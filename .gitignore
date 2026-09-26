@@ -1,5 +1,16 @@
-# Python
+# ===== 原有规则（AI 组 · 选品工具）=====
+.env
+data/raw/
+data/computed/
 __pycache__/
+*.pyc
+web/data/view.json
+.DS_Store
+需求挖掘/_素材/
+发给同事/
+
+# ===== 调研模块新增 =====
+# Python
 *.py[cod]
 *.egg-info/
 .venv/
@@ -12,7 +23,6 @@ tmp/
 # 系统文件
 Thumbs.db
 Desktop.ini
-.DS_Store
 
 # 编辑器
 .idea/
