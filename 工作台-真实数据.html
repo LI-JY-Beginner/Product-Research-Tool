@@ -1,0 +1,1154 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>美妆选品数据看板 · 真实数据版</title>
+<style>
+:root{
+  --pm-accent:#533afd;
+  --pm-accent-deep:#4434d4;
+  --pm-accent-press:#2e2b8c;
+  --pm-accent-soft:#eceafe;
+  --pm-up:#d93a3a;
+  --pm-down:#1a9e5c;
+  --ink-1:#0d253d;
+  --ink-2:#273951;
+  --ink-3:#64748d;
+  --ink-4:#b6b9c4;
+  --hair:#e3e8ee;
+  --hair-2:#f1f2f6;
+  --bg:#ffffff;
+  --bg-soft:#f6f9fc;
+  --warn:#b07207;
+  --warn-bg:#fdf6e7;
+  --radius:12px;
+  --shadow-1:rgba(0,55,112,.08) 0 1px 3px;
+  --shadow-2:rgba(0,55,112,.08) 0 8px 24px,rgba(0,55,112,.04) 0 2px 6px;
+  --font:"Microsoft YaHei","PingFang SC","Hiragino Sans GB","Helvetica Neue",Arial,sans-serif;
+  --mono:"SF Mono","JetBrains Mono",Menlo,Consolas,monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{font-family:var(--font);background:var(--bg);color:var(--ink-1);font-size:13px;line-height:1.55;font-feature-settings:"ss01"}
+a{color:var(--pm-accent);text-decoration:none}
+button{font-family:var(--font);cursor:pointer}
+::selection{background:var(--pm-accent-soft)}
+
+/* 顶栏 */
+.topbar{position:sticky;top:0;z-index:50;background:#fff;border-bottom:1px solid var(--hair)}
+.topbar-inner{max-width:1240px;margin:0 auto;padding:0 24px;display:flex;align-items:center;height:52px;gap:24px}
+.brand{display:flex;align-items:baseline;gap:8px;white-space:nowrap}
+.brand b{font-size:14px;font-weight:700;letter-spacing:.2px}
+.brand .proto{font-size:10px;color:#167a47;background:#eaf7ef;border:1px solid #bfe6cd;border-radius:9999px;padding:1px 8px;line-height:16px;font-weight:600}
+.nav{display:flex;gap:4px;flex:1;overflow:visible;align-items:center}
+.nav-item{border:0;background:none;font-size:13px;color:var(--ink-2);padding:6px 14px;border-radius:9999px;white-space:nowrap;position:relative;font-weight:400}
+.nav-item:hover{background:var(--bg-soft);color:var(--ink-1)}
+.nav-item.active{color:var(--pm-accent-deep);font-weight:600;background:var(--pm-accent-soft)}
+.nav-item .idx{font-size:10px;color:var(--ink-4);margin-right:3px;font-family:var(--mono)}
+.nav-item.active .idx{color:var(--pm-accent-deep)}
+.nav-more{position:relative}
+.nav-more .nav-item .caret{font-size:9px;margin-left:4px;font-family:var(--mono);color:var(--ink-3)}
+.nav-more-menu{position:absolute;top:calc(100% + 6px);right:0;background:#fff;border:1px solid var(--hair);border-radius:8px;box-shadow:var(--shadow-2);padding:4px;min-width:140px;display:none;z-index:70}
+.nav-more:hover .nav-more-menu,.nav-more.open .nav-more-menu{display:block}
+.nav-more-item{display:flex;align-items:center;width:100%;border:0;background:none;font-size:13px;color:var(--ink-2);padding:7px 12px;border-radius:6px;white-space:nowrap;text-align:left}
+.nav-more-item:hover{background:var(--bg-soft);color:var(--ink-1)}
+.nav-more-item.active{color:var(--pm-accent-deep);font-weight:600;background:var(--pm-accent-soft)}
+.nav-more-item .idx{font-size:10px;color:var(--ink-4);margin-right:5px;font-family:var(--mono)}
+.data-info{position:relative;flex-shrink:0}
+.data-info-btn{border:1px solid var(--hair);background:#fff;width:26px;height:26px;border-radius:9999px;font-size:11px;color:var(--ink-3);font-family:var(--mono);display:flex;align-items:center;justify-content:center;cursor:pointer}
+.data-info-btn:hover{border-color:var(--pm-accent);color:var(--pm-accent)}
+.data-info-pop{position:absolute;top:calc(100% + 8px);right:0;background:#fff;border:1px solid var(--hair);border-radius:8px;box-shadow:var(--shadow-2);padding:10px 14px;font-size:11px;color:var(--ink-3);line-height:1.7;white-space:nowrap;display:none;z-index:70}
+.data-info:hover .data-info-pop,.data-info.open .data-info-pop{display:block}
+.data-info-pop b{color:var(--ink-2);font-weight:600;font-variant-numeric:tabular-nums}
+
+/* 数据真实性横幅 */
+.truth-banner{max-width:1240px;margin:14px auto 0;padding:0 24px}
+.truth-banner-inner{background:#eaf7ef;border:1px solid #bfe6cd;border-radius:10px;padding:10px 16px;font-size:12px;color:#167a47;line-height:1.7;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.truth-banner-inner b{font-weight:700}
+
+/* 子 Tab */
+.subtabs{max-width:1240px;margin:0 auto;padding:10px 24px 0;display:none;gap:2px;border-bottom:1px solid var(--hair)}
+.subtabs.show{display:flex}
+.subtab{border:0;background:none;font-size:13px;color:var(--ink-2);padding:7px 14px 9px;position:relative;white-space:nowrap}
+.subtab:hover{color:var(--ink-1)}
+.subtab.active{color:var(--pm-accent);font-weight:600}
+.subtab.active::after{content:"";position:absolute;left:12px;right:12px;bottom:-1px;height:2px;background:var(--pm-accent);border-radius:2px}
+.subtab .fresh{font-size:10px;color:var(--ink-4);margin-left:6px;font-family:var(--mono)}
+
+/* 布局 */
+.page{max-width:1240px;margin:0 auto;padding:22px 24px 64px}
+section.view{display:none;animation:fade .18s ease}
+section.view.active{display:block}
+@keyframes fade{from{opacity:0;transform:translateY(3px)}to{opacity:1;transform:none}}
+.page-head{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;margin-bottom:18px;flex-wrap:wrap}
+.page-title{font-size:22px;font-weight:300;letter-spacing:-.22px;color:var(--ink-1)}
+.page-sub{font-size:12px;color:var(--ink-3);margin-top:3px}
+.page-sub b{color:var(--ink-2);font-weight:600}
+
+/* KPI */
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:20px}
+.kpi{padding:16px 20px;border:1px solid var(--hair);border-radius:var(--radius);background:#fff;box-shadow:var(--shadow-1)}
+.kpi .k-label{font-size:11px;color:var(--ink-3);display:flex;align-items:center;gap:6px}
+.kpi .k-value{font-size:24px;font-weight:300;margin-top:4px;font-variant-numeric:tabular-nums;font-feature-settings:"tnum";letter-spacing:-.5px}
+.kpi .k-delta{font-size:11px;margin-top:3px;font-variant-numeric:tabular-nums}
+.kpi .k-delta .up{color:var(--pm-up);font-weight:600}
+.kpi .k-delta .down{color:var(--pm-down);font-weight:600}
+.kpi .k-note{font-size:10px;color:var(--ink-4);margin-top:2px}
+
+/* 面板 */
+.panel{border:1px solid var(--hair);border-radius:var(--radius);background:#fff;margin-bottom:16px;overflow:hidden}
+.panel-head{display:flex;align-items:center;gap:10px;padding:11px 16px;cursor:pointer;user-select:none;background:var(--bg-soft);border-bottom:1px solid var(--hair)}
+.panel-head:hover{background:#f5f6fa}
+.panel-head .caret{font-size:10px;color:var(--ink-3);transition:transform .15s;font-family:var(--mono)}
+.panel.collapsed .panel-head .caret{transform:rotate(-90deg)}
+.panel.collapsed .panel-head{border-bottom:0}
+.panel-head h3{font-size:13.5px;font-weight:700}
+.panel-head .p-meta{font-size:11px;color:var(--ink-3);margin-left:auto;font-family:var(--mono)}
+.panel-body{padding:14px 16px}
+.panel.collapsed .panel-body{display:none}
+
+/* 表格 */
+.tbl{width:100%;border-collapse:collapse;font-variant-numeric:tabular-nums;font-feature-settings:"tnum"}
+.tbl th{font-size:11px;color:var(--ink-3);font-weight:600;text-align:left;padding:7px 10px;border-bottom:1px solid var(--hair);white-space:nowrap;background:#fff}
+.tbl td{padding:9px 10px;border-bottom:1px solid var(--hair-2);font-size:12.5px;vertical-align:middle}
+.tbl tbody tr{transition:background .1s}
+.tbl tbody tr:hover{background:var(--bg-soft)}
+.tbl tbody tr:last-child td{border-bottom:0}
+.tbl .num{text-align:right;font-family:var(--mono);font-size:12px}
+.tbl th.num{text-align:right}
+.up{color:var(--pm-up);font-weight:600}
+.down{color:var(--pm-down);font-weight:600}
+.t-name{font-weight:600;color:var(--ink-1)}
+.t-sub{font-size:11px;color:var(--ink-3)}
+.rank-badge{display:inline-flex;align-items:center;justify-content:center;width:20px;height:20px;border-radius:6px;font-size:11px;font-weight:700;font-family:var(--mono);background:var(--hair-2);color:var(--ink-2)}
+.rank-badge.r1{background:#17181c;color:#fff}
+.rank-badge.r2{background:#4a4d57;color:#fff}
+.rank-badge.r3{background:#8a8d99;color:#fff}
+
+/* 徽章 */
+.tag{display:inline-flex;align-items:center;gap:4px;font-size:10.5px;padding:1px 7px;border-radius:5px;line-height:17px;white-space:nowrap;font-weight:600}
+.tag-real{background:#eaf7ef;color:#167a47;border:1px solid #bfe6cd}
+.tag-pending{background:#f1f2f6;color:var(--ink-3);border:1px dashed var(--ink-4)}
+.tag-tbs{background:#f1f2f6;color:var(--ink-3);border:1px dashed var(--ink-4)}
+.tag-cat{background:var(--pm-accent-soft);color:var(--pm-accent)}
+.tag-sample{background:var(--warn-bg);color:var(--warn);border:1px dashed #e3c98a}
+.badge-caliber{display:inline-flex;align-items:center;gap:3px;font-size:10.5px;color:var(--pm-accent);background:var(--pm-accent-soft);border:1px solid #d9dbf5;border-radius:5px;padding:1px 7px;cursor:pointer;font-weight:600;white-space:nowrap}
+.badge-caliber:hover{background:#e2e5fb}
+.badge-caliber::before{content:"i";width:11px;height:11px;border-radius:50%;background:var(--pm-accent);color:#fff;font-size:8px;display:inline-flex;align-items:center;justify-content:center;font-family:var(--mono)}
+
+/* 模式开关 */
+.mode-switch{display:inline-flex;border:1px solid var(--hair);border-radius:8px;overflow:hidden;background:#fff}
+.mode-switch button{border:0;background:none;font-size:12px;padding:6px 14px;color:var(--ink-2)}
+.mode-switch button.on{background:var(--pm-accent);color:#fff;font-weight:600}
+.mode-hint{font-size:11px;color:var(--ink-3);margin-left:10px}
+body[data-mode="pitch"] .kpi .k-value{font-size:28px}
+body[data-mode="pitch"] .pitch-line{display:block}
+.pitch-line{display:none;background:linear-gradient(90deg,var(--pm-accent-soft),#fff);border:1px solid #d9dbf5;border-radius:var(--radius);padding:12px 16px;margin-bottom:16px;font-size:13.5px;color:var(--ink-1)}
+.pitch-line b{color:var(--pm-accent)}
+
+/* Tab */
+.ptabs{display:inline-flex;gap:2px;border:1px solid var(--hair);border-radius:8px;padding:2px;background:#fff}
+.ptabs button{border:0;background:none;font-size:12px;padding:5px 14px;border-radius:6px;color:var(--ink-2)}
+.ptabs button.on{background:var(--pm-accent);color:#fff;font-weight:600}
+.ptab-pane{display:none}
+.ptab-pane.on{display:block}
+
+/* 筛选 */
+.filters{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:14px}
+.filters .f-label{font-size:11px;color:var(--ink-3)}
+.filters select{font-family:var(--font);font-size:12px;color:var(--ink-1);border:1px solid var(--hair);border-radius:7px;padding:5px 26px 5px 9px;background:#fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='5'%3E%3Cpath d='M0 0l4 5 4-5z' fill='%238a8d99'/%3E%3C/svg%3E") no-repeat right 9px center;appearance:none;cursor:pointer}
+.filters select:hover{border-color:var(--ink-4)}
+.filters .f-reset{border:1px solid var(--hair);background:#fff;border-radius:7px;font-size:11px;color:var(--ink-3);padding:5px 10px}
+.filters .f-reset:hover{color:var(--pm-accent);border-color:var(--pm-accent)}
+
+/* 级联 */
+.casc{position:relative;display:inline-block}
+.casc-box{display:flex;align-items:center;gap:6px;min-width:280px;max-width:520px;border:1px solid var(--hair);border-radius:7px;background:#fff;padding:5px 10px;font-size:12px;color:var(--ink-1);cursor:default;user-select:none}
+.casc-box:hover,.casc.open .casc-box{border-color:var(--pm-accent)}
+.casc-box .casc-path{flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.casc-box .casc-path .sep{color:var(--ink-4);margin:0 4px;font-family:var(--mono)}
+.casc-box .casc-path .placeholder{color:var(--ink-4)}
+.casc-box .casc-caret{font-size:9px;color:var(--ink-3);font-family:var(--mono);transition:transform .15s}
+.casc.open .casc-caret{transform:rotate(180deg)}
+.casc-flyouts{position:absolute;top:calc(100% + 4px);left:0;display:none;z-index:60}
+.casc.open .casc-flyouts{display:flex}
+.casc-col{background:#fff;border:1px solid var(--hair);border-radius:8px;box-shadow:0 8px 24px rgba(23,24,28,.10);min-width:150px;max-height:300px;overflow-y:auto;padding:4px}
+.casc-col+.casc-col{margin-left:4px}
+.casc-opt{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:6px 10px;font-size:12px;border-radius:6px;white-space:nowrap;cursor:default;color:var(--ink-2)}
+.casc-opt:hover,.casc-opt.hov{background:var(--pm-accent-soft);color:var(--pm-accent)}
+.casc-opt.sel{color:var(--pm-accent);font-weight:600}
+.casc-opt .arr{font-size:9px;color:var(--ink-4);font-family:var(--mono)}
+.casc-opt .cid{font-size:9.5px;color:var(--ink-4);font-family:var(--mono);margin-left:6px}
+.casc-opt .tbs{font-size:9.5px;color:var(--ink-4);background:var(--hair-2);border-radius:9999px;padding:1px 7px;margin-left:6px;white-space:nowrap}
+.casc-empty{border:1px dashed var(--ink-4);border-radius:10px;padding:40px 20px;text-align:center;background:var(--bg-soft);color:var(--ink-3);font-size:12px;margin-bottom:14px}
+.casc-empty b{color:var(--ink-2)}
+.casc-empty .tag{margin-left:6px}
+
+/* 链接 */
+.link-act{font-size:11.5px;color:var(--pm-accent);cursor:pointer;white-space:nowrap;border:0;background:none;padding:0}
+.link-act:hover{text-decoration:underline}
+.link-act+.link-act{margin-left:10px}
+
+/* 占比条 */
+.bar-cell{display:flex;align-items:center;gap:8px}
+.bar-track{flex:1;max-width:110px;height:5px;background:var(--hair-2);border-radius:3px;overflow:hidden}
+.bar-fill{height:100%;background:var(--pm-accent);border-radius:3px}
+.bar-val{font-size:11px;font-family:var(--mono);color:var(--ink-2);white-space:nowrap}
+
+/* 弹层 */
+.modal-mask{position:fixed;inset:0;background:rgba(23,24,28,.42);z-index:100;display:none;align-items:center;justify-content:center;backdrop-filter:blur(2px)}
+.modal-mask.show{display:flex}
+.modal{background:#fff;border-radius:12px;width:420px;max-width:92vw;box-shadow:0 16px 48px rgba(0,0,0,.18);overflow:hidden;animation:pop .16s ease}
+@keyframes pop{from{opacity:0;transform:scale(.96)}to{opacity:1;transform:none}}
+.modal-head{padding:14px 18px;border-bottom:1px solid var(--hair);display:flex;justify-content:space-between;align-items:center}
+.modal-head b{font-size:14px}
+.modal-close{border:0;background:none;font-size:16px;color:var(--ink-3);width:28px;height:28px;border-radius:6px}
+.modal-close:hover{background:var(--hair-2);color:var(--ink-1)}
+.modal-body{padding:16px 18px}
+.modal-body .m-row{display:flex;gap:12px;padding:7px 0;border-bottom:1px solid var(--hair-2);font-size:12.5px}
+.modal-body .m-row:last-child{border-bottom:0}
+.modal-body .m-k{width:76px;flex-shrink:0;color:var(--ink-3);font-size:11.5px;padding-top:1px}
+.modal-body .m-v{color:var(--ink-1);line-height:1.6}
+
+/* 空态 */
+.empty{border:1px dashed var(--ink-4);border-radius:12px;padding:64px 24px;text-align:center;background:var(--bg-soft)}
+.empty .e-icon{font-size:30px;color:var(--ink-4);font-family:var(--mono)}
+.empty h3{font-size:15px;margin:12px 0 6px;color:var(--ink-2)}
+.empty p{font-size:12px;color:var(--ink-3)}
+.empty .e-owner{display:inline-block;margin-top:14px;font-size:11px;color:var(--pm-accent);background:var(--pm-accent-soft);border-radius:6px;padding:3px 10px;cursor:pointer}
+
+/* 商品图占位 */
+.prod{display:flex;align-items:center;gap:10px}
+.prod-img{width:34px;height:34px;border-radius:7px;background:linear-gradient(135deg,var(--pm-accent-soft),#e0e2fa);border:1px solid var(--hair);display:flex;align-items:center;justify-content:center;font-size:9px;color:var(--pm-accent);font-weight:700;flex-shrink:0}
+
+/* Hero */
+.hero{background:linear-gradient(120deg,#f4f4fd,#eef0fd 55%,#fff);border:1px solid #d9dbf5;border-radius:14px;padding:20px 22px;margin-bottom:18px;display:flex;gap:26px;align-items:center;flex-wrap:wrap}
+.hero .h-left{min-width:250px;flex:1}
+.hero .h-kicker{font-size:11px;color:var(--pm-accent);font-weight:700;letter-spacing:.8px;text-transform:uppercase}
+.hero .h-name{font-size:20px;font-weight:800;margin:6px 0 2px;letter-spacing:.2px}
+.hero .h-sub{font-size:12px;color:var(--ink-3)}
+.hero .h-stats{display:flex;gap:0;border-left:1px solid #d9dbf5;padding-left:22px;flex-wrap:wrap}
+.hero .h-stat{padding:0 22px;border-right:1px solid var(--hair)}
+.hero .h-stat:last-child{border-right:0}
+.hero .h-stat .s-l{font-size:11px;color:var(--ink-3)}
+.hero .h-stat .s-v{font-size:24px;font-weight:800;font-variant-numeric:tabular-nums;margin-top:2px;letter-spacing:-.4px}
+.hero .h-stat .s-v.up{color:var(--pm-up)}
+body[data-mode="pitch"] .hero .h-name{font-size:26px}
+body[data-mode="pitch"] .hero .h-stat .s-v{font-size:30px}
+
+/* 类目趋势顶部 */
+.topcat{display:grid;grid-template-columns:1.4fr 1fr;gap:16px;margin-bottom:18px}
+.topcat .tc-chart,.topcat .tc-now{border:1px solid var(--hair);border-radius:var(--radius);background:#fff;padding:16px 18px}
+.topcat .tc-kicker{font-size:11px;color:var(--pm-accent);font-weight:700;letter-spacing:.6px;display:flex;justify-content:space-between;align-items:center}
+.topcat .tc-name{font-size:17px;font-weight:800;margin:6px 0 4px}
+.topcat .tc-now .n-v{font-size:30px;font-weight:800;font-variant-numeric:tabular-nums;letter-spacing:-.5px}
+.topcat .tc-now .n-l{font-size:11px;color:var(--ink-3);margin-top:8px}
+.topcat .tc-now .n-amt{font-size:15px;font-weight:700;margin-top:2px;font-variant-numeric:tabular-nums}
+
+/* 策略台 */
+.strat-hero{border:2px solid var(--pm-accent);border-radius:14px;padding:20px 24px;margin-bottom:18px;background:linear-gradient(120deg,#f6f6fe,#fff);display:flex;gap:24px;align-items:center;flex-wrap:wrap}
+.strat-hero .verdict{font-size:30px;font-weight:800;letter-spacing:.5px;padding:8px 22px;border-radius:12px}
+.strat-hero .verdict.go{background:#eaf7ef;color:#167a47;border:1px solid #bfe6cd}
+.strat-hero .verdict.explore{background:#fdf6e7;color:#b07207;border:1px solid #e3c98a}
+.strat-hero .sh-body{flex:1;min-width:280px}
+.strat-hero .sh-title{font-size:15px;font-weight:700;margin-bottom:4px}
+.strat-hero .sh-reason{font-size:12.5px;color:var(--ink-2);line-height:1.7}
+.strat-hero .sh-meta{display:flex;gap:18px;margin-top:8px;font-size:12px;flex-wrap:wrap}
+.strat-hero .sh-meta b{color:var(--pm-accent)}
+.analytics{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.ana-card{border:1px solid var(--hair);border-radius:var(--radius);background:#fff;overflow:hidden}
+.ana-card .ac-head{padding:12px 16px;background:var(--bg-soft);border-bottom:1px solid var(--hair);display:flex;justify-content:space-between;align-items:center}
+.ana-card .ac-head b{font-size:13.5px}
+.ana-card .ac-head .ac-idx{font-family:var(--mono);font-size:10px;color:var(--pm-accent);font-weight:700;margin-right:6px}
+.ana-card .ac-body{padding:14px 16px}
+.ana-card.full{grid-column:1/-1}
+.rule-note{font-size:11px;color:var(--ink-3);background:var(--bg-soft);border:1px dashed var(--ink-4);border-radius:7px;padding:8px 11px;margin-top:10px;line-height:1.7}
+.price-hist{display:flex;align-items:flex-end;gap:8px;height:96px;margin:12px 0 4px}
+.price-hist .ph-col{flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;height:100%;justify-content:flex-end}
+.price-hist .ph-bar{width:100%;max-width:46px;border-radius:5px 5px 0 0;background:var(--pm-accent)}
+.price-hist .ph-bar.hot{background:var(--pm-up)}
+.price-hist .ph-bar.gap{background:repeating-linear-gradient(45deg,#dcdcf8,#dcdcf8 4px,#f4f4fd 4px,#f4f4fd 8px);border:1px dashed var(--pm-accent)}
+.price-hist .ph-l{font-size:10px;color:var(--ink-3);white-space:nowrap}
+.price-hist .ph-n{font-size:10.5px;font-family:var(--mono);font-weight:700}
+
+.footnote{margin-top:26px;font-size:11px;color:var(--ink-4);line-height:1.8;border-top:1px solid var(--hair-2);padding-top:12px}
+.footnote .tag{margin-right:2px}
+
+/* 页脚 */
+.site-footer{border-top:1px solid var(--hair);background:#fff}
+.site-footer-inner{max-width:1240px;margin:0 auto;padding:24px;font-size:13px;color:var(--ink-3);letter-spacing:-.2px}
+.site-footer-inner b{color:var(--ink-2);font-weight:600;font-variant-numeric:tabular-nums}
+
+@media (max-width:980px){
+  .kpis{grid-template-columns:repeat(2,1fr)}
+  .topcat{grid-template-columns:1fr}
+  .analytics{grid-template-columns:1fr}
+  .topbar-inner{gap:12px}
+}
+</style>
+</head>
+<body data-mode="dense">
+
+<!-- 顶栏 -->
+<header class="topbar">
+  <div class="topbar-inner">
+    <div class="brand"><b>美妆选品数据看板</b><span class="proto">真实数据版</span></div>
+    <nav class="nav" id="mainNav">
+      <button class="nav-item" data-nav="global" data-target="global-growth"><span class="idx">①</span>全球数据看板</button>
+      <button class="nav-item" data-nav="rank" data-target="product-rank"><span class="idx">②</span>商品榜</button>
+      <button class="nav-item" data-nav="lib" data-target="ingredient-lib"><span class="idx">③</span>成分库</button>
+      <button class="nav-item" data-nav="strategy" data-target="strategy-cards"><span class="idx">④</span>初始策略台</button>
+      <div class="nav-more" id="navMore">
+        <button class="nav-item" id="navMoreBtn" type="button">更多<span class="caret">▾</span></button>
+        <div class="nav-more-menu">
+          <button class="nav-more-item" data-nav="competitor" data-target="competitor"><span class="idx">⑤</span>竞品分析</button>
+          <button class="nav-more-item" data-nav="panalysis" data-target="product-analysis"><span class="idx">⑥</span>产品分析</button>
+          <button class="nav-more-item" data-nav="pdesign" data-target="product-design"><span class="idx">⑦</span>产品设计</button>
+        </div>
+      </div>
+    </nav>
+    <div class="data-info" id="dataInfo">
+      <button class="data-info-btn" type="button" title="数据说明">i</button>
+      <div class="data-info-pop">数据截止 <b>2026-09-24</b><br>真实采集版 · 内嵌 JSON<br>环比增速待积累快照</div>
+    </div>
+  </div>
+  <div class="subtabs" id="globalSubtabs">
+    <button class="subtab" data-target="global-growth">增速产品看板<span class="fresh">每日</span></button>
+    <button class="subtab" data-target="global-category-trend">类目增长趋势<span class="fresh">7天</span></button>
+    <button class="subtab" data-target="global-ingredient-rank">成分增长榜<span class="fresh">7天</span></button>
+  </div>
+</header>
+
+<!-- 数据真实性横幅 -->
+<div class="truth-banner">
+  <div class="truth-banner-inner">
+    <span class="tag tag-real">实测</span>
+    <span><b>本页数据为真实采集</b>（罗盘·商品榜 2026-09-24 近7天 + 蝉妈妈·美妆属性分析），环比增速待积累每日快照后可算。</span>
+  </div>
+</div>
+
+<main class="page">
+
+<!-- ============ ① 增速产品看板 ============ -->
+<section class="view" id="global-growth">
+  <div class="page-head">
+    <div>
+      <div class="page-title">增速产品看板</div>
+      <div class="page-sub">数据周期 <b>2026-09-18 ~ 09-24</b>（近7天） · 来源：抖音罗盘·商品榜 <span class="tag tag-real">实测</span></div>
+    </div>
+    <div style="display:flex;align-items:center">
+      <div class="mode-switch" id="modeSwitch">
+        <button class="on" data-mode="dense">自用密度模式</button>
+        <button data-mode="pitch">路演结论模式</button>
+      </div>
+      <span class="mode-hint" id="modeHint">紧凑行高 · 全字段</span>
+    </div>
+  </div>
+
+  <div class="filters">
+    <span class="f-label">市场</span>
+    <select id="gg-market"><option>中国</option><option>美国（待采集）</option><option>东南亚（待采集）</option><option>日本（待采集）</option></select>
+    <span class="f-label">品类</span>
+    <div class="casc" id="gg-casc"></div>
+    <button class="f-reset" onclick="resetGrowthFilters()">重置</button>
+  </div>
+  <div class="casc-empty" id="gg-empty" style="display:none">当前选中类目 <b id="gg-empty-path"></b> <span class="tag tag-tbs">该类目数据待采集</span> — 目前仅「面部洗护 / 眼部护理」有实测数据</div>
+
+  <div class="hero" id="ggHero">
+    <div class="h-left">
+      <div class="h-kicker">本期榜单第一名 · 近7天</div>
+      <div class="h-name">BUV绿泥洗面奶 <span class="tag tag-real" style="font-size:10px">实测</span></div>
+      <div class="h-sub" id="ggHeroSub">面部洗护 TOP1（当前筛选：中国 · 面部洗护）· 四级类目：洁面</div>
+    </div>
+    <div class="h-stats">
+      <div class="h-stat"><div class="s-l">支付金额区间</div><div class="s-v" id="ggHeroAmt">¥10亿-¥25亿</div></div>
+      <div class="h-stat"><div class="s-l">环比增速</div><div class="s-v" id="ggHeroGmv"><span class="tag tag-pending" style="font-size:12px">待积累快照</span></div></div>
+      <div class="h-stat"><div class="s-l">价格带</div><div class="s-v" id="ggHeroPrice">¥99-¥149</div></div>
+    </div>
+  </div>
+
+  <div class="pitch-line">本期榜单：面部洗护 TOP1 为 <b>BUV绿泥洗面奶（¥99-¥149）</b>；眼部护理 TOP1 为 <b>素说美丽胶原蛋白眼膜（¥399）</b>。成分侧 <b>玻色因环比 +221.28%</b>（蝉妈妈实测）显著上升。环比增速待积累每日快照后可算。</div>
+
+  <div class="kpis">
+    <div class="kpi"><div class="k-label">监测三级类目</div><div class="k-value">2</div><div class="k-note">面部洗护 / 眼部护理（罗盘实测）</div></div>
+    <div class="kpi"><div class="k-label">上榜商品（TOP10 × 2 组）</div><div class="k-value">20</div><div class="k-note">罗盘商品榜实测 · 2026-09-24</div></div>
+    <div class="kpi"><div class="k-label">面部洗护 TOP1 支付金额区间</div><div class="k-value">¥10亿-¥25亿</div><div class="k-note">BUV绿泥洗面奶 · 平台脱敏区间</div></div>
+    <div class="kpi"><div class="k-label">成分榜最高环比</div><div class="k-value up">+221.28%</div><div class="k-delta"><span class="up">玻色因 · 蝉妈妈实测</span></div></div>
+  </div>
+
+  <div class="panel" id="pnl-face">
+    <div class="panel-head" onclick="togglePanel('pnl-face')">
+      <span class="caret">▼</span><h3>面部洗护 · 商品榜 TOP10</h3>
+      <span class="tag tag-cat">三级类目</span>
+      <span class="tag tag-real">实测</span>
+      <span class="p-meta">罗盘 · 2026-09-18~24</span>
+    </div>
+    <div class="panel-body" style="padding:0">
+      <table class="tbl">
+        <thead><tr>
+          <th style="width:52px">名次</th><th>商品</th><th class="num">价格带</th>
+          <th class="num">支付金额区间</th><th class="num">环比增速</th><th>所属类目</th><th>口径</th>
+        </tr></thead>
+        <tbody id="faceBody"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="panel" id="pnl-eye">
+    <div class="panel-head" onclick="togglePanel('pnl-eye')">
+      <span class="caret">▼</span><h3>眼部护理 · 商品榜 TOP10</h3>
+      <span class="tag tag-cat">三级类目</span>
+      <span class="tag tag-real">实测</span>
+      <span class="p-meta">罗盘 · 2026-09-18~24</span>
+    </div>
+    <div class="panel-body" style="padding:0">
+      <table class="tbl">
+        <thead><tr>
+          <th style="width:52px">名次</th><th>商品</th><th class="num">价格带</th>
+          <th class="num">支付金额区间</th><th class="num">环比增速</th><th>所属类目</th><th>口径</th>
+        </tr></thead>
+        <tbody id="eyeBody"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="footnote">
+    <span class="tag tag-real">实测</span> 商品名、名次、价格带、支付金额区间为罗盘实测（2026-09-18~24 近7天），金额为平台脱敏区间值；
+    <span class="tag tag-pending">待积累快照</span> 环比增速需积累每日快照后计算，当前未编造。
+  </div>
+</section>
+
+<!-- ============ ① 类目增长趋势 ============ -->
+<section class="view" id="global-category-trend">
+  <div class="page-head">
+    <div>
+      <div class="page-title">类目增长趋势</div>
+      <div class="page-sub">三级类目列表 · 来源：抖音罗盘 · 面部洗护 / 眼部护理已有实测商品榜</div>
+    </div>
+  </div>
+
+  <div class="filters">
+    <span class="f-label">市场</span>
+    <select id="ct-market"><option>中国</option><option>美国（待采集）</option><option>东南亚（待采集）</option><option>日本（待采集）</option></select>
+    <span class="f-label">类目</span>
+    <div class="casc" id="ct-casc"></div>
+    <button class="f-reset" onclick="resetTrendFilters()">重置</button>
+  </div>
+
+  <div class="panel" id="pnl-trend">
+    <div class="panel-head" onclick="togglePanel('pnl-trend')">
+      <span class="caret">▼</span><h3>类目趋势表（三级类目级）</h3>
+      <span class="p-meta">13 个三级类目 · 有实测商品榜的标「实测」，其余「待采集」</span>
+    </div>
+    <div class="panel-body" style="padding:0">
+      <table class="tbl" id="trendTable">
+        <thead><tr>
+          <th>类目（三级）</th><th>层级</th>
+          <th class="num">上榜商品数（近7天）</th>
+          <th class="num">环比增速</th>
+          <th>状态</th><th>操作</th>
+        </tr></thead>
+        <tbody id="trendTbody">
+          <tr class="l3-row" data-g="1" onclick="toggleSubcat(this,'face')">
+            <td><span class="caret">▶</span><span class="t-name">面部洗护</span><div class="t-sub">个护家清 / 个人护理</div></td>
+            <td><span class="tag tag-cat">三级</span></td>
+            <td class="num">TOP10 已采集 <span class="tag tag-real">实测</span></td>
+            <td class="num"><span class="tag tag-pending">待积累快照</span></td>
+            <td><span class="tag tag-real">实测</span></td>
+            <td onclick="event.stopPropagation()"><button class="link-act" onclick="go('global-growth')">看商品榜</button><button class="link-act" onclick="go('global-ingredient-rank')">看成分</button></td>
+          </tr>
+          <tr class="l3-row" data-g="1" onclick="toggleSubcat(this,'eye')">
+            <td><span class="caret">▶</span><span class="t-name">眼部护理</span><div class="t-sub">个护家清 / 个人护理</div></td>
+            <td><span class="tag tag-cat">三级</span></td>
+            <td class="num">TOP10 已采集 <span class="tag tag-real">实测</span></td>
+            <td class="num"><span class="tag tag-pending">待积累快照</span></td>
+            <td><span class="tag tag-real">实测</span></td>
+            <td onclick="event.stopPropagation()"><button class="link-act" onclick="go('global-growth')">看商品榜</button><button class="link-act" onclick="go('global-ingredient-rank')">看成分</button></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="footnote"><span class="tag tag-real">实测</span> 面部洗护 / 眼部护理已采集罗盘商品榜 TOP10；<span class="tag tag-pending">待积累快照</span> 类目级环比需每日快照；其余 11 个三级类目 <span class="tag tag-tbs">待采集</span>。</div>
+</section>
+
+<!-- ============ ① 成分增长榜 ============ -->
+<section class="view" id="global-ingredient-rank">
+  <div class="page-head">
+    <div>
+      <div class="page-title">成分增长榜</div>
+      <div class="page-sub">来源：蝉妈妈 · 美妆属性分析（护肤品，近7天） <span class="tag tag-real">实测</span></div>
+    </div>
+  </div>
+
+  <div class="filters">
+    <span class="f-label">市场</span>
+    <select id="ir-market"><option selected>中国</option><option>美国（待采集）</option><option>东南亚（待采集）</option><option>日本（待采集）</option></select>
+    <span class="f-label">类目</span>
+    <div class="casc" id="ir-casc"></div>
+    <button class="f-reset" onclick="resetIngFilters()">重置</button>
+  </div>
+
+  <div class="kpis" style="grid-template-columns:repeat(3,1fr)">
+    <div class="kpi"><div class="k-label">环比增速最高成分</div><div class="k-value up">玻色因 +221.28%</div><div class="k-note">关联商品 69 款 <span class="tag tag-real">实测</span></div></div>
+    <div class="kpi"><div class="k-label">在售覆盖最广成分</div><div class="k-value">烟酰胺 · 215 款</div><div class="k-note">环比 +4.82% <span class="tag tag-real">实测</span></div></div>
+    <div class="kpi"><div class="k-label">本期已采集成分数</div><div class="k-value">5 个</div><div class="k-note">蝉妈妈·美妆属性分析 · 2026-09-24</div></div>
+  </div>
+
+  <div class="panel" id="pnl-ing">
+    <div class="panel-head" onclick="togglePanel('pnl-ing')">
+      <span class="caret">▼</span><h3>成分榜 TOP5（已采集）</h3>
+      <span class="p-meta">环比为蝉妈妈实测值</span>
+    </div>
+    <div class="panel-body" style="padding:0">
+      <table class="tbl">
+        <thead><tr><th style="width:52px">排名</th><th>成分名</th><th class="num">关联商品数</th><th class="num">销量区间</th><th class="num">销售额区间</th><th class="num">环比增速</th></tr></thead>
+        <tbody id="ingBody"></tbody>
+      </table>
+    </div>
+  </div>
+  <div class="footnote"><span class="tag tag-real">实测</span> 成分名、关联商品数、销量/销售额区间、环比均为蝉妈妈实测（2026-09-24）。销量/销售额为平台区间值（如 100w+ / 1000w+）。</div>
+</section>
+
+<!-- ============ ② 商品榜 ============ -->
+<section class="view" id="product-rank">
+  <div class="page-head">
+    <div>
+      <div class="page-title">商品榜</div>
+      <div class="page-sub">罗盘商品榜 · 面部洗护 TOP10（近7天） <span class="tag tag-real">罗盘实测</span></div>
+    </div>
+    <div class="ptabs" id="rankTabs">
+      <button class="on" data-pane="rank-compass">罗盘</button>
+      <button data-pane="rank-chanmama">蝉妈妈</button>
+      <button data-pane="rank-fastmoss">FastMoss（海外）</button>
+    </div>
+  </div>
+
+  <div class="filters">
+    <span class="f-label">国家/地区</span>
+    <select id="f-country" onchange="onRankMarketChange()"><option>中国</option><option>美国（待采集）</option><option>东南亚（待采集）</option><option>日本（待采集）</option></select>
+    <span class="f-label">类目</span>
+    <div class="casc" id="rank-casc"></div>
+    <span class="f-label">统计周期</span>
+    <select id="f-period"><option>近7天</option></select>
+    <button class="f-reset" onclick="resetFilters()">重置</button>
+    <span class="f-label" id="filterEcho" style="margin-left:auto;font-family:var(--mono)"></span>
+  </div>
+
+  <div class="ptab-pane on" id="rank-compass">
+    <div class="panel" style="margin-bottom:0"><div class="panel-body" style="padding:0">
+      <table class="tbl">
+        <thead><tr><th style="width:52px">名次</th><th>商品</th><th class="num">价格带</th><th class="num">支付金额区间</th><th class="num">环比增速</th><th>所属类目</th><th>数据截至</th></tr></thead>
+        <tbody id="rankCompassBody"></tbody>
+      </table>
+    </div></div>
+  </div>
+
+  <div class="ptab-pane" id="rank-chanmama">
+    <div class="panel" style="margin-bottom:0"><div class="panel-body" style="padding:0">
+      <table class="tbl">
+        <thead><tr><th style="width:52px">名次</th><th>商品</th><th class="num">价格带</th><th class="num">支付金额区间</th><th class="num">环比增速</th><th>所属类目</th><th>数据截至</th></tr></thead>
+        <tbody>
+          <tr><td colspan="7" style="text-align:center;color:var(--ink-3);padding:22px">蝉妈妈商品级榜单 <span class="tag tag-tbs">待采集</span> — 当前蝉妈妈仅有成分维度实测数据（见成分增长榜），商品级接入后排期补全</td></tr>
+        </tbody>
+      </table>
+    </div></div>
+  </div>
+
+  <div class="ptab-pane" id="rank-fastmoss">
+    <div class="panel" style="margin-bottom:0"><div class="panel-body" style="padding:0">
+      <table class="tbl">
+        <thead><tr><th style="width:52px">名次</th><th>商品</th><th class="num">价格带</th><th class="num">支付金额区间</th><th class="num">环比增速</th><th>所属类目</th><th>数据截至</th></tr></thead>
+        <tbody>
+          <tr><td colspan="7" style="text-align:center;color:var(--ink-3);padding:22px">FastMoss 海外榜单 <span class="tag tag-tbs">待采集</span> — 海外市场数据待接入</td></tr>
+        </tbody>
+      </table>
+    </div></div>
+  </div>
+</section>
+
+<!-- ============ ③ 成分库 ============ -->
+<section class="view" id="ingredient-lib">
+  <div class="page-head">
+    <div>
+      <div class="page-title">成分库</div>
+      <div class="page-sub">已采集成分 5 个 · 来源：蝉妈妈 <span class="tag tag-real">实测</span> · TOP30 待采集</div>
+    </div>
+  </div>
+
+  <div class="filters">
+    <span class="f-label">市场</span>
+    <select id="lib-market"><option selected>中国</option><option>美国（待采集）</option><option>东南亚（待采集）</option></select>
+    <span class="f-label">品类</span>
+    <div class="casc" id="lib-casc"></div>
+    <span class="f-label">周期</span>
+    <select id="lib-period"><option>近7天</option></select>
+    <button class="f-reset" onclick="resetLibFilters()">重置</button>
+  </div>
+
+  <div class="panel"><div class="panel-body" style="padding:0">
+    <table class="tbl">
+      <thead><tr><th style="width:52px">排名</th><th>成分</th><th class="num">关联商品数</th><th class="num">销量区间</th><th class="num">销售额区间</th><th class="num">环比增速</th><th>状态</th></tr></thead>
+      <tbody id="libBody"></tbody>
+    </table>
+  </div></div>
+  <div class="footnote"><span class="tag tag-real">实测</span> 全部 5 条均为蝉妈妈实测（2026-09-24）；成分 × 类目分布矩阵、热度分待采集后补全。</div>
+</section>
+
+<!-- ============ ④ 初始策略台 ============ -->
+<section class="view" id="strategy-cards">
+  <div class="page-head">
+    <div>
+      <div class="page-title">初始策略台</div>
+      <div class="page-sub">基于真实数据做一版 GO/NOGO 示例 · <b>示例逻辑，决策阈值待定稿</b></div>
+    </div>
+  </div>
+
+  <div class="filters">
+    <span class="f-label">市场</span>
+    <select id="st-market"><option>中国</option><option>美国（待采集）</option><option>东南亚（待采集）</option></select>
+    <span class="f-label">类目</span>
+    <div class="casc" id="st-casc"></div>
+  </div>
+
+  <div class="strat-hero">
+    <div class="verdict explore">探索性 GO <span style="font-size:12px;font-weight:600">示例逻辑</span></div>
+    <div class="sh-body">
+      <div class="sh-title">眼部精华方向：成分端玻色因爆发 + 眼部护理价格带分散，值得进一步验证 <span class="tag tag-sample">示例逻辑 · 阈值待定稿</span></div>
+      <div class="sh-reason">
+        依据（全部为真实数据）：① 成分端 <b class="up">玻色因环比 +221.28%</b>（69 款关联商品，蝉妈妈实测），抗皱/紧致成分需求快速上升；② 眼部护理 TOP10 价格带从 <b>¥59 到 ¥17,976</b> 高度分散（罗盘实测），未出现单一价格带垄断；③ 眼部护理 TOP10 中眼膜/眼部精华油/眼霜多形态并存，新锐（效妆、KAZOO、优时颜、雏菊的天空、薇旖美）与国际大牌（丸美）同场竞争。
+      </div>
+      <div class="sh-meta">
+        <span>细分方向：<b>眼部精华 · 玻色因/胶原抗皱</b>（成分实测：玻色因 +221.28%、胶原蛋白 +20.94%）</span>
+        <span>参考价格带：<b>¥59-¥399</b>（TOP10 主力带，实测）</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="analytics">
+    <div class="ana-card">
+      <div class="ac-head"><b><span class="ac-idx">01</span>成分端信号（实测）</b><span class="tag tag-real">蝉妈妈实测</span></div>
+      <div class="ac-body">
+        <table class="tbl">
+          <thead><tr><th>成分</th><th class="num">关联商品数</th><th class="num">环比</th></tr></thead>
+          <tbody>
+            <tr><td class="t-name">玻色因</td><td class="num">69</td><td class="num"><span class="up">+221.28%</span></td></tr>
+            <tr><td class="t-name">黑参提取物</td><td class="num">5</td><td class="num"><span class="up">+60.47%</span></td></tr>
+            <tr><td class="t-name">角鲨烷</td><td class="num">55</td><td class="num"><span class="up">+58.08%</span></td></tr>
+            <tr><td class="t-name">胶原蛋白</td><td class="num">67</td><td class="num"><span class="up">+20.94%</span></td></tr>
+            <tr><td class="t-name">烟酰胺</td><td class="num">215</td><td class="num"><span class="up">+4.82%</span></td></tr>
+          </tbody>
+        </table>
+        <div class="rule-note">解读：玻色因增速 +221.28% 为新兴爆发信号；烟酰胺覆盖 215 款但增速仅 +4.82%，已进入成熟期。</div>
+      </div>
+    </div>
+
+    <div class="ana-card">
+      <div class="ac-head"><b><span class="ac-idx">02</span>眼部护理价格带分布（实测）</b><span class="tag tag-real">罗盘实测</span></div>
+      <div class="ac-body">
+        <div class="t-sub" style="margin-bottom:2px">TOP10 商品价格带散点（按名次）</div>
+        <div class="price-hist" id="eyePriceHist"></div>
+        <div class="t-sub">TOP10 价格从 ¥59 跨到 ¥17,976，主力带 ¥59-¥699；¥1,480-¥17,976 由薇旖美套盒占据，属超高端异常值。</div>
+        <div class="rule-note">解读：价格带分散 = 竞争格局未定；¥150-¥400 带内已有 KAZOO、优时颜、丸美等多款，需进一步看 CR4 集中度（待采集）。</div>
+      </div>
+    </div>
+
+    <div class="ana-card full">
+      <div class="ac-head"><b><span class="ac-idx">03</span>初步结论（示例逻辑，决策阈值待定稿）</b><span class="badge-caliber" onclick="openCaliber('初始策略台·眼部精华','探索性 GO 仅基于两条真实信号：① 成分端玻色因环比 +221.28%（蝉妈妈实测）；② 眼部护理 TOP10 价格带高度分散（罗盘实测）。CR4/CR10、玩家结构、利润空间等关键判定项均待采集，当前不下最终结论。','眼部护理 TOP10 商品 + 成分榜 5 条','2026-09-24 24:00','罗盘 + 蝉妈妈 · 实测')">结论口径</span></div>
+      <div class="ac-body">
+        <table class="tbl">
+          <thead><tr><th style="width:150px">判定项</th><th>结论</th><th>依据</th></tr></thead>
+          <tbody>
+            <tr><td class="t-name">做不做这个品类</td><td><b style="color:#b07207">探索性 GO</b> <span class="tag tag-sample">示例逻辑</span></td><td>成分信号强（玻色因 +221.28% 实测）+ 价格带分散（实测）；但 CR4 集中度待采集，阈值待定稿</td></tr>
+            <tr><td class="t-name">做什么产品</td><td>眼部精华 · 玻色因/胶原抗皱方向</td><td>成分榜实测：玻色因 +221.28%、胶原蛋白 +20.94%</td></tr>
+            <tr><td class="t-name">做什么客单价带</td><td>¥59 - ¥399（主力带）</td><td>眼部护理 TOP10 中 8/10 落在该区间（罗盘实测）</td></tr>
+            <tr><td class="t-name">还需补什么数据</td><td>CR4/CR10 集中度、环比增速快照、供需比</td><td><span class="tag tag-pending">待积累快照</span> 每日快照积累后可算</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="footnote">本页结论为<b>示例逻辑</b>：仅使用已采集的真实数据（罗盘商品榜 + 蝉妈妈成分榜），未编任何数字；CR4/CR10、玩家结构、利润空间等待采集后按定稿阈值重新判定。</div>
+</section>
+
+<!-- ============ ⑤⑥⑦ 占位 ============ -->
+<section class="view" id="competitor">
+  <div class="page-head"><div><div class="page-title">竞品分析</div><div class="page-sub">板块 ⑤</div></div></div>
+  <div class="empty">
+    <div class="e-icon">◌</div>
+    <h3>建设中 · 同事负责</h3>
+    <p>本板块为占位页面，信息架构与数据口径由对应同事排期交付。</p>
+    <span class="e-owner">查看负责人 / 排期 →</span>
+  </div>
+</section>
+
+<section class="view" id="product-analysis">
+  <div class="page-head"><div><div class="page-title">产品分析</div><div class="page-sub">板块 ⑥</div></div></div>
+  <div class="empty">
+    <div class="e-icon">◌</div>
+    <h3>建设中 · 同事负责</h3>
+    <p>本板块为占位页面，信息架构与数据口径由对应同事排期交付。</p>
+    <span class="e-owner">查看负责人 / 排期 →</span>
+  </div>
+</section>
+
+<section class="view" id="product-design">
+  <div class="page-head"><div><div class="page-title">产品设计</div><div class="page-sub">板块 ⑦</div></div></div>
+  <div class="empty">
+    <div class="e-icon">◌</div>
+    <h3>建设中 · 同事负责</h3>
+    <p>本板块为占位页面，信息架构与数据口径由对应同事排期交付。</p>
+    <span class="e-owner">查看负责人 / 排期 →</span>
+  </div>
+</section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="site-footer-inner">数据截止 <b>2026-09-24</b> · 来源：抖音电商罗盘·商品榜（近7天）/ 蝉妈妈·美妆属性分析 · <b>本页数据为真实采集，环比增速待积累每日快照后可算</b></div>
+</footer>
+
+<!-- 口径弹层 -->
+<div class="modal-mask" id="caliberMask" onclick="if(event.target===this)closeCaliber()">
+  <div class="modal">
+    <div class="modal-head"><b id="caliberTitle">口径说明</b><button class="modal-close" onclick="closeCaliber()">✕</button></div>
+    <div class="modal-body">
+      <div class="m-row"><div class="m-k">定义</div><div class="m-v" id="caliberDef"></div></div>
+      <div class="m-row"><div class="m-k">样本量</div><div class="m-v" id="caliberSample"></div></div>
+      <div class="m-row"><div class="m-k">数据截止</div><div class="m-v" id="caliberCutoff"></div></div>
+      <div class="m-row"><div class="m-k">数据来源</div><div class="m-v" id="caliberSource"></div></div>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ================= 内嵌真实数据（罗盘·商品榜 2026-09-24 近7天） ================= */
+var GROWTH_DATA = {"date":"2026/09/24","window":["2026/09/18 00:00:00","2026/09/24 00:00:00"],"categories":[
+{"path":"个护家清/个人护理/面部洗护","rows":[
+{"rank":1,"name":"【蔡徐坤代言】BUV绿泥洗面奶控油深层清洁细腻毛孔去闭口男女通用","price_bin":"¥99-¥149","pay_lower":1000000000,"pay_upper":2500000000,"leaf_category_id":1000003481},
+{"rank":2,"name":"【四火姐姐专享】海蓝之谜奇迹晚霜精萃水精华面霜套装抗皱保湿紧致","price_bin":"¥4385","pay_lower":1000000000,"pay_upper":2500000000,"leaf_category_id":1000003483},
+{"rank":3,"name":"荷诺逆时蕴能胶原面膜","price_bin":"¥2437","pay_lower":1000000000,"pay_upper":2500000000,"leaf_category_id":1000003482},
+{"rank":4,"name":"【徐艺洋推荐】温博士B5水细毛孔控油紧致 提亮维稳屏障换季补水","price_bin":"¥49-¥138","pay_lower":1000000000,"pay_upper":2500000000,"leaf_category_id":1000003479},
+{"rank":5,"name":"【徐艺洋同款】eiio水光面膜补水保湿透亮嫩肤紧致抗皱滋养敏肌可用","price_bin":"¥99","pay_lower":1000000000,"pay_upper":2500000000,"leaf_category_id":1000003482},
+{"rank":6,"name":"【重磅上新】法国科兰黎永升精华水200ml抗皱紧致滋养修护舒缓保湿","price_bin":"¥1680","pay_lower":1000000000,"pay_upper":2500000000,"leaf_category_id":1000003476},
+{"rank":7,"name":"【明星同款】黛兰卡377美白抗皱祛斑面膜熬夜去黄细腻淡斑补水保湿1","price_bin":"¥79-¥119","pay_lower":1000000000,"pay_upper":2500000000,"leaf_category_id":1000003482},
+{"rank":8,"name":"【95周年经典】超A瓶礼盒水乳套装面霜精华保湿抗皱护肤品中秋送礼","price_bin":"¥399","pay_lower":1000000000,"pay_upper":2500000000,"leaf_category_id":1000003483},
+{"rank":9,"name":"PMCREATE云朵罗兰红女巫颜骨炮精华【重塑颜骨，一骑红尘】","price_bin":"¥2288","pay_lower":1000000000,"pay_upper":2500000000,"leaf_category_id":1000003479},
+{"rank":10,"name":"【陈三废专属】珀莱雅紧致肌密3.0洁水乳霜精华套装提拉紧致抗皱","price_bin":"¥399","pay_lower":1000000000,"pay_upper":2500000000,"leaf_category_id":1000003483}
+]},
+{"path":"个护家清/个人护理/眼部护理","rows":[
+{"rank":1,"name":"素说美丽【双节同庆】多重重组胶原蛋白塑颜保湿紧致提拉眼膜 A","price_bin":"¥399","pay_lower":1000000000,"pay_upper":2500000000,"leaf_category_id":1000003551},
+{"rank":2,"name":"【林心如代言】效妆PDRN小金瓶眼油眼部精华油紧致抗皱保湿官方正品","price_bin":"¥59","pay_lower":1000000000,"pay_upper":2500000000,"leaf_category_id":1000003553},
+{"rank":3,"name":"KAZOO/可逐【抚纹熨斗】冻干眼膜抗皱提拉紧致淡化眼纹细纹黑眼圈","price_bin":"¥168-¥399","pay_lower":500000000,"pay_upper":750000000,"leaf_category_id":1000003551},
+{"rank":4,"name":"【达人专属】优时颜第4代眼霜紧致修护抗皱淡纹提拉抚纹提亮T","price_bin":"¥329","pay_lower":500000000,"pay_upper":750000000,"leaf_category_id":1000003550},
+{"rank":5,"name":"【官旗静】雏菊的天空 琥珀时光眼部淡纹精华油8ml双瓶 滋养紧致","price_bin":"¥699","pay_lower":250000000,"pay_upper":500000000,"leaf_category_id":1000003553},
+{"rank":6,"name":"【白白叶叶】优时颜淡斑眼次抛精华紧致淡纹出差熬夜","price_bin":"¥319","pay_lower":100000000,"pay_upper":250000000,"leaf_category_id":1000003553},
+{"rank":7,"name":"【蔡徐坤同款】丸美小红笔眼霜4.0按摩仪淡眼纹抗皱紧致提亮YS#修护","price_bin":"¥298","pay_lower":100000000,"pay_upper":250000000,"leaf_category_id":1000003550},
+{"rank":8,"name":"【官方正品】美康粉黛双萃咖啡因眼膜贴抗皱提拉紧致淡化眼纹细纹","price_bin":"¥59-¥129","pay_lower":100000000,"pay_upper":250000000,"leaf_category_id":1000003551},
+{"rank":9,"name":"薇旖美倍护眼部精华液胶原蛋白“嘭嘭管”保湿紧致护肤套盒","price_bin":"¥1480-¥17976","pay_lower":100000000,"pay_upper":250000000,"leaf_category_id":1000003553},
+{"rank":10,"name":"【琥珀眼油2.0】雏菊的天空新一代补脂精华油修护抗皱中秋礼盒 SC","price_bin":"¥516","pay_lower":100000000,"pay_upper":250000000,"leaf_category_id":1000003553}
+]}
+]};
+
+/* 四级类目 id → 名称（罗盘实测） */
+var LEAF_MAP = {
+  1000003476:'面部精华',1000003479:'化妆水/爽肤水',1000003481:'洁面',
+  1000003482:'面膜',1000003483:'面部护理套装',
+  1000003550:'眼霜',1000003551:'眼膜',1000003553:'眼部精华'
+};
+
+/* 蝉妈妈·美妆属性分析（成分）实测 */
+var INGREDIENT_DATA = {"source":"蝉妈妈·美妆属性分析","rows":[
+{"name":"烟酰胺","product_cnt":"215","mom":"+4.82%","volume":"100w+","amount":"1000w+"},
+{"name":"黑参提取物","product_cnt":"5","mom":"+60.47%","volume":"5w~10w","amount":"1000w+"},
+{"name":"玻色因","product_cnt":"69","mom":"+221.28%","volume":"50w~100w","amount":"1000w+"},
+{"name":"角鲨烷","product_cnt":"55","mom":"+58.08%","volume":"25w~50w","amount":"1000w+"},
+{"name":"胶原蛋白","product_cnt":"67","mom":"+20.94%","volume":"25w~50w","amount":"1000w+"}
+]};
+
+/* 金额区间格式化（平台脱敏区间值） */
+function fmtRange(lower, upper){
+  function f(v){
+    if(v >= 100000000) return '¥' + (v/100000000) + '亿';
+    if(v >= 10000) return '¥' + (v/10000) + '万';
+    return '¥' + v;
+  }
+  return f(lower) + ' - ' + f(upper);
+}
+function shortName(n){
+  /* 商品名过长时截断展示，完整名放 title */
+  return n.length > 26 ? n.slice(0,26) + '…' : n;
+}
+
+/* ================= 渲染：增速产品看板两组 TOP10 ================= */
+function renderGrowth(){
+  var face = GROWTH_DATA.categories[0], eye = GROWTH_DATA.categories[1];
+  function rows(cat){
+    return cat.rows.map(function(r){
+      var rb = r.rank<=3 ? ' r'+r.rank : '';
+      return '<tr>'
+        +'<td><span class="rank-badge'+rb+'">'+r.rank+'</span></td>'
+        +'<td><div class="prod"><div class="prod-img">图</div><div><div class="t-name" title="'+r.name+'">'+shortName(r.name)+'</div><div class="t-sub">'+r.name.slice(0,18)+'</div></div></div></td>'
+        +'<td class="num">'+r.price_bin+'</td>'
+        +'<td class="num">'+fmtRange(r.pay_lower, r.pay_upper)+' <span class="tag tag-real">实测</span></td>'
+        +'<td class="num"><span class="tag tag-pending">待积累快照</span></td>'
+        +'<td><span class="tag tag-cat">'+(LEAF_MAP[r.leaf_category_id]||r.leaf_category_id)+'</span></td>'
+        +'<td><span class="badge-caliber" onclick="openCaliber(\'罗盘·商品榜口径\',\'近 7 天支付金额榜（2026-09-18~24），按三级类目取 TOP10；名次、价格带、支付金额区间均为实测，金额为平台脱敏区间值。环比增速需积累每日快照后计算，当前不展示。\\\',\'面部洗护/眼部护理 TOP10（区间内全量）\\\',\'2026-09-24 24:00\\\',\'抖音电商罗盘 · 商品榜 · 实测\')">罗盘口径</span></td>'
+        +'</tr>';
+    }).join('');
+  }
+  document.getElementById('faceBody').innerHTML = rows(face);
+  document.getElementById('eyeBody').innerHTML = rows(eye);
+  /* Hero */
+  var t = face.rows[0];
+  document.getElementById('ggHeroAmt').textContent = fmtRange(t.pay_lower, t.pay_upper);
+  document.getElementById('ggHeroPrice').textContent = t.price_bin;
+}
+
+/* ================= 渲染：成分榜 / 成分库 ================= */
+function renderIngredients(){
+  /* 按环比降序排 */
+  var rows = INGREDIENT_DATA.rows.slice().sort(function(a,b){
+    return parseFloat(b.mom.replace(/[+ %]/g,'')) - parseFloat(a.mom.replace(/[+ %]/g,''));
+  });
+  document.getElementById('ingBody').innerHTML = rows.map(function(r,i){
+    var rb = i<3 ? ' r'+(i+1) : '';
+    return '<tr><td><span class="rank-badge'+rb+'">'+(i+1)+'</span></td>'
+      +'<td class="t-name">'+r.name+'</td>'
+      +'<td class="num">'+r.product_cnt+' <span class="tag tag-real">实测</span></td>'
+      +'<td class="num">'+r.volume+'</td>'
+      +'<td class="num">'+r.amount+'</td>'
+      +'<td class="num"><span class="up">'+r.mom+'</span> <span class="tag tag-real">实测</span></td></tr>';
+  }).join('');
+  document.getElementById('libBody').innerHTML = rows.map(function(r,i){
+    var rb = i<3 ? ' r'+(i+1) : '';
+    return '<tr><td><span class="rank-badge'+rb+'">'+(i+1)+'</span></td>'
+      +'<td class="t-name">'+r.name+'</td>'
+      +'<td class="num">'+r.product_cnt+'</td>'
+      +'<td class="num">'+r.volume+'</td>'
+      +'<td class="num">'+r.amount+'</td>'
+      +'<td class="num"><span class="up">'+r.mom+'</span></td>'
+      +'<td><span class="tag tag-real">实测</span></td></tr>';
+  }).join('');
+}
+
+/* ================= 渲染：商品榜（罗盘） ================= */
+function renderRank(){
+  var face = GROWTH_DATA.categories[0];
+  document.getElementById('rankCompassBody').innerHTML = face.rows.map(function(r){
+    var rb = r.rank<=3 ? ' r'+r.rank : '';
+    return '<tr><td><span class="rank-badge'+rb+'">'+r.rank+'</span></td>'
+      +'<td><div class="prod"><div class="prod-img">图</div><span class="t-name" title="'+r.name+'">'+shortName(r.name)+'</span></div></td>'
+      +'<td class="num">'+r.price_bin+'</td>'
+      +'<td class="num">'+fmtRange(r.pay_lower, r.pay_upper)+' <span class="tag tag-real">罗盘实测</span></td>'
+      +'<td class="num"><span class="tag tag-pending">待积累快照</span></td>'
+      +'<td><span class="tag tag-cat">'+(LEAF_MAP[r.leaf_category_id]||'')+'</span></td>'
+      +'<td class="t-sub">2026-09-24</td></tr>';
+  }).join('');
+  document.getElementById('filterEcho').textContent = '中国 · 近7天 · 源:罗盘实测';
+}
+
+/* ================= 策略台：眼部护理价格带分布（实测） ================= */
+function renderEyePriceHist(){
+  var eye = GROWTH_DATA.categories[1];
+  function minPrice(bin){
+    var m = bin.match(/¥(\d+)/);
+    return m ? parseInt(m[1]) : 0;
+  }
+  /* 按名次绘制高度 ∝ log(价格) */
+  var html = eye.rows.map(function(r){
+    var p = minPrice(r.price_bin);
+    var h = Math.max(10, Math.min(100, Math.round(Math.log10(p) * 32)));
+    return '<div class="ph-col" title="#'+r.rank+' '+r.price_bin+' '+shortName(r.name)+'">'
+      +'<span class="ph-n">'+p+'</span>'
+      +'<div class="ph-bar" style="height:'+h+'%"></div>'
+      +'<span class="ph-l">#'+r.rank+'</span></div>';
+  }).join('');
+  document.getElementById('eyePriceHist').innerHTML = html;
+}
+
+/* ================= Hash 路由 ================= */
+var PAGES = ['global-growth','global-category-trend','global-ingredient-rank','product-rank','ingredient-lib','strategy-cards','competitor','product-analysis','product-design'];
+var GLOBAL_PAGES = ['global-growth','global-category-trend','global-ingredient-rank'];
+var NAV_MAP = {'global-growth':'global','global-category-trend':'global','global-ingredient-rank':'global','product-rank':'rank','ingredient-lib':'lib','strategy-cards':'strategy','competitor':'competitor','product-analysis':'panalysis','product-design':'pdesign'};
+var MORE_NAVS = ['competitor','panalysis','pdesign'];
+function route(){
+  var id = (location.hash||'').replace(/^#\/?/,'');
+  if(PAGES.indexOf(id)<0){ id='global-growth'; history.replaceState(null,'','#global-growth'); }
+  PAGES.forEach(function(p){ document.getElementById(p).classList.toggle('active', p===id); });
+  var nav = NAV_MAP[id];
+  document.querySelectorAll('#mainNav > .nav-item').forEach(function(b){ b.classList.toggle('active', b.dataset.nav===nav); });
+  var inMore = MORE_NAVS.indexOf(nav) >= 0;
+  document.querySelectorAll('.nav-more-item').forEach(function(b){ b.classList.toggle('active', b.dataset.nav===nav); });
+  document.getElementById('navMoreBtn').classList.toggle('active', inMore);
+  document.getElementById('globalSubtabs').classList.toggle('show', GLOBAL_PAGES.indexOf(id)>=0);
+  document.querySelectorAll('#globalSubtabs .subtab').forEach(function(b){ b.classList.toggle('active', b.dataset.target===id); });
+  window.scrollTo(0,0);
+}
+function go(id){ location.hash = '#'+id; }
+window.addEventListener('hashchange', route);
+
+document.getElementById('mainNav').addEventListener('click', function(e){
+  var b = e.target.closest('.nav-item[data-target],.nav-more-item'); if(!b) return;
+  document.getElementById('navMore').classList.remove('open');
+  go(b.dataset.target);
+});
+document.getElementById('navMoreBtn').addEventListener('click', function(e){
+  e.stopPropagation();
+  document.getElementById('navMore').classList.toggle('open');
+});
+document.addEventListener('click', function(e){
+  var m = document.getElementById('navMore');
+  if(!m.contains(e.target)) m.classList.remove('open');
+  var d = document.getElementById('dataInfo');
+  if(!d.contains(e.target)) d.classList.remove('open');
+});
+document.getElementById('dataInfo').querySelector('.data-info-btn').addEventListener('click', function(e){
+  e.stopPropagation();
+  document.getElementById('dataInfo').classList.toggle('open');
+});
+document.getElementById('globalSubtabs').addEventListener('click', function(e){
+  var b = e.target.closest('.subtab'); if(b) go(b.dataset.target);
+});
+
+/* 模式开关 */
+document.getElementById('modeSwitch').addEventListener('click', function(e){
+  var b = e.target.closest('button'); if(!b) return;
+  this.querySelectorAll('button').forEach(function(x){x.classList.remove('on')});
+  b.classList.add('on');
+  document.body.dataset.mode = b.dataset.mode;
+  document.getElementById('modeHint').textContent = b.dataset.mode==='pitch' ? '放大结论 · 弱化次列' : '紧凑行高 · 全字段';
+});
+
+function togglePanel(id){ document.getElementById(id).classList.toggle('collapsed'); }
+
+/* 页内 Tab */
+function bindTabs(tabsId){
+  var box = document.getElementById(tabsId);
+  box.addEventListener('click', function(e){
+    var b = e.target.closest('button'); if(!b) return;
+    box.querySelectorAll('button').forEach(function(x){x.classList.remove('on')});
+    b.classList.add('on');
+    var host = box.closest('section') || box.parentElement;
+    var panes = host.querySelectorAll('.ptab-pane');
+    panes.forEach(function(p){ p.classList.toggle('on', p.id===b.dataset.pane); });
+  });
+}
+['rankTabs'].forEach(bindTabs);
+
+/* 口径弹层 */
+function openCaliber(title, def, sample, cutoff, source){
+  document.getElementById('caliberTitle').textContent = title;
+  document.getElementById('caliberDef').textContent = def;
+  document.getElementById('caliberSample').textContent = sample;
+  document.getElementById('caliberCutoff').textContent = cutoff;
+  document.getElementById('caliberSource').textContent = source;
+  document.getElementById('caliberMask').classList.add('show');
+}
+function closeCaliber(){ document.getElementById('caliberMask').classList.remove('show'); }
+document.addEventListener('keydown', function(e){ if(e.key==='Escape') closeCaliber(); });
+
+/* 类目趋势：13 个三级类目（2 个实测 + 11 个待采集） */
+var TREND_L3_PENDING = ['手部洗护','身体清洁','身体护理','唇部护理','私处洗护','洗护美用具','洗发护发','染发烫发','假发','口腔护理','成人护理'];
+(function renderTrendPending(){
+  var tbody = document.getElementById('trendTbody');
+  TREND_L3_PENDING.forEach(function(name){
+    var tr = document.createElement('tr');
+    tr.className = 'l3-pending';
+    tr.innerHTML = '<td><span style="display:inline-block;width:15px"></span><span class="t-name" style="color:var(--ink-3);font-weight:400">'+name+'</span><div class="t-sub">个护家清 / 个人护理</div></td>'
+      +'<td><span class="tag tag-cat">三级</span></td>'
+      +'<td class="num">—</td>'
+      +'<td class="num"><span class="tag tag-pending">待积累快照</span></td>'
+      +'<td><span class="tag tag-tbs">待采集</span></td>'
+      +'<td class="t-sub">该类目数据待采集</td>';
+    tbody.appendChild(tr);
+  });
+})();
+
+/* 三级行展开：展示该类目 TOP10 商品（实测） */
+function toggleSubcat(tr, key){
+  var next = tr.nextElementSibling;
+  if(next && next.classList.contains('subcat-row')){ next.remove(); tr.classList.remove('open'); return; }
+  var cat = key==='face' ? GROWTH_DATA.categories[0] : GROWTH_DATA.categories[1];
+  var rows = cat.rows.map(function(r){
+    return '<tr><td><span class="rank-badge'+(r.rank<=3?' r'+r.rank:'')+'">'+r.rank+'</span> <b title="'+r.name+'">'+shortName(r.name)+'</b></td>'
+      +'<td class="num">'+r.price_bin+'</td>'
+      +'<td class="num">'+fmtRange(r.pay_lower, r.pay_upper)+' <span class="tag tag-real">实测</span></td></tr>';
+  }).join('');
+  var row=document.createElement('tr');
+  row.className='subcat-row';
+  var td=document.createElement('td');
+  td.colSpan=tr.children.length;
+  td.style.background='var(--bg-soft)';
+  td.style.padding='12px 18px';
+  td.innerHTML='<div style="font-size:11px;color:var(--ink-3);margin-bottom:6px">该类目商品榜 TOP10（罗盘实测 · 2026-09-18~24）</div>'
+    +'<table class="tbl" style="background:#fff"><thead><tr><th>商品</th><th class="num" style="text-align:right">价格带</th><th class="num" style="text-align:right">支付金额区间</th></tr></thead><tbody>'+rows+'</tbody></table>';
+  row.appendChild(td);
+  tr.parentNode.insertBefore(row, tr.nextSibling);
+  tr.classList.add('open');
+}
+
+/* ================= 类目树（级联筛选） ================= */
+var CAT_TREE = [
+  {name:'个护家清', cid:'5', children:[
+    {name:'个人护理', cid:'1000003462', children:[
+      {name:'面部洗护', cid:'1000003463', hasData:true, children:['化妆水/爽肤水','乳液','面霜','面部精华','面部磨砂/去角质','洁面','面膜','面部护理套装','护肤体验装/便携装','防晒霜','防晒喷雾','T区护理','卸妆','面部精油','剃须啫喱类','须后水'].map(function(n){return {name:n, hasData:true};})},
+      {name:'手部洗护', cid:'1000003464'},
+      {name:'身体清洁', cid:'1000003465'},
+      {name:'身体护理', cid:'1000003466'},
+      {name:'唇部护理', cid:'1000003467'},
+      {name:'私处洗护', cid:'1000003468'},
+      {name:'眼部护理', cid:'1000003469', hasData:true, children:['眼霜','眼膜','眼胶/啫喱','眼部精华','眼部护理套装'].map(function(n){return {name:n, hasData:true};})},
+      {name:'洗护美用具', cid:'1000003470'},
+      {name:'洗发护发', cid:'1000003471'},
+      {name:'染发烫发', cid:'1000003472'},
+      {name:'假发', cid:'1000003473'},
+      {name:'口腔护理', cid:'1000003474'},
+      {name:'成人护理', cid:'1000003475'}
+    ]},
+    {name:'家清纸品', cid:'1000004647'}
+  ]},
+  {name:'美妆', tbs:true},{name:'服饰内衣', tbs:true},{name:'智能家居', tbs:true},
+  {name:'生鲜', tbs:true},{name:'母婴宠物', tbs:true},{name:'鲜花园艺', tbs:true},
+  {name:'食品饮料', tbs:true},{name:'3C数码家电', tbs:true},{name:'图书教育', tbs:true},
+  {name:'鞋靴箱包', tbs:true},{name:'运动户外', tbs:true},{name:'钟表配饰', tbs:true},
+  {name:'珠宝文玩', tbs:true},{name:'医疗健康', tbs:true},{name:'酒类', tbs:true},
+  {name:'滋补保健', tbs:true},{name:'原料包装', tbs:true},{name:'玩具乐器', tbs:true}
+];
+var DATA_L3 = ['面部洗护','眼部护理'];
+function cascHasData(path){
+  if(!path.length) return true;
+  if(path[0].name !== '个护家清') return false;
+  var l3 = path[2] ? path[2].name : null;
+  if(!l3) return true;
+  return DATA_L3.indexOf(l3) >= 0;
+}
+
+var CASC_REGISTRY = {};
+function findNode(list, name){
+  for(var i=0;i<list.length;i++){ if(list[i].name===name) return list[i]; }
+  return null;
+}
+function createCascader(el, opts){
+  opts = opts || {};
+  var inst = { el:el, path:[], onChange:opts.onChange||function(){}, id:el.id };
+  el.classList.add('casc');
+  el.innerHTML = '<div class="casc-box"><span class="casc-path"></span><span class="casc-caret">▼</span></div><div class="casc-flyouts"></div>';
+  var box = el.querySelector('.casc-box');
+  var fly = el.querySelector('.casc-flyouts');
+  var closeTimer = null;
+  function pathLabel(){
+    if(!inst.path.length) return '<span class="placeholder">全部类目</span>';
+    return inst.path.map(function(n){return n.name;}).join('<span class="sep">/</span>');
+  }
+  function renderBox(){ el.querySelector('.casc-path').innerHTML = pathLabel(); }
+  function colFor(nodes, level, ancestors){
+    ancestors = ancestors || [];
+    var col = document.createElement('div');
+    col.className = 'casc-col';
+    nodes.forEach(function(node){
+      var o = document.createElement('div');
+      o.className = 'casc-opt' + (inst.path[level] && inst.path[level].name===node.name ? ' sel' : '');
+      o.innerHTML = '<span>'+node.name+(node.cid?'<span class="cid">'+node.cid+'</span>':'')+(node.tbs?'<span class="tbs">数据待接入</span>':'')+'</span>' + (node.children&&node.children.length?'<span class="arr">▶</span>':'');
+      o.addEventListener('mouseenter', function(){
+        clearTimeout(closeTimer);
+        col.querySelectorAll('.casc-opt').forEach(function(x){x.classList.remove('hov')});
+        o.classList.add('hov');
+        while(fly.children.length > level+1) fly.removeChild(fly.lastChild);
+        if(node.children && node.children.length){
+          fly.appendChild(colFor(node.children, level+1, ancestors.concat([node])));
+        }
+      });
+      o.addEventListener('click', function(){
+        inst.path = ancestors.concat([node]);
+        renderBox(); close();
+        inst.onChange(inst.path.slice());
+      });
+      col.appendChild(o);
+    });
+    return col;
+  }
+  function open(){
+    clearTimeout(closeTimer);
+    el.classList.add('open');
+    fly.innerHTML = '';
+    fly.appendChild(colFor(CAT_TREE, 0, []));
+    var nodes = CAT_TREE, anc = [];
+    for(var lv=0; lv<inst.path.length; lv++){
+      var n = findNode(nodes, inst.path[lv].name);
+      if(n && n.children && n.children.length){
+        anc = anc.concat([n]);
+        fly.appendChild(colFor(n.children, lv+1, anc));
+        nodes = n.children;
+      } else break;
+    }
+  }
+  function close(){ el.classList.remove('open'); }
+  function scheduleClose(){ clearTimeout(closeTimer); closeTimer = setTimeout(close, 220); }
+  box.addEventListener('mouseenter', open);
+  box.addEventListener('click', function(e){
+    e.stopPropagation();
+    if(el.classList.contains('open')) close(); else open();
+  });
+  fly.addEventListener('mouseenter', function(){ clearTimeout(closeTimer); });
+  fly.addEventListener('click', function(e){ e.stopPropagation(); });
+  el.addEventListener('mouseleave', scheduleClose);
+  document.addEventListener('click', function(e){ if(!el.contains(e.target)) close(); });
+  inst.setPath = function(names){
+    inst.path = [];
+    var nodes = CAT_TREE;
+    (names||[]).forEach(function(nm){
+      var n = findNode(nodes, nm);
+      if(n){ inst.path.push(n); nodes = n.children||[]; }
+    });
+    renderBox();
+  };
+  inst.reset = function(){ inst.setPath(opts.defaultPath||[]); inst.onChange(inst.path.slice()); };
+  inst.setPath(opts.defaultPath||[]);
+  CASC_REGISTRY[el.id] = inst;
+  return inst;
+}
+
+function updateEmpty(emptyId, pathId, path, hasData){
+  var box = document.getElementById(emptyId);
+  if(!box) return;
+  if(hasData){ box.style.display='none'; return; }
+  box.style.display='block';
+  document.getElementById(pathId).textContent = path.length ? path.map(function(n){return n.name;}).join(' / ') : '全部类目';
+}
+
+var ggCasc = createCascader(document.getElementById('gg-casc'), {
+  defaultPath:['个护家清','个人护理','面部洗护'],
+  onChange:function(path){ updateEmpty('gg-empty','gg-empty-path',path,cascHasData(path)); }
+});
+createCascader(document.getElementById('ct-casc'), { defaultPath:['个护家清','个人护理'] });
+createCascader(document.getElementById('ir-casc'), { defaultPath:[] });
+createCascader(document.getElementById('rank-casc'), { defaultPath:['个护家清','个人护理','面部洗护'] });
+createCascader(document.getElementById('lib-casc'), { defaultPath:[] });
+createCascader(document.getElementById('st-casc'), { defaultPath:['个护家清','个人护理','眼部护理','眼部精华'] });
+
+function resetGrowthFilters(){ document.getElementById('gg-market').selectedIndex=0; ggCasc.reset(); document.getElementById('gg-empty').style.display='none'; }
+function resetTrendFilters(){ document.getElementById('ct-market').selectedIndex=0; CASC_REGISTRY['ct-casc'].reset(); }
+function resetIngFilters(){ document.getElementById('ir-market').selectedIndex=0; CASC_REGISTRY['ir-casc'].reset(); }
+function resetLibFilters(){ document.getElementById('lib-market').selectedIndex=0; document.getElementById('lib-period').selectedIndex=0; CASC_REGISTRY['lib-casc'].reset(); }
+function resetFilters(){ document.getElementById('f-country').selectedIndex=0; document.getElementById('f-period').selectedIndex=0; CASC_REGISTRY['rank-casc'].reset(); renderRank(); }
+function onRankMarketChange(){
+  var m = document.getElementById('f-country').value;
+  var isOverseas = m.indexOf('中国') < 0;
+  var box=document.getElementById('rankTabs');
+  var target = isOverseas ? 'rank-fastmoss' : 'rank-compass';
+  box.querySelectorAll('button').forEach(function(x){ x.classList.toggle('on', x.dataset.pane===target); });
+  document.getElementById('product-rank').querySelectorAll('.ptab-pane').forEach(function(p){ p.classList.toggle('on', p.id===target); });
+  document.getElementById('filterEcho').textContent = m + ' · 近7天 · 源:' + (isOverseas ? 'FastMoss（待采集）' : '罗盘实测');
+}
+
+/* 启动 */
+route();
+renderGrowth();
+renderIngredients();
+renderRank();
+renderEyePriceHist();
+</script>
+</body>
+</html>

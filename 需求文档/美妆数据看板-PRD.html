@@ -1,0 +1,1093 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>美妆数据看板 · 产品需求文档（PRD）v0.2</title>
+<style>
+/* ===== 全局交互骨架样式（<head> 内，不被一键复制带走） ===== */
+:root{
+  --pm-accent:#5b5bd6;
+  --pm-panel-w:520px;
+}
+body.dual-pane { margin:0!important; max-width:none!important; padding-right: calc(var(--pm-panel-w) + 36px); }
+.prototype-sidebar { display:none; position:fixed; right:0; top:0; height:100vh; width:var(--pm-panel-w); background:#1a1a2e; color:#e8e6ff; flex-direction:column; z-index:1000; box-shadow:-8px 0 28px rgba(10,8,40,.35); font-family:"Microsoft YaHei","微软雅黑","PingFang SC",sans-serif; }
+body.dual-pane .prototype-sidebar { display:flex; }
+.sidebar-header { display:flex; align-items:center; gap:10px; padding:14px 16px 10px; font-size:14px; font-weight:700; }
+.sidebar-close { background:rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.16); color:#e8e6ff; border-radius:6px; width:26px; height:26px; cursor:pointer; font-size:13px; line-height:1; }
+.preview-context { padding:0 16px 10px; font-size:12px; color:#9c97c9; line-height:1.6; border-bottom:1px solid rgba(255,255,255,.08); }
+.page-selector { padding:10px 16px; border-bottom:1px solid rgba(255,255,255,.08); }
+.page-selector select { width:100%; background:#242448; color:#e8e6ff; border:1px solid rgba(255,255,255,.18); border-radius:8px; padding:7px 10px; font-size:13px; }
+.preview-zoom { display:flex; align-items:center; gap:6px; padding:8px 16px; border-bottom:1px solid rgba(255,255,255,.08); }
+.preview-zoom button { background:rgba(255,255,255,.08); color:#e8e6ff; border:1px solid rgba(255,255,255,.16); border-radius:6px; padding:3px 10px; font-size:12px; cursor:pointer; line-height:1.6; }
+.preview-zoom button:hover { background:rgba(255,255,255,.18); }
+.preview-zoom #previewZoomLabel { min-width:82px; text-align:center; font-size:12px; color:#b9b5e0; font-variant-numeric:tabular-nums; }
+.device-shell { flex:1; overflow:auto; display:flex; align-items:flex-start; justify-content:center; padding:20px; }
+.device-wrapper { flex:0 0 auto; position:relative; background:#fff; border-radius:12px; overflow:hidden; box-shadow:0 10px 34px rgba(0,0,0,.4); }
+.device-wrapper iframe { transform-origin:top left; border:none; background:#fff; display:block; }
+.prototype-resizer { position:absolute; left:0; top:0; width:8px; height:100%; cursor:ew-resize; z-index:5; }
+.prototype-resizer:hover { background:rgba(91,91,214,.35); }
+.fab-group { position:fixed; right:28px; bottom:28px; z-index:1001; display:flex; gap:10px; }
+body.dual-pane .fab-group { right: calc(var(--pm-panel-w) + 28px); }
+.fab-group button { background:#fff; color:#3b357a; border:1px solid #d8d4f0; border-radius:12px; padding:13px 20px; font-size:14px; font-weight:700; cursor:pointer; box-shadow:0 4px 16px rgba(91,91,214,.18); font-family:inherit; }
+.fab-group button:hover { transform:translateY(-2px); border-color:#5b5bd6; }
+.copy-all-fab { position:fixed; left:28px; bottom:28px; z-index:1001; background:#fff; color:#3b357a; border:1px solid #d8d4f0; border-radius:12px; padding:13px 20px; font-size:14px; font-weight:700; cursor:pointer; box-shadow:0 4px 16px rgba(91,91,214,.18); display:flex; align-items:center; gap:8px; font-family:inherit; }
+.copy-all-fab:hover { transform:translateY(-2px); border-color:#5b5bd6; }
+.copy-toast { position:fixed; left:28px; bottom:80px; z-index:1002; max-width:360px; background:#2a2459; color:#fff; padding:11px 16px; border-radius:10px; font-size:13px; box-shadow:0 8px 24px rgba(20,16,70,.28); opacity:0; transform:translateY(8px); pointer-events:none; transition:opacity .2s, transform .2s; }
+.copy-toast.show { opacity:1; transform:translateY(0); }
+/* ===== §2.7 通用编辑模块样式 ===== */
+.edited-cell { background:#e8f5e9 !important; }
+.editable-table-wrap { position:relative; margin:14px 0; }
+.editable-table-wrap > table { margin:0 !important; }
+.pm-anchor { position:relative; }
+.row-ctrl { position:absolute; left:-30px; display:flex; flex-direction:column; gap:3px; opacity:0; pointer-events:none; transition:opacity .15s; z-index:4; }
+tr:hover > * .pm-anchor > .row-ctrl, tr:hover .pm-anchor > .row-ctrl { opacity:1; pointer-events:auto; }
+.row-ctrl button { width:22px; height:18px; border:none; border-radius:5px; cursor:pointer; color:#fff; font-size:13px; font-weight:700; line-height:1; }
+.row-add { background:#00b894; } .row-del { background:#e74c3c; }
+.editable-table-remove { position:absolute; top:-12px; right:8px; z-index:5; border:none; border-radius:999px; background:rgba(231,76,60,.96); color:#fff; font-size:12px; padding:6px 10px; cursor:pointer; opacity:0; pointer-events:none; transition:opacity .15s; }
+.editable-table-wrap:hover .editable-table-remove { opacity:1; pointer-events:auto; }
+.col-resizer { position:absolute; top:0; right:0; width:9px; height:100%; cursor:col-resize; transform:translateX(50%); z-index:3; opacity:0; transition:opacity .15s; }
+.col-resizer::after { content:''; position:absolute; left:4px; top:0; width:2px; height:100%; background:#00b894; opacity:0; transition:opacity .15s; }
+th:hover .col-resizer, td:hover .col-resizer, body.col-resizing .col-resizer.active { opacity:1; }
+.col-resizer:hover::after, body.col-resizing .col-resizer.active::after { opacity:1; }
+.row-resizer { position:absolute; left:0; bottom:0; width:100%; height:9px; cursor:row-resize; transform:translateY(50%); z-index:3; }
+.row-resizer::after { content:''; position:absolute; top:4px; left:0; width:100%; height:2px; background:#00b894; opacity:0; transition:opacity .15s; }
+.row-resizer:hover::after, body.row-resizing .row-resizer.active::after { opacity:1; }
+body.col-resizing, body.row-resizing { user-select:none !important; }
+body.col-resizing { cursor:col-resize !important; } body.row-resizing { cursor:row-resize !important; }
+.pm-undo-toast { position:fixed; left:50%; bottom:34px; transform:translateX(-50%); background:rgba(33,33,45,.92); color:#fff; padding:8px 16px; border-radius:8px; font-size:13px; line-height:1.4; pointer-events:none; opacity:0; transition:opacity .18s; z-index:9999; }
+.pm-undo-toast.show { opacity:1; }
+</style>
+</head>
+<body>
+
+<main id="prdContent">
+<!-- 文档级正文样式：必须是 #prdContent 的第一个子元素（§2.5 ③，配合一键复制全文） -->
+<style>
+:root{
+  --pm-accent:#5b5bd6;                                            /* 唯一需要改的主色 */
+  --pm-ink:#1f2937;
+  --pm-heading:color-mix(in srgb, var(--pm-accent) 38%, #1f2937);
+  --pm-line:color-mix(in srgb, var(--pm-accent) 13%, #fff);
+  --pm-soft:color-mix(in srgb, var(--pm-accent) 9%, #fff);
+}
+#prdContent { max-width:1336px; margin:0 auto; padding:40px 32px 120px; color:var(--pm-ink); font-size:14px; line-height:1.75;
+  font-family:"Microsoft YaHei","微软雅黑","PingFang SC","Hiragino Sans GB","Noto Sans CJK SC",sans-serif; }
+h1.doc-title { font-size:30px; font-weight:800; color:var(--pm-heading); margin:0 0 6px; }
+p.doc-sub { font-size:14px; color:#6b7280; margin:0 0 28px; }
+#prdContent h2 { font-size:21px; font-weight:800; color:var(--pm-heading); border-left:5px solid var(--pm-accent); padding-left:12px; margin:40px 0 14px; }
+#prdContent h3 { font-size:16px; font-weight:700; color:var(--pm-heading); margin:26px 0 10px; }
+#prdContent p { margin:8px 0; }
+#prdContent table { width:100%; border-collapse:collapse; table-layout:fixed; margin:14px 0; font-size:13px; background:#fff; }
+#prdContent th, #prdContent td { border:1px solid var(--pm-line); padding:8px 10px; vertical-align:top; text-align:left; word-break:break-word; }
+#prdContent th { background:var(--pm-soft); font-weight:700; }
+.source-note { font-size:12px; color:#6b7280; border-left:3px solid #d8d4f0; padding-left:10px; }
+.alert { background:#fffbe6; border:1px solid #ffe58f; border-radius:8px; padding:10px 14px; margin:12px 0; }
+.scope-card { background:var(--pm-soft); border:1px solid var(--pm-line); border-radius:10px; padding:14px 18px; margin:12px 0; }
+.scope-card b, .risk-card b { color:var(--pm-heading); }
+.risk-card { background:#fdf2f0; border:1px solid #f3d1cb; border-radius:10px; padding:14px 18px; margin:12px 0; }
+.scope-card ul, .risk-card ul { margin:8px 0 0; padding-left:20px; }
+.scheme-table .c-mod { width:100px; } .scheme-table .c-fn { width:120px; } .scheme-table .c-proto { width:360px; }
+.scheme-table td.mod { font-weight:700; text-align:center; background:var(--pm-soft); }
+.scheme-table td.fn { font-weight:700; }
+.scheme-table td.desc .desc-block { margin:0 0 12px; }
+.scheme-table td.desc .desc-block b { color:var(--pm-heading); }
+.scheme-table td.desc .desc-block p { margin:4px 0; }
+.scheme-table td.desc ul, .scheme-table td.desc ol { margin:4px 0; padding-left:20px; }
+.proto-placeholder { display:flex; flex-direction:column; align-items:center; justify-content:center; gap:8px; min-height:150px; background:repeating-linear-gradient(45deg,#f6f5fc,#f6f5fc 12px,#efeefc 12px,#efeefc 24px); border:1.5px dashed var(--pm-accent); border-radius:8px; color:#6d6a9e; font-size:13px; text-align:center; padding:14px; }
+.proto-placeholder .ph-icon { font-size:26px; }
+.proto-placeholder .ph-page { font-weight:700; color:var(--pm-heading); }
+.asset-note { font-size:12px; color:#6b7280; margin:8px 0 0; }
+.prototype-frame { position:relative; overflow:hidden; border-radius:8px; background:#f5f5f5; width:100%; }
+.prototype-iframe { position:absolute; top:0; left:0; border:none; background:transparent; transform-origin:top left; }
+iframe.flow-frame { border-radius:10px; background:#faf9ff; }
+.proto-shot { max-width:100%; height:auto; border-radius:8px; }
+</style>
+
+<h1 class="doc-title">美妆数据看板 · 产品需求文档（PRD）</h1>
+<p class="doc-sub">选品同事（业务实效）+ AI 大赛评委（路演演示） · PC Web 单文件看板 · v0.2</p>
+
+<h2>📋 项目信息</h2>
+<table class="meta-table"><colgroup><col style="width:160px"><col></colgroup><tbody>
+<tr><td>项目名称</td><td>美妆数据看板（全球选品平台 · 看板体系与前端视觉重做）</td></tr>
+<tr><td>版本号</td><td>v0.2</td></tr>
+<tr><td>文档负责人</td><td>用户本人（负责①~④板块）</td></tr>
+<tr><td>需求状态</td><td>PRD 初稿，待评审；原型与流程图待产出</td></tr>
+<tr><td>目标用户</td><td>主用户：用户本人（每日选品判断）；次级用户：选品同事（直接引用结论）、AI 大赛评委（路演观看）</td></tr>
+<tr><td>涉及端</td><td>PC Web（单文件 HTML 看板，可发布至 workbuddy.link 路演）</td></tr>
+<tr><td>功能入口</td><td>顶部导航：① 全球数据看板 ② 商品榜 ③ 成分库 ④ 初始策略台 ⑤ 竞品分析（占位）⑥ 产品分析（占位）⑦ 产品设计（占位）</td></tr>
+<tr><td>关联文件</td><td>需求洞察 v1.1、需求与可用数据总览 v2.0、架构方案 v1.0、罗盘后台数据字段手册、蝉妈妈后台数据字段手册（均位于本需求「需求挖掘/」目录）；沟通记录.md</td></tr>
+<tr><td>覆盖类目</td><td>个护家清 → 个人护理 下的「面部洗护」与「眼部护理」两个三级类目；验证顺利后再扩其他类目</td></tr>
+</tbody></table>
+
+<h2>📝 版本记录</h2>
+<table class="version-table"><colgroup><col style="width:90px"><col style="width:120px"><col style="width:120px"><col></colgroup>
+<thead><tr><th>版本</th><th>日期</th><th>修订人</th><th>修订说明</th></tr></thead>
+<tbody>
+<tr><td>v0.1</td><td>2026-09-25</td><td>用户本人 + AI 助手</td><td>首次产出全部章节（范围经 2026-09-25 沟通确认：只写用户负责的 4 个板块，同事负责的竞品分析/产品分析/产品设计仅留导航占位；省略数据埋点/时序图/上线计划/附录）。影响：选品同事与研发按此评审</td></tr>
+<tr><td>v0.2</td><td>2026-09-25</td><td>用户本人 + AI 助手</td><td>按用户修改需求改版：① 增速产品看板新增自用结论板块与「市场+品类」筛选条，商品行表头改为「环比增速 / 所属类目」，新增「品牌」「供需比」列；② 类目增长趋势加筛选条、改为「三级默认 + 点开行展开四级排序」分级展示，顶部改为「增速最快类目」折线展示块；③ 成分增长榜加筛选条（市场含「全部」）、去掉销售额/销售量列、新增占比列，增速口径改为成分自身增长率；④ 商品榜筛选条级联到三级类目，海外市场自动切换 FastMoss 榜单；⑤ 成分库加筛选条、热度口径改为确认热度分、新增成分关联类目层级与关联产品可视化；⑥ 「初步判断策略」改名「初始策略台」并按「市场规模 / 竞争程度（CR4·CR10·玩家结构）/ 供给侧结构（价格带·SKU矩阵）/ GO·NOGO 初步结论」四段重做。新增 3.5 已确认口径规则表（成分增速、成分热度分、玩家结构）。影响：选品同事与研发按新版评审</td></tr>
+</tbody></table>
+
+<h2>一、需求背景</h2>
+<p>用户本人每天要做美妆选品判断，工作台上挂着罗盘、蝉妈妈、FastMoss、飞瓜等一堆平台后台；选品同事要用他产出的结论做下一步调研。但真实卡点不是没数据——原话：「虽然我有很多平台的后台，但这些平台有太多数据字段了」。同一指标在多个平台之间口径打架，42 个字段里有 15 个要靠人手工填，没人替选品同事把结论说完。</p>
+<p>造成的影响：用户每天花大量时间在多平台间切换对数、手工补字段，「每天更新」靠手工根本不可持续；同事拿到的不是结论而是半成品表格，还要二次加工；AI 大赛路演现场没有解释口径的机会，界面如果像内部工具，评委不会记住。</p>
+<p>同时这个需求天然是双场景：业务实效是及格线（功能必须真跑通，不能是演示数据），视觉是入场券（路演 + 现场演示，不能做得太丑）。两者共用同一份真实数据，不能互相替代。</p>
+<p class="source-note">事实来源：① 9/24 飞书会议纪要（含原始录音转写）② 现有工作台发布版源码实测盘点（42 字段中 15 个手工填，占 36%）③ 需求洞察 v1.1 §1~§3；15 项口径已于 2026-09-25 逐项与用户确认闭环（见沟通记录）。</p>
+
+<h2>二、需求目标</h2>
+<p><strong>总目标：让选品判断链路每天自动跑完——默认只给结论、每个数字可下钻到原始来源，同一份数据同时撑住「自用高密度分析」和「路演 30 秒看懂」两种读法。</strong></p>
+<table class="goal-table">
+<colgroup><col><col><col><col><col></colgroup>
+<thead><tr><th>用户结果</th><th>衡量指标</th><th>统计口径</th><th>预期方向</th><th>目标值</th></tr></thead>
+<tbody>
+<tr><td>用户无需每天切换多平台手工对数，打开看板即看到当日增速结论</td><td>增速看板每日自动更新成功率</td><td>观察方式：连续 7 天检查快照表，实际成功写入天数 ÷ 7</td><td>↑</td><td>待基线确认</td></tr>
+<tr><td>同事拿到的是可直接引用的结论，不再二次加工</td><td>手工补数字段占比</td><td>需手工填写的字段数 ÷ 看板总字段数（现状 15/42 = 36%）</td><td>↓</td><td>待基线确认</td></tr>
+<tr><td>路演现场评委不用听解释就能看懂「它解决什么」</td><td>路演模式首屏结论数 / 可切换性</td><td>观察方式：路演模式下首屏只呈现结论卡片与机会点；同一份数据一键切回密度模式</td><td>↑</td><td>待基线确认</td></tr>
+</tbody></table>
+
+<h2>三、需求概述（功能清单）</h2>
+<div class="scope-card"><b>本期范围</b>
+  <ul>
+    <li>① 全球数据看板：增速产品看板（市场 + 品类筛选，三级类目分组各 TOP3，含自用结论板块，每日刷新）、类目增长趋势（三级类目增速默认展示、点开行展开四级类目排序，每 7 天刷新）、成分增长榜（成分自身增长率口径 TOP10，市场含「全部」，每 7 天刷新）三个子看板；现有「市场总览/数据覆盖度」模块保留</li>
+    <li>② 商品榜：罗盘 / 蝉妈妈 / FastMoss 分来源分榜展示；筛选条按罗盘类目分类级联到三级（面部洗护/眼部护理级）；市场切换到海外时自动切换至 FastMoss 榜单数据</li>
+    <li>③ 成分库：TOP30 增速 + TOP30 热度双榜（每 7 天刷新）；新增成分关联类目层级（个护家清/个人护理/三级/四级）与关联产品可视化；本期先把国内（蝉妈妈）做好</li>
+    <li>④ 初始策略台（原「初步判断策略」改名）：业务人员筛选想做的类目后，AI 输出该类目能否进入的结论，含市场规模 / 市场竞争程度（CR4·CR10·玩家结构）/ 供给侧结构（价格带·SKU 矩阵）/ GO·NOGO 初步结论四部分</li>
+    <li>⑤⑥⑦ 竞品分析 / 产品分析 / 产品设计：仅保留顶部导航占位（顺序：看机会 → 看竞品 → 产品分析 → 产品设计），本期不开发</li>
+  </ul>
+</div>
+<div class="risk-card"><b>本期不做什么 / 暂不展开</b>
+  <ul>
+    <li>竞品分析（产品/用户/视频三维度）：由同事独立开发，本工作台只留导航位，不承担其数据通路（飞瓜账号易被顶号，风险随模块转移）</li>
+    <li>产品分析、产品设计：同属同事范围，各占一个导航占位</li>
+    <li>新增数据源：痛点是字段过载与口径打架，加数据源会让问题更严重——本期只用已实测的罗盘 + 蝉妈妈（+ FastMoss 海外口径待实测）</li>
+    <li>成分知识库校准：ima「Voyager」实测为行业趋势报告、无结构化成分词典，成分榜第一版只靠标题关键词 + 蝉妈妈成分榜；自建轻量成分词典单列为待决项</li>
+    <li>竞品八大人群画像：罗盘商品维度拿不到，需走巨量星图（达人维度），随竞品模块一并移交同事</li>
+    <li>上线排期与灰度：已定「先出 PRD + 线框稿，再谈排期」，不写上线计划</li>
+  </ul>
+</div>
+
+<table class="overview-table"><thead><tr><th>模块</th><th>一级功能</th><th>说明</th></tr></thead>
+<tbody>
+<tr><td>1</td><td>全球数据看板 · 增速产品看板</td><td>「市场 + 品类」筛选条（品类按罗盘分类从一级个护家清级联到三级面部洗护/眼部护理级），三级类目分组各出增速 TOP3 商品；顶部自用结论板块（七天内增速最快产品 + GMV 增速 + 销售国家 + 销售价格，带货币符号）；增速 = 两段不重叠 7 天窗口的罗盘 7 天累计支付金额比值；每日刷新，第一天即可出数</td></tr>
+<tr><td>1</td><td>全球数据看板 · 类目增长趋势</td><td>「市场 + 类目」筛选条（与增速看板联动）；趋势表默认展示三级类目（面部洗护/眼部护理级）增速，点开行展开该级下四级类目（眼霜级）增长排序列表；顶部展示增速最快类目的增速折线图 + 当前增速与支付金额；每 7 天刷新；点击类目联动跳转成分增长榜</td></tr>
+<tr><td>1</td><td>全球数据看板 · 成分增长榜</td><td>「市场 + 类目」筛选条（市场含「全部」，显示所有国家增长成分）；榜单列为排名 / 成分名 / 关联商品数 / 占比 / 环比增速；增速口径 = 成分自身增长率（7 天前 vs 今天的排名与关联商品数变化，新上榜成分单独标出）；每 7 天刷新；承接类目增长趋势的联动筛选</td></tr>
+<tr><td>2</td><td>商品榜</td><td>罗盘 / 蝉妈妈 / FastMoss 分来源分榜，国家/地区筛选；类目筛选按罗盘分类级联到三级；切换到海外市场时自动切换至 FastMoss 榜单数据；各榜口径独立展示、绝不跨源相加</td></tr>
+<tr><td>3</td><td>成分库</td><td>「市场 + 品类」筛选条（逻辑同增速看板）；TOP30 增速榜 + TOP30 热度榜（热度分 = 关联商品数 + 销量加权 + 近 7 天上榜频次合成，页面注明口径）；同一成分关联的完整类目层级与关联产品可视化；本期先做国内（蝉妈妈），海外从商品标题/详情页提取成分，后续接入</td></tr>
+<tr><td>4</td><td>初始策略台</td><td>业务人员筛选想做的类目后，AI 给出该类目能否进入的结论：① 市场规模（类目 GMV、当前增速）② 市场竞争程度（CR4/CR10 集中度 + 国际大牌/新锐品牌/白牌玩家结构占比 + 决策标准）③ 供给侧结构（价格带分布、TOP 玩家定价策略与 SKU 矩阵、机会判定）④ 初步结论（GO/NOGO + 理由 + 细分方向 + 目标客单价带）；关键数据可视化并与结论联动</td></tr>
+<tr><td>5</td><td>竞品分析（占位）</td><td>仅导航占位，同事开发；本期点击显示「建设中」</td></tr>
+<tr><td>6</td><td>产品分析（占位）</td><td>仅导航占位，同事开发；本期点击显示「建设中」</td></tr>
+<tr><td>7</td><td>产品设计（占位）</td><td>仅导航占位，同事开发；本期点击显示「建设中」</td></tr>
+</tbody></table>
+
+<h3>3.1 数据源口径分工</h3>
+<table class="rule-table"><thead><tr><th>维度</th><th>取值</th><th>说明</th></tr></thead>
+<tbody>
+<tr><td>GMV 主口径</td><td>抖音罗盘（官方区间值）</td><td>「多少钱」只信罗盘；罗盘金额全为区间值（如 ¥1,000万-¥2,500万），不假装精确</td></tr>
+<tr><td>带货结构 / 成分卖点 / 受众画像</td><td>蝉妈妈</td><td>「谁在卖、怎么卖、用户是谁」信蝉妈妈；其 GMV 精确值为非官方预估，一律不作主口径</td></tr>
+<tr><td>成分关联（国内）</td><td>蝉妈妈</td><td>国内产品扒蝉妈妈数据得关联成分；海外无类似平台，本质都是从商品标题/详情页提取主要成分——本期先把国内做好</td></tr>
+<tr><td>竞品筛选</td><td>飞瓜</td><td>同事负责的竞品模块使用，本期不涉及</td></tr>
+<tr><td>市场规模 · 国内</td><td>罗盘店铺榜 / 商品榜 TOP200</td><td>与海外口径分列展示</td></tr>
+<tr><td>市场规模 / 商品榜 · 海外</td><td>FastMoss</td><td>FastMoss 主要覆盖海外市场（TikTok Shop）；字段可获取性待实测；国内与海外绝不混合相加</td></tr>
+<tr><td>铁律</td><td>罗盘区间值与蝉妈妈预估值绝不混加</td><td>同一指标只有一个口径，谁说了算写在口径徽章里</td></tr>
+</tbody></table>
+
+<h3>3.2 增速计算口径</h3>
+<table class="rule-table"><thead><tr><th>维度</th><th>取值</th><th>说明</th></tr></thead>
+<tbody>
+<tr><td>商品增速公式</td><td>本期 7 天累计支付金额 ÷ 前段 7 天累计支付金额 − 1</td><td>罗盘 GMV 本身是 7 天累计值、每日更新；取两段不重叠 7 天窗口做比值（如 9/18–9/24 vs 9/11–9/17），等价于「当日 ÷ 前 7 日同日」的会议口径</td></tr>
+<tr><td>可回溯范围</td><td>自然日最长回 266 天（罗盘实测）</td><td>第一天就能出增速，不需要空跑攒历史</td></tr>
+<tr><td>类目 cid</td><td>个护家清=5 / 个人护理=1000003462 / 面部洗护=1000003463 / 眼部护理=1000003469</td><td>罗盘类目树实测值（四级：眼霜=1000003550 / 眼膜=1000003551 / 眼部精华=1000003553 / 眼部护理套装=1000003554；洁面=1000003481 / 面膜=1000003482 / 面部护理套装=1000003483 / 化妆水·爽肤水=1000003476 / 面霜=1000003478 / 面部精华=1000003479），类目选错 = 数据整体错位</td></tr>
+<tr><td>类目趋势环比</td><td>直接用罗盘类目概览自带环比字段</td><td>8 个类目指标全部自带「较上周期」环比，不用自己算</td></tr>
+<tr><td>CR4 / CR10</td><td>用 TOP200 榜单数据自己算</td><td>TOP4 / TOP10 支付金额占比，源头可追溯，不依赖外部现成口径</td></tr>
+<tr><td>供需比</td><td>罗盘 demand_supply_rate 字段原值</td><td>增速产品看板商品行的「供需比」列直接用罗盘字段，标来源，不自算</td></tr>
+</tbody></table>
+
+<h3>3.3 更新频率</h3>
+<table class="rule-table"><thead><tr><th>维度</th><th>取值</th><th>说明</th></tr></thead>
+<tbody>
+<tr><td>增速产品看板</td><td>每日刷新</td><td>「每日快照」的真实含义 = 每天重新取一次 7 天累计值并写入快照，不是每天攒一个单日值</td></tr>
+<tr><td>类目增长趋势</td><td>每 7 天刷新</td><td>会议敲定节奏，与增速看板不统一</td></tr>
+<tr><td>成分增长榜 / 成分库</td><td>每 7 天刷新</td><td>同上</td></tr>
+<tr><td>采集通道</td><td>浏览器自动化（kimi-webbridge，带登录态）</td><td>罗盘签名每次变、蝉妈妈请求体加密，必须走真实浏览器；登录失效则暂停并通知手动登录，不硬闯</td></tr>
+</tbody></table>
+
+<h3>3.4 展示模式</h3>
+<table class="rule-table"><thead><tr><th>维度</th><th>取值</th><th>说明</th></tr></thead>
+<tbody>
+<tr><td>自用密度模式（默认）</td><td>高密度表格、多列对比、筛选器全展开</td><td>服务用户本人的日常研判；Kibana 式可折叠分区 + 可下钻关联展示</td></tr>
+<tr><td>路演结论模式</td><td>结论卡片大字号、一屏一个观点、动效克制、可全屏</td><td>服务 AI 大赛评委与选品同事；同一份真实数据，一个开关切换，不是两套数据</td></tr>
+<tr><td>三层读法</td><td>结论层 → 证据层 → 原始层</td><td>默认只给结论；证据层给支撑指标 + 口径徽章 + 样本量；原始层给来源行与数据截止日。42 字段不默认平铺</td></tr>
+</tbody></table>
+
+<h3>3.5 已确认口径（2026-09-25 与用户逐项确认，别改错）</h3>
+<table class="rule-table"><thead><tr><th>维度</th><th>取值</th><th>说明</th></tr></thead>
+<tbody>
+<tr><td>成分增长榜增速</td><td>成分自身增长率：同一成分 7 天前 vs 今天的排名 / 关联商品数变化</td><td>看的是成分自身的增长率，<strong>不是销售额增速</strong>；「新上榜成分」（今天上榜、7 天前没上）单独标记，不与环比数字混排</td></tr>
+<tr><td>成分热度分</td><td>关联商品数 + 销量加权 + 近 7 天上榜频次，三者合成</td><td>成分库热度榜的排序口径，页面需注明口径；权重系数第一版为建议值，定稿见文末待确认清单</td></tr>
+<tr><td>玩家结构分类</td><td>国际大牌 / 新锐品牌 / 白牌 三类</td><td>罗盘商品榜有「知名品牌 / 非知名品牌」筛选；按「国际知名品牌」筛选维度判定：符合 = 国际大牌，不符合的知名品牌 = 新锐品牌；非知名品牌 ≈ 白牌（维度标准待细定，先标记待确认）</td></tr>
+<tr><td>筛选条统一结构</td><td>市场 + 品类（类目）</td><td>增速产品看板 / 类目增长趋势 / 成分库 / 初始策略台共用；品类按罗盘分类逻辑从一级（个护家清）级联到三级（面部洗护 / 眼部护理级）；成分增长榜的市场额外含「全部」（所有国家）；商品榜在三级之上可继续级联到四级</td></tr>
+<tr><td>海外榜单切换</td><td>商品榜市场筛选切到海外 → 自动切换至 FastMoss 榜单数据</td><td>FastMoss 主要覆盖海外市场；国内继续走罗盘 / 蝉妈妈</td></tr>
+</tbody></table>
+
+<h2>四、业务流程图</h2>
+<p class="asset-note">流程图文件后续单独产出，届时替换本 iframe 的 src 即可。</p>
+<iframe class="flow-frame" loading="lazy" src="../流程图/美妆数据看板-flow.html"
+        style="width:100%;height:800px;border:none;background:transparent;"></iframe>
+
+<h2>五、交互流程图</h2>
+<p class="asset-note">交互流程图文件后续单独产出，届时替换本 iframe 的 src 即可。</p>
+<iframe class="flow-frame screen-frame" loading="lazy" src="../流程图/美妆数据看板-screenflow.html"
+        style="width:100%;height:1150px;border:none;background:transparent;"></iframe>
+
+<h2>六、详细方案</h2>
+<table class="scheme-table">
+<colgroup><col class="c-mod"><col class="c-fn"><col class="c-proto"><col></colgroup>
+<thead><tr><th>一级模块</th><th>二级功能</th><th>原型</th><th>描述</th></tr></thead><tbody>
+
+<!-- ========== 模块 1 全球数据看板 ========== -->
+<tr data-preview="global-growth">
+  <td class="mod" rowspan="3">1<br>全球数据看板</td>
+  <td class="fn">1.1 增速产品看板</td>
+  <td class="proto">
+    <div class="prototype-frame" data-pw="1280" data-ph="800">
+      <iframe class="prototype-iframe" loading="lazy" src="../原型/美妆数据看板-prototype.html#global-growth"></iframe>
+    </div>
+    <p class="asset-note">原型文件待产出；产出后本 iframe 直接渲染。见原型 [全球数据看板-增速产品看板]</p>
+  </td>
+  <td class="desc">
+    <div class="desc-block"><b>【页面元素】</b>
+      <p>1、顶部视图开关：「自用密度模式 / 路演结论模式」切换（默认自用密度模式）</p>
+      <p>2、自用结论板块（两种模式下都置顶展示，大字号卡片）：① 七天内增速最快的产品（商品名 + 主图）② 该产品的 GMV 增速 ③ 该产品的销售国家 ④ 销售价格（带货币符号，如 ¥/$）</p>
+      <p>3、筛选条：「市场」（国家/地区）+「品类」级联筛选——品类按罗盘分类逻辑，从一级（个护家清）→ 二级（个人护理）→ 三级（面部洗护 / 眼部护理级）</p>
+      <p>4、类目分组区：按当前筛选命中的三级类目分组卡片（如「面部洗护」「眼部护理」），各展示本组增速 TOP3 商品</p>
+      <p>5、商品行：名次与名次变化、是否新上榜标记、商品名 + 主图、品牌（独立列）、价格带、支付金额区间、环比增速、所属类目、供需比</p>
+      <p>6、表头列序：名次 | 商品 | 品牌 | 价格带 | 支付金额区间 | 环比增速 | 所属类目 | 供需比 | 口径</p>
+      <p>7、口径徽章：每个增速数字旁的口径标签（来源 / 时间窗 / 区间值标记 / 数据截止日）</p>
+      <p>8、「数据截至」标识：本页数据的截止日期</p>
+    </div>
+    <div class="desc-block"><b>【交互说明】</b>
+      <p>1、切换「市场」或「品类」筛选 → 自用结论板块与下方类目分组区同步刷新为对应市场/品类数据</p>
+      <p>2、点击口径徽章 → 弹出该指标的口径说明（定义、样本量、数据截止日、来源）</p>
+      <p>3、点击商品行 → 展开证据层（构成该增速的两段窗口数值与排名变化明细）</p>
+      <p>4、点击「路演结论模式」开关 → 整页切换为一屏一个观点的结论卡片视图（自用结论板块保留并放大）</p>
+      <p>5、证据层中点击「查看原始数据」→ 展开原始层（来源数据行与抓取时间）</p>
+      <p>6、点击表头「环比增速」→ 组内按增速切换升序 / 降序</p>
+    </div>
+    <div class="desc-block"><b>【数据与内容规则】</b>
+      <p>1、增速口径见「3.2 增速计算口径」规则表（两段不重叠 7 天窗口比值，罗盘 7 天累计值，第一天即可出数）</p>
+      <p>2、供需比列直接用罗盘 demand_supply_rate 字段原值，标注来源（见「3.2 增速计算口径」规则表）</p>
+      <p>3、类目 cid 与更新频率见「3.2 增速计算口径」与「3.3 更新频率」规则表；筛选条结构见「3.5 已确认口径」规则表</p>
+      <p>4、自用结论板块的「增速最快产品」= 当前筛选范围内环比增速第一的商品；销售国家取该商品 GMV 归属市场；价格带货币符号随市场切换（国内 ¥ / 海外 $ 等）</p>
+      <p>5、每个分组只出 TOP3，不展示全量榜单（全量榜单在「商品榜」板块）</p>
+    </div>
+    <div class="desc-block"><b>【边界说明】</b>
+      <p>1、当日采集失败或登录失效 → 保留最近一次成功数据并标记「数据截至 xx 日 · 待更新」，不展示空页</p>
+      <p>2、某类目上榜商品不足 3 个 → 按实际数量展示，不补假数据</p>
+      <p>3、增速分母窗口支付金额为 0 或样本过低 → 不计算增速，该行标记「低基数，仅供参考」</p>
+      <p>4、筛选市场为海外且 FastMoss 未接入 → 分组区显示「海外口径接入中」占位，自用结论板块标注「证据不完整」</p>
+      <p>5、筛选品类下无三级类目命中 → 分组区展示空态「该品类暂无监测类目」，结论板块隐藏</p>
+    </div>
+  </td>
+</tr>
+
+<tr data-preview="global-category-trend">
+  <td class="fn">1.2 类目增长趋势</td>
+  <td class="proto">
+    <div class="prototype-frame" data-pw="1280" data-ph="800">
+      <iframe class="prototype-iframe" loading="lazy" src="../原型/美妆数据看板-prototype.html#global-category-trend"></iframe>
+    </div>
+    <p class="asset-note">原型文件待产出；产出后本 iframe 直接渲染。见原型 [全球数据看板-类目增长趋势]</p>
+  </td>
+  <td class="desc">
+    <div class="desc-block"><b>【页面元素】</b>
+      <p>1、筛选条：「市场」（国家/地区）+「类目」级联筛选（与增速产品看板筛选逻辑一致、两页联动；类目按罗盘口径从一级个护家清级联到三级）</p>
+      <p>2、顶部展示块：「增速最快的类目」卡片——该类目近 30 天增速折线图（可看出趋势走向）+ 右侧大字号突出显示当前增速与近 30 天累计支付金额</p>
+      <p>3、趋势表：默认仅展示三级类目（面部洗护 / 眼部护理级）行——类目名、近 30 天累计支付金额、环比增速、占比、操作；三级与四级（眼霜级）增速不混排</p>
+      <p>4、行展开区：点开三级类目行后，行内展开该级下四级类目（如眼霜 / 眼膜 / 眼部精华）的增长排序列表</p>
+      <p>5、每行「查看趋势」入口 + 日级趋势展开位、「看成分」入口（联动跳转成分增长榜）</p>
+      <p>6、口径徽章：环比数字旁的口径标签</p>
+    </div>
+    <div class="desc-block"><b>【交互说明】</b>
+      <p>1、切换「市场 / 类目」筛选 → 顶部展示块与趋势表同步刷新；与增速产品看板的筛选保持联动（从增速看板跳入时自动带出）</p>
+      <p>2、点击三级类目行 → 行内展开该级下所有四级类目的增长排序列表（按环比增速降序）；再次点击收起</p>
+      <p>3、点击「查看趋势」→ 行内展开该类目近 30 天支付金额日级趋势曲线</p>
+      <p>4、点击「看成分」→ 跳转成分增长榜子看板并自动带上该类目筛选</p>
+      <p>5、点击表头「环比增速」→ 切换升序 / 降序（仅作用于当前层级）</p>
+    </div>
+    <div class="desc-block"><b>【功能逻辑】</b>
+      <p>1、分级展示规则：三级类目增速与四级类目增速永不混排在同一层级；四级类目只在所属三级类目行展开后出现</p>
+      <p>2、顶部展示块取当前筛选范围内「环比增速最高的三级类目」；折线图取该类目近 30 天日级支付金额序列</p>
+    </div>
+    <div class="desc-block"><b>【数据与内容规则】</b>
+      <p>1、环比增速直接采用罗盘类目概览自带的「较上周期」口径，不自算（见「3.2 增速计算口径」规则表）</p>
+      <p>2、每 7 天刷新（见「3.3 更新频率」规则表）</p>
+    </div>
+    <div class="desc-block"><b>【边界说明】</b>
+      <p>1、四级类目无成交（支付金额为 0）→ 行保留但显示「—」，不参与增速排序</p>
+      <p>2、刷新日数据源未更新 → 沿用上一期数据并标注实际数据截止日</p>
+      <p>3、三级类目下无四级子类目数据 → 行不可展开，点击提示「暂无下级类目数据」</p>
+      <p>4、日级趋势数据未接入 → 折线区标注「占位示意」，不放具体类目支付金额类无意义数字</p>
+    </div>
+  </td>
+</tr>
+
+<tr data-preview="global-ingredient-rank">
+  <td class="fn">1.3 成分增长榜</td>
+  <td class="proto">
+    <div class="prototype-frame" data-pw="1280" data-ph="800">
+      <iframe class="prototype-iframe" loading="lazy" src="../原型/美妆数据看板-prototype.html#global-ingredient-rank"></iframe>
+    </div>
+    <p class="asset-note">原型文件待产出；产出后本 iframe 直接渲染。见原型 [全球数据看板-成分增长榜]</p>
+  </td>
+  <td class="desc">
+    <div class="desc-block"><b>【页面元素】</b>
+      <p>1、筛选条：「市场」（具体国家/地区 + 「全部」——选「全部」时显示所有国家的增长成分）+「类目」级联筛选（承接类目增长趋势跳入时自动带出，可清除恢复大盘口径）</p>
+      <p>2、榜单表：排名、成分名、关联商品数、占比（该成分关联商品数 ÷ 当前筛选范围上榜成分关联商品总数）、环比增速；不含「销售额」「销售量」两列</p>
+      <p>3、新上榜标记：今天上榜、7 天前未上榜的成分行首标「新上榜」徽标，单独醒目</p>
+      <p>4、维度 Tab：成分 / 功效两个维度切换</p>
+      <p>5、口径徽章：增速数字旁标注「成分自身增长率口径 · 7 天前 vs 今天」</p>
+    </div>
+    <div class="desc-block"><b>【交互说明】</b>
+      <p>1、切换「市场 / 类目」筛选 → 榜单刷新；市场选「全部」→ 聚合所有国家的增长成分并标注来源市场构成</p>
+      <p>2、点击维度 Tab → 榜单在「成分」与「功效」口径间切换</p>
+      <p>3、点击成分名 → 展开该成分关联商品的简要列表（名称、价格带、所属类目）</p>
+      <p>4、点击筛选条的「×」→ 清除类目筛选，回到大盘一级类目口径</p>
+      <p>5、点击口径徽章 → 弹出成分增速口径说明（排名 / 关联商品数变化如何计算）</p>
+    </div>
+    <div class="desc-block"><b>【数据与内容规则】</b>
+      <p>1、增速口径 = 成分自身增长率（同一成分 7 天前 vs 今天的排名 / 关联商品数变化），见「3.5 已确认口径」规则表；不是销售额增速</p>
+      <p>2、数据源为蝉妈妈美妆属性分析；GMV 数字以罗盘为准（见「3.1 数据源口径分工」规则表）</p>
+      <p>3、每 7 天刷新（见「3.3 更新频率」规则表）</p>
+    </div>
+    <div class="desc-block"><b>【边界说明】</b>
+      <p>1、蝉妈妈区间值封顶 100w+ → 展示时原样标注区间，不做跨行聚合累加</p>
+      <p>2、成分名为商品标题抽取结果（第一版无结构化词典校准）→ 页面固定标注「成分名来自标题关键词，准确度受命名规范影响」</p>
+      <p>3、新上榜成分无 7 天前基数 → 不参与环比排序比较，以「新上榜」徽标单独呈现</p>
+      <p>4、市场选「全部」时海外数据未接入 → 榜单仅含国内成分并在筛选条旁提示「海外成分接入中」</p>
+    </div>
+  </td>
+</tr>
+
+<!-- ========== 模块 2 商品榜 ========== -->
+<tr data-preview="product-rank">
+  <td class="mod" rowspan="1">2<br>商品榜</td>
+  <td class="fn">2.1 商品榜（分来源分榜）</td>
+  <td class="proto">
+    <div class="prototype-frame" data-pw="1280" data-ph="800">
+      <iframe class="prototype-iframe" loading="lazy" src="../原型/美妆数据看板-prototype.html#product-rank"></iframe>
+    </div>
+    <p class="asset-note">原型文件待产出；产出后本 iframe 直接渲染。见原型 [商品榜]</p>
+  </td>
+  <td class="desc">
+    <div class="desc-block"><b>【页面元素】</b>
+      <p>1、来源 Tab：罗盘 / 蝉妈妈 / FastMoss 三个分榜，当前 Tab 高亮</p>
+      <p>2、筛选条：国家/地区筛选 + 类目级联筛选（按罗盘类目分类一致，从一级级联到三级面部洗护/眼部护理级，可继续到四级）+ 统计周期标识</p>
+      <p>3、榜单表：名次、商品名 + 主图、品牌、价格带、销售额区间、销量区间、关联店铺/达人；各来源列结构随来源口径略有差异</p>
+      <p>4、口径徽章：标明当前榜单来源、周期与「区间值/预估」属性</p>
+      <p>5、分榜说明条：「各平台统计周期与口径不同，分榜独立展示、不相加」</p>
+    </div>
+    <div class="desc-block"><b>【交互说明】</b>
+      <p>1、点击来源 Tab → 切换对应平台榜单，口径徽章同步切换</p>
+      <p>2、切换国家/地区筛选 → 榜单刷新为对应市场数据；<strong>切换到海外市场时，榜单自动切换至 FastMoss 数据源</strong>（FastMoss 主要覆盖海外）；切回国内市场恢复罗盘 / 蝉妈妈</p>
+      <p>3、切换类目级联筛选 → 榜单按所选层级过滤（三级可选面部洗护 / 眼部护理级）</p>
+      <p>4、点击商品行 → 展开证据层（该商品的来源口径、数据截止日与关联信息）</p>
+    </div>
+    <div class="desc-block"><b>【功能逻辑】</b>
+      <p>1、市场与数据源绑定规则：国内市场 = 罗盘 / 蝉妈妈；海外市场 = FastMoss。切换市场时来源 Tab 联动切换，不出现「海外市场 + 罗盘榜」的错位组合</p>
+    </div>
+    <div class="desc-block"><b>【数据与内容规则】</b>
+      <p>1、数据源分工与「不混加」铁律见「3.1 数据源口径分工」规则表；罗盘榜为官方区间值，蝉妈妈榜数字标注为预估口径</p>
+    </div>
+    <div class="desc-block"><b>【边界说明】</b>
+      <p>1、FastMoss 海外字段未实测 → 切到海外市场时显示「海外口径接入中」占位，不展示空表</p>
+      <p>2、某来源榜单为空 → 显示空态文案「该来源当前周期无上榜商品」，不跨来源补数</p>
+      <p>3、类目筛选到暂无数据的层级 → 榜单区显示空态并保留筛选路径面包屑，可一键回退上级</p>
+    </div>
+  </td>
+</tr>
+
+<!-- ========== 模块 3 成分库 ========== -->
+<tr data-preview="ingredient-lib">
+  <td class="mod" rowspan="1">3<br>成分库</td>
+  <td class="fn">3.1 成分库（增速榜 + 热度榜）</td>
+  <td class="proto">
+    <div class="prototype-frame" data-pw="1280" data-ph="800">
+      <iframe class="prototype-iframe" loading="lazy" src="../原型/美妆数据看板-prototype.html#ingredient-lib"></iframe>
+    </div>
+    <p class="asset-note">原型文件待产出；产出后本 iframe 直接渲染。见原型 [成分库]</p>
+  </td>
+  <td class="desc">
+    <div class="desc-block"><b>【页面元素】</b>
+      <p>1、筛选条：「市场」（国内 / 海外）+「品类」级联筛选（逻辑同增速产品看板，一级个护家清 → 三级面部洗护/眼部护理级）+ 周期（近 7/30/90 天）</p>
+      <p>2、双榜并列区：左侧「TOP30 增速榜」（按成分自身增长率降序）、右侧「TOP30 热度榜」（按热度分降序）</p>
+      <p>3、热度口径标注：热度榜顶部固定注明「热度分 = 关联商品数 + 销量加权 + 近 7 天上榜频次 三者合成」（见「3.5 已确认口径」规则表）</p>
+      <p>4、成分行：成分名、增速/热度分、关联商品数、覆盖类目标记</p>
+      <p>5、成分关联可视化区：点击成分后展示该成分关联了几个类目、完整类目层级路径（如 个护家清 / 个人护理 / 眼部护理 / 眼霜），并可视化列出关联的具体产品（商品名 + 主图 + 价格带）</p>
+      <p>6、口径徽章与「成分名来自标题关键词」准确度提示</p>
+    </div>
+    <div class="desc-block"><b>【交互说明】</b>
+      <p>1、切换市场 / 品类 / 周期筛选 → 双榜同步刷新</p>
+      <p>2、点击成分行 → 展开成分关联可视化区（关联类目层级树 + 关联产品列表）</p>
+      <p>3、点击关联产品 → 展开该产品证据层（来源口径与数据截止日）</p>
+      <p>4、点击热度口径标注 → 弹出热度分合成口径说明</p>
+    </div>
+    <div class="desc-block"><b>【数据与内容规则】</b>
+      <p>1、增速榜复用成分自身增长率口径（见「3.5 已确认口径」规则表）；热度分口径 = 关联商品数 + 销量加权 + 近 7 天上榜频次合成，页面注明</p>
+      <p>2、国内成分关联扒蝉妈妈数据；海外无类似平台，本质都是从商品标题/详情页提取主要成分——本期先把国内做好，海外标记「接入中」（见「3.1 数据源口径分工」规则表）</p>
+      <p>3、每 7 天刷新（见「3.3 更新频率」规则表）</p>
+    </div>
+    <div class="desc-block"><b>【边界说明】</b>
+      <p>1、ima「Voyager」知识库无结构化成分词典 → 成分名校准缺失时按标题关键词原样展示，并持续展示准确度提示（自建词典为待决项，见文末清单）</p>
+      <p>2、某筛选组合下成分不足 30 个 → 按实际数量展示，不补位</p>
+      <p>3、成分仅关联单一类目 → 类目层级树只展示实际命中的路径，不虚构层级</p>
+      <p>4、市场切到海外 → 双榜区显示「海外成分提取接入中」占位，筛选条保留可回切国内</p>
+    </div>
+  </td>
+</tr>
+
+<!-- ========== 模块 4 初始策略台 ========== -->
+<tr data-preview="strategy-cards">
+  <td class="mod" rowspan="2">4<br>初始策略台</td>
+  <td class="fn">4.1 策略台主界面（类目筛选 + AI 进入结论）</td>
+  <td class="proto">
+    <div class="prototype-frame" data-pw="1280" data-ph="800">
+      <iframe class="prototype-iframe" loading="lazy" src="../原型/美妆数据看板-prototype.html#strategy-cards"></iframe>
+    </div>
+    <p class="asset-note">原型文件待产出；产出后本 iframe 直接渲染。见原型 [初始策略台-主界面]</p>
+  </td>
+  <td class="desc">
+    <div class="desc-block"><b>【页面元素】</b>
+      <p>1、业务动线提示条：「看完增速 / 类目 / 成分 / 商品榜后，在这里判断要不要进这个类目」</p>
+      <p>2、类目筛选区：「市场」+「类目」级联筛选（结构见「3.5 已确认口径」规则表），选定后触发 AI 分析</p>
+      <p>3、初步结论卡（置顶最显眼）：GO / NOGO 大字号判定 + 一句话理由 + 建议细分方向（做什么产品）+ 目标客单价带</p>
+      <p>4、四段分析卡片区（自上而下）：市场规模卡、市场竞争程度卡、供给侧结构卡、初步结论卡；关键数据均以图表可视化并与结论联动</p>
+      <p>5、口径徽章组：每张卡标注来源与数据截止日</p>
+    </div>
+    <div class="desc-block"><b>【交互说明】</b>
+      <p>1、筛选市场 + 类目 → AI 按四段结构产出该类目「能否进入」的分析，结论卡置顶刷新</p>
+      <p>2、点击分析卡片中的图表/数字 → 联动高亮结论卡中对应的判定依据</p>
+      <p>3、点击口径徽章 → 弹出该指标口径说明（定义、样本量、数据截止日、来源）</p>
+      <p>4、点击「看证据」→ 展开证据层（构成结论的全部指标、样本量与来源）</p>
+    </div>
+    <div class="desc-block"><b>【功能逻辑】</b>
+      <p>1、业务目的：业务人员在前面板块发现增长快的类目、看完该类目热门成分和头部商品后，来到策略台筛选想做的类目，由 AI 给出该类目能否进入的结论——本页不做全类目自动巡检，只回答「当前选中的这个类目能不能进」</p>
+      <p>2、结论卡判定优先级：GO/NOGO 由竞争程度与供给侧结构两段综合推出，市场规模只作背景参考，不单独决定 GO</p>
+    </div>
+    <div class="desc-block"><b>【数据与内容规则】</b>
+      <p>1、结论由数据综合判断生成，不靠人硬填（沿用已确认的「15 个手工字段尽量自动化，决策类由数据判断」口径）；规则阈值第一版为建议值，待定稿（见文末待确认清单）</p>
+    </div>
+    <div class="desc-block"><b>【边界说明】</b>
+      <p>1、支撑指标缺失（如 FastMoss 海外未接入）→ 结论照常出具但标注「证据不完整」，不隐藏</p>
+      <p>2、所选类目数据量过小（榜单不足 10 个商品）→ 不出 GO/NOGO，改出「样本不足，建议积累数据后再判断」结论</p>
+      <p>3、未筛选类目 → 分析卡片区为空态引导「请先选择想做的类目」，不默认展示某个类目结论</p>
+    </div>
+  </td>
+</tr>
+
+<tr data-preview="strategy-market-size">
+  <td class="fn">4.2 分析卡片明细（市场规模 / 竞争程度 / 供给侧 / 结论）</td>
+  <td class="proto">
+    <div class="prototype-frame" data-pw="1280" data-ph="800">
+      <iframe class="prototype-iframe" loading="lazy" src="../原型/美妆数据看板-prototype.html#strategy-market-size"></iframe>
+    </div>
+    <p class="asset-note">原型文件待产出；产出后本 iframe 直接渲染。见原型 [初始策略台-分析卡片]</p>
+  </td>
+  <td class="desc">
+    <div class="desc-block"><b>【页面元素】</b>
+      <p>1、市场规模卡：该类目 GMV（区间值）+ 当前增速，配趋势折线</p>
+      <p>2、市场竞争程度卡：CR4（前 4 名占比）、CR10 占比数值与条形图；玩家结构占比堆叠条（国际大牌 / 新锐品牌 / 白牌）；决策标准文字（见【功能逻辑】）</p>
+      <p>3、供给侧结构卡：价格带分布直方图（哪个价格带玩家最多 = 最卷、哪个价格带有空白但有需求）、TOP 玩家定价策略（日常价 vs 大促价、折扣力度）、TOP 玩家 SKU 矩阵（引流款低价高 ROI / 利润款高客单 / 复购款会员或套装）</p>
+      <p>4、初步结论卡：GO / NOGO 判定 + 理由；GO 时给具体细分方向（品类细分做什么产品）与目标客单价带；NOGO 时给不做的理由</p>
+    </div>
+    <div class="desc-block"><b>【交互说明】</b>
+      <p>1、点击 CR4 / CR10 数值 → 展开构成该集中度的 TOP4 / TOP10 商品明细</p>
+      <p>2、点击玩家结构堆叠条的某一段 → 展开该类玩家代表品牌列表（分类标准见「3.5 已确认口径」规则表）</p>
+      <p>3、点击价格带直方图某档 → 展开该价格带内在售商品数与代表商品</p>
+      <p>4、点击 SKU 矩阵单元 → 展开该角色（引流/利润/复购）的 TOP 玩家代表款</p>
+    </div>
+    <div class="desc-block"><b>【功能逻辑】</b>
+      <p>1、竞争程度决策标准：<strong>CR4 &gt; 60% 且无明显细分机会 → 很难进入</strong>（除非有供应链/渠道优势）；<strong>CR4 &lt; 40% 且有细分空白 → 有机会</strong>；中间区间综合 CR4 / CR10 与玩家结构（白牌占比高 = 有替代空间，国际大牌占比高 = 品牌壁垒强）给结论</p>
+      <p>2、供给侧决策标准：<strong>目标价格带竞品数量 &lt; 10 且月销量 &gt; 1,000 万 → 有机会</strong>；<strong>目标价格带利润空间（1 − 成本占比）&gt; 50% → 可以做</strong></p>
+      <p>3、玩家结构分类：按罗盘「知名品牌 / 非知名品牌」与「国际知名品牌」筛选维度判定——符合国际知名品牌维度 = 国际大牌，不符合的知名品牌 = 新锐品牌，非知名品牌 ≈ 白牌（白牌维度标准待细定，先标记待确认；见「3.5 已确认口径」规则表）</p>
+    </div>
+    <div class="desc-block"><b>【数据与内容规则】</b>
+      <p>1、国内口径 = 罗盘店铺榜/商品榜 TOP200；海外口径 = FastMoss；CR4/CR10 用榜单数据自算（见「3.1 数据源口径分工」与「3.2 增速计算口径」规则表）；国内与海外始终分开展示，不出现合计值</p>
+    </div>
+    <div class="desc-block"><b>【边界说明】</b>
+      <p>1、FastMoss 字段未实测 → 海外类目卡片先显示「海外口径接入中」，不编数</p>
+      <p>2、榜单数据不足 TOP10（如小类目）→ CR10 不展示，只出 CR4 并标注样本量</p>
+      <p>3、价格带分布出现空档（某档无商品）→ 直方图该档显示为空并标注「空白带」，供机会判断引用</p>
+    </div>
+  </td>
+</tr>
+
+</tbody></table>
+
+<h3>待后续确认的产品口径</h3>
+<ul>
+  <li>结构化成分词典是否自建（可从蝉妈妈成分榜 + 飞瓜「关联成分词 TOP」口径起步）—— 卡在：用户拍板；影响：成分库与成分增长榜的成分名准确度</li>
+  <li>白牌（非知名品牌）的细分维度标准 —— 卡在：罗盘「知名品牌/非知名品牌」筛选项的细定；影响：初始策略台玩家结构占比的国际大牌/新锐/白牌分类准确度</li>
+  <li>成分热度分三要素的权重系数定稿（关联商品数 / 销量加权 / 上榜频次各占多少）—— 卡在：PRD 评审时与用户逐条过；影响：成分库热度榜排序</li>
+  <li>初始策略台判断规则阈值定稿（CR4 60%/40% 门槛、价格带竞品数 &lt;10 且月销量 &gt;1,000 万、利润空间 &gt;50% 等，当前为确认口径中的建议值）—— 卡在：PRD 评审；影响：GO/NOGO 结论产出</li>
+  <li>FastMoss 海外字段可获取性实测 —— 卡在：待执行实测；影响：商品榜海外自动切换、策略台海外类目结论、成分增长榜「全部」市场的海外部分</li>
+  <li>海外成分提取方案（商品标题/详情页主要成分提取的具体实现）—— 卡在：国内跑通后启动；影响：成分库海外部分</li>
+  <li>技术架构二选一（资料库表 + 定时任务 / 重建采集管道）—— 卡在：待试跑真实数据后用户拍板；影响：开发方式与工期</li>
+  <li>采集脚本运行位置（先用用户 Mac launchd / 常开服务器）—— 卡在：用户拍板；影响：每日自动更新的稳定性</li>
+  <li>快照表历史保留时长（建议近 90 天）—— 卡在：用户拍板；影响：环比可算窗口与表体积</li>
+  <li>蝉妈妈竞品采集是否并入本套脚本（飞瓜筛选留同事）—— 卡在：用户拍板；影响：竞品模块接入时的数据通路边界</li>
+  <li>竞品分析 / 产品分析 / 产品设计三个导航占位的具体形式（点击后空态样式）—— 卡在：前端样式确定；影响：占位板块展示</li>
+  <li>路演结论模式的结论卡片内容取舍（一屏一个观点的具体筛选规则）—— 卡在：原型评审；影响：路演演示效果</li>
+</ul>
+
+</main>
+
+<!-- ===== 右侧双栏交互原型预览（§2.6，默认关闭） ===== -->
+<aside class="prototype-sidebar" id="prototypeSidebar">
+  <div class="prototype-resizer" id="prototypeResizer"></div>
+  <div class="sidebar-header">
+    <button type="button" class="sidebar-close" onclick="toggleDualPane()" aria-label="关闭预览">✕</button>
+    <span>交互原型预览</span>
+  </div>
+  <div class="preview-context">原型文件尚未产出，面板在原型产出后可预览各页面；静态预览仅还原界面，完整交互以最终原型为准。</div>
+  <div class="page-selector"><select id="pageSelect" onchange="switchPage(this.value)"></select></div>
+  <div class="preview-zoom">
+    <button type="button" onclick="zoomPreview(-1)" title="缩小">－</button>
+    <span id="previewZoomLabel">100%</span>
+    <button type="button" onclick="zoomPreview(1)" title="放大">＋</button>
+    <button type="button" onclick="fitPreview()" title="适配面板宽度">适配</button>
+  </div>
+  <div class="device-shell"><div class="device-wrapper" id="deviceWrapper"><iframe id="prototypeFrame" title="原型预览"></iframe></div></div>
+</aside>
+
+<!-- ===== 悬浮按钮：左下复制全文 / 右下双栏+保存 ===== -->
+<button type="button" class="copy-all-fab" onclick="copyAllContent()">📋 一键复制全文</button>
+<div class="fab-group">
+  <button type="button" id="dualPaneToggle" onclick="toggleDualPane()" aria-pressed="false">双栏预览</button>
+  <button type="button" onclick="saveAndNotify()">💾 保存并通知AI</button>
+</div>
+<div class="copy-toast" id="copyToast"></div>
+
+<script src="../../scripts/prototype-export-client.js?v=20260925-prd"></script>
+<script>
+/* ===== §2.6 双栏预览：CATALOG / 切页 / 缩放 / scroll-spy ===== */
+var CATALOG = [
+  { value:'global-growth',          label:'1.1 · 全球数据看板-增速产品看板',   url:'../原型/美妆数据看板-prototype.html#global-growth',          w:1280, h:800 },
+  { value:'global-category-trend',  label:'1.2 · 全球数据看板-类目增长趋势',   url:'../原型/美妆数据看板-prototype.html#global-category-trend',  w:1280, h:800 },
+  { value:'global-ingredient-rank', label:'1.3 · 全球数据看板-成分增长榜',     url:'../原型/美妆数据看板-prototype.html#global-ingredient-rank', w:1280, h:800 },
+  { value:'product-rank',           label:'2.1 · 商品榜',                     url:'../原型/美妆数据看板-prototype.html#product-rank',           w:1280, h:800 },
+  { value:'ingredient-lib',         label:'3.1 · 成分库',                     url:'../原型/美妆数据看板-prototype.html#ingredient-lib',         w:1280, h:800 },
+  { value:'strategy-cards',         label:'4.1 · 初始策略台-主界面',           url:'../原型/美妆数据看板-prototype.html#strategy-cards',         w:1280, h:800 },
+  { value:'strategy-market-size',   label:'4.2 · 初始策略台-分析卡片',         url:'../原型/美妆数据看板-prototype.html#strategy-market-size',   w:1280, h:800 }
+];
+var previewPage = CATALOG[0].value;
+var previewZoom = null;
+function currentCfg(){ return CATALOG.find(function(o){return o.value===previewPage;}) || CATALOG[0]; }
+function scalePreview(){
+  var shell=document.querySelector('.device-shell'), wrap=document.getElementById('deviceWrapper'), frame=document.getElementById('prototypeFrame');
+  if(!shell||!wrap||!frame) return;
+  var cfg=currentCfg(), innerW=Math.max(120, shell.clientWidth-40);
+  var fit=innerW/cfg.w, scale=(previewZoom==null)? fit : previewZoom;
+  frame.style.width=cfg.w+'px'; frame.style.height=cfg.h+'px'; frame.style.transform='scale('+scale+')';
+  wrap.style.width=Math.round(cfg.w*scale)+'px'; wrap.style.height=Math.round(cfg.h*scale)+'px';
+  var lab=document.getElementById('previewZoomLabel');
+  if(lab) lab.textContent=Math.round(scale*100)+'%'+(previewZoom==null?' · 适配':'');
+}
+function switchPage(v){
+  previewPage=v; var sel=document.getElementById('pageSelect'); if(sel) sel.value=v;
+  if(!document.body.classList.contains('dual-pane')) return;
+  var f=document.getElementById('prototypeFrame'); if(f) f.src=currentCfg().url;
+  requestAnimationFrame(scalePreview); setTimeout(scalePreview,350);
+}
+function toggleDualPane(){
+  var on = document.body.classList.toggle('dual-pane');
+  var btn = document.getElementById('dualPaneToggle');
+  if(btn){ btn.textContent = on ? '收起预览' : '双栏预览'; btn.setAttribute('aria-pressed', on?'true':'false'); }
+  if(on){ var f=document.getElementById('prototypeFrame'); if(f && !f.src) f.src=currentCfg().url;
+          requestAnimationFrame(scalePreview); setTimeout(scalePreview,350); }
+}
+function renderSelect(){
+  var sel=document.getElementById('pageSelect'); if(!sel) return;
+  sel.innerHTML = CATALOG.map(function(o){ return '<option value="'+o.value+'">'+o.label+'</option>'; }).join('');
+  sel.value=previewPage;
+}
+var ZOOM_STEPS=[0.25,0.5,0.75,1,1.25,1.5,2,3];
+function currentPreviewScale(){
+  if(previewZoom!=null) return previewZoom;
+  var shell=document.querySelector('.device-shell'); if(!shell) return 1;
+  return Math.max(120, shell.clientWidth-40)/currentCfg().w;
+}
+function zoomPreview(dir){
+  var now=currentPreviewScale(), next;
+  if(dir>0) next=ZOOM_STEPS.find(function(s){return s>now+1e-4;});
+  else      next=[].concat(ZOOM_STEPS).reverse().find(function(s){return s<now-1e-4;});
+  previewZoom = next==null ? Math.min(3, Math.max(0.25, now)) : next;
+  scalePreview();
+}
+function fitPreview(){ previewZoom=null; scalePreview(); }
+document.querySelector('.device-shell') && document.querySelector('.device-shell').addEventListener('wheel', function(e){
+  if(!e.ctrlKey && !e.metaKey) return;
+  e.preventDefault();
+  zoomPreview(e.deltaY < 0 ? 1 : -1);
+}, { passive:false });
+/* 面板左缘拖拽改宽 */
+(function(){
+  var rz=document.getElementById('prototypeResizer'); if(!rz) return;
+  rz.addEventListener('mousedown', function(e){
+    e.preventDefault();
+    var startX=e.clientX, startW=parseInt(getComputedStyle(document.documentElement).getPropertyValue('--pm-panel-w'))||520;
+    function mv(ev){
+      var w=Math.min(Math.max(380, startW+(startX-ev.clientX)), Math.min(900, window.innerWidth-360));
+      document.documentElement.style.setProperty('--pm-panel-w', w+'px');
+      scalePreview();
+    }
+    function up(){ document.removeEventListener('mousemove',mv); document.removeEventListener('mouseup',up); }
+    document.addEventListener('mousemove',mv); document.addEventListener('mouseup',up);
+  });
+})();
+/* scroll-spy：正文滚动联动右侧预览切页 */
+function initPreviewScrollSync(){
+  var nodes = Array.prototype.slice.call(document.querySelectorAll('.scheme-table [data-preview]'));
+  if(!nodes.length) return;
+  var lockUntil = 0, sel = document.getElementById('pageSelect');
+  if(sel) sel.addEventListener('change', function(){ lockUntil = Date.now() + 4000; });
+  function pickActive(){
+    if(!document.body.classList.contains('dual-pane') || Date.now() < lockUntil) return;
+    var line = window.innerHeight * 0.35, current = null;
+    for(var i=0;i<nodes.length;i++){ if(nodes[i].getBoundingClientRect().top <= line) current = nodes[i]; }
+    if(!current) current = nodes[0];
+    var v = current.getAttribute('data-preview');
+    if(v && v !== previewPage) switchPage(v);
+  }
+  var ticking = false;
+  function onScroll(){ if(ticking) return; ticking = true; requestAnimationFrame(function(){ pickActive(); ticking = false; }); }
+  window.addEventListener('scroll', onScroll, { passive:true });
+  window.addEventListener('resize', onScroll);
+}
+/* 原型内 postMessage 联动（§2.6 ⑥，向后兼容） */
+window.addEventListener('message', function(e){
+  var d=e.data||{};
+  if(d.type==='page-changed' && d.page && CATALOG.some(function(o){return o.value===d.page;})){
+    previewPage=d.page; var sel=document.getElementById('pageSelect'); if(sel) sel.value=d.page;
+    if(document.body.classList.contains('dual-pane')){ var f=document.getElementById('prototypeFrame'); if(f) f.src=currentCfg().url; requestAnimationFrame(scalePreview); }
+  }
+});
+window.addEventListener('resize', scalePreview);
+window.addEventListener('load', function(){
+  renderSelect(); switchPage(previewPage); initPreviewScrollSync(); scalePrototypes();
+  var m=location.hash.match(/preview=([\w-]+)/);
+  if(m && CATALOG.some(function(o){return o.value===m[1];})){ previewPage=m[1]; renderSelect(); toggleDualPane(); }
+});
+/* ===== §3.3 原型列 iframe 等比缩放 ===== */
+function scalePrototypes() {
+  document.querySelectorAll('.prototype-frame').forEach(function(frame){
+    var pw = parseInt(frame.dataset.pw) || 1280;
+    var ph = parseInt(frame.dataset.ph) || 800;
+    var iframe = frame.querySelector('.prototype-iframe');
+    if (!iframe) return;
+    iframe.style.width = pw + 'px';
+    iframe.style.height = ph + 'px';
+    var containerWidth = frame.clientWidth || 340;
+    var scale = containerWidth / pw;
+    iframe.style.transform = 'scale(' + scale + ')';
+    frame.style.height = Math.round(ph * scale) + 'px';
+  });
+}
+window.addEventListener('resize', scalePrototypes);
+setTimeout(scalePrototypes, 500);
+/* ===== §2.4 保存并通知AI（file:// 直存；http 不安全上下文降级为下载副本） ===== */
+async function saveAndNotify(){
+  var html = document.documentElement.outerHTML;
+  try{
+    if(window.showSaveFilePicker){
+      var handle = await window.showSaveFilePicker({ suggestedName:'美妆数据看板-PRD.html', types:[{description:'HTML', accept:{'text/html':['.html']}}] });
+      var w = await handle.createWritable(); await w.write(html); await w.close();
+      pmToast('已保存。如你正在与 AI 协作，请告知 AI 重新读取本文件。');
+    }else{
+      var blob = new Blob([html], {type:'text/html'});
+      var a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = '美妆数据看板-PRD.html'; a.click();
+      URL.revokeObjectURL(a.href);
+      pmToast('当前环境不支持直接覆写，已下载一份副本（请替换原文件）。');
+    }
+  }catch(e){ if(e && e.name!=='AbortError') pmToast('保存失败：'+(e.message||e), true); }
+}
+function pmToast(msg, err){
+  var t=document.getElementById('copyToast');
+  t.textContent=msg; t.style.background= err? '#c0392b' : '#2a2459'; t.classList.add('show');
+  clearTimeout(pmToast._t); pmToast._t=setTimeout(function(){ t.classList.remove('show'); }, 2600);
+}
+</script>
+
+<script>
+/* ===== §2.7 通用编辑模块（全文档可编辑 / 增删行 / 行列拖拽 / 撤销重做） ===== */
+(function () {
+  var EDITABLE_BLOCK_SELECTOR = 'td, th, p, li, h1, h2, h3, h4, .alert, blockquote, dd, dt';
+  var EXCLUDE_SELECTOR = '.prototype-sidebar, .fab-group, .save-btn, .save-btn-container, .dual-pane-toggle, ' +
+    '.col-resizer, .row-resizer, .row-ctrl, .pm-anchor, .editable-table-remove, .pm-undo-toast, script, style, iframe, button, .copy-all-fab, .copy-toast';
+  var SKIP_CELL_CONTENT = 'table, iframe, video, canvas, img';
+  var origMap = new WeakMap(), rowDone = new WeakSet();
+  var undoStack = [], redoStack = [], MAX_STEPS = 200, applying = false;
+  function pushStep(step){
+    if (applying) return;
+    undoStack.push(step);
+    if (undoStack.length > MAX_STEPS) undoStack.shift();
+    redoStack.length = 0;
+  }
+  function reinsert(node, parent, next){
+    if (!parent) return;
+    if (next && next.parentNode === parent) parent.insertBefore(node, next); else parent.appendChild(node);
+  }
+  var toastEl = null, toastTimer = null;
+  function toast(msg){
+    if (!toastEl){
+      toastEl = document.createElement('div'); toastEl.className = 'pm-undo-toast';
+      toastEl.setAttribute('contenteditable','false'); document.body.appendChild(toastEl);
+    }
+    toastEl.textContent = msg;
+    requestAnimationFrame(function(){ if (toastEl) toastEl.classList.add('show'); });
+    if (toastTimer) clearTimeout(toastTimer);
+    toastTimer = setTimeout(function(){ if (toastEl){ toastEl.remove(); toastEl = null; } }, 1300);
+  }
+  function runStep(s, dir){ applying = true; try { s[dir](); } finally { applying = false; } }
+  function undo(){
+    commitPending();
+    var s = undoStack.pop(); if (!s){ toast('没有可撤销的操作'); return; }
+    runStep(s, 'undo'); redoStack.push(s); toast('已撤销');
+  }
+  function redo(){
+    commitPending();
+    var s = redoStack.pop(); if (!s){ toast('没有可重做的操作'); return; }
+    runStep(s, 'redo'); undoStack.push(s); toast('已重做');
+  }
+  function isFormField(t){ return !!t && (t.tagName === 'INPUT' || t.tagName === 'TEXTAREA' || t.tagName === 'SELECT'); }
+  document.addEventListener('keydown', function(e){
+    if (!(e.metaKey || e.ctrlKey) || e.altKey) return;
+    if (isFormField(e.target)) return;
+    var k = (e.key || '').toLowerCase();
+    if (k === 'z' && !e.shiftKey){ e.preventDefault(); undo(); }
+    else if (k === 'y' || (k === 'z' && e.shiftKey)){ e.preventDefault(); redo(); }
+  }, true);
+  var pending = null, pendTimer = null, PEND_MS = 600;
+  function flagState(el){ return { changed: el.getAttribute('data-changed'), cls: el.classList.contains('edited-cell') }; }
+  function applyFlag(el, s){
+    if (s.changed) el.setAttribute('data-changed', s.changed); else el.removeAttribute('data-changed');
+    if (s.cls) el.classList.add('edited-cell'); else el.classList.remove('edited-cell');
+  }
+  function syncChangedFlag(el){ if (el.innerHTML !== origMap.get(el)) markEditableCellChanged(el); }
+  function reveal(el){ if (el && el.isConnected && el.scrollIntoView) el.scrollIntoView({ block:'nearest' }); }
+  function seed(el){ pending = { el: el, before: el.innerHTML, flag: flagState(el) }; }
+  function commitPending(){
+    if (pendTimer){ clearTimeout(pendTimer); pendTimer = null; }
+    var p = pending; pending = null;
+    if (!p) return;
+    var el = p.el, before = p.before, beforeFlag = p.flag, after = el.innerHTML;
+    if (after === before) return;
+    syncChangedFlag(el);
+    var afterFlag = flagState(el);
+    pushStep({
+      undo: function(){ el.innerHTML = before; applyFlag(el, beforeFlag); reveal(el); },
+      redo: function(){ el.innerHTML = after;  applyFlag(el, afterFlag);  reveal(el); }
+    });
+  }
+  function onEditFocus(){ if (pending && pending.el !== this) commitPending(); if (!pending) seed(this); }
+  function onEditInput(){
+    var el = this;
+    if (!pending || pending.el !== el){ commitPending(); seed(el); }
+    if (pendTimer) clearTimeout(pendTimer);
+    pendTimer = setTimeout(function(){
+      var still = pending && pending.el;
+      commitPending();
+      if (still && document.activeElement === still) seed(still);
+    }, PEND_MS);
+  }
+  function onEditBlur(){ if (pending && pending.el === this) commitPending(); syncChangedFlag(this); }
+  function isExcluded(el){ return !!(el.closest && el.closest(EXCLUDE_SELECTOR)); }
+  function isHeaderRow(tr){ return tr.cells.length > 0 && Array.prototype.every.call(tr.cells, function(c){ return c.tagName === 'TH'; }); }
+  function headerRowOf(table){
+    if (table.tHead && table.tHead.rows[0]) return table.tHead.rows[0];
+    for (var i=0;i<table.rows.length;i++) if (isHeaderRow(table.rows[i])) return table.rows[i];
+    return table.rows[0] || null;
+  }
+  function markEditableCellChanged(el){ if(!el) return; el.setAttribute('data-changed','true'); el.classList.add('edited-cell'); }
+  function trackEditable(el){
+    if (origMap.has(el)) return; origMap.set(el, el.innerHTML);
+    el.setAttribute('contenteditable','true'); el.style.outline='none';
+    el.addEventListener('focus', onEditFocus);
+    el.addEventListener('input', onEditInput);
+    el.addEventListener('blur', onEditBlur);
+  }
+  function makeDocumentEditable(root){
+    (root||document).querySelectorAll(EDITABLE_BLOCK_SELECTOR).forEach(function(el){
+      if (isExcluded(el)) return;
+      if (el.querySelector(SKIP_CELL_CONTENT)) return;
+      trackEditable(el);
+    });
+  }
+  function wrapTable(table){
+    if (table.closest('.editable-table-wrap')) return table.closest('.editable-table-wrap');
+    var wrap=document.createElement('div'); wrap.className='editable-table-wrap'; wrap.setAttribute('contenteditable','false');
+    table.parentNode.insertBefore(wrap, table); wrap.appendChild(table);
+    var rm=document.createElement('button'); rm.type='button'; rm.className='editable-table-remove'; rm.textContent='删除表格';
+    rm.addEventListener('click', function(e){
+      e.preventDefault();
+      var parent=wrap.parentNode, next=wrap.nextSibling;
+      wrap.remove();
+      pushStep({ undo:function(){ reinsert(wrap, parent, next); reveal(wrap); }, redo:function(){ wrap.remove(); } });
+    });
+    wrap.appendChild(rm); return wrap;
+  }
+  function blankRowFrom(tr){
+    var clone=tr.cloneNode(true); clone.style.height=''; clone.removeAttribute('id');
+    Array.prototype.forEach.call(clone.cells, function(c){
+      c.removeAttribute('rowspan'); c.removeAttribute('colspan'); c.removeAttribute('id');
+      c.removeAttribute('data-changed'); c.classList.remove('edited-cell');
+      c.querySelectorAll('.row-ctrl, .col-resizer, .row-resizer, .pm-anchor').forEach(function(n){
+        if(n.classList.contains('pm-anchor')){ while(n.firstChild) n.parentNode.insertBefore(n.firstChild,n); n.remove(); } else n.remove();
+      });
+      if(!c.querySelector('iframe, img, video, canvas')) c.innerHTML='<br>';
+      c.removeAttribute('contenteditable');
+    });
+    return clone;
+  }
+  function installRowControls(tr){
+    var first=tr.cells[0]; if(!first || first.querySelector(':scope > .pm-anchor > .row-ctrl')) return;
+    first.style.position='relative';
+    var anchor=document.createElement('span'); anchor.className='pm-anchor'; anchor.setAttribute('contenteditable','false');
+    var ctrl=document.createElement('span'); ctrl.className='row-ctrl';
+    var add=document.createElement('button'); add.type='button'; add.className='row-add'; add.textContent='+'; add.title='在下方插入一行';
+    var del=document.createElement('button'); del.type='button'; del.className='row-del'; del.textContent='−'; del.title='删除本行';
+    add.addEventListener('click', function(e){
+      e.preventDefault();
+      var nr=blankRowFrom(tr), parent=tr.parentNode, next=tr.nextSibling;
+      parent.insertBefore(nr, next); decorateRow(nr); makeDocumentEditable(nr);
+      pushStep({
+        undo:function(){ nr.remove(); },
+        redo:function(){ if(tr.parentNode) tr.parentNode.insertBefore(nr, tr.nextSibling); else reinsert(nr, parent, next); reveal(nr); }
+      });
+    });
+    del.addEventListener('click', function(e){
+      e.preventDefault();
+      var body=tr.parentNode; var dataRows=Array.prototype.filter.call(body.rows, function(r){return !isHeaderRow(r);});
+      if(dataRows.length<=1) return;
+      var next=tr.nextSibling;
+      tr.remove();
+      pushStep({ undo:function(){ reinsert(tr, body, next); reveal(tr); }, redo:function(){ tr.remove(); } });
+    });
+    ctrl.appendChild(add); ctrl.appendChild(del); anchor.appendChild(ctrl); first.insertBefore(anchor, first.firstChild);
+  }
+  function ensureCols(table){
+    if (table.querySelector('colgroup')) return table.querySelector('colgroup');
+    var headRow=headerRowOf(table); if(!headRow) return null;
+    var cg=document.createElement('colgroup');
+    for(var i=0;i<headRow.cells.length;i++){ var col=document.createElement('col'); col.style.width=headRow.cells[i].offsetWidth+'px'; cg.appendChild(col); }
+    table.insertBefore(cg, table.firstChild); return cg;
+  }
+  function installColResizers(table){
+    var cg=ensureCols(table); if(!cg) return; var cols=cg.querySelectorAll('col');
+    var headRow=headerRowOf(table); if(!headRow) return;
+    Array.prototype.forEach.call(headRow.cells, function(th, idx){
+      if(idx>=cols.length) return; if(th.querySelector(':scope > .col-resizer')) return;
+      th.style.position='relative';
+      var h=document.createElement('span'); h.className='col-resizer'; h.setAttribute('contenteditable','false');
+      var col=cols[idx];
+      h.addEventListener('mousedown', function(e){
+        e.preventDefault(); e.stopPropagation();
+        var startX=e.clientX, startW=col.offsetWidth||th.offsetWidth, beforeW=col.style.width;
+        h.classList.add('active'); document.body.classList.add('col-resizing');
+        function mv(ev){ col.style.width=Math.max(48, startW+(ev.clientX-startX))+'px'; }
+        function up(){
+          document.removeEventListener('mousemove',mv); document.removeEventListener('mouseup',up);
+          h.classList.remove('active'); document.body.classList.remove('col-resizing');
+          var afterW=col.style.width;
+          if(afterW!==beforeW) pushStep({ undo:function(){ col.style.width=beforeW; }, redo:function(){ col.style.width=afterW; } });
+        }
+        document.addEventListener('mousemove',mv); document.addEventListener('mouseup',up);
+      });
+      th.appendChild(h);
+    });
+  }
+  function installRowResizer(tr){
+    var first=tr.cells[0]; if(!first || first.querySelector(':scope > .row-resizer')) return;
+    first.style.position='relative';
+    var h=document.createElement('span'); h.className='row-resizer'; h.setAttribute('contenteditable','false');
+    h.addEventListener('mousedown', function(e){
+      e.preventDefault(); e.stopPropagation();
+      var startY=e.clientY, startH=tr.offsetHeight, beforeH=tr.style.height;
+      h.classList.add('active'); document.body.classList.add('row-resizing');
+      function mv(ev){ tr.style.height=Math.max(24, startH+(ev.clientY-startY))+'px'; }
+      function up(){
+        document.removeEventListener('mousemove',mv); document.removeEventListener('mouseup',up);
+        h.classList.remove('active'); document.body.classList.remove('row-resizing');
+        var afterH=tr.style.height;
+        if(afterH!==beforeH) pushStep({ undo:function(){ tr.style.height=beforeH; }, redo:function(){ tr.style.height=afterH; } });
+      }
+      document.addEventListener('mousemove',mv); document.addEventListener('mouseup',up);
+    });
+    first.appendChild(h);
+  }
+  function decorateRow(tr){ if(rowDone.has(tr) || isHeaderRow(tr) || tr.closest('thead')) return; rowDone.add(tr); installRowControls(tr); installRowResizer(tr); }
+  function installTableControls(root){
+    (root||document).querySelectorAll('table').forEach(function(table){
+      if(isExcluded(table) || table.closest('.no-edit')) return;
+      wrapTable(table); installColResizers(table);
+      Array.prototype.forEach.call(table.rows, decorateRow);
+    });
+  }
+  function init(root){ installTableControls(root); makeDocumentEditable(root); }
+  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded', function(){ init(document); }); else init(document);
+  window.PMEdit={ init:init, makeDocumentEditable:makeDocumentEditable, installTableControls:installTableControls,
+                  undo:undo, redo:redo, canUndo:function(){ return undoStack.length>0; }, canRedo:function(){ return redoStack.length>0; } };
+})();
+</script>
+
+<script>
+/* ===== §2.8 一键复制全文（剥骨架 → 取图 → 落图，三档降级） ===== */
+(function(){
+  var mediaCache = new Map();
+  var MAX_IMG_WIDTH = 2000;
+  function shrinkDataUrl(dataUrl, maxWidth){
+    return new Promise(function(resolve){
+      var im = new Image();
+      im.onload = function(){
+        if(!im.naturalWidth || im.naturalWidth <= maxWidth){ resolve(dataUrl); return; }
+        try{
+          var r = maxWidth / im.naturalWidth;
+          var c = document.createElement('canvas');
+          c.width = Math.round(im.naturalWidth * r);
+          c.height = Math.round(im.naturalHeight * r);
+          var ctx = c.getContext('2d');
+          ctx.fillStyle = '#fff'; ctx.fillRect(0, 0, c.width, c.height);
+          ctx.drawImage(im, 0, 0, c.width, c.height);
+          resolve(c.toDataURL('image/jpeg', 0.9));
+        }catch(e){ resolve(dataUrl); }
+      };
+      im.onerror = function(){ resolve(dataUrl); };
+      im.src = dataUrl;
+    });
+  }
+  function stripSkeleton(){
+    var clone = document.body.cloneNode(true);
+    var live = document.body.querySelectorAll('img'), copies = clone.querySelectorAll('img');
+    for(var i=0; i<live.length && i<copies.length; i++){
+      var w = Math.round(live[i].getBoundingClientRect().width);
+      if(w > 0){ copies[i].style.width = w + 'px'; copies[i].style.height = 'auto'; }
+      copies[i].style.maxWidth = '100%';
+    }
+    clone.querySelectorAll('.prototype-sidebar, .fab-group, .copy-all-fab, .copy-toast, .col-resizer, .row-resizer, .row-ctrl, .pm-anchor, .editable-table-remove, script, noscript').forEach(function(n){ n.remove(); });
+    clone.querySelectorAll('.editable-table-wrap').forEach(function(w){ var t=w.querySelector('table'); if(t) w.replaceWith(t); else w.remove(); });
+    return clone;
+  }
+  async function collectMedia(clone){
+    var jobs = [];
+    clone.querySelectorAll('iframe[src]').forEach(function(el){
+      jobs.push({ el: el, src: el.getAttribute('src'), kind: 'frame' });
+    });
+    clone.querySelectorAll('img[src]').forEach(function(el){
+      var s = el.getAttribute('src');
+      if(s && !/^data:/i.test(s)) jobs.push({ el: el, src: s, kind: 'asset' });
+    });
+    var out = { ok:0, fail:0, serviceDown:false, jobs: jobs };
+    if(!jobs.length) return out;
+    if(typeof window.snapshotPrototypeViaServer !== 'function' || typeof window.inlineAssetViaServer !== 'function'){
+      out.serviceDown = true; out.fail = jobs.length; return out;
+    }
+    var srcs = [];
+    jobs.forEach(function(j){ if(srcs.indexOf(j.src) === -1) srcs.push(j.src); });
+    if(mediaCache.size < srcs.length){
+      showToast('正在唤起原型导出服务（首次启动较慢，最长约 40 秒）…', false, true);
+      try{
+        await window.ensureExportServerReady();
+      }catch(e){
+        console.warn('[copy-all] 导出服务不可用', e);
+        out.serviceDown = true; out.fail = srcs.length; return out;
+      }
+    }
+    for(var i=0;i<srcs.length;i++){
+      var src = srcs[i];
+      if(mediaCache.has(src)){ out.ok++; continue; }
+      showToast('正在生成图片 '+(i+1)+'/'+srcs.length+'…', false, true);
+      var kind = jobs.filter(function(j){ return j.src === src; })[0].kind;
+      try{
+        var data = kind === 'frame'
+          ? await window.snapshotPrototypeViaServer(src, {})
+          : await window.inlineAssetViaServer(src, {});
+        mediaCache.set(src, await shrinkDataUrl(data.dataUrl, MAX_IMG_WIDTH)); out.ok++;
+      }catch(e){
+        console.warn('[copy-all] 取图失败', src, e);
+        out.fail++;
+      }
+    }
+    return out;
+  }
+  function finalizeClone(clone, jobs){
+    (jobs||[]).forEach(function(j){
+      var url = mediaCache.get(j.src);
+      if(j.kind === 'frame'){
+        if(!url){ j.el.remove(); return; }
+        var img = document.createElement('img');
+        img.src = url;
+        img.alt = j.el.getAttribute('title') || '原型预览';
+        img.style.cssText = 'max-width:100%;height:auto;border:1px solid #e5e3f5;border-radius:8px;';
+        j.el.replaceWith(img);
+      } else if(url){
+        j.el.setAttribute('src', url);
+      }
+    });
+    clone.querySelectorAll('[contenteditable]').forEach(function(el){ el.removeAttribute('contenteditable'); });
+    ['data-changed','data-original','data-orig','data-pm-tracked'].forEach(function(a){ clone.querySelectorAll('['+a+']').forEach(function(el){ el.removeAttribute(a); }); });
+    clone.querySelectorAll('.edited-cell').forEach(function(el){ el.classList.remove('edited-cell'); });
+    clone.querySelectorAll('table').forEach(function(t){ t.style.borderCollapse='collapse'; t.style.width='100%'; });
+    clone.querySelectorAll('th,td').forEach(function(c){ c.style.border='1px solid #ccc'; c.style.padding='6px 10px'; c.style.verticalAlign='top'; });
+    clone.querySelectorAll('th').forEach(function(c){ if(!c.style.background) c.style.background='#f2f1f8'; });
+    clone.querySelectorAll('img').forEach(function(img){
+      try{ if(!/^data:/i.test(img.getAttribute('src')||'')) img.setAttribute('src', img.src); }catch(e){}
+    });
+    return clone;
+  }
+  function showToast(msg, err, sticky){
+    var t=document.querySelector('.copy-toast');
+    if(!t){ t=document.createElement('div'); t.className='copy-toast'; document.body.appendChild(t); }
+    t.textContent=msg; t.style.background= err? '#c0392b' : '#2a2459'; t.classList.add('show');
+    clearTimeout(showToast._t);
+    if(!sticky) showToast._t=setTimeout(function(){ t.classList.remove('show'); }, 2600);
+  }
+  async function writeClipboard(html, text){
+    try{
+      if(navigator.clipboard && window.ClipboardItem){
+        await navigator.clipboard.write([new ClipboardItem({
+          'text/html': new Blob([html],{type:'text/html'}),
+          'text/plain': new Blob([text],{type:'text/plain'})
+        })]);
+        return true;
+      }
+      throw new Error('no async clipboard');
+    }catch(e){
+      var holder=document.createElement('div'); holder.setAttribute('contenteditable','true');
+      holder.style.cssText='position:fixed;left:-99999px;top:0;opacity:0;'; holder.innerHTML=html;
+      document.body.appendChild(holder);
+      var range=document.createRange(); range.selectNodeContents(holder);
+      var sel=window.getSelection(); sel.removeAllRanges(); sel.addRange(range);
+      var okc=document.execCommand('copy'); sel.removeAllRanges(); holder.remove();
+      if(!okc) throw new Error('execCommand 拒绝');
+      return true;
+    }
+  }
+  async function copyAllContent(){
+    try{
+      var clone = stripSkeleton();
+      var media = await collectMedia(clone);
+      finalizeClone(clone, media.jobs);
+      await writeClipboard('<meta charset="utf-8">'+clone.innerHTML, clone.innerText);
+      if(media.serviceDown)     showToast('导出服务未启动，已按纯文本复制（原型图缺失）', true);
+      else if(media.fail)       showToast('已复制全文，含 '+media.ok+' 张图，'+media.fail+' 张生成失败已跳过', true);
+      else if(media.ok)         showToast('已复制全文（含 '+media.ok+' 张图），可直接粘贴到钉钉/飞书/Word');
+      else                      showToast('已复制全文，可直接粘贴到钉钉/飞书/Word');
+    }catch(e){
+      showToast('复制失败，请手动全选复制：'+(e.message||e), true);
+    }
+  }
+  window.copyAllContent=copyAllContent;
+})();
+</script>
+
+</body>
+</html>

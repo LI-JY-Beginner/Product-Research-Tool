@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>美妆数据看板 · 业务流程图</title>
+<style>
+  :root { --pm-accent: #5b5bd6; }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    background:#f8f8fc;
+    font-family:'Microsoft YaHei','PingFang SC',sans-serif;
+    color:#30285b;
+    padding:32px 40px;
+  }
+  .card {
+    max-width:1400px;
+    margin:0 auto;
+    background:#fff;
+    border-radius:14px;
+    padding:28px 36px 36px;
+    box-shadow:0 2px 12px rgba(48,40,91,.06);
+  }
+  h1 { font-size:20px; font-weight:700; color:var(--pm-accent); margin-bottom:6px; }
+  .sub { font-size:13px; color:#8d82b1; margin-bottom:24px; }
+  .mermaid { display:flex; justify-content:center; overflow-x:auto; }
+  .legend {
+    display:flex; gap:22px; flex-wrap:wrap;
+    margin-top:22px; padding-top:16px;
+    border-top:1px dashed #cbc4e7;
+    font-size:12.5px; color:#6f65a3;
+  }
+  .legend span { display:inline-flex; align-items:center; gap:6px; }
+  .legend i {
+    display:inline-block; width:26px; height:14px;
+    border:1.5px solid #cbc4e7; background:#faf9ff; border-radius:3px;
+  }
+  .legend i.d { border-radius:50%; width:14px; height:14px; }
+  .legend i.dim { transform:rotate(45deg); width:12px; height:12px; }
+</style>
+</head>
+<body>
+<div class="card">
+  <h1>美妆数据看板 · 数据流转业务全流程</h1>
+  <div class="sub">采集 → 口径统一 → 存储 → 看板 → 决策输出，含调度周期与登录失效异常分支</div>
+
+  <div class="mermaid">
+flowchart TD
+  %% ============ 采集层 ============
+  subgraph SRC["采集层"]
+    direction LR
+    S1["罗盘"]
+    S2["蝉妈妈"]
+    S3["飞瓜·同事"]
+  end
+
+  %% ============ 口径统一 ============
+  subgraph NORM["口径统一"]
+    direction LR
+    N1["字段对齐"]
+    N2["单位统一"]
+    N3["区间值不混加"]
+  end
+
+  %% ============ 登录校验 ============
+  AUTH{"登录态有效?"}
+  PAUSE["暂停任务<br/>通知手动登录"]
+
+  %% ============ 存储层 ============
+  subgraph STORE["存储层"]
+    direction LR
+    M1["主表<br/>最新状态"]
+    M2["快照表<br/>每日历史"]
+  end
+
+  %% ============ 看板层 ============
+  subgraph DASH["看板层"]
+    direction TB
+    D1["① 全球数据看板<br/>增速产品 / 类目趋势 / 成分增长榜"]
+    D2["② 商品榜"]
+    D3["③ 成分库"]
+    D4["④ 初步判断策略"]
+  end
+
+  %% ============ 决策输出 ============
+  OUT(["决策输出<br/>机会结论卡片<br/>选品同事引用 + 路演演示"])
+
+  %% ============ 调度器 ============
+  SCH(["定时调度"])
+  DAILY{"每日刷新"}
+  WEEKLY{"每 7 天刷新"}
+
+  %% ============ 主流程 ============
+  SRC --> NORM
+  NORM --> AUTH
+  AUTH -- "是" --> STORE
+  AUTH -- "否" --> PAUSE
+  PAUSE -. "手动登录成功后恢复" .-> AUTH
+  STORE --> DASH
+  DASH --> OUT
+
+  %% ============ 调度分支 ============
+  SCH --> DAILY
+  SCH --> WEEKLY
+  DAILY -. "每日" .-> D1
+  DAILY -. "每日" .-> D2
+  WEEKLY -. "每 7 天<br/>类目趋势" .-> D1
+  WEEKLY -. "每 7 天" .-> D3
+
+  classDef step fill:#faf9ff,stroke:#cbc4e7,stroke-width:1.5px,color:#30285b;
+  classDef deci fill:#faf9ff,stroke:#cbc4e7,stroke-width:1.5px,color:#30285b;
+  classDef term fill:#faf9ff,stroke:#cbc4e7,stroke-width:1.5px,color:#30285b;
+  class S1,S2,S3,N1,N2,N3,M1,M2,D1,D2,D3,D4,PAUSE step;
+  class AUTH,DAILY,WEEKLY deci;
+  class OUT,SCH term;
+  style SRC fill:#faf9ff,stroke:#cbc4e7,stroke-width:1px,color:#30285b
+  style NORM fill:#faf9ff,stroke:#cbc4e7,stroke-width:1px,color:#30285b
+  style STORE fill:#faf9ff,stroke:#cbc4e7,stroke-width:1px,color:#30285b
+  style DASH fill:#faf9ff,stroke:#cbc4e7,stroke-width:1px,color:#30285b
+  </div>
+
+  <div class="legend">
+    <span><i></i>流程 / 数据节点</span>
+    <span><i class="dim"></i>判断 / 调度分支</span>
+    <span><i class="d"></i>起止 / 输出</span>
+    <span>实线 = 数据主链路 &nbsp;·&nbsp; 虚线 = 调度与异常恢复</span>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/mermaid@10.9.1/dist/mermaid.min.js"></script>
+<script>
+  mermaid.initialize({
+    theme: 'base',
+    themeVariables: {
+      primaryColor:'#faf9ff', primaryBorderColor:'#cbc4e7', primaryTextColor:'#30285b',
+      lineColor:'#8d82b1', textColor:'#30285b',
+      fontFamily:'Microsoft YaHei, PingFang SC, sans-serif'
+    },
+    flowchart:{ useMaxWidth:false, htmlLabels:true, curve:'linear', nodeSpacing:60, rankSpacing:70, padding:18 }
+  });
+</script>
+</body>
+</html>

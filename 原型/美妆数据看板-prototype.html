@@ -1,0 +1,1611 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>美妆选品数据看板 · 可交互原型</title>
+<style>
+:root{
+  /* —— Stripe 设计规范 token —— */
+  --pm-accent:#533afd;          /* primary 靛蓝：仅 CTA / 强调 */
+  --pm-accent-deep:#4434d4;     /* primary-deep */
+  --pm-accent-press:#2e2b8c;    /* primary-press */
+  --pm-accent-soft:#eceafe;     /* 柔和靛蓝底（pill-tag-soft 风格） */
+  --pm-up:#d93a3a;      /* 上升=红（中国股市配色） */
+  --pm-down:#1a9e5c;    /* 下降=绿 */
+  --ink-1:#0d253d;      /* ink 深墨 */
+  --ink-2:#273951;      /* ink-secondary */
+  --ink-3:#64748d;      /* ink-mute */
+  --ink-4:#b6b9c4;
+  --hair:#e3e8ee;       /* hairline 细线 */
+  --hair-2:#f1f2f6;
+  --bg:#ffffff;         /* canvas 白 */
+  --bg-soft:#f6f9fc;    /* canvas-soft */
+  --warn:#b07207;
+  --warn-bg:#fdf6e7;
+  --radius:12px;        /* rounded.lg */
+  --shadow-1:rgba(0,55,112,.08) 0 1px 3px;
+  --shadow-2:rgba(0,55,112,.08) 0 8px 24px,rgba(0,55,112,.04) 0 2px 6px;
+  --font:"Microsoft YaHei","PingFang SC","Hiragino Sans GB","Helvetica Neue",Arial,sans-serif;
+  --mono:"SF Mono","JetBrains Mono",Menlo,Consolas,monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{font-family:var(--font);background:var(--bg);color:var(--ink-1);font-size:13px;line-height:1.55;font-feature-settings:"ss01"}
+a{color:var(--pm-accent);text-decoration:none}
+button{font-family:var(--font);cursor:pointer}
+::selection{background:var(--pm-accent-soft)}
+
+/* ============ 顶栏（Stripe 克制导航：不横向滚动） ============ */
+.topbar{position:sticky;top:0;z-index:50;background:#fff;border-bottom:1px solid var(--hair)}
+.topbar-inner{max-width:1240px;margin:0 auto;padding:0 24px;display:flex;align-items:center;height:52px;gap:24px}
+.brand{display:flex;align-items:baseline;gap:8px;white-space:nowrap}
+.brand b{font-size:14px;font-weight:700;letter-spacing:.2px}
+.brand .proto{font-size:10px;color:var(--pm-accent-deep);background:var(--pm-accent-soft);border-radius:9999px;padding:1px 8px;line-height:16px;font-weight:600}
+.nav{display:flex;gap:4px;flex:1;overflow:visible;align-items:center}
+.nav-item{border:0;background:none;font-size:13px;color:var(--ink-2);padding:6px 14px;border-radius:9999px;white-space:nowrap;position:relative;font-weight:400}
+.nav-item:hover{background:var(--bg-soft);color:var(--ink-1)}
+.nav-item.active{color:var(--pm-accent-deep);font-weight:600;background:var(--pm-accent-soft)}
+.nav-item .idx{font-size:10px;color:var(--ink-4);margin-right:3px;font-family:var(--mono)}
+.nav-item.active .idx{color:var(--pm-accent-deep)}
+/* 「更多」下拉 */
+.nav-more{position:relative}
+.nav-more .nav-item .caret{font-size:9px;margin-left:4px;font-family:var(--mono);color:var(--ink-3)}
+.nav-more-menu{position:absolute;top:calc(100% + 6px);right:0;background:#fff;border:1px solid var(--hair);border-radius:8px;box-shadow:var(--shadow-2);padding:4px;min-width:140px;display:none;z-index:70}
+.nav-more:hover .nav-more-menu,.nav-more.open .nav-more-menu{display:block}
+.nav-more-item{display:flex;align-items:center;width:100%;border:0;background:none;font-size:13px;color:var(--ink-2);padding:7px 12px;border-radius:6px;white-space:nowrap;text-align:left}
+.nav-more-item:hover{background:var(--bg-soft);color:var(--ink-1)}
+.nav-more-item.active{color:var(--pm-accent-deep);font-weight:600;background:var(--pm-accent-soft)}
+.nav-more-item .idx{font-size:10px;color:var(--ink-4);margin-right:5px;font-family:var(--mono)}
+/* 数据信息小 icon 气泡 */
+.data-info{position:relative;flex-shrink:0}
+.data-info-btn{border:1px solid var(--hair);background:#fff;width:26px;height:26px;border-radius:9999px;font-size:11px;color:var(--ink-3);font-family:var(--mono);display:flex;align-items:center;justify-content:center;cursor:pointer}
+.data-info-btn:hover{border-color:var(--pm-accent);color:var(--pm-accent)}
+.data-info-pop{position:absolute;top:calc(100% + 8px);right:0;background:#fff;border:1px solid var(--hair);border-radius:8px;box-shadow:var(--shadow-2);padding:10px 14px;font-size:11px;color:var(--ink-3);line-height:1.7;white-space:nowrap;display:none;z-index:70}
+.data-info:hover .data-info-pop,.data-info.open .data-info-pop{display:block}
+.data-info-pop b{color:var(--ink-2);font-weight:600;font-variant-numeric:tabular-nums}
+
+/* ============ 子 Tab（全球数据看板） ============ */
+.subtabs{max-width:1240px;margin:0 auto;padding:10px 24px 0;display:none;gap:2px;border-bottom:1px solid var(--hair)}
+.subtabs.show{display:flex}
+.subtab{border:0;background:none;font-size:13px;color:var(--ink-2);padding:7px 14px 9px;position:relative;white-space:nowrap}
+.subtab:hover{color:var(--ink-1)}
+.subtab.active{color:var(--pm-accent);font-weight:600}
+.subtab.active::after{content:"";position:absolute;left:12px;right:12px;bottom:-1px;height:2px;background:var(--pm-accent);border-radius:2px}
+.subtab .fresh{font-size:10px;color:var(--ink-4);margin-left:6px;font-family:var(--mono)}
+
+/* ============ 布局 ============ */
+.page{max-width:1240px;margin:0 auto;padding:22px 24px 64px}
+section.view{display:none;animation:fade .18s ease}
+section.view.active{display:block}
+@keyframes fade{from{opacity:0;transform:translateY(3px)}to{opacity:1;transform:none}}
+
+.page-head{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;margin-bottom:18px;flex-wrap:wrap}
+.page-title{font-size:22px;font-weight:300;letter-spacing:-.22px;color:var(--ink-1)}
+.page-sub{font-size:12px;color:var(--ink-3);margin-top:3px}
+.page-sub b{color:var(--ink-2);font-weight:600}
+
+/* ============ KPI 行（克制首屏） ============ */
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:20px}
+.kpi{padding:16px 20px;border:1px solid var(--hair);border-radius:var(--radius);background:#fff;box-shadow:var(--shadow-1)}
+.kpi .k-label{font-size:11px;color:var(--ink-3);display:flex;align-items:center;gap:6px}
+.kpi .k-value{font-size:24px;font-weight:300;margin-top:4px;font-variant-numeric:tabular-nums;font-feature-settings:"tnum";letter-spacing:-.5px}
+.kpi .k-delta{font-size:11px;margin-top:3px;font-variant-numeric:tabular-nums}
+.kpi .k-delta .up{color:var(--pm-up);font-weight:600}
+.kpi .k-delta .down{color:var(--pm-down);font-weight:600}
+.kpi .k-note{font-size:10px;color:var(--ink-4);margin-top:2px}
+
+/* ============ 可折叠分区（Kibana 式） ============ */
+.panel{border:1px solid var(--hair);border-radius:var(--radius);background:#fff;margin-bottom:16px;overflow:hidden}
+.panel-head{display:flex;align-items:center;gap:10px;padding:11px 16px;cursor:pointer;user-select:none;background:var(--bg-soft);border-bottom:1px solid var(--hair)}
+.panel-head:hover{background:#f5f6fa}
+.panel-head .caret{font-size:10px;color:var(--ink-3);transition:transform .15s;font-family:var(--mono)}
+.panel.collapsed .panel-head .caret{transform:rotate(-90deg)}
+.panel.collapsed .panel-head{border-bottom:0}
+.panel-head h3{font-size:13.5px;font-weight:700}
+.panel-head .p-meta{font-size:11px;color:var(--ink-3);margin-left:auto;font-family:var(--mono)}
+.panel-body{padding:14px 16px}
+.panel.collapsed .panel-body{display:none}
+
+/* ============ 表格（Stripe/Linear 式紧凑） ============ */
+.tbl{width:100%;border-collapse:collapse;font-variant-numeric:tabular-nums;font-feature-settings:"tnum"}
+.tbl th{font-size:11px;color:var(--ink-3);font-weight:600;text-align:left;padding:7px 10px;border-bottom:1px solid var(--hair);white-space:nowrap;background:#fff}
+.tbl td{padding:9px 10px;border-bottom:1px solid var(--hair-2);font-size:12.5px;vertical-align:middle}
+.tbl tbody tr{transition:background .1s}
+.tbl tbody tr:hover{background:var(--bg-soft)}
+.tbl tbody tr:last-child td{border-bottom:0}
+.tbl .num{text-align:right;font-family:var(--mono);font-size:12px}
+.tbl th.num{text-align:right}
+.up{color:var(--pm-up);font-weight:600}
+.down{color:var(--pm-down);font-weight:600}
+.t-name{font-weight:600;color:var(--ink-1)}
+.t-sub{font-size:11px;color:var(--ink-3)}
+.rank-badge{display:inline-flex;align-items:center;justify-content:center;width:20px;height:20px;border-radius:6px;font-size:11px;font-weight:700;font-family:var(--mono);background:var(--hair-2);color:var(--ink-2)}
+.rank-badge.r1{background:#17181c;color:#fff}
+.rank-badge.r2{background:#4a4d57;color:#fff}
+.rank-badge.r3{background:#8a8d99;color:#fff}
+.rank-move{font-size:10px;margin-left:4px;font-family:var(--mono)}
+.rank-move.mu{color:var(--pm-up)}
+.rank-move.md{color:var(--pm-down)}
+.rank-move.mf{color:var(--ink-4)}
+
+/* ============ 徽章 / 标签 ============ */
+.tag{display:inline-flex;align-items:center;gap:4px;font-size:10.5px;padding:1px 7px;border-radius:5px;line-height:17px;white-space:nowrap;font-weight:600}
+.tag-sample{background:var(--warn-bg);color:var(--warn);border:1px dashed #e3c98a}
+.tag-tbs{background:#f1f2f6;color:var(--ink-3);border:1px dashed var(--ink-4)}
+.tag-real{background:#eaf7ef;color:#167a47;border:1px solid #bfe6cd}
+.tag-cat{background:var(--pm-accent-soft);color:var(--pm-accent)}
+.badge-caliber{display:inline-flex;align-items:center;gap:3px;font-size:10.5px;color:var(--pm-accent);background:var(--pm-accent-soft);border:1px solid #d9dbf5;border-radius:5px;padding:1px 7px;cursor:pointer;font-weight:600;white-space:nowrap}
+.badge-caliber:hover{background:#e2e5fb}
+.badge-caliber::before{content:"i";width:11px;height:11px;border-radius:50%;background:var(--pm-accent);color:#fff;font-size:8px;display:inline-flex;align-items:center;justify-content:center;font-family:var(--mono)}
+
+/* ============ 模式开关 ============ */
+.mode-switch{display:inline-flex;border:1px solid var(--hair);border-radius:8px;overflow:hidden;background:#fff}
+.mode-switch button{border:0;background:none;font-size:12px;padding:6px 14px;color:var(--ink-2)}
+.mode-switch button.on{background:var(--pm-accent);color:#fff;font-weight:600}
+.mode-hint{font-size:11px;color:var(--ink-3);margin-left:10px}
+
+/* 路演结论模式：放大关键数字、弱化次列 */
+body[data-mode="pitch"] .kpi .k-value{font-size:28px}
+body[data-mode="pitch"] .col-minor{opacity:.45}
+body[data-mode="pitch"] .pitch-line{display:block}
+.pitch-line{display:none;background:linear-gradient(90deg,var(--pm-accent-soft),#fff);border:1px solid #d9dbf5;border-radius:var(--radius);padding:12px 16px;margin-bottom:16px;font-size:13.5px;color:var(--ink-1)}
+.pitch-line b{color:var(--pm-accent)}
+
+/* ============ Tab 页内切换 ============ */
+.ptabs{display:inline-flex;gap:2px;border:1px solid var(--hair);border-radius:8px;padding:2px;background:#fff}
+.ptabs button{border:0;background:none;font-size:12px;padding:5px 14px;border-radius:6px;color:var(--ink-2)}
+.ptabs button.on{background:var(--pm-accent);color:#fff;font-weight:600}
+.ptab-pane{display:none}
+.ptab-pane.on{display:block}
+
+/* ============ 筛选器 ============ */
+.filters{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:14px}
+.filters .f-label{font-size:11px;color:var(--ink-3)}
+.filters select{font-family:var(--font);font-size:12px;color:var(--ink-1);border:1px solid var(--hair);border-radius:7px;padding:5px 26px 5px 9px;background:#fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='5'%3E%3Cpath d='M0 0l4 5 4-5z' fill='%238a8d99'/%3E%3C/svg%3E") no-repeat right 9px center;appearance:none;cursor:pointer}
+.filters select:hover{border-color:var(--ink-4)}
+.filters .f-reset{border:1px solid var(--hair);background:#fff;border-radius:7px;font-size:11px;color:var(--ink-3);padding:5px 10px}
+.filters .f-reset:hover{color:var(--pm-accent);border-color:var(--pm-accent)}
+
+/* ============ 罗盘式级联筛选（hover 逐级展开） ============ */
+.casc{position:relative;display:inline-block}
+.casc-box{display:flex;align-items:center;gap:6px;min-width:280px;max-width:520px;border:1px solid var(--hair);border-radius:7px;background:#fff;padding:5px 10px;font-size:12px;color:var(--ink-1);cursor:default;user-select:none}
+.casc-box:hover,.casc.open .casc-box{border-color:var(--pm-accent)}
+.casc-box .casc-path{flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.casc-box .casc-path .sep{color:var(--ink-4);margin:0 4px;font-family:var(--mono)}
+.casc-box .casc-path .placeholder{color:var(--ink-4)}
+.casc-box .casc-caret{font-size:9px;color:var(--ink-3);font-family:var(--mono);transition:transform .15s}
+.casc.open .casc-caret{transform:rotate(180deg)}
+.casc-flyouts{position:absolute;top:calc(100% + 4px);left:0;display:none;z-index:60}
+.casc.open .casc-flyouts{display:flex}
+.casc-col{background:#fff;border:1px solid var(--hair);border-radius:8px;box-shadow:0 8px 24px rgba(23,24,28,.10);min-width:150px;max-height:300px;overflow-y:auto;padding:4px}
+.casc-col+.casc-col{margin-left:4px}
+.casc-opt{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:6px 10px;font-size:12px;border-radius:6px;white-space:nowrap;cursor:default;color:var(--ink-2)}
+.casc-opt:hover,.casc-opt.hov{background:var(--pm-accent-soft);color:var(--pm-accent)}
+.casc-opt.sel{color:var(--pm-accent);font-weight:600}
+.casc-opt .arr{font-size:9px;color:var(--ink-4);font-family:var(--mono)}
+.casc-opt .cid{font-size:9.5px;color:var(--ink-4);font-family:var(--mono);margin-left:6px}
+.casc-opt .tbs{font-size:9.5px;color:var(--ink-4);background:var(--hair-2);border-radius:9999px;padding:1px 7px;margin-left:6px;white-space:nowrap}
+.casc-empty{border:1px dashed var(--ink-4);border-radius:10px;padding:40px 20px;text-align:center;background:var(--bg-soft);color:var(--ink-3);font-size:12px;margin-bottom:14px}
+.casc-empty b{color:var(--ink-2)}
+.casc-empty .tag{margin-left:6px}
+
+/* ============ 趋势展开行 ============ */
+.link-act{font-size:11.5px;color:var(--pm-accent);cursor:pointer;white-space:nowrap;border:0;background:none;padding:0}
+.link-act:hover{text-decoration:underline}
+.link-act+.link-act{margin-left:10px}
+tr.trend-row td{background:var(--bg-soft);padding:14px 18px}
+.trend-box{display:flex;gap:20px;align-items:center}
+.trend-box svg{flex-shrink:0}
+.trend-note{font-size:11px;color:var(--ink-3);line-height:1.7}
+.trend-note .tag{margin-right:4px}
+
+/* 迷你条形图（占比） */
+.bar-cell{display:flex;align-items:center;gap:8px}
+.bar-track{flex:1;max-width:110px;height:5px;background:var(--hair-2);border-radius:3px;overflow:hidden}
+.bar-fill{height:100%;background:var(--pm-accent);border-radius:3px}
+.bar-val{font-size:11px;font-family:var(--mono);color:var(--ink-2);white-space:nowrap}
+
+/* ============ 卡片流（机会结论） ============ */
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.card{border:1px solid var(--hair);border-radius:var(--radius);padding:16px;background:#fff;transition:box-shadow .15s,border-color .15s;cursor:default}
+.card:hover{border-color:#c9cbf0;box-shadow:0 4px 16px rgba(83,58,253,.08)}
+.card .c-kicker{font-size:10.5px;color:var(--pm-accent);font-weight:700;letter-spacing:.6px;text-transform:uppercase;display:flex;justify-content:space-between;align-items:center}
+.card .c-title{font-size:15px;font-weight:700;margin:8px 0 10px;line-height:1.45}
+.card .c-metrics{border-top:1px solid var(--hair-2);padding-top:10px;display:flex;flex-direction:column;gap:6px}
+.card .c-metric{display:flex;justify-content:space-between;font-size:12px}
+.card .c-metric .m-l{color:var(--ink-3)}
+.card .c-metric .m-r{font-family:var(--mono);font-weight:600;font-size:11.5px}
+.card .c-foot{margin-top:12px;padding-top:10px;border-top:1px solid var(--hair-2);display:flex;gap:6px;align-items:center;flex-wrap:wrap}
+.card .c-sample{font-size:10px;color:var(--ink-4);font-family:var(--mono)}
+
+/* ============ 成分矩阵 ============ */
+.matrix-dot{display:inline-block;width:10px;height:10px;border-radius:3px}
+.md-3{background:var(--pm-accent)}
+.md-2{background:#a3a4ec}
+.md-1{background:#dcdcf8}
+.md-0{background:var(--hair-2)}
+.legend{display:flex;gap:14px;font-size:11px;color:var(--ink-3);align-items:center;margin-bottom:10px}
+.legend .matrix-dot{margin-right:4px;vertical-align:-1px}
+
+/* ============ 弹层（口径说明） ============ */
+.modal-mask{position:fixed;inset:0;background:rgba(23,24,28,.42);z-index:100;display:none;align-items:center;justify-content:center;backdrop-filter:blur(2px)}
+.modal-mask.show{display:flex}
+.modal{background:#fff;border-radius:12px;width:420px;max-width:92vw;box-shadow:0 16px 48px rgba(0,0,0,.18);overflow:hidden;animation:pop .16s ease}
+@keyframes pop{from{opacity:0;transform:scale(.96)}to{opacity:1;transform:none}}
+.modal-head{padding:14px 18px;border-bottom:1px solid var(--hair);display:flex;justify-content:space-between;align-items:center}
+.modal-head b{font-size:14px}
+.modal-close{border:0;background:none;font-size:16px;color:var(--ink-3);width:28px;height:28px;border-radius:6px}
+.modal-close:hover{background:var(--hair-2);color:var(--ink-1)}
+.modal-body{padding:16px 18px}
+.modal-body .m-row{display:flex;gap:12px;padding:7px 0;border-bottom:1px solid var(--hair-2);font-size:12.5px}
+.modal-body .m-row:last-child{border-bottom:0}
+.modal-body .m-k{width:76px;flex-shrink:0;color:var(--ink-3);font-size:11.5px;padding-top:1px}
+.modal-body .m-v{color:var(--ink-1);line-height:1.6}
+
+/* ============ 空态（占位板块） ============ */
+.empty{border:1px dashed var(--ink-4);border-radius:12px;padding:64px 24px;text-align:center;background:var(--bg-soft)}
+.empty .e-icon{font-size:30px;color:var(--ink-4);font-family:var(--mono)}
+.empty h3{font-size:15px;margin:12px 0 6px;color:var(--ink-2)}
+.empty p{font-size:12px;color:var(--ink-3)}
+.empty .e-owner{display:inline-block;margin-top:14px;font-size:11px;color:var(--pm-accent);background:var(--pm-accent-soft);border-radius:6px;padding:3px 10px;cursor:pointer}
+
+/* ============ 商品图占位 ============ */
+.prod{display:flex;align-items:center;gap:10px}
+.prod-img{width:34px;height:34px;border-radius:7px;background:linear-gradient(135deg,var(--pm-accent-soft),#e0e2fa);border:1px solid var(--hair);display:flex;align-items:center;justify-content:center;font-size:9px;color:var(--pm-accent);font-weight:700;flex-shrink:0}
+
+/* 市场规模两列 */
+.size-cols{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.size-col{border:1px solid var(--hair);border-radius:var(--radius);overflow:hidden}
+.size-col .sc-head{padding:12px 16px;background:var(--bg-soft);border-bottom:1px solid var(--hair);display:flex;justify-content:space-between;align-items:center}
+.size-col .sc-head b{font-size:13.5px}
+.size-col .sc-body{padding:14px 16px}
+
+/* ============ 自用结论板块（增速看板 Hero） ============ */
+.hero{background:linear-gradient(120deg,#f4f4fd,#eef0fd 55%,#fff);border:1px solid #d9dbf5;border-radius:14px;padding:20px 22px;margin-bottom:18px;display:flex;gap:26px;align-items:center;flex-wrap:wrap}
+.hero .h-left{min-width:250px;flex:1}
+.hero .h-kicker{font-size:11px;color:var(--pm-accent);font-weight:700;letter-spacing:.8px;text-transform:uppercase}
+.hero .h-name{font-size:20px;font-weight:800;margin:6px 0 2px;letter-spacing:.2px}
+.hero .h-sub{font-size:12px;color:var(--ink-3)}
+.hero .h-stats{display:flex;gap:0;border-left:1px solid #d9dbf5;padding-left:22px;flex-wrap:wrap}
+.hero .h-stat{padding:0 22px;border-right:1px solid var(--hair)}
+.hero .h-stat:last-child{border-right:0}
+.hero .h-stat .s-l{font-size:11px;color:var(--ink-3)}
+.hero .h-stat .s-v{font-size:24px;font-weight:800;font-variant-numeric:tabular-nums;margin-top:2px;letter-spacing:-.4px}
+.hero .h-stat .s-v.up{color:var(--pm-up)}
+body[data-mode="pitch"] .hero .h-name{font-size:26px}
+body[data-mode="pitch"] .hero .h-stat .s-v{font-size:30px}
+
+/* ============ 类目趋势 · 顶部展示块 ============ */
+.topcat{display:grid;grid-template-columns:1.4fr 1fr;gap:16px;margin-bottom:18px}
+.topcat .tc-chart,.topcat .tc-now{border:1px solid var(--hair);border-radius:var(--radius);background:#fff;padding:16px 18px}
+.topcat .tc-kicker{font-size:11px;color:var(--pm-accent);font-weight:700;letter-spacing:.6px;display:flex;justify-content:space-between;align-items:center}
+.topcat .tc-name{font-size:17px;font-weight:800;margin:6px 0 4px}
+.topcat .tc-now .n-v{font-size:30px;font-weight:800;font-variant-numeric:tabular-nums;letter-spacing:-.5px}
+.topcat .tc-now .n-l{font-size:11px;color:var(--ink-3);margin-top:8px}
+.topcat .tc-now .n-amt{font-size:15px;font-weight:700;margin-top:2px;font-variant-numeric:tabular-nums}
+.subcat-row td{background:var(--bg-soft);padding:12px 18px}
+.subcat-tbl{width:100%;border-collapse:collapse;font-variant-numeric:tabular-nums}
+.subcat-tbl th{font-size:10.5px;color:var(--ink-3);font-weight:600;text-align:left;padding:5px 8px;border-bottom:1px solid var(--hair)}
+.subcat-tbl td{padding:7px 8px;border-bottom:1px solid var(--hair-2);font-size:12px}
+.subcat-tbl tr:last-child td{border-bottom:0}
+.subcat-tbl .num{text-align:right;font-family:var(--mono);font-size:11.5px}
+tr.l3-row{cursor:pointer}
+tr.l3-row .caret{display:inline-block;font-size:9px;color:var(--ink-3);margin-right:6px;transition:transform .15s;font-family:var(--mono)}
+tr.l3-row.open .caret{transform:rotate(90deg)}
+
+/* ============ 策略台 ============ */
+.strat-hero{border:2px solid var(--pm-accent);border-radius:14px;padding:20px 24px;margin-bottom:18px;background:linear-gradient(120deg,#f6f6fe,#fff);display:flex;gap:24px;align-items:center;flex-wrap:wrap}
+.strat-hero .verdict{font-size:30px;font-weight:800;letter-spacing:.5px;padding:8px 22px;border-radius:12px}
+.strat-hero .verdict.go{background:#eaf7ef;color:#167a47;border:1px solid #bfe6cd}
+.strat-hero .verdict.nogo{background:#fdf0ee;color:#c0392b;border:1px solid #f3d1cb}
+.strat-hero .sh-body{flex:1;min-width:280px}
+.strat-hero .sh-title{font-size:15px;font-weight:700;margin-bottom:4px}
+.strat-hero .sh-reason{font-size:12.5px;color:var(--ink-2);line-height:1.7}
+.strat-hero .sh-meta{display:flex;gap:18px;margin-top:8px;font-size:12px}
+.strat-hero .sh-meta b{color:var(--pm-accent)}
+.analytics{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.ana-card{border:1px solid var(--hair);border-radius:var(--radius);background:#fff;overflow:hidden}
+.ana-card .ac-head{padding:12px 16px;background:var(--bg-soft);border-bottom:1px solid var(--hair);display:flex;justify-content:space-between;align-items:center}
+.ana-card .ac-head b{font-size:13.5px}
+.ana-card .ac-head .ac-idx{font-family:var(--mono);font-size:10px;color:var(--pm-accent);font-weight:700;margin-right:6px}
+.ana-card .ac-body{padding:14px 16px}
+.ana-card.full{grid-column:1/-1}
+.cr-bars{display:flex;flex-direction:column;gap:10px;margin:10px 0}
+.cr-bar{display:flex;align-items:center;gap:10px;font-size:12px}
+.cr-bar .cb-l{width:110px;color:var(--ink-2);flex-shrink:0}
+.cr-bar .cb-track{flex:1;height:14px;background:var(--hair-2);border-radius:4px;overflow:hidden;position:relative}
+.cr-bar .cb-fill{height:100%;border-radius:4px;background:var(--pm-accent)}
+.cr-bar .cb-fill.warn{background:var(--warn)}
+.cr-bar .cb-fill.bad{background:var(--pm-up)}
+.cr-bar .cb-v{width:56px;text-align:right;font-family:var(--mono);font-weight:700;font-size:12px}
+.stack-bar{display:flex;height:22px;border-radius:6px;overflow:hidden;margin:8px 0 4px}
+.stack-bar span{display:flex;align-items:center;justify-content:center;font-size:10.5px;color:#fff;font-weight:700;font-family:var(--mono)}
+.sb-intl{background:#3b357a}.sb-new{background:var(--pm-accent)}.sb-white{background:#b6b9c4}
+.stack-legend{display:flex;gap:14px;font-size:11px;color:var(--ink-3);flex-wrap:wrap}
+.stack-legend i{display:inline-block;width:9px;height:9px;border-radius:2px;margin-right:4px;vertical-align:-1px}
+.rule-note{font-size:11px;color:var(--ink-3);background:var(--bg-soft);border:1px dashed var(--ink-4);border-radius:7px;padding:8px 11px;margin-top:10px;line-height:1.7}
+.price-hist{display:flex;align-items:flex-end;gap:8px;height:96px;margin:12px 0 4px}
+.price-hist .ph-col{flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;height:100%;justify-content:flex-end}
+.price-hist .ph-bar{width:100%;max-width:46px;border-radius:5px 5px 0 0;background:var(--pm-accent)}
+.price-hist .ph-bar.hot{background:var(--pm-up)}
+.price-hist .ph-bar.gap{background:repeating-linear-gradient(45deg,#dcdcf8,#dcdcf8 4px,#f4f4fd 4px,#f4f4fd 8px);border:1px dashed var(--pm-accent)}
+.price-hist .ph-l{font-size:10px;color:var(--ink-3);white-space:nowrap}
+.price-hist .ph-n{font-size:10.5px;font-family:var(--mono);font-weight:700}
+.sku-matrix{width:100%;border-collapse:collapse;margin-top:8px}
+.sku-matrix th{font-size:10.5px;color:var(--ink-3);font-weight:600;text-align:left;padding:6px 8px;border-bottom:1px solid var(--hair)}
+.sku-matrix td{padding:8px;border-bottom:1px solid var(--hair-2);font-size:12px;vertical-align:top}
+.sku-matrix .sku-role{font-weight:700}
+.sku-matrix .sku-role small{display:block;font-weight:400;color:var(--ink-3);font-size:10.5px;margin-top:2px}
+.cat-tree{display:flex;align-items:center;gap:6px;flex-wrap:wrap;font-size:11.5px;margin:6px 0}
+.cat-tree .ct-node{background:var(--pm-accent-soft);color:var(--pm-accent);border-radius:6px;padding:2px 9px;font-weight:600}
+.cat-tree .ct-sep{color:var(--ink-4);font-family:var(--mono)}
+
+.footnote{margin-top:26px;font-size:11px;color:var(--ink-4);line-height:1.8;border-top:1px solid var(--hair-2);padding-top:12px}
+.footnote .tag{margin-right:2px}
+
+/* ============ 页脚（footer-light） ============ */
+.site-footer{border-top:1px solid var(--hair);background:#fff}
+.site-footer-inner{max-width:1240px;margin:0 auto;padding:24px;font-size:13px;color:var(--ink-3);letter-spacing:-.2px}
+.site-footer-inner b{color:var(--ink-2);font-weight:600;font-variant-numeric:tabular-nums}
+
+@media (max-width:980px){
+  .kpis{grid-template-columns:repeat(2,1fr)}
+  .cards{grid-template-columns:1fr}
+  .size-cols{grid-template-columns:1fr}
+  .topcat{grid-template-columns:1fr}
+  .analytics{grid-template-columns:1fr}
+  .topbar-inner{gap:12px}
+}
+</style>
+</head>
+<body data-mode="dense">
+
+<!-- ================= 顶栏 ================= -->
+<header class="topbar">
+  <div class="topbar-inner">
+    <div class="brand"><b>美妆选品数据看板</b><span class="proto">原型 v0.2</span></div>
+    <nav class="nav" id="mainNav">
+      <button class="nav-item" data-nav="global" data-target="global-growth"><span class="idx">①</span>全球数据看板</button>
+      <button class="nav-item" data-nav="rank" data-target="product-rank"><span class="idx">②</span>商品榜</button>
+      <button class="nav-item" data-nav="lib" data-target="ingredient-lib"><span class="idx">③</span>成分库</button>
+      <button class="nav-item" data-nav="strategy" data-target="strategy-cards"><span class="idx">④</span>初始策略台</button>
+      <div class="nav-more" id="navMore">
+        <button class="nav-item" id="navMoreBtn" type="button">更多<span class="caret">▾</span></button>
+        <div class="nav-more-menu">
+          <button class="nav-more-item" data-nav="competitor" data-target="competitor"><span class="idx">⑤</span>竞品分析</button>
+          <button class="nav-more-item" data-nav="panalysis" data-target="product-analysis"><span class="idx">⑥</span>产品分析</button>
+          <button class="nav-more-item" data-nav="pdesign" data-target="product-design"><span class="idx">⑦</span>产品设计</button>
+        </div>
+      </div>
+    </nav>
+    <div class="data-info" id="dataInfo">
+      <button class="data-info-btn" type="button" title="数据说明">i</button>
+      <div class="data-info-pop">数据截止 <b>2026-09-24</b><br>v0.2 改版（初始策略台）<br>部分数据为示例</div>
+    </div>
+  </div>
+  <div class="subtabs" id="globalSubtabs">
+    <button class="subtab" data-target="global-growth">增速产品看板<span class="fresh">每日</span></button>
+    <button class="subtab" data-target="global-category-trend">类目增长趋势<span class="fresh">7天</span></button>
+    <button class="subtab" data-target="global-ingredient-rank">成分增长榜<span class="fresh">7天</span></button>
+  </div>
+</header>
+
+<main class="page">
+
+<!-- ================= ① 增速产品看板 ================= -->
+<section class="view" id="global-growth">
+  <div class="page-head">
+    <div>
+      <div class="page-title">增速产品看板</div>
+      <div class="page-sub">数据周期 <b>2026-09-18 ~ 09-24</b> · 每日刷新 · 来源：抖音罗盘（实测）· 金额均为支付金额区间</div>
+    </div>
+    <div style="display:flex;align-items:center">
+      <div class="mode-switch" id="modeSwitch">
+        <button class="on" data-mode="dense">自用密度模式</button>
+        <button data-mode="pitch">路演结论模式</button>
+      </div>
+      <span class="mode-hint" id="modeHint">紧凑行高 · 全字段</span>
+    </div>
+  </div>
+
+  <!-- 筛选条：市场 + 罗盘式级联品类选择器 -->
+  <div class="filters">
+    <span class="f-label">市场</span>
+    <select id="gg-market"><option>中国</option><option>美国</option><option>东南亚</option><option>日本</option></select>
+    <span class="f-label">品类</span>
+    <div class="casc" id="gg-casc"></div>
+    <button class="f-reset" onclick="resetGrowthFilters()">重置</button>
+  </div>
+  <div class="casc-empty" id="gg-empty" style="display:none">当前选中类目 <b id="gg-empty-path"></b> <span class="tag tag-tbs">该类目数据待采集</span> — 目前仅「面部洗护 / 眼部护理」有实测数据</div>
+
+  <!-- 自用结论板块（两种模式都置顶、大而显眼） -->
+  <div class="hero" id="ggHero">
+    <div class="h-left">
+      <div class="h-kicker">本期自用结论 · 7 天窗口</div>
+      <div class="h-name">海蓝之谜奇迹晚霜套装</div>
+      <div class="h-sub" id="ggHeroSub">七天内增速最快的产品（当前筛选范围：中国 · 面部洗护）· 类目：面部护理套装</div>
+    </div>
+    <div class="h-stats">
+      <div class="h-stat"><div class="s-l">GMV 增速（环比）</div><div class="s-v up" id="ggHeroGmv">+35.08% <span class="tag tag-sample" style="font-size:10px">示例</span></div></div>
+      <div class="h-stat"><div class="s-l">销售国家</div><div class="s-v" id="ggHeroCountry">中国</div></div>
+      <div class="h-stat"><div class="s-l">销售价格</div><div class="s-v" id="ggHeroPrice">¥4,385</div></div>
+    </div>
+  </div>
+
+  <div class="pitch-line">本周结论：七天内增速最快的产品为 <b>海蓝之谜奇迹晚霜套装（¥4,385，中国）</b>，GMV 环比 <b>+35.08%</b>；面部洗护大盘 <b>¥30亿-¥40亿</b>（占 50%-55%），其中 <b>面部护理套装增速 +68.01%</b> 领跑；眼部护理体量小但 <b>眼部精华 +49.87%</b>，竞争小（供需比 42.81，第 11 名），值得优先看。</div>
+
+  <div class="kpis">
+    <div class="kpi"><div class="k-label">监测三级类目</div><div class="k-value">2</div><div class="k-note">面部洗护 / 眼部护理</div></div>
+    <div class="kpi"><div class="k-label">上榜商品（增速 TOP3 × 2 组）</div><div class="k-value">6</div><div class="k-note">按支付金额环比增速排序</div></div>
+    <div class="kpi"><div class="k-label">组内最高增速</div><div class="k-value up">+68.01%</div><div class="k-note">面部护理套装 · 四级类目口径</div></div>
+    <div class="kpi"><div class="k-label">眼部精华增速</div><div class="k-value up">+49.87%</div><div class="k-delta"><span class="up">供需比 42.81 · 竞争第 11 名</span></div></div>
+  </div>
+
+  <!-- 面部洗护组 -->
+  <div class="panel" id="pnl-face">
+    <div class="panel-head" onclick="togglePanel('pnl-face')">
+      <span class="caret">▼</span><h3>面部洗护 · 增速 TOP3</h3>
+      <span class="tag tag-cat">三级类目</span>
+      <span class="p-meta">大盘 ¥30亿-¥40亿 · 占 50%-55%</span>
+    </div>
+    <div class="panel-body" style="padding:0">
+      <table class="tbl">
+        <thead><tr>
+          <th style="width:64px">名次</th><th>商品</th><th>品牌</th><th>价格带</th>
+          <th class="num">支付金额区间</th><th class="num">环比增速</th>
+          <th>所属类目</th><th class="num">供需比</th><th>口径</th>
+        </tr></thead>
+        <tbody>
+          <tr>
+            <td><span class="rank-badge r1">1</span><span class="rank-move mu">▲2</span></td>
+            <td><div class="prod"><div class="prod-img">图</div><div><div class="t-name">BUV 绿泥洗面奶</div></div></div></td>
+            <td>BUV</td>
+            <td class="num">¥99 - ¥149</td>
+            <td class="num">¥10亿 - ¥25亿</td>
+            <td class="num"><span class="up">+41.26%</span> <span class="tag tag-sample">示例</span></td>
+            <td><span class="tag tag-cat">洁面</span></td>
+            <td class="num">18.6 <span class="tag tag-sample">示例</span></td>
+            <td><span class="badge-caliber" onclick="openCaliber('罗盘·增速商品口径','近 7 天支付金额环比增速，按三级类目分组取 TOP3；金额为平台脱敏区间值，非精确值。供需比 = 罗盘 demand_supply_rate 字段原值。','面部洗护在售商品约 3.2 万款（区间内全量）','2026-09-24 24:00','抖音电商罗盘 · 实测 / 供需比字段 demand_supply_rate')">罗盘口径</span></td>
+          </tr>
+          <tr>
+            <td><span class="rank-badge r2">2</span><span class="rank-move md">▼1</span></td>
+            <td><div class="prod"><div class="prod-img">图</div><div><div class="t-name">海蓝之谜奇迹晚霜套装</div></div></div></td>
+            <td>LA MER</td>
+            <td class="num">¥4,385</td>
+            <td class="num">¥10亿 - ¥25亿</td>
+            <td class="num"><span class="up">+35.08%</span> <span class="tag tag-sample">示例</span></td>
+            <td><span class="tag tag-cat">面部护理套装</span></td>
+            <td class="num">9.4 <span class="tag tag-sample">示例</span></td>
+            <td><span class="badge-caliber" onclick="openCaliber('罗盘·增速商品口径','近 7 天支付金额环比增速，按三级类目分组取 TOP3；金额为平台脱敏区间值，非精确值。供需比 = 罗盘 demand_supply_rate 字段原值。','面部洗护在售商品约 3.2 万款（区间内全量）','2026-09-24 24:00','抖音电商罗盘 · 实测 / 供需比字段 demand_supply_rate')">罗盘口径</span></td>
+          </tr>
+          <tr>
+            <td><span class="rank-badge r3">3</span><span class="rank-move mf">─</span></td>
+            <td><div class="prod"><div class="prod-img">图</div><div><div class="t-name">荷诺逆时蕴能胶原面膜</div></div></div></td>
+            <td>荷诺</td>
+            <td class="num">¥2,437</td>
+            <td class="num">¥10亿 - ¥25亿</td>
+            <td class="num"><span class="up">+28.93%</span> <span class="tag tag-sample">示例</span></td>
+            <td><span class="tag tag-cat">面膜</span></td>
+            <td class="num">12.2 <span class="tag tag-sample">示例</span></td>
+            <td><span class="badge-caliber" onclick="openCaliber('罗盘·增速商品口径','近 7 天支付金额环比增速，按三级类目分组取 TOP3；金额为平台脱敏区间值，非精确值。供需比 = 罗盘 demand_supply_rate 字段原值。','面部洗护在售商品约 3.2 万款（区间内全量）','2026-09-24 24:00','抖音电商罗盘 · 实测 / 供需比字段 demand_supply_rate')">罗盘口径</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- 眼部护理组 -->
+  <div class="panel" id="pnl-eye">
+    <div class="panel-head" onclick="togglePanel('pnl-eye')">
+      <span class="caret">▼</span><h3>眼部护理 · 增速 TOP3</h3>
+      <span class="tag tag-cat">三级类目</span>
+      <span class="p-meta">大盘 ¥2亿-¥2.5亿 · 占 2.5%-5%</span>
+    </div>
+    <div class="panel-body" style="padding:0">
+      <table class="tbl">
+        <thead><tr>
+          <th style="width:64px">名次</th><th>商品</th><th>品牌</th><th>价格带</th>
+          <th class="num">支付金额区间</th><th class="num">环比增速</th>
+          <th>所属类目</th><th class="num">供需比</th><th>口径</th>
+        </tr></thead>
+        <tbody>
+          <tr>
+            <td><span class="rank-badge r1">1</span><span class="rank-move mu">▲1</span></td>
+            <td><div class="prod"><div class="prod-img">图</div><div><div class="t-name">眼部精华（类目代表款）</div><div class="t-sub">供需比 42.81 · 竞争小（第 11 名）</div></div></div></td>
+            <td>— <span class="tag tag-sample">示例</span></td>
+            <td class="num">—</td>
+            <td class="num">¥5,000万 - ¥7,500万</td>
+            <td class="num"><span class="up">+49.87%</span> <span class="tag tag-real">实测</span></td>
+            <td><span class="tag tag-cat">眼部精华</span></td>
+            <td class="num">42.81 <span class="tag tag-real">实测</span></td>
+            <td><span class="badge-caliber" onclick="openCaliber('罗盘·类目口径','四级类目近 7 天支付金额环比增速；类目代表款为该四级类目下增速最高在售商品。供需比 = 罗盘 demand_supply_rate 字段原值。','眼部护理四级类目 4 个 · 眼部精华在售约 1,800 款','2026-09-24 24:00','抖音电商罗盘 · 实测')">罗盘口径</span></td>
+          </tr>
+          <tr>
+            <td><span class="rank-badge r2">2</span><span class="rank-move md">▼1</span></td>
+            <td><div class="prod"><div class="prod-img">图</div><div><div class="t-name">眼霜（类目代表款）</div><div class="t-sub">眼部护理四级类目</div></div></div></td>
+            <td>— <span class="tag tag-sample">示例</span></td>
+            <td class="num">—</td>
+            <td class="num">— <span class="tag tag-sample">示例</span></td>
+            <td class="num"><span class="up">+22.40%</span> <span class="tag tag-sample">示例</span></td>
+            <td><span class="tag tag-cat">眼霜</span></td>
+            <td class="num">15.3 <span class="tag tag-sample">示例</span></td>
+            <td><span class="badge-caliber" onclick="openCaliber('罗盘·类目口径','四级类目近 7 天支付金额环比增速。本行金额与增速为示例值，待接入实测数据。','眼部护理四级类目 4 个','2026-09-24 24:00','抖音电商罗盘 · 示例待实测')">罗盘口径</span></td>
+          </tr>
+          <tr>
+            <td><span class="rank-badge r3">3</span><span class="rank-move mf">─</span></td>
+            <td><div class="prod"><div class="prod-img">图</div><div><div class="t-name">眼膜（类目代表款）</div><div class="t-sub">眼部护理四级类目</div></div></div></td>
+            <td>— <span class="tag tag-sample">示例</span></td>
+            <td class="num">—</td>
+            <td class="num">— <span class="tag tag-sample">示例</span></td>
+            <td class="num"><span class="down">-3.15%</span> <span class="tag tag-sample">示例</span></td>
+            <td><span class="tag tag-cat">眼膜</span></td>
+            <td class="num">8.7 <span class="tag tag-sample">示例</span></td>
+            <td><span class="badge-caliber" onclick="openCaliber('罗盘·类目口径','四级类目近 7 天支付金额环比增速。本行金额与增速为示例值，待接入实测数据。','眼部护理四级类目 4 个','2026-09-24 24:00','抖音电商罗盘 · 示例待实测')">罗盘口径</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="footnote">
+    <span class="tag tag-real">实测</span> 罗盘实测数据（2026-09-18~24）；
+    <span class="tag tag-sample">示例</span> 标注的增速/金额/品牌/供需比为占位示例，非真实值，正式版接入后替换。
+    供需比列来源 = 罗盘 demand_supply_rate 字段。上升=红、下降=绿（股市配色约定）。
+  </div>
+</section>
+
+<!-- ================= ① 类目增长趋势 ================= -->
+<section class="view" id="global-category-trend">
+  <div class="page-head">
+    <div>
+      <div class="page-title">类目增长趋势</div>
+      <div class="page-sub">近 30 天累计口径 · 每 7 天刷新 · 来源：抖音罗盘（实测）</div>
+    </div>
+  </div>
+
+  <!-- 筛选条：市场 + 罗盘式级联类目选择器 -->
+  <div class="filters">
+    <span class="f-label">市场</span>
+    <select id="ct-market"><option>中国</option><option>美国</option><option>东南亚</option><option>日本</option></select>
+    <span class="f-label">类目</span>
+    <div class="casc" id="ct-casc"></div>
+    <button class="f-reset" onclick="resetTrendFilters()">重置</button>
+  </div>
+
+  <!-- 顶部展示块：增速最快的类目 -->
+  <div class="topcat">
+    <div class="tc-chart">
+      <div class="tc-kicker">增速最快的类目 · 近30天增速走势 <span class="tag tag-real">实测</span></div>
+      <div class="tc-name">面部护理套装 <span class="t-sub" style="font-weight:400">（四级 · 归属：面部洗护）</span></div>
+      <svg width="100%" height="120" viewBox="0 0 560 120" preserveAspectRatio="none" style="display:block;margin-top:6px">
+        <line x1="0" y1="100" x2="560" y2="100" stroke="#e7e8ee" stroke-width="1"/>
+        <line x1="0" y1="66" x2="560" y2="66" stroke="#f1f2f6" stroke-width="1"/>
+        <line x1="0" y1="32" x2="560" y2="32" stroke="#f1f2f6" stroke-width="1"/>
+        <polyline points="0,96 40,94 80,90 120,88 160,82 200,78 240,72 280,64 320,58 360,48 400,40 440,30 480,22 520,14 560,10" fill="none" stroke="#533afd" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
+        <circle cx="560" cy="10" r="4" fill="#533afd"/>
+        <text x="6" y="112" font-size="9" fill="#8a8d99">08-26</text>
+        <text x="528" y="112" font-size="9" fill="#8a8d99">09-24</text>
+      </svg>
+      <div class="t-sub" style="margin-top:4px">折线为支付金额环比增速日级走势（占位示意 <span class="tag tag-sample">示例</span>，正式版接入罗盘日级数据后替换）</div>
+    </div>
+    <div class="tc-now">
+      <div class="tc-kicker">当前口径值</div>
+      <div class="n-l" style="margin-top:10px">现在的增速（近30天环比）</div>
+      <div class="n-v up">+68.01% <span class="tag tag-real" style="font-size:10px">实测</span></div>
+      <div class="n-l" style="margin-top:12px">近30天累计支付金额</div>
+      <div class="n-amt">¥7.5亿 - ¥8亿 <span class="tag tag-real" style="font-size:10px">实测</span></div>
+      <div class="t-sub" style="margin-top:8px">成交第 1 名 · 面部洗护四级类目全量口径</div>
+    </div>
+  </div>
+
+  <div class="panel" id="pnl-trend">
+    <div class="panel-head" onclick="togglePanel('pnl-trend')">
+      <span class="caret">▼</span><h3>类目趋势表（三级类目级）</h3>
+      <span class="p-meta">近30天 · 点开三级类目行展开四级排序 · 「查看趋势」展开日级曲线</span>
+    </div>
+    <div class="panel-body" style="padding:0">
+      <table class="tbl" id="trendTable">
+        <thead><tr>
+          <th>类目（三级）</th><th>层级</th>
+          <th class="num">近30天累计支付金额</th>
+          <th class="num">环比增速 <span style="cursor:pointer" title="点击切换排序" onclick="sortTrend(this)">⇅</span></th>
+          <th>占比</th><th>操作</th>
+        </tr></thead>
+        <tbody id="trendTbody">
+          <tr class="l3-row" data-g="12.5" onclick="toggleSubcat(this,'face')">
+            <td><span class="caret">▶</span><span class="t-name">面部洗护</span><div class="t-sub">个护家清 / 个人护理</div></td>
+            <td><span class="tag tag-cat">三级</span></td>
+            <td class="num">¥30亿 - ¥40亿</td>
+            <td class="num"><span class="up">+12.50%</span> <span class="tag tag-sample">示例</span></td>
+            <td><div class="bar-cell"><div class="bar-track"><div class="bar-fill" style="width:100%"></div></div><span class="bar-val">50%-55%</span></div></td>
+            <td onclick="event.stopPropagation()"><button class="link-act" onclick="toggleTrend(this,'面部洗护')">查看趋势</button><button class="link-act" onclick="go('global-ingredient-rank')">看成分</button></td>
+          </tr>
+          <tr class="l3-row" data-g="9.3" onclick="toggleSubcat(this,'eye')">
+            <td><span class="caret">▶</span><span class="t-name">眼部护理</span><div class="t-sub">个护家清 / 个人护理</div></td>
+            <td><span class="tag tag-cat">三级</span></td>
+            <td class="num">¥2亿 - ¥2.5亿</td>
+            <td class="num"><span class="up">+9.30%</span> <span class="tag tag-sample">示例</span></td>
+            <td><div class="bar-cell"><div class="bar-track"><div class="bar-fill" style="width:6%"></div></div><span class="bar-val">2.5%-5%</span></div></td>
+            <td onclick="event.stopPropagation()"><button class="link-act" onclick="toggleTrend(this,'眼部护理')">查看趋势</button><button class="link-act" onclick="go('global-ingredient-rank')">看成分</button></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="footnote"><span class="tag tag-real">实测</span> 罗盘实测区间值；<span class="tag tag-sample">示例</span> 三级汇总增速为占位示例。四级类目行仅在点开三级类目后出现，增速与三级不混排。占比按一级大盘估算。日级趋势曲线为占位示意（非真实日数据）。</div>
+</section>
+
+<!-- ================= ① 成分增长榜 ================= -->
+<section class="view" id="global-ingredient-rank">
+  <div class="page-head">
+    <div>
+      <div class="page-title">成分增长榜</div>
+      <div class="page-sub">每 7 天刷新 · 来源：蝉妈妈 · 美妆属性分析（护肤品，实测）</div>
+    </div>
+  </div>
+
+  <!-- 筛选条：市场（含「全部」）+ 罗盘式级联类目选择器 -->
+  <div class="filters">
+    <span class="f-label">市场</span>
+    <select id="ir-market"><option selected>全部（所有国家）</option><option>中国</option><option>美国</option><option>东南亚</option><option>日本</option></select>
+    <span class="f-label">类目</span>
+    <div class="casc" id="ir-casc"></div>
+    <button class="f-reset" onclick="resetIngFilters()">重置</button>
+  </div>
+
+  <div class="kpis" style="grid-template-columns:repeat(3,1fr)">
+    <div class="kpi"><div class="k-label">增速最高成分</div><div class="k-value up">玻色因 +186.60%</div><div class="k-note">关联商品 69 款（实测）</div></div>
+    <div class="kpi"><div class="k-label">在售覆盖最广成分</div><div class="k-value">烟酰胺 · 215 款</div><div class="k-note">增速 +17.89%（实测）</div></div>
+    <div class="kpi"><div class="k-label">本期新上榜成分</div><div class="k-value">2 个</div><div class="k-note">今天上榜、7 天前未上榜 <span class="tag tag-sample">示例</span></div></div>
+  </div>
+
+  <div class="panel" id="pnl-ing">
+    <div class="panel-head" onclick="togglePanel('pnl-ing')">
+      <span class="caret">▼</span><h3>成分榜 / 功效榜</h3>
+      <span class="p-meta">成分自身增长率口径 · 降序 TOP10</span>
+    </div>
+    <div class="panel-body">
+      <div class="ptabs" id="ingTabs" style="margin-bottom:14px">
+        <button class="on" data-pane="ing-comp">成分榜 TOP10</button>
+        <button data-pane="ing-eff">功效榜 TOP5</button>
+      </div>
+
+      <div class="ptab-pane on" id="ing-comp">
+        <table class="tbl">
+          <thead><tr><th style="width:52px">排名</th><th>成分名</th><th class="num">关联商品数</th><th class="num">占比</th><th class="num">环比增速</th></tr></thead>
+          <tbody>
+            <tr><td><span class="rank-badge r1">1</span></td><td class="t-name">玻色因</td><td class="num">69</td><td class="num">12.4% <span class="tag tag-sample">示例</span></td><td class="num"><span class="up">+186.60%</span> <span class="tag tag-real">实测</span></td></tr>
+            <tr><td><span class="rank-badge r2">2</span></td><td class="t-name">角鲨烷</td><td class="num">55</td><td class="num">9.9% <span class="tag tag-sample">示例</span></td><td class="num"><span class="up">+150.30%</span> <span class="tag tag-real">实测</span></td></tr>
+            <tr><td><span class="rank-badge r3">3</span></td><td class="t-name">黑参提取物</td><td class="num">5</td><td class="num">0.9% <span class="tag tag-sample">示例</span></td><td class="num"><span class="up">+62.09%</span> <span class="tag tag-real">实测</span></td></tr>
+            <tr><td><span class="rank-badge">4</span></td><td class="t-name">胶原蛋白</td><td class="num">67</td><td class="num">12.0% <span class="tag tag-sample">示例</span></td><td class="num"><span class="up">+33.23%</span> <span class="tag tag-real">实测</span></td></tr>
+            <tr><td><span class="rank-badge">5</span></td><td class="t-name">烟酰胺</td><td class="num">215</td><td class="num">38.6% <span class="tag tag-sample">示例</span></td><td class="num"><span class="up">+17.89%</span> <span class="tag tag-real">实测</span></td></tr>
+            <tr><td><span class="rank-badge">6</span></td><td class="t-name">麦角硫因 <span class="tag tag-cat" style="margin-left:4px">新上榜</span></td><td class="num">12</td><td class="num">2.2% <span class="tag tag-sample">示例</span></td><td class="num"><span class="t-sub">新上榜 · 无 7 天前基数</span> <span class="tag tag-sample">示例</span></td></tr>
+            <tr><td><span class="rank-badge">7</span></td><td class="t-name">积雪草</td><td class="num">— <span class="tag tag-sample">示例</span></td><td class="num">— <span class="tag tag-sample">示例</span></td><td class="num"><span class="up">+15.20%</span> <span class="tag tag-sample">示例</span></td></tr>
+            <tr><td><span class="rank-badge">8</span></td><td class="t-name">玻尿酸</td><td class="num">— <span class="tag tag-sample">示例</span></td><td class="num">— <span class="tag tag-sample">示例</span></td><td class="num"><span class="up">+12.86%</span> <span class="tag tag-sample">示例</span></td></tr>
+            <tr><td><span class="rank-badge">9</span></td><td class="t-name">视黄醇</td><td class="num">— <span class="tag tag-sample">示例</span></td><td class="num">— <span class="tag tag-sample">示例</span></td><td class="num"><span class="up">+9.44%</span> <span class="tag tag-sample">示例</span></td></tr>
+            <tr><td><span class="rank-badge">10</span></td><td class="t-name">果酸</td><td class="num">— <span class="tag tag-sample">示例</span></td><td class="num">— <span class="tag tag-sample">示例</span></td><td class="num"><span class="down">-5.63%</span> <span class="tag tag-sample">示例</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="ptab-pane" id="ing-eff">
+        <table class="tbl">
+          <thead><tr><th style="width:52px">排名</th><th>功效</th><th class="num">关联商品数</th><th class="num">占比</th><th class="num">环比增速</th></tr></thead>
+          <tbody>
+            <tr><td><span class="rank-badge r1">1</span></td><td class="t-name">舒缓</td><td class="num">— <span class="tag tag-sample">示例</span></td><td class="num">— <span class="tag tag-sample">示例</span></td><td class="num"><span class="up">+121.51%</span> <span class="tag tag-real">实测</span></td></tr>
+            <tr><td><span class="rank-badge r2">2</span></td><td class="t-name">紧致</td><td class="num">— <span class="tag tag-sample">示例</span></td><td class="num">— <span class="tag tag-sample">示例</span></td><td class="num"><span class="up">+90.46%</span> <span class="tag tag-real">实测</span></td></tr>
+            <tr><td><span class="rank-badge r3">3</span></td><td class="t-name">抗皱</td><td class="num">— <span class="tag tag-sample">示例</span></td><td class="num">— <span class="tag tag-sample">示例</span></td><td class="num"><span class="up">+83.67%</span> <span class="tag tag-real">实测</span></td></tr>
+            <tr><td><span class="rank-badge">4</span></td><td class="t-name">修护</td><td class="num">— <span class="tag tag-sample">示例</span></td><td class="num">— <span class="tag tag-sample">示例</span></td><td class="num"><span class="up">+81.32%</span> <span class="tag tag-real">实测</span></td></tr>
+            <tr><td><span class="rank-badge">5</span></td><td class="t-name">保湿</td><td class="num">— <span class="tag tag-sample">示例</span></td><td class="num">— <span class="tag tag-sample">示例</span></td><td class="num"><span class="up">+71.54%</span> <span class="tag tag-real">实测</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="footnote">增速口径 = 成分自身增长率（7 天前 vs 今天的排名/关联商品数变化），<b>不是销售额增速</b>；今天上榜、7 天前未上榜的成分单独标「新上榜」。<span class="tag tag-real">实测</span> 蝉妈妈美妆属性分析（护肤品，近 7 天）实测环比与商品数；<span class="tag tag-sample">示例</span> 占比、6-10 名及新上榜为占位示例，正式版接入后替换。市场选「全部」时聚合所有国家（海外成分接入中）。</div>
+</section>
+
+<!-- ================= ② 商品榜 ================= -->
+<section class="view" id="product-rank">
+  <div class="page-head">
+    <div>
+      <div class="page-title">商品榜</div>
+      <div class="page-sub">来源：抖音罗盘 / 蝉妈妈 / FastMoss（海外）</div>
+    </div>
+    <div class="ptabs" id="rankTabs">
+      <button class="on" data-pane="rank-compass">罗盘</button>
+      <button data-pane="rank-chanmama">蝉妈妈</button>
+      <button data-pane="rank-fastmoss">FastMoss（海外）</button>
+    </div>
+  </div>
+
+  <div class="filters">
+    <span class="f-label">国家/地区</span>
+    <select id="f-country" onchange="onRankMarketChange()"><option>中国</option><option>美国</option><option>东南亚</option><option>日本</option></select>
+    <span class="f-label">类目</span>
+    <div class="casc" id="rank-casc"></div>
+    <span class="f-label">统计周期</span>
+    <select id="f-period" onchange="renderRank()"><option>近7天</option><option>近30天</option><option>近90天</option></select>
+    <button class="f-reset" onclick="resetFilters()">重置</button>
+    <span class="f-label" id="filterEcho" style="margin-left:auto;font-family:var(--mono)"></span>
+  </div>
+  <div class="casc-empty" id="rank-empty" style="display:none">当前选中类目 <b id="rank-empty-path"></b> <span class="tag tag-tbs">该类目数据待采集</span> — 目前仅「面部洗护 / 眼部护理」有实测数据</div>
+
+  <div class="ptab-pane on" id="rank-compass">
+    <div class="panel" style="margin-bottom:0"><div class="panel-body" style="padding:0">
+      <table class="tbl">
+        <thead><tr><th style="width:52px">名次</th><th>商品</th><th>品牌</th><th>国家/地区</th><th>所属类目</th><th class="num">销量</th><th class="num">销售额</th><th class="num">环比增速</th><th>数据截至</th></tr></thead>
+        <tbody id="rankCompassBody"></tbody>
+      </table>
+    </div></div>
+  </div>
+
+  <div class="ptab-pane" id="rank-chanmama">
+    <div class="panel" style="margin-bottom:0"><div class="panel-body" style="padding:0">
+      <table class="tbl">
+        <thead><tr><th style="width:52px">名次</th><th>商品</th><th>品牌</th><th>国家/地区</th><th>所属类目</th><th class="num">销量</th><th class="num">销售额</th><th class="num">环比增速</th><th>数据截至</th></tr></thead>
+        <tbody>
+          <tr><td><span class="rank-badge r1">1</span></td><td><div class="prod"><div class="prod-img">图</div><span class="t-name">玻色因关联代表商品</span></div></td><td>—</td><td>中国</td><td><span class="tag tag-cat">面部精华</span></td><td class="num">—</td><td class="num">—</td><td class="num"><span class="up">成分口径 +186.60%</span> <span class="tag tag-real">实测</span></td><td class="t-sub">2026-09-24</td></tr>
+          <tr><td colspan="9" style="text-align:center;color:var(--ink-3);padding:22px">蝉妈妈商品级榜单 <span class="tag tag-tbs">待实测</span> — 当前仅有成分维度实测数据，商品级接入后排期补全</td></tr>
+        </tbody>
+      </table>
+    </div></div>
+  </div>
+
+  <div class="ptab-pane" id="rank-fastmoss">
+    <div class="panel" style="margin-bottom:0"><div class="panel-body" style="padding:0">
+      <table class="tbl">
+        <thead><tr><th style="width:52px">名次</th><th>商品</th><th>品牌</th><th>国家/地区</th><th>所属类目</th><th class="num">销量</th><th class="num">销售额</th><th class="num">环比增速</th><th>数据截至</th></tr></thead>
+        <tbody>
+          <tr><td><span class="rank-badge r1">1</span></td><td><div class="prod"><div class="prod-img">图</div><span class="t-name">Glow Recipe 西瓜睡眠面膜</span></div></td><td>Glow Recipe</td><td>美国</td><td><span class="tag tag-cat">面膜</span></td><td class="num">8.2万 <span class="tag tag-sample">示例</span></td><td class="num">$320万 <span class="tag tag-sample">示例</span></td><td class="num"><span class="up">+58.4%</span> <span class="tag tag-sample">示例</span></td><td class="t-sub">—</td></tr>
+          <tr><td><span class="rank-badge r2">2</span></td><td><div class="prod"><div class="prod-img">图</div><span class="t-name">The Ordinary 烟酰胺精华</span></div></td><td>The Ordinary</td><td>美国</td><td><span class="tag tag-cat">面部精华</span></td><td class="num">12.6万 <span class="tag tag-sample">示例</span></td><td class="num">$210万 <span class="tag tag-sample">示例</span></td><td class="num"><span class="up">+31.7%</span> <span class="tag tag-sample">示例</span></td><td class="t-sub">—</td></tr>
+          <tr><td colspan="9" style="text-align:center;color:var(--ink-3);padding:16px">FastMoss 海外榜单（TikTok Shop）<span class="tag tag-tbs">待实测</span> — 以上为结构示例；市场筛选切到海外时自动切换到本榜</td></tr>
+        </tbody>
+      </table>
+    </div></div>
+  </div>
+</section>
+
+<!-- ================= ③ 成分库 ================= -->
+<section class="view" id="ingredient-lib">
+  <div class="page-head">
+    <div>
+      <div class="page-title">成分库</div>
+      <div class="page-sub">TOP30 增速成分 / TOP30 热度成分 · 每 7 天更新 · 来源：蝉妈妈</div>
+    </div>
+    <div class="ptabs" id="libTabs">
+      <button class="on" data-pane="lib-growth">TOP30 增速成分</button>
+      <button data-pane="lib-hot">TOP30 热度成分</button>
+    </div>
+  </div>
+
+  <!-- 筛选条：市场 + 罗盘式级联品类选择器 + 周期 -->
+  <div class="filters">
+    <span class="f-label">市场</span>
+    <select id="lib-market"><option selected>中国</option><option>美国（接入中）</option><option>东南亚（接入中）</option></select>
+    <span class="f-label">品类</span>
+    <div class="casc" id="lib-casc"></div>
+    <span class="f-label">周期</span>
+    <select id="lib-period" onchange="renderLibMatrix()"><option>近7天</option><option>近30天</option><option>近90天</option></select>
+    <button class="f-reset" onclick="resetLibFilters()">重置</button>
+    <span class="f-label" id="libEcho" style="margin-left:auto;font-family:var(--mono)"></span>
+  </div>
+  <div class="casc-empty" id="lib-empty" style="display:none">当前选中类目 <b id="lib-empty-path"></b> <span class="tag tag-tbs">该类目数据待采集</span> — 目前仅「面部洗护 / 眼部护理」有实测数据</div>
+
+  <div class="ptab-pane on" id="lib-growth">
+    <div class="panel"><div class="panel-body">
+      <div class="legend">覆盖强度：<span><i class="matrix-dot md-3"></i>高</span><span><i class="matrix-dot md-2"></i>中</span><span><i class="matrix-dot md-1"></i>低</span><span><i class="matrix-dot md-0"></i>无/未检出</span><span style="margin-left:auto">增速 = 成分自身增长率 · 点击成分行展开关联类目与产品 · 分布数据<span class="tag tag-sample" style="margin-left:4px">示例</span></span></div>
+      <table class="tbl">
+        <thead><tr><th>成分</th><th class="num" id="libGrowthPeriodTh">增速（近7天）</th><th class="num">关联商品数</th><th style="text-align:center">面部洗护</th><th style="text-align:center">眼部护理</th><th style="text-align:center">面膜</th><th style="text-align:center">精华</th><th style="text-align:center">面霜</th></tr></thead>
+        <tbody id="libMatrixGrowth"></tbody>
+      </table>
+    </div></div>
+
+    <!-- 成分关联可视化（默认展示选中成分） -->
+    <div class="panel" id="pnl-ing-detail">
+      <div class="panel-head" onclick="togglePanel('pnl-ing-detail')">
+        <span class="caret">▼</span><h3>成分关联可视化 · 玻色因</h3>
+        <span class="p-meta">同一成分可关联多个类目 · 展示完整类目层级与关联产品</span>
+      </div>
+      <div class="panel-body">
+        <div style="font-size:12px;color:var(--ink-2);margin-bottom:6px">关联了 <b>3 个四级类目</b>，分属 2 个三级类目：</div>
+        <div class="cat-tree">
+          <span class="ct-node">个护家清</span><span class="ct-sep">/</span><span class="ct-node">个人护理</span><span class="ct-sep">/</span><span class="ct-node">面部洗护</span><span class="ct-sep">/</span><span class="ct-node">面部精华</span>
+        </div>
+        <div class="cat-tree">
+          <span class="ct-node">个护家清</span><span class="ct-sep">/</span><span class="ct-node">个人护理</span><span class="ct-sep">/</span><span class="ct-node">面部洗护</span><span class="ct-sep">/</span><span class="ct-node">面霜</span>
+        </div>
+        <div class="cat-tree">
+          <span class="ct-node">个护家清</span><span class="ct-sep">/</span><span class="ct-node">个人护理</span><span class="ct-sep">/</span><span class="ct-node">眼部护理</span><span class="ct-sep">/</span><span class="ct-node">眼霜</span>
+        </div>
+        <table class="tbl" style="margin-top:10px">
+          <thead><tr><th>关联产品</th><th>品牌</th><th>所属类目</th><th class="num">价格带</th><th>口径</th></tr></thead>
+          <tbody>
+            <tr><td><div class="prod"><div class="prod-img">图</div><span class="t-name">荷诺逆时蕴能胶原面膜</span></div></td><td>荷诺</td><td><span class="tag tag-cat">面膜</span></td><td class="num">¥2,437</td><td><span class="tag tag-real">实测</span></td></tr>
+            <tr><td><div class="prod"><div class="prod-img">图</div><span class="t-name">某玻色因面霜（代表款）</span></div></td><td>—</td><td><span class="tag tag-cat">面霜</span></td><td class="num">¥399 - ¥599 <span class="tag tag-sample">示例</span></td><td><span class="tag tag-sample">示例</span></td></tr>
+            <tr><td><div class="prod"><div class="prod-img">图</div><span class="t-name">某玻色因眼霜（代表款）</span></div></td><td>—</td><td><span class="tag tag-cat">眼霜</span></td><td class="num">¥259 - ¥399 <span class="tag tag-sample">示例</span></td><td><span class="tag tag-sample">示例</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div class="ptab-pane" id="lib-hot">
+    <div class="panel"><div class="panel-body">
+      <div class="legend">热度分口径：<b style="color:var(--pm-accent)">热度分 = 关联商品数 + 销量加权 + 近7天上榜频次（三者合成）</b> · 权重系数待确认 · 热度分整榜 <span class="tag tag-sample">示例</span></div>
+      <table class="tbl">
+        <thead><tr><th style="width:52px">名次</th><th>成分</th><th class="num">热度分</th><th class="num">关联商品数</th><th class="num">销量加权</th><th class="num">近7天上榜频次</th><th class="num">环比</th></tr></thead>
+        <tbody>
+          <tr><td><span class="rank-badge r1">1</span></td><td class="t-name">烟酰胺</td><td class="num">98.2 <span class="tag tag-sample">示例</span></td><td class="num">215 <span class="tag tag-real">实测</span></td><td class="num">— <span class="tag tag-sample">示例</span></td><td class="num">7/7 <span class="tag tag-sample">示例</span></td><td class="num"><span class="up">+17.89%</span> <span class="tag tag-real">实测</span></td></tr>
+          <tr><td><span class="rank-badge r2">2</span></td><td class="t-name">玻尿酸</td><td class="num">92.7 <span class="tag tag-sample">示例</span></td><td class="num">—</td><td class="num">—</td><td class="num">—</td><td class="num">—</td></tr>
+          <tr><td><span class="rank-badge r3">3</span></td><td class="t-name">胶原蛋白</td><td class="num">88.4 <span class="tag tag-sample">示例</span></td><td class="num">67 <span class="tag tag-real">实测</span></td><td class="num">— <span class="tag tag-sample">示例</span></td><td class="num">6/7 <span class="tag tag-sample">示例</span></td><td class="num"><span class="up">+33.23%</span> <span class="tag tag-real">实测</span></td></tr>
+          <tr><td><span class="rank-badge">4</span></td><td class="t-name">玻色因</td><td class="num">85.1 <span class="tag tag-sample">示例</span></td><td class="num">69 <span class="tag tag-real">实测</span></td><td class="num">— <span class="tag tag-sample">示例</span></td><td class="num">7/7 <span class="tag tag-sample">示例</span></td><td class="num"><span class="up">+186.60%</span> <span class="tag tag-real">实测</span></td></tr>
+          <tr><td><span class="rank-badge">5</span></td><td class="t-name">视黄醇</td><td class="num">80.3 <span class="tag tag-sample">示例</span></td><td class="num">—</td><td class="num">—</td><td class="num">—</td><td class="num">—</td></tr>
+          <tr><td><span class="rank-badge">6</span></td><td class="t-name">维生素C</td><td class="num">76.8 <span class="tag tag-sample">示例</span></td><td class="num">—</td><td class="num">—</td><td class="num">—</td><td class="num">—</td></tr>
+          <tr><td><span class="rank-badge">7</span></td><td class="t-name">角鲨烷</td><td class="num">74.5 <span class="tag tag-sample">示例</span></td><td class="num">55 <span class="tag tag-real">实测</span></td><td class="num">— <span class="tag tag-sample">示例</span></td><td class="num">5/7 <span class="tag tag-sample">示例</span></td><td class="num"><span class="up">+150.30%</span> <span class="tag tag-real">实测</span></td></tr>
+          <tr><td><span class="rank-badge">8</span></td><td class="t-name">积雪草</td><td class="num">70.2 <span class="tag tag-sample">示例</span></td><td class="num">—</td><td class="num">—</td><td class="num">—</td><td class="num">—</td></tr>
+          <tr><td><span class="rank-badge">9</span></td><td class="t-name">果酸</td><td class="num">63.9 <span class="tag tag-sample">示例</span></td><td class="num">—</td><td class="num">—</td><td class="num">—</td><td class="num">—</td></tr>
+          <tr><td><span class="rank-badge">10</span></td><td class="t-name">黑参提取物</td><td class="num">58.6 <span class="tag tag-sample">示例</span></td><td class="num">5 <span class="tag tag-real">实测</span></td><td class="num">— <span class="tag tag-sample">示例</span></td><td class="num">3/7 <span class="tag tag-sample">示例</span></td><td class="num"><span class="up">+62.09%</span> <span class="tag tag-real">实测</span></td></tr>
+        </tbody>
+      </table>
+    </div></div>
+  </div>
+  <div class="footnote">完整 TOP30 在正式版展开；原型展示 TOP10 结构。<span class="tag tag-real">实测</span> 蝉妈妈实测；<span class="tag tag-sample">示例</span> 矩阵分布、热度分、销量加权与上榜频次为占位示例。热度分口径 = 关联商品数 + 销量加权 + 近 7 天上榜频次合成（已在榜单顶部注明）。</div>
+</section>
+
+<!-- ================= ④ 初始策略台 · 主界面 ================= -->
+<section class="view" id="strategy-cards">
+  <div class="page-head">
+    <div>
+      <div class="page-title">初始策略台</div>
+      <div class="page-sub">筛选类目，AI 给出该类目<b>能否进入</b>的结论</div>
+    </div>
+  </div>
+
+  <!-- 类目筛选区 -->
+  <div class="filters">
+    <span class="f-label">市场</span>
+    <select id="st-market"><option>中国</option><option>美国（待实测）</option><option>东南亚（待实测）</option></select>
+    <span class="f-label">类目</span>
+    <div class="casc" id="st-casc"></div>
+    <button class="f-reset" onclick="alert('占位交互：正式版重新触发 AI 分析。')">重新分析</button>
+  </div>
+  <div class="casc-empty" id="st-empty" style="display:none">当前选中类目 <b id="st-empty-path"></b> <span class="tag tag-tbs">该类目数据待采集</span> — 目前仅「眼部护理 / 眼部精华」已完成 AI 分析示例</div>
+
+  <!-- 初步结论卡（置顶最显眼） -->
+  <div class="strat-hero">
+    <div class="verdict go">GO · 建议进入</div>
+    <div class="sh-body">
+      <div class="sh-title">眼部精华：增速高、竞争分散、供给有空白，值得做</div>
+      <div class="sh-reason">
+        理由：① 类目增速 <b class="up">+49.87%</b>（实测），市场有增量；② CR4 = 38%（&lt;40%），竞争分散；③ 玩家结构中新锐 + 白牌占 72%，国际大牌壁垒不强；④ ¥150-¥250 价格带竞品仅 6 个但月销需求 &gt;1,000万，供给空白。
+      </div>
+      <div class="sh-meta">
+        <span>细分方向：<b>眼部精华 · 舒缓/抗皱功效</b>（联动成分：玻色因 +186.60%、角鲨烷 +150.30%）</span>
+        <span>目标客单价带：<b>¥150 - ¥250</b></span>
+      </div>
+    </div>
+  </div>
+
+  <div class="analytics">
+    <!-- ① 市场规模卡 -->
+    <div class="ana-card">
+      <div class="ac-head"><b><span class="ac-idx">01</span>市场规模</b><span class="badge-caliber" onclick="openCaliber('市场规模·眼部精华','类目 GMV 取罗盘近 30 天累计支付金额（区间值）；增速为罗盘类目概览自带环比。','眼部精华在售约 1,800 款','2026-09-24 24:00','抖音电商罗盘 · 实测')">罗盘口径</span></div>
+      <div class="ac-body">
+        <div style="display:flex;gap:24px;align-items:baseline;margin-bottom:8px">
+          <div><div class="t-sub">类目 GMV（近30天）</div><div style="font-size:22px;font-weight:800;font-variant-numeric:tabular-nums">¥5,000万 - ¥7,500万 <span class="tag tag-real">实测</span></div></div>
+          <div><div class="t-sub">当前增速（环比）</div><div style="font-size:22px;font-weight:800" class="up">+49.87% <span class="tag tag-real">实测</span></div></div>
+        </div>
+        <svg width="100%" height="72" viewBox="0 0 400 72" preserveAspectRatio="none" style="display:block">
+          <polyline points="0,60 30,58 60,55 90,56 120,50 150,46 180,42 210,38 240,32 270,28 300,22 330,18 360,12 400,8" fill="none" stroke="#533afd" stroke-width="2.5" stroke-linecap="round"/>
+          <circle cx="400" cy="8" r="3.5" fill="#533afd"/>
+        </svg>
+        <div class="t-sub" style="margin-top:2px">近 30 天支付金额走势 <span class="tag tag-sample">示例</span>（占位示意）</div>
+      </div>
+    </div>
+
+    <!-- ② 市场竞争程度卡 -->
+    <div class="ana-card">
+      <div class="ac-head"><b><span class="ac-idx">02</span>市场竞争程度</b><span class="tag tag-sample">示例</span></div>
+      <div class="ac-body">
+        <div class="cr-bars">
+          <div class="cr-bar"><span class="cb-l">CR4（前4名占比）</span><div class="cb-track"><div class="cb-fill" style="width:38%"></div></div><span class="cb-v">38%</span></div>
+          <div class="cr-bar"><span class="cb-l">CR10 占比</span><div class="cb-track"><div class="cb-fill" style="width:61%"></div></div><span class="cb-v">61%</span></div>
+        </div>
+        <div class="t-sub" style="margin:8px 0 2px">玩家结构占比（按罗盘「国际知名品牌」筛选维度划分）</div>
+        <div class="stack-bar">
+          <span class="sb-intl" style="width:28%" title="国际大牌 28%">国际 28%</span>
+          <span class="sb-new" style="width:41%" title="新锐品牌 41%">新锐 41%</span>
+          <span class="sb-white" style="width:31%" title="白牌 31%（待确认口径）">白牌 31%</span>
+        </div>
+        <div class="stack-legend">
+          <span><i style="background:#3b357a"></i>国际大牌（符合「国际知名品牌」维度）</span>
+          <span><i style="background:#533afd"></i>新锐品牌（知名品牌但不符合国际维度）</span>
+          <span><i style="background:#b6b9c4"></i>白牌（非知名品牌，口径待确认）</span>
+        </div>
+        <div class="rule-note">决策标准：CR4 &gt; 60% 且无明显细分机会 → 很难进入（除非有供应链/渠道优势）；CR4 &lt; 40% 且有细分空白 → 有机会。本类目 CR4=38% &lt; 40%，判定「竞争分散」。</div>
+      </div>
+    </div>
+
+    <!-- ③ 供给侧结构卡 -->
+    <div class="ana-card full">
+      <div class="ac-head"><b><span class="ac-idx">03</span>供给侧结构</b><span class="tag tag-sample">示例</span></div>
+      <div class="ac-body">
+        <div style="display:grid;grid-template-columns:1fr 1.2fr;gap:22px">
+          <div>
+            <div class="t-sub" style="margin-bottom:2px">价格带分布（在售商品数 · 哪个带最卷 / 哪个带空白）</div>
+            <div class="price-hist">
+              <div class="ph-col"><span class="ph-n">32</span><div class="ph-bar" style="height:34%"></div><span class="ph-l">¥0-80</span></div>
+              <div class="ph-col"><span class="ph-n">58</span><div class="ph-bar hot" style="height:62%"></div><span class="ph-l">¥80-150</span></div>
+              <div class="ph-col"><span class="ph-n">6</span><div class="ph-bar gap" style="height:12%"></div><span class="ph-l">¥150-250</span></div>
+              <div class="ph-col"><span class="ph-n">41</span><div class="ph-bar" style="height:46%"></div><span class="ph-l">¥250-400</span></div>
+              <div class="ph-col"><span class="ph-n">24</span><div class="ph-bar" style="height:28%"></div><span class="ph-l">¥400+</span></div>
+            </div>
+            <div class="t-sub">红 = 玩家最多（最卷：¥80-150）；虚线 = 空白但有需求（¥150-250，月销 &gt;1,000万 <span class="tag tag-sample">示例</span>）</div>
+            <div class="rule-note">机会判定：目标价格带竞品数量 &lt; 10 且月销量 &gt; 1,000万 → 有机会；利润空间（1 − 成本占比）&gt; 50% → 可以做。¥150-250 带竞品 6 个，命中。</div>
+          </div>
+          <div>
+            <div class="t-sub" style="margin-bottom:2px">TOP 玩家 SKU 矩阵与定价策略</div>
+            <table class="sku-matrix">
+              <thead><tr><th>SKU 角色</th><th>结构</th><th>定价策略（日常价 vs 大促价）</th></tr></thead>
+              <tbody>
+                <tr><td class="sku-role">引流款<small>低价高 ROI</small></td><td>小样/单支装 ¥39-69</td><td>日常 ¥59 · 大促 ¥39（-34%）<span class="tag tag-sample">示例</span></td></tr>
+                <tr><td class="sku-role">利润款<small>高客单</small></td><td>正装 30ml ¥199-299</td><td>日常 ¥269 · 大促 ¥199（-26%）<span class="tag tag-sample">示例</span></td></tr>
+                <tr><td class="sku-role">复购款<small>会员/套装</small></td><td>双支装/季度套装 ¥399-499</td><td>日常 ¥459 · 会员价 ¥399（-13%）<span class="tag tag-sample">示例</span></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ④ 初步结论卡 -->
+    <div class="ana-card full">
+      <div class="ac-head"><b><span class="ac-idx">04</span>初步结论（与上方数据联动）</b><span class="badge-caliber" onclick="openCaliber('初步结论·眼部精华','GO/NOGO 由竞争程度（CR4/CR10 + 玩家结构）与供给侧结构（价格带空白 + 利润空间）综合推出；市场规模只作背景参考。规则阈值第一版为建议值，待定稿。','眼部精华在售约 1,800 款 · TOP200 榜单','2026-09-24 24:00','罗盘 + 蝉妈妈 · 部分示例')">结论口径</span></div>
+      <div class="ac-body">
+        <table class="tbl">
+          <thead><tr><th style="width:130px">判定项</th><th>结论</th><th>依据（联动上方卡片数据）</th></tr></thead>
+          <tbody>
+            <tr><td class="t-name">做不做这个品类</td><td><b style="color:#167a47">GO · 做</b></td><td>CR4=38% &lt; 40%（卡片②）+ ¥150-250 价格带空白（卡片③）</td></tr>
+            <tr><td class="t-name">做什么产品</td><td>眼部精华 · 舒缓/抗皱功效方向</td><td>成分榜：玻色因 +186.60%、角鲨烷 +150.30%；功效榜：舒缓 +121.51%（实测）</td></tr>
+            <tr><td class="t-name">做什么客单价带</td><td>¥150 - ¥250</td><td>价格带空白且月销需求 &gt;1,000万；利润空间测算 52% &gt; 50% <span class="tag tag-sample">示例</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="footnote">玩家结构分类标准：符合罗盘「国际知名品牌」筛选维度 = 国际大牌；知名品牌但不符合 = 新锐品牌；非知名品牌 ≈ 白牌（维度标准待细定，先标记待确认）。<span class="tag tag-real">实测</span> 罗盘实测；<span class="tag tag-sample">示例</span> CR4/CR10、玩家结构占比、价格带分布、SKU 矩阵与利润空间为结构示例，待榜单数据接入后替换。</div>
+</section>
+
+<!-- ================= ④ 初始策略台 · 分析卡片明细（NOGO 对照示例 + 国内/海外口径） ================= -->
+<section class="view" id="strategy-market-size">
+  <div class="page-head">
+    <div>
+      <div class="page-title">初始策略台 · 分析卡片明细</div>
+      <div class="page-sub">NOGO 对照示例（面部洗护-面霜）· 国内（罗盘）/ 海外（FastMoss，待实测）口径分列不相加</div>
+    </div>
+  </div>
+
+  <div class="filters">
+    <span class="f-label">市场</span>
+    <select id="st2-market" onchange="sizeEcho(this.value)"><option>中国</option><option>美国（待实测）</option><option>东南亚（待实测）</option></select>
+    <span class="f-label">类目</span>
+    <div class="casc" id="st2-casc"></div>
+    <span class="f-label" id="sizeEcho" style="margin-left:auto;font-family:var(--mono)">中国 · 罗盘口径</span>
+  </div>
+
+  <!-- NOGO 结论卡对照 -->
+  <div class="strat-hero" style="border-color:#f3d1cb;background:linear-gradient(120deg,#fdf4f2,#fff)">
+    <div class="verdict nogo">NOGO · 暂不建议</div>
+    <div class="sh-body">
+      <div class="sh-title">面霜：头部高度集中 + 国际大牌主导，新玩家很难切入</div>
+      <div class="sh-reason">
+        不做的理由：① CR4 = 72%（&gt;60%），头部锁定；② 国际大牌占 54%，品牌壁垒强；③ 各价格带竞品均 &gt;20 个，无供给空白；除非有供应链/渠道优势，否则不建议进入。
+      </div>
+      <div class="sh-meta"><span>对照项：<b>与主界面 GO 结论共用同一套判定规则</b>（CR4 阈值 60%/40%、价格带空白、利润空间 50%）</span></div>
+    </div>
+  </div>
+
+  <div class="size-cols">
+    <div class="size-col">
+      <div class="sc-head"><b>国内 · 抖音罗盘（面霜类目）</b><span class="tag tag-real">实测</span></div>
+      <div class="sc-body" style="padding:0">
+        <table class="tbl">
+          <thead><tr><th>指标</th><th class="num">数值</th><th>备注</th></tr></thead>
+          <tbody>
+            <tr><td class="t-name">面霜 类目 GMV（近30天）</td><td class="num">¥4.5亿 - ¥5亿</td><td class="t-sub">增速 +30.88%（实测）</td></tr>
+            <tr><td class="t-name">CR4 集中度</td><td class="num">72% <span class="tag tag-sample">示例</span></td><td class="t-sub">前 4 名占比 &gt; 60% → 很难进入</td></tr>
+            <tr><td class="t-name">CR10 集中度</td><td class="num">89% <span class="tag tag-sample">示例</span></td><td class="t-sub">前 10 名占比 · 榜单自算</td></tr>
+            <tr><td class="t-name">玩家结构（国际/新锐/白牌）</td><td class="num">54% / 33% / 13% <span class="tag tag-sample">示例</span></td><td class="t-sub">国际大牌主导 → 品牌壁垒强</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="size-col">
+      <div class="sc-head"><b>海外 · FastMoss</b><span class="tag tag-tbs">待实测</span></div>
+      <div class="sc-body">
+        <div class="empty" style="border:0;background:none;padding:40px 16px">
+          <div class="e-icon">◌</div>
+          <h3>海外市场数据待接入 <span class="tag tag-tbs">待实测</span></h3>
+          <p>TikTok Shop（美国 / 东南亚）市场规模、CR4/CR10、玩家结构<br>需完成 FastMoss 实测后填充。国内与海外口径不同，不相加。</p>
+          <span class="e-owner" onclick="alert('占位交互：正式版此处展示海外数据接入进度与验证清单。')">查看验证清单 →</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footnote">集中度（CR4/CR10）= 头部玩家支付金额占比，用 TOP200 榜单自算；当前无实测值，已标 <span class="tag tag-sample">示例</span>。金额为平台脱敏区间，不可用于精确财务测算。</div>
+</section>
+
+<!-- ================= ⑤⑥⑦ 占位空态 ================= -->
+<section class="view" id="competitor">
+  <div class="page-head"><div><div class="page-title">竞品分析</div><div class="page-sub">板块 ⑤</div></div></div>
+  <div class="empty">
+    <div class="e-icon">◌</div>
+    <h3>建设中 · 由同事负责</h3>
+    <p>本板块为占位页面，信息架构与数据口径由对应同事排期交付。</p>
+    <span class="e-owner" onclick="alert('占位交互：正式版此处可查看负责人与交付排期。')">查看负责人 / 排期 →</span>
+  </div>
+</section>
+
+<section class="view" id="product-analysis">
+  <div class="page-head"><div><div class="page-title">产品分析</div><div class="page-sub">板块 ⑥</div></div></div>
+  <div class="empty">
+    <div class="e-icon">◌</div>
+    <h3>建设中 · 由同事负责</h3>
+    <p>本板块为占位页面，信息架构与数据口径由对应同事排期交付。</p>
+    <span class="e-owner" onclick="alert('占位交互：正式版此处可查看负责人与交付排期。')">查看负责人 / 排期 →</span>
+  </div>
+</section>
+
+<section class="view" id="product-design">
+  <div class="page-head"><div><div class="page-title">产品设计</div><div class="page-sub">板块 ⑦</div></div></div>
+  <div class="empty">
+    <div class="e-icon">◌</div>
+    <h3>建设中 · 由同事负责</h3>
+    <p>本板块为占位页面，信息架构与数据口径由对应同事排期交付。</p>
+    <span class="e-owner" onclick="alert('占位交互：正式版此处可查看负责人与交付排期。')">查看负责人 / 排期 →</span>
+  </div>
+</section>
+
+</main>
+
+<!-- ================= 页脚（footer-light 风格） ================= -->
+<footer class="site-footer">
+  <div class="site-footer-inner">数据截止 <b>2026-09-24</b> · 来源：抖音电商罗盘 / 蝉妈妈 / FastMoss · 部分数据为示例，正式版接入实测接口后替换</div>
+</footer>
+
+<!-- ================= 口径弹层 ================= -->
+<div class="modal-mask" id="caliberMask" onclick="if(event.target===this)closeCaliber()">
+  <div class="modal">
+    <div class="modal-head"><b id="caliberTitle">口径说明</b><button class="modal-close" onclick="closeCaliber()">✕</button></div>
+    <div class="modal-body">
+      <div class="m-row"><div class="m-k">定义</div><div class="m-v" id="caliberDef"></div></div>
+      <div class="m-row"><div class="m-k">样本量</div><div class="m-v" id="caliberSample"></div></div>
+      <div class="m-row"><div class="m-k">数据截止</div><div class="m-v" id="caliberCutoff"></div></div>
+      <div class="m-row"><div class="m-k">数据来源</div><div class="m-v" id="caliberSource"></div></div>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ================= Hash 路由 ================= */
+var PAGES = ['global-growth','global-category-trend','global-ingredient-rank','product-rank','ingredient-lib','strategy-cards','strategy-market-size','competitor','product-analysis','product-design'];
+var GLOBAL_PAGES = ['global-growth','global-category-trend','global-ingredient-rank'];
+var NAV_MAP = {'global-growth':'global','global-category-trend':'global','global-ingredient-rank':'global','product-rank':'rank','ingredient-lib':'lib','strategy-cards':'strategy','strategy-market-size':'strategy','competitor':'competitor','product-analysis':'panalysis','product-design':'pdesign'};
+
+var MORE_NAVS = ['competitor','panalysis','pdesign'];
+function route(){
+  var id = (location.hash||'').replace(/^#\/?/,'');
+  if(PAGES.indexOf(id)<0){ id='global-growth'; history.replaceState(null,'','#global-growth'); }
+  PAGES.forEach(function(p){ document.getElementById(p).classList.toggle('active', p===id); });
+  var nav = NAV_MAP[id];
+  document.querySelectorAll('#mainNav > .nav-item').forEach(function(b){ b.classList.toggle('active', b.dataset.nav===nav); });
+  /* 「更多」菜单项高亮 + 按钮态 */
+  var inMore = MORE_NAVS.indexOf(nav) >= 0;
+  document.querySelectorAll('.nav-more-item').forEach(function(b){ b.classList.toggle('active', b.dataset.nav===nav); });
+  document.getElementById('navMoreBtn').classList.toggle('active', inMore);
+  document.getElementById('globalSubtabs').classList.toggle('show', GLOBAL_PAGES.indexOf(id)>=0);
+  document.querySelectorAll('#globalSubtabs .subtab').forEach(function(b){ b.classList.toggle('active', b.dataset.target===id); });
+  window.scrollTo(0,0);
+}
+function go(id){ location.hash = '#'+id; }
+window.addEventListener('hashchange', route);
+
+document.getElementById('mainNav').addEventListener('click', function(e){
+  var b = e.target.closest('.nav-item[data-target],.nav-more-item'); if(!b) return;
+  document.getElementById('navMore').classList.remove('open');
+  go(b.dataset.target);
+});
+/* 「更多」按钮：click 切换（hover 由 CSS 处理），点击外部收拢 */
+document.getElementById('navMoreBtn').addEventListener('click', function(e){
+  e.stopPropagation();
+  document.getElementById('navMore').classList.toggle('open');
+});
+document.addEventListener('click', function(e){
+  var m = document.getElementById('navMore');
+  if(!m.contains(e.target)) m.classList.remove('open');
+  var d = document.getElementById('dataInfo');
+  if(!d.contains(e.target)) d.classList.remove('open');
+});
+document.getElementById('dataInfo').querySelector('.data-info-btn').addEventListener('click', function(e){
+  e.stopPropagation();
+  document.getElementById('dataInfo').classList.toggle('open');
+});
+document.getElementById('globalSubtabs').addEventListener('click', function(e){
+  var b = e.target.closest('.subtab'); if(b) go(b.dataset.target);
+});
+
+/* ================= 模式开关（自用/路演） ================= */
+document.getElementById('modeSwitch').addEventListener('click', function(e){
+  var b = e.target.closest('button'); if(!b) return;
+  this.querySelectorAll('button').forEach(function(x){x.classList.remove('on')});
+  b.classList.add('on');
+  document.body.dataset.mode = b.dataset.mode;
+  document.getElementById('modeHint').textContent = b.dataset.mode==='pitch' ? '放大结论 · 弱化次列' : '紧凑行高 · 全字段';
+});
+
+/* ================= 可折叠分区 ================= */
+function togglePanel(id){ document.getElementById(id).classList.toggle('collapsed'); }
+
+/* ================= 页内 Tab ================= */
+function bindTabs(tabsId){
+  var box = document.getElementById(tabsId);
+  box.addEventListener('click', function(e){
+    var b = e.target.closest('button'); if(!b) return;
+    box.querySelectorAll('button').forEach(function(x){x.classList.remove('on')});
+    b.classList.add('on');
+    var host = box.closest('section') || box.parentElement;
+    var panes = host.querySelectorAll('.ptab-pane');
+    panes.forEach(function(p){ p.classList.toggle('on', p.id===b.dataset.pane); });
+  });
+}
+['ingTabs','rankTabs','libTabs'].forEach(bindTabs);
+
+/* ================= 口径弹层 ================= */
+function openCaliber(title, def, sample, cutoff, source){
+  document.getElementById('caliberTitle').textContent = title;
+  document.getElementById('caliberDef').textContent = def;
+  document.getElementById('caliberSample').textContent = sample;
+  document.getElementById('caliberCutoff').textContent = cutoff;
+  document.getElementById('caliberSource').textContent = source;
+  document.getElementById('caliberMask').classList.add('show');
+}
+function closeCaliber(){ document.getElementById('caliberMask').classList.remove('show'); }
+document.addEventListener('keydown', function(e){ if(e.key==='Escape') closeCaliber(); });
+
+/* ================= 趋势展开行（日级曲线占位） ================= */
+function sparklineSVG(){
+  /* 占位示意曲线，非真实日数据 */
+  var pts=[12,15,13,18,22,20,26,31,29,35,40,44,42,50];
+  var max=50, w=260, h=56, step=w/(pts.length-1);
+  var d = pts.map(function(v,i){ return (i*step).toFixed(1)+','+(h-6-(v/max)*(h-14)).toFixed(1); }).join(' ');
+  return '<svg width="'+w+'" height="'+h+'" viewBox="0 0 '+w+' '+h+'">'
+    +'<polyline points="'+d+'" fill="none" stroke="#533afd" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>'
+    +'<circle cx="'+((pts.length-1)*step)+'" cy="'+(h-6-(pts[pts.length-1]/max)*(h-14))+'" r="3" fill="#533afd"/></svg>';
+}
+function toggleTrend(btn, name){
+  var tr = btn.closest('tr');
+  var next = tr.nextElementSibling;
+  if(next && next.classList.contains('trend-row')){ next.remove(); btn.textContent='查看趋势'; return; }
+  var row = document.createElement('tr');
+  row.className='trend-row';
+  var td = document.createElement('td');
+  td.colSpan = tr.children.length;
+  td.innerHTML = '<div class="trend-box">'+sparklineSVG()
+    +'<div class="trend-note"><b>'+name+'</b> · 日级支付金额趋势（近 14 天）<br>'
+    +'<span class="tag tag-sample">示例</span>曲线为占位示意，非真实日数据；正式版接入罗盘日级接口后替换。<br>'
+    +'<button class="link-act" onclick="go(\'global-ingredient-rank\')">下钻：看该类目关联成分 →</button></div></div>';
+  row.appendChild(td);
+  tr.parentNode.insertBefore(row, tr.nextSibling);
+  btn.textContent='收起趋势';
+}
+
+/* ================= 趋势表：三级类目全量渲染（待采集行不参与排序） ================= */
+var TREND_L3_PENDING = ['手部洗护','身体清洁','身体护理','唇部护理','私处洗护','洗护美用具','洗发护发','染发烫发','假发','口腔护理','成人护理'];
+(function renderTrendPending(){
+  var tbody = document.getElementById('trendTbody');
+  TREND_L3_PENDING.forEach(function(name){
+    var tr = document.createElement('tr');
+    tr.className = 'l3-pending';
+    tr.innerHTML = '<td><span style="display:inline-block;width:15px"></span><span class="t-name" style="color:var(--ink-3);font-weight:400">'+name+'</span><div class="t-sub">个护家清 / 个人护理</div></td>'
+      +'<td><span class="tag tag-cat">三级</span></td>'
+      +'<td class="num">—</td>'
+      +'<td class="num"><span class="tag tag-tbs">待采集</span></td>'
+      +'<td class="num">—</td>'
+      +'<td class="t-sub">该类目数据待采集</td>';
+    tbody.appendChild(tr);
+  });
+})();
+
+/* ================= 趋势表排序（仅作用于有数据的三级行） ================= */
+var trendAsc = false;
+function sortTrend(th){
+  var tbody = document.querySelector('#trendTable tbody');
+  var rows = Array.prototype.slice.call(tbody.querySelectorAll('tr.l3-row'));
+  /* 先收起所有展开行，避免顺序错乱 */
+  rows.forEach(function(r){
+    var next=r.nextElementSibling;
+    if(next && (next.classList.contains('subcat-row')||next.classList.contains('trend-row'))) next.remove();
+    r.classList.remove('open');
+  });
+  rows.sort(function(a,b){
+    var ga=parseFloat(a.dataset.g), gb=parseFloat(b.dataset.g);
+    return trendAsc ? ga-gb : gb-ga;
+  });
+  /* 有数据行排上面，待采集行始终沉底 */
+  rows.forEach(function(r){ tbody.insertBefore(r, tbody.querySelector('tr.l3-pending')); });
+  trendAsc = !trendAsc;
+}
+
+/* ================= 完整类目树（罗盘实测 cid） ================= */
+var CAT_TREE = [
+  {name:'个护家清', cid:'5', hasData:true, children:[
+    {name:'个人护理', cid:'1000003462', children:[
+      {name:'面部洗护', cid:'1000003463', hasData:true, children:['化妆水/爽肤水','乳液','面霜','面部精华','面部磨砂/去角质','洁面','面膜','面部护理套装','护肤体验装/便携装','防晒霜','防晒喷雾','T区护理','卸妆','面部精油','剃须啫喱类','须后水'].map(function(n){return {name:n, hasData:true};})},
+      {name:'手部洗护', cid:'1000003464'},
+      {name:'身体清洁', cid:'1000003465'},
+      {name:'身体护理', cid:'1000003466'},
+      {name:'唇部护理', cid:'1000003467'},
+      {name:'私处洗护', cid:'1000003468'},
+      {name:'眼部护理', cid:'1000003469', hasData:true, children:['眼霜','眼膜','眼胶/啫喱','眼部精华','眼部护理套装'].map(function(n){return {name:n, hasData:true};})},
+      {name:'洗护美用具', cid:'1000003470'},
+      {name:'洗发护发', cid:'1000003471'},
+      {name:'染发烫发', cid:'1000003472'},
+      {name:'假发', cid:'1000003473'},
+      {name:'口腔护理', cid:'1000003474'},
+      {name:'成人护理', cid:'1000003475'}
+    ]},
+    {name:'家清纸品', cid:'1000004647'}
+  ]},
+  /* —— 罗盘其余 18 个一级类目：数据待接入 —— */
+  {name:'美妆', tbs:true},
+  {name:'服饰内衣', tbs:true},
+  {name:'智能家居', tbs:true},
+  {name:'生鲜', tbs:true},
+  {name:'母婴宠物', tbs:true},
+  {name:'鲜花园艺', tbs:true},
+  {name:'食品饮料', tbs:true},
+  {name:'3C数码家电', tbs:true},
+  {name:'图书教育', tbs:true},
+  {name:'鞋靴箱包', tbs:true},
+  {name:'运动户外', tbs:true},
+  {name:'钟表配饰', tbs:true},
+  {name:'珠宝文玩', tbs:true},
+  {name:'医疗健康', tbs:true},
+  {name:'酒类', tbs:true},
+  {name:'滋补保健', tbs:true},
+  {name:'原料包装', tbs:true},
+  {name:'玩具乐器', tbs:true}
+];
+/* 有实测数据的三级类目（均在「个护家清」下） */
+var DATA_L3 = ['面部洗护','眼部护理'];
+function cascHasData(path){
+  if(!path.length) return true;
+  /* 一级不是「个护家清」= 数据待接入 */
+  if(path[0].name !== '个护家清') return false;
+  var l3 = path[2] ? path[2].name : null;
+  if(!l3) return true; /* 只选到一/二级 = 全部三级，有数据 */
+  return DATA_L3.indexOf(l3) >= 0;
+}
+
+/* ================= 罗盘式级联选择器（可复用组件） ================= */
+/* 用法：createCascader(el, {defaultPath:['个护家清','个人护理','面部洗护'], onChange:function(path){...}})
+   - hover 逐级展开 L1→L4 flyout
+   - 点击选中收拢；鼠标移开不点也收拢，框内显示完整路径 */
+var CASC_REGISTRY = {};
+function findNode(list, name){
+  for(var i=0;i<list.length;i++){ if(list[i].name===name) return list[i]; }
+  return null;
+}
+function createCascader(el, opts){
+  opts = opts || {};
+  var inst = { el:el, path:[], onChange:opts.onChange||function(){}, id:el.id };
+  el.classList.add('casc');
+  el.innerHTML = '<div class="casc-box"><span class="casc-path"></span><span class="casc-caret">▼</span></div><div class="casc-flyouts"></div>';
+  var box = el.querySelector('.casc-box');
+  var fly = el.querySelector('.casc-flyouts');
+  var closeTimer = null;
+
+  function pathLabel(){
+    if(!inst.path.length) return '<span class="placeholder">全部类目</span>';
+    return inst.path.map(function(n){return n.name;}).join('<span class="sep">/</span>');
+  }
+  function renderBox(){ el.querySelector('.casc-path').innerHTML = pathLabel(); }
+
+  function colFor(nodes, level, ancestors){
+    ancestors = ancestors || [];
+    var col = document.createElement('div');
+    col.className = 'casc-col';
+    nodes.forEach(function(node){
+      var o = document.createElement('div');
+      o.className = 'casc-opt' + (inst.path[level] && inst.path[level].name===node.name ? ' sel' : '');
+      o.innerHTML = '<span>'+node.name+(node.cid?'<span class="cid">'+node.cid+'</span>':'')+(node.tbs?'<span class="tbs">数据待接入</span>':'')+'</span>' + (node.children&&node.children.length?'<span class="arr">▶</span>':'');
+      o.addEventListener('mouseenter', function(){
+        clearTimeout(closeTimer);
+        col.querySelectorAll('.casc-opt').forEach(function(x){x.classList.remove('hov')});
+        o.classList.add('hov');
+        /* 移除更深层级，展开当前节点的子级 */
+        while(fly.children.length > level+1) fly.removeChild(fly.lastChild);
+        if(node.children && node.children.length){
+          fly.appendChild(colFor(node.children, level+1, ancestors.concat([node])));
+        }
+      });
+      o.addEventListener('click', function(){
+        inst.path = ancestors.concat([node]);
+        renderBox(); close();
+        inst.onChange(inst.path.slice());
+      });
+      col.appendChild(o);
+    });
+    return col;
+  }
+  function open(){
+    clearTimeout(closeTimer);
+    el.classList.add('open');
+    fly.innerHTML = '';
+    fly.appendChild(colFor(CAT_TREE, 0, []));
+    /* 已有路径时逐级预展开 */
+    var nodes = CAT_TREE, anc = [];
+    for(var lv=0; lv<inst.path.length; lv++){
+      var n = findNode(nodes, inst.path[lv].name);
+      if(n && n.children && n.children.length){
+        anc = anc.concat([n]);
+        fly.appendChild(colFor(n.children, lv+1, anc));
+        nodes = n.children;
+      } else break;
+    }
+  }
+  function close(){ el.classList.remove('open'); }
+  function scheduleClose(){ clearTimeout(closeTimer); closeTimer = setTimeout(close, 220); }
+
+  box.addEventListener('mouseenter', open);
+  box.addEventListener('click', function(e){
+    e.stopPropagation();
+    if(el.classList.contains('open')) close(); else open();
+  });
+  fly.addEventListener('mouseenter', function(){ clearTimeout(closeTimer); });
+  fly.addEventListener('click', function(e){ e.stopPropagation(); });
+  el.addEventListener('mouseleave', scheduleClose);
+  document.addEventListener('click', function(e){ if(!el.contains(e.target)) close(); });
+
+  inst.setPath = function(names){
+    inst.path = [];
+    var nodes = CAT_TREE;
+    (names||[]).forEach(function(nm){
+      var n = findNode(nodes, nm);
+      if(n){ inst.path.push(n); nodes = n.children||[]; }
+    });
+    renderBox();
+  };
+  inst.reset = function(){ inst.setPath(opts.defaultPath||[]); inst.onChange(inst.path.slice()); };
+
+  inst.setPath(opts.defaultPath||[]);
+  CASC_REGISTRY[el.id] = inst;
+  return inst;
+}
+
+/* 空态提示：选中无数据类目时显示 */
+function updateEmpty(emptyId, pathId, path, hasData){
+  var box = document.getElementById(emptyId);
+  if(!box) return;
+  if(hasData){ box.style.display='none'; return; }
+  box.style.display='block';
+  document.getElementById(pathId).textContent = path.length ? path.map(function(n){return n.name;}).join(' / ') : '全部类目';
+}
+
+/* ================= 各页筛选：级联选择器挂载 ================= */
+function syncGrowthHero(){
+  var m = document.getElementById('gg-market').value;
+  var p = CASC_REGISTRY['gg-casc'].path;
+  var l3 = p[2] ? p[2].name : '全部三级类目';
+  document.getElementById('ggHeroSub').textContent='七天内增速最快的产品（当前筛选范围：'+m+' · '+l3+'）· 类目：面部护理套装';
+  document.getElementById('ggHeroCountry').textContent=m;
+}
+var ggCasc = createCascader(document.getElementById('gg-casc'), {
+  defaultPath:['个护家清','个人护理','面部洗护'],
+  onChange:function(path){ updateEmpty('gg-empty','gg-empty-path',path,cascHasData(path)); syncGrowthHero(); }
+});
+document.getElementById('gg-market').addEventListener('change', syncGrowthHero);
+
+createCascader(document.getElementById('ct-casc'), { defaultPath:['个护家清','个人护理'] });
+createCascader(document.getElementById('ir-casc'), { defaultPath:[] });
+
+var rankCasc = createCascader(document.getElementById('rank-casc'), {
+  defaultPath:['个护家清','个人护理'],
+  onChange:function(path){ updateEmpty('rank-empty','rank-empty-path',path,cascHasData(path)); renderRank(); }
+});
+var libCasc = createCascader(document.getElementById('lib-casc'), {
+  defaultPath:[],
+  onChange:function(path){
+    updateEmpty('lib-empty','lib-empty-path',path,cascHasData(path));
+    document.getElementById('libEcho').textContent = document.getElementById('lib-market').value+' · '+(path.length?path.map(function(n){return n.name;}).join(' / '):'全部类目')+' · '+document.getElementById('lib-period').value;
+    renderLibMatrix();
+  }
+});
+document.getElementById('lib-market').addEventListener('change', function(){ libCasc.onChange(libCasc.path); });
+document.getElementById('lib-period').addEventListener('change', function(){ libCasc.onChange(libCasc.path); });
+
+createCascader(document.getElementById('st-casc'), {
+  defaultPath:['个护家清','个人护理','眼部护理','眼部精华'],
+  onChange:function(path){ updateEmpty('st-empty','st-empty-path',path,cascHasData(path)); }
+});
+createCascader(document.getElementById('st2-casc'), { defaultPath:['个护家清','个人护理','面部洗护','面霜'] });
+
+function resetGrowthFilters(){ document.getElementById('gg-market').selectedIndex=0; ggCasc.reset(); document.getElementById('gg-empty').style.display='none'; }
+function resetTrendFilters(){ document.getElementById('ct-market').selectedIndex=0; CASC_REGISTRY['ct-casc'].reset(); }
+function resetIngFilters(){ document.getElementById('ir-market').selectedIndex=0; CASC_REGISTRY['ir-casc'].reset(); }
+function resetLibFilters(){ document.getElementById('lib-market').selectedIndex=0; document.getElementById('lib-period').selectedIndex=0; libCasc.reset(); document.getElementById('lib-empty').style.display='none'; }
+
+/* ================= 商品榜：周期联动数据 + 海外自动切 FastMoss ================= */
+var RANK_DATA = {
+  '近7天': [
+    {n:'BUV 绿泥洗面奶', b:'BUV', cat:'洁面', amt:'¥10亿-¥25亿', g:'+41.26%'},
+    {n:'海蓝之谜奇迹晚霜套装', b:'LA MER', cat:'面部护理套装', amt:'¥10亿-¥25亿', g:'+35.08%'},
+    {n:'荷诺逆时蕴能胶原面膜', b:'荷诺', cat:'面膜', amt:'¥10亿-¥25亿', g:'+28.93%'}
+  ],
+  '近30天': [
+    {n:'海蓝之谜奇迹晚霜套装', b:'LA MER', cat:'面部护理套装', amt:'¥25亿-¥50亿', g:'+52.14%'},
+    {n:'BUV 绿泥洗面奶', b:'BUV', cat:'洁面', amt:'¥25亿-¥50亿', g:'+38.72%'},
+    {n:'某玻色因面霜（代表款）', b:'—', cat:'面霜', amt:'¥10亿-¥25亿', g:'+31.05%'}
+  ],
+  '近90天': [
+    {n:'BUV 绿泥洗面奶', b:'BUV', cat:'洁面', amt:'¥75亿-¥100亿', g:'+64.30%'},
+    {n:'某烟酰胺精华（代表款）', b:'—', cat:'面部精华', amt:'¥50亿-¥75亿', g:'+47.88%'},
+    {n:'海蓝之谜奇迹晚霜套装', b:'LA MER', cat:'面部护理套装', amt:'¥50亿-¥75亿', g:'+40.21%'}
+  ]
+};
+function renderRank(){
+  var p = document.getElementById('f-period').value;
+  var rows = RANK_DATA[p] || RANK_DATA['近7天'];
+  var tbody = document.getElementById('rankCompassBody');
+  tbody.innerHTML = rows.map(function(it, i){
+    return '<tr><td><span class="rank-badge'+(i<3?' r'+(i+1):'')+'">'+(i+1)+'</span></td>'
+      +'<td><div class="prod"><div class="prod-img">图</div><span class="t-name">'+it.n+'</span></div></td>'
+      +'<td>'+it.b+'</td><td>中国</td>'
+      +'<td><span class="tag tag-cat">'+it.cat+'</span></td>'
+      +'<td class="num">— <span class="tag tag-sample">示例</span></td>'
+      +'<td class="num">'+it.amt+'</td>'
+      +'<td class="num"><span class="up">'+it.g+'</span> <span class="tag tag-sample">示例</span></td>'
+      +'<td class="t-sub">2026-09-24</td></tr>';
+  }).join('');
+  echoFilter();
+}
+var OVERSEAS_MARKETS = ['美国','东南亚','日本'];
+function setRankTab(paneId){
+  var box=document.getElementById('rankTabs');
+  box.querySelectorAll('button').forEach(function(x){ x.classList.toggle('on', x.dataset.pane===paneId); });
+  var host=document.getElementById('product-rank');
+  host.querySelectorAll('.ptab-pane').forEach(function(p){ p.classList.toggle('on', p.id===paneId); });
+}
+function onRankMarketChange(){
+  var m=document.getElementById('f-country').value;
+  if(OVERSEAS_MARKETS.indexOf(m)>=0){ setRankTab('rank-fastmoss'); }
+  else { setRankTab('rank-compass'); }
+  echoFilter();
+}
+function resetFilters(){
+  document.getElementById('f-country').selectedIndex=0;
+  document.getElementById('f-period').selectedIndex=0;
+  rankCasc.reset();
+  document.getElementById('rank-empty').style.display='none';
+  onRankMarketChange();
+  renderRank();
+}
+function echoFilter(){
+  var c=document.getElementById('f-country').value, p=document.getElementById('f-period').value;
+  var src = OVERSEAS_MARKETS.indexOf(c)>=0 ? 'FastMoss（自动）' : '罗盘/蝉妈妈';
+  document.getElementById('filterEcho').textContent = c+' · '+p+' · 源:'+src;
+}
+
+/* ================= 市场规模筛选回显 ================= */
+function sizeEcho(v){
+  document.getElementById('sizeEcho').textContent = v+(v==='中国'?' · 罗盘口径':' · FastMoss 待实测');
+}
+
+/* ================= 类目趋势：三级行展开四级排序 ================= */
+var SUBCAT_DATA = {
+  face: [
+    {n:'面部护理套装', amt:'¥7.5亿 - ¥8亿', g:'+68.01%', real:true},
+    {n:'化妆水/爽肤水', amt:'¥2.5亿 - ¥3亿', g:'+35.19%', real:true},
+    {n:'面部精华', amt:'¥6.5亿 - ¥7亿', g:'+34.20%', real:true},
+    {n:'面霜', amt:'¥4.5亿 - ¥5亿', g:'+30.88%', real:true},
+    {n:'洁面', amt:'—', g:'+18.60%', real:false},
+    {n:'面膜', amt:'—', g:'+9.72%', real:false}
+  ],
+  eye: [
+    {n:'眼部精华', amt:'¥5,000万 - ¥7,500万', g:'+49.87%', real:true},
+    {n:'眼霜', amt:'—', g:'+22.40%', real:false},
+    {n:'眼膜', amt:'—', g:'-3.15%', real:false, down:true},
+    {n:'眼部护理套装', amt:'—', g:'+6.10%', real:false}
+  ]
+};
+function toggleSubcat(tr, key){
+  var next = tr.nextElementSibling;
+  if(next && next.classList.contains('subcat-row')){ next.remove(); tr.classList.remove('open'); return; }
+  var rows = SUBCAT_DATA[key].map(function(it, i){
+    return '<tr><td><span class="rank-badge'+(i<3?' r'+(i+1):'')+'">'+(i+1)+'</span> <b>'+it.n+'</b></td>'
+      +'<td class="num">'+it.amt+(it.real?' <span class="tag tag-real">实测</span>':' <span class="tag tag-sample">示例</span>')+'</td>'
+      +'<td class="num"><span class="'+(it.down?'down':'up')+'">'+it.g+'</span> '+(it.real?'<span class="tag tag-real">实测</span>':'<span class="tag tag-sample">示例</span>')+'</td></tr>';
+  }).join('');
+  var row=document.createElement('tr');
+  row.className='subcat-row';
+  var td=document.createElement('td');
+  td.colSpan=tr.children.length;
+  td.innerHTML='<div style="font-size:11px;color:var(--ink-3);margin-bottom:6px">四级类目 · 按环比增速降序（与三级增速不混排）</div>'
+    +'<table class="subcat-tbl"><thead><tr><th>四级类目</th><th class="num" style="text-align:right">近30天累计支付金额</th><th class="num" style="text-align:right">环比增速</th></tr></thead><tbody>'+rows+'</tbody></table>';
+  row.appendChild(td);
+  tr.parentNode.insertBefore(row, tr.nextSibling);
+  tr.classList.add('open');
+}
+
+/* ================= 成分 × 二级类目矩阵（增速榜 · 周期联动） ================= */
+var LIB_DATA = {
+  '近7天': [
+    {n:'玻色因',   g:'+186.60%',c:'69',  real:true,  m:[2,1,1,3,2]},
+    {n:'角鲨烷',   g:'+150.30%',c:'55',  real:true,  m:[2,2,1,2,3]},
+    {n:'黑参提取物',g:'+62.09%',c:'5',   real:true,  m:[1,0,0,2,1]},
+    {n:'胶原蛋白', g:'+33.23%', c:'67',  real:true,  m:[2,2,3,2,2]},
+    {n:'烟酰胺',   g:'+17.89%', c:'215', real:true,  m:[3,1,2,3,2]},
+    {n:'积雪草',   g:'+15.20%', c:'—',   real:false, m:[2,1,3,1,2]},
+    {n:'玻尿酸',   g:'+12.86%', c:'—',   real:false, m:[3,2,3,2,2]},
+    {n:'视黄醇',   g:'+9.44%',  c:'—',   real:false, m:[1,2,0,3,3]},
+    {n:'维生素C',  g:'-2.10%',  c:'—',   real:false, m:[2,0,1,3,1], down:true},
+    {n:'果酸',     g:'-5.63%',  c:'—',   real:false, m:[3,0,1,1,0], down:true}
+  ],
+  '近30天': [
+    {n:'玻色因',   g:'+214.35%',c:'84',  real:false, m:[2,1,1,3,2]},
+    {n:'角鲨烷',   g:'+168.72%',c:'63',  real:false, m:[2,2,1,2,3]},
+    {n:'胶原蛋白', g:'+58.40%', c:'79',  real:false, m:[2,2,3,2,2]},
+    {n:'黑参提取物',g:'+55.18%',c:'8',   real:false, m:[1,0,0,2,1]},
+    {n:'烟酰胺',   g:'+24.06%', c:'236', real:false, m:[3,1,2,3,2]},
+    {n:'麦角硫因', g:'+19.80%', c:'21',  real:false, m:[1,1,0,2,2]},
+    {n:'积雪草',   g:'+11.42%', c:'—',   real:false, m:[2,1,3,1,2]},
+    {n:'玻尿酸',   g:'+8.33%',  c:'—',   real:false, m:[3,2,3,2,2]},
+    {n:'视黄醇',   g:'+5.17%',  c:'—',   real:false, m:[1,2,0,3,3]},
+    {n:'果酸',     g:'-8.90%',  c:'—',   real:false, m:[3,0,1,1,0], down:true}
+  ],
+  '近90天': [
+    {n:'玻色因',   g:'+287.50%',c:'112', real:false, m:[2,1,1,3,2]},
+    {n:'角鲨烷',   g:'+195.44%',c:'88',  real:false, m:[2,2,1,2,3]},
+    {n:'黑参提取物',g:'+96.20%',c:'14',  real:false, m:[1,0,0,2,1]},
+    {n:'胶原蛋白', g:'+82.15%', c:'95',  real:false, m:[2,2,3,2,2]},
+    {n:'麦角硫因', g:'+45.60%', c:'38',  real:false, m:[1,1,0,2,2]},
+    {n:'烟酰胺',   g:'+31.72%', c:'258', real:false, m:[3,1,2,3,2]},
+    {n:'积雪草',   g:'+18.05%', c:'—',   real:false, m:[2,1,3,1,2]},
+    {n:'玻尿酸',   g:'+9.66%',  c:'—',   real:false, m:[3,2,3,2,2]},
+    {n:'视黄醇',   g:'-4.38%',  c:'—',   real:false, m:[1,2,0,3,3], down:true},
+    {n:'果酸',     g:'-12.74%', c:'—',   real:false, m:[3,0,1,1,0], down:true}
+  ]
+};
+function renderLibMatrix(){
+  var p = document.getElementById('lib-period').value;
+  document.getElementById('libGrowthPeriodTh').textContent = '增速（'+p+'）';
+  var tbody = document.getElementById('libMatrixGrowth');
+  tbody.innerHTML = '';
+  (LIB_DATA[p]||LIB_DATA['近7天']).forEach(function(it){
+    var tr = document.createElement('tr');
+    var dots = it.m.map(function(v){
+      var label=['无/未检出','低','中','高'][v];
+      return '<td style="text-align:center"><span class="matrix-dot md-'+v+'" title="'+it.n+' 在该类目覆盖：'+label+'（示例）"></span></td>';
+    }).join('');
+    tr.innerHTML = '<td class="t-name">'+it.n+'</td>'
+      +'<td class="num"><span class="'+(it.down?'down':'up')+'">'+it.g+'</span> '+(it.real?'<span class="tag tag-real">实测</span>':'<span class="tag tag-sample">示例</span>')+'</td>'
+      +'<td class="num">'+it.c+(it.real?'':' <span class="tag tag-sample">示例</span>')+'</td>'
+      +dots;
+    tbody.appendChild(tr);
+  });
+}
+
+/* ================= 启动 ================= */
+route();
+renderRank();
+onRankMarketChange();
+renderLibMatrix();
+syncGrowthHero();
+document.getElementById('libEcho').textContent = '中国 · 全部类目 · 近7天';
+</script>
+</body>
+</html>
