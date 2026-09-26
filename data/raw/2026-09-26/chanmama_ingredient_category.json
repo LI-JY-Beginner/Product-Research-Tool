@@ -1,0 +1,27 @@
+{
+  "date": "2026-09-26",
+  "source": "蝉妈妈·美妆属性分析（品类维度）",
+  "source_url": "https://www.chanmama.com/industryTrends/productConsumptionTrend",
+  "collected_at": "2026-09-26T12:51:23",
+  "window": "近7天",
+  "max_pages": 4,
+  "caliber": "蝉妈妈预估口径 · 各品类是**独立的一份成分榜**，不是同一榜的筛选子集 · 销售额列封顶 1000w+ 不可排序聚合 · 仅覆盖国内抖音",
+  "categories": {
+    "全部": {
+      "error": "级联选择器切换失败：全部",
+      "rows": [],
+      "count": 0
+    },
+    "护肤品": {
+      "error": "级联选择器切换失败：护肤品",
+      "rows": [],
+      "count": 0
+    },
+    "彩妆/香水": {
+      "error": "级联选择器切换失败：彩妆/香水",
+      "rows": [],
+      "count": 0
+    }
+  },
+  "switch_failed": true
+}

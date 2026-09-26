@@ -1,0 +1,2534 @@
+{
+  "date": "2026-09-26",
+  "source": "蝉妈妈·美妆属性分析",
+  "source_url": "https://www.chanmama.com/industryTrends/productConsumptionTrend",
+  "collected_at": "2026-09-26T11:58:06",
+  "main_window": "近7天",
+  "max_pages": 8,
+  "windows": {
+    "近7天": {
+      "range_label": "护肤品，09/19-09/25",
+      "window_clicked": true,
+      "dimensions": {
+        "成分": {
+          "headers": [
+            "排名",
+            "名称",
+            "关联商品数",
+            "销量",
+            "销售额",
+            "销售额环比",
+            "操作"
+          ],
+          "rows": [
+            {
+              "name": "烟酰胺",
+              "rank_raw": "持平",
+              "product_cnt": 204,
+              "sales_raw": "100w+",
+              "amount_raw": "1000w+",
+              "amount_mom": -0.2371,
+              "amount_mom_raw": "-23.71%",
+              "_page": 1
+            },
+            {
+              "name": "玻色因",
+              "rank_raw": "22",
+              "product_cnt": 72,
+              "sales_raw": "50w~100w",
+              "amount_raw": "1000w+",
+              "amount_mom": 2.3405,
+              "amount_mom_raw": "+234.05%",
+              "_page": 1
+            },
+            {
+              "name": "角鲨烷",
+              "rank_raw": "5",
+              "product_cnt": 54,
+              "sales_raw": "25w~50w",
+              "amount_raw": "1000w+",
+              "amount_mom": 0.45740000000000003,
+              "amount_mom_raw": "+45.74%",
+              "_page": 1
+            },
+            {
+              "name": "胶原蛋白",
+              "rank_raw": "4 2",
+              "product_cnt": 64,
+              "sales_raw": "25w~50w",
+              "amount_raw": "1000w+",
+              "amount_mom": 0.298,
+              "amount_mom_raw": "+29.80%",
+              "_page": 1
+            },
+            {
+              "name": "积雪草叶提取物",
+              "rank_raw": "5 2",
+              "product_cnt": 26,
+              "sales_raw": "25w~50w",
+              "amount_raw": "1000w+",
+              "amount_mom": 0.006999999999999999,
+              "amount_mom_raw": "+0.70%",
+              "_page": 1
+            },
+            {
+              "name": "黑参提取物",
+              "rank_raw": "6 4",
+              "product_cnt": 4,
+              "sales_raw": "5w~10w",
+              "amount_raw": "1000w+",
+              "amount_mom": -0.08259999999999999,
+              "amount_mom_raw": "-8.26%",
+              "_page": 2
+            },
+            {
+              "name": "维生素原B5",
+              "rank_raw": "7 3",
+              "product_cnt": 67,
+              "sales_raw": "25w~50w",
+              "amount_raw": "1000w+",
+              "amount_mom": 0.0753,
+              "amount_mom_raw": "+7.53%",
+              "_page": 2
+            },
+            {
+              "name": "依克多因",
+              "rank_raw": "8 6",
+              "product_cnt": 37,
+              "sales_raw": "25w~50w",
+              "amount_raw": "1000w+",
+              "amount_mom": 0.3488,
+              "amount_mom_raw": "+34.88%",
+              "_page": 2
+            },
+            {
+              "name": "重组胶原蛋白",
+              "rank_raw": "9 1",
+              "product_cnt": 50,
+              "sales_raw": "25w~50w",
+              "amount_raw": "1000w+",
+              "amount_mom": 0.2003,
+              "amount_mom_raw": "+20.03%",
+              "_page": 2
+            },
+            {
+              "name": "玻尿酸钠",
+              "rank_raw": "10 2",
+              "product_cnt": 90,
+              "sales_raw": "25w~50w",
+              "amount_raw": "1000w+",
+              "amount_mom": 0.1153,
+              "amount_mom_raw": "+11.53%",
+              "_page": 2
+            },
+            {
+              "name": "六胜肽",
+              "rank_raw": "11 68",
+              "product_cnt": 11,
+              "sales_raw": "10w~25w",
+              "amount_raw": "1000w+",
+              "amount_mom": 4.0127,
+              "amount_mom_raw": "+401.27%",
+              "_page": 3
+            },
+            {
+              "name": "凝血酸",
+              "rank_raw": "12 6",
+              "product_cnt": 52,
+              "sales_raw": "25w~50w",
+              "amount_raw": "1000w+",
+              "amount_mom": 0.5053,
+              "amount_mom_raw": "+50.53%",
+              "_page": 3
+            },
+            {
+              "name": "生育酚(维生素E)",
+              "rank_raw": "13 28",
+              "product_cnt": 41,
+              "sales_raw": "10w~25w",
+              "amount_raw": "1000w+",
+              "amount_mom": 1.7037,
+              "amount_mom_raw": "+170.37%",
+              "_page": 3
+            },
+            {
+              "name": "补骨脂酚",
+              "rank_raw": "14 399",
+              "product_cnt": 3,
+              "sales_raw": "2.5w~5w",
+              "amount_raw": "1000w+",
+              "amount_mom": 4.7010000000000005,
+              "amount_mom_raw": "+470.10%",
+              "_page": 3
+            },
+            {
+              "name": "红没药醇",
+              "rank_raw": "15 4",
+              "product_cnt": 26,
+              "sales_raw": "10w~25w",
+              "amount_raw": "1000w+",
+              "amount_mom": 0.3418,
+              "amount_mom_raw": "+34.18%",
+              "_page": 3
+            },
+            {
+              "name": "牛油果树果脂提取物",
+              "rank_raw": "16 90",
+              "product_cnt": 24,
+              "sales_raw": "10w~25w",
+              "amount_raw": "1000w+",
+              "amount_mom": 4.5,
+              "amount_mom_raw": "+450.00%",
+              "_page": 4
+            },
+            {
+              "name": "向日葵籽油",
+              "rank_raw": "17 10",
+              "product_cnt": 14,
+              "sales_raw": "25w~50w",
+              "amount_raw": "1000w+",
+              "amount_mom": -0.2416,
+              "amount_mom_raw": "-24.16%",
+              "_page": 4
+            },
+            {
+              "name": "积雪草提取物",
+              "rank_raw": "18 2",
+              "product_cnt": 58,
+              "sales_raw": "25w~50w",
+              "amount_raw": "1000w+",
+              "amount_mom": 0.32159999999999994,
+              "amount_mom_raw": "+32.16%",
+              "_page": 4
+            },
+            {
+              "name": "氢化卵磷脂",
+              "rank_raw": "19 21",
+              "product_cnt": 11,
+              "sales_raw": "10w~25w",
+              "amount_raw": "1000w+",
+              "amount_mom": 1.0490000000000002,
+              "amount_mom_raw": "+104.90%",
+              "_page": 4
+            },
+            {
+              "name": "50胜肽",
+              "rank_raw": "20 393",
+              "product_cnt": 2,
+              "sales_raw": "1w~2.5w",
+              "amount_raw": "1000w+",
+              "amount_mom": null,
+              "amount_mom_raw": "-",
+              "_page": 4
+            },
+            {
+              "name": "视黄醇",
+              "rank_raw": "21 91",
+              "product_cnt": 22,
+              "sales_raw": "10w~25w",
+              "amount_raw": "1000w+",
+              "amount_mom": 4.486000000000001,
+              "amount_mom_raw": "+448.60%",
+              "_page": 5
+            },
+            {
+              "name": "玻尿酸",
+              "rank_raw": "22 5",
+              "product_cnt": 49,
+              "sales_raw": "25w~50w",
+              "amount_raw": "1000w+",
+              "amount_mom": 0.5101,
+              "amount_mom_raw": "+51.01%",
+              "_page": 5
+            },
+            {
+              "name": "水解胶原蛋白",
+              "rank_raw": "23 持平",
+              "product_cnt": 32,
+              "sales_raw": "25w~50w",
+              "amount_raw": "1000w+",
+              "amount_mom": 0.1519,
+              "amount_mom_raw": "+15.19%",
+              "_page": 5
+            },
+            {
+              "name": "重组双胶原蛋白",
+              "rank_raw": "24 389",
+              "product_cnt": 3,
+              "sales_raw": "2.5w~5w",
+              "amount_raw": "1000w+",
+              "amount_mom": 7.9885,
+              "amount_mom_raw": "+798.85%",
+              "_page": 5
+            },
+            {
+              "name": "苯乙基间苯二酚",
+              "rank_raw": "25 8",
+              "product_cnt": 66,
+              "sales_raw": "25w~50w",
+              "amount_raw": "1000w+",
+              "amount_mom": -0.147,
+              "amount_mom_raw": "-14.70%",
+              "_page": 5
+            },
+            {
+              "name": "层孔菌提取物",
+              "rank_raw": "26 17",
+              "product_cnt": 12,
+              "sales_raw": "25w~50w",
+              "amount_raw": "1000w+",
+              "amount_mom": -0.3945,
+              "amount_mom_raw": "-39.45%",
+              "_page": 6
+            },
+            {
+              "name": "水杨酸",
+              "rank_raw": "27 11",
+              "product_cnt": 33,
+              "sales_raw": "10w~25w",
+              "amount_raw": "1000w+",
+              "amount_mom": -0.2076,
+              "amount_mom_raw": "-20.76%",
+              "_page": 6
+            },
+            {
+              "name": "甘油葡糖苷",
+              "rank_raw": "28 5",
+              "product_cnt": 16,
+              "sales_raw": "10w~25w",
+              "amount_raw": "1000w+",
+              "amount_mom": 0.42729999999999996,
+              "amount_mom_raw": "+42.73%",
+              "_page": 6
+            },
+            {
+              "name": "泛喜马拉雅松露",
+              "rank_raw": "29 87",
+              "product_cnt": 8,
+              "sales_raw": "5w~10w",
+              "amount_raw": "1000w+",
+              "amount_mom": 3.4739,
+              "amount_mom_raw": "+347.39%",
+              "_page": 6
+            },
+            {
+              "name": "小分子胶原蛋白",
+              "rank_raw": "30 87",
+              "product_cnt": 8,
+              "sales_raw": "5w~10w",
+              "amount_raw": "1000w+",
+              "amount_mom": 3.4739,
+              "amount_mom_raw": "+347.39%",
+              "_page": 6
+            },
+            {
+              "name": "木糖醇复合保湿剂",
+              "rank_raw": "31 93",
+              "product_cnt": 7,
+              "sales_raw": "5w~10w",
+              "amount_raw": "1000w+",
+              "amount_mom": 3.8775,
+              "amount_mom_raw": "+387.75%",
+              "_page": 7
+            },
+            {
+              "name": "白柳树皮提取物",
+              "rank_raw": "32 21",
+              "product_cnt": 13,
+              "sales_raw": "25w~50w",
+              "amount_raw": "1000w+",
+              "amount_mom": -0.4208,
+              "amount_mom_raw": "-42.08%",
+              "_page": 7
+            },
+            {
+              "name": "椰油酰水解燕麦蛋白钾",
+              "rank_raw": "33 18",
+              "product_cnt": 6,
+              "sales_raw": "25w~50w",
+              "amount_raw": "1000w+",
+              "amount_mom": -0.4073,
+              "amount_mom_raw": "-40.73%",
+              "_page": 7
+            },
+            {
+              "name": "摩洛哥熔岩粘土",
+              "rank_raw": "34 21",
+              "product_cnt": 7,
+              "sales_raw": "25w~50w",
+              "amount_raw": "1000w+",
+              "amount_mom": -0.4378,
+              "amount_mom_raw": "-43.78%",
+              "_page": 7
+            },
+            {
+              "name": "肌醇",
+              "rank_raw": "35 98",
+              "product_cnt": 7,
+              "sales_raw": "5w~10w",
+              "amount_raw": "1000w+",
+              "amount_mom": 4.2216000000000005,
+              "amount_mom_raw": "+422.16%",
+              "_page": 7
+            },
+            {
+              "name": "胜肽",
+              "rank_raw": "36 8",
+              "product_cnt": 9,
+              "sales_raw": "5w~10w",
+              "amount_raw": "1000w+",
+              "amount_mom": 0.0726,
+              "amount_mom_raw": "+7.26%",
+              "_page": 8
+            },
+            {
+              "name": "海藻糖",
+              "rank_raw": "37 2",
+              "product_cnt": 23,
+              "sales_raw": "10w~25w",
+              "amount_raw": "1000w+",
+              "amount_mom": 0.2728,
+              "amount_mom_raw": "+27.28%",
+              "_page": 8
+            },
+            {
+              "name": "视黄醇棕榈酸酯",
+              "rank_raw": "38 178",
+              "product_cnt": 5,
+              "sales_raw": "5w~10w",
+              "amount_raw": "1000w+",
+              "amount_mom": 11.3564,
+              "amount_mom_raw": "+1135.64%",
+              "_page": 8
+            },
+            {
+              "name": "马齿苋提取物",
+              "rank_raw": "39 9",
+              "product_cnt": 22,
+              "sales_raw": "10w~25w",
+              "amount_raw": "1000w+",
+              "amount_mom": 0.018799999999999997,
+              "amount_mom_raw": "+1.88%",
+              "_page": 8
+            },
+            {
+              "name": "类肉do肽",
+              "rank_raw": "40 373",
+              "product_cnt": 2,
+              "sales_raw": "5000~1w",
+              "amount_raw": "1000w+",
+              "amount_mom": null,
+              "amount_mom_raw": "-",
+              "_page": 8
+            }
+          ],
+          "count": 40,
+          "pages_fetched": 8
+        },
+        "功效": {
+          "headers": [
+            "排名",
+            "名称",
+            "关联商品数",
+            "销量",
+            "销售额",
+            "销售额环比",
+            "操作"
+          ],
+          "rows": [
+            {
+              "name": "紧致",
+              "rank_raw": "1",
+              "product_cnt": 772,
+              "sales_raw": "100w+",
+              "amount_raw": "1000w+",
+              "amount_mom": 0.526,
+              "amount_mom_raw": "+52.60%",
+              "_page": 1
+            },
+            {
+              "name": "保湿",
+              "rank_raw": "1",
+              "product_cnt": 1064,
+              "sales_raw": "100w+",
+              "amount_raw": "1000w+",
+              "amount_mom": 0.42700000000000005,
+              "amount_mom_raw": "+42.70%",
+              "_page": 1
+            },
+            {
+              "name": "抗皱",
+              "rank_raw": "持平",
+              "product_cnt": 731,
+              "sales_raw": "100w+",
+              "amount_raw": "1000w+",
+              "amount_mom": 0.4733,
+              "amount_mom_raw": "+47.33%",
+              "_page": 1
+            },
+            {
+              "name": "修护",
+              "rank_raw": "4 持平",
+              "product_cnt": 469,
+              "sales_raw": "100w+",
+              "amount_raw": "1000w+",
+              "amount_mom": 0.3594,
+              "amount_mom_raw": "+35.94%",
+              "_page": 1
+            },
+            {
+              "name": "舒缓",
+              "rank_raw": "5 持平",
+              "product_cnt": 512,
+              "sales_raw": "100w+",
+              "amount_raw": "1000w+",
+              "amount_mom": 0.6409,
+              "amount_mom_raw": "+64.09%",
+              "_page": 1
+            },
+            {
+              "name": "美白",
+              "rank_raw": "6 2",
+              "product_cnt": 278,
+              "sales_raw": "100w+",
+              "amount_raw": "1000w+",
+              "amount_mom": 0.3651,
+              "amount_mom_raw": "+36.51%",
+              "_page": 2
+            },
+            {
+              "name": "控油",
+              "rank_raw": "7 1",
+              "product_cnt": 281,
+              "sales_raw": "100w+",
+              "amount_raw": "1000w+",
+              "amount_mom": -0.0684,
+              "amount_mom_raw": "-6.84%",
+              "_page": 2
+            },
+            {
+              "name": "滋养",
+              "rank_raw": "8 1",
+              "product_cnt": 141,
+              "sales_raw": "50w~100w",
+              "amount_raw": "1000w+",
+              "amount_mom": 0.1746,
+              "amount_mom_raw": "+17.46%",
+              "_page": 2
+            },
+            {
+              "name": "提亮",
+              "rank_raw": "9 持平",
+              "product_cnt": 236,
+              "sales_raw": "100w+",
+              "amount_raw": "1000w+",
+              "amount_mom": 0.2805,
+              "amount_mom_raw": "+28.05%",
+              "_page": 2
+            },
+            {
+              "name": "淡纹",
+              "rank_raw": "10 1",
+              "product_cnt": 134,
+              "sales_raw": "50w~100w",
+              "amount_raw": "1000w+",
+              "amount_mom": 0.1586,
+              "amount_mom_raw": "+15.86%",
+              "_page": 2
+            },
+            {
+              "name": "补水",
+              "rank_raw": "11 1",
+              "product_cnt": 253,
+              "sales_raw": "100w+",
+              "amount_raw": "1000w+",
+              "amount_mom": -0.0152,
+              "amount_mom_raw": "-1.52%",
+              "_page": 3
+            },
+            {
+              "name": "祛斑",
+              "rank_raw": "12 3",
+              "product_cnt": 165,
+              "sales_raw": "50w~100w",
+              "amount_raw": "1000w+",
+              "amount_mom": 0.6628000000000001,
+              "amount_mom_raw": "+66.28%",
+              "_page": 3
+            },
+            {
+              "name": "清洁",
+              "rank_raw": "13 1",
+              "product_cnt": 202,
+              "sales_raw": "100w+",
+              "amount_raw": "1000w+",
+              "amount_mom": -0.1324,
+              "amount_mom_raw": "-13.24%",
+              "_page": 3
+            },
+            {
+              "name": "舒缓修护",
+              "rank_raw": "14 17",
+              "product_cnt": 47,
+              "sales_raw": "25w~50w",
+              "amount_raw": "1000w+",
+              "amount_mom": 2.3761,
+              "amount_mom_raw": "+237.61%",
+              "_page": 3
+            },
+            {
+              "name": "祛痘",
+              "rank_raw": "15 2",
+              "product_cnt": 141,
+              "sales_raw": "50w~100w",
+              "amount_raw": "1000w+",
+              "amount_mom": -0.2618,
+              "amount_mom_raw": "-26.18%",
+              "_page": 3
+            },
+            {
+              "name": "去黑头",
+              "rank_raw": "16 2",
+              "product_cnt": 83,
+              "sales_raw": "50w~100w",
+              "amount_raw": "1000w+",
+              "amount_mom": -0.2887,
+              "amount_mom_raw": "-28.87%",
+              "_page": 4
+            },
+            {
+              "name": "舒缓肌肤",
+              "rank_raw": "17 6",
+              "product_cnt": 58,
+              "sales_raw": "25w~50w",
+              "amount_raw": "1000w+",
+              "amount_mom": 0.5733,
+              "amount_mom_raw": "+57.33%",
+              "_page": 4
+            },
+            {
+              "name": "提拉",
+              "rank_raw": "18 14",
+              "product_cnt": 21,
+              "sales_raw": "25w~50w",
+              "amount_raw": "1000w+",
+              "amount_mom": 1.1469,
+              "amount_mom_raw": "+114.69%",
+              "_page": 4
+            },
+            {
+              "name": "焕亮",
+              "rank_raw": "19 7",
+              "product_cnt": 52,
+              "sales_raw": "25w~50w",
+              "amount_raw": "1000w+",
+              "amount_mom": 0.6609999999999999,
+              "amount_mom_raw": "+66.10%",
+              "_page": 4
+            },
+            {
+              "name": "淡化细纹",
+              "rank_raw": "20 15",
+              "product_cnt": 46,
+              "sales_raw": "10w~25w",
+              "amount_raw": "1000w+",
+              "amount_mom": 1.5488,
+              "amount_mom_raw": "+154.88%",
+              "_page": 4
+            },
+            {
+              "name": "淡斑",
+              "rank_raw": "21 2",
+              "product_cnt": 56,
+              "sales_raw": "25w~50w",
+              "amount_raw": "1000w+",
+              "amount_mom": -0.025699999999999997,
+              "amount_mom_raw": "-2.57%",
+              "_page": 5
+            },
+            {
+              "name": "美白祛斑",
+              "rank_raw": "22 5",
+              "product_cnt": 61,
+              "sales_raw": "25w~50w",
+              "amount_raw": "1000w+",
+              "amount_mom": -0.2785,
+              "amount_mom_raw": "-27.85%",
+              "_page": 5
+            },
+            {
+              "name": "抗氧",
+              "rank_raw": "23 2",
+              "product_cnt": 19,
+              "sales_raw": "25w~50w",
+              "amount_raw": "1000w+",
+              "amount_mom": -0.2348,
+              "amount_mom_raw": "-23.48%",
+              "_page": 5
+            },
+            {
+              "name": "补水保湿",
+              "rank_raw": "24 5",
+              "product_cnt": 74,
+              "sales_raw": "25w~50w",
+              "amount_raw": "1000w+",
+              "amount_mom": 0.3189,
+              "amount_mom_raw": "+31.89%",
+              "_page": 5
+            },
+            {
+              "name": "清洁毛孔",
+              "rank_raw": "25 7",
+              "product_cnt": 38,
+              "sales_raw": "25w~50w",
+              "amount_raw": "1000w+",
+              "amount_mom": -0.36329999999999996,
+              "amount_mom_raw": "-36.33%",
+              "_page": 5
+            },
+            {
+              "name": "去角质",
+              "rank_raw": "26 10",
+              "product_cnt": 62,
+              "sales_raw": "25w~50w",
+              "amount_raw": "1000w+",
+              "amount_mom": -0.433,
+              "amount_mom_raw": "-43.30%",
+              "_page": 6
+            },
+            {
+              "name": "抗老",
+              "rank_raw": "27 123",
+              "product_cnt": 11,
+              "sales_raw": "2.5w~5w",
+              "amount_raw": "1000w+",
+              "amount_mom": 38.2882,
+              "amount_mom_raw": "+3828.82%",
+              "_page": 6
+            },
+            {
+              "name": "全面淡纹",
+              "rank_raw": "28 228",
+              "product_cnt": 2,
+              "sales_raw": "1w~2.5w",
+              "amount_raw": "1000w+",
+              "amount_mom": null,
+              "amount_mom_raw": "-",
+              "_page": 6
+            },
+            {
+              "name": "透亮",
+              "rank_raw": "29 4",
+              "product_cnt": 10,
+              "sales_raw": "10w~25w",
+              "amount_raw": "1000w+",
+              "amount_mom": -0.0381,
+              "amount_mom_raw": "-3.81%",
+              "_page": 6
+            },
+            {
+              "name": "抗皱紧致",
+              "rank_raw": "30 10",
+              "product_cnt": 22,
+              "sales_raw": "10w~25w",
+              "amount_raw": "1000w+",
+              "amount_mom": 1.2503,
+              "amount_mom_raw": "+125.03%",
+              "_page": 6
+            },
+            {
+              "name": "水润",
+              "rank_raw": "31 1",
+              "product_cnt": 43,
+              "sales_raw": "25w~50w",
+              "amount_raw": "1000w+",
+              "amount_mom": 0.10550000000000001,
+              "amount_mom_raw": "+10.55%",
+              "_page": 7
+            },
+            {
+              "name": "去闭口",
+              "rank_raw": "32 12",
+              "product_cnt": 19,
+              "sales_raw": "25w~50w",
+              "amount_raw": "1000w+",
+              "amount_mom": -0.4462,
+              "amount_mom_raw": "-44.62%",
+              "_page": 7
+            },
+            {
+              "name": "塑颜",
+              "rank_raw": "33 14",
+              "product_cnt": 3,
+              "sales_raw": "5w~10w",
+              "amount_raw": "1000w+",
+              "amount_mom": 1.2819999999999998,
+              "amount_mom_raw": "+128.20%",
+              "_page": 7
+            },
+            {
+              "name": "防晒",
+              "rank_raw": "34 持平",
+              "product_cnt": 44,
+              "sales_raw": "10w~25w",
+              "amount_raw": "1000w+",
+              "amount_mom": -0.0194,
+              "amount_mom_raw": "-1.94%",
+              "_page": 7
+            },
+            {
+              "name": "弹嫩",
+              "rank_raw": "35 40",
+              "product_cnt": 8,
+              "sales_raw": "10w~25w",
+              "amount_raw": "1000w+",
+              "amount_mom": 5.5976,
+              "amount_mom_raw": "+559.76%",
+              "_page": 7
+            },
+            {
+              "name": "去粉刺",
+              "rank_raw": "36 14",
+              "product_cnt": 6,
+              "sales_raw": "10w~25w",
+              "amount_raw": "1000w+",
+              "amount_mom": -0.4278,
+              "amount_mom_raw": "-42.78%",
+              "_page": 8
+            },
+            {
+              "name": "改善暗沉",
+              "rank_raw": "37 13",
+              "product_cnt": 52,
+              "sales_raw": "25w~50w",
+              "amount_raw": "1000w+",
+              "amount_mom": 1.4391,
+              "amount_mom_raw": "+143.91%",
+              "_page": 8
+            },
+            {
+              "name": "充盈",
+              "rank_raw": "38 99",
+              "product_cnt": 4,
+              "sales_raw": "5w~10w",
+              "amount_raw": "1000w+",
+              "amount_mom": 16.674500000000002,
+              "amount_mom_raw": "+1667.45%",
+              "_page": 8
+            },
+            {
+              "name": "维稳",
+              "rank_raw": "39 64",
+              "product_cnt": 10,
+              "sales_raw": "5w~10w",
+              "amount_raw": "1000w+",
+              "amount_mom": 9.2936,
+              "amount_mom_raw": "+929.36%",
+              "_page": 8
+            },
+            {
+              "name": "去黄",
+              "rank_raw": "40 2",
+              "product_cnt": 13,
+              "sales_raw": "10w~25w",
+              "amount_raw": "1000w+",
+              "amount_mom": 0.33159999999999995,
+              "amount_mom_raw": "+33.16%",
+              "_page": 8
+            }
+          ],
+          "count": 40,
+          "pages_fetched": 8
+        }
+      }
+    },
+    "近30天": {
+      "range_label": "护肤品，08/27-09/25",
+      "window_clicked": true,
+      "dimensions": {
+        "成分": {
+          "headers": [
+            "排名",
+            "名称",
+            "关联商品数",
+            "销量",
+            "销售额",
+            "销售额环比",
+            "操作"
+          ],
+          "rows": [
+            {
+              "name": "烟酰胺",
+              "rank_raw": "持平",
+              "product_cnt": 208,
+              "sales_raw": "100w+",
+              "amount_raw": "1000w+",
+              "amount_mom": -0.1266,
+              "amount_mom_raw": "-12.66%",
+              "_page": 1
+            },
+            {
+              "name": "山茶花提取物",
+              "rank_raw": "2",
+              "product_cnt": 29,
+              "sales_raw": "100w+",
+              "amount_raw": "1000w+",
+              "amount_mom": 0.4919,
+              "amount_mom_raw": "+49.19%",
+              "_page": 1
+            },
+            {
+              "name": "维生素原B5",
+              "rank_raw": "3",
+              "product_cnt": 82,
+              "sales_raw": "100w+",
+              "amount_raw": "1000w+",
+              "amount_mom": -0.1174,
+              "amount_mom_raw": "-11.74%",
+              "_page": 1
+            },
+            {
+              "name": "积雪草叶提取物",
+              "rank_raw": "4 1",
+              "product_cnt": 31,
+              "sales_raw": "100w+",
+              "amount_raw": "1000w+",
+              "amount_mom": -0.142,
+              "amount_mom_raw": "-14.20%",
+              "_page": 1
+            },
+            {
+              "name": "黑参提取物",
+              "rank_raw": "5 237",
+              "product_cnt": 5,
+              "sales_raw": "10w~25w",
+              "amount_raw": "1000w+",
+              "amount_mom": 43.0972,
+              "amount_mom_raw": "+4309.72%",
+              "_page": 1
+            },
+            {
+              "name": "胶原蛋白",
+              "rank_raw": "6 8",
+              "product_cnt": 72,
+              "sales_raw": "100w+",
+              "amount_raw": "1000w+",
+              "amount_mom": 0.17809999999999998,
+              "amount_mom_raw": "+17.81%",
+              "_page": 2
+            },
+            {
+              "name": "玻尿酸钠",
+              "rank_raw": "7 5",
+              "product_cnt": 97,
+              "sales_raw": "100w+",
+              "amount_raw": "1000w+",
+              "amount_mom": 0.0209,
+              "amount_mom_raw": "+2.09%",
+              "_page": 2
+            },
+            {
+              "name": "角鲨烷",
+              "rank_raw": "8 13",
+              "product_cnt": 51,
+              "sales_raw": "100w+",
+              "amount_raw": "1000w+",
+              "amount_mom": 0.5303,
+              "amount_mom_raw": "+53.03%",
+              "_page": 2
+            },
+            {
+              "name": "重组胶原蛋白",
+              "rank_raw": "9 4",
+              "product_cnt": 43,
+              "sales_raw": "100w+",
+              "amount_raw": "1000w+",
+              "amount_mom": -0.0864,
+              "amount_mom_raw": "-8.64%",
+              "_page": 2
+            },
+            {
+              "name": "向日葵籽油",
+              "rank_raw": "10 2",
+              "product_cnt": 10,
+              "sales_raw": "100w+",
+              "amount_raw": "1000w+",
+              "amount_mom": -0.21289999999999998,
+              "amount_mom_raw": "-21.29%",
+              "_page": 2
+            },
+            {
+              "name": "白柳树皮提取物",
+              "rank_raw": "11 4",
+              "product_cnt": 16,
+              "sales_raw": "100w+",
+              "amount_raw": "1000w+",
+              "amount_mom": -0.2552,
+              "amount_mom_raw": "-25.52%",
+              "_page": 3
+            },
+            {
+              "name": "层孔菌提取物",
+              "rank_raw": "12 3",
+              "product_cnt": 11,
+              "sales_raw": "100w+",
+              "amount_raw": "1000w+",
+              "amount_mom": -0.19079999999999997,
+              "amount_mom_raw": "-19.08%",
+              "_page": 3
+            },
+            {
+              "name": "玻色因",
+              "rank_raw": "13 15",
+              "product_cnt": 64,
+              "sales_raw": "100w+",
+              "amount_raw": "1000w+",
+              "amount_mom": 0.5986,
+              "amount_mom_raw": "+59.86%",
+              "_page": 3
+            },
+            {
+              "name": "依克多因",
+              "rank_raw": "14 3",
+              "product_cnt": 42,
+              "sales_raw": "50w~100w",
+              "amount_raw": "1000w+",
+              "amount_mom": 0.0528,
+              "amount_mom_raw": "+5.28%",
+              "_page": 3
+            },
+            {
+              "name": "摩洛哥熔岩粘土",
+              "rank_raw": "15 5",
+              "product_cnt": 9,
+              "sales_raw": "100w+",
+              "amount_raw": "1000w+",
+              "amount_mom": -0.2395,
+              "amount_mom_raw": "-23.95%",
+              "_page": 3
+            },
+            {
+              "name": "椰油酰水解燕麦蛋白钾",
+              "rank_raw": "16 5",
+              "product_cnt": 6,
+              "sales_raw": "100w+",
+              "amount_raw": "1000w+",
+              "amount_mom": -0.2384,
+              "amount_mom_raw": "-23.84%",
+              "_page": 4
+            },
+            {
+              "name": "苯乙基间苯二酚",
+              "rank_raw": "17 1",
+              "product_cnt": 74,
+              "sales_raw": "100w+",
+              "amount_raw": "1000w+",
+              "amount_mom": -0.1771,
+              "amount_mom_raw": "-17.71%",
+              "_page": 4
+            },
+            {
+              "name": "水杨酸",
+              "rank_raw": "18 3",
+              "product_cnt": 42,
+              "sales_raw": "100w+",
+              "amount_raw": "1000w+",
+              "amount_mom": -0.1848,
+              "amount_mom_raw": "-18.48%",
+              "_page": 4
+            },
+            {
+              "name": "玻尿酸",
+              "rank_raw": "19 1",
+              "product_cnt": 54,
+              "sales_raw": "100w+",
+              "amount_raw": "1000w+",
+              "amount_mom": -0.1206,
+              "amount_mom_raw": "-12.06%",
+              "_page": 4
+            },
+            {
+              "name": "凝血酸",
+              "rank_raw": "20 4",
+              "product_cnt": 36,
+              "sales_raw": "100w+",
+              "amount_raw": "1000w+",
+              "amount_mom": 0.098,
+              "amount_mom_raw": "+9.80%",
+              "_page": 4
+            },
+            {
+              "name": "积雪草提取物",
+              "rank_raw": "21 2",
+              "product_cnt": 66,
+              "sales_raw": "100w+",
+              "amount_raw": "1000w+",
+              "amount_mom": -0.0907,
+              "amount_mom_raw": "-9.07%",
+              "_page": 5
+            },
+            {
+              "name": "乙基维生素C",
+              "rank_raw": "22 2",
+              "product_cnt": 13,
+              "sales_raw": "50w~100w",
+              "amount_raw": "1000w+",
+              "amount_mom": -0.0794,
+              "amount_mom_raw": "-7.94%",
+              "_page": 5
+            },
+            {
+              "name": "肌肽",
+              "rank_raw": "23 1",
+              "product_cnt": 20,
+              "sales_raw": "50w~100w",
+              "amount_raw": "1000w+",
+              "amount_mom": -0.1058,
+              "amount_mom_raw": "-10.58%",
+              "_page": 5
+            },
+            {
+              "name": "DNA 钠",
+              "rank_raw": "24 22",
+              "product_cnt": 28,
+              "sales_raw": "50w~100w",
+              "amount_raw": "1000w+",
+              "amount_mom": -0.8219,
+              "amount_mom_raw": "-82.19%",
+              "_page": 5
+            },
+            {
+              "name": "红没药醇",
+              "rank_raw": "25 4",
+              "product_cnt": 28,
+              "sales_raw": "50w~100w",
+              "amount_raw": "1000w+",
+              "amount_mom": -0.006,
+              "amount_mom_raw": "-0.60%",
+              "_page": 5
+            },
+            {
+              "name": "咖啡因",
+              "rank_raw": "26 12",
+              "product_cnt": 24,
+              "sales_raw": "100w+",
+              "amount_raw": "1000w+",
+              "amount_mom": 0.1433,
+              "amount_mom_raw": "+14.33%",
+              "_page": 6
+            },
+            {
+              "name": "生育酚(维生素E)",
+              "rank_raw": "27 51",
+              "product_cnt": 46,
+              "sales_raw": "50w~100w",
+              "amount_raw": "1000w+",
+              "amount_mom": 1.19,
+              "amount_mom_raw": "+119.00%",
+              "_page": 6
+            },
+            {
+              "name": "水解胶原蛋白",
+              "rank_raw": "28 1",
+              "product_cnt": 27,
+              "sales_raw": "100w+",
+              "amount_raw": "1000w+",
+              "amount_mom": -0.0843,
+              "amount_mom_raw": "-8.43%",
+              "_page": 6
+            },
+            {
+              "name": "水解透明质酸钠",
+              "rank_raw": "29 14",
+              "product_cnt": 19,
+              "sales_raw": "100w+",
+              "amount_raw": "1000w+",
+              "amount_mom": 0.2498,
+              "amount_mom_raw": "+24.98%",
+              "_page": 6
+            },
+            {
+              "name": "六胜肽",
+              "rank_raw": "30 27",
+              "product_cnt": 9,
+              "sales_raw": "50w~100w",
+              "amount_raw": "1000w+",
+              "amount_mom": 0.7136,
+              "amount_mom_raw": "+71.36%",
+              "_page": 6
+            },
+            {
+              "name": "马齿苋提取物",
+              "rank_raw": "31 9",
+              "product_cnt": 31,
+              "sales_raw": "50w~100w",
+              "amount_raw": "1000w+",
+              "amount_mom": 0.10039999999999999,
+              "amount_mom_raw": "+10.04%",
+              "_page": 7
+            },
+            {
+              "name": "氢化卵磷脂",
+              "rank_raw": "32 10",
+              "product_cnt": 15,
+              "sales_raw": "25w~50w",
+              "amount_raw": "1000w+",
+              "amount_mom": 0.0757,
+              "amount_mom_raw": "+7.57%",
+              "_page": 7
+            },
+            {
+              "name": "胜肽",
+              "rank_raw": "33 32",
+              "product_cnt": 9,
+              "sales_raw": "25w~50w",
+              "amount_raw": "1000w+",
+              "amount_mom": 0.6305,
+              "amount_mom_raw": "+63.05%",
+              "_page": 7
+            },
+            {
+              "name": "白池花籽油",
+              "rank_raw": "34 3",
+              "product_cnt": 15,
+              "sales_raw": "50w~100w",
+              "amount_raw": "1000w+",
+              "amount_mom": -0.1906,
+              "amount_mom_raw": "-19.06%",
+              "_page": 7
+            },
+            {
+              "name": "甘油葡糖苷",
+              "rank_raw": "35 2",
+              "product_cnt": 16,
+              "sales_raw": "25w~50w",
+              "amount_raw": "1000w+",
+              "amount_mom": -0.0765,
+              "amount_mom_raw": "-7.65%",
+              "_page": 7
+            },
+            {
+              "name": "视黄醇",
+              "rank_raw": "36 5",
+              "product_cnt": 22,
+              "sales_raw": "50w~100w",
+              "amount_raw": "1000w+",
+              "amount_mom": -0.0336,
+              "amount_mom_raw": "-3.36%",
+              "_page": 8
+            },
+            {
+              "name": "氨基酸",
+              "rank_raw": "37 1",
+              "product_cnt": 51,
+              "sales_raw": "100w+",
+              "amount_raw": "1000w+",
+              "amount_mom": -0.1288,
+              "amount_mom_raw": "-12.88%",
+              "_page": 8
+            },
+            {
+              "name": "北美金缕梅水",
+              "rank_raw": "38 15",
+              "product_cnt": 10,
+              "sales_raw": "50w~100w",
+              "amount_raw": "1000w+",
+              "amount_mom": -0.3886,
+              "amount_mom_raw": "-38.86%",
+              "_page": 8
+            },
+            {
+              "name": "乳酸杆菌发酵产物提取物",
+              "rank_raw": "39 14",
+              "product_cnt": 7,
+              "sales_raw": "50w~100w",
+              "amount_raw": "1000w+",
+              "amount_mom": -0.359,
+              "amount_mom_raw": "-35.90%",
+              "_page": 8
+            },
+            {
+              "name": "药用层孔菌提取物",
+              "rank_raw": "40 14",
+              "product_cnt": 8,
+              "sales_raw": "50w~100w",
+              "amount_raw": "1000w+",
+              "amount_mom": -0.3958,
+              "amount_mom_raw": "-39.58%",
+              "_page": 8
+            }
+          ],
+          "count": 40,
+          "pages_fetched": 8
+        },
+        "功效": {
+          "headers": [
+            "排名",
+            "名称",
+            "关联商品数",
+            "销量",
+            "销售额",
+            "销售额环比",
+            "操作"
+          ],
+          "rows": [
+            {
+              "name": "保湿",
+              "rank_raw": "持平",
+              "product_cnt": 1085,
+              "sales_raw": "100w+",
+              "amount_raw": "1000w+",
+              "amount_mom": -0.114,
+              "amount_mom_raw": "-11.40%",
+              "_page": 1
+            },
+            {
+              "name": "紧致",
+              "rank_raw": "持平",
+              "product_cnt": 730,
+              "sales_raw": "100w+",
+              "amount_raw": "1000w+",
+              "amount_mom": 0.0662,
+              "amount_mom_raw": "+6.62%",
+              "_page": 1
+            },
+            {
+              "name": "抗皱",
+              "rank_raw": "持平",
+              "product_cnt": 699,
+              "sales_raw": "100w+",
+              "amount_raw": "1000w+",
+              "amount_mom": 0.0527,
+              "amount_mom_raw": "+5.27%",
+              "_page": 1
+            },
+            {
+              "name": "修护",
+              "rank_raw": "4 持平",
+              "product_cnt": 439,
+              "sales_raw": "100w+",
+              "amount_raw": "1000w+",
+              "amount_mom": 0.075,
+              "amount_mom_raw": "+7.50%",
+              "_page": 1
+            },
+            {
+              "name": "舒缓",
+              "rank_raw": "5 持平",
+              "product_cnt": 485,
+              "sales_raw": "100w+",
+              "amount_raw": "1000w+",
+              "amount_mom": -0.18109999999999998,
+              "amount_mom_raw": "-18.11%",
+              "_page": 1
+            },
+            {
+              "name": "控油",
+              "rank_raw": "6 持平",
+              "product_cnt": 302,
+              "sales_raw": "100w+",
+              "amount_raw": "1000w+",
+              "amount_mom": -0.1058,
+              "amount_mom_raw": "-10.58%",
+              "_page": 2
+            },
+            {
+              "name": "美白",
+              "rank_raw": "7 持平",
+              "product_cnt": 291,
+              "sales_raw": "100w+",
+              "amount_raw": "1000w+",
+              "amount_mom": -0.0998,
+              "amount_mom_raw": "-9.98%",
+              "_page": 2
+            },
+            {
+              "name": "淡纹",
+              "rank_raw": "8 2",
+              "product_cnt": 121,
+              "sales_raw": "100w+",
+              "amount_raw": "1000w+",
+              "amount_mom": 0.20489999999999997,
+              "amount_mom_raw": "+20.49%",
+              "_page": 2
+            },
+            {
+              "name": "滋养",
+              "rank_raw": "9 2",
+              "product_cnt": 133,
+              "sales_raw": "100w+",
+              "amount_raw": "1000w+",
+              "amount_mom": 0.1827,
+              "amount_mom_raw": "+18.27%",
+              "_page": 2
+            },
+            {
+              "name": "提亮",
+              "rank_raw": "10 2",
+              "product_cnt": 223,
+              "sales_raw": "100w+",
+              "amount_raw": "1000w+",
+              "amount_mom": -0.039900000000000005,
+              "amount_mom_raw": "-3.99%",
+              "_page": 2
+            },
+            {
+              "name": "补水",
+              "rank_raw": "11 2",
+              "product_cnt": 279,
+              "sales_raw": "100w+",
+              "amount_raw": "1000w+",
+              "amount_mom": -0.11599999999999999,
+              "amount_mom_raw": "-11.60%",
+              "_page": 3
+            },
+            {
+              "name": "清洁",
+              "rank_raw": "12 持平",
+              "product_cnt": 229,
+              "sales_raw": "100w+",
+              "amount_raw": "1000w+",
+              "amount_mom": -0.0286,
+              "amount_mom_raw": "-2.86%",
+              "_page": 3
+            },
+            {
+              "name": "抗氧焕亮",
+              "rank_raw": "13 7",
+              "product_cnt": 3,
+              "sales_raw": "25w~50w",
+              "amount_raw": "1000w+",
+              "amount_mom": 0.5948,
+              "amount_mom_raw": "+59.48%",
+              "_page": 3
+            },
+            {
+              "name": "祛痘",
+              "rank_raw": "14 1",
+              "product_cnt": 151,
+              "sales_raw": "100w+",
+              "amount_raw": "1000w+",
+              "amount_mom": -0.0171,
+              "amount_mom_raw": "-1.71%",
+              "_page": 3
+            },
+            {
+              "name": "祛斑",
+              "rank_raw": "15 1",
+              "product_cnt": 154,
+              "sales_raw": "100w+",
+              "amount_raw": "1000w+",
+              "amount_mom": -0.1381,
+              "amount_mom_raw": "-13.81%",
+              "_page": 3
+            },
+            {
+              "name": "去黑头",
+              "rank_raw": "16 3",
+              "product_cnt": 85,
+              "sales_raw": "100w+",
+              "amount_raw": "1000w+",
+              "amount_mom": -0.22219999999999998,
+              "amount_mom_raw": "-22.22%",
+              "_page": 4
+            },
+            {
+              "name": "清洁毛孔",
+              "rank_raw": "17 1",
+              "product_cnt": 40,
+              "sales_raw": "100w+",
+              "amount_raw": "1000w+",
+              "amount_mom": -0.26839999999999997,
+              "amount_mom_raw": "-26.84%",
+              "_page": 4
+            },
+            {
+              "name": "去角质",
+              "rank_raw": "18 5",
+              "product_cnt": 59,
+              "sales_raw": "100w+",
+              "amount_raw": "1000w+",
+              "amount_mom": 0.0888,
+              "amount_mom_raw": "+8.88%",
+              "_page": 4
+            },
+            {
+              "name": "淡斑",
+              "rank_raw": "19 1",
+              "product_cnt": 60,
+              "sales_raw": "100w+",
+              "amount_raw": "1000w+",
+              "amount_mom": -0.26789999999999997,
+              "amount_mom_raw": "-26.79%",
+              "_page": 4
+            },
+            {
+              "name": "去闭口",
+              "rank_raw": "20 1",
+              "product_cnt": 17,
+              "sales_raw": "100w+",
+              "amount_raw": "1000w+",
+              "amount_mom": -0.2404,
+              "amount_mom_raw": "-24.04%",
+              "_page": 4
+            },
+            {
+              "name": "抗氧",
+              "rank_raw": "21 5",
+              "product_cnt": 23,
+              "sales_raw": "100w+",
+              "amount_raw": "1000w+",
+              "amount_mom": 0.1757,
+              "amount_mom_raw": "+17.57%",
+              "_page": 5
+            },
+            {
+              "name": "美白祛斑",
+              "rank_raw": "22 持平",
+              "product_cnt": 65,
+              "sales_raw": "100w+",
+              "amount_raw": "1000w+",
+              "amount_mom": -0.092,
+              "amount_mom_raw": "-9.20%",
+              "_page": 5
+            },
+            {
+              "name": "舒缓修护",
+              "rank_raw": "23 8",
+              "product_cnt": 40,
+              "sales_raw": "100w+",
+              "amount_raw": "1000w+",
+              "amount_mom": 0.3795,
+              "amount_mom_raw": "+37.95%",
+              "_page": 5
+            },
+            {
+              "name": "透亮",
+              "rank_raw": "24 3",
+              "product_cnt": 12,
+              "sales_raw": "100w+",
+              "amount_raw": "1000w+",
+              "amount_mom": -0.33740000000000003,
+              "amount_mom_raw": "-33.74%",
+              "_page": 5
+            },
+            {
+              "name": "去粉刺",
+              "rank_raw": "25 持平",
+              "product_cnt": 4,
+              "sales_raw": "100w+",
+              "amount_raw": "1000w+",
+              "amount_mom": -0.23559999999999998,
+              "amount_mom_raw": "-23.56%",
+              "_page": 5
+            },
+            {
+              "name": "防晒",
+              "rank_raw": "26 9",
+              "product_cnt": 68,
+              "sales_raw": "100w+",
+              "amount_raw": "1000w+",
+              "amount_mom": -0.555,
+              "amount_mom_raw": "-55.50%",
+              "_page": 6
+            },
+            {
+              "name": "舒缓肌肤",
+              "rank_raw": "27 5",
+              "product_cnt": 54,
+              "sales_raw": "100w+",
+              "amount_raw": "1000w+",
+              "amount_mom": 0.1594,
+              "amount_mom_raw": "+15.94%",
+              "_page": 6
+            },
+            {
+              "name": "焕亮",
+              "rank_raw": "28 5",
+              "product_cnt": 42,
+              "sales_raw": "100w+",
+              "amount_raw": "1000w+",
+              "amount_mom": 0.21309999999999998,
+              "amount_mom_raw": "+21.31%",
+              "_page": 6
+            },
+            {
+              "name": "补水保湿",
+              "rank_raw": "29 5",
+              "product_cnt": 86,
+              "sales_raw": "100w+",
+              "amount_raw": "1000w+",
+              "amount_mom": 0.23879999999999998,
+              "amount_mom_raw": "+23.88%",
+              "_page": 6
+            },
+            {
+              "name": "淡化细纹",
+              "rank_raw": "30 持平",
+              "product_cnt": 44,
+              "sales_raw": "50w~100w",
+              "amount_raw": "1000w+",
+              "amount_mom": -0.07,
+              "amount_mom_raw": "-7.00%",
+              "_page": 6
+            },
+            {
+              "name": "嫩肤",
+              "rank_raw": "31 7",
+              "product_cnt": 26,
+              "sales_raw": "100w+",
+              "amount_raw": "1000w+",
+              "amount_mom": -0.40049999999999997,
+              "amount_mom_raw": "-40.05%",
+              "_page": 7
+            },
+            {
+              "name": "水润",
+              "rank_raw": "32 5",
+              "product_cnt": 44,
+              "sales_raw": "100w+",
+              "amount_raw": "1000w+",
+              "amount_mom": -0.2752,
+              "amount_mom_raw": "-27.52%",
+              "_page": 7
+            },
+            {
+              "name": "收缩毛孔",
+              "rank_raw": "33 4",
+              "product_cnt": 41,
+              "sales_raw": "100w+",
+              "amount_raw": "1000w+",
+              "amount_mom": -0.2073,
+              "amount_mom_raw": "-20.73%",
+              "_page": 7
+            },
+            {
+              "name": "提拉",
+              "rank_raw": "34 17",
+              "product_cnt": 20,
+              "sales_raw": "50w~100w",
+              "amount_raw": "1000w+",
+              "amount_mom": 1.5169,
+              "amount_mom_raw": "+151.69%",
+              "_page": 7
+            },
+            {
+              "name": "细毛孔",
+              "rank_raw": "35 7",
+              "product_cnt": 13,
+              "sales_raw": "50w~100w",
+              "amount_raw": "1000w+",
+              "amount_mom": -0.3312,
+              "amount_mom_raw": "-33.12%",
+              "_page": 7
+            },
+            {
+              "name": "滋润",
+              "rank_raw": "36 25",
+              "product_cnt": 61,
+              "sales_raw": "100w+",
+              "amount_raw": "1000w+",
+              "amount_mom": 1.7058000000000002,
+              "amount_mom_raw": "+170.58%",
+              "_page": 8
+            },
+            {
+              "name": "去黄",
+              "rank_raw": "37 2",
+              "product_cnt": 19,
+              "sales_raw": "50w~100w",
+              "amount_raw": "1000w+",
+              "amount_mom": -0.0483,
+              "amount_mom_raw": "-4.83%",
+              "_page": 8
+            },
+            {
+              "name": "淡化眼纹",
+              "rank_raw": "38 12",
+              "product_cnt": 12,
+              "sales_raw": "25w~50w",
+              "amount_raw": "1000w+",
+              "amount_mom": 0.2723,
+              "amount_mom_raw": "+27.23%",
+              "_page": 8
+            },
+            {
+              "name": "维稳屏障",
+              "rank_raw": "39 4",
+              "product_cnt": 2,
+              "sales_raw": "50w~100w",
+              "amount_raw": "1000w+",
+              "amount_mom": -0.4533,
+              "amount_mom_raw": "-45.33%",
+              "_page": 8
+            },
+            {
+              "name": "塑颜",
+              "rank_raw": "40 13",
+              "product_cnt": 2,
+              "sales_raw": "10w~25w",
+              "amount_raw": "1000w+",
+              "amount_mom": 0.2266,
+              "amount_mom_raw": "+22.66%",
+              "_page": 8
+            }
+          ],
+          "count": 40,
+          "pages_fetched": 8
+        }
+      }
+    },
+    "近90天": {
+      "range_label": "护肤品，06/28-09/25",
+      "window_clicked": true,
+      "dimensions": {
+        "成分": {
+          "headers": [
+            "排名",
+            "名称",
+            "关联商品数",
+            "销量",
+            "销售额",
+            "销售额环比",
+            "操作"
+          ],
+          "rows": [
+            {
+              "name": "烟酰胺",
+              "rank_raw": "持平",
+              "product_cnt": 226,
+              "sales_raw": "100w+",
+              "amount_raw": "1000w+",
+              "amount_mom": -0.2421,
+              "amount_mom_raw": "-24.21%",
+              "_page": 1
+            },
+            {
+              "name": "山茶花提取物",
+              "rank_raw": "30",
+              "product_cnt": 23,
+              "sales_raw": "100w+",
+              "amount_raw": "1000w+",
+              "amount_mom": 2.8869,
+              "amount_mom_raw": "+288.69%",
+              "_page": 1
+            },
+            {
+              "name": "维生素原B5",
+              "rank_raw": "1",
+              "product_cnt": 88,
+              "sales_raw": "100w+",
+              "amount_raw": "1000w+",
+              "amount_mom": -0.25079999999999997,
+              "amount_mom_raw": "-25.08%",
+              "_page": 1
+            },
+            {
+              "name": "DNA 钠",
+              "rank_raw": "4 73",
+              "product_cnt": 33,
+              "sales_raw": "100w+",
+              "amount_raw": "1000w+",
+              "amount_mom": 4.7677,
+              "amount_mom_raw": "+476.77%",
+              "_page": 1
+            },
+            {
+              "name": "积雪草叶提取物",
+              "rank_raw": "5 2",
+              "product_cnt": 35,
+              "sales_raw": "100w+",
+              "amount_raw": "1000w+",
+              "amount_mom": 0.28550000000000003,
+              "amount_mom_raw": "+28.55%",
+              "_page": 1
+            },
+            {
+              "name": "白柳树皮提取物",
+              "rank_raw": "6 11",
+              "product_cnt": 16,
+              "sales_raw": "100w+",
+              "amount_raw": "1000w+",
+              "amount_mom": 0.35729999999999995,
+              "amount_mom_raw": "+35.73%",
+              "_page": 2
+            },
+            {
+              "name": "向日葵籽油",
+              "rank_raw": "7 14",
+              "product_cnt": 11,
+              "sales_raw": "100w+",
+              "amount_raw": "1000w+",
+              "amount_mom": 0.6302,
+              "amount_mom_raw": "+63.02%",
+              "_page": 2
+            },
+            {
+              "name": "玻尿酸钠",
+              "rank_raw": "8 4",
+              "product_cnt": 103,
+              "sales_raw": "100w+",
+              "amount_raw": "1000w+",
+              "amount_mom": -0.3788,
+              "amount_mom_raw": "-37.88%",
+              "_page": 2
+            },
+            {
+              "name": "层孔菌提取物",
+              "rank_raw": "9 14",
+              "product_cnt": 10,
+              "sales_raw": "100w+",
+              "amount_raw": "1000w+",
+              "amount_mom": 0.7624,
+              "amount_mom_raw": "+76.24%",
+              "_page": 2
+            },
+            {
+              "name": "摩洛哥熔岩粘土",
+              "rank_raw": "10 19",
+              "product_cnt": 9,
+              "sales_raw": "100w+",
+              "amount_raw": "1000w+",
+              "amount_mom": 0.7992,
+              "amount_mom_raw": "+79.92%",
+              "_page": 2
+            },
+            {
+              "name": "重组胶原蛋白",
+              "rank_raw": "11 8",
+              "product_cnt": 46,
+              "sales_raw": "100w+",
+              "amount_raw": "1000w+",
+              "amount_mom": -0.45130000000000003,
+              "amount_mom_raw": "-45.13%",
+              "_page": 3
+            },
+            {
+              "name": "水杨酸",
+              "rank_raw": "12 持平",
+              "product_cnt": 39,
+              "sales_raw": "100w+",
+              "amount_raw": "1000w+",
+              "amount_mom": 0.049699999999999994,
+              "amount_mom_raw": "+4.97%",
+              "_page": 3
+            },
+            {
+              "name": "胶原蛋白",
+              "rank_raw": "13 8",
+              "product_cnt": 76,
+              "sales_raw": "100w+",
+              "amount_raw": "1000w+",
+              "amount_mom": -0.3406,
+              "amount_mom_raw": "-34.06%",
+              "_page": 3
+            },
+            {
+              "name": "椰油酰水解燕麦蛋白钾",
+              "rank_raw": "14 10",
+              "product_cnt": 8,
+              "sales_raw": "100w+",
+              "amount_raw": "1000w+",
+              "amount_mom": 0.6564,
+              "amount_mom_raw": "+65.64%",
+              "_page": 3
+            },
+            {
+              "name": "苯乙基间苯二酚",
+              "rank_raw": "15 1",
+              "product_cnt": 90,
+              "sales_raw": "100w+",
+              "amount_raw": "1000w+",
+              "amount_mom": 0.0048,
+              "amount_mom_raw": "+0.48%",
+              "_page": 3
+            },
+            {
+              "name": "积雪草提取物",
+              "rank_raw": "16 5",
+              "product_cnt": 74,
+              "sales_raw": "100w+",
+              "amount_raw": "1000w+",
+              "amount_mom": -0.19010000000000002,
+              "amount_mom_raw": "-19.01%",
+              "_page": 4
+            },
+            {
+              "name": "依克多因",
+              "rank_raw": "17 7",
+              "product_cnt": 42,
+              "sales_raw": "100w+",
+              "amount_raw": "1000w+",
+              "amount_mom": -0.2184,
+              "amount_mom_raw": "-21.84%",
+              "_page": 4
+            },
+            {
+              "name": "玻尿酸",
+              "rank_raw": "18 5",
+              "product_cnt": 55,
+              "sales_raw": "100w+",
+              "amount_raw": "1000w+",
+              "amount_mom": -0.16879999999999998,
+              "amount_mom_raw": "-16.88%",
+              "_page": 4
+            },
+            {
+              "name": "1",
+              "rank_raw": "19 181",
+              "product_cnt": 7,
+              "sales_raw": "25w~50w",
+              "amount_raw": "1000w+",
+              "amount_mom": 14.4811,
+              "amount_mom_raw": "+1448.11%",
+              "_page": 4
+            },
+            {
+              "name": "角鲨烷",
+              "rank_raw": "20 21",
+              "product_cnt": 42,
+              "sales_raw": "100w+",
+              "amount_raw": "1000w+",
+              "amount_mom": 0.37520000000000003,
+              "amount_mom_raw": "+37.52%",
+              "_page": 4
+            },
+            {
+              "name": "玻色因",
+              "rank_raw": "21 5",
+              "product_cnt": 55,
+              "sales_raw": "100w+",
+              "amount_raw": "1000w+",
+              "amount_mom": -0.25429999999999997,
+              "amount_mom_raw": "-25.43%",
+              "_page": 5
+            },
+            {
+              "name": "凝血酸",
+              "rank_raw": "22 16",
+              "product_cnt": 43,
+              "sales_raw": "100w+",
+              "amount_raw": "1000w+",
+              "amount_mom": -0.45189999999999997,
+              "amount_mom_raw": "-45.19%",
+              "_page": 5
+            },
+            {
+              "name": "北美金缕梅水",
+              "rank_raw": "23 3",
+              "product_cnt": 14,
+              "sales_raw": "100w+",
+              "amount_raw": "1000w+",
+              "amount_mom": 0.1043,
+              "amount_mom_raw": "+10.43%",
+              "_page": 5
+            },
+            {
+              "name": "肌肽",
+              "rank_raw": "24 15",
+              "product_cnt": 20,
+              "sales_raw": "100w+",
+              "amount_raw": "1000w+",
+              "amount_mom": -0.3936,
+              "amount_mom_raw": "-39.36%",
+              "_page": 5
+            },
+            {
+              "name": "乙基维生素C",
+              "rank_raw": "25 19",
+              "product_cnt": 19,
+              "sales_raw": "100w+",
+              "amount_raw": "1000w+",
+              "amount_mom": 0.26030000000000003,
+              "amount_mom_raw": "+26.03%",
+              "_page": 5
+            },
+            {
+              "name": "乳酸杆菌发酵产物提取物",
+              "rank_raw": "26 8",
+              "product_cnt": 9,
+              "sales_raw": "100w+",
+              "amount_raw": "1000w+",
+              "amount_mom": -0.1536,
+              "amount_mom_raw": "-15.36%",
+              "_page": 6
+            },
+            {
+              "name": "药用层孔菌提取物",
+              "rank_raw": "27 7",
+              "product_cnt": 9,
+              "sales_raw": "100w+",
+              "amount_raw": "1000w+",
+              "amount_mom": -0.1449,
+              "amount_mom_raw": "-14.49%",
+              "_page": 6
+            },
+            {
+              "name": "水解胶原蛋白",
+              "rank_raw": "28 20",
+              "product_cnt": 33,
+              "sales_raw": "100w+",
+              "amount_raw": "1000w+",
+              "amount_mom": -0.45640000000000003,
+              "amount_mom_raw": "-45.64%",
+              "_page": 6
+            },
+            {
+              "name": "皱波角叉菜提取物",
+              "rank_raw": "29 2",
+              "product_cnt": 9,
+              "sales_raw": "100w+",
+              "amount_raw": "1000w+",
+              "amount_mom": 0.042300000000000004,
+              "amount_mom_raw": "+4.23%",
+              "_page": 6
+            },
+            {
+              "name": "红没药醇",
+              "rank_raw": "30 8",
+              "product_cnt": 35,
+              "sales_raw": "100w+",
+              "amount_raw": "1000w+",
+              "amount_mom": -0.0785,
+              "amount_mom_raw": "-7.85%",
+              "_page": 6
+            },
+            {
+              "name": "金黄洋甘菊花水",
+              "rank_raw": "31 5",
+              "product_cnt": 7,
+              "sales_raw": "100w+",
+              "amount_raw": "1000w+",
+              "amount_mom": 0.0558,
+              "amount_mom_raw": "+5.58%",
+              "_page": 7
+            },
+            {
+              "name": "马齿苋提取物",
+              "rank_raw": "32 31",
+              "product_cnt": 38,
+              "sales_raw": "100w+",
+              "amount_raw": "1000w+",
+              "amount_mom": 0.6293,
+              "amount_mom_raw": "+62.93%",
+              "_page": 7
+            },
+            {
+              "name": "乳酸菌发酵产物",
+              "rank_raw": "33 7",
+              "product_cnt": 6,
+              "sales_raw": "100w+",
+              "amount_raw": "1000w+",
+              "amount_mom": 0.046900000000000004,
+              "amount_mom_raw": "+4.69%",
+              "_page": 7
+            },
+            {
+              "name": "库拉索芦荟叶水",
+              "rank_raw": "34 1",
+              "product_cnt": 5,
+              "sales_raw": "100w+",
+              "amount_raw": "1000w+",
+              "amount_mom": -0.021099999999999997,
+              "amount_mom_raw": "-2.11%",
+              "_page": 7
+            },
+            {
+              "name": "柳兰花/叶/茎提取物",
+              "rank_raw": "35 8",
+              "product_cnt": 3,
+              "sales_raw": "100w+",
+              "amount_raw": "1000w+",
+              "amount_mom": 0.0415,
+              "amount_mom_raw": "+4.15%",
+              "_page": 7
+            },
+            {
+              "name": "白池花籽油",
+              "rank_raw": "36 6",
+              "product_cnt": 12,
+              "sales_raw": "100w+",
+              "amount_raw": "1000w+",
+              "amount_mom": -0.08789999999999999,
+              "amount_mom_raw": "-8.79%",
+              "_page": 8
+            },
+            {
+              "name": "咖啡因",
+              "rank_raw": "37 10",
+              "product_cnt": 25,
+              "sales_raw": "100w+",
+              "amount_raw": "1000w+",
+              "amount_mom": 0.0443,
+              "amount_mom_raw": "+4.43%",
+              "_page": 8
+            },
+            {
+              "name": "氢化卵磷脂",
+              "rank_raw": "38 8",
+              "product_cnt": 18,
+              "sales_raw": "100w+",
+              "amount_raw": "1000w+",
+              "amount_mom": -0.025699999999999997,
+              "amount_mom_raw": "-2.57%",
+              "_page": 8
+            },
+            {
+              "name": "甘油葡糖苷",
+              "rank_raw": "39 20",
+              "product_cnt": 20,
+              "sales_raw": "100w+",
+              "amount_raw": "1000w+",
+              "amount_mom": -0.3771,
+              "amount_mom_raw": "-37.71%",
+              "_page": 8
+            },
+            {
+              "name": "乙酰基六肽-8",
+              "rank_raw": "40 15",
+              "product_cnt": 22,
+              "sales_raw": "100w+",
+              "amount_raw": "1000w+",
+              "amount_mom": -0.2275,
+              "amount_mom_raw": "-22.75%",
+              "_page": 8
+            }
+          ],
+          "count": 40,
+          "pages_fetched": 8
+        },
+        "功效": {
+          "headers": [
+            "排名",
+            "名称",
+            "关联商品数",
+            "销量",
+            "销售额",
+            "销售额环比",
+            "操作"
+          ],
+          "rows": [
+            {
+              "name": "保湿",
+              "rank_raw": "持平",
+              "product_cnt": 1040,
+              "sales_raw": "100w+",
+              "amount_raw": "1000w+",
+              "amount_mom": -0.0812,
+              "amount_mom_raw": "-8.12%",
+              "_page": 1
+            },
+            {
+              "name": "紧致",
+              "rank_raw": "持平",
+              "product_cnt": 661,
+              "sales_raw": "100w+",
+              "amount_raw": "1000w+",
+              "amount_mom": -0.0341,
+              "amount_mom_raw": "-3.41%",
+              "_page": 1
+            },
+            {
+              "name": "抗皱",
+              "rank_raw": "持平",
+              "product_cnt": 612,
+              "sales_raw": "100w+",
+              "amount_raw": "1000w+",
+              "amount_mom": 0.0051,
+              "amount_mom_raw": "+0.51%",
+              "_page": 1
+            },
+            {
+              "name": "修护",
+              "rank_raw": "4 持平",
+              "product_cnt": 425,
+              "sales_raw": "100w+",
+              "amount_raw": "1000w+",
+              "amount_mom": 0.2036,
+              "amount_mom_raw": "+20.36%",
+              "_page": 1
+            },
+            {
+              "name": "舒缓",
+              "rank_raw": "5 持平",
+              "product_cnt": 452,
+              "sales_raw": "100w+",
+              "amount_raw": "1000w+",
+              "amount_mom": 0.1268,
+              "amount_mom_raw": "+12.68%",
+              "_page": 1
+            },
+            {
+              "name": "控油",
+              "rank_raw": "6 1",
+              "product_cnt": 315,
+              "sales_raw": "100w+",
+              "amount_raw": "1000w+",
+              "amount_mom": 0.050300000000000004,
+              "amount_mom_raw": "+5.03%",
+              "_page": 2
+            },
+            {
+              "name": "美白",
+              "rank_raw": "7 1",
+              "product_cnt": 317,
+              "sales_raw": "100w+",
+              "amount_raw": "1000w+",
+              "amount_mom": -0.2722,
+              "amount_mom_raw": "-27.22%",
+              "_page": 2
+            },
+            {
+              "name": "淡纹",
+              "rank_raw": "8 2",
+              "product_cnt": 108,
+              "sales_raw": "100w+",
+              "amount_raw": "1000w+",
+              "amount_mom": 0.1595,
+              "amount_mom_raw": "+15.95%",
+              "_page": 2
+            },
+            {
+              "name": "提亮",
+              "rank_raw": "9 1",
+              "product_cnt": 234,
+              "sales_raw": "100w+",
+              "amount_raw": "1000w+",
+              "amount_mom": -0.2685,
+              "amount_mom_raw": "-26.85%",
+              "_page": 2
+            },
+            {
+              "name": "补水",
+              "rank_raw": "10 1",
+              "product_cnt": 270,
+              "sales_raw": "100w+",
+              "amount_raw": "1000w+",
+              "amount_mom": -0.1794,
+              "amount_mom_raw": "-17.94%",
+              "_page": 2
+            },
+            {
+              "name": "滋养",
+              "rank_raw": "11 1",
+              "product_cnt": 109,
+              "sales_raw": "100w+",
+              "amount_raw": "1000w+",
+              "amount_mom": 0.0455,
+              "amount_mom_raw": "+4.55%",
+              "_page": 3
+            },
+            {
+              "name": "清洁",
+              "rank_raw": "12 1",
+              "product_cnt": 232,
+              "sales_raw": "100w+",
+              "amount_raw": "1000w+",
+              "amount_mom": 0.1076,
+              "amount_mom_raw": "+10.76%",
+              "_page": 3
+            },
+            {
+              "name": "祛痘",
+              "rank_raw": "13 2",
+              "product_cnt": 163,
+              "sales_raw": "100w+",
+              "amount_raw": "1000w+",
+              "amount_mom": 0.0519,
+              "amount_mom_raw": "+5.19%",
+              "_page": 3
+            },
+            {
+              "name": "祛斑",
+              "rank_raw": "14 持平",
+              "product_cnt": 158,
+              "sales_raw": "100w+",
+              "amount_raw": "1000w+",
+              "amount_mom": -0.0643,
+              "amount_mom_raw": "-6.43%",
+              "_page": 3
+            },
+            {
+              "name": "去黑头",
+              "rank_raw": "15 2",
+              "product_cnt": 91,
+              "sales_raw": "100w+",
+              "amount_raw": "1000w+",
+              "amount_mom": 0.2988,
+              "amount_mom_raw": "+29.88%",
+              "_page": 3
+            },
+            {
+              "name": "抗氧焕亮",
+              "rank_raw": "16 90",
+              "product_cnt": 2,
+              "sales_raw": "50w~100w",
+              "amount_raw": "1000w+",
+              "amount_mom": 31.3733,
+              "amount_mom_raw": "+3137.33%",
+              "_page": 4
+            },
+            {
+              "name": "清洁毛孔",
+              "rank_raw": "17 3",
+              "product_cnt": 47,
+              "sales_raw": "100w+",
+              "amount_raw": "1000w+",
+              "amount_mom": 0.27690000000000003,
+              "amount_mom_raw": "+27.69%",
+              "_page": 4
+            },
+            {
+              "name": "防晒",
+              "rank_raw": "18 7",
+              "product_cnt": 143,
+              "sales_raw": "100w+",
+              "amount_raw": "1000w+",
+              "amount_mom": -0.526,
+              "amount_mom_raw": "-52.60%",
+              "_page": 4
+            },
+            {
+              "name": "淡斑",
+              "rank_raw": "19 3",
+              "product_cnt": 61,
+              "sales_raw": "100w+",
+              "amount_raw": "1000w+",
+              "amount_mom": -0.2443,
+              "amount_mom_raw": "-24.43%",
+              "_page": 4
+            },
+            {
+              "name": "去闭口",
+              "rank_raw": "20 2",
+              "product_cnt": 21,
+              "sales_raw": "100w+",
+              "amount_raw": "1000w+",
+              "amount_mom": 0.3025,
+              "amount_mom_raw": "+30.25%",
+              "_page": 4
+            },
+            {
+              "name": "去角质",
+              "rank_raw": "21 2",
+              "product_cnt": 68,
+              "sales_raw": "100w+",
+              "amount_raw": "1000w+",
+              "amount_mom": -0.0642,
+              "amount_mom_raw": "-6.42%",
+              "_page": 5
+            },
+            {
+              "name": "美白祛斑",
+              "rank_raw": "22 4",
+              "product_cnt": 78,
+              "sales_raw": "100w+",
+              "amount_raw": "1000w+",
+              "amount_mom": -0.23879999999999998,
+              "amount_mom_raw": "-23.88%",
+              "_page": 5
+            },
+            {
+              "name": "透亮",
+              "rank_raw": "23 1",
+              "product_cnt": 17,
+              "sales_raw": "100w+",
+              "amount_raw": "1000w+",
+              "amount_mom": 0.1948,
+              "amount_mom_raw": "+19.48%",
+              "_page": 5
+            },
+            {
+              "name": "嫩肤",
+              "rank_raw": "24 5",
+              "product_cnt": 28,
+              "sales_raw": "100w+",
+              "amount_raw": "1000w+",
+              "amount_mom": 0.2024,
+              "amount_mom_raw": "+20.24%",
+              "_page": 5
+            },
+            {
+              "name": "去粉刺",
+              "rank_raw": "25 8",
+              "product_cnt": 7,
+              "sales_raw": "100w+",
+              "amount_raw": "1000w+",
+              "amount_mom": 0.8408,
+              "amount_mom_raw": "+84.08%",
+              "_page": 5
+            },
+            {
+              "name": "抗氧",
+              "rank_raw": "26 8",
+              "product_cnt": 23,
+              "sales_raw": "100w+",
+              "amount_raw": "1000w+",
+              "amount_mom": 0.7988,
+              "amount_mom_raw": "+79.88%",
+              "_page": 6
+            },
+            {
+              "name": "水润",
+              "rank_raw": "27 1",
+              "product_cnt": 39,
+              "sales_raw": "100w+",
+              "amount_raw": "1000w+",
+              "amount_mom": -0.0974,
+              "amount_mom_raw": "-9.74%",
+              "_page": 6
+            },
+            {
+              "name": "收缩毛孔",
+              "rank_raw": "28 4",
+              "product_cnt": 43,
+              "sales_raw": "100w+",
+              "amount_raw": "1000w+",
+              "amount_mom": 0.23010000000000003,
+              "amount_mom_raw": "+23.01%",
+              "_page": 6
+            },
+            {
+              "name": "细毛孔",
+              "rank_raw": "29 1",
+              "product_cnt": 14,
+              "sales_raw": "100w+",
+              "amount_raw": "1000w+",
+              "amount_mom": -0.06860000000000001,
+              "amount_mom_raw": "-6.86%",
+              "_page": 6
+            },
+            {
+              "name": "舒缓修护",
+              "rank_raw": "30 7",
+              "product_cnt": 43,
+              "sales_raw": "100w+",
+              "amount_raw": "1000w+",
+              "amount_mom": -0.2359,
+              "amount_mom_raw": "-23.59%",
+              "_page": 6
+            },
+            {
+              "name": "补水保湿",
+              "rank_raw": "31 1",
+              "product_cnt": 91,
+              "sales_raw": "100w+",
+              "amount_raw": "1000w+",
+              "amount_mom": -0.08960000000000001,
+              "amount_mom_raw": "-8.96%",
+              "_page": 7
+            },
+            {
+              "name": "焕亮",
+              "rank_raw": "32 1",
+              "product_cnt": 38,
+              "sales_raw": "100w+",
+              "amount_raw": "1000w+",
+              "amount_mom": -0.1789,
+              "amount_mom_raw": "-17.89%",
+              "_page": 7
+            },
+            {
+              "name": "舒缓肌肤",
+              "rank_raw": "33 8",
+              "product_cnt": 44,
+              "sales_raw": "100w+",
+              "amount_raw": "1000w+",
+              "amount_mom": -0.4364,
+              "amount_mom_raw": "-43.64%",
+              "_page": 7
+            },
+            {
+              "name": "淡化细纹",
+              "rank_raw": "34 13",
+              "product_cnt": 45,
+              "sales_raw": "100w+",
+              "amount_raw": "1000w+",
+              "amount_mom": -0.488,
+              "amount_mom_raw": "-48.80%",
+              "_page": 7
+            },
+            {
+              "name": "维稳屏障",
+              "rank_raw": "35 持平",
+              "product_cnt": 3,
+              "sales_raw": "100w+",
+              "amount_raw": "1000w+",
+              "amount_mom": 0.0593,
+              "amount_mom_raw": "+5.93%",
+              "_page": 7
+            },
+            {
+              "name": "防紫外线",
+              "rank_raw": "36 9",
+              "product_cnt": 24,
+              "sales_raw": "100w+",
+              "amount_raw": "1000w+",
+              "amount_mom": -0.5624,
+              "amount_mom_raw": "-56.24%",
+              "_page": 8
+            },
+            {
+              "name": "防水",
+              "rank_raw": "37 1",
+              "product_cnt": 25,
+              "sales_raw": "100w+",
+              "amount_raw": "1000w+",
+              "amount_mom": -0.12240000000000001,
+              "amount_mom_raw": "-12.24%",
+              "_page": 8
+            },
+            {
+              "name": "提拉",
+              "rank_raw": "38 8",
+              "product_cnt": 18,
+              "sales_raw": "100w+",
+              "amount_raw": "1000w+",
+              "amount_mom": 0.2698,
+              "amount_mom_raw": "+26.98%",
+              "_page": 8
+            },
+            {
+              "name": "防汗",
+              "rank_raw": "39 3",
+              "product_cnt": 18,
+              "sales_raw": "100w+",
+              "amount_raw": "1000w+",
+              "amount_mom": 0.0017000000000000001,
+              "amount_mom_raw": "+0.17%",
+              "_page": 8
+            },
+            {
+              "name": "减黄",
+              "rank_raw": "40 212",
+              "product_cnt": 2,
+              "sales_raw": "50w~100w",
+              "amount_raw": "1000w+",
+              "amount_mom": 6.1864,
+              "amount_mom_raw": "+618.64%",
+              "_page": 8
+            }
+          ],
+          "count": 40,
+          "pages_fetched": 8
+        }
+      }
+    }
+  },
+  "page_filters": {
+    "categories": [
+      "护肤品",
+      "彩妆/香水",
+      "全部"
+    ],
+    "trend_words": [
+      "龙胆根成分爆发了",
+      "甘油葡糖苷爆涨，速抢占",
+      "抗老护肤逆势爆涨",
+      "抗氧焕亮成增长新风口",
+      "屏障受损护肤爆卖了",
+      "出差护肤赛道爆增量",
+      "三效合一卖点爆涨了"
+    ]
+  }
+}

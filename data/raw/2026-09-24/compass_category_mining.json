@@ -1,0 +1,1193 @@
+{
+  "date": "2026/09/24",
+  "window": [
+    "2026/09/18",
+    "2026/09/24"
+  ],
+  "date_type": 21,
+  "first_cate_id": "1000003462",
+  "rows": [
+    {
+      "cid": 1000009093,
+      "name": "奢品护肤",
+      "tags": [
+        "增速快第1名"
+      ],
+      "pay_amt_incr_rate": 6.499539600209802,
+      "demand_supply_rate": 2.1481585836408046,
+      "pay_lower": null,
+      "pay_upper": null,
+      "top_pay_price_bin": null
+    },
+    {
+      "cid": 1000003528,
+      "name": "孕产妇腹膜",
+      "tags": [
+        "增速快第2名"
+      ],
+      "pay_amt_incr_rate": 2.438754184843259,
+      "demand_supply_rate": 3.5027428585824825,
+      "pay_lower": null,
+      "pay_upper": null,
+      "top_pay_price_bin": null
+    },
+    {
+      "cid": 1000003577,
+      "name": "毛孔清洁器",
+      "tags": [
+        "增速快第3名"
+      ],
+      "pay_amt_incr_rate": 2.1349340432307775,
+      "demand_supply_rate": 13.324914157787136,
+      "pay_lower": null,
+      "pay_upper": null,
+      "top_pay_price_bin": null
+    },
+    {
+      "cid": 1000003520,
+      "name": "唇部磨砂",
+      "tags": [
+        "增速快第4名"
+      ],
+      "pay_amt_incr_rate": 1.802364844098954,
+      "demand_supply_rate": 7.983431876092142,
+      "pay_lower": null,
+      "pay_upper": null,
+      "top_pay_price_bin": null
+    },
+    {
+      "cid": 1000003523,
+      "name": "唇部护理套装",
+      "tags": [
+        "增速快第5名",
+        "竞争小第23名"
+      ],
+      "pay_amt_incr_rate": 0.704653248488502,
+      "demand_supply_rate": 30.222479046752696,
+      "pay_lower": null,
+      "pay_upper": null,
+      "top_pay_price_bin": null
+    },
+    {
+      "cid": 1000003483,
+      "name": "面部护理套装",
+      "tags": [
+        "成交高第1名",
+        "增速快第6名"
+      ],
+      "pay_amt_incr_rate": 0.6801201381293184,
+      "demand_supply_rate": 17.285601665390356,
+      "pay_lower": null,
+      "pay_upper": null,
+      "top_pay_price_bin": null
+    },
+    {
+      "cid": 1000008143,
+      "name": "奢品身体护理",
+      "tags": [
+        "增速快第7名"
+      ],
+      "pay_amt_incr_rate": 0.6620735590278197,
+      "demand_supply_rate": 4.335559521644234,
+      "pay_lower": null,
+      "pay_upper": null,
+      "top_pay_price_bin": null
+    },
+    {
+      "cid": 1000003494,
+      "name": "手部磨砂",
+      "tags": [
+        "增速快第8名"
+      ],
+      "pay_amt_incr_rate": 0.6552418964482394,
+      "demand_supply_rate": 7.03310933612833,
+      "pay_lower": null,
+      "pay_upper": null,
+      "top_pay_price_bin": null
+    },
+    {
+      "cid": 1000003602,
+      "name": "其他假发",
+      "tags": [
+        "增速快第9名"
+      ],
+      "pay_amt_incr_rate": 0.6171022997675903,
+      "demand_supply_rate": 2.638337386069188,
+      "pay_lower": null,
+      "pay_upper": null,
+      "top_pay_price_bin": null
+    },
+    {
+      "cid": 1000003583,
+      "name": "免洗洗发水/喷雾",
+      "tags": [
+        "增速快第10名",
+        "竞争小第14名"
+      ],
+      "pay_amt_incr_rate": 0.6076838600980626,
+      "demand_supply_rate": 39.87967765463384,
+      "pay_lower": null,
+      "pay_upper": null,
+      "top_pay_price_bin": null
+    },
+    {
+      "cid": 1000003553,
+      "name": "眼部精华",
+      "tags": [
+        "成交高第23名",
+        "增速快第11名",
+        "竞争小第11名"
+      ],
+      "pay_amt_incr_rate": 0.4986749184076598,
+      "demand_supply_rate": 42.8077887682578,
+      "pay_lower": null,
+      "pay_upper": null,
+      "top_pay_price_bin": null
+    },
+    {
+      "cid": 1000003544,
+      "name": "私处香氛",
+      "tags": [
+        "增速快第12名"
+      ],
+      "pay_amt_incr_rate": 0.45905060842365686,
+      "demand_supply_rate": 1.2355156969305452,
+      "pay_lower": null,
+      "pay_upper": null,
+      "top_pay_price_bin": null
+    },
+    {
+      "cid": 1000003533,
+      "name": "乳房护理",
+      "tags": [
+        "增速快第13名"
+      ],
+      "pay_amt_incr_rate": 0.38535704211281013,
+      "demand_supply_rate": 15.627904535779761,
+      "pay_lower": null,
+      "pay_upper": null,
+      "top_pay_price_bin": null
+    },
+    {
+      "cid": 1000003580,
+      "name": "洗护套装",
+      "tags": [
+        "成交高第12名",
+        "增速快第14名"
+      ],
+      "pay_amt_incr_rate": 0.36074601051061655,
+      "demand_supply_rate": 16.76950094715794,
+      "pay_lower": null,
+      "pay_upper": null,
+      "top_pay_price_bin": null
+    },
+    {
+      "cid": 1000003476,
+      "name": "化妆水/爽肤水",
+      "tags": [
+        "成交高第6名",
+        "增速快第15名",
+        "竞争小第30名"
+      ],
+      "pay_amt_incr_rate": 0.3519048613011272,
+      "demand_supply_rate": 23.787265720118217,
+      "pay_lower": null,
+      "pay_upper": null,
+      "top_pay_price_bin": null
+    },
+    {
+      "cid": 1000003479,
+      "name": "面部精华",
+      "tags": [
+        "成交高第2名",
+        "增速快第16名",
+        "竞争小第24名"
+      ],
+      "pay_amt_incr_rate": 0.3420281437983423,
+      "demand_supply_rate": 30.179798944701165,
+      "pay_lower": null,
+      "pay_upper": null,
+      "top_pay_price_bin": null
+    },
+    {
+      "cid": 1000003478,
+      "name": "面霜",
+      "tags": [
+        "成交高第4名",
+        "增速快第17名"
+      ],
+      "pay_amt_incr_rate": 0.3088179241744158,
+      "demand_supply_rate": 18.967398391407908,
+      "pay_lower": null,
+      "pay_upper": null,
+      "top_pay_price_bin": null
+    },
+    {
+      "cid": 1000003489,
+      "name": "面部精油",
+      "tags": [
+        "成交高第13名",
+        "增速快第18名",
+        "竞争小第43名"
+      ],
+      "pay_amt_incr_rate": 0.30138631556952633,
+      "demand_supply_rate": 19.536717928288272,
+      "pay_lower": null,
+      "pay_upper": null,
+      "top_pay_price_bin": null
+    },
+    {
+      "cid": 1000003493,
+      "name": "洗手液",
+      "tags": [
+        "增速快第19名"
+      ],
+      "pay_amt_incr_rate": 0.30063799077472186,
+      "demand_supply_rate": 15.963409909587853,
+      "pay_lower": null,
+      "pay_upper": null,
+      "top_pay_price_bin": null
+    },
+    {
+      "cid": 1000003585,
+      "name": "头皮护理",
+      "tags": [
+        "成交高第21名",
+        "增速快第20名",
+        "竞争小第35名"
+      ],
+      "pay_amt_incr_rate": 0.2990150006410295,
+      "demand_supply_rate": 21.830269080867865,
+      "pay_lower": null,
+      "pay_upper": null,
+      "top_pay_price_bin": null
+    },
+    {
+      "cid": 1000009193,
+      "name": "花露水",
+      "tags": [
+        "增速快第21名"
+      ],
+      "pay_amt_incr_rate": 0.2881967665988796,
+      "demand_supply_rate": 7.578494356732377,
+      "pay_lower": null,
+      "pay_upper": null,
+      "top_pay_price_bin": null
+    },
+    {
+      "cid": 1000003491,
+      "name": "须后水",
+      "tags": [
+        "增速快第22名"
+      ],
+      "pay_amt_incr_rate": 0.28364015858574765,
+      "demand_supply_rate": 3.116479408055467,
+      "pay_lower": null,
+      "pay_upper": null,
+      "top_pay_price_bin": null
+    },
+    {
+      "cid": 1000003488,
+      "name": "卸妆",
+      "tags": [
+        "成交高第18名",
+        "增速快第23名",
+        "竞争小第20名"
+      ],
+      "pay_amt_incr_rate": 0.2737103109175414,
+      "demand_supply_rate": 33.19185358307779,
+      "pay_lower": null,
+      "pay_upper": null,
+      "top_pay_price_bin": null
+    },
+    {
+      "cid": 1000008288,
+      "name": "隐形眼镜伴侣盒",
+      "tags": [
+        "增速快第24名",
+        "竞争小第42名"
+      ],
+      "pay_amt_incr_rate": 0.2671421972959768,
+      "demand_supply_rate": 19.664986896962045,
+      "pay_lower": null,
+      "pay_upper": null,
+      "top_pay_price_bin": null
+    },
+    {
+      "cid": 1000003512,
+      "name": "颈膜",
+      "tags": [
+        "增速快第25名",
+        "竞争小第27名"
+      ],
+      "pay_amt_incr_rate": 0.2597952227189024,
+      "demand_supply_rate": 27.468684528078462,
+      "pay_lower": null,
+      "pay_upper": null,
+      "top_pay_price_bin": null
+    },
+    {
+      "cid": 1000003597,
+      "name": "马尾假发",
+      "tags": [
+        "增速快第26名"
+      ],
+      "pay_amt_incr_rate": 0.25852062235774503,
+      "demand_supply_rate": 1.5294932193294446,
+      "pay_lower": null,
+      "pay_upper": null,
+      "top_pay_price_bin": null
+    },
+    {
+      "cid": 1000003552,
+      "name": "眼胶/啫喱",
+      "tags": [
+        "增速快第27名",
+        "竞争小第12名"
+      ],
+      "pay_amt_incr_rate": 0.2584256556761209,
+      "demand_supply_rate": 41.75639915658508,
+      "pay_lower": null,
+      "pay_upper": null,
+      "top_pay_price_bin": null
+    },
+    {
+      "cid": 1000003554,
+      "name": "眼部护理套装",
+      "tags": [
+        "增速快第28名"
+      ],
+      "pay_amt_incr_rate": 0.24951274263850204,
+      "demand_supply_rate": 10.944689253749761,
+      "pay_lower": null,
+      "pay_upper": null,
+      "top_pay_price_bin": null
+    },
+    {
+      "cid": 1000003608,
+      "name": "口腔喷剂",
+      "tags": [
+        "增速快第29名"
+      ],
+      "pay_amt_incr_rate": 0.24556138413135217,
+      "demand_supply_rate": 16.256068312350088,
+      "pay_lower": null,
+      "pay_upper": null,
+      "top_pay_price_bin": null
+    },
+    {
+      "cid": 1000003584,
+      "name": "头皮清洁",
+      "tags": [
+        "增速快第30名"
+      ],
+      "pay_amt_incr_rate": 0.23653734377459487,
+      "demand_supply_rate": 16.57218746438286,
+      "pay_lower": null,
+      "pay_upper": null,
+      "top_pay_price_bin": null
+    },
+    {
+      "cid": 1000003599,
+      "name": "发包/丸子",
+      "tags": [
+        "增速快第31名"
+      ],
+      "pay_amt_incr_rate": 0.2346767292062741,
+      "demand_supply_rate": 1.9480059780227388,
+      "pay_lower": null,
+      "pay_upper": null,
+      "top_pay_price_bin": null
+    },
+    {
+      "cid": 1000003535,
+      "name": "淡疤护理",
+      "tags": [
+        "增速快第32名"
+      ],
+      "pay_amt_incr_rate": 0.2325773706255372,
+      "demand_supply_rate": 4.8631310892380615,
+      "pay_lower": null,
+      "pay_upper": null,
+      "top_pay_price_bin": null
+    },
+    {
+      "cid": 1000003564,
+      "name": "搓澡巾/海绵",
+      "tags": [
+        "增速快第33名"
+      ],
+      "pay_amt_incr_rate": 0.2279761247821752,
+      "demand_supply_rate": 4.338144143766259,
+      "pay_lower": null,
+      "pay_upper": null,
+      "top_pay_price_bin": null
+    },
+    {
+      "cid": 1000003516,
+      "name": "脱毛膏/凝胶",
+      "tags": [
+        "成交高第46名",
+        "增速快第34名",
+        "竞争小第22名"
+      ],
+      "pay_amt_incr_rate": 0.2240620845114002,
+      "demand_supply_rate": 32.088614936531854,
+      "pay_lower": null,
+      "pay_upper": null,
+      "top_pay_price_bin": null
+    },
+    {
+      "cid": 1000007437,
+      "name": "身体乳/霜/贴/膏/油",
+      "tags": [
+        "成交高第8名",
+        "增速快第35名",
+        "竞争小第19名"
+      ],
+      "pay_amt_incr_rate": 0.22377020335987188,
+      "demand_supply_rate": 33.211320096382835,
+      "pay_lower": null,
+      "pay_upper": null,
+      "top_pay_price_bin": null
+    },
+    {
+      "cid": 1000008423,
+      "name": "手动剃头刀",
+      "tags": [
+        "增速快第36名"
+      ],
+      "pay_amt_incr_rate": 0.22151686813112476,
+      "demand_supply_rate": 1.7825061191182414,
+      "pay_lower": null,
+      "pay_upper": null,
+      "top_pay_price_bin": null
+    },
+    {
+      "cid": 1000009190,
+      "name": "纤体霜/凝露",
+      "tags": [
+        "增速快第37名"
+      ],
+      "pay_amt_incr_rate": 0.21558368954355198,
+      "demand_supply_rate": 7.35806020654059,
+      "pay_lower": null,
+      "pay_upper": null,
+      "top_pay_price_bin": null
+    },
+    {
+      "cid": 1000003507,
+      "name": "洗漱套装",
+      "tags": [
+        "增速快第38名"
+      ],
+      "pay_amt_incr_rate": 0.20711804654045957,
+      "demand_supply_rate": 5.857859594922088,
+      "pay_lower": null,
+      "pay_upper": null,
+      "top_pay_price_bin": null
+    },
+    {
+      "cid": 1000003531,
+      "name": "胸部护理",
+      "tags": [
+        "增速快第39名"
+      ],
+      "pay_amt_incr_rate": 0.20253364679088998,
+      "demand_supply_rate": 2.2463276825634764,
+      "pay_lower": null,
+      "pay_upper": null,
+      "top_pay_price_bin": null
+    },
+    {
+      "cid": 1000010698,
+      "name": "发箍假发",
+      "tags": [
+        "增速快第40名"
+      ],
+      "pay_amt_incr_rate": 0.19951992537127425,
+      "demand_supply_rate": 2.8484974188749996,
+      "pay_lower": null,
+      "pay_upper": null,
+      "top_pay_price_bin": null
+    },
+    {
+      "cid": 1000003610,
+      "name": "其他口腔护理",
+      "tags": [
+        "增速快第41名",
+        "竞争小第41名"
+      ],
+      "pay_amt_incr_rate": 0.19811856828801638,
+      "demand_supply_rate": 19.988997288830927,
+      "pay_lower": null,
+      "pay_upper": null,
+      "top_pay_price_bin": null
+    },
+    {
+      "cid": 1000003536,
+      "name": "皮肤消毒用品",
+      "tags": [
+        "增速快第42名"
+      ],
+      "pay_amt_incr_rate": 0.18723816592513023,
+      "demand_supply_rate": 14.060937333401348,
+      "pay_lower": null,
+      "pay_upper": null,
+      "top_pay_price_bin": null
+    },
+    {
+      "cid": 1000003482,
+      "name": "面膜",
+      "tags": [
+        "成交高第3名",
+        "增速快第43名",
+        "竞争小第21名"
+      ],
+      "pay_amt_incr_rate": 0.18521612253651948,
+      "demand_supply_rate": 33.13396457264376,
+      "pay_lower": null,
+      "pay_upper": null,
+      "top_pay_price_bin": null
+    },
+    {
+      "cid": 1000003502,
+      "name": "沐浴露/油/乳",
+      "tags": [
+        "成交高第11名",
+        "增速快第44名",
+        "竞争小第37名"
+      ],
+      "pay_amt_incr_rate": 0.18201050541342104,
+      "demand_supply_rate": 20.840072386637907,
+      "pay_lower": null,
+      "pay_upper": null,
+      "top_pay_price_bin": null
+    },
+    {
+      "cid": 1000003600,
+      "name": "帽子假发",
+      "tags": [
+        "增速快第45名"
+      ],
+      "pay_amt_incr_rate": 0.1788733363061135,
+      "demand_supply_rate": 1.5583758318194498,
+      "pay_lower": null,
+      "pay_upper": null,
+      "top_pay_price_bin": null
+    },
+    {
+      "cid": 1000003590,
+      "name": "蓬蓬粉/干洗喷雾/头发纤维粉",
+      "tags": [
+        "增速快第46名"
+      ],
+      "pay_amt_incr_rate": 0.1763294850940776,
+      "demand_supply_rate": 14.31416262736538,
+      "pay_lower": null,
+      "pay_upper": null,
+      "top_pay_price_bin": null
+    },
+    {
+      "cid": 1000003559,
+      "name": "梳子",
+      "tags": [
+        "成交高第33名",
+        "增速快第47名"
+      ],
+      "pay_amt_incr_rate": 0.1684068335781517,
+      "demand_supply_rate": 4.27085787349454,
+      "pay_lower": null,
+      "pay_upper": null,
+      "top_pay_price_bin": null
+    },
+    {
+      "cid": 1000003598,
+      "name": "刘海片",
+      "tags": [
+        "增速快第48名"
+      ],
+      "pay_amt_incr_rate": 0.15768492888729616,
+      "demand_supply_rate": 2.3742250114554686,
+      "pay_lower": null,
+      "pay_upper": null,
+      "top_pay_price_bin": null
+    },
+    {
+      "cid": 1000003513,
+      "name": "身体喷雾",
+      "tags": [],
+      "pay_amt_incr_rate": 0.15678288059477638,
+      "demand_supply_rate": 14.975409014528969,
+      "pay_lower": null,
+      "pay_upper": null,
+      "top_pay_price_bin": null
+    },
+    {
+      "cid": 1000003587,
+      "name": "染发",
+      "tags": [
+        "成交高第14名"
+      ],
+      "pay_amt_incr_rate": 0.15277279319444165,
+      "demand_supply_rate": 11.63658686116513,
+      "pay_lower": null,
+      "pay_upper": null,
+      "top_pay_price_bin": null
+    },
+    {
+      "cid": 1000003566,
+      "name": "面部按摩工具",
+      "tags": [],
+      "pay_amt_incr_rate": 0.1525877940723998,
+      "demand_supply_rate": 4.816105107752534,
+      "pay_lower": null,
+      "pay_upper": null,
+      "top_pay_price_bin": null
+    },
+    {
+      "cid": 1000003515,
+      "name": "止汗露",
+      "tags": [
+        "成交高第39名"
+      ],
+      "pay_amt_incr_rate": 0.14946082148467701,
+      "demand_supply_rate": 13.561181043867832,
+      "pay_lower": null,
+      "pay_upper": null,
+      "top_pay_price_bin": null
+    },
+    {
+      "cid": 1000003576,
+      "name": "脱毛工具",
+      "tags": [],
+      "pay_amt_incr_rate": 0.14607971714726664,
+      "demand_supply_rate": 16.802634476940472,
+      "pay_lower": null,
+      "pay_upper": null,
+      "top_pay_price_bin": null
+    },
+    {
+      "cid": 1000009194,
+      "name": "防水贴",
+      "tags": [
+        "竞争小第29名"
+      ],
+      "pay_amt_incr_rate": 0.1416437150766993,
+      "demand_supply_rate": 24.664148791425024,
+      "pay_lower": null,
+      "pay_upper": null,
+      "top_pay_price_bin": null
+    },
+    {
+      "cid": 1000003589,
+      "name": "定型喷雾/啫喱/摩丝",
+      "tags": [
+        "成交高第30名",
+        "竞争小第44名"
+      ],
+      "pay_amt_incr_rate": 0.13982780546788987,
+      "demand_supply_rate": 19.49578299818198,
+      "pay_lower": null,
+      "pay_upper": null,
+      "top_pay_price_bin": null
+    },
+    {
+      "cid": 1000003595,
+      "name": "整顶假发",
+      "tags": [
+        "成交高第16名"
+      ],
+      "pay_amt_incr_rate": 0.1358787214669789,
+      "demand_supply_rate": 1.7391448349817848,
+      "pay_lower": null,
+      "pay_upper": null,
+      "top_pay_price_bin": null
+    },
+    {
+      "cid": 1000003574,
+      "name": "喷瓶(面霜分装瓶)",
+      "tags": [],
+      "pay_amt_incr_rate": 0.13505435603270885,
+      "demand_supply_rate": 3.1451355337615348,
+      "pay_lower": null,
+      "pay_upper": null,
+      "top_pay_price_bin": null
+    },
+    {
+      "cid": 1000003596,
+      "name": "补发片",
+      "tags": [
+        "成交高第15名"
+      ],
+      "pay_amt_incr_rate": 0.1338083960429391,
+      "demand_supply_rate": 3.514536434612083,
+      "pay_lower": null,
+      "pay_upper": null,
+      "top_pay_price_bin": null
+    },
+    {
+      "cid": 1000003517,
+      "name": "爽身粉",
+      "tags": [],
+      "pay_amt_incr_rate": 0.13275062988508043,
+      "demand_supply_rate": 3.5376018654315513,
+      "pay_lower": null,
+      "pay_upper": null,
+      "top_pay_price_bin": null
+    },
+    {
+      "cid": 1000009187,
+      "name": "热敷包",
+      "tags": [],
+      "pay_amt_incr_rate": 0.1280572438483531,
+      "demand_supply_rate": 9.378486888417202,
+      "pay_lower": null,
+      "pay_upper": null,
+      "top_pay_price_bin": null
+    },
+    {
+      "cid": 1000003550,
+      "name": "眼霜",
+      "tags": [
+        "成交高第17名",
+        "竞争小第32名"
+      ],
+      "pay_amt_incr_rate": 0.12511811170742487,
+      "demand_supply_rate": 22.83779784639509,
+      "pay_lower": null,
+      "pay_upper": null,
+      "top_pay_price_bin": null
+    },
+    {
+      "cid": 1000003551,
+      "name": "眼膜",
+      "tags": [
+        "成交高第25名",
+        "竞争小第15名"
+      ],
+      "pay_amt_incr_rate": 0.12130999994647144,
+      "demand_supply_rate": 39.05952481384524,
+      "pay_lower": null,
+      "pay_upper": null,
+      "top_pay_price_bin": null
+    },
+    {
+      "cid": 1000003570,
+      "name": "按摩棒/锤/刮疗片/板",
+      "tags": [],
+      "pay_amt_incr_rate": 0.11630034847392692,
+      "demand_supply_rate": 3.3700175803589585,
+      "pay_lower": null,
+      "pay_upper": null,
+      "top_pay_price_bin": null
+    },
+    {
+      "cid": 1000003546,
+      "name": "护垫",
+      "tags": [
+        "竞争小第17名"
+      ],
+      "pay_amt_incr_rate": 0.11499827889483778,
+      "demand_supply_rate": 35.236780032339844,
+      "pay_lower": null,
+      "pay_upper": null,
+      "top_pay_price_bin": null
+    },
+    {
+      "cid": 1000003588,
+      "name": "弹力素",
+      "tags": [],
+      "pay_amt_incr_rate": 0.11354868053686801,
+      "demand_supply_rate": 2.6461383270611067,
+      "pay_lower": null,
+      "pay_upper": null,
+      "top_pay_price_bin": null
+    },
+    {
+      "cid": 1000009186,
+      "name": "暖手贴",
+      "tags": [],
+      "pay_amt_incr_rate": 0.11136410461872623,
+      "demand_supply_rate": 3.2639072368577664,
+      "pay_lower": null,
+      "pay_upper": null,
+      "top_pay_price_bin": null
+    },
+    {
+      "cid": 1000003560,
+      "name": "手动剃须刀",
+      "tags": [],
+      "pay_amt_incr_rate": 0.10534492186922244,
+      "demand_supply_rate": 7.070795801878933,
+      "pay_lower": null,
+      "pay_upper": null,
+      "top_pay_price_bin": null
+    },
+    {
+      "cid": 1000009181,
+      "name": "乳腺贴",
+      "tags": [],
+      "pay_amt_incr_rate": 0.10311446901655115,
+      "demand_supply_rate": 7.488187935147665,
+      "pay_lower": null,
+      "pay_upper": null,
+      "top_pay_price_bin": null
+    },
+    {
+      "cid": 1000003611,
+      "name": "成人纸尿裤",
+      "tags": [],
+      "pay_amt_incr_rate": 0.0978940752128848,
+      "demand_supply_rate": 3.501501398628626,
+      "pay_lower": null,
+      "pay_upper": null,
+      "top_pay_price_bin": null
+    },
+    {
+      "cid": 1000003556,
+      "name": "浴帽",
+      "tags": [],
+      "pay_amt_incr_rate": 0.09745961799004925,
+      "demand_supply_rate": 4.491668043047884,
+      "pay_lower": null,
+      "pay_upper": null,
+      "top_pay_price_bin": null
+    },
+    {
+      "cid": 1000003487,
+      "name": "T区护理",
+      "tags": [
+        "成交高第43名",
+        "竞争小第9名"
+      ],
+      "pay_amt_incr_rate": 0.09303015796142815,
+      "demand_supply_rate": 47.05317289188245,
+      "pay_lower": null,
+      "pay_upper": null,
+      "top_pay_price_bin": null
+    },
+    {
+      "cid": 1000003569,
+      "name": "焗油用具",
+      "tags": [],
+      "pay_amt_incr_rate": 0.08989601758666271,
+      "demand_supply_rate": 5.329770371130998,
+      "pay_lower": null,
+      "pay_upper": null,
+      "top_pay_price_bin": null
+    },
+    {
+      "cid": 1000009184,
+      "name": "手/足贴",
+      "tags": [
+        "成交高第47名"
+      ],
+      "pay_amt_incr_rate": 0.08840841037219206,
+      "demand_supply_rate": 12.028401101822292,
+      "pay_lower": null,
+      "pay_upper": null,
+      "top_pay_price_bin": null
+    },
+    {
+      "cid": 1000003561,
+      "name": "剃须刀配件",
+      "tags": [],
+      "pay_amt_incr_rate": 0.08155461053815395,
+      "demand_supply_rate": 2.959675228599002,
+      "pay_lower": null,
+      "pay_upper": null,
+      "top_pay_price_bin": null
+    },
+    {
+      "cid": 1000003613,
+      "name": "成人拉拉裤",
+      "tags": [],
+      "pay_amt_incr_rate": 0.07821082749405842,
+      "demand_supply_rate": 1.3019324316409422,
+      "pay_lower": null,
+      "pay_upper": null,
+      "top_pay_price_bin": null
+    },
+    {
+      "cid": 1000003603,
+      "name": "牙膏",
+      "tags": [
+        "成交高第7名",
+        "竞争小第5名"
+      ],
+      "pay_amt_incr_rate": 0.06896263429175863,
+      "demand_supply_rate": 74.31425381196827,
+      "pay_lower": null,
+      "pay_upper": null,
+      "top_pay_price_bin": null
+    },
+    {
+      "cid": 1000003541,
+      "name": "卫生棉条",
+      "tags": [],
+      "pay_amt_incr_rate": 0.06673576098560709,
+      "demand_supply_rate": 11.446776242207006,
+      "pay_lower": null,
+      "pay_upper": null,
+      "top_pay_price_bin": null
+    },
+    {
+      "cid": 1000009177,
+      "name": "牙齿美白护理剂",
+      "tags": [],
+      "pay_amt_incr_rate": 0.06152436091562516,
+      "demand_supply_rate": 6.800643528212011,
+      "pay_lower": null,
+      "pay_upper": null,
+      "top_pay_price_bin": null
+    },
+    {
+      "cid": 1000003612,
+      "name": "成人纸尿片",
+      "tags": [],
+      "pay_amt_incr_rate": 0.05525453597605636,
+      "demand_supply_rate": 1.5302546392880698,
+      "pay_lower": null,
+      "pay_upper": null,
+      "top_pay_price_bin": null
+    },
+    {
+      "cid": 1000007438,
+      "name": "其他身体护理",
+      "tags": [
+        "成交高第19名"
+      ],
+      "pay_amt_incr_rate": 0.05423777112646629,
+      "demand_supply_rate": 17.880611545201468,
+      "pay_lower": null,
+      "pay_upper": null,
+      "top_pay_price_bin": null
+    },
+    {
+      "cid": 1000003529,
+      "name": "抑菌乳膏",
+      "tags": [
+        "成交高第44名"
+      ],
+      "pay_amt_incr_rate": 0.05255453873092179,
+      "demand_supply_rate": 1.4816876738047633,
+      "pay_lower": null,
+      "pay_upper": null,
+      "top_pay_price_bin": null
+    },
+    {
+      "cid": 1000003542,
+      "name": "卫生巾",
+      "tags": [
+        "成交高第10名",
+        "竞争小第7名"
+      ],
+      "pay_amt_incr_rate": 0.05069017207762608,
+      "demand_supply_rate": 55.05633408380239,
+      "pay_lower": null,
+      "pay_upper": null,
+      "top_pay_price_bin": null
+    },
+    {
+      "cid": 1000003485,
+      "name": "防晒霜",
+      "tags": [
+        "成交高第22名"
+      ],
+      "pay_amt_incr_rate": 0.04812902780108448,
+      "demand_supply_rate": 15.221025785607884,
+      "pay_lower": null,
+      "pay_upper": null,
+      "top_pay_price_bin": null
+    },
+    {
+      "cid": 1000003496,
+      "name": "手部护理套装",
+      "tags": [],
+      "pay_amt_incr_rate": 0.046612749045157595,
+      "demand_supply_rate": 17.97945410110819,
+      "pay_lower": null,
+      "pay_upper": null,
+      "top_pay_price_bin": null
+    },
+    {
+      "cid": 1000003571,
+      "name": "化妆镜",
+      "tags": [],
+      "pay_amt_incr_rate": 0.044175527384945686,
+      "demand_supply_rate": 3.6072775609947376,
+      "pay_lower": null,
+      "pay_upper": null,
+      "top_pay_price_bin": null
+    },
+    {
+      "cid": 1000003562,
+      "name": "沐浴球/沐浴花",
+      "tags": [],
+      "pay_amt_incr_rate": 0.04411557465764475,
+      "demand_supply_rate": 2.879178693182353,
+      "pay_lower": null,
+      "pay_upper": null,
+      "top_pay_price_bin": null
+    },
+    {
+      "cid": 1000003575,
+      "name": "发夹/发帖/盘发器",
+      "tags": [],
+      "pay_amt_incr_rate": 0.04372594978539981,
+      "demand_supply_rate": 3.4713190303591763,
+      "pay_lower": null,
+      "pay_upper": null,
+      "top_pay_price_bin": null
+    },
+    {
+      "cid": 1000003578,
+      "name": "其他洗护美用具",
+      "tags": [],
+      "pay_amt_incr_rate": 0.041451878022152576,
+      "demand_supply_rate": 9.462926490051148,
+      "pay_lower": null,
+      "pay_upper": null,
+      "top_pay_price_bin": null
+    },
+    {
+      "cid": 1000003501,
+      "name": "身体磨砂膏/去角质膏",
+      "tags": [
+        "成交高第48名",
+        "竞争小第46名"
+      ],
+      "pay_amt_incr_rate": 0.03601290884398176,
+      "demand_supply_rate": 19.205068752545834,
+      "pay_lower": null,
+      "pay_upper": null,
+      "top_pay_price_bin": null
+    },
+    {
+      "cid": 1000009180,
+      "name": "男士私处护理",
+      "tags": [],
+      "pay_amt_incr_rate": 0.02988864002349942,
+      "demand_supply_rate": 4.148225805260938,
+      "pay_lower": null,
+      "pay_upper": null,
+      "top_pay_price_bin": null
+    },
+    {
+      "cid": 1000003481,
+      "name": "洁面",
+      "tags": [
+        "成交高第9名",
+        "竞争小第28名"
+      ],
+      "pay_amt_incr_rate": 0.02576704541139875,
+      "demand_supply_rate": 26.241513406687947,
+      "pay_lower": null,
+      "pay_upper": null,
+      "top_pay_price_bin": null
+    },
+    {
+      "cid": 1000003524,
+      "name": "止痒膏/露/液/剂",
+      "tags": [
+        "成交高第42名"
+      ],
+      "pay_amt_incr_rate": 0.018723231319495406,
+      "demand_supply_rate": 2.3410373752830553,
+      "pay_lower": null,
+      "pay_upper": null,
+      "top_pay_price_bin": null
+    },
+    {
+      "cid": 1000003614,
+      "name": "其他成人护理用品",
+      "tags": [],
+      "pay_amt_incr_rate": 0.009705248152415828,
+      "demand_supply_rate": 4.693436143141168,
+      "pay_lower": null,
+      "pay_upper": null,
+      "top_pay_price_bin": null
+    },
+    {
+      "cid": 1000009183,
+      "name": "塑身贴",
+      "tags": [],
+      "pay_amt_incr_rate": 0.008994997735037565,
+      "demand_supply_rate": 14.957019085674178,
+      "pay_lower": null,
+      "pay_upper": null,
+      "top_pay_price_bin": null
+    },
+    {
+      "cid": 1000003607,
+      "name": "漱口水",
+      "tags": [
+        "竞争小第36名"
+      ],
+      "pay_amt_incr_rate": 0.008207583491781347,
+      "demand_supply_rate": 21.282104742788032,
+      "pay_lower": null,
+      "pay_upper": null,
+      "top_pay_price_bin": null
+    },
+    {
+      "cid": 1000003563,
+      "name": "沐浴刷",
+      "tags": [],
+      "pay_amt_incr_rate": 0.007892540937408791,
+      "demand_supply_rate": 3.0808595612593983,
+      "pay_lower": null,
+      "pay_upper": null,
+      "top_pay_price_bin": null
+    },
+    {
+      "cid": 1000003540,
+      "name": "手膜",
+      "tags": [],
+      "pay_amt_incr_rate": 0.007757038060397994,
+      "demand_supply_rate": 18.25849745451457,
+      "pay_lower": null,
+      "pay_upper": null,
+      "top_pay_price_bin": null
+    },
+    {
+      "cid": 1000003548,
+      "name": "安睡裤/安心裤",
+      "tags": [
+        "成交高第24名",
+        "竞争小第6名"
+      ],
+      "pay_amt_incr_rate": 0.006900137909212247,
+      "demand_supply_rate": 60.82449123034573,
+      "pay_lower": null,
+      "pay_upper": null,
+      "top_pay_price_bin": null
+    },
+    {
+      "cid": 1000003522,
+      "name": "润唇啫喱",
+      "tags": [
+        "竞争小第26名"
+      ],
+      "pay_amt_incr_rate": 0.002424634545119779,
+      "demand_supply_rate": 28.96440994777322,
+      "pay_lower": null,
+      "pay_upper": null,
+      "top_pay_price_bin": null
+    },
+    {
+      "cid": 1000003579,
+      "name": "洗发水",
+      "tags": [
+        "成交高第5名",
+        "竞争小第25名"
+      ],
+      "pay_amt_incr_rate": -1.815613280121353e-05,
+      "demand_supply_rate": 29.553423740144993,
+      "pay_lower": null,
+      "pay_upper": null,
+      "top_pay_price_bin": null
+    }
+  ]
+}

@@ -1,0 +1,2221 @@
+{
+  "date": "2026-09-25",
+  "source": "蝉妈妈·商品库",
+  "source_url": "https://www.chanmama.com/promotionRank/",
+  "collected_at": "2026-09-26T11:36:04",
+  "headers": [
+    "商品",
+    "佣金比例",
+    "昨日销量",
+    "直播销量",
+    "视频销量",
+    "商品卡销量",
+    "关联达人",
+    "关联视频",
+    "30天销量趋势"
+  ],
+  "count": 50,
+  "rows": [
+    {
+      "product_raw": "【线上拆盒】 泡泡玛特线上版欧气赏盲盒组合",
+      "product_name": "【线上拆盒】 泡泡玛特线上版欧气赏盲盒组合",
+      "commission_raw": "0.00%",
+      "commission_rate": 0.0,
+      "sales": {
+        "range_lo": 50000.0,
+        "range_hi": 100000.0,
+        "exact": 17957.0,
+        "raw": "5w~10w 17,957"
+      },
+      "live_sales": {
+        "range_lo": 50000.0,
+        "range_hi": 100000.0,
+        "exact": 17957.0,
+        "raw": "5w~10w 17,957"
+      },
+      "video_sales": {
+        "range_lo": null,
+        "range_hi": null,
+        "exact": 0.0,
+        "raw": "0"
+      },
+      "card_sales": {
+        "range_lo": null,
+        "range_hi": null,
+        "exact": 0.0,
+        "raw": "0"
+      },
+      "blogger_cnt": {
+        "range_lo": null,
+        "range_hi": null,
+        "exact": 1.0,
+        "raw": "1"
+      },
+      "aweme_cnt": {
+        "range_lo": null,
+        "range_hi": null,
+        "exact": 0.0,
+        "raw": "0"
+      },
+      "trend30_raw": "",
+      "_page": 1
+    },
+    {
+      "product_raw": "公仔牌顽渍净洗衣粉轻松搓洗去污渍除菌除螨3倍洁净去渍家用去黄",
+      "product_name": "公仔牌顽渍净洗衣粉轻松搓洗去污渍除菌除螨3倍洁净去渍家用去黄",
+      "commission_raw": "蝉选 33% 公开20.00%",
+      "commission_rate": null,
+      "sales": {
+        "range_lo": 50000.0,
+        "range_hi": 100000.0,
+        "exact": 17633.0,
+        "raw": "5w~10w 17,633"
+      },
+      "live_sales": {
+        "range_lo": 50000.0,
+        "range_hi": 100000.0,
+        "exact": 16214.0,
+        "raw": "5w~10w 16,214"
+      },
+      "video_sales": {
+        "range_lo": 2500.0,
+        "range_hi": 5000.0,
+        "exact": 875.4,
+        "raw": "2500~5000 875.4"
+      },
+      "card_sales": {
+        "range_lo": 5000.0,
+        "range_hi": 10000.0,
+        "exact": 1400.0,
+        "raw": "5000~1w 1,400"
+      },
+      "blogger_cnt": {
+        "range_lo": null,
+        "range_hi": null,
+        "exact": 1979.0,
+        "raw": "1,979"
+      },
+      "aweme_cnt": {
+        "range_lo": null,
+        "range_hi": null,
+        "exact": 2045.0,
+        "raw": "2,045"
+      },
+      "trend30_raw": "",
+      "_page": 1
+    },
+    {
+      "product_raw": "【生日福利专属】卡唯朵专研古源草本养肤美白祛斑霜保湿身体可用霜 保湿 抗皱 修护",
+      "product_name": "【生日福利专属】卡唯朵专研古源草本养肤美白祛斑霜保湿身体可用霜 保湿 抗皱 修护",
+      "commission_raw": "0.00%",
+      "commission_rate": 0.0,
+      "sales": {
+        "range_lo": 50000.0,
+        "range_hi": 100000.0,
+        "exact": 11567.0,
+        "raw": "5w~10w 11,567"
+      },
+      "live_sales": {
+        "range_lo": 50000.0,
+        "range_hi": 100000.0,
+        "exact": 11567.0,
+        "raw": "5w~10w 11,567"
+      },
+      "video_sales": {
+        "range_lo": null,
+        "range_hi": null,
+        "exact": 0.0,
+        "raw": "0"
+      },
+      "card_sales": {
+        "range_lo": null,
+        "range_hi": null,
+        "exact": 0.0,
+        "raw": "0"
+      },
+      "blogger_cnt": {
+        "range_lo": null,
+        "range_hi": null,
+        "exact": 2.0,
+        "raw": "2"
+      },
+      "aweme_cnt": {
+        "range_lo": null,
+        "range_hi": null,
+        "exact": 0.0,
+        "raw": "0"
+      },
+      "trend30_raw": "",
+      "_page": 1
+    },
+    {
+      "product_raw": "一线成衣半高领羊毛衫女士宽松毛衣秋冬打底内搭羊毛衫女N00-1101",
+      "product_name": "一线成衣半高领羊毛衫女士宽松毛衣秋冬打底内搭羊毛衫女N00-1101",
+      "commission_raw": "0.00%",
+      "commission_rate": 0.0,
+      "sales": {
+        "range_lo": 50000.0,
+        "range_hi": 100000.0,
+        "exact": 11523.0,
+        "raw": "5w~10w 11,523"
+      },
+      "live_sales": {
+        "range_lo": 50000.0,
+        "range_hi": 100000.0,
+        "exact": 11523.0,
+        "raw": "5w~10w 11,523"
+      },
+      "video_sales": {
+        "range_lo": null,
+        "range_hi": null,
+        "exact": 0.0,
+        "raw": "0"
+      },
+      "card_sales": {
+        "range_lo": null,
+        "range_hi": null,
+        "exact": 0.0,
+        "raw": "0"
+      },
+      "blogger_cnt": {
+        "range_lo": null,
+        "range_hi": null,
+        "exact": 1.0,
+        "raw": "1"
+      },
+      "aweme_cnt": {
+        "range_lo": null,
+        "range_hi": null,
+        "exact": 0.0,
+        "raw": "0"
+      },
+      "trend30_raw": "",
+      "_page": 1
+    },
+    {
+      "product_raw": "东方甄选EASTBUY气垫粉底液自然透亮细润贴合温和上妆长效持妆 提亮 修饰肤色 定妆",
+      "product_name": "东方甄选EASTBUY气垫粉底液自然透亮细润贴合温和上妆长效持妆 提亮 修饰肤色 定妆",
+      "commission_raw": "5.00%",
+      "commission_rate": 5.0,
+      "sales": {
+        "range_lo": 50000.0,
+        "range_hi": 100000.0,
+        "exact": 10213.0,
+        "raw": "5w~10w 10,213"
+      },
+      "live_sales": {
+        "range_lo": 50000.0,
+        "range_hi": 100000.0,
+        "exact": 10049.0,
+        "raw": "5w~10w 10,049"
+      },
+      "video_sales": {
+        "range_lo": 0.0,
+        "range_hi": 250.0,
+        "exact": 2.3,
+        "raw": "0~250 2.3"
+      },
+      "card_sales": {
+        "range_lo": 500.0,
+        "range_hi": 1000.0,
+        "exact": 274.5,
+        "raw": "500~1000 274.5"
+      },
+      "blogger_cnt": {
+        "range_lo": null,
+        "range_hi": null,
+        "exact": 9.0,
+        "raw": "9"
+      },
+      "aweme_cnt": {
+        "range_lo": null,
+        "range_hi": null,
+        "exact": 4.0,
+        "raw": "4"
+      },
+      "trend30_raw": "",
+      "_page": 1
+    },
+    {
+      "product_raw": "【与辉定制】佰瑞多巴斯克芝士蛋糕180g*2盒/3盒",
+      "product_name": "【与辉定制】佰瑞多巴斯克芝士蛋糕180g*2盒/3盒",
+      "commission_raw": "0.00%",
+      "commission_rate": 0.0,
+      "sales": {
+        "range_lo": 25000.0,
+        "range_hi": 50000.0,
+        "exact": 9620.0,
+        "raw": "2.5w~5w 9,620"
+      },
+      "live_sales": {
+        "range_lo": 25000.0,
+        "range_hi": 50000.0,
+        "exact": 9620.0,
+        "raw": "2.5w~5w 9,620"
+      },
+      "video_sales": {
+        "range_lo": null,
+        "range_hi": null,
+        "exact": 0.0,
+        "raw": "0"
+      },
+      "card_sales": {
+        "range_lo": null,
+        "range_hi": null,
+        "exact": 0.0,
+        "raw": "0"
+      },
+      "blogger_cnt": {
+        "range_lo": null,
+        "range_hi": null,
+        "exact": 1.0,
+        "raw": "1"
+      },
+      "aweme_cnt": {
+        "range_lo": null,
+        "range_hi": null,
+        "exact": 0.0,
+        "raw": "0"
+      },
+      "trend30_raw": "",
+      "_page": 1
+    },
+    {
+      "product_raw": "S45赛季战令进阶卡【王者荣耀官方】<自动充值>",
+      "product_name": "S45赛季战令进阶卡【王者荣耀官方】<自动充值>",
+      "commission_raw": "0.00%",
+      "commission_rate": 0.0,
+      "sales": {
+        "range_lo": 25000.0,
+        "range_hi": 50000.0,
+        "exact": 8066.0,
+        "raw": "2.5w~5w 8,066"
+      },
+      "live_sales": {
+        "range_lo": 10000.0,
+        "range_hi": 25000.0,
+        "exact": 5299.0,
+        "raw": "1w~2.5w 5,299"
+      },
+      "video_sales": {
+        "range_lo": 10000.0,
+        "range_hi": 25000.0,
+        "exact": 3415.0,
+        "raw": "1w~2.5w 3,415"
+      },
+      "card_sales": {
+        "range_lo": null,
+        "range_hi": null,
+        "exact": 0.0,
+        "raw": "0"
+      },
+      "blogger_cnt": {
+        "range_lo": null,
+        "range_hi": null,
+        "exact": 66.0,
+        "raw": "66"
+      },
+      "aweme_cnt": {
+        "range_lo": null,
+        "range_hi": null,
+        "exact": 47.0,
+        "raw": "47"
+      },
+      "trend30_raw": "",
+      "_page": 1
+    },
+    {
+      "product_raw": "清风黑金挂抽厚柔M码320抽18大提悬挂式抽纸家用厚实3个整箱纸巾2",
+      "product_name": "清风黑金挂抽厚柔M码320抽18大提悬挂式抽纸家用厚实3个整箱纸巾2",
+      "commission_raw": "0.00%",
+      "commission_rate": 0.0,
+      "sales": {
+        "range_lo": 25000.0,
+        "range_hi": 50000.0,
+        "exact": 7747.0,
+        "raw": "2.5w~5w 7,747"
+      },
+      "live_sales": {
+        "range_lo": 25000.0,
+        "range_hi": 50000.0,
+        "exact": 7747.0,
+        "raw": "2.5w~5w 7,747"
+      },
+      "video_sales": {
+        "range_lo": null,
+        "range_hi": null,
+        "exact": 0.0,
+        "raw": "0"
+      },
+      "card_sales": {
+        "range_lo": null,
+        "range_hi": null,
+        "exact": 0.0,
+        "raw": "0"
+      },
+      "blogger_cnt": {
+        "range_lo": null,
+        "range_hi": null,
+        "exact": 1.0,
+        "raw": "1"
+      },
+      "aweme_cnt": {
+        "range_lo": null,
+        "range_hi": null,
+        "exact": 0.0,
+        "raw": "0"
+      },
+      "trend30_raw": "",
+      "_page": 1
+    },
+    {
+      "product_raw": "仙料金仙茶五行金鼎茶甄选材料匠心工艺独立组合装 S-1 真材实料 五行食养 温润食补",
+      "product_name": "仙料金仙茶五行金鼎茶甄选材料匠心工艺独立组合装 S-1 真材实料 五行食养 温润食补",
+      "commission_raw": "5.00%",
+      "commission_rate": 5.0,
+      "sales": {
+        "range_lo": 25000.0,
+        "range_hi": 50000.0,
+        "exact": 7616.0,
+        "raw": "2.5w~5w 7,616"
+      },
+      "live_sales": {
+        "range_lo": 25000.0,
+        "range_hi": 50000.0,
+        "exact": 7616.0,
+        "raw": "2.5w~5w 7,616"
+      },
+      "video_sales": {
+        "range_lo": null,
+        "range_hi": null,
+        "exact": 0.0,
+        "raw": "0"
+      },
+      "card_sales": {
+        "range_lo": null,
+        "range_hi": null,
+        "exact": 0.0,
+        "raw": "0"
+      },
+      "blogger_cnt": {
+        "range_lo": null,
+        "range_hi": null,
+        "exact": 6.0,
+        "raw": "6"
+      },
+      "aweme_cnt": {
+        "range_lo": null,
+        "range_hi": null,
+        "exact": 0.0,
+        "raw": "0"
+      },
+      "trend30_raw": "",
+      "_page": 1
+    },
+    {
+      "product_raw": "【数量+到7下单】纯梨无添加鲜梨独立包装泡水喝纯砀山梨饮ys-1",
+      "product_name": "【数量+到7下单】纯梨无添加鲜梨独立包装泡水喝纯砀山梨饮ys-1",
+      "commission_raw": "0.00%",
+      "commission_rate": 0.0,
+      "sales": {
+        "range_lo": 25000.0,
+        "range_hi": 50000.0,
+        "exact": 7614.0,
+        "raw": "2.5w~5w 7,614"
+      },
+      "live_sales": {
+        "range_lo": 10000.0,
+        "range_hi": 25000.0,
+        "exact": 4478.0,
+        "raw": "1w~2.5w 4,478"
+      },
+      "video_sales": {
+        "range_lo": null,
+        "range_hi": null,
+        "exact": 0.0,
+        "raw": "0"
+      },
+      "card_sales": {
+        "range_lo": 10000.0,
+        "range_hi": 25000.0,
+        "exact": 3899.0,
+        "raw": "1w~2.5w 3,899"
+      },
+      "blogger_cnt": {
+        "range_lo": null,
+        "range_hi": null,
+        "exact": 1.0,
+        "raw": "1"
+      },
+      "aweme_cnt": {
+        "range_lo": null,
+        "range_hi": null,
+        "exact": 0.0,
+        "raw": "0"
+      },
+      "trend30_raw": "",
+      "_page": 1
+    },
+    {
+      "product_raw": "【双节同庆】自然堂洗面奶水润焕亮洁面洗卸合一不紧绷清洁控油 保湿 清洁 喜马拉雅绿茶",
+      "product_name": "【双节同庆】自然堂洗面奶水润焕亮洁面洗卸合一不紧绷清洁控油 保湿 清洁 喜马拉雅绿茶",
+      "commission_raw": "蝉选 5% 公开5.00%",
+      "commission_rate": null,
+      "sales": {
+        "range_lo": 25000.0,
+        "range_hi": 50000.0,
+        "exact": 7137.0,
+        "raw": "2.5w~5w 7,137"
+      },
+      "live_sales": {
+        "range_lo": 25000.0,
+        "range_hi": 50000.0,
+        "exact": 6879.0,
+        "raw": "2.5w~5w 6,879"
+      },
+      "video_sales": {
+        "range_lo": 500.0,
+        "range_hi": 1000.0,
+        "exact": 220.6,
+        "raw": "500~1000 220.6"
+      },
+      "card_sales": {
+        "range_lo": null,
+        "range_hi": null,
+        "exact": 0.0,
+        "raw": "0"
+      },
+      "blogger_cnt": {
+        "range_lo": null,
+        "range_hi": null,
+        "exact": 118.0,
+        "raw": "118"
+      },
+      "aweme_cnt": {
+        "range_lo": null,
+        "range_hi": null,
+        "exact": 234.0,
+        "raw": "234"
+      },
+      "trend30_raw": "",
+      "_page": 1
+    },
+    {
+      "product_raw": "【控油蓬松】赫系轻盈洗发水控油蓬松香氛官方正品去屑洗发露洗头膏 保湿 控油 去屑",
+      "product_name": "【控油蓬松】赫系轻盈洗发水控油蓬松香氛官方正品去屑洗发露洗头膏 保湿 控油 去屑",
+      "commission_raw": "蝉选 20% 公开20.00%",
+      "commission_rate": null,
+      "sales": {
+        "range_lo": 25000.0,
+        "range_hi": 50000.0,
+        "exact": 7041.0,
+        "raw": "2.5w~5w 7,041"
+      },
+      "live_sales": {
+        "range_lo": 25000.0,
+        "range_hi": 50000.0,
+        "exact": 7041.0,
+        "raw": "2.5w~5w 7,041"
+      },
+      "video_sales": {
+        "range_lo": null,
+        "range_hi": null,
+        "exact": 0.0,
+        "raw": "0"
+      },
+      "card_sales": {
+        "range_lo": null,
+        "range_hi": null,
+        "exact": 0.0,
+        "raw": "0"
+      },
+      "blogger_cnt": {
+        "range_lo": null,
+        "range_hi": null,
+        "exact": 7.0,
+        "raw": "7"
+      },
+      "aweme_cnt": {
+        "range_lo": null,
+        "range_hi": null,
+        "exact": 0.0,
+        "raw": "0"
+      },
+      "trend30_raw": "",
+      "_page": 1
+    },
+    {
+      "product_raw": "焕丽女王新中式浮雕绣花高腰加长桑蚕丝底裆全包臀舒适女士内裤zb",
+      "product_name": "焕丽女王新中式浮雕绣花高腰加长桑蚕丝底裆全包臀舒适女士内裤zb",
+      "commission_raw": "6.00%",
+      "commission_rate": 6.0,
+      "sales": {
+        "range_lo": 25000.0,
+        "range_hi": 50000.0,
+        "exact": 6323.0,
+        "raw": "2.5w~5w 6,323"
+      },
+      "live_sales": {
+        "range_lo": 25000.0,
+        "range_hi": 50000.0,
+        "exact": 6319.0,
+        "raw": "2.5w~5w 6,319"
+      },
+      "video_sales": {
+        "range_lo": 0.0,
+        "range_hi": 250.0,
+        "exact": 6.4,
+        "raw": "0~250 6.4"
+      },
+      "card_sales": {
+        "range_lo": null,
+        "range_hi": null,
+        "exact": 0.0,
+        "raw": "0"
+      },
+      "blogger_cnt": {
+        "range_lo": null,
+        "range_hi": null,
+        "exact": 6.0,
+        "raw": "6"
+      },
+      "aweme_cnt": {
+        "range_lo": null,
+        "range_hi": null,
+        "exact": 6.0,
+        "raw": "6"
+      },
+      "trend30_raw": "",
+      "_page": 1
+    },
+    {
+      "product_raw": "【与辉定制】卡尔顿4.0鲜奶无边嫩吐司400g/箱/6袋",
+      "product_name": "【与辉定制】卡尔顿4.0鲜奶无边嫩吐司400g/箱/6袋",
+      "commission_raw": "5.00%",
+      "commission_rate": 5.0,
+      "sales": {
+        "range_lo": 25000.0,
+        "range_hi": 50000.0,
+        "exact": 6313.0,
+        "raw": "2.5w~5w 6,313"
+      },
+      "live_sales": {
+        "range_lo": 25000.0,
+        "range_hi": 50000.0,
+        "exact": 6313.0,
+        "raw": "2.5w~5w 6,313"
+      },
+      "video_sales": {
+        "range_lo": null,
+        "range_hi": null,
+        "exact": 0.0,
+        "raw": "0"
+      },
+      "card_sales": {
+        "range_lo": null,
+        "range_hi": null,
+        "exact": 0.0,
+        "raw": "0"
+      },
+      "blogger_cnt": {
+        "range_lo": null,
+        "range_hi": null,
+        "exact": 1.0,
+        "raw": "1"
+      },
+      "aweme_cnt": {
+        "range_lo": null,
+        "range_hi": null,
+        "exact": 0.0,
+        "raw": "0"
+      },
+      "trend30_raw": "",
+      "_page": 1
+    },
+    {
+      "product_raw": "【头等舱DR面膜】拍五发六 白番茄水光提升幼颜面膜",
+      "product_name": "【头等舱DR面膜】拍五发六 白番茄水光提升幼颜面膜",
+      "commission_raw": "0.00%",
+      "commission_rate": 0.0,
+      "sales": {
+        "range_lo": 25000.0,
+        "range_hi": 50000.0,
+        "exact": 6270.0,
+        "raw": "2.5w~5w 6,270"
+      },
+      "live_sales": {
+        "range_lo": 25000.0,
+        "range_hi": 50000.0,
+        "exact": 6270.0,
+        "raw": "2.5w~5w 6,270"
+      },
+      "video_sales": {
+        "range_lo": null,
+        "range_hi": null,
+        "exact": 0.0,
+        "raw": "0"
+      },
+      "card_sales": {
+        "range_lo": null,
+        "range_hi": null,
+        "exact": 0.0,
+        "raw": "0"
+      },
+      "blogger_cnt": {
+        "range_lo": null,
+        "range_hi": null,
+        "exact": 1.0,
+        "raw": "1"
+      },
+      "aweme_cnt": {
+        "range_lo": null,
+        "range_hi": null,
+        "exact": 0.0,
+        "raw": "0"
+      },
+      "trend30_raw": "",
+      "_page": 1
+    },
+    {
+      "product_raw": "影视飓风【订单号兑换】飓风相机 永久Pro版会员",
+      "product_name": "影视飓风【订单号兑换】飓风相机 永久Pro版会员",
+      "commission_raw": "相似高佣 11% 公开0.00%",
+      "commission_rate": null,
+      "sales": {
+        "range_lo": 25000.0,
+        "range_hi": 50000.0,
+        "exact": 6266.0,
+        "raw": "2.5w~5w 6,266"
+      },
+      "live_sales": {
+        "range_lo": 250.0,
+        "range_hi": 500.0,
+        "exact": 84.4,
+        "raw": "250~500 84.4"
+      },
+      "video_sales": {
+        "range_lo": 10000.0,
+        "range_hi": 25000.0,
+        "exact": 4612.0,
+        "raw": "1w~2.5w 4,612"
+      },
+      "card_sales": {
+        "range_lo": 5000.0,
+        "range_hi": 10000.0,
+        "exact": 2071.0,
+        "raw": "5000~1w 2,071"
+      },
+      "blogger_cnt": {
+        "range_lo": null,
+        "range_hi": null,
+        "exact": 8.0,
+        "raw": "8"
+      },
+      "aweme_cnt": {
+        "range_lo": null,
+        "range_hi": null,
+        "exact": 47.0,
+        "raw": "47"
+      },
+      "trend30_raw": "",
+      "_page": 1
+    },
+    {
+      "product_raw": "列贵海盐艾草香免撕型加厚垃圾袋 双面加厚型垃圾袋",
+      "product_name": "列贵海盐艾草香免撕型加厚垃圾袋 双面加厚型垃圾袋",
+      "commission_raw": "蝉选 30% 公开20.00%",
+      "commission_rate": null,
+      "sales": {
+        "range_lo": 25000.0,
+        "range_hi": 50000.0,
+        "exact": 6237.0,
+        "raw": "2.5w~5w 6,237"
+      },
+      "live_sales": {
+        "range_lo": 10000.0,
+        "range_hi": 25000.0,
+        "exact": 4244.0,
+        "raw": "1w~2.5w 4,244"
+      },
+      "video_sales": {
+        "range_lo": 250.0,
+        "range_hi": 500.0,
+        "exact": 100.7,
+        "raw": "250~500 100.7"
+      },
+      "card_sales": {
+        "range_lo": 10000.0,
+        "range_hi": 25000.0,
+        "exact": 2452.0,
+        "raw": "1w~2.5w 2,452"
+      },
+      "blogger_cnt": {
+        "range_lo": null,
+        "range_hi": null,
+        "exact": 62.0,
+        "raw": "62"
+      },
+      "aweme_cnt": {
+        "range_lo": null,
+        "range_hi": null,
+        "exact": 39.0,
+        "raw": "39"
+      },
+      "trend30_raw": "",
+      "_page": 1
+    },
+    {
+      "product_raw": "【蕉新】焕新标内衣燕麦格雷山茶花超薄固定杯垫文胸防下垂无痕文胸 极简风 性感风 甜美风",
+      "product_name": "【蕉新】焕新标内衣燕麦格雷山茶花超薄固定杯垫文胸防下垂无痕文胸 极简风 性感风 甜美风",
+      "commission_raw": "18.00%",
+      "commission_rate": 18.0,
+      "sales": {
+        "range_lo": 25000.0,
+        "range_hi": 50000.0,
+        "exact": 6224.0,
+        "raw": "2.5w~5w 6,224"
+      },
+      "live_sales": {
+        "range_lo": 5000.0,
+        "range_hi": 10000.0,
+        "exact": 1909.0,
+        "raw": "5000~1w 1,909"
+      },
+      "video_sales": {
+        "range_lo": 5000.0,
+        "range_hi": 10000.0,
+        "exact": 2082.0,
+        "raw": "5000~1w 2,082"
+      },
+      "card_sales": {
+        "range_lo": 10000.0,
+        "range_hi": 25000.0,
+        "exact": 2878.0,
+        "raw": "1w~2.5w 2,878"
+      },
+      "blogger_cnt": {
+        "range_lo": null,
+        "range_hi": null,
+        "exact": 176.0,
+        "raw": "176"
+      },
+      "aweme_cnt": {
+        "range_lo": null,
+        "range_hi": null,
+        "exact": 515.0,
+        "raw": "515"
+      },
+      "trend30_raw": "",
+      "_page": 1
+    },
+    {
+      "product_raw": "索邦洗脸巾拖把免手洗拖地干湿两用家用室内浴室自动夹布平板拖把",
+      "product_name": "索邦洗脸巾拖把免手洗拖地干湿两用家用室内浴室自动夹布平板拖把",
+      "commission_raw": "相似高佣 20% 公开15.00%",
+      "commission_rate": null,
+      "sales": {
+        "range_lo": 25000.0,
+        "range_hi": 50000.0,
+        "exact": 5880.0,
+        "raw": "2.5w~5w 5,880"
+      },
+      "live_sales": {
+        "range_lo": 25000.0,
+        "range_hi": 50000.0,
+        "exact": 5848.0,
+        "raw": "2.5w~5w 5,848"
+      },
+      "video_sales": {
+        "range_lo": 0.0,
+        "range_hi": 250.0,
+        "exact": 57.7,
+        "raw": "0~250 57.7"
+      },
+      "card_sales": {
+        "range_lo": null,
+        "range_hi": null,
+        "exact": 0.0,
+        "raw": "0"
+      },
+      "blogger_cnt": {
+        "range_lo": null,
+        "range_hi": null,
+        "exact": 153.0,
+        "raw": "153"
+      },
+      "aweme_cnt": {
+        "range_lo": null,
+        "range_hi": null,
+        "exact": 107.0,
+        "raw": "107"
+      },
+      "trend30_raw": "",
+      "_page": 1
+    },
+    {
+      "product_raw": "小国旗五星红旗户外国庆装饰场景布置办公室门口免钉粘贴款斜插旗",
+      "product_name": "小国旗五星红旗户外国庆装饰场景布置办公室门口免钉粘贴款斜插旗",
+      "commission_raw": "20.00%",
+      "commission_rate": 20.0,
+      "sales": {
+        "range_lo": 25000.0,
+        "range_hi": 50000.0,
+        "exact": 5791.0,
+        "raw": "2.5w~5w 5,791"
+      },
+      "live_sales": {
+        "range_lo": 0.0,
+        "range_hi": 250.0,
+        "exact": 0.4,
+        "raw": "0~250 0.4"
+      },
+      "video_sales": {
+        "range_lo": 25000.0,
+        "range_hi": 50000.0,
+        "exact": 5791.0,
+        "raw": "2.5w~5w 5,791"
+      },
+      "card_sales": {
+        "range_lo": null,
+        "range_hi": null,
+        "exact": 0.0,
+        "raw": "0"
+      },
+      "blogger_cnt": {
+        "range_lo": null,
+        "range_hi": null,
+        "exact": 122.0,
+        "raw": "122"
+      },
+      "aweme_cnt": {
+        "range_lo": null,
+        "range_hi": null,
+        "exact": 150.0,
+        "raw": "150"
+      },
+      "trend30_raw": "",
+      "_page": 1
+    },
+    {
+      "product_raw": "【中国科学院化学博士】科芮实验室二硫化硒去屑止痒控油蓬松洗发水 控油 去屑 止痒",
+      "product_name": "【中国科学院化学博士】科芮实验室二硫化硒去屑止痒控油蓬松洗发水 控油 去屑 止痒",
+      "commission_raw": "蝉选 30% 公开5.00%",
+      "commission_rate": null,
+      "sales": {
+        "range_lo": 25000.0,
+        "range_hi": 50000.0,
+        "exact": 5784.0,
+        "raw": "2.5w~5w 5,784"
+      },
+      "live_sales": {
+        "range_lo": 25000.0,
+        "range_hi": 50000.0,
+        "exact": 5767.0,
+        "raw": "2.5w~5w 5,767"
+      },
+      "video_sales": {
+        "range_lo": 0.0,
+        "range_hi": 250.0,
+        "exact": 33.6,
+        "raw": "0~250 33.6"
+      },
+      "card_sales": {
+        "range_lo": null,
+        "range_hi": null,
+        "exact": 0.0,
+        "raw": "0"
+      },
+      "blogger_cnt": {
+        "range_lo": null,
+        "range_hi": null,
+        "exact": 36.0,
+        "raw": "36"
+      },
+      "aweme_cnt": {
+        "range_lo": null,
+        "range_hi": null,
+        "exact": 28.0,
+        "raw": "28"
+      },
+      "trend30_raw": "",
+      "_page": 1
+    },
+    {
+      "product_raw": "【达人专属】【十月稻田】通河长粒香大米5kg 稻谷生长周期 通河大米 黑土孕地",
+      "product_name": "【达人专属】【十月稻田】通河长粒香大米5kg 稻谷生长周期 通河大米 黑土孕地",
+      "commission_raw": "相似高佣 17.6% 公开0.00%",
+      "commission_rate": null,
+      "sales": {
+        "range_lo": 25000.0,
+        "range_hi": 50000.0,
+        "exact": 5701.0,
+        "raw": "2.5w~5w 5,701"
+      },
+      "live_sales": {
+        "range_lo": 25000.0,
+        "range_hi": 50000.0,
+        "exact": 5701.0,
+        "raw": "2.5w~5w 5,701"
+      },
+      "video_sales": {
+        "range_lo": null,
+        "range_hi": null,
+        "exact": 0.0,
+        "raw": "0"
+      },
+      "card_sales": {
+        "range_lo": null,
+        "range_hi": null,
+        "exact": 0.0,
+        "raw": "0"
+      },
+      "blogger_cnt": {
+        "range_lo": null,
+        "range_hi": null,
+        "exact": 1.0,
+        "raw": "1"
+      },
+      "aweme_cnt": {
+        "range_lo": null,
+        "range_hi": null,
+        "exact": 0.0,
+        "raw": "0"
+      },
+      "trend30_raw": "",
+      "_page": 1
+    },
+    {
+      "product_raw": "【黑鸭火鸡面】泡面先生定制141g速食哇噻面面饼美食火鸡面拌面吃播 便宜量大 劲道宽面 卤香入魂",
+      "product_name": "【黑鸭火鸡面】泡面先生定制141g速食哇噻面面饼美食火鸡面拌面吃播 便宜量大 劲道宽面 卤香入魂",
+      "commission_raw": "相似高佣 12% 公开5.00%",
+      "commission_rate": null,
+      "sales": {
+        "range_lo": 25000.0,
+        "range_hi": 50000.0,
+        "exact": 5660.0,
+        "raw": "2.5w~5w 5,660"
+      },
+      "live_sales": {
+        "range_lo": 10000.0,
+        "range_hi": 25000.0,
+        "exact": 2520.0,
+        "raw": "1w~2.5w 2,520"
+      },
+      "video_sales": {
+        "range_lo": 5000.0,
+        "range_hi": 10000.0,
+        "exact": 1477.0,
+        "raw": "5000~1w 1,477"
+      },
+      "card_sales": {
+        "range_lo": 5000.0,
+        "range_hi": 10000.0,
+        "exact": 2158.0,
+        "raw": "5000~1w 2,158"
+      },
+      "blogger_cnt": {
+        "range_lo": null,
+        "range_hi": null,
+        "exact": 125.0,
+        "raw": "125"
+      },
+      "aweme_cnt": {
+        "range_lo": null,
+        "range_hi": null,
+        "exact": 652.0,
+        "raw": "652"
+      },
+      "trend30_raw": "",
+      "_page": 1
+    },
+    {
+      "product_raw": "【数量加4到手19·9四瓶】富铁软糖莓果荔枝味补铁糖果官方正品 0添加蔗糖 0铁腥味 每天嚼几粒",
+      "product_name": "【数量加4到手19·9四瓶】富铁软糖莓果荔枝味补铁糖果官方正品 0添加蔗糖 0铁腥味 每天嚼几粒",
+      "commission_raw": "5.00%",
+      "commission_rate": 5.0,
+      "sales": {
+        "range_lo": 25000.0,
+        "range_hi": 50000.0,
+        "exact": 5454.0,
+        "raw": "2.5w~5w 5,454"
+      },
+      "live_sales": {
+        "range_lo": 25000.0,
+        "range_hi": 50000.0,
+        "exact": 5454.0,
+        "raw": "2.5w~5w 5,454"
+      },
+      "video_sales": {
+        "range_lo": null,
+        "range_hi": null,
+        "exact": 0.0,
+        "raw": "0"
+      },
+      "card_sales": {
+        "range_lo": null,
+        "range_hi": null,
+        "exact": 0.0,
+        "raw": "0"
+      },
+      "blogger_cnt": {
+        "range_lo": null,
+        "range_hi": null,
+        "exact": 5.0,
+        "raw": "5"
+      },
+      "aweme_cnt": {
+        "range_lo": null,
+        "range_hi": null,
+        "exact": 0.0,
+        "raw": "0"
+      },
+      "trend30_raw": "",
+      "_page": 1
+    },
+    {
+      "product_raw": "白哥正品第3代无对苯低敏单剂染发梳0氨0对苯0双氧",
+      "product_name": "白哥正品第3代无对苯低敏单剂染发梳0氨0对苯0双氧",
+      "commission_raw": "0.00%",
+      "commission_rate": 0.0,
+      "sales": {
+        "range_lo": 10000.0,
+        "range_hi": 25000.0,
+        "exact": 5335.0,
+        "raw": "1w~2.5w 5,335"
+      },
+      "live_sales": {
+        "range_lo": 10000.0,
+        "range_hi": 25000.0,
+        "exact": 5335.0,
+        "raw": "1w~2.5w 5,335"
+      },
+      "video_sales": {
+        "range_lo": null,
+        "range_hi": null,
+        "exact": 0.0,
+        "raw": "0"
+      },
+      "card_sales": {
+        "range_lo": null,
+        "range_hi": null,
+        "exact": 0.0,
+        "raw": "0"
+      },
+      "blogger_cnt": {
+        "range_lo": null,
+        "range_hi": null,
+        "exact": 1.0,
+        "raw": "1"
+      },
+      "aweme_cnt": {
+        "range_lo": null,
+        "range_hi": null,
+        "exact": 0.0,
+        "raw": "0"
+      },
+      "trend30_raw": "",
+      "_page": 1
+    },
+    {
+      "product_raw": "【拍5发6，拍10发12】风味挂面100g一袋",
+      "product_name": "【拍5发6，拍10发12】风味挂面100g一袋",
+      "commission_raw": "蝉选 6% 公开5.00%",
+      "commission_rate": null,
+      "sales": {
+        "range_lo": 10000.0,
+        "range_hi": 25000.0,
+        "exact": 5120.0,
+        "raw": "1w~2.5w 5,120"
+      },
+      "live_sales": {
+        "range_lo": 10000.0,
+        "range_hi": 25000.0,
+        "exact": 5120.0,
+        "raw": "1w~2.5w 5,120"
+      },
+      "video_sales": {
+        "range_lo": null,
+        "range_hi": null,
+        "exact": 0.0,
+        "raw": "0"
+      },
+      "card_sales": {
+        "range_lo": null,
+        "range_hi": null,
+        "exact": 0.0,
+        "raw": "0"
+      },
+      "blogger_cnt": {
+        "range_lo": null,
+        "range_hi": null,
+        "exact": 2.0,
+        "raw": "2"
+      },
+      "aweme_cnt": {
+        "range_lo": null,
+        "range_hi": null,
+        "exact": 0.0,
+        "raw": "0"
+      },
+      "trend30_raw": "",
+      "_page": 1
+    },
+    {
+      "product_raw": "【数量加到6到手6瓶19·9】富铁软糖六重铁女性莓果荔枝味官方正品P1",
+      "product_name": "【数量加到6到手6瓶19·9】富铁软糖六重铁女性莓果荔枝味官方正品P1",
+      "commission_raw": "5.00%",
+      "commission_rate": 5.0,
+      "sales": {
+        "range_lo": 10000.0,
+        "range_hi": 25000.0,
+        "exact": 5064.0,
+        "raw": "1w~2.5w 5,064"
+      },
+      "live_sales": {
+        "range_lo": 10000.0,
+        "range_hi": 25000.0,
+        "exact": 5052.0,
+        "raw": "1w~2.5w 5,052"
+      },
+      "video_sales": {
+        "range_lo": 0.0,
+        "range_hi": 250.0,
+        "exact": 23.5,
+        "raw": "0~250 23.5"
+      },
+      "card_sales": {
+        "range_lo": null,
+        "range_hi": null,
+        "exact": 0.0,
+        "raw": "0"
+      },
+      "blogger_cnt": {
+        "range_lo": null,
+        "range_hi": null,
+        "exact": 26.0,
+        "raw": "26"
+      },
+      "aweme_cnt": {
+        "range_lo": null,
+        "range_hi": null,
+        "exact": 23.0,
+        "raw": "23"
+      },
+      "trend30_raw": "",
+      "_page": 1
+    },
+    {
+      "product_raw": "周年庆全新升级凯绚多肽沙发自来卷蛋白矫正修护干枯毛躁受损发质 改善毛躁 染烫受损护理 柔顺",
+      "product_name": "周年庆全新升级凯绚多肽沙发自来卷蛋白矫正修护干枯毛躁受损发质 改善毛躁 染烫受损护理 柔顺",
+      "commission_raw": "50.00%",
+      "commission_rate": 50.0,
+      "sales": {
+        "range_lo": 10000.0,
+        "range_hi": 25000.0,
+        "exact": 5056.0,
+        "raw": "1w~2.5w 5,056"
+      },
+      "live_sales": {
+        "range_lo": 10000.0,
+        "range_hi": 25000.0,
+        "exact": 5050.0,
+        "raw": "1w~2.5w 5,050"
+      },
+      "video_sales": {
+        "range_lo": 0.0,
+        "range_hi": 250.0,
+        "exact": 11.5,
+        "raw": "0~250 11.5"
+      },
+      "card_sales": {
+        "range_lo": null,
+        "range_hi": null,
+        "exact": 0.0,
+        "raw": "0"
+      },
+      "blogger_cnt": {
+        "range_lo": null,
+        "range_hi": null,
+        "exact": 24.0,
+        "raw": "24"
+      },
+      "aweme_cnt": {
+        "range_lo": null,
+        "range_hi": null,
+        "exact": 11.0,
+        "raw": "11"
+      },
+      "trend30_raw": "",
+      "_page": 1
+    },
+    {
+      "product_raw": "【新疆直发】正宗新疆吐鲁番金色年华秋季哈密瓜甜脆多汁当季水果",
+      "product_name": "【新疆直发】正宗新疆吐鲁番金色年华秋季哈密瓜甜脆多汁当季水果",
+      "commission_raw": "0.00%",
+      "commission_rate": 0.0,
+      "sales": {
+        "range_lo": 10000.0,
+        "range_hi": 25000.0,
+        "exact": 5042.0,
+        "raw": "1w~2.5w 5,042"
+      },
+      "live_sales": {
+        "range_lo": 10000.0,
+        "range_hi": 25000.0,
+        "exact": 5042.0,
+        "raw": "1w~2.5w 5,042"
+      },
+      "video_sales": {
+        "range_lo": null,
+        "range_hi": null,
+        "exact": 0.0,
+        "raw": "0"
+      },
+      "card_sales": {
+        "range_lo": null,
+        "range_hi": null,
+        "exact": 0.0,
+        "raw": "0"
+      },
+      "blogger_cnt": {
+        "range_lo": null,
+        "range_hi": null,
+        "exact": 10.0,
+        "raw": "10"
+      },
+      "aweme_cnt": {
+        "range_lo": null,
+        "range_hi": null,
+        "exact": 0.0,
+        "raw": "0"
+      },
+      "trend30_raw": "",
+      "_page": 1
+    },
+    {
+      "product_raw": "西域呼唤【奶芙杏】爆款奶芙杏奶香软糯酸甜适中休闲零食居家健康 配料干净 双重体验 奶香软糯",
+      "product_name": "西域呼唤【奶芙杏】爆款奶芙杏奶香软糯酸甜适中休闲零食居家健康 配料干净 双重体验 奶香软糯",
+      "commission_raw": "0.00%",
+      "commission_rate": 0.0,
+      "sales": {
+        "range_lo": 10000.0,
+        "range_hi": 25000.0,
+        "exact": 5032.0,
+        "raw": "1w~2.5w 5,032"
+      },
+      "live_sales": {
+        "range_lo": 10000.0,
+        "range_hi": 25000.0,
+        "exact": 3158.0,
+        "raw": "1w~2.5w 3,158"
+      },
+      "video_sales": {
+        "range_lo": 0.0,
+        "range_hi": 250.0,
+        "exact": 8.2,
+        "raw": "0~250 8.2"
+      },
+      "card_sales": {
+        "range_lo": 5000.0,
+        "range_hi": 10000.0,
+        "exact": 2064.0,
+        "raw": "5000~1w 2,064"
+      },
+      "blogger_cnt": {
+        "range_lo": null,
+        "range_hi": null,
+        "exact": 1.0,
+        "raw": "1"
+      },
+      "aweme_cnt": {
+        "range_lo": null,
+        "range_hi": null,
+        "exact": 3.0,
+        "raw": "3"
+      },
+      "trend30_raw": "",
+      "_page": 1
+    },
+    {
+      "product_raw": "孙尚香三丽鸥珍品无双祈愿10抽【王者荣耀官方】<自动充值>",
+      "product_name": "孙尚香三丽鸥珍品无双祈愿10抽【王者荣耀官方】<自动充值>",
+      "commission_raw": "0.00%",
+      "commission_rate": 0.0,
+      "sales": {
+        "range_lo": 10000.0,
+        "range_hi": 25000.0,
+        "exact": 4972.0,
+        "raw": "1w~2.5w 4,972"
+      },
+      "live_sales": {
+        "range_lo": 10000.0,
+        "range_hi": 25000.0,
+        "exact": 2980.0,
+        "raw": "1w~2.5w 2,980"
+      },
+      "video_sales": {
+        "range_lo": 5000.0,
+        "range_hi": 10000.0,
+        "exact": 2188.0,
+        "raw": "5000~1w 2,188"
+      },
+      "card_sales": {
+        "range_lo": null,
+        "range_hi": null,
+        "exact": 0.0,
+        "raw": "0"
+      },
+      "blogger_cnt": {
+        "range_lo": null,
+        "range_hi": null,
+        "exact": 74.0,
+        "raw": "74"
+      },
+      "aweme_cnt": {
+        "range_lo": null,
+        "range_hi": null,
+        "exact": 70.0,
+        "raw": "70"
+      },
+      "trend30_raw": "",
+      "_page": 1
+    },
+    {
+      "product_raw": "叶黄素花青素蒸汽眼罩热敷缓解眼疲劳多场景学生上班族眼贴",
+      "product_name": "叶黄素花青素蒸汽眼罩热敷缓解眼疲劳多场景学生上班族眼贴",
+      "commission_raw": "蝉选 5% 公开5.00%",
+      "commission_rate": null,
+      "sales": {
+        "range_lo": 10000.0,
+        "range_hi": 25000.0,
+        "exact": 4961.0,
+        "raw": "1w~2.5w 4,961"
+      },
+      "live_sales": {
+        "range_lo": null,
+        "range_hi": null,
+        "exact": 0.0,
+        "raw": "0"
+      },
+      "video_sales": {
+        "range_lo": null,
+        "range_hi": null,
+        "exact": 0.0,
+        "raw": "0"
+      },
+      "card_sales": {
+        "range_lo": 10000.0,
+        "range_hi": 25000.0,
+        "exact": 4961.0,
+        "raw": "1w~2.5w 4,961"
+      },
+      "blogger_cnt": {
+        "range_lo": null,
+        "range_hi": null,
+        "exact": 0.0,
+        "raw": "0"
+      },
+      "aweme_cnt": {
+        "range_lo": null,
+        "range_hi": null,
+        "exact": 0.0,
+        "raw": "0"
+      },
+      "trend30_raw": "",
+      "_page": 1
+    },
+    {
+      "product_raw": "花叶鸟天然椰油皂/老奶奶家用椰子油洗衣皂多功能强力去污",
+      "product_name": "花叶鸟天然椰油皂/老奶奶家用椰子油洗衣皂多功能强力去污",
+      "commission_raw": "相似高佣 15% 公开5.00%",
+      "commission_rate": null,
+      "sales": {
+        "range_lo": 10000.0,
+        "range_hi": 25000.0,
+        "exact": 4829.0,
+        "raw": "1w~2.5w 4,829"
+      },
+      "live_sales": {
+        "range_lo": 10000.0,
+        "range_hi": 25000.0,
+        "exact": 4829.0,
+        "raw": "1w~2.5w 4,829"
+      },
+      "video_sales": {
+        "range_lo": null,
+        "range_hi": null,
+        "exact": 0.0,
+        "raw": "0"
+      },
+      "card_sales": {
+        "range_lo": null,
+        "range_hi": null,
+        "exact": 0.0,
+        "raw": "0"
+      },
+      "blogger_cnt": {
+        "range_lo": null,
+        "range_hi": null,
+        "exact": 1.0,
+        "raw": "1"
+      },
+      "aweme_cnt": {
+        "range_lo": null,
+        "range_hi": null,
+        "exact": 0.0,
+        "raw": "0"
+      },
+      "trend30_raw": "",
+      "_page": 1
+    },
+    {
+      "product_raw": "【六百万销量】正宗云南小黄姜老姜月子姜整箱净重1斤起包邮无硫熏",
+      "product_name": "【六百万销量】正宗云南小黄姜老姜月子姜整箱净重1斤起包邮无硫熏",
+      "commission_raw": "相似高佣 13% 公开13.00%",
+      "commission_rate": null,
+      "sales": {
+        "range_lo": 10000.0,
+        "range_hi": 25000.0,
+        "exact": 4758.0,
+        "raw": "1w~2.5w 4,758"
+      },
+      "live_sales": {
+        "range_lo": 10000.0,
+        "range_hi": 25000.0,
+        "exact": 4320.0,
+        "raw": "1w~2.5w 4,320"
+      },
+      "video_sales": {
+        "range_lo": 1000.0,
+        "range_hi": 2500.0,
+        "exact": 366.6,
+        "raw": "1000~2500 366.6"
+      },
+      "card_sales": {
+        "range_lo": 1000.0,
+        "range_hi": 2500.0,
+        "exact": 280.1,
+        "raw": "1000~2500 280.1"
+      },
+      "blogger_cnt": {
+        "range_lo": null,
+        "range_hi": null,
+        "exact": 197.0,
+        "raw": "197"
+      },
+      "aweme_cnt": {
+        "range_lo": null,
+        "range_hi": null,
+        "exact": 167.0,
+        "raw": "167"
+      },
+      "trend30_raw": "",
+      "_page": 1
+    },
+    {
+      "product_raw": "HYGIEINICS香氛衣物柔顺剂持久留香防静电护理衣物持久留香便携",
+      "product_name": "HYGIEINICS香氛衣物柔顺剂持久留香防静电护理衣物持久留香便携",
+      "commission_raw": "蝉选 13% 公开11.00%",
+      "commission_rate": null,
+      "sales": {
+        "range_lo": 10000.0,
+        "range_hi": 25000.0,
+        "exact": 4735.0,
+        "raw": "1w~2.5w 4,735"
+      },
+      "live_sales": {
+        "range_lo": 1000.0,
+        "range_hi": 2500.0,
+        "exact": 370.9,
+        "raw": "1000~2500 370.9"
+      },
+      "video_sales": {
+        "range_lo": 10000.0,
+        "range_hi": 25000.0,
+        "exact": 2493.0,
+        "raw": "1w~2.5w 2,493"
+      },
+      "card_sales": {
+        "range_lo": 5000.0,
+        "range_hi": 10000.0,
+        "exact": 2116.0,
+        "raw": "5000~1w 2,116"
+      },
+      "blogger_cnt": {
+        "range_lo": null,
+        "range_hi": null,
+        "exact": 52.0,
+        "raw": "52"
+      },
+      "aweme_cnt": {
+        "range_lo": null,
+        "range_hi": null,
+        "exact": 170.0,
+        "raw": "170"
+      },
+      "trend30_raw": "",
+      "_page": 1
+    },
+    {
+      "product_raw": "【露思同款】LeTea乐品乐茶冷泡茶高端原叶袋泡茶包茉莉花茶叶饮料 零香精色素 高端原叶 冷泡",
+      "product_name": "【露思同款】LeTea乐品乐茶冷泡茶高端原叶袋泡茶包茉莉花茶叶饮料 零香精色素 高端原叶 冷泡",
+      "commission_raw": "相似高佣 12% 公开1.00%",
+      "commission_rate": null,
+      "sales": {
+        "range_lo": 10000.0,
+        "range_hi": 25000.0,
+        "exact": 4728.0,
+        "raw": "1w~2.5w 4,728"
+      },
+      "live_sales": {
+        "range_lo": 10000.0,
+        "range_hi": 25000.0,
+        "exact": 4148.0,
+        "raw": "1w~2.5w 4,148"
+      },
+      "video_sales": {
+        "range_lo": 1000.0,
+        "range_hi": 2500.0,
+        "exact": 392.6,
+        "raw": "1000~2500 392.6"
+      },
+      "card_sales": {
+        "range_lo": 1000.0,
+        "range_hi": 2500.0,
+        "exact": 450.3,
+        "raw": "1000~2500 450.3"
+      },
+      "blogger_cnt": {
+        "range_lo": null,
+        "range_hi": null,
+        "exact": 9.0,
+        "raw": "9"
+      },
+      "aweme_cnt": {
+        "range_lo": null,
+        "range_hi": null,
+        "exact": 16.0,
+        "raw": "16"
+      },
+      "trend30_raw": "",
+      "_page": 1
+    },
+    {
+      "product_raw": "【数量+到6下单】元气口袋纯梨膏无添加鲜梨独立包装泡水喝纯砀山梨 方便随享 无添加 四季常备",
+      "product_name": "【数量+到6下单】元气口袋纯梨膏无添加鲜梨独立包装泡水喝纯砀山梨 方便随享 无添加 四季常备",
+      "commission_raw": "蝉选 5% 公开5.00%",
+      "commission_rate": null,
+      "sales": {
+        "range_lo": 10000.0,
+        "range_hi": 25000.0,
+        "exact": 4691.0,
+        "raw": "1w~2.5w 4,691"
+      },
+      "live_sales": {
+        "range_lo": 10000.0,
+        "range_hi": 25000.0,
+        "exact": 2462.0,
+        "raw": "1w~2.5w 2,462"
+      },
+      "video_sales": {
+        "range_lo": 5000.0,
+        "range_hi": 10000.0,
+        "exact": 1384.0,
+        "raw": "5000~1w 1,384"
+      },
+      "card_sales": {
+        "range_lo": 2500.0,
+        "range_hi": 5000.0,
+        "exact": 1210.0,
+        "raw": "2500~5000 1,210"
+      },
+      "blogger_cnt": {
+        "range_lo": null,
+        "range_hi": null,
+        "exact": 57.0,
+        "raw": "57"
+      },
+      "aweme_cnt": {
+        "range_lo": null,
+        "range_hi": null,
+        "exact": 63.0,
+        "raw": "63"
+      },
+      "trend30_raw": "",
+      "_page": 1
+    },
+    {
+      "product_raw": "【徐璐同款】RNW抛光洗面奶 抛光提亮 卸妆去黑头控油温和不刺激",
+      "product_name": "【徐璐同款】RNW抛光洗面奶 抛光提亮 卸妆去黑头控油温和不刺激",
+      "commission_raw": "0.00%",
+      "commission_rate": 0.0,
+      "sales": {
+        "range_lo": 10000.0,
+        "range_hi": 25000.0,
+        "exact": 4688.0,
+        "raw": "1w~2.5w 4,688"
+      },
+      "live_sales": {
+        "range_lo": null,
+        "range_hi": null,
+        "exact": 0.0,
+        "raw": "0"
+      },
+      "video_sales": {
+        "range_lo": null,
+        "range_hi": null,
+        "exact": 0.0,
+        "raw": "0"
+      },
+      "card_sales": {
+        "range_lo": 10000.0,
+        "range_hi": 25000.0,
+        "exact": 4688.0,
+        "raw": "1w~2.5w 4,688"
+      },
+      "blogger_cnt": {
+        "range_lo": null,
+        "range_hi": null,
+        "exact": 0.0,
+        "raw": "0"
+      },
+      "aweme_cnt": {
+        "range_lo": null,
+        "range_hi": null,
+        "exact": 0.0,
+        "raw": "0"
+      },
+      "trend30_raw": "",
+      "_page": 1
+    },
+    {
+      "product_raw": "【数量+4到手19·9】富铁软糖好吃糖果六重铁女性莓果荔枝味官方正品 0添加蔗糖 6重富铁 无铁腥味",
+      "product_name": "【数量+4到手19·9】富铁软糖好吃糖果六重铁女性莓果荔枝味官方正品 0添加蔗糖 6重富铁 无铁腥味",
+      "commission_raw": "蝉选 35% 公开35.00%",
+      "commission_rate": null,
+      "sales": {
+        "range_lo": 10000.0,
+        "range_hi": 25000.0,
+        "exact": 4687.0,
+        "raw": "1w~2.5w 4,687"
+      },
+      "live_sales": {
+        "range_lo": 5000.0,
+        "range_hi": 10000.0,
+        "exact": 1567.0,
+        "raw": "5000~1w 1,567"
+      },
+      "video_sales": {
+        "range_lo": 2500.0,
+        "range_hi": 5000.0,
+        "exact": 974.7,
+        "raw": "2500~5000 974.7"
+      },
+      "card_sales": {
+        "range_lo": 10000.0,
+        "range_hi": 25000.0,
+        "exact": 2476.0,
+        "raw": "1w~2.5w 2,476"
+      },
+      "blogger_cnt": {
+        "range_lo": null,
+        "range_hi": null,
+        "exact": 110.0,
+        "raw": "110"
+      },
+      "aweme_cnt": {
+        "range_lo": null,
+        "range_hi": null,
+        "exact": 111.0,
+        "raw": "111"
+      },
+      "trend30_raw": "",
+      "_page": 1
+    },
+    {
+      "product_raw": "比比赞'随心搭'面包任选5箱组合吐司营养健康早餐糕点心开学季ZB 早餐 下午茶 营养健康",
+      "product_name": "比比赞'随心搭'面包任选5箱组合吐司营养健康早餐糕点心开学季ZB 早餐 下午茶 营养健康",
+      "commission_raw": "蝉选 15% 公开5.00%",
+      "commission_rate": null,
+      "sales": {
+        "range_lo": 10000.0,
+        "range_hi": 25000.0,
+        "exact": 4645.0,
+        "raw": "1w~2.5w 4,645"
+      },
+      "live_sales": {
+        "range_lo": 10000.0,
+        "range_hi": 25000.0,
+        "exact": 4587.0,
+        "raw": "1w~2.5w 4,587"
+      },
+      "video_sales": {
+        "range_lo": 250.0,
+        "range_hi": 500.0,
+        "exact": 98.6,
+        "raw": "250~500 98.6"
+      },
+      "card_sales": {
+        "range_lo": null,
+        "range_hi": null,
+        "exact": 0.0,
+        "raw": "0"
+      },
+      "blogger_cnt": {
+        "range_lo": null,
+        "range_hi": null,
+        "exact": 65.0,
+        "raw": "65"
+      },
+      "aweme_cnt": {
+        "range_lo": null,
+        "range_hi": null,
+        "exact": 31.0,
+        "raw": "31"
+      },
+      "trend30_raw": "",
+      "_page": 1
+    },
+    {
+      "product_raw": "活力28四季繁花洗衣液除菌除螨花香留香持久家用深层去污无荧光剂",
+      "product_name": "活力28四季繁花洗衣液除菌除螨花香留香持久家用深层去污无荧光剂",
+      "commission_raw": "蝉选 10% 公开9.00%",
+      "commission_rate": null,
+      "sales": {
+        "range_lo": 10000.0,
+        "range_hi": 25000.0,
+        "exact": 4610.0,
+        "raw": "1w~2.5w 4,610"
+      },
+      "live_sales": {
+        "range_lo": 10000.0,
+        "range_hi": 25000.0,
+        "exact": 2867.0,
+        "raw": "1w~2.5w 2,867"
+      },
+      "video_sales": {
+        "range_lo": 1000.0,
+        "range_hi": 2500.0,
+        "exact": 480.5,
+        "raw": "1000~2500 480.5"
+      },
+      "card_sales": {
+        "range_lo": 5000.0,
+        "range_hi": 10000.0,
+        "exact": 1537.0,
+        "raw": "5000~1w 1,537"
+      },
+      "blogger_cnt": {
+        "range_lo": null,
+        "range_hi": null,
+        "exact": 422.0,
+        "raw": "422"
+      },
+      "aweme_cnt": {
+        "range_lo": null,
+        "range_hi": null,
+        "exact": 214.0,
+        "raw": "214"
+      },
+      "trend30_raw": "",
+      "_page": 1
+    },
+    {
+      "product_raw": "【顺丰/京东】正宗陕西周至翠香猕猴桃奇异果当季新鲜水果香甜多汁A",
+      "product_name": "【顺丰/京东】正宗陕西周至翠香猕猴桃奇异果当季新鲜水果香甜多汁A",
+      "commission_raw": "相似高佣 24.5% 公开10.00%",
+      "commission_rate": null,
+      "sales": {
+        "range_lo": 10000.0,
+        "range_hi": 25000.0,
+        "exact": 4599.0,
+        "raw": "1w~2.5w 4,599"
+      },
+      "live_sales": {
+        "range_lo": 10000.0,
+        "range_hi": 25000.0,
+        "exact": 3702.0,
+        "raw": "1w~2.5w 3,702"
+      },
+      "video_sales": {
+        "range_lo": 2500.0,
+        "range_hi": 5000.0,
+        "exact": 1016.0,
+        "raw": "2500~5000 1,016"
+      },
+      "card_sales": {
+        "range_lo": null,
+        "range_hi": null,
+        "exact": 0.0,
+        "raw": "0"
+      },
+      "blogger_cnt": {
+        "range_lo": null,
+        "range_hi": null,
+        "exact": 63.0,
+        "raw": "63"
+      },
+      "aweme_cnt": {
+        "range_lo": null,
+        "range_hi": null,
+        "exact": 46.0,
+        "raw": "46"
+      },
+      "trend30_raw": "",
+      "_page": 1
+    },
+    {
+      "product_raw": "致奇（送辅助液）明星同款叶黄素艾草蒸汽眼罩热敷缓解眼部疲劳眼贴",
+      "product_name": "致奇（送辅助液）明星同款叶黄素艾草蒸汽眼罩热敷缓解眼部疲劳眼贴",
+      "commission_raw": "蝉选 30% 公开5.00%",
+      "commission_rate": null,
+      "sales": {
+        "range_lo": 10000.0,
+        "range_hi": 25000.0,
+        "exact": 4599.0,
+        "raw": "1w~2.5w 4,599"
+      },
+      "live_sales": {
+        "range_lo": 10000.0,
+        "range_hi": 25000.0,
+        "exact": 4241.0,
+        "raw": "1w~2.5w 4,241"
+      },
+      "video_sales": {
+        "range_lo": 0.0,
+        "range_hi": 250.0,
+        "exact": 3.5,
+        "raw": "0~250 3.5"
+      },
+      "card_sales": {
+        "range_lo": 1000.0,
+        "range_hi": 2500.0,
+        "exact": 511.5,
+        "raw": "1000~2500 511.5"
+      },
+      "blogger_cnt": {
+        "range_lo": null,
+        "range_hi": null,
+        "exact": 29.0,
+        "raw": "29"
+      },
+      "aweme_cnt": {
+        "range_lo": null,
+        "range_hi": null,
+        "exact": 7.0,
+        "raw": "7"
+      },
+      "trend30_raw": "",
+      "_page": 1
+    },
+    {
+      "product_raw": "庞泉幻影酒清香型白酒纯粮食固态法白酒光瓶口粮品鉴酒42度248mL 自饮 纯粮酿造 还原本味",
+      "product_name": "庞泉幻影酒清香型白酒纯粮食固态法白酒光瓶口粮品鉴酒42度248mL 自饮 纯粮酿造 还原本味",
+      "commission_raw": "20.00%",
+      "commission_rate": 20.0,
+      "sales": {
+        "range_lo": 10000.0,
+        "range_hi": 25000.0,
+        "exact": 4539.0,
+        "raw": "1w~2.5w 4,539"
+      },
+      "live_sales": {
+        "range_lo": 10000.0,
+        "range_hi": 25000.0,
+        "exact": 4521.0,
+        "raw": "1w~2.5w 4,521"
+      },
+      "video_sales": {
+        "range_lo": 0.0,
+        "range_hi": 250.0,
+        "exact": 33.3,
+        "raw": "0~250 33.3"
+      },
+      "card_sales": {
+        "range_lo": null,
+        "range_hi": null,
+        "exact": 0.0,
+        "raw": "0"
+      },
+      "blogger_cnt": {
+        "range_lo": null,
+        "range_hi": null,
+        "exact": 8.0,
+        "raw": "8"
+      },
+      "aweme_cnt": {
+        "range_lo": null,
+        "range_hi": null,
+        "exact": 24.0,
+        "raw": "24"
+      },
+      "trend30_raw": "",
+      "_page": 1
+    },
+    {
+      "product_raw": "G【整箱30颗】火晶柿子软糯多汁爆甜流心放软食用山西",
+      "product_name": "G【整箱30颗】火晶柿子软糯多汁爆甜流心放软食用山西",
+      "commission_raw": "5.00%",
+      "commission_rate": 5.0,
+      "sales": {
+        "range_lo": 10000.0,
+        "range_hi": 25000.0,
+        "exact": 4536.0,
+        "raw": "1w~2.5w 4,536"
+      },
+      "live_sales": {
+        "range_lo": 10000.0,
+        "range_hi": 25000.0,
+        "exact": 4536.0,
+        "raw": "1w~2.5w 4,536"
+      },
+      "video_sales": {
+        "range_lo": null,
+        "range_hi": null,
+        "exact": 0.0,
+        "raw": "0"
+      },
+      "card_sales": {
+        "range_lo": null,
+        "range_hi": null,
+        "exact": 0.0,
+        "raw": "0"
+      },
+      "blogger_cnt": {
+        "range_lo": null,
+        "range_hi": null,
+        "exact": 2.0,
+        "raw": "2"
+      },
+      "aweme_cnt": {
+        "range_lo": null,
+        "range_hi": null,
+        "exact": 0.0,
+        "raw": "0"
+      },
+      "trend30_raw": "",
+      "_page": 1
+    },
+    {
+      "product_raw": "【沙特专享】RB沉香精华露",
+      "product_name": "【沙特专享】RB沉香精华露",
+      "commission_raw": "5.00%",
+      "commission_rate": 5.0,
+      "sales": {
+        "range_lo": 10000.0,
+        "range_hi": 25000.0,
+        "exact": 4474.0,
+        "raw": "1w~2.5w 4,474"
+      },
+      "live_sales": {
+        "range_lo": 10000.0,
+        "range_hi": 25000.0,
+        "exact": 4474.0,
+        "raw": "1w~2.5w 4,474"
+      },
+      "video_sales": {
+        "range_lo": null,
+        "range_hi": null,
+        "exact": 0.0,
+        "raw": "0"
+      },
+      "card_sales": {
+        "range_lo": null,
+        "range_hi": null,
+        "exact": 0.0,
+        "raw": "0"
+      },
+      "blogger_cnt": {
+        "range_lo": null,
+        "range_hi": null,
+        "exact": 2.0,
+        "raw": "2"
+      },
+      "aweme_cnt": {
+        "range_lo": null,
+        "range_hi": null,
+        "exact": 0.0,
+        "raw": "0"
+      },
+      "trend30_raw": "",
+      "_page": 1
+    },
+    {
+      "product_raw": "【沙特专享】RB沉香精华露（ys）",
+      "product_name": "【沙特专享】RB沉香精华露（ys）",
+      "commission_raw": "5.00%",
+      "commission_rate": 5.0,
+      "sales": {
+        "range_lo": 10000.0,
+        "range_hi": 25000.0,
+        "exact": 4474.0,
+        "raw": "1w~2.5w 4,474"
+      },
+      "live_sales": {
+        "range_lo": 10000.0,
+        "range_hi": 25000.0,
+        "exact": 4474.0,
+        "raw": "1w~2.5w 4,474"
+      },
+      "video_sales": {
+        "range_lo": null,
+        "range_hi": null,
+        "exact": 0.0,
+        "raw": "0"
+      },
+      "card_sales": {
+        "range_lo": null,
+        "range_hi": null,
+        "exact": 0.0,
+        "raw": "0"
+      },
+      "blogger_cnt": {
+        "range_lo": null,
+        "range_hi": null,
+        "exact": 3.0,
+        "raw": "3"
+      },
+      "aweme_cnt": {
+        "range_lo": null,
+        "range_hi": null,
+        "exact": 0.0,
+        "raw": "0"
+      },
+      "trend30_raw": "",
+      "_page": 1
+    },
+    {
+      "product_raw": "【运费险】美拉德棕咖色弯刀女2026秋冬新款高腰宽松显瘦休闲阔腿裤 休闲风 宽松型 显瘦",
+      "product_name": "【运费险】美拉德棕咖色弯刀女2026秋冬新款高腰宽松显瘦休闲阔腿裤 休闲风 宽松型 显瘦",
+      "commission_raw": "5.00%",
+      "commission_rate": 5.0,
+      "sales": {
+        "range_lo": 10000.0,
+        "range_hi": 25000.0,
+        "exact": 4463.0,
+        "raw": "1w~2.5w 4,463"
+      },
+      "live_sales": {
+        "range_lo": 5000.0,
+        "range_hi": 10000.0,
+        "exact": 2319.0,
+        "raw": "5000~1w 2,319"
+      },
+      "video_sales": {
+        "range_lo": 0.0,
+        "range_hi": 250.0,
+        "exact": 65.0,
+        "raw": "0~250 65.0"
+      },
+      "card_sales": {
+        "range_lo": 5000.0,
+        "range_hi": 10000.0,
+        "exact": 2277.0,
+        "raw": "5000~1w 2,277"
+      },
+      "blogger_cnt": {
+        "range_lo": null,
+        "range_hi": null,
+        "exact": 195.0,
+        "raw": "195"
+      },
+      "aweme_cnt": {
+        "range_lo": null,
+        "range_hi": null,
+        "exact": 182.0,
+        "raw": "182"
+      },
+      "trend30_raw": "",
+      "_page": 1
+    },
+    {
+      "product_raw": "【源头厂家】红旗摆件中控台办公室会议桌玄关红旗装饰品高端小红旗",
+      "product_name": "【源头厂家】红旗摆件中控台办公室会议桌玄关红旗装饰品高端小红旗",
+      "commission_raw": "18.00%",
+      "commission_rate": 18.0,
+      "sales": {
+        "range_lo": 10000.0,
+        "range_hi": 25000.0,
+        "exact": 4461.0,
+        "raw": "1w~2.5w 4,461"
+      },
+      "live_sales": {
+        "range_lo": 5000.0,
+        "range_hi": 10000.0,
+        "exact": 1930.0,
+        "raw": "5000~1w 1,930"
+      },
+      "video_sales": {
+        "range_lo": 10000.0,
+        "range_hi": 25000.0,
+        "exact": 2655.0,
+        "raw": "1w~2.5w 2,655"
+      },
+      "card_sales": {
+        "range_lo": null,
+        "range_hi": null,
+        "exact": 0.0,
+        "raw": "0"
+      },
+      "blogger_cnt": {
+        "range_lo": null,
+        "range_hi": null,
+        "exact": 238.0,
+        "raw": "238"
+      },
+      "aweme_cnt": {
+        "range_lo": null,
+        "range_hi": null,
+        "exact": 475.0,
+        "raw": "475"
+      },
+      "trend30_raw": "",
+      "_page": 1
+    },
+    {
+      "product_raw": "【韩国首发 咖啡因眼膜】【拍5发6片】冰美式咖啡因黑蝶眼膜 保湿 紧致 咖啡因",
+      "product_name": "【韩国首发 咖啡因眼膜】【拍5发6片】冰美式咖啡因黑蝶眼膜 保湿 紧致 咖啡因",
+      "commission_raw": "0.00%",
+      "commission_rate": 0.0,
+      "sales": {
+        "range_lo": 10000.0,
+        "range_hi": 25000.0,
+        "exact": 4451.0,
+        "raw": "1w~2.5w 4,451"
+      },
+      "live_sales": {
+        "range_lo": 10000.0,
+        "range_hi": 25000.0,
+        "exact": 4451.0,
+        "raw": "1w~2.5w 4,451"
+      },
+      "video_sales": {
+        "range_lo": null,
+        "range_hi": null,
+        "exact": 0.0,
+        "raw": "0"
+      },
+      "card_sales": {
+        "range_lo": null,
+        "range_hi": null,
+        "exact": 0.0,
+        "raw": "0"
+      },
+      "blogger_cnt": {
+        "range_lo": null,
+        "range_hi": null,
+        "exact": 1.0,
+        "raw": "1"
+      },
+      "aweme_cnt": {
+        "range_lo": null,
+        "range_hi": null,
+        "exact": 0.0,
+        "raw": "0"
+      },
+      "trend30_raw": "",
+      "_page": 1
+    }
+  ],
+  "note": "销售额列需在页面「列表配置」勾选后才会出现在 headers 里；区间列封顶 100w+ 不可聚合。"
+}
