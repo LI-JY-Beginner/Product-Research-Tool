@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>美妆选品数据看板 · v2.0 真实数据</title>
+<link rel="stylesheet" href="assets/main.css">
+<style>
+/* 真实商品图覆盖占位样式 */
+.prod-img.real{padding:0;overflow:hidden;background:#fff}
+.prod-img.real img{width:100%;height:100%;object-fit:cover;display:block}
+/* 筛选选中 pill 容器 */
+.casc-box .sel-pill{display:inline-flex;align-items:center;gap:3px;background:var(--pm-accent-soft);color:var(--pm-accent);border-radius:5px;padding:1px 7px;font-size:11px;font-weight:600;margin-right:4px}
+.casc-box .sel-pill i{font-style:normal;cursor:pointer;font-family:var(--mono)}
+/* 成分弹层 */
+.ing-modal-list{max-height:300px;overflow-y:auto}
+/* LLM 结论 markdown 简渲 */
+.llm-body{font-size:13px;line-height:1.8;color:var(--ink-1)}
+.llm-body b{color:var(--pm-accent-deep)}
+.llm-body p{margin:6px 0}
+/* 待积累 */
+.tag-pending{background:#fdf6e7;color:var(--warn);border:1px dashed #e3c98a}
+</style>
+</head>
+<body data-mode="dense">
+
+<!-- ================= 顶栏 ================= -->
+<header class="topbar">
+  <div class="topbar-inner">
+    <div class="brand"><b>美妆选品数据看板</b><span class="proto">v2.0 真实数据</span></div>
+    <nav class="nav" id="mainNav">
+      <button class="nav-item" data-nav="global" data-target="global-growth"><span class="idx">①</span>全球数据看板</button>
+      <button class="nav-item" data-nav="rank" data-target="product-rank"><span class="idx">②</span>商品榜</button>
+      <button class="nav-item" data-nav="lib" data-target="ingredient-lib"><span class="idx">③</span>成分库</button>
+      <button class="nav-item" data-nav="strategy" data-target="strategy-cards"><span class="idx">④</span>初始策略台</button>
+      <div class="nav-more" id="navMore">
+        <button class="nav-item" id="navMoreBtn" type="button">更多<span class="caret">▾</span></button>
+        <div class="nav-more-menu">
+          <button class="nav-more-item" data-nav="competitor" data-target="competitor"><span class="idx">⑤</span>竞品分析</button>
+          <button class="nav-more-item" data-nav="panalysis" data-target="product-analysis"><span class="idx">⑥</span>产品分析</button>
+          <button class="nav-more-item" data-nav="pdesign" data-target="product-design"><span class="idx">⑦</span>产品设计</button>
+        </div>
+      </div>
+    </nav>
+    <div class="data-info" id="dataInfo">
+      <button class="data-info-btn" type="button" title="数据说明">i</button>
+      <div class="data-info-pop" id="dataInfoPop">加载中…</div>
+    </div>
+  </div>
+  <div class="subtabs" id="globalSubtabs">
+    <button class="subtab" data-target="global-growth">增速产品看板<span class="fresh">每日</span></button>
+    <button class="subtab" data-target="global-category-trend">类目增长趋势<span class="fresh">7天</span></button>
+    <button class="subtab" data-target="global-ingredient-rank">成分增长榜<span class="fresh">7天</span></button>
+  </div>
+</header>
+
+<main class="page">
+
+<!-- ================= ① 增速产品看板 ================= -->
+<section class="view" id="global-growth">
+  <div class="page-head">
+    <div>
+      <div class="page-title">增速产品看板</div>
+      <div class="page-sub" id="gg-sub">数据周期 <b id="gg-window">—</b> · 每日刷新 · 来源：抖音罗盘（实测）· 金额均为支付金额区间</div>
+    </div>
+  </div>
+  <div class="filters" data-board="growth"></div>
+  <div class="hero" id="ggHero" style="display:none">
+    <div class="h-left">
+      <div class="h-kicker">本期结论 · 7 天窗口</div>
+      <div class="h-name" id="ggHeroName">—</div>
+      <div class="h-sub" id="ggHeroSub">—</div>
+    </div>
+    <div class="h-stats">
+      <div class="h-stat"><div class="s-l">GMV 增速（环比）</div><div class="s-v up" id="ggHeroGmv">—</div></div>
+      <div class="h-stat"><div class="s-l">销售国家</div><div class="s-v" id="ggHeroCountry">—</div></div>
+      <div class="h-stat"><div class="s-l">销售价格</div><div class="s-v" id="ggHeroPrice">—</div></div>
+    </div>
+  </div>
+  <div id="ggGroups"></div>
+</section>
+
+<!-- ================= ① 类目增长趋势 ================= -->
+<section class="view" id="global-category-trend">
+  <div class="page-head">
+    <div>
+      <div class="page-title">类目增长趋势</div>
+      <div class="page-sub">近 7 天口径 · 每 7 天刷新 · 来源：抖音罗盘（实测）</div>
+    </div>
+  </div>
+  <div class="filters" data-board="trend"></div>
+  <div class="topcat" id="trendTop" style="display:none">
+    <div class="tc-chart">
+      <div class="tc-kicker">增速最快的类目 <span class="tag tag-real">实测</span></div>
+      <div class="tc-name" id="trendFastName">—</div>
+      <svg width="100%" height="120" viewBox="0 0 560 120" preserveAspectRatio="none" style="display:block;margin-top:6px" id="trendSpark"></svg>
+      <div class="t-sub" style="margin-top:4px">折线为多期快照环比走势；仅 1 期快照时展示当前点</div>
+    </div>
+    <div class="tc-now">
+      <div class="tc-kicker">当前口径值</div>
+      <div class="n-l" style="margin-top:10px">现在的增速（环比）</div>
+      <div class="n-v up" id="trendFastMom">—</div>
+      <div class="n-l" style="margin-top:12px">支付金额区间</div>
+      <div class="n-amt" id="trendFastAmt">—</div>
+    </div>
+  </div>
+  <div class="panel" id="pnl-trend">
+    <div class="panel-head" onclick="togglePanel('pnl-trend')">
+      <span class="caret">▼</span><h3>类目趋势表（三级类目级）</h3>
+      <span class="p-meta">点开三级类目行展开四级 · 「看商品榜」跳转预选类目</span>
+    </div>
+    <div class="panel-body" style="padding:0">
+      <table class="tbl">
+        <thead><tr>
+          <th>类目（三级）</th><th>层级</th>
+          <th class="num">支付金额区间</th>
+          <th class="num">环比增速</th>
+          <th>占比</th><th>操作</th>
+        </tr></thead>
+        <tbody id="trendTbody"></tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ================= ① 成分增长榜 ================= -->
+<section class="view" id="global-ingredient-rank">
+  <div class="page-head">
+    <div>
+      <div class="page-title">成分增长榜</div>
+      <div class="page-sub">每 7 天刷新 · 来源：商品标题成分解析（实测）· 环比 = 关联商品数变化</div>
+    </div>
+  </div>
+  <div class="filters" data-board="ingredient"></div>
+  <div class="kpis" style="grid-template-columns:repeat(3,1fr)" id="ingKpis"></div>
+  <div class="panel">
+    <div class="panel-head"><span class="caret">▼</span><h3>成分榜 TOP30</h3>
+      <span class="p-meta">成分自身增长率口径 · 点击成分行查看关联商品</span>
+    </div>
+    <div class="panel-body" style="padding:0">
+      <table class="tbl">
+        <thead><tr><th style="width:52px">排名</th><th>成分名</th><th class="num">关联商品数</th><th class="num">占比</th><th class="num">环比增速</th></tr></thead>
+        <tbody id="ingRankBody"></tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ================= ② 商品榜 ================= -->
+<section class="view" id="product-rank">
+  <div class="page-head">
+    <div>
+      <div class="page-title">商品榜</div>
+      <div class="page-sub" id="pr-sub">罗盘商品榜 · 翻页拉满 TOP200/类目 · 点击商品行跳转真实链接</div>
+    </div>
+  </div>
+  <div class="filters" data-board="product"></div>
+  <div class="panel">
+    <div class="panel-body" style="padding:0">
+      <table class="tbl">
+        <thead><tr>
+          <th style="width:64px">名次</th><th>商品</th><th>品牌</th><th>价格带</th>
+          <th class="num">环比增速</th><th>所属类目</th><th class="num">支付金额区间</th>
+        </tr></thead>
+        <tbody id="prBody"></tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ================= ③ 成分库 ================= -->
+<section class="view" id="ingredient-lib">
+  <div class="page-head">
+    <div>
+      <div class="page-title">成分库</div>
+      <div class="page-sub">TOP30 增速 / 热度双榜 · 点击成分查看关联商品与类目层级</div>
+    </div>
+  </div>
+  <div class="filters" data-board="lib"></div>
+  <div class="ptabs" id="libTabs" style="margin-bottom:14px">
+    <button class="on" data-pane="libGrowth">增速 TOP30</button>
+    <button data-pane="libHeat">热度 TOP30</button>
+  </div>
+  <div class="ptab-pane on" id="libGrowth">
+    <div class="panel"><div class="panel-body" style="padding:0">
+      <table class="tbl">
+        <thead><tr><th style="width:52px">名次</th><th>成分</th><th class="num">环比增速</th><th class="num">关联商品数</th><th class="num">占比</th><th style="text-align:center">是否多类目</th></tr></thead>
+        <tbody id="libGrowthBody"></tbody>
+      </table>
+    </div></div>
+  </div>
+  <div class="ptab-pane" id="libHeat">
+    <div class="panel"><div class="panel-body" style="padding:0">
+      <div class="legend" style="padding:10px 14px 0">热度分口径：<b style="color:var(--pm-accent)">热度分 = 关联商品数(0.4) + 销量加权(0.35) + 上榜频次(0.25)</b></div>
+      <table class="tbl">
+        <thead><tr><th style="width:52px">名次</th><th>成分</th><th class="num">热度分</th><th class="num">关联商品数</th><th class="num">上榜频次</th><th style="text-align:center">是否多类目</th></tr></thead>
+        <tbody id="libHeatBody"></tbody>
+      </table>
+    </div></div>
+  </div>
+</section>
+
+<!-- ================= ④ 初始策略台 ================= -->
+<section class="view" id="strategy-cards">
+  <div class="page-head">
+    <div>
+      <div class="page-title">初始策略台</div>
+      <div class="page-sub">筛选类目，系统给出该类目<b>能否进入</b>的四段分析 + 综合研判</div>
+    </div>
+  </div>
+  <div class="filters" data-board="strategy"></div>
+  <div id="strategyBody"></div>
+</section>
+
+<!-- ================= 占位板块 ================= -->
+<section class="view" id="competitor"><div class="empty"><div class="e-icon">⑤</div><h3>竞品分析</h3><p>建设中 · 同事负责</p></div></section>
+<section class="view" id="product-analysis"><div class="empty"><div class="e-icon">⑥</div><h3>产品分析</h3><p>建设中 · 同事负责</p></div></section>
+<section class="view" id="product-design"><div class="empty"><div class="e-icon">⑦</div><h3>产品设计</h3><p>建设中 · 同事负责</p></div></section>
+
+</main>
+
+<!-- 成分关联弹层 -->
+<div class="modal-mask" id="ingModal">
+  <div class="modal" style="width:560px">
+    <div class="modal-head"><b id="ingModalTitle">成分关联</b><button class="modal-close" onclick="closeIngModal()">×</button></div>
+    <div class="modal-body" id="ingModalBody"></div>
+  </div>
+</div>
+
+<footer class="site-footer"><div class="site-footer-inner" id="siteFooter">—</div></footer>
+
+<script src="assets/filter-bar.js"></script>
+<script src="assets/board-growth.js"></script>
+<script src="assets/board-trend.js"></script>
+<script src="assets/board-ingredient.js"></script>
+<script src="assets/board-product.js"></script>
+<script src="assets/board-strategy.js"></script>
+<script src="assets/app.js"></script>
+</body>
+</html>

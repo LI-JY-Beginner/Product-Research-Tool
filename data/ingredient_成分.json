@@ -1,0 +1,47 @@
+{
+  "tab": "成分",
+  "source": "蝉妈妈·美妆属性分析",
+  "count": 5,
+  "rows": [
+    {
+      "amount": "1000w+",
+      "mom": "+4.82%",
+      "name": "烟酰胺",
+      "product_cnt": "215",
+      "rank": "持平",
+      "volume": "100w+"
+    },
+    {
+      "amount": "1000w+",
+      "mom": "+60.47%",
+      "name": "黑参提取物",
+      "product_cnt": "5",
+      "rank": "1",
+      "volume": "5w~10w"
+    },
+    {
+      "amount": "1000w+",
+      "mom": "+221.28%",
+      "name": "玻色因",
+      "product_cnt": "69",
+      "rank": "29",
+      "volume": "50w~100w"
+    },
+    {
+      "amount": "1000w+",
+      "mom": "+58.08%",
+      "name": "角鲨烷",
+      "product_cnt": "55",
+      "rank": "4 7",
+      "volume": "25w~50w"
+    },
+    {
+      "amount": "1000w+",
+      "mom": "+20.94%",
+      "name": "胶原蛋白",
+      "product_cnt": "67",
+      "rank": "5 1",
+      "volume": "25w~50w"
+    }
+  ]
+}

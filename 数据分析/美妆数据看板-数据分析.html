@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>美妆数据看板 · 数据分析报告</title>
+<style>
+  :root{
+    --bg:#0b1020;
+    --bg-2:#10182e;
+    --card:#151f38;
+    --card-2:#1a2542;
+    --line:#263254;
+    --txt:#e6ecf7;
+    --txt-dim:#8b96b5;
+    --accent:#4cc2ff;
+    --accent-2:#7c5cff;
+    --red:#ff5d73;
+    --green:#3ddc97;
+    --amber:#ffb347;
+    --mono:"SF Mono","JetBrains Mono",Menlo,monospace;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:linear-gradient(180deg,#0a0e1c 0%,#0b1020 40%,#0b1020 100%);color:var(--txt);font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Helvetica Neue",Arial,sans-serif;padding:32px 24px;line-height:1.6}
+  .wrap{max-width:1180px;margin:0 auto}
+
+  header.top{margin-bottom:28px}
+  .kicker{font-size:12px;letter-spacing:.18em;color:var(--accent);text-transform:uppercase;font-family:var(--mono)}
+  h1{font-size:30px;font-weight:700;margin:6px 0 4px;background:linear-gradient(90deg,#fff,#a5b8ff);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+  .sub{color:var(--txt-dim);font-size:13px}
+  .sub code{font-family:var(--mono);color:#c9d4f5;background:#0f1730;padding:1px 6px;border-radius:4px;font-size:12px}
+
+  .kpi-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:22px 0 30px}
+  .kpi{background:linear-gradient(180deg,var(--card),var(--card-2));border:1px solid var(--line);border-radius:12px;padding:16px 18px;position:relative;overflow:hidden}
+  .kpi::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:linear-gradient(180deg,var(--accent),var(--accent-2))}
+  .kpi .label{font-size:12px;color:var(--txt-dim);letter-spacing:.05em}
+  .kpi .val{font-size:30px;font-weight:700;font-family:var(--mono);margin-top:4px;color:#fff}
+  .kpi .delta{font-size:11px;margin-top:6px;display:inline-flex;align-items:center;gap:4px;padding:2px 8px;border-radius:999px;background:rgba(76,194,255,.12);color:var(--accent);font-family:var(--mono)}
+  .kpi .delta.up{background:rgba(255,93,115,.14);color:var(--red)}
+  .kpi .delta.flat{background:rgba(139,150,181,.15);color:var(--txt-dim)}
+
+  section.block{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px 24px;margin-bottom:22px}
+  .block h2{font-size:17px;font-weight:600;margin-bottom:4px;display:flex;align-items:center;gap:10px}
+  .block h2 .idx{font-family:var(--mono);font-size:12px;color:var(--accent);background:rgba(76,194,255,.12);padding:2px 8px;border-radius:6px}
+  .block .desc{font-size:12.5px;color:var(--txt-dim);margin-bottom:18px}
+  .src-tag{font-size:10.5px;font-family:var(--mono);padding:2px 8px;border-radius:4px;background:rgba(124,92,255,.15);color:#b7a5ff;margin-left:auto}
+  .src-tag.luopan{background:rgba(76,194,255,.14);color:var(--accent)}
+
+  .two-col{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+
+  table.tbl{width:100%;border-collapse:collapse;font-size:12.5px}
+  table.tbl th{text-align:left;color:var(--txt-dim);font-weight:500;font-size:11.5px;letter-spacing:.05em;padding:8px 10px;border-bottom:1px solid var(--line);text-transform:uppercase;font-family:var(--mono)}
+  table.tbl td{padding:9px 10px;border-bottom:1px solid rgba(38,50,84,.5);vertical-align:middle}
+  table.tbl tr:last-child td{border-bottom:none}
+  table.tbl tr:hover td{background:rgba(76,194,255,.04)}
+  .rank{font-family:var(--mono);color:var(--txt-dim);width:34px}
+  .rank.top3{color:var(--amber);font-weight:700}
+  .pname{max-width:300px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .price{font-family:var(--mono);color:#ffd18a;white-space:nowrap}
+  .gmv{font-family:var(--mono);font-size:11.5px;color:var(--txt-dim)}
+  .leaf{font-size:11px;color:var(--txt-dim);font-family:var(--mono)}
+
+  .bar-row{display:flex;align-items:center;gap:10px;padding:7px 0;font-size:12.5px}
+  .bar-row .name{width:120px;flex-shrink:0;color:#d4ddf2}
+  .bar-row .bar-wrap{flex:1;background:#0e1730;border-radius:6px;height:20px;overflow:hidden;position:relative}
+  .bar-row .bar{height:100%;border-radius:6px;background:linear-gradient(90deg,var(--accent),var(--accent-2));display:flex;align-items:center;justify-content:flex-end;padding-right:8px;font-family:var(--mono);font-size:11px;color:#fff;min-width:32px}
+  .bar-row .bar.red{background:linear-gradient(90deg,#ff5d73,#ff8b5d)}
+  .bar-row .bar.amber{background:linear-gradient(90deg,#ffb347,#ff8b5d)}
+  .bar-row .num{font-family:var(--mono);width:78px;text-align:right;color:#fff;font-weight:600}
+  .bar-row .num.red{color:var(--red)}
+  .bar-row .num.green{color:var(--green)}
+
+  .price-band{display:flex;gap:6px;align-items:flex-end;height:170px;padding:0 4px;margin-top:8px}
+  .pb-col{flex:1;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;gap:6px}
+  .pb-bar{width:100%;border-radius:6px 6px 2px 2px;background:linear-gradient(180deg,var(--accent),var(--accent-2));position:relative;min-height:6px}
+  .pb-bar.b2{background:linear-gradient(180deg,#ff8b5d,#ff5d73)}
+  .pb-lbl{font-size:10.5px;color:var(--txt-dim);font-family:var(--mono);text-align:center;line-height:1.3}
+  .pb-val{font-family:var(--mono);font-size:11px;color:#fff;font-weight:600}
+
+  .insight-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+  .insight{background:linear-gradient(135deg,rgba(76,194,255,.08),rgba(124,92,255,.08));border:1px solid rgba(76,194,255,.25);border-radius:12px;padding:16px 18px}
+  .insight.warn{background:linear-gradient(135deg,rgba(255,93,115,.09),rgba(255,139,93,.08));border-color:rgba(255,93,115,.3)}
+  .insight.amber{background:linear-gradient(135deg,rgba(255,179,71,.09),rgba(255,139,93,.08));border-color:rgba(255,179,71,.3)}
+  .insight .tag{font-size:10.5px;font-family:var(--mono);letter-spacing:.1em;padding:2px 8px;border-radius:4px;background:rgba(76,194,255,.18);color:var(--accent);display:inline-block;margin-bottom:8px}
+  .insight.warn .tag{background:rgba(255,93,115,.2);color:var(--red)}
+  .insight.amber .tag{background:rgba(255,179,71,.2);color:var(--amber)}
+  .insight h3{font-size:15px;font-weight:600;margin-bottom:6px}
+  .insight p{font-size:12.5px;color:#c3cddf;line-height:1.7}
+  .insight .hl{font-family:var(--mono);color:#fff;font-weight:700}
+  .insight .hl.red{color:var(--red)}
+  .insight .hl.amber{color:var(--amber)}
+
+  .action-list{display:flex;flex-direction:column;gap:10px}
+  .action{display:flex;gap:14px;align-items:flex-start;background:#0f1830;border:1px solid var(--line);border-radius:10px;padding:14px 16px}
+  .action .pri{font-family:var(--mono);font-size:11px;font-weight:700;padding:4px 9px;border-radius:6px;flex-shrink:0;margin-top:1px}
+  .action .pri.p0{background:rgba(255,93,115,.2);color:var(--red);border:1px solid rgba(255,93,115,.4)}
+  .action .pri.p1{background:rgba(255,179,71,.18);color:var(--amber);border:1px solid rgba(255,179,71,.35)}
+  .action .pri.p2{background:rgba(76,194,255,.15);color:var(--accent);border:1px solid rgba(76,194,255,.3)}
+  .action .body{flex:1}
+  .action .title{font-size:13.5px;font-weight:600;color:#fff;margin-bottom:3px}
+  .action .why{font-size:12px;color:var(--txt-dim);line-height:1.6}
+  .action .why code{font-family:var(--mono);color:#ffd18a;background:rgba(255,209,138,.1);padding:1px 5px;border-radius:4px;font-size:11px}
+
+  .cred-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;font-size:12.5px}
+  .cred{background:#0f1830;border:1px solid var(--line);border-radius:10px;padding:14px}
+  .cred .src{font-family:var(--mono);font-size:12px;font-weight:600;margin-bottom:6px;display:flex;align-items:center;gap:6px}
+  .cred .dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+  .cred p{color:#c3cddf;font-size:12px;line-height:1.6}
+  .cred .lv{display:inline-block;margin-top:6px;font-size:10.5px;font-family:var(--mono);padding:2px 8px;border-radius:4px}
+
+  footer{margin-top:28px;padding-top:18px;border-top:1px solid var(--line);font-size:11.5px;color:var(--txt-dim);font-family:var(--mono);display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
+
+  @media (max-width:880px){
+    .kpi-grid{grid-template-columns:repeat(2,1fr)}
+    .two-col,.insight-grid,.cred-grid{grid-template-columns:1fr}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="top">
+    <div class="kicker">Beauty Category · Product Selection Intelligence</div>
+    <h1>美妆数据看板 · 数据分析报告</h1>
+    <div class="sub">
+      数据周期 <code>2026/09/18 – 2026/09/24</code> ·
+      数据源：<code>罗盘·增速商品榜</code> / <code>蝉妈妈·成分榜</code> ·
+      生成时间 <code>2026-09-25</code>
+    </div>
+  </header>
+
+  <!-- KPI -->
+  <div class="kpi-grid">
+    <div class="kpi">
+      <div class="label">覆盖类目数</div>
+      <div class="val">2</div>
+      <div class="delta flat">面部洗护 / 眼部护理</div>
+    </div>
+    <div class="kpi">
+      <div class="label">上榜商品数（TOP10×2）</div>
+      <div class="val">20</div>
+      <div class="delta">罗盘·增速榜实测</div>
+    </div>
+    <div class="kpi">
+      <div class="label">监控成分数</div>
+      <div class="val">5</div>
+      <div class="delta">蝉妈妈·美妆属性分析</div>
+    </div>
+    <div class="kpi">
+      <div class="label">数据截止日</div>
+      <div class="val" style="font-size:22px;padding-top:6px">09-24</div>
+      <div class="delta flat">单周快照 · 环比需积累</div>
+    </div>
+  </div>
+
+  <!-- 1. 本期在涨的商品 -->
+  <section class="block">
+    <h2><span class="idx">01</span>本期哪些商品在涨<span class="src-tag luopan">罗盘 · 增速商品榜</span></h2>
+    <div class="desc">取数窗口 2026/09/18–09/24，按增速排序的 TOP10。GMV 字段为罗盘区间值（单位：元），非精确成交额。</div>
+    <div class="two-col">
+      <div>
+        <h3 style="font-size:13px;color:var(--accent);margin-bottom:10px;font-family:var(--mono);letter-spacing:.05em">▍面部洗护 TOP10</h3>
+        <table class="tbl">
+          <thead><tr><th>#</th><th>商品</th><th>价格带</th><th>GMV区间</th></tr></thead>
+          <tbody>
+            <tr><td class="rank top3">1</td><td class="pname" title="【蔡徐坤代言】BUV绿泥洗面奶">BUV绿泥洗面奶（蔡徐坤代言）</td><td class="price">¥99-149</td><td class="gmv">10-25亿</td></tr>
+            <tr><td class="rank top3">2</td><td class="pname" title="【四火姐姐专享】海蓝之谜奇迹晚霜">海蓝之谜奇迹晚霜套装</td><td class="price">¥4385</td><td class="gmv">10-25亿</td></tr>
+            <tr><td class="rank top3">3</td><td class="pname" title="荷诺逆时蕴能胶原面膜">荷诺胶原面膜</td><td class="price">¥2437</td><td class="gmv">10-25亿</td></tr>
+            <tr><td class="rank">4</td><td class="pname" title="【徐艺洋推荐】温博士B5水">温博士B5水（徐艺洋）</td><td class="price">¥49-138</td><td class="gmv">10-25亿</td></tr>
+            <tr><td class="rank">5</td><td class="pname" title="【徐艺洋同款】eiio水光面膜">eiio水光面膜</td><td class="price">¥99</td><td class="gmv">10-25亿</td></tr>
+            <tr><td class="rank">6</td><td class="pname" title="【重磅上新】法国科兰黎永升精华水">科兰黎永升精华水</td><td class="price">¥1680</td><td class="gmv">10-25亿</td></tr>
+            <tr><td class="rank">7</td><td class="pname" title="黛兰卡377美白抗皱面膜">黛兰卡377美白面膜</td><td class="price">¥79-119</td><td class="gmv">10-25亿</td></tr>
+            <tr><td class="rank">8</td><td class="pname" title="【95周年经典】超A瓶礼盒">超A瓶礼盒（水乳霜精华）</td><td class="price">¥399</td><td class="gmv">10-25亿</td></tr>
+            <tr><td class="rank">9</td><td class="pname" title="PMCREATE云朵罗兰红女巫颜骨炮精华">PMCREATE颜骨炮精华</td><td class="price">¥2288</td><td class="gmv">10-25亿</td></tr>
+            <tr><td class="rank">10</td><td class="pname" title="珀莱雅紧致肌密3.0套装">珀莱雅紧致肌密3.0套装</td><td class="price">¥399</td><td class="gmv">10-25亿</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div>
+        <h3 style="font-size:13px;color:var(--accent-2);margin-bottom:10px;font-family:var(--mono);letter-spacing:.05em">▍眼部护理 TOP10</h3>
+        <table class="tbl">
+          <thead><tr><th>#</th><th>商品</th><th>价格带</th><th>GMV区间</th></tr></thead>
+          <tbody>
+            <tr><td class="rank top3">1</td><td class="pname" title="素说美丽多重重组胶原蛋白眼膜">素说美丽胶原蛋白眼膜</td><td class="price">¥399</td><td class="gmv">10-25亿</td></tr>
+            <tr><td class="rank top3">2</td><td class="pname" title="【林心如代言】效妆PDRN小金瓶眼油">效妆PDRN小金瓶眼油</td><td class="price">¥59</td><td class="gmv">10-25亿</td></tr>
+            <tr><td class="rank top3">3</td><td class="pname" title="KAZOO/可逐冻干眼膜">KAZOO冻干眼膜</td><td class="price">¥168-399</td><td class="gmv">5-7.5亿</td></tr>
+            <tr><td class="rank">4</td><td class="pname" title="优时颜第4代眼霜">优时颜第4代眼霜</td><td class="price">¥329</td><td class="gmv">5-7.5亿</td></tr>
+            <tr><td class="rank">5</td><td class="pname" title="雏菊的天空琥珀时光眼油">雏菊的天空琥珀眼油</td><td class="price">¥699</td><td class="gmv">2.5-5亿</td></tr>
+            <tr><td class="rank">6</td><td class="pname" title="优时颜淡斑眼次抛精华">优时颜淡斑眼次抛</td><td class="price">¥319</td><td class="gmv">1-2.5亿</td></tr>
+            <tr><td class="rank">7</td><td class="pname" title="丸美小红笔眼霜4.0">丸美小红笔眼霜4.0</td><td class="price">¥298</td><td class="gmv">1-2.5亿</td></tr>
+            <tr><td class="rank">8</td><td class="pname" title="美康粉黛双萃咖啡因眼膜">美康粉黛咖啡因眼膜</td><td class="price">¥59-129</td><td class="gmv">1-2.5亿</td></tr>
+            <tr><td class="rank">9</td><td class="pname" title="薇旖美倍护眼部精华">薇旖美眼部精华（嘭嘭管）</td><td class="price">¥1480-17976</td><td class="gmv">1-2.5亿</td></tr>
+            <tr><td class="rank">10</td><td class="pname" title="雏菊的天空琥珀眼油2.0">雏菊的天空琥珀眼油2.0</td><td class="price">¥516</td><td class="gmv">1-2.5亿</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <p style="margin-top:14px;font-size:12px;color:var(--txt-dim);line-height:1.7">
+      说明：面部洗护 TOP1–TOP10 的 GMV 区间均为 <code style="font-family:var(--mono);color:#ffd18a">10-25亿</code>，榜单内部区分度低，无法据此判定绝对体量差距；
+      眼部护理 TOP3 之后 GMV 区间明显分层（5-7.5亿 → 2.5-5亿 → 1-2.5亿），梯度更真实。
+    </p>
+  </section>
+
+  <!-- 2. 价格带分布 -->
+  <section class="block">
+    <h2><span class="idx">02</span>价格带分布与空白带诊断<span class="src-tag luopan">罗盘 · 增速商品榜</span></h2>
+    <div class="desc">基于 TOP10 商品「价格下限」归入 5 档：&lt;¥100 / ¥100-299 / ¥300-599 / ¥600-1499 / ≥¥1500</div>
+    <div class="two-col">
+      <div>
+        <h3 style="font-size:13px;color:var(--accent);margin-bottom:8px;font-family:var(--mono)">▍面部洗护（10 个 SKU）</h3>
+        <div class="price-band">
+          <div class="pb-col"><div class="pb-val">3</div><div class="pb-bar" style="height:78px"></div><div class="pb-lbl">&lt;¥100</div></div>
+          <div class="pb-col"><div class="pb-val">1</div><div class="pb-bar" style="height:26px"></div><div class="pb-lbl">¥100-299</div></div>
+          <div class="pb-col"><div class="pb-val">2</div><div class="pb-bar" style="height:52px"></div><div class="pb-lbl">¥300-599</div></div>
+          <div class="pb-col"><div class="pb-val">1</div><div class="pb-bar" style="height:26px"></div><div class="pb-lbl">¥600-1499</div></div>
+          <div class="pb-col"><div class="pb-val">3</div><div class="pb-bar" style="height:78px"></div><div class="pb-lbl">≥¥1500</div></div>
+        </div>
+        <p style="margin-top:10px;font-size:11.5px;color:var(--txt-dim);font-family:var(--mono)">双峰分布：大众平价 + 超高端（科兰黎1680 / 荷诺2437 / 海蓝之谜4385）</p>
+      </div>
+      <div>
+        <h3 style="font-size:13px;color:var(--accent-2);margin-bottom:8px;font-family:var(--mono)">▍眼部护理（10 个 SKU）</h3>
+        <div class="price-band">
+          <div class="pb-col"><div class="pb-val">2</div><div class="pb-bar b2" style="height:52px"></div><div class="pb-lbl">&lt;¥100</div></div>
+          <div class="pb-col"><div class="pb-val">2</div><div class="pb-bar b2" style="height:52px"></div><div class="pb-lbl">¥100-299</div></div>
+          <div class="pb-col"><div class="pb-val">4</div><div class="pb-bar b2" style="height:104px"></div><div class="pb-lbl">¥300-599</div></div>
+          <div class="pb-col"><div class="pb-val">1</div><div class="pb-bar b2" style="height:26px"></div><div class="pb-lbl">¥600-1499</div></div>
+          <div class="pb-col"><div class="pb-val">1</div><div class="pb-bar b2" style="height:26px"></div><div class="pb-lbl">≥¥1500</div></div>
+        </div>
+        <p style="margin-top:10px;font-size:11.5px;color:var(--txt-dim);font-family:var(--mono)">主战场 ¥300-599（占 40%），¥59 → ¥17976 跨度超 300 倍</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. 成分趋势 -->
+  <section class="block">
+    <h2><span class="idx">03</span>成分趋势 · 押注参考<span class="src-tag">蝉妈妈 · 成分榜</span></h2>
+    <div class="desc">左：关联商品数（代表成熟度）；右：环比增速（代表热度趋势）。销售额单位来自蝉妈妈（区间值），非精确数。</div>
+    <div class="two-col">
+      <div>
+        <h3 style="font-size:13px;margin-bottom:8px;font-family:var(--mono);color:var(--accent)">▍关联商品数（竞争烈度）</h3>
+        <div class="bar-row"><span class="name">烟酰胺</span><div class="bar-wrap"><div class="bar" style="width:100%">215</div></div><span class="num">215</span></div>
+        <div class="bar-row"><span class="name">玻色因</span><div class="bar-wrap"><div class="bar" style="width:32%">69</div></div><span class="num">69</span></div>
+        <div class="bar-row"><span class="name">胶原蛋白</span><div class="bar-wrap"><div class="bar" style="width:31%">67</div></div><span class="num">67</span></div>
+        <div class="bar-row"><span class="name">角鲨烷</span><div class="bar-wrap"><div class="bar" style="width:26%">55</div></div><span class="num">55</span></div>
+        <div class="bar-row"><span class="name">黑参提取物</span><div class="bar-wrap"><div class="bar amber" style="width:3%;min-width:20px">5</div></div><span class="num">5</span></div>
+      </div>
+      <div>
+        <h3 style="font-size:13px;margin-bottom:8px;font-family:var(--mono);color:var(--red)">▍环比增速（热度趋势）</h3>
+        <div class="bar-row"><span class="name">玻色因</span><div class="bar-wrap"><div class="bar red" style="width:100%">+221.28%</div></div><span class="num red">+221%</span></div>
+        <div class="bar-row"><span class="name">黑参提取物</span><div class="bar-wrap"><div class="bar red" style="width:27%">+60.47%</div></div><span class="num red">+60%</span></div>
+        <div class="bar-row"><span class="name">角鲨烷</span><div class="bar-wrap"><div class="bar red" style="width:26%">+58.08%</div></div><span class="num red">+58%</span></div>
+        <div class="bar-row"><span class="name">胶原蛋白</span><div class="bar-wrap"><div class="bar red" style="width:9%;min-width:48px">+20.94%</div></div><span class="num red">+21%</span></div>
+        <div class="bar-row"><span class="name">烟酰胺</span><div class="bar-wrap"><div class="bar red" style="width:3%;min-width:40px">+4.82%</div></div><span class="num red">+5%</span></div>
+      </div>
+    </div>
+    <table class="tbl" style="margin-top:18px">
+      <thead><tr><th>成分</th><th>关联商品</th><th>销售额区间</th><th>销量区间</th><th>环比</th><th>解读</th></tr></thead>
+      <tbody>
+        <tr><td>烟酰胺</td><td class="price">215</td><td class="gmv">1000w+</td><td class="gmv">100w+</td><td class="gmv" style="color:var(--green)">+4.82%</td><td style="font-size:12px;color:var(--txt-dim)">主流红海 · 增速见顶</td></tr>
+        <tr><td>玻色因</td><td class="price">69</td><td class="gmv">1000w+</td><td class="gmv">50w~100w</td><td class="gmv" style="color:var(--red)">+221.28%</td><td style="font-size:12px;color:var(--txt-dim)">新兴热点 · 竞争还小</td></tr>
+        <tr><td>胶原蛋白</td><td class="price">67</td><td class="gmv">1000w+</td><td class="gmv">25w~50w</td><td class="gmv" style="color:var(--red)">+20.94%</td><td style="font-size:12px;color:var(--txt-dim)">稳步上行</td></tr>
+        <tr><td>角鲨烷</td><td class="price">55</td><td class="gmv">1000w+</td><td class="gmv">25w~50w</td><td class="gmv" style="color:var(--red)">+58.08%</td><td style="font-size:12px;color:var(--txt-dim)">次热点 · 持续观察</td></tr>
+        <tr><td>黑参提取物</td><td class="price">5</td><td class="gmv">1000w+</td><td class="gmv">5w~10w</td><td class="gmv" style="color:var(--red)">+60.47%</td><td style="font-size:12px;color:var(--amber)">极早期信号 · 样本小需谨慎</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- 4. 核心洞察 -->
+  <section class="block">
+    <h2><span class="idx">04</span>核心洞察</h2>
+    <div class="desc">基于真实数据交叉比对的 4 条高亮发现</div>
+    <div class="insight-grid">
+      <div class="insight warn">
+        <span class="tag">成分热点</span>
+        <h3>玻色因 +221.28%，竞争密度远低于烟酰胺</h3>
+        <p>玻色因本期环比 <span class="hl red">+221.28%</span>，但关联商品仅 <span class="hl">69</span> 个，是烟酰胺（<span class="hl">215</span> 个）的 <span class="hl">32%</span>。销售额区间同样达到 <span class="hl">1000w+</span>，说明单坑产出并不低。<b>属于「高增长 + 低竞争」的典型早期机会位</b>，可作为下季度押注的首选成分。</p>
+      </div>
+      <div class="insight amber">
+        <span class="tag">价格带分散</span>
+        <h3>眼部护理价格跨度超 12 倍，主战场集中但空白带明显</h3>
+        <p>眼部 TOP10 从效妆眼油 <span class="hl amber">¥59</span> 到雏菊的天空 <span class="hl amber">¥699</span>（更极端的是薇旖美上限 ¥17976），跨度极大。<span class="hl">¥300-599</span> 是主战场（4/10），<span class="hl">¥600-1499</span> 仅 1 席、<span class="hl">¥1500+</span> 仅 1 席 → 中高端带 <b>可能有结构性空白</b>，适合用「成分升级 + 轻奢包装」切入。</p>
+      </div>
+      <div class="insight">
+        <span class="tag">面部洗护双峰</span>
+        <h3>面部洗护呈「平价引流 + 超高端礼盒」双峰</h3>
+        <p>TOP10 中 <span class="hl">&lt;¥100</span> 有 3 席（BUV绿泥、温博士B5、eiio），<span class="hl">≥¥1500</span> 也有 3 席（科兰黎1680 / PMCREATE 2288 / 海蓝之谜4385），但 <span class="hl">¥100-299</span> 仅 1 席。<b>中间价格带供给稀缺</b>，可能是被高端礼盒挤压的「轻奢段」机会。</p>
+      </div>
+      <div class="insight">
+        <span class="tag">早期信号</span>
+        <h3>黑参提取物 +60% 但仅 5 个商品，需二次验证</h3>
+        <p>黑参提取物环比 <span class="hl red">+60.47%</span>，销量区间 <span class="hl">5w~10w</span>（明显低于其他 4 个成分的 25w+）。<b>样本过小，环比波动可能被放大</b>。建议下周期（09/25–10/01）继续观察是否稳在 +50% 以上，再决定是否纳入押注名单。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. 数据可信度 -->
+  <section class="block">
+    <h2><span class="idx">05</span>数据可信度与口径说明</h2>
+    <div class="desc">避免将「区间值 / 预估值 / 缺环比」误读为精确结论</div>
+    <div class="cred-grid">
+      <div class="cred">
+        <div class="src"><span class="dot" style="background:var(--accent)"></span>罗盘 · 增速商品榜</div>
+        <p>实测榜单数据，但 GMV 字段为<b>区间值</b>（如 10亿–25亿），非精确成交额。面部洗护 TOP10 全部为同一区间，无法横向比较体量。</p>
+        <span class="lv" style="background:rgba(76,194,255,.15);color:var(--accent)">实测 · 区间</span>
+      </div>
+      <div class="cred">
+        <div class="src"><span class="dot" style="background:var(--accent-2)"></span>蝉妈妈 · 成分榜</div>
+        <p>销售额 / 销量为<b>区间预估值</b>（1000w+ / 50w~100w），环比增速由蝉妈妈模型计算。<b>未提供原始快照，无法独立复算环比</b>。</p>
+        <span class="lv" style="background:rgba(124,92,255,.18);color:#b7a5ff">预估 · 模型环比</span>
+      </div>
+      <div class="cred">
+        <div class="src"><span class="dot" style="background:var(--amber)"></span>本看板环比</div>
+        <p>本次仅采集到 <b>2026/09/24 单日快照</b>。要看板自身计算环比，需持续积累每日快照（建议每日定时拉取），下一周期才能输出真实涨跌。</p>
+        <span class="lv" style="background:rgba(255,179,71,.15);color:var(--amber)">待积累</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. 行动项 -->
+  <section class="block">
+    <h2><span class="idx">06</span>选品行动项（按优先级）</h2>
+    <div class="desc">基于本期数据，可直接落地的 5 条建议</div>
+    <div class="action-list">
+      <div class="action">
+        <span class="pri p0">P0</span>
+        <div class="body">
+          <div class="title">押注「玻色因」成分，切入眼部护理中高端带</div>
+          <div class="why">玻色因环比 <code>+221%</code> 且竞争仅 69 个商品；眼部护理 <code>¥600-1499</code> 仅 1 席、供给稀缺。建议做 <code>¥599-899</code> 的玻色因眼精华，对标雏菊的天空（¥699）下沿 + 优时颜（¥329）上沿之间的真空带。</div>
+        </div>
+      </div>
+      <div class="action">
+        <span class="pri p0">P0</span>
+        <div class="body">
+          <div class="title">复制「明星/达人绑定」话术，跟进面部洗护平价爆款</div>
+          <div class="why">TOP5 中 4 个挂「蔡徐坤 / 徐艺洋 / 四火姐姐」头衔，平价带（<code>¥49-149</code>）+ 达人背书是当前面部洗护的明确爆款公式。建议优先在 <code>¥99-149</code> 区间上新 1 个主打控油/补水的 SKU。</div>
+        </div>
+      </div>
+      <div class="action">
+        <span class="pri p1">P1</span>
+        <div class="body">
+          <div class="title">观察黑参提取物下一周期是否持续 +50%</div>
+          <div class="why">本期 <code>+60.47%</code> 但仅 5 个商品，样本小。下周期（09/25–10/01）若稳在 <code>+50%+</code> 且商品数增至 10+，即可纳入 P0 押注名单；若回落至 +20% 以下，则放弃。</div>
+        </div>
+      </div>
+      <div class="action">
+        <span class="pri p1">P1</span>
+        <div class="body">
+          <div class="title">建立每日快照机制，下一周期输出真实环比</div>
+          <div class="why">当前只有 <code>2026/09/24</code> 单点数据，无法算看板自身环比。建议接入定时任务，每日 <code>00:30</code> 拉取罗盘 TOP50 + 蝉妈妈成分榜，落盘到 <code>data/growth_YYYY-MM-DD.json</code>，7 天后即可输出周环比趋势图。</div>
+        </div>
+      </div>
+      <div class="action">
+        <span class="pri p2">P2</span>
+        <div class="body">
+          <div class="title">补充采集「防晒」「男士护理」两个类目</div>
+          <div class="why">当前仅覆盖 2 个类目，样本不足以代表美妆大盘。建议下一周期新增 <code>防晒</code>（应季）和 <code>男士护理</code>（蓝海）两类目，验证是否也存在「成分升级 + 价格带分散」的结构性机会。</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <span>source: 罗盘·增速商品榜 (2026/09/18–09/24) · 蝉妈妈·成分榜</span>
+    <span>report: 美妆数据看板 · edu-pm-data-analysis workflow</span>
+  </footer>
+
+</div>
+</body>
+</html>

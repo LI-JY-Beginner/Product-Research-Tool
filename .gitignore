@@ -1,0 +1,9 @@
+.env
+data/raw/
+data/computed/
+__pycache__/
+*.pyc
+web/data/view.json
+.DS_Store
+需求挖掘/_素材/
+发给同事/

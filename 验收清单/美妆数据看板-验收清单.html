@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>美妆数据看板 · 功能验收清单 v0.2</title>
+<style>
+:root{
+  --bg:#f7f7f5;
+  --card:#ffffff;
+  --ink:#1f2329;
+  --ink-2:#4b5563;
+  --ink-3:#8a8f98;
+  --line:#e7e5e0;
+  --line-soft:#efede8;
+  --accent:#4f46e5;
+  --accent-soft:#eef0ff;
+  --green:#16a34a;
+  --green-soft:#eaf7ee;
+  --red:#dc2626;
+  --red-soft:#fbeaea;
+  --amber:#d97706;
+  --amber-soft:#fdf3e3;
+  --skip:#6b7280;
+  --skip-soft:#f0f1f3;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{
+  background:var(--bg);
+  color:var(--ink);
+  font-family:"PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans CJK SC",sans-serif;
+  font-size:14px;line-height:1.7;
+  -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:1080px;margin:0 auto;padding:28px 28px 140px}
+
+/* ===== 顶部悬浮进度 ===== */
+.progress-sticky{
+  position:sticky;top:0;z-index:100;
+  background:rgba(247,247,245,.92);
+  backdrop-filter:saturate(180%) blur(12px);
+  border-bottom:1px solid var(--line);
+  padding:14px 28px 12px;
+  margin:0 -28px 24px;
+}
+.progress-meta{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.progress-title{font-size:13px;color:var(--ink-2);font-weight:600}
+.progress-title b{color:var(--ink);font-size:14px}
+.progress-stats{display:flex;gap:14px;font-size:12.5px;font-variant-numeric:tabular-nums;flex-wrap:wrap}
+.stat{display:flex;align-items:center;gap:6px;color:var(--ink-2)}
+.dot{width:8px;height:8px;border-radius:50%;display:inline-block}
+.dot.total{background:#94a3b8}
+.dot.done{background:var(--green)}
+.dot.fail{background:var(--red)}
+.dot.skip{background:var(--skip)}
+.dot.pend{background:#d1d5db}
+.progress-bar{height:6px;background:#e8e6e0;border-radius:999px;margin-top:10px;overflow:hidden;display:flex}
+.progress-bar i{display:block;height:100%;transition:width .25s}
+.progress-bar i.b-done{background:var(--green)}
+.progress-bar i.b-fail{background:var(--red)}
+.progress-bar i.b-skip{background:#9ca3af}
+
+/* ===== 头部 ===== */
+header h1{font-size:26px;font-weight:800;margin:0 0 6px;letter-spacing:-0.02em}
+header .sub{color:var(--ink-3);font-size:13px;margin:0 0 20px}
+header .sub code{background:#eeece6;padding:1px 6px;border-radius:4px;font-size:12px}
+
+/* ===== 筛选工具条 ===== */
+.toolbar{
+  display:flex;align-items:center;gap:10px;flex-wrap:wrap;
+  background:var(--card);border:1px solid var(--line);border-radius:12px;
+  padding:12px 14px;margin-bottom:22px;
+  box-shadow:0 1px 2px rgba(16,16,20,.03);
+}
+.toolbar .label{font-size:12px;color:var(--ink-3);font-weight:600;margin-right:2px}
+.seg{display:inline-flex;background:#f0efe9;border-radius:9px;padding:3px;gap:2px}
+.seg button{
+  border:none;background:transparent;color:var(--ink-2);
+  padding:5px 12px;border-radius:7px;font-size:13px;cursor:pointer;
+  font-family:inherit;transition:background .12s,color .12s;
+}
+.seg button:hover{color:var(--ink)}
+.seg button.active{background:#fff;color:var(--ink);font-weight:600;box-shadow:0 1px 2px rgba(16,16,20,.08)}
+.toolbar .spacer{flex:1}
+.btn{
+  border:1px solid var(--line);background:#fff;color:var(--ink);
+  border-radius:8px;padding:6px 13px;font-size:13px;cursor:pointer;font-family:inherit;
+  transition:border-color .12s,background .12s;
+}
+.btn:hover{border-color:#c9c6bc;background:#fafaf7}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:600}
+.btn.primary:hover{background:#4338ca;border-color:#4338ca}
+
+/* ===== 模块分组 ===== */
+.module{margin-bottom:18px}
+.module-head{
+  display:flex;align-items:center;gap:12px;
+  background:var(--card);border:1px solid var(--line);border-radius:12px;
+  padding:13px 16px;cursor:pointer;user-select:none;
+  transition:background .12s;
+}
+.module-head:hover{background:#fbfbfa}
+.module-head .caret{
+  width:20px;height:20px;border-radius:5px;display:flex;align-items:center;justify-content:center;
+  color:var(--ink-3);font-size:11px;transition:transform .15s;background:#f0efe9;flex:0 0 auto;
+}
+.module.collapsed .module-head .caret{transform:rotate(-90deg)}
+.module-head .m-title{font-weight:700;font-size:14.5px}
+.module-head .m-count{margin-left:auto;font-size:12px;color:var(--ink-3);font-variant-numeric:tabular-nums;display:flex;gap:10px}
+.module-head .m-count .c-done{color:var(--green)}
+.module-head .m-count .c-fail{color:var(--red)}
+.module-body{margin-top:10px;display:flex;flex-direction:column;gap:10px}
+.module.collapsed .module-body{display:none}
+
+/* ===== 验收项卡片 ===== */
+.item{
+  background:var(--card);border:1px solid var(--line);border-radius:12px;
+  padding:14px 16px;display:flex;gap:14px;align-items:flex-start;
+  transition:border-color .12s, box-shadow .12s;
+}
+.item:hover{border-color:#d6d3c8;box-shadow:0 1px 3px rgba(16,16,20,.04)}
+.item.st-done{border-left:3px solid var(--green)}
+.item.st-fail{border-left:3px solid var(--red)}
+.item.st-skip{border-left:3px solid #9ca3af;opacity:.72}
+.item.st-pend{border-left:3px solid var(--line)}
+
+.tri{
+  flex:0 0 auto;display:inline-flex;border:1px solid var(--line);border-radius:8px;overflow:hidden;
+  background:#fff;margin-top:1px;
+}
+.tri button{
+  border:none;background:transparent;padding:5px 9px;font-size:14px;cursor:pointer;line-height:1;
+  transition:background .1s;font-family:inherit;
+}
+.tri button:not(:last-child){border-right:1px solid var(--line-soft)}
+.tri button.on-done{background:var(--green-soft)}
+.tri button.on-fail{background:var(--red-soft)}
+.tri button.on-skip{background:var(--skip-soft)}
+.tri button:focus-visible{outline:2px solid var(--accent);outline-offset:-2px}
+
+.item-main{flex:1;min-width:0}
+.item-top{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:4px}
+.item-id{font-family:"SF Mono","JetBrains Mono",Menlo,monospace;font-size:11.5px;color:var(--ink-3);background:#f0efe9;padding:1px 7px;border-radius:5px}
+.pri{font-size:11px;font-weight:700;padding:1px 8px;border-radius:999px;letter-spacing:.02em}
+.pri.p0{background:#fbeaea;color:#b91c1c}
+.pri.p1{background:#fdf3e3;color:#b45309}
+.pri.p2{background:#eef0ff;color:#4338ca}
+.item-dim{font-size:11px;color:var(--ink-3)}
+.item-title{font-weight:650;font-size:14px;margin:2px 0 6px}
+.item-expect{font-size:13px;color:var(--ink-2);background:#fafaf7;border:1px solid var(--line-soft);border-radius:8px;padding:8px 11px}
+.item-expect .tag{font-size:11px;color:var(--ink-3);font-weight:600;margin-right:6px}
+
+/* ===== 空态 ===== */
+.empty{
+  text-align:center;color:var(--ink-3);padding:44px 0;font-size:13px;
+  background:var(--card);border:1px dashed var(--line);border-radius:12px;
+}
+
+/* ===== 底部导出 ===== */
+.footer-bar{
+  position:fixed;left:0;right:0;bottom:0;z-index:90;
+  background:rgba(255,255,255,.94);backdrop-filter:blur(10px);
+  border-top:1px solid var(--line);
+  padding:12px 28px;
+}
+.footer-inner{max-width:1080px;margin:0 auto;display:flex;align-items:center;gap:14px}
+.footer-inner .hint{font-size:12.5px;color:var(--ink-3)}
+.footer-inner .right{margin-left:auto;display:flex;gap:10px}
+
+/* toast */
+.toast{
+  position:fixed;left:50%;bottom:76px;transform:translateX(-50%) translateY(8px);
+  background:#1f2329;color:#fff;font-size:13px;padding:9px 16px;border-radius:9px;
+  opacity:0;pointer-events:none;transition:opacity .18s,transform .18s;z-index:200;
+  box-shadow:0 8px 24px rgba(0,0,0,.18);
+}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+
+@media (max-width:720px){
+  .wrap{padding:20px 16px 140px}
+  .progress-sticky{margin:0 -16px 18px;padding:12px 16px 10px}
+  .item{flex-direction:column}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="progress-sticky">
+    <div class="progress-meta">
+      <div class="progress-title">验收进度 <b id="pctText">0%</b> <span id="doneOverTotal" style="color:var(--ink-3);font-weight:400"></span></div>
+      <div class="progress-stats">
+        <span class="stat"><i class="dot total"></i>总数 <b id="cntTotal">0</b></span>
+        <span class="stat"><i class="dot pend"></i>待验收 <b id="cntPend">0</b></span>
+        <span class="stat"><i class="dot done"></i>通过 <b id="cntDone">0</b></span>
+        <span class="stat"><i class="dot fail"></i>未通过 <b id="cntFail">0</b></span>
+        <span class="stat"><i class="dot skip"></i>跳过 <b id="cntSkip">0</b></span>
+      </div>
+    </div>
+    <div class="progress-bar">
+      <i class="b-done" id="barDone" style="width:0%"></i>
+      <i class="b-fail" id="barFail" style="width:0%"></i>
+      <i class="b-skip" id="barSkip" style="width:0%"></i>
+    </div>
+  </div>
+
+  <header>
+    <h1>美妆数据看板 · 功能验收清单</h1>
+    <p class="sub">依据 <code>美妆数据看板-PRD.html v0.2</code> 生成 · 覆盖 ①全球数据看板 ②商品榜 ③成分库 ④初始策略台 四大板块 · 进度自动保存于浏览器 localStorage</p>
+  </header>
+
+  <div class="toolbar">
+    <span class="label">状态筛选</span>
+    <div class="seg" id="filterSeg">
+      <button data-f="all" class="active">全部</button>
+      <button data-f="pend">待验收</button>
+      <button data-f="done">通过</button>
+      <button data-f="fail">未通过</button>
+      <button data-f="skip">跳过</button>
+    </div>
+    <span class="spacer"></span>
+    <button class="btn" id="expandAll">全部展开</button>
+    <button class="btn" id="collapseAll">全部折叠</button>
+    <button class="btn" id="resetBtn">清空进度</button>
+  </div>
+
+  <main id="modules"></main>
+
+</div>
+
+<div class="footer-bar">
+  <div class="footer-inner">
+    <span class="hint" id="saveHint">进度已自动保存</span>
+    <div class="right">
+      <button class="btn primary" id="exportBtn">⬇ 一键导出验收报告（txt）</button>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+/* ================= 数据：验收项 =================
+ * state: pend(待验收) / done(通过) / fail(未通过) / skip(跳过)
+ * 字段：id / dim(维度) / pri(P0/P1/P2) / title(验收内容) / expect(预期结果)
+ */
+var MODULES = [
+{
+  key:"m1", name:"① 全球数据看板",
+  items:[
+    // ---- 1.1 增速产品看板 ----
+    {id:"1.1-01", dim:"核心流程", pri:"P0", title:"「自用密度模式 / 路演结论模式」顶部视图开关可切换，默认进入为自用密度模式", expect:"打开页面默认是自用密度模式；点击开关整页切换为结论卡片视图，同一份数据不重抓"},
+    {id:"1.1-02", dim:"核心流程", pri:"P0", title:"自用结论板块置顶展示：七天内增速最快产品（商品名+主图）+ GMV 增速 + 销售国家 + 销售价格（带货币符号）", expect:"两种模式下均置顶、大字号卡片；四要素齐全；货币符号随市场切换（国内 ¥ / 海外 $）"},
+    {id:"1.1-03", dim:"核心流程", pri:"P0", title:"筛选条「市场 + 品类」级联：品类从一级（个护家清）→ 二级（个人护理）→ 三级（面部洗护 / 眼部护理级）逐级展开", expect:"hover/点击逐级展开，选择三级类目后下方分组区同步刷新"},
+    {id:"1.1-04", dim:"核心流程", pri:"P0", title:"类目分组区按当前筛选命中的三级类目分组，每组只展示增速 TOP3 商品", expect:"分组卡片按三级类目划分；每组最多 3 条，不展示全量榜单"},
+    {id:"1.1-05", dim:"核心流程", pri:"P0", title:"商品行表头列序：名次 | 商品 | 品牌 | 价格带 | 支付金额区间 | 环比增速 | 所属类目 | 供需比 | 口径", expect:"列序与 PRD 完全一致；品牌为独立列；含新上榜标记与名次变化"},
+    {id:"1.1-06", dim:"核心流程", pri:"P0", title:"增速看板每日刷新：每天重新取一次 7 天累计值写入快照表，看板渲染最新快照", expect:"连续 2 天观察快照表有新行写入；页面「数据截至」日期随之更新；第一天即可出数"},
+    {id:"1.1-07", dim:"核心流程", pri:"P0", title:"点击口径徽章弹出该指标口径说明（定义、样本量、数据截止日、来源）", expect:"每个增速数字旁有口径徽章；点击出现弹层，四要素齐全"},
+    {id:"1.1-08", dim:"核心流程", pri:"P1", title:"点击商品行展开证据层（两段窗口数值与排名变化明细），证据层内可再展开原始层（来源行与抓取时间）", expect:"三层读法（结论层→证据层→原始层）逐层展开，42 字段不默认平铺"},
+    {id:"1.1-09", dim:"核心流程", pri:"P1", title:"点击表头「环比增速」在组内切换升序 / 降序", expect:"排序仅作用于当前分组，不影响其他组"},
+    {id:"1.1-10", dim:"核心流程", pri:"P1", title:"切换「市场 / 品类」筛选后，自用结论板块与分组区同步刷新", expect:"「增速最快产品」= 当前筛选范围内环比增速第一的商品；销售国家取 GMV 归属市场"},
+    // ---- 1.2 类目增长趋势 ----
+    {id:"1.2-01", dim:"核心流程", pri:"P0", title:"类目增长趋势每 7 天刷新，与增速看板的每日节奏不统一", expect:"快照/刷新记录显示该板块 7 天一刷；刷新日数据源未更新时沿用上一期并标注实际截止日"},
+    {id:"1.2-02", dim:"核心流程", pri:"P0", title:"趋势表默认仅展示三级类目行（类目名、近 30 天累计支付金额、环比增速、占比、操作）", expect:"三级与四级增速不混排在同一层级；环比直接采用罗盘类目概览自带「较上周期」字段，不自算"},
+    {id:"1.2-03", dim:"核心流程", pri:"P0", title:"点开三级类目行，行内展开该级下四级类目（眼霜级）按环比增速降序的排序列表；再次点击收起", expect:"四级类目只在所属三级行展开后出现；排序仅作用于当前层级"},
+    {id:"1.2-04", dim:"核心流程", pri:"P0", title:"顶部「增速最快的类目」展示块：近 30 天增速折线图 + 大字号当前增速与近 30 天累计支付金额", expect:"取当前筛选范围内环比增速最高的三级类目；折线为该类目近 30 天日级支付金额序列"},
+    {id:"1.2-05", dim:"核心流程", pri:"P0", title:"「看成分」入口联动跳转成分增长榜，并自动带上该类目筛选", expect:"跳转后成分榜筛选条已带出来源类目，可点「×」清除回到大盘口径"},
+    {id:"1.2-06", dim:"核心流程", pri:"P1", title:"与增速产品看板筛选联动：从增速看板跳入时自动带出市场/类目筛选", expect:"两页筛选状态一致；切换筛选后顶部展示块与趋势表同步刷新"},
+    {id:"1.2-07", dim:"核心流程", pri:"P2", title:"点击「查看趋势」行内展开该类目近 30 天支付金额日级趋势曲线", expect:"行内展开/收起正常；日级数据未接入时折线区标注「占位示意」，不放无意义数字"},
+    // ---- 1.3 成分增长榜 ----
+    {id:"1.3-01", dim:"核心流程", pri:"P0", title:"成分增长榜每 7 天刷新；筛选条「市场」含「全部」选项", expect:"选「全部」时聚合所有国家的增长成分，并标注来源市场构成"},
+    {id:"1.3-02", dim:"核心流程", pri:"P0", title:"榜单列为：排名 / 成分名 / 关联商品数 / 占比 / 环比增速；不含「销售额」「销售量」两列", expect:"列结构与 PRD 一致；占比 = 该成分关联商品数 ÷ 当前筛选范围上榜成分关联商品总数"},
+    {id:"1.3-03", dim:"核心流程", pri:"P0", title:"新上榜成分（今天上榜、7 天前未上榜）行首标「新上榜」徽标，单独醒目", expect:"新上榜成分不参与环比排序比较，不与环比数字混排"},
+    {id:"1.3-04", dim:"核心流程", pri:"P1", title:"「成分 / 功效」维度 Tab 可切换，榜单在两个口径间刷新", expect:"切换 Tab 后榜单内容、排序随之变化"},
+    {id:"1.3-05", dim:"核心流程", pri:"P1", title:"点击成分名展开该成分关联商品简要列表（名称、价格带、所属类目）", expect:"展开/收起正常，列表字段齐全"},
+    {id:"1.3-06", dim:"核心流程", pri:"P1", title:"承接类目增长趋势跳入时自动带出类目筛选；点击筛选条「×」清除并恢复大盘一级类目口径", expect:"跳入带筛选、可清除、可恢复，状态不串"}
+  ]
+},
+{
+  key:"m2", name:"② 商品榜",
+  items:[
+    {id:"2.1-01", dim:"核心流程", pri:"P0", title:"来源 Tab：罗盘 / 蝉妈妈 / FastMoss 三个分榜，当前 Tab 高亮，切换后口径徽章同步切换", expect:"三个分榜独立展示；徽章标明来源、周期与「区间值/预估」属性"},
+    {id:"2.1-02", dim:"核心流程", pri:"P0", title:"市场与数据源绑定：国内 = 罗盘/蝉妈妈；切换国家/地区到海外 → 榜单自动切换至 FastMoss 数据源；切回国内恢复罗盘/蝉妈妈", expect:"不出现「海外市场 + 罗盘榜」的错位组合；来源 Tab 随市场联动"},
+    {id:"2.1-03", dim:"核心流程", pri:"P0", title:"类目级联筛选从一级级联到三级（面部洗护/眼部护理级），可继续级联到四级；榜单按所选层级过滤", expect:"层级过滤正确；筛选路径面包屑保留"},
+    {id:"2.1-04", dim:"核心流程", pri:"P0", title:"分榜说明条固定展示「各平台统计周期与口径不同，分榜独立展示、不相加」", expect:"说明条常驻；榜单数字无跨来源合计项"},
+    {id:"2.1-05", dim:"核心流程", pri:"P1", title:"榜单表字段：名次、商品名+主图、品牌、价格带、销售额区间、销量区间、关联店铺/达人；各来源列结构随口径略有差异", expect:"字段齐全；罗盘榜为官方区间值，蝉妈妈榜数字标注为预估口径"},
+    {id:"2.1-06", dim:"核心流程", pri:"P1", title:"点击商品行展开证据层（来源口径、数据截止日与关联信息）", expect:"展开正常，信息与口径徽章一致"},
+    {id:"2.1-07", dim:"边界与异常", pri:"P0", title:"FastMoss 海外字段未实测：切到海外市场时显示「海外口径接入中」占位，不展示空表", expect:"占位文案出现；不编数、不显示空白表格"},
+    {id:"2.1-08", dim:"边界与异常", pri:"P1", title:"某来源榜单为空 → 显示空态文案「该来源当前周期无上榜商品」，不跨来源补数", expect:"空态文案准确；不从其他来源借数据填充"},
+    {id:"2.1-09", dim:"边界与异常", pri:"P1", title:"类目筛选到暂无数据的层级 → 榜单区空态并保留面包屑，可一键回退上级", expect:"空态 + 面包屑回退均可用"}
+  ]
+},
+{
+  key:"m3", name:"③ 成分库",
+  items:[
+    {id:"3.1-01", dim:"核心流程", pri:"P0", title:"筛选条「市场（国内/海外）+ 品类级联 + 周期（近 7/30/90 天）」切换后双榜同步刷新", expect:"三个筛选维度均生效，双榜联动刷新"},
+    {id:"3.1-02", dim:"核心流程", pri:"P0", title:"双榜并列：左侧 TOP30 增速榜（成分自身增长率降序）、右侧 TOP30 热度榜（热度分降序）", expect:"双榜并列展示；排序口径正确；每 7 天刷新"},
+    {id:"3.1-03", dim:"核心流程", pri:"P0", title:"热度榜顶部固定注明口径「热度分 = 关联商品数 + 销量加权 + 近 7 天上榜频次 三者合成」", expect:"口径标注常驻；点击标注弹出热度分合成口径说明"},
+    {id:"3.1-04", dim:"核心流程", pri:"P0", title:"点击成分行展开关联可视化：完整类目层级路径（个护家清/个人护理/三级/四级）+ 关联产品列表（商品名+主图+价格带）", expect:"层级树与产品列表均正确；点击关联产品可再展开证据层"},
+    {id:"3.1-05", dim:"核心流程", pri:"P1", title:"成分行字段：成分名、增速/热度分、关联商品数、覆盖类目标记；口径徽章与「成分名来自标题关键词」准确度提示常驻", expect:"字段齐全；准确度提示固定展示"},
+    {id:"3.1-06", dim:"边界与异常", pri:"P0", title:"市场切到海外 → 双榜区显示「海外成分提取接入中」占位，筛选条保留可回切国内", expect:"占位正确，回切国内后双榜恢复"},
+    {id:"3.1-07", dim:"边界与异常", pri:"P1", title:"某筛选组合下成分不足 30 个 → 按实际数量展示，不补位", expect:"榜单行数 = 实际数量，无填充假行"},
+    {id:"3.1-08", dim:"边界与异常", pri:"P1", title:"成分仅关联单一类目 → 类目层级树只展示实际命中路径，不虚构层级", expect:"层级树无凭空补全的节点"}
+  ]
+},
+{
+  key:"m4", name:"④ 初始策略台",
+  items:[
+    {id:"4.1-01", dim:"核心流程", pri:"P0", title:"筛选「市场 + 类目」后触发 AI 分析，按四段结构产出该类目「能否进入」的结论", expect:"只回答当前选中类目，不做全类目自动巡检；结论卡置顶刷新"},
+    {id:"4.1-02", dim:"核心流程", pri:"P0", title:"初步结论卡置顶最显眼：GO / NOGO 大字号判定 + 一句话理由 + 建议细分方向 + 目标客单价带", expect:"四要素齐全；GO 时给细分方向与客单价带，NOGO 时给不做的理由"},
+    {id:"4.1-03", dim:"核心流程", pri:"P0", title:"四段分析卡片区自上而下：市场规模卡 → 竞争程度卡 → 供给侧结构卡 → 初步结论卡，关键数据图表可视化", expect:"四卡顺序正确；每张卡有口径徽章（来源 + 数据截止日）"},
+    {id:"4.1-04", dim:"核心流程", pri:"P0", title:"GO/NOGO 由竞争程度与供给侧结构两段综合推出，市场规模只作背景参考，不单独决定 GO", expect:"判定优先级符合规则；结论由数据综合生成，不靠人硬填"},
+    {id:"4.1-05", dim:"核心流程", pri:"P1", title:"业务动线提示条常驻：「看完增速 / 类目 / 成分 / 商品榜后，在这里判断要不要进这个类目」", expect:"提示条在页面顶部展示"},
+    {id:"4.1-06", dim:"核心流程", pri:"P1", title:"点击分析卡片中的图表/数字 → 联动高亮结论卡中对应判定依据；点击「看证据」展开证据层（全部指标、样本量与来源）", expect:"联动高亮与证据层展开均可用"},
+    {id:"4.2-01", dim:"核心流程", pri:"P0", title:"市场规模卡：类目 GMV（区间值）+ 当前增速 + 趋势折线", expect:"GMV 以罗盘区间值展示，不假装精确"},
+    {id:"4.2-02", dim:"核心流程", pri:"P0", title:"竞争程度卡：CR4 / CR10 数值与条形图 + 玩家结构占比堆叠条（国际大牌/新锐品牌/白牌）+ 决策标准文字", expect:"CR4/CR10 用 TOP200 榜单自算；堆叠条三类齐全；决策标准文案与 PRD 一致（CR4>60% 很难进入 / CR4<40% 且有细分空白有机会）"},
+    {id:"4.2-03", dim:"核心流程", pri:"P0", title:"供给侧结构卡：价格带分布直方图 + TOP 玩家定价策略（日常价 vs 大促价）+ SKU 矩阵（引流款/利润款/复购款）", expect:"三部分齐全；空档价格带标注「空白带」供机会判断引用"},
+    {id:"4.2-04", dim:"核心流程", pri:"P1", title:"点击 CR4/CR10 数值展开 TOP4/TOP10 商品明细；点击玩家结构某段展开该类代表品牌列表", expect:"下钻明细可用；玩家分类按罗盘「国际知名品牌/知名品牌/非知名品牌」维度判定"},
+    {id:"4.2-05", dim:"核心流程", pri:"P1", title:"点击价格带直方图某档展开该档在售商品数与代表商品；点击 SKU 矩阵单元展开该角色 TOP 玩家代表款", expect:"两处下钻均可用"},
+    {id:"4.1-07", dim:"边界与异常", pri:"P0", title:"支撑指标缺失（如 FastMoss 海外未接入）→ 结论照常出具但标注「证据不完整」，不隐藏", expect:"结论卡仍在，标注清晰"},
+    {id:"4.1-08", dim:"边界与异常", pri:"P0", title:"所选类目榜单不足 10 个商品 → 不出 GO/NOGO，改出「样本不足，建议积累数据后再判断」", expect:"样本不足时无 GO/NOGO 判定，文案准确"},
+    {id:"4.1-09", dim:"边界与异常", pri:"P1", title:"未筛选类目 → 分析卡片区空态引导「请先选择想做的类目」，不默认展示某类目结论", expect:"初始为空态，无默认结论"}
+  ]
+},
+{
+  key:"m5", name:"⑤ 边界与异常（全局）",
+  items:[
+    {id:"5-01", dim:"边界与异常", pri:"P0", title:"罗盘/蝉妈妈登录失效 → 采集暂停并通知手动登录，不硬闯；看板保留最近一次成功数据并标记「数据截至 xx 日 · 待更新」", expect:"登录失效不报错崩溃；页面不展示空白，截止日标注正确"},
+    {id:"5-02", dim:"边界与异常", pri:"P0", title:"采集接口报错 → 自动重试；重试仍失败则沿用上次数据并标注实际数据截止日", expect:"重试机制存在；失败降级不展示空页"},
+    {id:"5-03", dim:"边界与异常", pri:"P0", title:"增速分母窗口支付金额为 0 或样本过低 → 不计算增速，该行标记「低基数，仅供参考」", expect:"该行无增速数字，低基数标记出现"},
+    {id:"5-04", dim:"边界与异常", pri:"P0", title:"某类目上榜商品不足 3 个 → 按实际数量展示，不补假数据", expect:"分组行数 = 实际数量，无编造行"},
+    {id:"5-05", dim:"边界与异常", pri:"P1", title:"筛选品类下无三级类目命中 → 分组区空态「该品类暂无监测类目」，自用结论板块隐藏", expect:"空态文案准确，结论卡不残留旧数据"},
+    {id:"5-06", dim:"边界与异常", pri:"P1", title:"四级类目无成交（支付金额为 0）→ 行保留但显示「—」，不参与增速排序", expect:"行在、数值为「—」、排序中不出现"},
+    {id:"5-07", dim:"边界与异常", pri:"P1", title:"三级类目下无四级子类目数据 → 行不可展开，点击提示「暂无下级类目数据」", expect:"不可展开态与提示均正确"},
+    {id:"5-08", dim:"边界与异常", pri:"P1", title:"蝉妈妈区间值封顶 100w+ → 展示时原样标注区间，不做跨行聚合累加", expect:"区间原样展示，无聚合后的虚假精确值"},
+    {id:"5-09", dim:"边界与异常", pri:"P1", title:"成分增长榜市场选「全部」但海外数据未接入 → 榜单仅含国内成分，筛选条旁提示「海外成分接入中」", expect:"提示出现；榜单不混入海外假数据"},
+    {id:"5-10", dim:"边界与异常", pri:"P1", title:"榜单数据不足 TOP10（小类目）→ CR10 不展示，只出 CR4 并标注样本量", expect:"CR10 隐藏、CR4 保留、样本量标注清晰"},
+    {id:"5-11", dim:"边界与异常", pri:"P2", title:"快照表缺历史（如首日运行）→ 环比相关区块降级标注，不伪造历史窗口数据", expect:"首日即可出数（罗盘可回溯 266 天）；无快照处明确降级提示"}
+  ]
+},
+{
+  key:"m6", name:"⑥ UI 还原度（Stripe 视觉规范）",
+  items:[
+    {id:"6-01", dim:"UI 还原度", pri:"P0", title:"顶部导航一屏放下不横滚：① 全球数据看板 ② 商品榜 ③ 成分库 ④ 初始策略台 + 更多下拉（竞品分析/产品分析/产品设计占位）", expect:"1280px 宽度下导航无横向滚动条；放不下的项收进「更多」下拉"},
+    {id:"6-02", dim:"UI 还原度", pri:"P1", title:"竞品分析 / 产品分析 / 产品设计三个占位项点击后显示「建设中」空态", expect:"三个占位均可点击，空态样式统一"},
+    {id:"6-03", dim:"UI 还原度", pri:"P1", title:"级联筛选器 hover 逐级展开：一级 → 二级 → 三级（商品榜可到四级），选中路径可见", expect:"hover 展开流畅；选中项高亮；层级不错乱"},
+    {id:"6-04", dim:"UI 还原度", pri:"P1", title:"周期/筛选联动：增速看板、类目趋势、成分库、策略台之间跳转时筛选状态正确带出", expect:"跨页跳转筛选不丢失、可清除恢复"},
+    {id:"6-05", dim:"UI 还原度", pri:"P1", title:"Stripe 视觉规范：白色卡片底、靛蓝主色（accent）、数字使用 tnum 等宽数字、涨红跌绿", expect:"全站视觉统一；表格数字 font-variant-numeric: tabular-nums；增速正红负绿"},
+    {id:"6-06", dim:"UI 还原度", pri:"P1", title:"双模式切换：自用密度模式（高密度表格、筛选器全展开）⇄ 路演结论模式（结论卡片大字号、一屏一个观点、可全屏）", expect:"一个开关切换、同一份真实数据；路演模式首屏只呈现结论卡片与机会点"},
+    {id:"6-07", dim:"UI 还原度", pri:"P2", title:"口径徽章、数据截止日、加载/空态样式在全站统一", expect:"徽章样式一致；截止日格式统一（如「数据截至 9/24」）"},
+    {id:"6-08", dim:"UI 还原度", pri:"P2", title:"Kibana 式可折叠分区：各看板分区可折叠/展开，下钻关联展示正常", expect:"分区折叠态可记忆或至少当次会话内保持"}
+  ]
+},
+{
+  key:"m7", name:"⑦ 数据口径（铁律核验）",
+  items:[
+    {id:"7-01", dim:"数据口径", pri:"P0", title:"罗盘区间值与蝉妈妈预估值绝不混加：同一指标只有一个口径，口径徽章写明来源", expect:"全站无任何跨源合计数字；GMV 主口径只信罗盘"},
+    {id:"7-02", dim:"数据口径", pri:"P0", title:"商品增速 = 本期 7 天累计支付金额 ÷ 前段 7 天累计支付金额 − 1（两段不重叠 7 天窗口）", expect:"抽查 3 个商品手工核算，与页面增速一致；等价于「当日 ÷ 前 7 日同日」会议口径"},
+    {id:"7-03", dim:"数据口径", pri:"P0", title:"成分增速 = 成分自身增长率（同一成分 7 天前 vs 今天的排名/关联商品数变化），不是销售额增速", expect:"口径徽章标注「成分自身增长率口径 · 7 天前 vs 今天」；抽查 3 个成分核对一致"},
+    {id:"7-04", dim:"数据口径", pri:"P0", title:"热度分 = 关联商品数 + 销量加权 + 近 7 天上榜频次三要素合成，页面注明口径", expect:"热度榜排序与合成口径一致；权重系数与定稿值一致（评审确认后核对）"},
+    {id:"7-05", dim:"数据口径", pri:"P0", title:"CR4 / CR10 用 TOP200 榜单数据自算：TOP4 / TOP10 支付金额占比", expect:"抽查 1 个类目手工核算 CR4/CR10 与页面一致；源头可追溯"},
+    {id:"7-06", dim:"数据口径", pri:"P0", title:"玩家结构分类正确：符合「国际知名品牌」= 国际大牌；不符合的知名品牌 = 新锐品牌；非知名品牌 ≈ 白牌", expect:"抽查 10 个品牌的分类与罗盘筛选维度一致；白牌标准待确认处有明确标记"},
+    {id:"7-07", dim:"数据口径", pri:"P0", title:"类目 cid 使用罗盘实测值（个护家清=5 / 个人护理=1000003462 / 面部洗护=1000003463 / 眼部护理=1000003469）", expect:"采集请求中的 cid 与实测值一致；类目选错=数据整体错位，需逐项核对"},
+    {id:"7-08", dim:"数据口径", pri:"P1", title:"供需比列直接用罗盘 demand_supply_rate 字段原值并标注来源，不自算", expect:"数值与罗盘后台一致；来源标注存在"},
+    {id:"7-09", dim:"数据口径", pri:"P1", title:"类目趋势环比直接用罗盘类目概览自带「较上周期」字段，不自算", expect:"与罗盘后台类目概览数值一致"},
+    {id:"7-10", dim:"数据口径", pri:"P1", title:"国内与海外市场数据始终分开展示，不出现合计值；商品榜/策略台均遵守", expect:"全站无「国内+海外」合计指标；海外口径独立标注"}
+  ]
+}
+];
+
+/* ================= 状态管理 ================= */
+var LS_KEY = "acceptance-mz-dashboard-v02";
+var stateMap = {};   // id -> done/fail/skip（pend 不落库）
+var collapsedMap = {}; // moduleKey -> true
+var filter = "all";
+
+function loadState(){
+  try{
+    var raw = localStorage.getItem(LS_KEY);
+    if(raw){
+      var obj = JSON.parse(raw);
+      stateMap = obj.stateMap || {};
+      collapsedMap = obj.collapsedMap || {};
+    }
+  }catch(e){}
+}
+function saveState(){
+  try{
+    localStorage.setItem(LS_KEY, JSON.stringify({ stateMap: stateMap, collapsedMap: collapsedMap, ts: Date.now() }));
+    var h = document.getElementById("saveHint");
+    if(h){ h.textContent = "进度已自动保存 · " + new Date().toLocaleTimeString("zh-CN",{hour12:false}); }
+  }catch(e){}
+}
+function getState(id){ return stateMap[id] || "pend"; }
+var CYCLE = ["pend","done","fail","skip"]; // 点击三态按钮直接设定，单击当前态 → 回到 pend
+
+/* ================= 渲染 ================= */
+var PRI_LABEL = { P0:"P0", P1:"P1", P2:"P2" };
+var STATE_LABEL = { pend:"待验收", done:"通过", fail:"未通过", skip:"跳过" };
+
+function esc(s){ return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;"); }
+
+function render(){
+  var root = document.getElementById("modules");
+  root.innerHTML = "";
+  var anyVisible = false;
+
+  MODULES.forEach(function(mod){
+    var visibleItems = mod.items.filter(function(it){
+      if(filter==="all") return true;
+      return getState(it.id) === filter;
+    });
+    // 全部折叠/展开记忆
+    var isCollapsed = !!collapsedMap[mod.key];
+
+    var modEl = document.createElement("section");
+    modEl.className = "module" + (isCollapsed ? " collapsed" : "");
+    modEl.dataset.key = mod.key;
+
+    // 统计
+    var st = { done:0, fail:0, skip:0, pend:0 };
+    mod.items.forEach(function(it){ st[getState(it.id)]++; });
+
+    var head = document.createElement("div");
+    head.className = "module-head";
+    head.innerHTML =
+      '<span class="caret">▼</span>' +
+      '<span class="m-title">' + esc(mod.name) + '</span>' +
+      '<span class="m-count">' +
+        '<span>共 ' + mod.items.length + ' 项</span>' +
+        '<span class="c-done">✅ ' + st.done + '</span>' +
+        '<span class="c-fail">❌ ' + st.fail + '</span>' +
+        (st.skip ? '<span>⏭️ ' + st.skip + '</span>' : '') +
+      '</span>';
+    head.addEventListener("click", function(){
+      collapsedMap[mod.key] = !collapsedMap[mod.key];
+      modEl.classList.toggle("collapsed");
+      saveState();
+    });
+    modEl.appendChild(head);
+
+    var body = document.createElement("div");
+    body.className = "module-body";
+
+    if(visibleItems.length === 0){
+      if(filter !== "all"){
+        var em = document.createElement("div");
+        em.className = "empty";
+        em.textContent = "本模块暂无「" + STATE_LABEL[filter] + "」状态的验收项";
+        body.appendChild(em);
+      }
+    } else {
+      anyVisible = true;
+      visibleItems.forEach(function(it){
+        body.appendChild(renderItem(it));
+      });
+    }
+    modEl.appendChild(body);
+    root.appendChild(modEl);
+  });
+
+  if(!anyVisible && filter!=="all"){
+    var emAll = document.createElement("div");
+    emAll.className = "empty";
+    emAll.textContent = "当前筛选「" + STATE_LABEL[filter] + "」下没有任何验收项";
+    root.appendChild(emAll);
+  }
+
+  updateProgress();
+}
+
+function renderItem(it){
+  var st = getState(it.id);
+  var el = document.createElement("div");
+  el.className = "item st-" + st;
+  el.dataset.id = it.id;
+
+  var tri = document.createElement("div");
+  tri.className = "tri";
+  tri.setAttribute("role","group");
+  tri.setAttribute("aria-label","验收状态");
+  [["done","✅","通过"],["fail","❌","未通过"],["skip","⏭️","跳过"]].forEach(function(cfg){
+    var b = document.createElement("button");
+    b.type = "button";
+    b.textContent = cfg[1];
+    b.title = cfg[2] + (st===cfg[0] ? "（再点一次取消）" : "");
+    if(st===cfg[0]) b.classList.add("on-"+cfg[0]);
+    b.addEventListener("click", function(){
+      if(getState(it.id) === cfg[0]) delete stateMap[it.id];  // 再点当前态 → 回到待验收
+      else stateMap[it.id] = cfg[0];
+      saveState();
+      // 若当前在过滤视图且新状态被过滤掉，整树重渲染；否则局部更新即可
+      render();
+    });
+    tri.appendChild(b);
+  });
+
+  var main = document.createElement("div");
+  main.className = "item-main";
+  main.innerHTML =
+    '<div class="item-top">' +
+      '<span class="item-id">' + esc(it.id) + '</span>' +
+      '<span class="pri ' + it.pri.toLowerCase() + '">' + PRI_LABEL[it.pri] + '</span>' +
+      '<span class="item-dim">' + esc(it.dim) + '</span>' +
+    '</div>' +
+    '<div class="item-title">' + esc(it.title) + '</div>' +
+    '<div class="item-expect"><span class="tag">预期结果</span>' + esc(it.expect) + '</div>';
+
+  el.appendChild(tri);
+  el.appendChild(main);
+  return el;
+}
+
+/* ================= 进度 ================= */
+function updateProgress(){
+  var total=0, done=0, fail=0, skip=0, pend=0;
+  MODULES.forEach(function(m){ m.items.forEach(function(it){
+    total++;
+    var s = getState(it.id);
+    if(s==="done") done++; else if(s==="fail") fail++; else if(s==="skip") skip++; else pend++;
+  });});
+  var answered = done+fail+skip;
+  var pct = total ? Math.round(done/total*100) : 0;
+  document.getElementById("cntTotal").textContent = total;
+  document.getElementById("cntPend").textContent = pend;
+  document.getElementById("cntDone").textContent = done;
+  document.getElementById("cntFail").textContent = fail;
+  document.getElementById("cntSkip").textContent = skip;
+  document.getElementById("pctText").textContent = pct + "%";
+  document.getElementById("doneOverTotal").textContent = "（已验收 " + answered + "/" + total + "）";
+  document.getElementById("barDone").style.width = (total?done/total*100:0) + "%";
+  document.getElementById("barFail").style.width = (total?fail/total*100:0) + "%";
+  document.getElementById("barSkip").style.width = (total?skip/total*100:0) + "%";
+}
+
+/* ================= 导出 ================= */
+function exportReport(){
+  var total=0, done=0, fail=0, skip=0, pend=0;
+  var lines = [];
+  lines.push("美妆数据看板 · 功能验收报告");
+  lines.push("生成时间：" + new Date().toLocaleString("zh-CN",{hour12:false}));
+  lines.push("PRD 版本：美妆数据看板-PRD.html v0.2");
+  lines.push("");
+
+  MODULES.forEach(function(m){
+    lines.push("========================================");
+    lines.push(m.name);
+    lines.push("----------------------------------------");
+    m.items.forEach(function(it){
+      total++;
+      var s = getState(it.id);
+      if(s==="done") done++; else if(s==="fail") fail++; else if(s==="skip") skip++; else pend++;
+      var mark = {done:"[✅ 通过]", fail:"[❌ 未通过]", skip:"[⏭️ 跳过]", pend:"[⬜ 待验收]"}[s];
+      lines.push(mark + " " + it.id + "（" + it.pri + " · " + it.dim + "）" + it.title);
+      lines.push("    预期结果：" + it.expect);
+    });
+    lines.push("");
+  });
+
+  lines.push("========================================");
+  lines.push("汇总：总数 " + total + " ｜ 通过 " + done + " ｜ 未通过 " + fail + " ｜ 跳过 " + skip + " ｜ 待验收 " + pend);
+  lines.push("通过率：" + (total ? Math.round(done/total*100) : 0) + "%（按总项数计）");
+
+  var blob = new Blob([lines.join("\n")], {type:"text/plain;charset=utf-8"});
+  var a = document.createElement("a");
+  a.href = URL.createObjectURL(blob);
+  a.download = "美妆数据看板-验收报告-" + new Date().toISOString().slice(0,10) + ".txt";
+  document.body.appendChild(a);
+  a.click();
+  setTimeout(function(){ URL.revokeObjectURL(a.href); a.remove(); }, 400);
+  toast("验收报告已导出");
+}
+
+/* ================= 工具 ================= */
+var toastTimer = null;
+function toast(msg){
+  var t = document.getElementById("toast");
+  t.textContent = msg;
+  t.classList.add("show");
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(function(){ t.classList.remove("show"); }, 2200);
+}
+
+/* ================= 事件绑定 ================= */
+document.getElementById("filterSeg").addEventListener("click", function(e){
+  var b = e.target.closest("button[data-f]");
+  if(!b) return;
+  filter = b.dataset.f;
+  this.querySelectorAll("button").forEach(function(x){ x.classList.toggle("active", x===b); });
+  render();
+});
+document.getElementById("expandAll").addEventListener("click", function(){
+  collapsedMap = {};
+  document.querySelectorAll(".module").forEach(function(m){ m.classList.remove("collapsed"); });
+  saveState();
+});
+document.getElementById("collapseAll").addEventListener("click", function(){
+  MODULES.forEach(function(m){ collapsedMap[m.key] = true; });
+  document.querySelectorAll(".module").forEach(function(m){ m.classList.add("collapsed"); });
+  saveState();
+});
+document.getElementById("resetBtn").addEventListener("click", function(){
+  if(!confirm("确定清空全部验收进度？此操作不可撤销。")) return;
+  stateMap = {};
+  saveState();
+  render();
+  toast("已清空进度");
+});
+document.getElementById("exportBtn").addEventListener("click", exportReport);
+
+/* ================= 启动 ================= */
+loadState();
+render();
+</script>
+</body>
+</html>
