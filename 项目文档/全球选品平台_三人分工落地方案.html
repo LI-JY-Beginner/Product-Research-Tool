@@ -1,0 +1,528 @@
+<!DOCTYPE html><html data-page-node-id="TsBE7kvqDxNStSGIXDhdak" lang="zh-CN"><head data-page-node-id="tCHpMlUJ7L25zVp3BGKNpo">
+<script data-page-node-id="KZ5BcsxmtMwcR6qDn1XwXT" src="/page/page_comm/inject.js"></script><meta data-page-node-id="NtqHJpBYNcnZsMzDr6ZhG1" charset="utf-8">
+<meta data-page-node-id="2S2nsdgdPdQ1JriyCqmlq8" content="width=device-width,initial-scale=1" name="viewport"><title data-page-node-id="qP7dhCElUfS3zpCpqGNnaY" data-pnid-children="0yOUa3SvdBcq8QeIPDhNGJ">全球选品平台 · 三人分工落地方案</title>
+<style data-page-node-id="IuAMiXo1H6QMbkOJ5a7s04" data-pnid-children="Z28URFDhKkguaY7nxpYgQZ">
+:root{--fg:#1f2328;--muted:#6b7280;--line:#e5e7eb;--accent:#2563eb;--soft:#f7f8fa;}
+*{box-sizing:border-box}
+body{margin:0;background:#fff;color:var(--fg);font-family:-apple-system,"PingFang SC","Microsoft YaHei",Segoe UI,sans-serif;font-size:15px;line-height:1.75;}
+.wrap{max-width:1080px;margin:0 auto;padding:48px 32px 96px;}
+h1{font-size:28px;line-height:1.4;border-bottom:3px solid var(--accent);padding-bottom:14px;margin:0 0 24px;}
+h2{font-size:21px;margin:44px 0 16px;padding-left:12px;border-left:5px solid var(--accent);}
+h3{font-size:17px;margin:30px 0 12px;color:#111827;}
+p{margin:10px 0;} ul,ol{padding-left:24px;} li{margin:5px 0;}
+blockquote{margin:16px 0;padding:12px 18px;background:var(--soft);border-left:4px solid var(--muted);color:#374151;border-radius:0 6px 6px 0;}
+blockquote p{margin:6px 0;}
+table{border-collapse:collapse;width:100%;margin:16px 0;font-size:13.5px;display:block;overflow-x:auto;}
+th,td{border:1px solid var(--line);padding:9px 12px;text-align:left;vertical-align:top;}
+th{background:#f1f5f9;font-weight:600;}
+tr:nth-child(even) td{background:#fcfcfd;}
+code{background:var(--soft);padding:2px 6px;border-radius:4px;font-size:13px;}
+pre{background:var(--soft);padding:14px 16px;border-radius:8px;overflow-x:auto;border:1px solid var(--line);}
+pre code{background:none;padding:0;font-size:12.5px;line-height:1.65;}
+strong{color:#111827;} hr{border:0;border-top:1px solid var(--line);margin:36px 0;}
+</style></head><body data-page-node-id="uxAC8Ex6ZtFyeGii8sKN7S"><div data-page-node-id="Xavz8QDOl3xBHiKlDprQk9" class="wrap"><h1 data-page-node-id="o4pQQ71H4WabFM4tQy2H2g" id="v1"><!--pnid:4iDlvhFqfMeAM7WosnppQU-->全球选品平台 · 三人分工落地方案 v1</h1>
+<blockquote data-page-node-id="GyO9VfzrwfDvXquqt61UPV">
+<p data-page-node-id="H89hPhP53HyuxTLmiIH7sm"><!--pnid:8NbaE7qTjAUC0AnIh8K9bu-->时间基准：2026-09-22 晚出发 → <strong data-page-node-id="vLf4W1cdpu98DWhreKXj2z"><!--pnid:yCcn4SlNOkLETLD2sqNHKv-->2026-09-28 提交</strong><!--pnid:0XQNJD8EHlMLmow89tuz3V-->（有效工期 5 天 + 1 天缓冲）
+适用角色：乾颖（商务助理实习生 · 电商BD）／选品专员／AI组
+本文所有结论基于对线上工作台源码（v11）的实测拆解，不是猜的</p>
+</blockquote>
+<hr data-page-node-id="aMh73F1ECDrUCTS02ExA1w">
+<h2 data-page-node-id="yTpU0EKVQWV6X5oKwMH8rA" id="_1"><!--pnid:z0DBKDv6gBcFYGHosVlj8d-->零、三个先说的判断</h2>
+<p data-page-node-id="kpJ7oW7r8yCrEeq5Cb5m2m"><strong data-page-node-id="KVIU3q2buSEUMSCgQObvxt"><!--pnid:wuitz6iifpYt6XXdIgeL4y-->判断一：你们的方向是对的，但现在是一辆没有装货的车。</strong><!--pnid:kaBbkRVjMjFxYTcKHmx3nU-->
+工作台的工程完成度很高（5 视图 / 9 条洞察规则 / 8 个数据源台账 / 33 字段 / 双云表 / 规则健康度自检），这部分 AI 组同事做得相当专业。但库里现在全是 <code data-page-node-id="tlONQz5RVPqYoow6vd7bPa"><!--pnid:yL2aAHFW30NPqX2eLkkrKP-->DEMO0001</code><!--pnid:iuLZ8p6FBEDoRGCZRK0MXY--> 开头的<strong data-page-node-id="Z57oRUcJwwEXdFtXdnmHDw"><!--pnid:xl8xm3kNhhmA5tfRljjEIP-->示例数据</strong><!--pnid:boZUnItuByDQdmpbUDPyyc-->。而 9 条规则里有 3 条（改良机会 / 可落地 / 空白赛道）依赖「差评关键词、备案路径、宣称支撑难度、预估成本、与我方 SKU 重合度」这些<strong data-page-node-id="tJDvyfPuHu6HuUmRqUKIQn"><!--pnid:iCKolRqB1KrjXlpAuU1G6F-->只能人工标</strong><!--pnid:zVBbEYuqdAUsForUJ9scL6-->的字段——这些字段现在全空，所以这三条规则<strong data-page-node-id="VhHPlUN68XsFDapWhtJPJX"><!--pnid:rzp5647G3RysKESvkwPanl-->必然是 0 命中</strong><!--pnid:kFWJG6e8KmS8pRrwquLlzY-->。</p>
+<blockquote data-page-node-id="IhP9PLcgiIEnrETaTzIkOl">
+<p data-page-node-id="YQ8OsfRQ45jNOhoqUHbCbl"><strong data-page-node-id="AKo2UnlhncrftFdvmp6IWs"><!--pnid:wyql6KePAYOmKRtAzMlAqw-->结论：9/28 前最高杠杆的事不是加功能，是把真数据和大选字段灌进去，让 9 条规则全部能跑出东西。</strong></p>
+</blockquote>
+<p data-page-node-id="ZHRgWbqxIUc4COoRaHBEdP"><strong data-page-node-id="eRf8jPOAuuXTM3k8ig3D28"><!--pnid:vyb8DCiyN98bt1gysk8hmD-->判断二：你负责的部分，恰恰是别人抢不走的那一块。</strong><!--pnid:ERA1967obfS4jZRPic65NK-->
+远程分工最怕"三个人做同一件事"。按"谁能拿到什么资源"切，护城河很清晰：</p>
+<table data-page-node-id="QMYkOtiL5gOHi4FvAnKjWN">
+<thead data-page-node-id="ug0SsFdUC5zQRfBIHuIkwg">
+<tr data-page-node-id="KMkVVKpGi31kZYytbNDuyv">
+<th data-page-node-id="SPksK6M5AxWHJeQB90Q7yX"><!--pnid:28a0CHXgkBDU4ssis9RDiK-->人</th>
+<th data-page-node-id="ZTlD2tLxubV0ZtA8BXk9v5"><!--pnid:E5o5sBCE4ppj2vmwWkYoC1-->独占资源</th>
+<th data-page-node-id="QmNyZtPOkjXySAuCAnkbcx"><!--pnid:bVHQFoqsT6mhiXdxg6isgL-->不可替代性</th>
+</tr>
+</thead>
+<tbody data-page-node-id="DmSnWmf5aqfyjWfOv9vPJS">
+<tr data-page-node-id="ciDp5h05Wjwv0zuUppyH4O">
+<td data-page-node-id="zWZuteZv82gYDFLx3sJ6cd"><strong data-page-node-id="KYtnKVKYsyWa6Meiw5Asyt"><!--pnid:MJSDw9W2xVHyBj6IptdA1r-->乾颖</strong></td>
+<td data-page-node-id="XSnTz8RbrJflIY11nV5E6z"><!--pnid:WVOBQCKXz7F4gZJ0TCFlQ9-->自家店铺罗盘账号、千川投放后台、达人资源与发片表、TikHub、飞书自动化链路、<strong data-page-node-id="IIqGU8BzagwQqsi1SQDvLu"><!--pnid:JjQIWb8MBump7xunwgiLfZ-->真实业务场景</strong></td>
+<td data-page-node-id="8dEjcthKuPZYiBNuiIqLbR"><!--pnid:Rpk2bOD5cjzfUGVi93bzaE-->别人拿不到这些登录态和业务判断</td>
+</tr>
+<tr data-page-node-id="jGdHkNFYxAlPSbrffrHs4c">
+<td data-page-node-id="yRJ5ZrqylfPVbzaKgRdPhw"><strong data-page-node-id="m3nhOqrm3rHpwLUL4IuMzV"><!--pnid:e1qh0IhIInCYQEm4aPKzem-->选品专员</strong></td>
+<td data-page-node-id="wtSxw3WIspcBSyGAhDuJHJ"><!--pnid:5GRvZIls1Eub4skXxSfszn-->品类/成分/备案/成本/功效宣称的领域知识</td>
+<td data-page-node-id="LuKK3swAthOqYhH6dK5vsN"><!--pnid:1xzJIt5B71vAGcudocwacg-->别人不知道「配方工艺」和「独家原料」该怎么分档</td>
+</tr>
+<tr data-page-node-id="bqme5vPNrgXi8fn0yqNklX">
+<td data-page-node-id="ig9x6AwUEPLtFptcDhgGEW"><strong data-page-node-id="SNt6LYr6L3Ygxxolxll0dy"><!--pnid:1VWyZJFYMcOoVaCFRAkGFz-->AI组</strong></td>
+<td data-page-node-id="thfvrvSIeVSDfkKfjiSd3p"><!--pnid:fYE8T3Ea5yx0nedH0bMtwF-->工程能力（采集管线 / 引擎 / 部署）</td>
+<td data-page-node-id="Cul1Gw2NRUEYPj0pvyIwTi"><!--pnid:Pn4MF4Tl3RYvf7LxEoHr26-->别人写不动这 4000 行</td>
+</tr>
+</tbody>
+</table>
+<p data-page-node-id="1Aj9b0z3MRlp5Igtx5UuN6"><!--pnid:9a3tcX6Cixu9g6isHxYU7o-->一句话：<strong data-page-node-id="354XdNowdeVLE5FchStVH0"><!--pnid:4rWL10eHE09vRMJZayfRGg-->AI 组搭骨架，选品专员定标准，乾颖灌真血肉并把它讲成一个能打的故事。</strong><!--pnid:OgasSB5gUkrhlvho4v9X09-->
+比赛评分最看"真实性"和"闭环"，而这两样正好卡在你手上——所以你的份额一点都不轻。</p>
+<p data-page-node-id="8dhrKqsVO19bY0nKg1AkIY"><strong data-page-node-id="IptcvFtFMvP3bPqajhU6Ve"><!--pnid:7MoI3IcwJkuiHl4boDw7Ak-->判断三：现在最大的缺口是"后半段"，而它正好是你的地盘。</strong><!--pnid:Wi2wDo9ha8xEB4K2PNr1K4-->
+我把工作流 V2.1 的八个章节和工作台逐个对了：</p>
+<table data-page-node-id="xEbNCnLTgBF31IJdDKXHB0">
+<thead data-page-node-id="zaBajkq2NvBlfuRTKJ79H4">
+<tr data-page-node-id="skFgeIoij5Qgj5GtRXQLXu">
+<th data-page-node-id="xB0t8PNSypGgs6Q696x0my"><!--pnid:2S7IljWP5Brd2I8UvJBQJl-->工作流章节</th>
+<th data-page-node-id="IbNHBvbEHyidnWvZoPSUdH"><!--pnid:e5cJwlJAgtX8xTI2SzPZfL-->工作台现状</th>
+</tr>
+</thead>
+<tbody data-page-node-id="IbcdFIhco32wZrcw724zLn">
+<tr data-page-node-id="o32fijc1av2xqfd9WMyweb">
+<td data-page-node-id="3uAu6UJ1tcUDfx8rbvywIw"><!--pnid:7ZU8u3z7SsFvEsg5ZGHUBg-->一 · 市场规模与趋势</td>
+<td data-page-node-id="avRShFFAUcp9tvYrgL69aI"><!--pnid:8p0mKDJSxmW9m9SoaDUlCE-->✅ 有（全球看板 / 类目热度）</td>
+</tr>
+<tr data-page-node-id="wTEnCO5hSKocxt0tfWWGSP">
+<td data-page-node-id="lvuiCFsNPLM1cTQ2T2Oj0P"><!--pnid:aB0xvANaMKtuoGkgBtCRn2-->一 · <strong data-page-node-id="0h4BhUgxVXACzjVe8J3RGz"><!--pnid:X9iVxZfeRrZuoP0tLgCBlh-->竞争集中度 CR4/CR10</strong></td>
+<td data-page-node-id="1eGn1uWhRm4tevkt02z8HE"><!--pnid:3GN0N9f1mFoi302YsNkdCK-->❌ 源码里 <code data-page-node-id="VToWCUfzqlMYoio0PSwgB5"><!--pnid:9zVhk0KLqgoyOvEI0Bjsfy-->CR4</code><!--pnid:rqu6cTy1kDckrFrWxcA5p8--> 一次都没出现 —— 决策标准缺一条腿</td>
+</tr>
+<tr data-page-node-id="YcOcQdpeX2EBg1FCal4IlJ">
+<td data-page-node-id="V4wnNPEb1hJJLWeS7JbpU6"><!--pnid:WaBGXV7mRiTnWRHqQVdHxj-->一 · <strong data-page-node-id="mJUQNgKtdnakwHuxNV4K6s"><!--pnid:s6IkbieeRzPHxUMIXUnHAc-->流量结构</strong></td>
+<td data-page-node-id="2z15ZvEwuGvD4kuyDNPVOi"><!--pnid:uP4mDiiEJbbJXrIsO5BL1N-->❌ 无（上一版分析里就指出这节被误删了）</td>
+</tr>
+<tr data-page-node-id="V3mFLWJFoNRU0MFv6j03ip">
+<td data-page-node-id="uUOZxgmAhKfDaE7xCzr6dj"><!--pnid:pDGUgZTorGhkn7GcoeZFRB-->二 · 产品核心要素 / 成分</td>
+<td data-page-node-id="w3s4SJWXRYSKVZbAA4h07f"><!--pnid:CYiqv1OaFpoH6WLxjRtQZm-->✅ 有（品类与成分库）</td>
+</tr>
+<tr data-page-node-id="fcEZsGnbRTUvidHnHjmpRQ">
+<td data-page-node-id="qW9tQ2IC2bEWB4HbziSrbm"><!--pnid:Ry6u2aGwEeYRoHPwf1Y5sU-->二 · <strong data-page-node-id="yI7cKAYmVuEGbVdGRGtxw5"><!--pnid:uqmGTlOqNLAFVYMJrXfFeJ-->SKU 矩阵与定价 / 货架策略</strong></td>
+<td data-page-node-id="dY2Mj70YH0Ii2n3vhCQo3E"><!--pnid:iEFOpvJZaZr1czhaOaRieu-->❌ 无</td>
+</tr>
+<tr data-page-node-id="IHGm5bEYSAG3S7bKY8Yb46">
+<td data-page-node-id="jhK4GrIseMMT8N2S2d0zDt"><!--pnid:02YL6flFrGcR3ANX3wviKc-->三 · 竞品商品榜</td>
+<td data-page-node-id="MChKVNoVs3n22EiXyq9jQ7"><!--pnid:6sKg22GlQlo4QntsWhW4Z6-->✅ 有（榜单中心，含达人密度榜）</td>
+</tr>
+<tr data-page-node-id="Lq6PEATMEl8bk3yCM4DzVT">
+<td data-page-node-id="yP9SLwjGS8z265tpIo9mln"><!--pnid:9GB2azSfaUP8K2iM1gQOaE-->三 · <strong data-page-node-id="AObQuWqbPYFOOG8B52iCyz"><!--pnid:Q9e4APoLPAv3fKuDW28iA1-->爆品视频拆解 / 素材模板库</strong></td>
+<td data-page-node-id="sVqn4hQMfjluhSvcmBGvIr"><!--pnid:lj6gbdc9w8Mrtnx2WYwKqm-->❌ <strong data-page-node-id="WfVdHAxppn9d5SHjddW7pK"><!--pnid:NRux7W1573ZgWqu1KL2GhR-->完全空白</strong><!--pnid:1qb1EHNX8sxCWkaC37S6VY-->（<code data-page-node-id="3TW1g9R2WldKjyg5IKW5Js"><!--pnid:J7UdnyX686qOKtPTuoUIIN-->视频</code><!--pnid:bCILYmXN33pYGVC6ElKlPJ--> 命中 1 次、<code data-page-node-id="WXv5ymgNbKdHBawJ88mNpC"><!--pnid:ED1kY5gEZnCZznkfsFa0PS-->素材/钩子</code><!--pnid:PG0qBvu7gqkv5NsN3lWe3y--> 命中 0 次）</td>
+</tr>
+<tr data-page-node-id="tn7TbaeTREdizjLXnL2ziA">
+<td data-page-node-id="ih7Y5dnJFQIKB988vTk4nI"><!--pnid:QGzPmwBie5JPhgdpdPfD4N-->三 · <strong data-page-node-id="airrI8cHtU1fQzzTL3yDEC"><!--pnid:NkCLHZPGxvbeX0zKDrH11q-->达人资源清单</strong></td>
+<td data-page-node-id="JTlyvn5HtBNFF4ck8bJhft"><!--pnid:OhPFwB4NKDLfAd4tYHqhpZ-->⚠️ 只有「关联达人数」一个数字，没有达人台账</td>
+</tr>
+<tr data-page-node-id="5Af9OA9l0MmwWzB1XMXXKi">
+<td data-page-node-id="we1oaaBkMTWCnrPILWNKLl"><!--pnid:6AHhXJiEYbfuGZdhiQvay1-->四 · 用户调研（小红书 / 外部口碑）</td>
+<td data-page-node-id="MSie3Olcno28KIJmJGYmf3"><!--pnid:PJX4bceeuK00nh3LgPLMMQ-->⚠️ 小红书只是「评价来源」的一个选项，没有采集管线</td>
+</tr>
+<tr data-page-node-id="IyKVwiaqjtp6pn9DosKv5m">
+<td data-page-node-id="geHTT4s7wrzhxs6srGuxw0"><!--pnid:brgslL3TyGclqSGLTBdMWo-->五 · 供需匹配 / 机会洞察</td>
+<td data-page-node-id="RK13pIWkhvtihUiA7DSzvB"><!--pnid:k06SVdZj9yOHoRGnIv1hzq-->✅ 有（9 条规则，且带健康度自检，很专业）</td>
+</tr>
+<tr data-page-node-id="pNmwTio9McnpiHzmUlpUoy">
+<td data-page-node-id="dtk9zTAPKTaXc4KgeWMfwB"><!--pnid:9uYWPcoNu8cXGfE1wK6PTm-->六 · 达人资源对接</td>
+<td data-page-node-id="omsqDfhmxktWfYKSPWhWi1"><!--pnid:5Maqal3TaFLT6ABVO2ZHoy-->❌ 无</td>
+</tr>
+<tr data-page-node-id="2zbvvgvJV650AHQVY7xbHq">
+<td data-page-node-id="NkkZp3qFrJwwjdRUIQt0mW"><!--pnid:wdEIkMm95mr6ZVf5Mf3tk3-->七 · <strong data-page-node-id="hna0vGhkHdPBrQdIM3uaGK"><!--pnid:utG2P2gZ6KV4oKZkyUHvyX-->上线后测试 / 投放 / ROI</strong></td>
+<td data-page-node-id="A9CmwJ6LalhOvUY81xlw6r"><!--pnid:lI1IG7rRi8KP2LJ8jKk7Ur-->❌ <strong data-page-node-id="DeZqJ6b6Xi0bBRVS47KIB7"><!--pnid:E8qKWxXo4RIRoNiq2PXv7Q-->完全空白</strong><!--pnid:zJreNNHgSruZdPjKConJR3-->（<code data-page-node-id="ZlEIsS6Yd5AHT8TKKORn4j"><!--pnid:OYuCBwEhHmVLxzNfGQSCzO-->ROI</code> <code data-page-node-id="laOm8jnRobmjQipLzUGCNs"><!--pnid:ezkN0FTIpMWT0TQJ9vBFQh-->千川</code><!--pnid:rJJFVVZDbDpfi6gZBOqrzB--> 命中 0 次）</td>
+</tr>
+<tr data-page-node-id="eosTDJjaXGAeXtBRpFceJg">
+<td data-page-node-id="7Lxuy2U7Mx3qIplG6ltm2Y"><!--pnid:A4L4IWenQKNxH54DAsN4nB-->八 · <strong data-page-node-id="SoK78heMUlwjpW2U0fnxgJ"><!--pnid:OZkG1Rseoj7m5tcx1mFmSY-->规模化 / 每周迭代报告</strong></td>
+<td data-page-node-id="Z9CzUmFN4F40dbxG4RhPwU"><!--pnid:cYnT0fiRd6cW0BZRBpYrsR-->❌ 无</td>
+</tr>
+</tbody>
+</table>
+<blockquote data-page-node-id="bbzzfHI2NDd12R0aCT5W4w">
+<p data-page-node-id="WNb75rmwiblZJEhtIbPzhQ"><strong data-page-node-id="7rUNiqdod8u9i2ZARUSuMi"><!--pnid:bYDVqJRqPcg4RqRZkXKvwJ-->一句话：现在它是一个"前半段选品工具"，不是"完整工作流闭环"。补上后半段，作品就从工具升级成闭环平台——这是评委感知差别最大的一步，而这后半段正好全是你的日常。</strong></p>
+</blockquote>
+<hr data-page-node-id="Yw8m18FugzluOGMpEtGzeE">
+<h2 data-page-node-id="M6PT6nsys3UuDp3gyQTmZr" id="_2"><!--pnid:FuSu9vvaLBy6RMDAwOcr36-->一、分工总表（负荷尽量平均）</h2>
+<table data-page-node-id="HL40LR3IT8c0GaYRWjci3j">
+<thead data-page-node-id="rKtioYC9doTh5C6HtfifsV">
+<tr data-page-node-id="yCR37esnYLbsYXQLeBrrLB">
+<th data-page-node-id="j37CdixhWwBs7E45Vt4dm1"><!--pnid:7pj8m3S1ZtTjGuFP6yvFwq-->#</th>
+<th data-page-node-id="0RoX48RV1S6ebunmsQpdxU"><!--pnid:5hEurSVk5tn7jO3sRJbAYB-->模块</th>
+<th data-page-node-id="E00kwyKhdd2NpuG6xUBiwK"><!--pnid:xtXWynAPNylf98igSvEgyn-->负责人</th>
+<th data-page-node-id="V0Fdi6tlFtwJ3edkxWDCol"><!--pnid:oND4EvJN3kpm0hcbfEMtwx-->工作量占比</th>
+<th data-page-node-id="wc96S7u82ABsc5pKjqRABE"><!--pnid:bZ9jsfiRcVq92f4csrGUry-->交付物</th>
+</tr>
+</thead>
+<tbody data-page-node-id="E3AjkTU2j1EDo4f10g9chT">
+<tr data-page-node-id="YTyivxPj4rhtS0Q2KnEJbY">
+<td data-page-node-id="jh3qoEFEEq5rr5fhA9ZxBb"><!--pnid:tf8ONFu4cGB4PhFiDwwUE7-->M1</td>
+<td data-page-node-id="hKYwg77oHcEjTHUo7thcuc"><!--pnid:AlRQtniMRHJ0rakzYnALeM-->平台工程底座（管线 / 引擎 / 云表 / 部署）</td>
+<td data-page-node-id="enPuq9Km3MIMDcK2izET6h"><!--pnid:PkNnlmRoroqibaYeYpZ7ZF-->AI组</td>
+<td data-page-node-id="w5Onk3zvRojVU2rlqfDmnq"><!--pnid:CtPks0HDXL4YV1TYCz9DUN-->~25%</td>
+<td data-page-node-id="QH2JbXUfrbncn7fohP58Vz"><!--pnid:UpFjtJCc7gaYoWcj3VQYaa-->稳定的采集管线 + 云表同步 + 定时发布</td>
+</tr>
+<tr data-page-node-id="2I7HTNBcGFMpQjjI1cKPjH">
+<td data-page-node-id="M3aAzmeybnqgEtCzODsK9f"><!--pnid:nhlzubHMZ8kGqOjmPMvCgq-->M2</td>
+<td data-page-node-id="vaRZi8ASdotY4PAmWF8lxO"><!--pnid:dJydKCUhxGZyIXoRjTwUVp-->新增「素材与达人」视图 + 表</td>
+<td data-page-node-id="QHSvI7HQqFEKSoQgLOl3PM"><!--pnid:VCQRDJoRuwVmaHSKXd8yMi-->AI组主、乾颖定义字段</td>
+<td data-page-node-id="ht0UgJ890WRtLfqBhyLdx0"><!--pnid:5Aycnxwwo4CslFYcchTIyO-->~15%</td>
+<td data-page-node-id="0uZOMPOe4sKTzJdiDLJirh"><!--pnid:Dmrt1RvmobmYRj4vfSydXr-->第六视图</td>
+</tr>
+<tr data-page-node-id="ItC5NnVt62NOXef4zpAA9Y">
+<td data-page-node-id="pD2US8h3qMLLMa34Irtjua"><!--pnid:iDFgWpGjwHjjb5TlbugucJ-->M3</td>
+<td data-page-node-id="cv4jTxsTnGNePfsivHSd2W"><!--pnid:Jt21vNCdCsf1HPLVFHHOEB-->33 字段中 manual 字段的填写标准</td>
+<td data-page-node-id="VSY0tZmKeG4T6X6jRmt6xK"><!--pnid:Ol56Vm1TuFSSUhQ93T9NP8-->选品专员</td>
+<td data-page-node-id="Sy3M7zCh8H4t1lic0hwL7X"><!--pnid:YxdWtSl4mf2ZzvzeNOJXF0-->~15%</td>
+<td data-page-node-id="vIwFhFL95lYnltWdbYwFsp"><!--pnid:Ve1jvVjnWdxicRCfAtg0lC-->《人工字段填写规范》+ 已填完的数据</td>
+</tr>
+<tr data-page-node-id="rN2f73qY5j3frecedtYXv4">
+<td data-page-node-id="5Rpt3V5b4A1v5HFyi8sbWG"><!--pnid:5NdAJI137mBmOBUYRJi1xx-->M4</td>
+<td data-page-node-id="m6151JEYs9fkgJCUT6DSwb"><!--pnid:6nOJudp3uJHMh9ua5qWUCi-->9 条洞察规则的阈值校准与依据</td>
+<td data-page-node-id="S83JtLxuxZ2syx7ryWlNBd"><!--pnid:zP3rKzzeMNworbVvUP3GTu-->选品专员</td>
+<td data-page-node-id="NZEsZ69Orc5QJH0nKDHjgz"><!--pnid:KUrmBMIM5eIpMjUZZPzb8h-->~12%</td>
+<td data-page-node-id="KsRUHP8VIDlikCV9aXUjC3"><!--pnid:P1i2YrRXnBXLpWDMszG7wA-->《规则阈值卡》</td>
+</tr>
+<tr data-page-node-id="FHMINu91KVtu8KZrG9HvGq">
+<td data-page-node-id="0lzMKZas5nFB9BIiydIBuK"><!--pnid:rSOzkpqHbj9nt5ASHbjpJZ-->M5</td>
+<td data-page-node-id="Bfl4YdPe95gXWG1yn2XEhF"><strong data-page-node-id="7n2BiEtoNdBxlRUywUSC1p"><!--pnid:qdpqcxzojpu7L79EtM9ilE-->口碑真数据供给（自家 + 外部）</strong></td>
+<td data-page-node-id="giauFuUvFtpFOEPReOgane"><strong data-page-node-id="jzFz5kAlN5PeRGkfleXIyE"><!--pnid:fMzbesg8WacNijrYnvdfpx-->乾颖</strong></td>
+<td data-page-node-id="dteCcItGMRgjk1Epe3NAUq"><!--pnid:v43ZpRTDzyiaXhvXqG6lGC-->~18%</td>
+<td data-page-node-id="UUUnOYBUPa7vtiB3urdmN1"><!--pnid:UpCHLBeHBdEn2D9qEzOeQC-->真实口碑数据 + 让「改良机会」规则跑通</td>
+</tr>
+<tr data-page-node-id="zGTM9yMmfUa4n6Y1Yc5mCY">
+<td data-page-node-id="hwBpHOSlLStD02zXKwFLiJ"><!--pnid:Y23AvCdOuyr12V7c486aLC-->M6</td>
+<td data-page-node-id="1hwpwZR9iX9mkCkMlQd8vS"><strong data-page-node-id="14xd9dXefsnR4qVYHXKgcS"><!--pnid:ImWkaoN6MC0gegqkUTX06N-->达人 / 素材 / 投放回流数据</strong></td>
+<td data-page-node-id="XpMcW6gLMEd98WWpLGXIfV"><strong data-page-node-id="g4XwM91xLtEKIvuEUofsbx"><!--pnid:B0KxEhMZWGDNFOmOtxiVjD-->乾颖</strong></td>
+<td data-page-node-id="qzCUbvBMJYq7GwayKrt4Y4"><!--pnid:PcgSB1HOutXmuok7JX0Xq8-->~20%</td>
+<td data-page-node-id="D2CwrwpYtBqoWCgfuiASmL"><!--pnid:6GlBTG59UiKGQt687XkUDP-->素材与达人表数据 + 投放数据回流</td>
+</tr>
+<tr data-page-node-id="Qt2TgfZD4mQ80okudiJqel">
+<td data-page-node-id="KZfVfHdKVJPtRV0iNWzp77"><!--pnid:PN42FXvVRIM8ytYOXCtDbI-->M7</td>
+<td data-page-node-id="itsi26iSyblnemRHgMOZzm"><strong data-page-node-id="xcRpjmqjQomgj5g1gavz5P"><!--pnid:UzNz5UuI7fqB0wxa0GREKz-->演示叙事、答辩材料、每日自动化</strong></td>
+<td data-page-node-id="1sQkQbzQLqbM9VJbyDDsaG"><strong data-page-node-id="05AjKtBFuN1EdhhKLZTODw"><!--pnid:UGRMMMe54EMzEg7hfxEzU4-->乾颖</strong></td>
+<td data-page-node-id="wKSX5Mbb4zgUbZgPyinmF7"><!--pnid:fVaMBw4mA7Oac8pp1PAZtr-->~15%</td>
+<td data-page-node-id="4VlH7gCs6rU9vfnWpuOCwN"><!--pnid:5a8SnpthwMVCmstiJwdFsa-->demo 脚本 + 答辩 deck + 周报链路</td>
+</tr>
+</tbody>
+</table>
+<p data-page-node-id="c5sMezRzmWU4vREqffxdpq"><!--pnid:9XcOBXSYyKXwtu1xcxn7Hd-->乾颖合计约 <strong data-page-node-id="3iXTnekFuL4MgEq9nxoIGI"><!--pnid:QhQt75chpZxMUstBxLBbQI-->53% 的可见产出</strong><!--pnid:Me717tnUKe67knyM9u1Hmh-->，但注意——你的工作大部分是<strong data-page-node-id="r1Gdfo44liy8j81LAgU5kp"><!--pnid:9AL41QjIU0fSmfn0ow6rWs-->用 WorkBuddy 对话完成</strong><!--pnid:ecYS47mtMrfy0vDd2tXf0W-->，不需要写代码。下面逐条给你具体动作。</p>
+<hr data-page-node-id="S6OTxSi10Oxbd0gyUbIGl6">
+<h2 data-page-node-id="MdBAxscLyvqGuyAmdzB4hj" id="_3"><!--pnid:oK9TtS1det2jEupYddDCMN-->二、乾颖的三个模块 · 具体操作手册</h2>
+<h3 data-page-node-id="1urWwf9WnUxYytKBMWzgaV" id="m5"><!--pnid:qYwvL2CVW4FdDo2AK99TP5-->M5 ｜口碑真数据供给 —— 你的最高杠杆动作</h3>
+<p data-page-node-id="Row2VeClOASD1KcSODUY4H"><strong data-page-node-id="dLVHRNIROuKBGmDgTnOLvI"><!--pnid:UP6xKgoT6BjB9QMw2uZ4n8-->为什么是它</strong><!--pnid:gUDMseolDokfj4JD8arqMv-->：9 条规则里「改良机会」只依赖一个字段——<code data-page-node-id="Ial5yvhEq0T96ZbuLz1nUV"><!--pnid:Ffbu6OylrpE4fnzHG7Z5Xl-->差评关键词</code><!--pnid:FeWbYNwFsTvLsmOM3XLCDb-->。这个字段是 <code data-page-node-id="Q3RM9RXCN52E67SzdOhmsT"><!--pnid:Dbtmsuf5YzQ3LTcF7aYR9b-->src:'manual'</code><!--pnid:792LDEcm6bTlmYCO8t7tJN-->，任何平台都导不出来。现在全空，所以这条规则一定是 0 命中。<strong data-page-node-id="rJ6BDO8VEWRhb6Ei4bLU4k"><!--pnid:Gl3lyXoTSo3B1Pu9nXTaCj-->只要把它填上，平台立刻多出一条能输出的洞察规则。</strong><!--pnid:Y1vwRYIuJTcmWudcRMpLp5--> 而这份数据只有你能拿。</p>
+<p data-page-node-id="7r7y1d72XzXMNJGzPmxHgV"><strong data-page-node-id="PjLN5rXCNZZzYecEQDRbBX"><!--pnid:w32tZl4rI4hBbC5QJt46DH-->产出目标</strong><!--pnid:oE2ugZneJcsM6AYKQn4hgT-->：不少于 <strong data-page-node-id="dgBvyGnDBT4zdCin7bGFw3"><!--pnid:fma976HwTCbxLMUCKUIg4R-->30 个真实商品 × 好评/差评关键词</strong><!--pnid:iBhH8SKNMgxGiaIzrxe1AN-->。</p>
+<p data-page-node-id="wer2yGHyayG7f72WBUPnJY"><strong data-page-node-id="xC5N6MgwscBY0V7PczvyVU"><!--pnid:53sIYBc8dOfGqhuTeq8WDH-->操作步骤（照着做）</strong><!--pnid:aZMCB5I08ORH1KLFGEYZ56-->：</p>
+<ol data-page-node-id="uW2kznpfnbiYprLC3gUbCN">
+<li data-page-node-id="EkbbX4rbTJL3mAoGnXXvZp"><!--pnid:VhmeLDOHeJwrfcD9TFWh9C-->打开 <code data-page-node-id="NXIeixT6ohOYZ5rQRS4Rm2"><!--pnid:6ymr4fhZeBSbcGO7T175oc-->compass.jinritemai.com</code><!--pnid:RH00X25tPmesXd5v8xS23E-->（抖音罗盘）→ <strong data-page-node-id="VbMJfERNS5GlkWOmGF5FC7"><!--pnid:xQodrgyoz4zgTJEjapDP4Z-->商品</strong><!--pnid:LVZ4LW8m2apRXMd2wolPdZ--> → <strong data-page-node-id="nH8umFfnSHndw3QtoFiEkf"><!--pnid:iqolEATK4QhdSyCMZpwEBH-->体验</strong><!--pnid:I88AE3uxc0syNHgh00YooH--> → <strong data-page-node-id="FTcvhXRv0apy9Vvv6Cqa9w"><!--pnid:U03c4Cvz6GJu4G7zzeDwGA-->用户原声</strong></li>
+<li data-page-node-id="38577yUYf13H1a8lyHWIze"><!--pnid:W4Lq2oMMiXajuLwXN4X8Cv-->导出自家 TOP 10–15 商品的原声数据，再补 15–20 个主要竞品的评价（竞品的可以走第三方或已装的抓取技能）</li>
+<li data-page-node-id="a3tMLDsxzxQCKIctW2YxsG"><!--pnid:hbSxYGGGpsa7bXzi8Jimq9-->让 WorkBuddy 帮你结构化，直接复制这段话：</li>
+</ol>
+<blockquote data-page-node-id="aV1B5M1LwtOOQndvUDPeWJ">
+<p data-page-node-id="qKZwaqZM1ZGliVrSAhpyGf"><!--pnid:vONRtsPLPPt5PporwWFzO9-->我把抖音罗盘「用户原声」导出的文件放在 <code data-page-node-id="oHyYJJcV9mSDJMJaHYo20w"><!--pnid:Pwriag5x8qJAxxvUTo7zZN-->&lt;路径&gt;</code><!--pnid:M3huSQAn2kyzZzwFnypUEE-->。
+请按这个格式整理成 TSV：<strong data-page-node-id="pfJf5xjcxQRe8zav911dSS"><!--pnid:1DgHdn6pK2EpCSiqnyu4bC-->商品名称 \t 商品ID \t 评分 \t 评价数 \t 好评关键词 \t 差评关键词 \t 评价来源</strong><!--pnid:srcli7rr57R4K4AkuPDPGR-->。
+要求：① 好评/差评关键词各不超过 5 个，必须是从原文里真实出现的词，不许概括不许编；② 差评里优先保留能指向"可改良"的具体问题（如漏油、辣眼、搓泥、难冲洗），不要保留"太贵了"这种不可改良的；③ 输出前给我看 3 行样例，确认后再出全量。</p>
+</blockquote>
+<ol data-page-node-id="6PfKstOInxiXhiif5qTtrB">
+<li data-page-node-id="mfvLlk9cXm4sZDlSZqbsn9"><!--pnid:8Kfskw6GGRgFceXQqOzfiS-->打开线上工作台 → 口碑诊断视图 → <strong data-page-node-id="mBU4bKyqrM6tlpco6rTLCr"><!--pnid:E4ye6xCcMR6MCq8cKWjdEj-->导入数据</strong><!--pnid:POVckvAcpN7uRtrhuaLWU4--> → 粘贴 TSV</li>
+<li data-page-node-id="9cqsdimwe6fZRg6NfxHcFg"><strong data-page-node-id="rol2E8bDWq0J7hb9Y5WxkU"><!--pnid:KpyRFJSfzVeDJSjDswmZQo-->验收</strong><!--pnid:7CnbjoXBeZ3nsshMLZrDBp-->：去「机会洞察」看「改良机会」是否从 0 命中变成 ≥ 3 个。</li>
+</ol>
+<blockquote data-page-node-id="2I1JqmeJ3WBiOzIxToprV3">
+<p data-page-node-id="J5GW0ETMvyKGdUzM8xb2n2"><!--pnid:KQgJSbtu5gpUtt7JGbZA8g-->⚠️ <strong data-page-node-id="SEoFChVSLHWBgYB30cIHGa"><!--pnid:M4Vndh2ak5sQbFTPWMXfL8-->开工前必做</strong><!--pnid:UJdlJj9sQkNdWoVsNMjTCN-->：先微信问 AI 组一句话——"第二张表 <code data-page-node-id="WNkYQ09ChqV3LaZPr4E1Zr"><!--pnid:MD8uYmMMIx7n84J5e7pTbh-->ZOiFonS5w7psZlgM5kJjiD</code><!--pnid:ddw4zHx846Y0DEqlePOYpq--> 现在的字段名列表给我一下，我要对齐 TSV 表头。" 别自己猜字段名，这是远程协作最容易返工的地方。</p>
+</blockquote>
+<hr data-page-node-id="X0Ku6CrnPlSa38KQH38Tlk">
+<h3 data-page-node-id="mn2BQ7NEA3VJ2aqnxnJeYu" id="m6"><!--pnid:aismxLzOp3gGAPQD5VRODT-->M6 ｜素材与达人 —— 补上最大的那个洞</h3>
+<p data-page-node-id="Ghr3FKut4evOXDO2ppNjbl"><!--pnid:QEkt3z5YyqAXsENGTHzRl4-->这是<strong data-page-node-id="rSY1qSlfeF3uO8bWYY8tvb"><!--pnid:S9jlZq8mQz77FedV82aoGW-->加分最多</strong><!--pnid:mAnvwtz6Yga1y6XLvFPg8l-->的一块，因为它同时修掉了两个问题：</p>
+<ul data-page-node-id="vonxLbEoSvIYJH8b5L2Xfp">
+<li data-page-node-id="ydV9XK0NCM0Bdq6gSRnmjT"><!--pnid:TQobAm1O9KGMguS3obMER6-->补上工作流第三/六/七/八章（视频拆解、达人资源、投放测试、规模化）—— 平台目前完全空白</li>
+<li data-page-node-id="L36vWwA55l7Z48LZVkHPu3"><!--pnid:Bjv4me4xPV3MWLOr0YP2oV-->顺手修掉我上一版指出的硬伤：<strong data-page-node-id="1PVgOdLTC9pIyW9ygRbVV5"><!--pnid:UVmVoSCTnzUIofRy2R4Hlr-->视频分级依据不该用"点赞"，因为点赞 ≠ 带货</strong><!--pnid:2qQzyXe0Jfjqb12FvLsuxW-->。你要找的是<strong data-page-node-id="DX6VAptb4mOtc9M8TZI1va"><!--pnid:u0DRBSK9wwzxPJCQyZlThG-->挂车视频的真实带货 GMV</strong><!--pnid:8VrjJvcsufhILaAudh01b9-->，蝉妈妈的「视频带货明细」正好有。</li>
+</ul>
+<p data-page-node-id="i8zdkI1EfErlVtEXaYU7oN"><strong data-page-node-id="g7BzbjiHuuYJgkYDg32hLV"><!--pnid:CcUhlrWYzJ2JndFZseho2v-->你要做的</strong><!--pnid:4u3EzGfuDUMIRXTSzyNG2V-->：定义字段（你最懂业务），AI 组建表建视图。把下面这张表直接发给他：</p>
+<table data-page-node-id="ExJqt69Uw5sFQi7aYmSvZ0">
+<thead data-page-node-id="EZahXNRgN51hxi5cF8eazF">
+<tr data-page-node-id="4QriSBCnJsgQq1S2I941N6">
+<th data-page-node-id="867dEoArCi3Ta8Slm5pMPx"><!--pnid:cTYvvPCLciRTcqBduMYqHG-->字段</th>
+<th data-page-node-id="JBEa1XRCaiv2eHpsUGnjCV"><!--pnid:cQ0VZ1zuomE55ZvdVODtQM-->类型</th>
+<th data-page-node-id="FJOtiWngx9ERb6sJRFhg4A"><!--pnid:n1MkGm9zP48SsBp8UKWkP7-->说明</th>
+</tr>
+</thead>
+<tbody data-page-node-id="EdtAicSeiFNYS8HfGqKj5Z">
+<tr data-page-node-id="uP7oIAHFF3uEYDYYxIo3bx">
+<td data-page-node-id="jMelpAVsaVsxiJkUCOLmFJ"><!--pnid:mZfLV5PsJlXBSsnAbQh5a1-->素材ID</td>
+<td data-page-node-id="uI7yajJHY9qtRIn5ugS88v"><!--pnid:yBEvBo5KupPGmJXEj8Gepf-->文本</td>
+<td data-page-node-id="IJBYUGobWCgCBiqFBUjVMA"><!--pnid:2OttPuHIW31rc14BKB7Bgv-->唯一键</td>
+</tr>
+<tr data-page-node-id="aZNEe7I8u7XEGkj30pZbQZ">
+<td data-page-node-id="DE3GW0VmpbHaBXgAqwQ9kU"><strong data-page-node-id="3PL43x0LDUYT9adI7eacb5"><!--pnid:Ck880tvy9eKTRqHH5hqQZr-->关联商品ID</strong></td>
+<td data-page-node-id="BrPnBmwmSlKgH8SjOseSEN"><!--pnid:kYLv6D3rHm1owlHPI2LSca-->文本</td>
+<td data-page-node-id="IUZ86EGUIIeGHceQUT1z5w"><strong data-page-node-id="8ytqNcGUQNbdlt0cWFCtJB"><!--pnid:Vg7augSVaUbVC3iAIG35lc-->外键，关联主库的商品ID——这条最关键，没它两张表连不上</strong></td>
+</tr>
+<tr data-page-node-id="0IculIjaA7Bgz4vNgvxbkJ">
+<td data-page-node-id="xJCgnEdYQf1RRQNV288XlZ"><!--pnid:bcao9XioCwZXkqzoDwzG1R-->平台</td>
+<td data-page-node-id="JKU7aISTCa8jZMPHfx9eUi"><!--pnid:mi6vziAxEQ2nzDzJqnUfAw-->单选</td>
+<td data-page-node-id="2T3Agr9Pwy1DXZMIMa139O"><!--pnid:j28A4TD5wyHY5EOjosfbaF-->抖音 / TikTok</td>
+</tr>
+<tr data-page-node-id="SAfmmx0MP18GjiEtvki8pI">
+<td data-page-node-id="24b1lRMcuZaG8eVLz5Pxjb"><!--pnid:MuGsSrC1psLPwIjTxJxEom-->视频链接</td>
+<td data-page-node-id="6eyRvr1JMT0CbAuXG5sJir"><!--pnid:E56IMQPDEVzPYdkrc8F6f6-->文本</td>
+<td data-page-node-id="aGbqFPR0L91YNNCfBtypiO"></td>
+</tr>
+<tr data-page-node-id="j8QMa74Lb7kGGmQld8rkLN">
+<td data-page-node-id="lwploLYVjtvtRUTVZT990b"><!--pnid:dETD0oS5Sb270chg4MsyQH-->达人抖音号</td>
+<td data-page-node-id="u0XJKiMLEoKT9bAReJO5mf"><!--pnid:q3p1GdoQehHrRQzOW5Q9E2-->文本</td>
+<td data-page-node-id="avqBL7xWILkxqv4IYl9oaC"><!--pnid:UMITkTkdnqRC2FhObdr08p-->你建联要用</td>
+</tr>
+<tr data-page-node-id="r5iqwrge6CDSTsKFYet5zT">
+<td data-page-node-id="N8hDP2NcdHmKVypbEAnG8e"><!--pnid:5qHBgrlIapJtCkWe6SLIwF-->达人粉丝量</td>
+<td data-page-node-id="M2IjKfYsqhdvno5rSLwTeU"><!--pnid:n7iJBnJzWxdZMWJwG9OB3p-->单选</td>
+<td data-page-node-id="5uc6cV678XWoJOhb8f5vCZ"><!--pnid:1WYSmtljXJaPrJlNtO2pLC-->1万以下 / 1-10万 / 10-50万 / 50万以上</td>
+</tr>
+<tr data-page-node-id="AF3D6FQEPfg7GAplCWT0VG">
+<td data-page-node-id="SqSRv0b60oVgxpGDMkfKwW"><!--pnid:DrgjTBqGSU3iVkaIHEodp0-->视频时长</td>
+<td data-page-node-id="WUnTP01VQCn0JshOF2xNxm"><!--pnid:GOojvLoWLZVYu13EgV4b3A-->数字</td>
+<td data-page-node-id="3OC0NXK6IduOUuCEeZkTgl"><!--pnid:Vlw18nAJoLyHf3SsRcIOpe-->秒</td>
+</tr>
+<tr data-page-node-id="viV80z8nUHVPeDScWphg0S">
+<td data-page-node-id="mCAzUbeOtuwXNaLMlqwWsB"><!--pnid:jsnfsHzUiNBzzut0yaEB5p-->是否挂车</td>
+<td data-page-node-id="qJQ0q0CBt6nwQpzAub2TDH"><!--pnid:7qMHjjtsjk6nHr3C7ZdDV7-->单选</td>
+<td data-page-node-id="So7Uy2UrvrhrCDcfhC8vEC"><!--pnid:xShr0fTWxx8vkeg5YZNRhS-->是 / 否（<strong data-page-node-id="lUs5FAmelU7kLeS7WpCXoP"><!--pnid:FCdsS2jCm7mJd1ame0a4B9-->不挂车的不进 ROI 评级</strong><!--pnid:91BmfEaEdnEdNHCkMI8v1j-->）</td>
+</tr>
+<tr data-page-node-id="IAZ5ZvT996DgQvILYZzXBR">
+<td data-page-node-id="NbLRVkuT6X1lYFU44KOQAY"><!--pnid:yhdxmAussvxKDzkXgAtf8z-->钩子类型</td>
+<td data-page-node-id="R7rV69FWvOxX9d3t216bJs"><!--pnid:e5Wb7rSGNINjYFgAgec2ew-->单选</td>
+<td data-page-node-id="oz8YiAuF0R2w331CxSuUWr"><!--pnid:vJ5qXVjMoGqb7Pu8p1DiNg-->痛点 / 反常识 / 提问 / 场景 / 剧情</td>
+</tr>
+<tr data-page-node-id="2Itohx78wwRtltNdke5ENE">
+<td data-page-node-id="kfttbT89GtJ37a090BUnae"><!--pnid:BmNeUwvOTh5q53oPpx16KH-->0-3秒话术</td>
+<td data-page-node-id="jBMB3ujNrm3u26mxoZ5TcO"><!--pnid:NjkOqQBlsI8hrC0jCT6m55-->长文本</td>
+<td data-page-node-id="kM8oJbVGlikABz3PVqjcz7"><!--pnid:1kXbjdyBu6B2mrHhCKcTqx-->逐字</td>
+</tr>
+<tr data-page-node-id="pxHcpztNodpbEfvktiyi4s">
+<td data-page-node-id="RWh0jNEHUM9538mgyEahBS"><!--pnid:DK95Frd4MRXOaAl0k60YwV-->3-10秒核心利益点</td>
+<td data-page-node-id="IGYEiKVtQ99NfN4fCLd5nY"><!--pnid:gRpEPvod5SLU8Jh8v3qwpg-->长文本</td>
+<td data-page-node-id="r6lJxRi5KnKc5SMpphPqKE"></td>
+</tr>
+<tr data-page-node-id="gicoDQ49SOk2Qh7H4tvR2c">
+<td data-page-node-id="dgdH7S5WxRUOk3tSiTcbB6"><!--pnid:JpiUUHIaw1Yjqsnbs5XcBA-->10-15秒转化强化</td>
+<td data-page-node-id="W6S0txPZfCHoyJYO6FOpZe"><!--pnid:pkeRZbpjr91h2En6Q9b0xz-->长文本</td>
+<td data-page-node-id="oOqzC8XWKAvCw4qRpbjqnG"></td>
+</tr>
+<tr data-page-node-id="lvBpn8AGBpRM059qxo4teD">
+<td data-page-node-id="81lFMXxEV7m25qkt3mDmoX"><!--pnid:1uEexxIT6h6HyPEx3Zc2Pw-->15秒后信任背书</td>
+<td data-page-node-id="jFjQEuY1B7OOWAhjWErg6e"><!--pnid:5DGwYcITVkVRcpYvzauWuu-->长文本</td>
+<td data-page-node-id="WFCaJYZbJH6ycHrhds1Tb5"></td>
+</tr>
+<tr data-page-node-id="y3pmOepLM73qLURoump99h">
+<td data-page-node-id="e7fJN76Et3ODfLk9z74Htn"><!--pnid:2t8ladcdVOtCQ0c86d1QDL-->场景</td>
+<td data-page-node-id="GWSi7Qznm8u3lQON07Qu3g"><!--pnid:c6dLHgXlQpDgXCM6BLLCr1-->单选</td>
+<td data-page-node-id="52vJrjb6nbQBolICSN73PB"><!--pnid:r72Fo35pbvAdwuwg18Pdj6-->卫生间 / 卧室 / 户外 / 化妆台</td>
+</tr>
+<tr data-page-node-id="1q4K3jCpTcNK2UFdSmkC8G">
+<td data-page-node-id="nQkfDN89e7hJ1rwb8OvPdW"><!--pnid:iikkR8TC0jILB1ptZ6N9W4-->角色</td>
+<td data-page-node-id="LFxdU4m5UefTu9a0uo2BXI"><!--pnid:uGkeIyjK0BdaVRtzpW0Kev-->单选</td>
+<td data-page-node-id="QiuzvxN85HqzBRUpxVJDbQ"><!--pnid:XHduE2L8f66JL4WNvpliyI-->素人 / 达人 / 剧情 / 测评</td>
+</tr>
+<tr data-page-node-id="hAGrxC8iIpwhJSdcJonrTk">
+<td data-page-node-id="9wg6C2ee2nQiGG9e1G65wE"><!--pnid:mwmZyEb1OkJyIuW21qKFdm-->播放 / 点赞 / 评论</td>
+<td data-page-node-id="OL7JQLxYJ4khxLK2AOZLhG"><!--pnid:FseEUOYUfryMx7DniLIuhY-->数字</td>
+<td data-page-node-id="zcdIcGN9CEvDARBMm8xH6p"></td>
+</tr>
+<tr data-page-node-id="vzr3jY22glfTdBfZSkxp0Q">
+<td data-page-node-id="985dRMFjB3MHFD8vq1kTWf"><strong data-page-node-id="wuATjKGhIeRFwOjoHWDTne"><!--pnid:wrXJxnRyWROkKixbifhvfl-->带货GMV</strong></td>
+<td data-page-node-id="TbPEZGw0Hhhk5unYGVAChC"><!--pnid:03RILZBlPpB64fEf4Qmnu6-->数字</td>
+<td data-page-node-id="1eyQ63fg5Dn2zkgrBTq5NC"><strong data-page-node-id="M67Eb4sMUkFUBTVamXXXfX"><!--pnid:TwrypOonvaGxlq5OM0ciBZ-->来自蝉妈妈视频带货明细，这条才是评级依据</strong></td>
+</tr>
+<tr data-page-node-id="fhdzX02J5hQwOMkdrdmnre">
+<td data-page-node-id="nXuS17xtJn0L6emXUmSjNl"><strong data-page-node-id="KgTwuTs8hk6Cq9zeimvDTi"><!--pnid:dfXj2tk7w6QhdnSqgWstUh-->ROI</strong></td>
+<td data-page-node-id="UnGInwYwexifjHr1440orp"><!--pnid:ZCRzJhwoZQy6TxXmQ6SsV4-->数字</td>
+<td data-page-node-id="P666ypssD8IYQuduMdnD4k"><!--pnid:Y9p9FQRQMKkfOfQO2HavXW-->千川后台，<strong data-page-node-id="qWmTITYublJZfNRwIun4Th"><!--pnid:kj3UarRazZG2LmnGLtbdzM-->没有就用 GMV÷投放额 估，不许空着不填</strong></td>
+</tr>
+<tr data-page-node-id="fTavi7CmBhzZFs2DiHWOVn">
+<td data-page-node-id="HRIYRzaaBZgpytRPI5Bb1S"><!--pnid:jmV2qpyPPsiz2ejOeXyBkd-->素材等级</td>
+<td data-page-node-id="gwmvXQ09GdosHddcBsoZSg"><!--pnid:we0vFT6stx356CeHcP1c1u-->单选</td>
+<td data-page-node-id="NBvLOcEfavXDNY188P6rjY"><!--pnid:whdVyTnUdhERwFcs2BPgJF-->S / A / B / C</td>
+</tr>
+<tr data-page-node-id="5Fs4LpsQtdwfZtNA3rrYri">
+<td data-page-node-id="rbdbGKb0q1IpqVojUap6Dj"><!--pnid:NbFIEA4E7GCCtDOiR8s9Xr-->归属阶段</td>
+<td data-page-node-id="mRVMS1ZXuVr5PaemFFalex"><!--pnid:1D0ewuHnGLsTKHAV5bHQGV-->单选</td>
+<td data-page-node-id="0YIb97Lq8HtfXBttI4ZjLR"><!--pnid:PQomoN18ky2YDUCsuMRjlL-->测试期 / 规模化 / 已淘汰</td>
+</tr>
+</tbody>
+</table>
+<p data-page-node-id="xHw67Aq1F6VPij2SN1m6k6"><strong data-page-node-id="jwHzLtBNEGKZiytS75A1cK"><!--pnid:NDYkUL4avOsh9lYpC4qniH-->数据源分工</strong><!--pnid:FDhXSw6axLQYcgyped2vI9-->：
+- <strong data-page-node-id="OXRoIorO88yfi5cyTvZUyX"><!--pnid:0jUd0MGM7xWWTbxbDoemne-->自家素材</strong><!--pnid:SgoDMY9DqDsMQIKJivhOJ3-->：你的「达人发片表」（飞书）+ 千川后台 → 直接导出
+- <strong data-page-node-id="sLnyKTpJqP8imvUo9PkEvo"><!--pnid:Mk4QPiNGtahveoWnC6Pf6j-->竞品素材</strong><!--pnid:e5SSJCxGY0zhycr2q2xFjj-->：蝉妈妈「视频带货明细」（注意配额：品牌版品类趋势月报 <strong data-page-node-id="kkacAlcSX16HnQyTKqsd8q"><!--pnid:BhUwG6mzfrS3rpcKqEMnOo-->55 次/月且是月度更新，别按天跑</strong><!--pnid:0XFBoSyTEp8MP9l1yJycTF-->，一次性规划完）</p>
+<p data-page-node-id="e5ZTJFPRqk5Uduxqj5cI4k"><strong data-page-node-id="0lKg9urA5qPBJbtotWg8ix"><!--pnid:DU1WmBrmhm73bzzNjj8prA-->推荐安装这个技能</strong><!--pnid:tBuIG62fmw4d3GVNhAJKoj-->（比自己写脚本省你两天）：</p>
+<blockquote data-page-node-id="ymRHeOpHeWTlRkYJ9pcoNg">
+<p data-page-node-id="My0fvmGuK2GcRVqpF7CTsi"><strong data-page-node-id="4e9a8ZTTS34VcUT3Ok7eyl"><code data-page-node-id="cps7VwBQytWbXiP8XHlNzw"><!--pnid:3b9shoMOExDWV061AJIReV-->douyin-jiexi</code></strong><!--pnid:iUabtGKTPNFLGFLXiYZlDo-->（skill_d：skill_2097291922769104896）
+发一个抖音分享链接，自动完成 下载 → Whisper 口播转写 → VLM 画面理解 → 逐帧 OCR → 生成结构化笔记。
+<strong data-page-node-id="vAqtM75dTgaquusVoi9Zs3"><!--pnid:fZAUVKiGxoc5NmEDLm6Mj2-->有省钱方案</strong><!--pnid:Ui34hZzTQBIMtX2Bs3cwlo-->：方案 B 纯口播走本地 Whisper + 免费视觉模型，<strong data-page-node-id="RajWnJ60YhUOdwbb01pmCW"><!--pnid:EQZVx8SkgQTJYN5oejveAm-->零成本</strong><!--pnid:BMS3Mmu5Uelm4Tqgg7T3q6-->；方案 A 画面有料的走付费 VLM，约 0.3 元/条，且执行前会先给你确认。还有先预览再入库的设计，不会瞎写。
+这正是上一版分析里我建议你们自研的"视频拆解 skill"，现成的，直接装。</p>
+</blockquote>
+<p data-page-node-id="qxV0OyVBIvcpIFnhvFGzpP"><!--pnid:DrBxsqcxwWrwcKd2bs26US-->配套的还可以装 <strong data-page-node-id="WNXgqhZFEwjfLKQwOqA6q1"><code data-page-node-id="TGZmsblFX1bVXhsmcSKxJE"><!--pnid:MvW87ef7tiaiYcALFwdPPQ-->douyin-transcript-imitation</code></strong><!--pnid:D36cRgT0sWxwfhonn2E4fF-->（skill_2095706615499956224），它带 <strong data-page-node-id="f3A6BUSxFj9nmbdOiNbp63"><!--pnid:sD9iSMTiX1NndjNqoFDBev-->10 维度敏感词检测</strong><!--pnid:ZoenOTrTBwOQelRIupKQDh-->——正好接住上一版说的合规红线（眼护/护肤在抖音是强监管，话术直出脚本会下架封号）。AI 初筛 + 你人工终审。</p>
+<p data-page-node-id="YJaffxrjb2UUO6hhsZkSuN"><!--pnid:1F6tqIoXznuCGUdFgMx4Bd-->补外部口碑（小红书侧）装 <strong data-page-node-id="4BzKlyq1KhWThEevkkCiJH"><code data-page-node-id="WdMaYV0sOvaWAv9EVutJB7"><!--pnid:gyXqKshF4IsFcAJ2a3AdfM-->xhs-note-scraper</code></strong><!--pnid:XscmYGfmYoHh2wU1XEGJWs-->（skill_2095502902239928320），批量采笔记 + 首屏评论，自带限流重试；想快速攒话术词库可以再配 <strong data-page-node-id="GedSiIXJ8gLzS4jFzTY0H9"><code data-page-node-id="G59q69TwXGUetYnQNhg6uH"><!--pnid:FBNufbtM9YrImSr86Gt7Ta-->xhs-title-collector</code></strong><!--pnid:E9GHGPGYzkkvqg5s8nqh0M-->，按关键词搜爆款标题与点赞导出 CSV。</p>
+<hr data-page-node-id="lO8apiQqRtx8zsHHPHrJt1">
+<h3 data-page-node-id="DhJ7QIMNiwE3DhVD9EFYKR" id="m7"><!--pnid:trVbiPB9QbVMU6MkwQfEXN-->M7 ｜把平台讲成一个故事 —— 作品的临门一脚</h3>
+<p data-page-node-id="5Gx5BKYFLX8kflZdMnMmcB"><!--pnid:lHbdoG4crwd3nFWGWBmm4s-->比赛作品好不好，<strong data-page-node-id="RLMqMV3nu8vUje0c0nwTGS"><!--pnid:kR2iJtP4YVJMIKhyjsFW4w-->一半在工程，一半在 90 秒能不能让人听懂</strong><!--pnid:YXe7DIDca3CthPfDexHZeT-->。这块建议由你主导，因为你最懂业务价值点在哪。</p>
+<p data-page-node-id="GdEbUDDMMxPkF1HYm1eUcz"><!--pnid:YI8oFDYqUGsvPfMiPrmRTB-->要产出 4 样东西：</p>
+<ol data-page-node-id="yoDRmNVpnzthi3Q9DkQ8Rb">
+<li data-page-node-id="itFuBEpouoLEAdqrV4LLWY"><strong data-page-node-id="olzEIJnO2TvGGOCEWQqsrJ"><!--pnid:Gl7COaK8ewZ7jtVIuMJ3Ss-->90 秒 demo 脚本</strong><!--pnid:dFD2UIIEk0qC47RxG34faH-->（固定路径，不许临场发挥）
+   建议路径：<code data-page-node-id="A8iK8ihSCwDZLtObbMeksm"><!--pnid:0lWVUXGd8VTN1ujJyxWaIb-->全球看板（看全球覆盖）→ 机会洞察（引擎自动跑出 4 类机会，报数字）→ 点开一个命中商品看完整档案（含成分/口碑/可行性）→ 跳素材与达人视图（这就是我们接下去要投的方向）→ 收口讲 ROI 闭环</code></li>
+<li data-page-node-id="fAbxLfXQq7DqdvBXcwSNCP"><strong data-page-node-id="NhxpFpfiAjcYMTaCKiucyK"><!--pnid:OZpBx265DFTOxOOJrZWcJx-->答辩 deck</strong><!--pnid:SCbrXPk0e9tPHWCs68Kbip--> —— 建议装 <code data-page-node-id="tAK1j4q3Oz00GFlxQWHRss"><!--pnid:B6IIqrgYy7OxyHocd3bqDO-->business-html-deck</code><!--pnid:lQpn3ntABZ0sTxY1Xp74FD-->（skill_2096363609409032192，HTML 演示，键盘翻页、响应式）或 <code data-page-node-id="N0ifmul7RB15pkGhZC09wS"><!--pnid:TylM5qvuUuMMtyQX8Q8s3G-->enterprise-ppt-guard</code><!--pnid:bvOUl2CwdeSgYg1EEYWBHW-->（skill_2100436084917194752，出 PPTX 且会先给你大纲确认）</li>
+<li data-page-node-id="mO91M5HnOITL5iibE1YLe7"><strong data-page-node-id="POByFuCfMvwIyf8OF7SZOe"><!--pnid:QNGnCd3qfXQ6pIKVglD1Qb-->README / 一页纸</strong><!--pnid:ry9Gt5klGyzBBp5iXUll7f-->：说清 数据来源 → 字段契约 → 9 条规则 → 谁负责什么</li>
+<li data-page-node-id="8AnRQlYEELx6xnqVuQbaWW"><strong data-page-node-id="uTdw8Rg5CAupkowNhDEVmR"><!--pnid:RVwVcMDRSdkbk8NmezADhG-->每周自动化上线</strong><!--pnid:ZmsR9qctFaFuhKaQbExu4O--> —— 你已经有的 lark-cli 飞书链路直接复用，不用新搭：</li>
+<li data-page-node-id="q93DDQfrLeGMltg5EYlnU4"><!--pnid:SKVMDlt2ckuGScWwmNzZpc-->每周一自动生成「上周新入库商品 + 新命中的机会 + 素材 ROI 排名」推送到飞书群</li>
+<li data-page-node-id="wru5Tj36jynW8LXkaELyuE"><!--pnid:aLcHVGclU7G63McVNyKuW1-->这一条的好处是：<strong data-page-node-id="ykPT9qC6odI52pAVrs6u5c"><!--pnid:tG7yLNsL4hR8dHypmDR42J-->答辩时你可以说"它已经在每周跑了，不是演示品"</strong><!--pnid:BXboQQWtrTJx9fCZS8ncPl-->，这句话杀伤力很大</li>
+</ol>
+<hr data-page-node-id="BSKnqPjkvOT32JyTxiMMc4">
+<h2 data-page-node-id="4okgy4GzQVay3bd1jW0dkN" id="_4"><!--pnid:BNy4aRz8i90UCUrogttElg-->三、选品专员的两个模块（你要拿去对齐的）</h2>
+<p data-page-node-id="pOXsGPEqgxzyYstWO76M6Q"><strong data-page-node-id="MpgP8brvG5yR9KUdrBODzX"><!--pnid:XPAfLjZiv41Y1UFrTb6ll0-->M3 · manual 字段填写规范</strong><!--pnid:LmcLPNLCMidZzxDo8Vm8D6--> —— 目前是 0，直接卡死 3 条规则。需要他给出：
+剂型、概念标签、质地描述、技术壁垒（无壁垒/配方工艺/独家原料/专利技术）、备案路径、宣称支撑难度、预估成本、与我方价格带匹配、与我方客群匹配、与我方 SKU 重合度、决策状态。
+重点是<strong data-page-node-id="OrlXjcErZVZYnNmmmjlwOB"><!--pnid:UzB357FkxNUSSd9touXZwq-->每一档要有明确判定标准</strong><!--pnid:LFjRdjTK4o4aicUgBxACiJ-->，否则三个人填出来三套，数据就废了。</p>
+<p data-page-node-id="AfrbVktr381gjIEpQzscSm"><strong data-page-node-id="FkXysdm7pv8KlCCPZOyNid"><!--pnid:JF2TUqUcxGuyjakvvZDbDr-->M4 · 9 条规则阈值卡</strong><!--pnid:floBEuBTBXqsE6sHohEsS9--> —— 现在代码里的阈值是拍的（<code data-page-node-id="Col9IreRiJLLUMQZKysg6p"><!--pnid:fXLwZdTRGyuq6BxjYIepMV-->WIN_MIN_GROWTH=60</code><!--pnid:G2aSYWWwycLRdV8Edp404W-->、<code data-page-node-id="YdSh96naqQRhBcHPXeLrVy"><!--pnid:Za6791TIdFdtlLnh8AMEeo-->NEW_MIN_GROWTH=100</code><!--pnid:RHEdcOhHy0Vqwx69pjgyXU-->、<code data-page-node-id="14jvVEB5HRqK1BknjrbJw4"><!--pnid:VZidcRGR6W3cz7nenxfpGe-->NEW_MIN_SOLD=1000</code><!--pnid:NyeSxY924TcnFfUy6ldQL5-->、<code data-page-node-id="OFwt8tGISHN5kuL4sB6juJ"><!--pnid:01asFiW30PsAxD3av73kP6-->ING_MIN_GROWTH=80</code><!--pnid:IBntkB13S6FcMoSLO1LfAc-->…）。<strong data-page-node-id="RP5ocM07xL4LER02ZXCtel"><!--pnid:Qo5V8u0HFZ3w2BlSZ9jDFQ-->这是评委最容易问倒的地方</strong><!--pnid:EORVX674FxXpB6ym9oyYX9-->："60% 这个数哪来的？" 需要专员给依据（比如"过去 6 个月 TOP100 商品增速中位数是 38%，取 1.6 倍作为机会线"）。有了这层依据，作品的专业度会再上一个台阶。</p>
+<p data-page-node-id="2zDim8YD2aVA6qd2Uwrque"><!--pnid:AY5VjjCD9O9XlTJNzywNVF-->另外请他拍板一件小事：<strong data-page-node-id="HOMlIYnrjCPkQlIeM8Fpak"><!--pnid:TM54HbRioHUCAJBUbpsl7c-->韩国市场怎么办</strong><!--pnid:TH7VpbGKoZE4o85S4c1RaO-->。平台自己标得很诚实——<code data-page-node-id="bHJNm0hoWH59Abrg8eXEek"><!--pnid:58HGy3GKGc8kg9PZX2Jo6V-->MARKET_FLOW.韩国 = 'no'</code><!--pnid:op7UXQ1QmKOMAn9a0NCVYx-->（TikTok Shop 韩国站未开通，只有 Hwahae/Olive Young 的成分口碑名次，拿不到销量，所以三条规则算不出来）。</p>
+<blockquote data-page-node-id="Cl6ycl7jcq1Gz4RXDH2MIj">
+<p data-page-node-id="2RM1eTBtxARffXgEkwAdXh"><!--pnid:NTFZq9a3vPjENR9CVVs0Bd-->我的建议：<strong data-page-node-id="3b1pGxDsyFhL2hjg11k0Rc"><!--pnid:lWUqJQBqeXLiOfxeP8Smjv-->不要掩饰，要主动说出来</strong><!--pnid:JaS9l0FsJKmUpOGsneFak1-->。这份「数据源地图 + 覆盖率标注 + 规则健康度自检」的设计是整个平台最成熟的部分之一，敢承认自己算不出来的市场，反而比假装全覆盖更可信。</p>
+</blockquote>
+<hr data-page-node-id="ozXxPXyl6RXRrWeUbLgwMN">
+<h2 data-page-node-id="cnL9aNwHJTfSGBNZ05ZL0W" id="ai"><!--pnid:vkVPPjsrQ40pFct1zXfLEu-->四、AI组的两个模块</h2>
+<p data-page-node-id="yee8vOJuPrVexs1MA5295g"><strong data-page-node-id="8apLFnmJgepIPxqVAQbdRA"><!--pnid:tFXCabTL5lN94izLpOSz4m-->M1 · 工程底座稳住</strong><!--pnid:7fu6JdNBwPHGm1GoOWdmze-->：采集管线（FastMoss / TikHub / Hwahae）的稳定与重试、配额管理、示例/真实开关、导入导出、移动端适配、定时发布。
+已知要处理的坑：TikHub 越南/泰国/菲律宾偶发取不到需换站点重试；蝉妈妈 55 次/月配额；日本站 2025-06 才开历史浅。</p>
+<p data-page-node-id="YnLBhR3TFLfQpAVekLHYTA"><strong data-page-node-id="5gj4KNCFLSQsrh7pH6ZXxx"><!--pnid:Q1DYdjtNN09CPhlPjNAO5S-->M2 · 新增素材与达人视图</strong><!--pnid:ERLKbXqgYRfH8VRlQZMxbw-->：按你给的字段表。建议<strong data-page-node-id="CRLTRusLGgKnWnN4pfIMWo"><!--pnid:n2V6LG0B5LSrJYLBDshLns-->字段分两步</strong><!--pnid:YnoJTEGexn1XBOAFftX7gK-->：先做通 M6 表里前 12 个核心字段（够答辩用），其余留到你有余力再加。别一步到位。</p>
+<hr data-page-node-id="ooNUpNsbxNiyG1IdcV3UcU">
+<h2 data-page-node-id="61gciHZt52gzGv7XFn3WcL" id="_5"><!--pnid:GDAktrbzNPBSGMHsevm9GX-->五、接口契约 —— 远程三人协作的生死线</h2>
+<p data-page-node-id="rdZLdxQKt9iVnwIIgeyeVE"><!--pnid:ke4DhM9SnGWAqcscK0Nt2a-->三个人异地远程，最大的风险不是谁偷懒，是<strong data-page-node-id="KUZcEsIzXiOUnsq1wbB0Xf"><!--pnid:gYHUBpMXLh4AYQGW6pEeuf-->接口漂移</strong><!--pnid:jpA65Y1fU98C7GMnUv1QSu-->。务必在今晚把这三份东西冻结：</p>
+<table data-page-node-id="KpphsQpagouB2moxIxGmbj">
+<thead data-page-node-id="NJscc1iRqWMfTZCQ03AZ1b">
+<tr data-page-node-id="zYybpcb96K24yfTeqBK9oB">
+<th data-page-node-id="U5VYnv5BOaMhoA5MUqueuH"><!--pnid:8mHn2MTQrDQHg3xSIngVw7-->契约文件</th>
+<th data-page-node-id="01Ds4YRCkmowk9U9X2B2O4"><!--pnid:lts1OGNk5Hku54fNVeiLLC-->谁负责初稿</th>
+<th data-page-node-id="d5yrodhcAA6j7C6PYDG0Tu"><!--pnid:RRJHI8xOqXV7Vcgx9i3uGp-->冻结时间</th>
+</tr>
+</thead>
+<tbody data-page-node-id="nWwHDLHFnXKaVwqJFfd2VV">
+<tr data-page-node-id="LD9GWPOb5Wro9IWklw7LVc">
+<td data-page-node-id="JoxuWPlPY2QgN2NNSADGY8"><!--pnid:L5RHPKPc8i4uspRmJiy4qS-->① 33 字段字典（现有）+ 新增素材表字段字典</td>
+<td data-page-node-id="8HyGWv9ywWqFw4ctkALbzx"><!--pnid:8hD45yJYKkcyVlNNpqp22i-->乾颖出初稿 → AI组确认</td>
+<td data-page-node-id="NWREAaWhUsdkFwx5UXhBZw"><strong data-page-node-id="WulZtWlYgwvg1qTlk90b5E"><!--pnid:Rx2SaqZi9QdWnMWiw5s4xt-->9/22 今晚</strong></td>
+</tr>
+<tr data-page-node-id="er6fszYcArxbj0SYapDzd8">
+<td data-page-node-id="XaX792J3tJP8iuKyO5fsCy"><!--pnid:8WnVrOs91OiT7MWzLQ73zW-->② 9 条规则阈值卡（含依据）</td>
+<td data-page-node-id="EZcEwHEgTR3S4HFWgm0eFd"><!--pnid:EgX4I9SlXl5K2rnAWJJZFZ-->选品专员</td>
+<td data-page-node-id="De8R0RcufKAICrAPAGihEJ"><!--pnid:lkQGxgir05y2ruNv3t9xqE-->9/23 晚</td>
+</tr>
+<tr data-page-node-id="4lMwftvC4ftWTJKFCnsDuv">
+<td data-page-node-id="ubpAroDfljuErROjSPIufN"><!--pnid:emcQhgMdCbb77lodELFBQk-->③ 数据源与配额表（谁用哪个源、额度多少）</td>
+<td data-page-node-id="Z6Rvea6DwzuO9hmbHkhbCO"><!--pnid:6E3YZRhHjajNMcBg61hJq3-->AI组 + 乾颖</td>
+<td data-page-node-id="TTbbsfnmaOoTg6eJ56xC7D"><!--pnid:lbBlTYLYBxuEBowCa7t19B-->9/23 晚</td>
+</tr>
+</tbody>
+</table>
+<p data-page-node-id="te89TmL1gbL86mNE9oXc6j"><strong data-page-node-id="f4DAGsbukquMjYLC6DUljH"><!--pnid:aYsJngLK514hMnMPiqzhSq-->规则：冻结之后任何人改字段名，必须三方口头确认。</strong><!--pnid:b1dewunLRsjFqkiJjVQY65--> 一个字段名改动会导致另外两个人当天的活白干。</p>
+<p data-page-node-id="XJF9njjoAnj0xT4MaPnL6R"><strong data-page-node-id="UNpfTX3u8o1w9gFaKPbRQl"><!--pnid:I3q62PZ4BAPhH6GAjcsRhV-->协作节奏（低成本）</strong><!--pnid:PzCyVtInBEOx5OjDAYaA0J-->：
+- 每人每天一条群消息，固定三段：<strong data-page-node-id="WtUk5XG6JS2g2zlk2uSYNZ"><!--pnid:nE41QcrGY6cLELeADKNY9c-->今天做了什么 / 明天做什么 / 卡在哪</strong><!--pnid:CagKeOg9Zr6QJFWvjvEIzJ-->
+- 每晚 21:00 一次集成（哪怕只有 20 条数据，也要全链路点通）
+- 共用一个「缺口清单」，谁发现空数据就往里丢，别私聊</p>
+<hr data-page-node-id="f2jKSLo1fzxBX1HNvpBtdc">
+<h2 data-page-node-id="j2uBEvGnal10ur2VdxnJbd" id="922-928-1"><!--pnid:EpU0OYuMqWE8eeb79thX7f-->六、日程表（9/22 → 9/28，含 1 天缓冲）</h2>
+<table data-page-node-id="6IvtR1O8I5gg0kl2qOkZfA">
+<thead data-page-node-id="u7eXBTgt2r0tbixvKG1Xvz">
+<tr data-page-node-id="iZhTTor409fZUOCwvIaydY">
+<th data-page-node-id="UmFnluMA6i4Ux2ClBbuRVo"><!--pnid:YkddDvE6HYgP2djR5b48dW-->日期</th>
+<th data-page-node-id="IvEa7MJQVvQ6z17R1dsZZa"><!--pnid:lcQUXacqk4DteGIwcWeXcu-->关键动作</th>
+<th data-page-node-id="vgbgTpQdigYyS1sfWXCw5V"><!--pnid:2niapng3e6Bt2M5bvpxRKZ-->完成标志</th>
+</tr>
+</thead>
+<tbody data-page-node-id="gKjkV9TPiCQ99goWDMEkp8">
+<tr data-page-node-id="BbV56D3f1skWpAmjQLuDMN">
+<td data-page-node-id="QvGFVkkpyRKIdd1bXXQ5FZ"><strong data-page-node-id="h4geqbHmS3v1NboA5SNW4r"><!--pnid:TECS0XNY40WSA1E8NGqO5s-->9/22 今晚</strong></td>
+<td data-page-node-id="QUgwSt5SrkR4sHh3XP5NNu"><!--pnid:mqrkWANWihec2ORagB5E1h-->三方 30 分钟对齐会；<strong data-page-node-id="2xjaGduuj3b6m6AG4fynXS"><!--pnid:LfJMLR1x9mXOG3ORgd7XAZ-->冻结字段字典</strong><!--pnid:snQAK6E2qelFHfNZwlyf2n-->；确认素材表初稿</td>
+<td data-page-node-id="ZkiBxPKxPd5AAHroOVP4BP"><!--pnid:f6A4PFZgEuxNP6iQoADdQu-->每个人知道自己明天具体做什么</td>
+</tr>
+<tr data-page-node-id="k99mTD6695gLB3EOSlmUWx">
+<td data-page-node-id="hegNgaqe39G0fzzCYUOxGn"><strong data-page-node-id="WSq9rnHPvvSgtRmQGCwriW"><!--pnid:BTjiMqGkG0ewWgop6sBEdb-->9/23</strong></td>
+<td data-page-node-id="EvKAn3AzWFhB4ndnGb3ZJa"><!--pnid:KTwJibmXKzU9NdNB7RHM46-->乾颖：<strong data-page-node-id="Al7AKSgAdRo4pE18SVPKG5"><!--pnid:p0A9nfd4yZJafTqrriKdNw-->先只导出 5 条</strong><!--pnid:WFaxaKr1jSWfQazYJDpl6f-->口碑样例跑通格式（别一上来批量）；选品专员出填写规范初稿；AI组稳管线</td>
+<td data-page-node-id="Cn8NjweXHPNkvXuqcuW2Uv"><!--pnid:7lfkKHjyxyzqGYbnXQpi1c-->5 条样例能成功导入并看到字段对齐</td>
+</tr>
+<tr data-page-node-id="q3Pjg0EffwxIt717sJYpPt">
+<td data-page-node-id="M0iGsqYypmU7TC0kC3nHhO"><strong data-page-node-id="3oiwQQRnbCnBVW1giXGEru"><!--pnid:xElefhbNj58Dk91gaUHVMe-->9/24 21:00</strong></td>
+<td data-page-node-id="dMd5qmHjolFK8LAMfQ0NUb"><strong data-page-node-id="XxeNX7dkckY02FsJzxhHIR"><!--pnid:xsxDPxhL11uITbes6zAcP5-->第一次集成</strong><!--pnid:sXeBTdz67ZykmaDjIcpEE5-->：全链路哪怕只有 20 条也要能点通</td>
+<td data-page-node-id="pPziHDL4n937hQzJGbH3mN"><!--pnid:fgweYWFpgHfTEyS9P1SiSg-->「导出 → 导入 → 洞察有输出」闭环跑通</td>
+</tr>
+<tr data-page-node-id="HgwaGql6Zk1vqC37HvXCBh">
+<td data-page-node-id="gmXan8TdiNhFsj6BahNFWi"><strong data-page-node-id="tINrONTWjCXzVxramvzSer"><!--pnid:gshcTDmjCkz3MsBtzUE72r-->9/25</strong></td>
+<td data-page-node-id="DWxWhXna19fAkClJexK5m2"><!--pnid:8fQq7DzhJn43kO3ywANlfe-->灌真实数据（乾颖）＋ manual 字段填完（选品）＋ 9 条规则全部有输出</td>
+<td data-page-node-id="zvSeVMuSbqEwyKQkuC3Xde"><!--pnid:zZ4zlAR4r41JTyJSiReS2P-->9 条规则里 ≥ 7 条有命中</td>
+</tr>
+<tr data-page-node-id="XEucCJjURrGr6hQENjtLXI">
+<td data-page-node-id="8WNcRiCWc04dqaIaA74dOp"><strong data-page-node-id="JoOhLebXTVYOXACbhOqTbQ"><!--pnid:VHmelOwWLdmijUEd1wkjFG-->9/26 12:00</strong></td>
+<td data-page-node-id="PbRN6NywsEKCcutwHRvHRh"><!--pnid:wzXE8pI5TD0mOLfRemev96-->🔒 <strong data-page-node-id="UB3xYjZf9ze6Vt4OUTDtAL"><!--pnid:GA7nPGFXTiboEeO6nLNCmx-->功能冻结</strong><!--pnid:ObxJUcR4tZp7RG5aAQ2gWu-->（这一条最重要）</td>
+<td data-page-node-id="xGamy2s5XjTrWOhYLDcnXL"><!--pnid:WcONnVGZQwpYNqC0GCBNAh-->之后不加任何新功能</td>
+</tr>
+<tr data-page-node-id="OSIjKsLTn1KSC1fLkzg4r6">
+<td data-page-node-id="hVMgXr7Vw260y45bYJlG14"><strong data-page-node-id="8poLjxMSBQB7mYY7rMFxUw"><!--pnid:IBeKVH67moYyuMcbvgNnMt-->9/26 下午-晚</strong></td>
+<td data-page-node-id="OcwCTeO2SNilqzKhdz2YqT"><!--pnid:2742Y6J8lUA0V0lt9nHLZe-->演示材料、demo 脚本、README、飞书周报上线</td>
+<td data-page-node-id="88xWjBlzwMngXcw2AM3OYN"><!--pnid:yy0iR2yfXIUVzYE6KhEbQh-->deck 完成 + 90 秒脚本定稿</td>
+</tr>
+<tr data-page-node-id="HI0tOtaIf3lMghJO6IZVci">
+<td data-page-node-id="IGPBAarqLlD3oucEgfdZna"><strong data-page-node-id="Atjyva2wdB3fqYboeC5Na6"><!--pnid:nIq7KtemMuN9iguVi0qIcY-->9/27</strong></td>
+<td data-page-node-id="HPtynfPDbevUo1O9wc9TM1"><!--pnid:Qx7rEDOO6I2hIoJ0CIS5u2-->彩排两轮；<strong data-page-node-id="gbIfcFeTYEWdtCpVsrjVcS"><!--pnid:x8QGNhN7hshZJ0CKXtO0Ug-->只修 bug 不加功能</strong><!--pnid:k3dlZmwDuPDfqDHf2yT8w3--> ← 这就是你的缓冲日</td>
+<td data-page-node-id="MAFyJuRefBNRmcpbZK0naH"><!--pnid:4XXkI33SdOo4gWfVxeI0iW-->能在 90 秒内讲完不卡壳</td>
+</tr>
+<tr data-page-node-id="3MHCU2DgmsR4CyssQUlZWO">
+<td data-page-node-id="nRPfG0mrjQKHgM95lzjmd7"><strong data-page-node-id="6v5U7IdmktwgQ1ak7rVeQl"><!--pnid:ahAKxzwQIMFdYgbXj2y0eY-->9/28</strong></td>
+<td data-page-node-id="7hBg6CS3W01a9Hcqr1nqbd"><!--pnid:zVPulQvXOlja32SlnpgufO-->提交</td>
+<td data-page-node-id="mdexdiEgyVlxr82cOoL4Kw"><!--pnid:RRVvW2MG11vPnpriIrIkQb-->✅</td>
+</tr>
+</tbody>
+</table>
+<blockquote data-page-node-id="yqdZCu0kYzkIJOA8shFhJ7">
+<p data-page-node-id="3bvLli2Px0dPtHrU2TweEd"><!--pnid:JpZjoaD2faOIH504gipHf7-->🔒 <strong data-page-node-id="3MI5QEbPPSvrZAC8cFRnh4"><!--pnid:THiwkg3bYGomABgwJEXiju-->9/26 中午必须冻结功能。</strong><!--pnid:WpERgts2Bw7jgLxGCc9iad--> 如果到 9/26 中午还有模块没完成，宁可砍掉也不要延期——一个<strong data-page-node-id="styWnxR7boAvKD3UQpmBJO"><!--pnid:kK5L7qrfoUHMk6kFjR2246-->半完整但每个环节都是真的</strong><!--pnid:WCppSkEVrWx5UtGVX9BQcA-->作品，分数远高于一个缝缝补补的全而不真。</p>
+</blockquote>
+<hr data-page-node-id="oERITNZk8kqf1o4pPKKHvk">
+<h2 data-page-node-id="jWHzGYEHmAYe1dZyJHTCDB" id="_6"><!--pnid:amdmkzXypQSte8oDAyfiEp-->七、风险红线（提前说，别踩）</h2>
+<ol data-page-node-id="ZH6Z6nUG8fvnknipwVxief">
+<li data-page-node-id="Y2UQxS2pdOx3ru9gdbqLK1"><strong data-page-node-id="UqoxrBc3JBkipoEdvNwXhO"><!--pnid:07ekGSGvRfk5P3BlWqlrW4-->韩国别吹</strong><!--pnid:wzysGgYcKwCkJMgJBHI1jG--> —— 人家问"韩国数据怎么来的"，答不上来就是硬伤。诚实标注反而加分。</li>
+<li data-page-node-id="kyGdyGLsHfAhBO5WeWqWlK"><strong data-page-node-id="ahSD4qhQkdrGrnlWfHpQPy"><!--pnid:htuY2zwtQnjVHc9XV18Xdu-->蝉妈妈配额</strong><!--pnid:Knlvz2aUwRY3cgL5IkNHLT--> —— 55 次/月且月度更新，一次性规划调用，千万别写成每天自动跑。</li>
+<li data-page-node-id="5baHfuWMC8jKQoyv73L2AR"><strong data-page-node-id="01Deb35zHTtaAJQE5BvXZd"><!--pnid:dwfruRcvZEs7kp32JcpeQP-->示例数据 vs 真实数据</strong><!--pnid:vAGPYUDOVRqOAs6iKJQGy0--> —— 代码里有「数据标记」开关，答辩务必切到真实；但<strong data-page-node-id="tmj0CBEEdDHALoY3qKk51P"><!--pnid:laxvwHOLu7ek7YfPG4lo7l-->建议保留一份示例模式作为 fallback</strong><!--pnid:Z82NNTXtPka4PYLJGrya9r-->，万一现场真实数据出问题还能演。</li>
+<li data-page-node-id="yjYkdHn39PvnzFylbMauNO"><strong data-page-node-id="sFukNFFnWqdgtqA9D5fe9F"><!--pnid:jVNHGx8amfv4Umtu4QU9QY-->合规</strong><!--pnid:Dln4pNOGiUy9NrGV1HaTtM--> —— 所有出街话术过一遍敏感词检测（AI 初筛），你人工终审。眼护/护肤这个是会封号的。</li>
+<li data-page-node-id="ZKnkgcbGHcJyQgNM4iY1NM"><strong data-page-node-id="ZNiEN48GH4OrBrpABi4d29"><!--pnid:KhCc1Y6l08jsILVEe0GR1s-->别选 Temu / Amazon</strong><!--pnid:ZkJUf11LKWehXaJdP9vNwI--> —— 平台的源全是 TikTok Shop 生态；现在叫"全球选品"但实质是 TikTok Shop 六国 + 中日韩口碑，<strong data-page-node-id="6q8iS6xLy3WiktwkrLQJ8t"><!--pnid:FxtLx9jCqSFKf8X8yYni2O-->对外口径要诚实说清边界</strong><!--pnid:mDRBzer2ZE4sTkPANNcrvA-->，评委一定会问。</li>
+<li data-page-node-id="4IScRxjwg2nW6a7qIpZE8n"><strong data-page-node-id="4UCFJ4g4xkKlT2s4UnkTk8"><!--pnid:4ZO8WcSt9pytbeG6Y7CdYx-->你自己的时间</strong><!--pnid:yG4uvE8hL8ykb3gwMrNAgf--> —— 你是实习生，白天要上班。上面给你的 M5/M6 里，凡是重复的、批量的活都丢给 WorkBuddy 跑，你只做"判断"和"验收"这两件贵的事。</li>
+</ol>
+<hr data-page-node-id="BvWCOrtwmTbwQNI267QzYQ">
+<h2 data-page-node-id="zs1vFZM497JivY5wKqNu8J" id="_7"><!--pnid:chePTUc8Za26ZRAsgxRcCO-->八、给你的技能安装清单（可直接执行）</h2>
+<table data-page-node-id="9xZqgrbl7FtPnuPnZWl2HL">
+<thead data-page-node-id="l4ZfvcnZ8cuMFa4rUDYkyu">
+<tr data-page-node-id="tYyP7mvQAbuWuGpQwFRejQ">
+<th data-page-node-id="cjXzgjUTshXNP9uxRzC1Av"><!--pnid:mxqbBODRsocj5jXdwZjILx-->用途</th>
+<th data-page-node-id="d7UmtKC7OPfyZp5spjFzb8"><!--pnid:hXtmcEOikHGnFOdhiSlESS-->技能名</th>
+<th data-page-node-id="D3Bzz7eYO14izZGJEADfgJ"><!--pnid:DFSUpBF1wEuGx1g5hOydAW-->ID</th>
+</tr>
+</thead>
+<tbody data-page-node-id="mwIhyuZpAuWUb3jA9fFXTo">
+<tr data-page-node-id="cWyuSA24CZNWNk0NkEBFQo">
+<td data-page-node-id="rBX3noXZ0dgHwrhskslKrI"><!--pnid:FI5koKB6s6eINqhwcK76UA-->视频拆解（下载→转写→画面理解→OCR→结构化）</td>
+<td data-page-node-id="UqtFqVzAT568bLrHYszfht"><code data-page-node-id="5C9D5hDFA9eqX5SPhFwgXA"><!--pnid:ULI7KkbHhbKNOaAYYbqsDm-->douyin-jiexi</code></td>
+<td data-page-node-id="c4qqTx2ubuGYZSrNbnhpSz"><!--pnid:4pbHf0dbsemsV1Jpq4wA0V-->skill_2097291922769104896</td>
+</tr>
+<tr data-page-node-id="EMctf0oCVzwrKwdrpKVZLe">
+<td data-page-node-id="jGvlgyQgH3uxWdNC2g70KS"><!--pnid:TpNxVLLLDCxJw1qyAFnm6B-->转写 + 10 维敏感词检测（合规兜底）</td>
+<td data-page-node-id="zyIFLHh559Oo7Exxr9mXGO"><code data-page-node-id="dIbGaEs8FbWC6opHMDtRa4"><!--pnid:IjvxYaTG4SOx7f6LdQglp0-->douyin-transcript-imitation</code></td>
+<td data-page-node-id="zKii1ymJelQKrWOlsJKiZE"><!--pnid:rNEqlOkcWpYuWrkiCXHt5z-->skill_2095706615499956224</td>
+</tr>
+<tr data-page-node-id="nrRiWYRp9HskWz2XIpEg7Z">
+<td data-page-node-id="grII6p54AjXjhQBo64bFKW"><!--pnid:l39VXofUodbBeNdWLSLrZw-->小红书笔记与评论批量采集</td>
+<td data-page-node-id="Uvo7PedAPR2H6lobRogVN5"><code data-page-node-id="i8s1iWBul2w8BQcQmpHZwG"><!--pnid:8GY6LGs6IeXEmddoACxsIY-->xhs-note-scraper</code></td>
+<td data-page-node-id="dRRXSuo3lJZNcHxtkjQeyR"><!--pnid:T989zOoDgS5HWnZOztkQCy-->skill_2095502902239928320</td>
+</tr>
+<tr data-page-node-id="XRKO7ExhUzmbFGADpCNa9A">
+<td data-page-node-id="PZ3FObL3USHX8p74mU9HSE"><!--pnid:Xi4gIw3IMB3ccXJ5pGjjLl-->小红书爆款标题批量导出（攒话术词库）</td>
+<td data-page-node-id="U841AafT8YeCc0UkfG253H"><code data-page-node-id="41jTF1nLrKYiRfK7BjE4By"><!--pnid:hUUP7TuYfLr0ImUdCUKfK5-->xhs-title-collector</code></td>
+<td data-page-node-id="cOZlCXGggKeKKcShy6Wy56"><!--pnid:URvaG1kmIiCqdjSuC0u8G7-->skill_2095470620470190080</td>
+</tr>
+<tr data-page-node-id="ngwLIx5HAZ7Efme950ykRj">
+<td data-page-node-id="1WSBOiN40ZmHkEgQ1igQ5R"><!--pnid:STFh2GvHes9uJ1Y8SBESsf-->答辩演示（HTML）</td>
+<td data-page-node-id="1GrVUSDkzcAH5JJ6tLLnW8"><code data-page-node-id="GqXTRBsOLQgNkaa8TsHHtU"><!--pnid:H5b1OTXk2Tu8weW8MHFim4-->business-html-deck</code></td>
+<td data-page-node-id="fWp63OkoLjxL9lPzxbdyGZ"><!--pnid:k7iy2oGZoXMh4gst3uYXpz-->skill_2096363609409032192</td>
+</tr>
+<tr data-page-node-id="2aDxnszgV6dM9zQzmFxm7D">
+<td data-page-node-id="Aj0A0xk1D2y8leiZsXJ2Ie"><!--pnid:JMGQ40UOR32asNG1iAxV6V-->答辩演示（PPTX，含大纲确认）</td>
+<td data-page-node-id="N8S5WmkU8MfBiltZu2A5JQ"><code data-page-node-id="Wg4bt55H92A9vAjZ9VwClr"><!--pnid:1BF4ce1xtwD0HCLXAA5x9J-->enterprise-ppt-guard</code></td>
+<td data-page-node-id="5LZx4Z5ISDzAaUDwuezTTX"><!--pnid:e9FoQfCwiwzdQiHLUwMgOR-->skill_2100436084917194752</td>
+</tr>
+</tbody>
+</table>
+<p data-page-node-id="LhmWLt4m5yOp1QXqUENaH5"><!--pnid:Bo2DRkfMKEQ4OeSbPNKbVa-->你已经有的，直接复用不用装：<strong data-page-node-id="nJSWtpe9IVKyrmyE9naWkS"><!--pnid:H4InjLfQhQ02cWsvyf6nfv-->TikHub</strong><!--pnid:h2uebDaEdneTzIxoNUu9S8-->（商品/达人取数）、<strong data-page-node-id="c4p5TjnprwxK4askT6W0od"><!--pnid:rheMsGEtO1ZlT4z913BFci-->Kimi WebBridge</strong><!--pnid:z1xKoEjSHKxUDb1zBVedMd-->（浏览器自动化，FastMoss/罗盘登录态抓取就用它）、<strong data-page-node-id="d4s99ykUzuZ3T81DlyYJXn"><!--pnid:XeApVAGe10G8g8sIcpW5Qj-->lark-cli</strong><!--pnid:edye9AneSG1LGLpoXsamZA-->（飞书周报推送）、<strong data-page-node-id="8kLCgP6eHYSpkvYrGd0GqG"><!--pnid:cUsoyzzyJo4ysgxBoiHkPQ-->达人雷达</strong><!--pnid:m2MRWRkcGePPkNYaBjIriR-->（你自己的项目）。</p>
+<hr data-page-node-id="f0Tjq70vZJhVkQgCRVq1qk">
+<h2 data-page-node-id="WvyAGvibtjU7D2JANUtgZm" id="_8"><!--pnid:hb4zlbMfKWaojtkqAE7w1d-->九、最后一句实话</h2>
+<p data-page-node-id="jABrUNWyqrOfscdw3e5EBv"><!--pnid:yz9uZRsJbjs7VFlSkKTIGi-->这套方案的胜负手不在谁写的代码多，而在 <strong data-page-node-id="krvDVNF8Xe32CTz5b6hJn3"><!--pnid:S66tb8KaHNZBKdYz3b73aW-->9/25 那天晚上你们有没有让 9 条规则全部跑出真实结果</strong><!--pnid:eFmfs8yxPFQiYHXOUNf4QO-->。</p>
+<p data-page-node-id="KHNa6wZiFsqvOgFSJ2fgOW"><!--pnid:kCVPL5LWjIF1bHZaARwu15-->你和另外两位的差别在于：你在公司做的是 BD，天天跟达人、素材、投放打交道——这恰恰是平台现在最缺的那半段。<strong data-page-node-id="qQrngvmFwmogAKRh1aJ67e"><!--pnid:6m0mUNEbZKIAZD0d7rni7K-->不要用你的短板（写代码）去跟 AI 组比，用你的长板（真实数据 + 业务场景 + 渠道资源）把他们的骨架喂饱。</strong><!--pnid:7ZuKNLvk0uit4GhscEOVCY--> 一个能自动跑出"哪 5 个品值得投、为什么、下一步投谁"的系统，比一个图表好看但全是 DEMO 数据的系统，评委一眼就能分出来。</p>
+<p data-page-node-id="Tnmv2jg7TP3jJwQruKOA6z"><!--pnid:jklgLwAWsrWX01KRFoWqfl-->需要我现在就帮你把这几个技能装上，或者先把那份「素材与达人表」的字段字典整理成能直接发给 AI 组的飞书消息吗？</p></div></body></html>

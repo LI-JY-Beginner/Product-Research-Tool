@@ -1,0 +1,12 @@
+{
+  "ok": false,
+  "identity": "user",
+  "error": {
+    "type": "api",
+    "subtype": "unknown",
+    "code": 3380002,
+    "message": "Unsupported document type 'sheet'. Only docx is supported.",
+    "log_id": "2026092609551613BBA0BA95216247C85A",
+    "troubleshooter": "排查建议查看(Troubleshooting suggestions): https://open.feishu.cn/search?from=openapi&log_id=2026092609551613BBA0BA95216247C85A&code=3380002&method_id=7624117956138650561"
+  }
+}

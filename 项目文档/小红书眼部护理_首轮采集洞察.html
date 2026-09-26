@@ -1,0 +1,278 @@
+<!DOCTYPE html><html data-page-node-id="7g88Hp60krraiFEmporxU8" lang="zh-CN"><head data-page-node-id="9KiTDqH86uE7S3ubbVFyKE">
+<script data-page-node-id="bUU5S4zkuEzRiYzqXVrhjs" src="/page/page_comm/inject.js"></script><meta data-page-node-id="JhQqcIWu1JtxdNa7Ca9p3I" charset="utf-8"><title data-page-node-id="7Xa8n0gvYV2K2hI4jUPqVs" data-pnid-children="7AhMHuskEbMkGxm6slLsHk">小红书眼部护理·首轮采集洞察</title><style data-page-node-id="PdnQQL6nw8h6enJgmOGDcx" data-pnid-children="IJD0BZTgkyZbviWZMgxSxY">
+body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;line-height:1.75;color:#1f2328;max-width:920px;margin:0 auto;padding:40px 32px;background:#fff;}
+h1{font-size:28px;border-bottom:3px solid #d946ef;padding-bottom:12px;color:#111;}
+h2{font-size:22px;margin-top:38px;padding-left:12px;border-left:5px solid #d946ef;color:#111;}
+h3{font-size:17px;margin-top:26px;color:#7c3aed;}
+table{border-collapse:collapse;width:100%;margin:16px 0;font-size:14px;}
+th{background:#fdf4ff;border:1px solid #e5e7eb;padding:9px 12px;text-align:left;font-weight:600;}
+td{border:1px solid #e5e7eb;padding:9px 12px;vertical-align:top;}
+tr:nth-child(even) td{background:#fafafa;}
+blockquote{border-left:4px solid #f0abfc;background:#fdf4ff;margin:14px 0;padding:10px 16px;color:#4a5568;}
+code{background:#f3f4f6;padding:2px 6px;border-radius:4px;font-size:13px;}
+hr{border:none;border-top:1px solid #e5e7eb;margin:32px 0;}
+strong{color:#be185d;}
+ul,ol{padding-left:24px;}
+li{margin:5px 0;}
+</style></head><body data-page-node-id="elQ8oKaX1XPqUKJN5gh8y7"><h1 data-page-node-id="eTQ5vsKBZav0D6lHptCxB2" id="_1"><!--pnid:dIEC9Am1qv9b3UhrKXLQBl-->小红书眼部护理 · 首轮采集洞察</h1>
+<blockquote data-page-node-id="pTWmGjd2fV83NLNCyMQ2pr">
+<p data-page-node-id="zodoYAWeGGiQUAg0su0u9M"><!--pnid:7m24OdTjaJy3mvy9gV5tcn-->采集时间：2026-09-24  关键词：眼油 / 眼纹 / 眼周抗老  样本量：90 条（各 30）
+用途：直接填充「用户调研模块」的 TOP5 痛点、用户话语词典、决策链三块
+数据来源：小红书网页版搜索结果（真实登录态采集）</p>
+</blockquote>
+<hr data-page-node-id="Hv6wSgf7v8nNpMEWDcU6rT">
+<h2 data-page-node-id="bX1obof2Q8C2EBvbyZkKL0" id="_2"><!--pnid:6x0JxYh65kIxPHdJVtE6Kt-->一、这次解决的坑（先记一笔，免得再踩）</h2>
+<table data-page-node-id="tdpEWfwTS7STlSdmOWS9cR">
+<thead data-page-node-id="LdLVUW18l4jeX9dJbAfLLp">
+<tr data-page-node-id="FuHrE0xTKrMWU7wxax6cVM">
+<th data-page-node-id="SBD9LjmIAmuuGkaW3EJE3L"><!--pnid:cmX54NC8DW4zXsWdGXDlA0-->问题</th>
+<th data-page-node-id="xCbT4lrbdWt2h6qUEEoEWB"><!--pnid:1Wb0vQvWV5rTxPKBJoM2Sm-->原因</th>
+<th data-page-node-id="c5IWEPV62GBjH8k7srOUme"><!--pnid:7M0WnDEuB4pYS2UsENCYle-->已修</th>
+</tr>
+</thead>
+<tbody data-page-node-id="FxbeI7xycU4U7plx9tSADZ">
+<tr data-page-node-id="y5vbacSYqzoc3aUX7LSba7">
+<td data-page-node-id="wRLGdL8ziw26acvrKMumBR"><!--pnid:b0WqnieqibMwYI1A2jZbSy-->第一次"登录成功"是假的</td>
+<td data-page-node-id="9PtcrMBFbENZuraqkY2Re2"><!--pnid:Q2Cpx16ME7iRU69MRUzX2I-->脚本把访客态也有的 <code data-page-node-id="avl70Sh0sK1Cd7IzoJz7Wt"><!--pnid:okmxr57oU75LD7mzFJreHX-->unread</code><!--pnid:96H2CaGyvY43bFfXE2aeVg--> cookie 当成登录信号</td>
+<td data-page-node-id="AxbzKgt7lpZ26TkHP9UPR7"><!--pnid:ODK3KG9nzN2ndZlcKCN3sf-->✅ 改为必须 <code data-page-node-id="ut9aKGxlRuH3IIEoOxaM8E"><!--pnid:6qlCn0EmJ13MF9agQL7FcX-->id_token</code><!--pnid:uFHU8CFK1oSrXnQj5z88TH-->，或 <code data-page-node-id="qg2dON7XfiiqBRbtaJ0lBo"><!--pnid:g9duTCPAQDdFPMXbxciBiJ-->holderctry + unread</code><!--pnid:WKYr8CKtY5qS22iAjGJenq--> 同时存在</td>
+</tr>
+<tr data-page-node-id="pWdppbub0X7PFcYF9BXArU">
+<td data-page-node-id="OLvcjBeCjCzKqp9MWHNyyt"><!--pnid:H5V9SW8JbBkBb4dZ2pfYNr-->采集报"Cookie 已失效"</td>
+<td data-page-node-id="rJMsjRb2XPgMfPZFdL6eky"><!--pnid:t0WyAnQ3bM7CVjRNg5Ysvz-->上面误判导致保存的是访客 cookie</td>
+<td data-page-node-id="DaiQSgJkRXCrZJAKJEpyGo"><!--pnid:KiAQoSMW4rwtufYrS078w6-->✅ 重新登录后 cookie 从 13 → 18 个，<code data-page-node-id="nUip8stfmviowU8AI9oZzs"><!--pnid:krVPbPzjNt2XRe1NWKCttu-->id_token</code><!--pnid:qpuKdwxQ2Bp25dqt6bY2Fz-->、<code data-page-node-id="oeJWMbRtjl3hRZ1vethaXu"><!--pnid:T510Fi7b7MWBQ8qWHih54d-->holderctry=CN</code><!--pnid:MxFi0LGRgCFH97WVqye1XI--> 均已下发</td>
+</tr>
+</tbody>
+</table>
+<p data-page-node-id="XorVLaSqKARPZ9zvicz6dm"><strong data-page-node-id="oGsSrYu2fh2poX6Vwx7pUA"><!--pnid:4mtpgTDYkgoY106l83FImy-->现在登录态是真实有效的，之后直接跑采集即可，不用再扫码。</strong></p>
+<hr data-page-node-id="gFDe735JDvow4ZvhovNqbc">
+<h2 data-page-node-id="B8CGRTbmgpQeEWzRxh8l1A" id="7"><!--pnid:0BMTWtsxYAl7cnurLIRe1S-->二、核心洞察（7 条，都带数据）</h2>
+<h3 data-page-node-id="x0k0P1BPts7O5ZXGefIih2" id="1-35-19-25"><!--pnid:FbckWMMtF6hGZppiAcxXBP-->🔴 洞察 1：目标人群不是 35+，是 19-25 岁 —— 这条最反常识</h3>
+<p data-page-node-id="A7uuFIKKS5fOKls69LyzcO"><!--pnid:Vve4fDMwljViEEmPxxxIVH-->「眼纹」关键词下，明确带年龄的求助帖：</p>
+<table data-page-node-id="rq7sajf5AHl42FdAS2fBWz">
+<thead data-page-node-id="fKIdrsyWLagoxi9azfb4pm">
+<tr data-page-node-id="F5AxMq8Kjq7sNp9KflIG4R">
+<th data-page-node-id="LiEd2kl50p7i4RFmM5BkeA"><!--pnid:YV9w9N4JjcOaKR6jybGkwv-->标题</th>
+<th data-page-node-id="l6dVCiuITBHifYbbEuA0RP"><!--pnid:OuzLEdWrB3WTsU7zCLs7TX-->点赞</th>
+</tr>
+</thead>
+<tbody data-page-node-id="CHGMSxgN3EuEelQUmnilnz">
+<tr data-page-node-id="FPGebzIwUj8S1nVWw5AhH5">
+<td data-page-node-id="398c6fXeTbtx3Cq1rAiP0e"><!--pnid:5wcMI11cfk9onfe4loySuw-->才25岁，眼周的细纹怎么才能减少啊啊啊</td>
+<td data-page-node-id="vjk5oW1LUDdBqCXp7f56Px"><!--pnid:HhqUHcyOxBQCN6qFc5zCx3-->3794</td>
+</tr>
+<tr data-page-node-id="zozF6gsCz46S5PtWXeCPoS">
+<td data-page-node-id="ck9H6wjkxBNUdF0c2p04w1"><!--pnid:FZXv1NeOWc27TfRTCYuIgn-->23岁的眼纹😭😭</td>
+<td data-page-node-id="7tl4XauQ7zk2lpXD5bvxfu"><!--pnid:xK9B1I1CPCT1rYMUPOzzkv-->2071</td>
+</tr>
+<tr data-page-node-id="f0OrxBpUcV3Ky8Qb8544rw">
+<td data-page-node-id="q3XUiYYMr7enK50LPLdU0s"><!--pnid:4YPXOB4YRmam6b1ZGCXb17-->25岁眼纹重到一笑就卡粉，还有救吗。。</td>
+<td data-page-node-id="vMn498UKD3OnuDYfNPYbOd"><!--pnid:nhnWCMx83vjP5XDs2Phg0L-->1744</td>
+</tr>
+<tr data-page-node-id="fVS1cIusMC9HZnbJurqm0V">
+<td data-page-node-id="NVbIoD8MgdLH0WyY6FjukL"><!--pnid:mReIwxyJUMUjlbeb9nixYc-->求助24岁 眼下的细纹用什么眼霜</td>
+<td data-page-node-id="pLlGfLZ2jmu2vXoEucKM8o"><!--pnid:HohzNyG5RSvLA6hemoOcLt-->962</td>
+</tr>
+<tr data-page-node-id="FDKtx1i6jc5rMJQDI6pWas">
+<td data-page-node-id="B56C5v3iQ4oGC4Cji3gtZK"><!--pnid:67rV9NUmrv7pQG7jn3FtDt-->才24，眼睛下面的细纹怎么办啊</td>
+<td data-page-node-id="vcXk7XJkzUT06kZMu15wfw"><!--pnid:5HvRHgYfG0hFCXBSqc68Ih-->260</td>
+</tr>
+<tr data-page-node-id="3OQjnHssu94VEPy71f7zyX">
+<td data-page-node-id="vd1adaHsuew0YSBC5d9Bx2"><!--pnid:V80pdILSqw8wwJFO5jVGfK-->19岁眼下有细纹</td>
+<td data-page-node-id="3OLmgJPrPbtPI7h9O17o3t"><!--pnid:4ueys2vpBou63t4kjr1l7Y-->334</td>
+</tr>
+</tbody>
+</table>
+<p data-page-node-id="WCXS7E6r7RXfMoUIRGR02K"><strong data-page-node-id="uAqgsw8ZUoemlOgIogJpKV"><!--pnid:ZJXorAuRTvArlS0TKrD2Jh-->结论</strong><!--pnid:cYgpanfSwQVi873UHCuAYf-->：眼周品类的真实焦虑人群比我们预设的年轻了 10 岁以上。
+<strong data-page-node-id="HwiSHKT9AyXxVJamQcr39G"><!--pnid:eSrsZi9H4CI4cQJ4elE8bs-->直接动作</strong><!--pnid:ureuUmu5qAFQqAYBKOkXYw-->：
+- 达人筛选别只盯着"成熟抗衰"人设的博主，<strong data-page-node-id="uoF28t1O6jDnAlm6RONe7F"><!--pnid:AeeX2DxhiQ7725qDPtE1Jb-->年轻向（学生党/初入职场）博主才是主战场</strong><!--pnid:R7oCrbvifjYkAe8124QbOM-->
+- 产品卖点文案从"抗老抗皱"改成"<strong data-page-node-id="Vzmsn24HajmSnNjaq2NYeW"><!--pnid:VeQUxjD1qCcGUfLXlE9Tgz-->卡粉救急 / 初纹预防</strong><!--pnid:zH0aylt8WvpWtwOGAFppFT-->"</p>
+<hr data-page-node-id="tKJ6BVWiPbCnboeqgZ3SSC">
+<h3 data-page-node-id="gymF5K3EQ1eDlJdahXpRqW" id="2"><!--pnid:dL6YV7vBj3nXZJ5yHyrL4i-->🔴 洞察 2：「卡粉」是被严重低估的场景痛点</h3>
+<p data-page-node-id="hZMmfwsU11NjnBw6ipUH58"><code data-page-node-id="JtTl9QLxOJg1fopXtiKk42"><!--pnid:0xIzTIUYw702YJJ70heXm1-->只有我化完妆眼下这样吗</code><!--pnid:w1cXdrG8qBdfrg443AGPbo-->(3349)、<code data-page-node-id="g5taEHmhxpadCNwxzPWTmx"><!--pnid:00W59Ei02ctIvuKG8jxN95-->眼睛下面这种细纹卡粉怎么办</code><!--pnid:iiePq6BAJUSaR32cB8jfCJ-->(2379)、<code data-page-node-id="4xno9dURzlpvTZmpMUj4jY"><!--pnid:3IYU5ignMrCspsTZCLfdMy-->25岁眼纹重到一笑就卡粉</code><!--pnid:mVl2ezN31x7sgkirgTRdAT-->(1744)</p>
+<p data-page-node-id="fRrmfYbp0qMVGPaYDJtvnP"><strong data-page-node-id="WBTSDUkAWZTAcOLyjVzcYc"><!--pnid:JFYK9KNKcSeWiOKWdH9zJc-->这是"化妆时才暴露"的场景痛点，抗老赛道几乎没人打这个点。</strong>
+<strong data-page-node-id="X5A2hC99lzzGSZjmP9hsVc"><!--pnid:djRZRiOXU16YEkb4hCKnQ5-->直接动作</strong><!--pnid:05WQwF9ZMyYylcAhGFdphs-->：内容切入点优先级建议 <strong data-page-node-id="f7J7cuRBgf3e1w7gXhELCt"><!--pnid:dZzHPP6PZpmMT5NKdD0TSY-->卡粉救急 &gt; 淡纹 &gt; 抗老</strong><!--pnid:9sUfzPn5h6uRiaQds1eALj-->；达人素材里必须有"上妆前后对比"镜头。</p>
+<hr data-page-node-id="IystpriLclznstycQzx8jU">
+<h3 data-page-node-id="Mb4XgMIL4Xsfrx65VHxsnC" id="3"><!--pnid:8x4urIfle5qtZQ03SsFBWo-->🔴 洞察 3：黑眼圈的流量量级碾压眼纹</h3>
+<p data-page-node-id="MnqWqIKu9gIFDj65TdMWaR"><!--pnid:zv9C6bDkXwklBiA7xsTNId-->「眼周抗老」关键词 TOP3：</p>
+<table data-page-node-id="91ofXJoqBIvcqyMkNRkGNH">
+<thead data-page-node-id="3w0xcslOsQlOOuVTA7l2uc">
+<tr data-page-node-id="P61X84BbkMlfDYH520YnBz">
+<th data-page-node-id="DazI3sQCfF32ZzWQckSI64"><!--pnid:sZxzI4Atp2xqjqd0YVKJ7n-->标题</th>
+<th data-page-node-id="veJI2LUyLXNzjCCwcIKyZG"><!--pnid:VXMbFnWOiEBmhccGx7EtH6-->点赞</th>
+</tr>
+</thead>
+<tbody data-page-node-id="IDFXNQ2nbdhCoJaYjvL5mf">
+<tr data-page-node-id="gJqBm6bTHMit7oppGpOuvA">
+<td data-page-node-id="jhOp9iPDMDsJXSlvNV8E32"><!--pnid:ruAT1Wd4whkNsgUh15Ij4I-->重度黑眼圈、眼袋、泪沟终极改善方法</td>
+<td data-page-node-id="75S3PEB60mmrPzHUAUw1yR"><strong data-page-node-id="5maBGFAnoDfZkjLUF6wkMc"><!--pnid:bmnJhXUIrSb1l7ShhGdtrO-->217,000</strong></td>
+</tr>
+<tr data-page-node-id="wwILDKmFwttTdwiShVMmwr">
+<td data-page-node-id="xnHhPHdh1j2cE6mMQlxA4F"><!--pnid:JAA3QRDrczUeq5x7wZovQz-->练一次惊艳‼️让眼睛变大的眼肌撸铁训练</td>
+<td data-page-node-id="sE73Sq0xP6ftAyJDRQg2o6"><!--pnid:dv0zX1LwsOfMG3oTc19XKj-->92,000</td>
+</tr>
+<tr data-page-node-id="6FlpTsZvyAGQRJq4G9Z5L3">
+<td data-page-node-id="avlw9IQUxCUomUx75aITJz"><!--pnid:M3xMY63V6GRY5iUfjCdZ3P-->每天按3分钟❗️重度黑眼圈，成功上岸✌️</td>
+<td data-page-node-id="4IDxNaaawVxjCtMDyrCHIH"><!--pnid:1fcOusOKkhvtSJKB7MvBzd-->45,000</td>
+</tr>
+</tbody>
+</table>
+<p data-page-node-id="nQ6WbDcnZScshN3yGtA6jx"><!--pnid:708CYs2w1n61I9AAT3vyHe-->对比眼油关键词最高赞仅 43,000。<strong data-page-node-id="IpHGBS30g9j0V1sOaCjexw"><!--pnid:Tph9a72lKgoX8C2XAWclyQ-->黑眼圈内容是眼纹内容的 5 倍量级。</strong>
+<strong data-page-node-id="Z9a2BecLWq9TEyyAtZIFEA"><!--pnid:gbC2pGi2T25ifiS3PMO4au-->直接动作</strong><!--pnid:9OE6yJAWcvf09R7zDlHwBe-->：如果白云山眼油产品能蹭到"改善黑眼圈/眼周循环"的功效宣称（⚠️需先确认合规），流量天花板比纯淡纹高一个数量级。</p>
+<hr data-page-node-id="mN2iPH097VQruMBx8l9e73">
+<h3 data-page-node-id="RofnRlruTIlGqQCjFr6jn7" id="4-90"><!--pnid:dhWVtyaHgPLX72dGQPiwiK-->🟡 洞察 4：高赞内容 90% 是「手法教程」，不是「产品测评」</h3>
+<ul data-page-node-id="kc8ygwz0Q507n2BM9d7XRU">
+<li data-page-node-id="Tiz0z3XHnHw01wnbzyG9em"><code data-page-node-id="BbvbXDJzfmXEUTb1s5xSsu"><!--pnid:2gWLd9Mywk2Q0Os2k1Kd9i-->正确涂眼霜分享📝让眼周身无分纹</code><!--pnid:8HUTk3NTthwOMOOp47ArLC--> 7002</li>
+<li data-page-node-id="zmg6i6dlJsEi3fV5CvITeE"><code data-page-node-id="uG5CoxRimwSQF4AXOcBpue"><!--pnid:jtR5CgeeOU36TnMrrYro5U-->99%的人都没涂到位！这样做到41岁不长眼纹</code><!--pnid:ZkoV5ApMrh2MFPJ4aZXMUR--> 6600</li>
+<li data-page-node-id="pCAUyaMmDm2TQxM7uP9ciw"><code data-page-node-id="Lrwd1nE6u14CbE0O2XhSIx"><!--pnid:gW0pimzD12ISt2yCEBLqnV-->范冰冰眼部乳敷法</code><!--pnid:mO2uyS7M9oFZpunbmSwJHP--> 11000</li>
+<li data-page-node-id="HKRDG4hmCHduACdn4qRzYd"><code data-page-node-id="mLe9cQ28kADzg1mGaKTPJR"><!--pnid:Wa5ks8F79iBmdoNEMkylwO-->李佳琦的8字眼霜涂法</code><!--pnid:i72kTQgAwjEOGXeQ5ifvSu--> 1293</li>
+<li data-page-node-id="L6PAQIBFfn1nOQXFdGvudm"><code data-page-node-id="NZtbKv8BdgxtgaqW8Bha49"><!--pnid:0KbPvMcnRA5iIyFvmOz9sH-->三明治眼油敷法</code><!--pnid:gtMGMMZdGvmfoSts4DPDlH--> 859 / <code data-page-node-id="U3ClON1rwo7wSZrrJzPAr3"><!--pnid:F0fT6Bj55Jc73hIlhfmzZL-->以油入霜</code><!--pnid:dkQ3lahCkXW61CGBtB88Nb--> 672 / 各种"跟练版" 16000、92000</li>
+</ul>
+<p data-page-node-id="z4IAd3KntDmfiwu2zZ11GX"><!--pnid:0QDPrBJCG9fz42eNdp5ciy-->纯产品测评类赞数普遍低一个数量级。
+<strong data-page-node-id="niyyyb3yPbYUmeamIoxqqL"><!--pnid:KclGTqz5H6JX5LjSEd2NpM-->直接动作</strong><!--pnid:MEN8YgcOYFCdXDRXCYJeTk-->：<strong data-page-node-id="Pu7ZvjmmZQVagWYzHLK2C1"><!--pnid:R6YD4xYavd6YlwdbcBz8XK-->给达人的素材 brief 必须强制包含"手法教学"环节</strong><!--pnid:vvyIYoaGzEjIIDcOyLyd3Y-->，只讲成分的视频拿不到量。</p>
+<hr data-page-node-id="gBPTgcShdCrFcQCDD2sL2n">
+<h3 data-page-node-id="LZSWqcYkCIdHyc4nYHMbDy" id="5"><!--pnid:FJhmdYfxzKoT5W8H3fr47K-->🟡 洞察 5：用户处于"分不清自己是什么纹"的认知模糊期</h3>
+<p data-page-node-id="O70GLkmMIWmTWAxThGusvK"><code data-page-node-id="ogqx3nve9JYFOPA0ipiUGV"><!--pnid:sVQEp9VtUaboy62dk9yZFP-->我这个到底是细纹还是结构纹</code><!--pnid:hni3k9uBKuAA6lC8jYpjVt-->(280)、<code data-page-node-id="cPfX78OtlvXeiJFVDXgD6y"><!--pnid:hsjKMS0k7QI9M4JRgVEmK7-->1分钟判断眼纹类型</code><!--pnid:6HLVzB0jCZlnSTNErlYaE1-->(349)、<code data-page-node-id="wqB1vnZInBBGeSEi0zk7M3"><!--pnid:5cHAsaDOhWicqrDFTO3air-->请问眼下的纹怎么才能去除？</code><!--pnid:9YSGQLqL9vUj3OPqfQSs6c-->(351)</p>
+<p data-page-node-id="PwPFWdjnyXhYoSIqwhomDd"><strong data-page-node-id="zCACTReSiAp43TDoY4tYDz"><!--pnid:6Q4iB7IkJwAuyIP30DRpQF-->直接动作</strong><!--pnid:sRbuyqwHAS4PbRrmCWX1gD-->：做一版「眼周问题自测/分型」内容（干纹 / 细纹 / 结构纹 / 泪沟 / 黑眼圈），既是流量入口，也是产品匹配的转化前置。</p>
+<hr data-page-node-id="N6UWcdszTQWWKKM0JRdoHZ">
+<h3 data-page-node-id="mNqsdaA2tveRHyzPfJpESA" id="6"><!--pnid:ylLbTdwzb1guGXxPL7RfCb-->🟡 洞察 6：决策链是「求助 → 看避雷 → 看手法 → 要榜单 → 下单」</h3>
+<table data-page-node-id="6WK495ju53HvYri1w0TOvt">
+<thead data-page-node-id="8NQcPpvg3Zc9F7qIJIuE3K">
+<tr data-page-node-id="2x271Tg9kGScCCdjdMT0ml">
+<th data-page-node-id="D0RBat4F9KQ5NKLYUhNAvy"><!--pnid:Fs4dhtMyVWtExe2fsOKUYn-->环节</th>
+<th data-page-node-id="S3GvZsUasD1zaGiLOzJbxV"><!--pnid:8JcwvQj3o2VQ1xfOj9DtEW-->证据</th>
+</tr>
+</thead>
+<tbody data-page-node-id="Qq5YDWOt31JeRFut5IeTR8">
+<tr data-page-node-id="IsTlxx16bpej7Uvf2VsUyR">
+<td data-page-node-id="0gE8lWkl6E3wjiwLDJFK6I"><!--pnid:5dIlJ9XulwE4u9XBoGyogX-->求助</td>
+<td data-page-node-id="BrdxifNSFbLqr09cdTy52U"><code data-page-node-id="6tZd9uRyaC0dzU5qGArvt2"><!--pnid:3N1OVQmZAP2dWbCeqjACAe-->求助24岁 眼下的细纹用什么眼霜</code><!--pnid:HRmgGU5xcTNfIQRW88mkTr--> 962</td>
+</tr>
+<tr data-page-node-id="m82oTgDXmmj1c9hPftIToM">
+<td data-page-node-id="3nqi6o5hci90eWhvdYqn8R"><!--pnid:lXWqjFj7U9pZJOi3FzsbPM-->避雷</td>
+<td data-page-node-id="FApn78I5xSyr7HxAjQe1FK"><code data-page-node-id="56uaA0LLHyh5iY4ckZno7m"><!--pnid:2lxKGwU9v4JyW5TX7NTQCo-->眼周抗衰5大禁忌</code><!--pnid:AWnzxxhC0t0eLOJMtrkUoY--> 1781、<code data-page-node-id="y54v1KlPUmu9KoPR69kiCW"><!--pnid:ptKiqKqiNjRiicztsm6yMB-->避雷半天，最后还是买了……</code><!--pnid:4u74boVqVSUIbLdgUIfSKO--> 142</td>
+</tr>
+<tr data-page-node-id="E9OYweXhBkOMSN0dVzbDyQ">
+<td data-page-node-id="ZDmibwnFQaNeL73IA46Oms"><!--pnid:XnLM4oru1nq77i5tTKi8o1-->手法</td>
+<td data-page-node-id="sOD6i4UV5VpngIme9My08A"><code data-page-node-id="fI1gEXJRCvyYwsP37UxDgm"><!--pnid:x0q6wRkBC80qBbcxAnG9oy-->正确涂眼霜分享</code><!--pnid:VKrLUSIgu8oM5rR38BB2Ww--> 7002</td>
+</tr>
+<tr data-page-node-id="DJv05ZcLPVLfIoprP3neaD">
+<td data-page-node-id="qVmfUCkfuHeSTw0xPaF6LJ"><!--pnid:rOVc67mnJge7MJjlYORmI3-->要榜单</td>
+<td data-page-node-id="rlA5qV8r2zWTwYmHiag3t5"><code data-page-node-id="t6ni1w86EK3TUCb3RsFp9A"><!--pnid:8k9iN8EYfnOehgijLDs66w-->2026 求眼油必吃榜 bot</code><!--pnid:hbOO0E69AG8dIEYvaqmjtW--> 398</td>
+</tr>
+<tr data-page-node-id="sGOl8yrcvcVfqyGQTs552t">
+<td data-page-node-id="5P9flfisrQmSFpJNqjS32V"><!--pnid:cBzjzTagJsOfD83DeSlqjt-->下单</td>
+<td data-page-node-id="F0Gk7l0YVWKweavSH5LRo1"><code data-page-node-id="eUnfn0OOCYmlMAjjbn9ljC"><!--pnid:s5nXem0UFOqVwyV9H0m1NL-->阿芙眼油使用两周了</code><!--pnid:b8KMdwcpJGLPuY3TtRLP1p--> 350、<code data-page-node-id="Y09gzQ5J8GSopxICpdXTFX"><!--pnid:pGiEm6QUpfZH1tbGkL6Y6S-->穷鬼意外发现对眼纹有效的东西</code><!--pnid:7CDUwIuTGGSiVAGgHOXYAa--> 229</td>
+</tr>
+</tbody>
+</table>
+<p data-page-node-id="XUsqGfNa7Zkb9Fs2FJKD9O"><strong data-page-node-id="svBNFSooIUXSsAbULSJb1n"><!--pnid:9090PfYiqo5lYLj37cxkPS-->结论</strong><!--pnid:Bsk6YtWTDYQ6Yef6HmP2Mv-->：决策周期长，中途会被竞品攻略截胡。<strong data-page-node-id="FsdPYsr2t8h6g99MSHrY2y"><!--pnid:NlFtghFwevVJHpGxPEXeuS-->"必吃榜/清单"型内容是明显的需求缺口</strong><!--pnid:9FDLKCEhKxlSkOdYqvSub7-->（有人在主动求，供给不足）。</p>
+<hr data-page-node-id="QoiDn7ERIZS3v9BA03xsXT">
+<h3 data-page-node-id="Upeynk7LC76dxaufODQt0y" id="7_1"><!--pnid:LjyIXPnXwBoMLkCBsKlEfC-->🟢 洞察 7：有反焦虑声音，硬打"显老"有翻车风险</h3>
+<p data-page-node-id="HYwnR20ohIkEthFopOI021"><code data-page-node-id="iD9oEGc3e3XsZ9RDGOWWZL"><!--pnid:ul4dk1lWM9BijrzithunFw-->爱上皱纹</code><!--pnid:9Hqq2cya0nKucBwjdz1FSg--> 1139、<code data-page-node-id="k4Twe0NHniQfnWpNZhG9cd"><!--pnid:IIdxDPPy1d9GBgSvsDSlf9-->特意保留了唇纹和眼纹的一张</code><!--pnid:Jk1VYZdOwjSCAvzxFR2DlX--> 3759</p>
+<p data-page-node-id="kTFUeH9vww3TGKHXHwJVmo"><strong data-page-node-id="0t5fid8TAzukft6ViWcRD6"><!--pnid:fIQZUusdzGsXyigNbD1ZUZ-->合规提醒</strong><!--pnid:a8mTU0XYl9ySGkj7LzDuTo-->：素材里避免"显老""像大妈""衰老"这类制造焦虑的强刺激表述，容易被限流也容易引发评论区反弹。改用"状态""平整""干净"这类中性词。</p>
+<hr data-page-node-id="RzI811Rc1JnEyxs3Fc1SOP">
+<h2 data-page-node-id="BwTNctlhm1DiSGOv1zEAv6" id="_3"><!--pnid:T1PUyXsJlBbQUaIjVnxlF4-->三、竞品/品牌信号（顺手捞到的）</h2>
+<table data-page-node-id="Gdonzz7yGxamE7Ju4v8zik">
+<thead data-page-node-id="JuPknP4zlVVourBtDSsdTD">
+<tr data-page-node-id="ENoKrwnULsvYUFrB2CNfQK">
+<th data-page-node-id="2mCyi4CWuZvYsVjb4eyftc"><!--pnid:sZkvlTNxCQu1F6I0szABb8-->品牌/人物</th>
+<th data-page-node-id="PFYIIvidrxmUNkX8h2Lz11"><!--pnid:5WZDpz4t6iOtAyjBqqfIs5-->信号</th>
+</tr>
+</thead>
+<tbody data-page-node-id="s8lhdU4mrtOpnhldtA4tV1">
+<tr data-page-node-id="jINbt6NRolQ040n3Eu87hU">
+<td data-page-node-id="7qXqrDH2COdAyJ3xQEINGS"><strong data-page-node-id="3WlYnPojTZRz6lzo6ZDCBF"><!--pnid:KnhCIccpU41STfzD2XWuDB-->阿芙</strong></td>
+<td data-page-node-id="gobfgzaWIiXg7oLflaJ3AA"><!--pnid:WOiWA6bTXExXIY587K9e5d-->眼油品类头部，有真实用户自发晒单（<code data-page-node-id="OCmPRdaXy2jmA4NvAYkLBK"><!--pnid:NIQmDF77dEKzUoYrnbRL0S-->阿芙眼油使用两周了</code><!--pnid:YUWwxpI38otvkM8JFAqGmb-->）</td>
+</tr>
+<tr data-page-node-id="YtxVTXM5sA33gQ5GElMc16">
+<td data-page-node-id="aDz0CgqcXG65H8S6pmAHeq"><strong data-page-node-id="ngsTrNak7Q5QGyutxX7GN7"><!--pnid:tmP8KsI6TlAAfSYnee3xpq-->Melvita</strong></td>
+<td data-page-node-id="FeAgMyQV4zc3MfTAgBZKde"><!--pnid:RQh0ytQZqlx85EAW0L49Eo-->正在做回归拉新（<code data-page-node-id="sqV7YU2oQw65ru0N8Vpes0"><!--pnid:WNN32Clt9lQjHOp7mJrcJN-->0元送🎁 Melvita回归见面礼</code><!--pnid:xNmULpwgl3Isfp72wFOXyC-->）→ 说明在抢份额</td>
+</tr>
+<tr data-page-node-id="UcyaZYH9XiIjCJD9DETvHv">
+<td data-page-node-id="mlba6axjbLKdcukOpcdH9K"><strong data-page-node-id="55nWgf5z7uzB9AMN6bRYXP"><!--pnid:b0IUTKuaJrSGLKqvPxCKKg-->赏容</strong></td>
+<td data-page-node-id="p2ZcQJQlLd82EgP1e5BBOM"><!--pnid:NvvytaYpsWqIfYIGbT0lWb-->「极夜璀璨紧塑眼油」，在做包装设计投入 → 新锐竞品</td>
+</tr>
+<tr data-page-node-id="v14hU3LM5wyBbzV89MyS66">
+<td data-page-node-id="wqI2l6KdCCdiX1edoo3WOa"><strong data-page-node-id="B88KidhNVfPv3SekFhJhgW"><!--pnid:6MiT1R04lkpmc7eKPsFDOr-->李佳琦</strong></td>
+<td data-page-node-id="6cxhEqPRSR198kC7U79fTJ"><code data-page-node-id="brf2LrliTzIaiWLTjbdQ5K"><!--pnid:HGPzTInLJ7qolYf8Ih5LpJ-->眼霜小课堂</code><!--pnid:xrH3ghGmcGKtuhHRqKJ6Pf--> 3279、<code data-page-node-id="YJMKJljD4wPJWU0HwGc1UU"><!--pnid:gaYQntfnoV4631H8SgaMCo-->8字眼霜涂法</code><!--pnid:DIYbYWU5ZDSYAWPmh7rPT0--> 1293 → 眼周品类的关键带货节点，达人策略要考虑</td>
+</tr>
+<tr data-page-node-id="D6pbSCb6RFjK2uE70lJnU4">
+<td data-page-node-id="STT0s22QCtUjV3c9gIa2xS"><strong data-page-node-id="yJCTy4qiyyvagADnPCDe4N"><!--pnid:CGS3fTn1ssZsHGx0uW0k6K-->平价市场</strong></td>
+<td data-page-node-id="uLvEqeDfzKMTtdEXqFanrv"><code data-page-node-id="MTBolgwafD6hDelIEd1uPQ"><!--pnid:ftZ1oUKk8XBPu5nI8A5Fih-->穷鬼意外发现对眼纹有效的东西</code><!--pnid:bMDaes9RoN3RX1pXID27xW--> 229 → 低价带存在真实需求</td>
+</tr>
+</tbody>
+</table>
+<hr data-page-node-id="2lyGVDmbOoiGWgudZaxnwy">
+<h2 data-page-node-id="XU1IrcHjzoYLZliRLGbJJt" id="_4"><!--pnid:d1D4cIPoU4mt1jPWexUFHL-->四、这批数据能填你模块的哪几格</h2>
+<table data-page-node-id="u6DSpid7ibjRa5tF3Nrw1r">
+<thead data-page-node-id="5b5X8Tty9ELP8ldEgHhWYK">
+<tr data-page-node-id="COKYG0yvyF8yiZpYxNFu34">
+<th data-page-node-id="SBCRbGOnMAJA6YQnDEj9L2"><!--pnid:ttQ8DQOWWkZW5ZQoxh8kLn-->用户调研模块交付项</th>
+<th data-page-node-id="vDCeFsXsz6E1uZQX9XPJEd"><!--pnid:9OYPP6e2VKg91aoBaeZ8eR-->这批数据贡献</th>
+</tr>
+</thead>
+<tbody data-page-node-id="neicHUrB5OqdNCbCDGxflu">
+<tr data-page-node-id="gl5QTGqGOsVU5o6eWmJ90S">
+<td data-page-node-id="7FTGOFTnbED4HiaeX5yRHR"><!--pnid:bThan4uEEutcENIq9t2P97-->TOP5 需求/痛点 + 频次</td>
+<td data-page-node-id="glnPb5OiH9lLwtevv8RG21"><!--pnid:1j3VpgMjMirNcrMK2TEgDh-->✅ 已可产出（见洞察 1/2/3）</td>
+</tr>
+<tr data-page-node-id="jGHN33JU1L4RMMPHpadLl0">
+<td data-page-node-id="bkBhbXMHHlA5cqGed7Gfiv"><!--pnid:oKP8X7Cwy8FMiHwDoDPNcM-->用户话语词典</td>
+<td data-page-node-id="NhKonsW8g2FT260BwdMeZ4"><!--pnid:xr1YXGOSIQpWgoFB9Apozd-->✅ 已可产出（90 条标题的原始表述，见下方）</td>
+</tr>
+<tr data-page-node-id="ab0o6RxBAQvERvUFynQVFn">
+<td data-page-node-id="GADY8LXIq0T4orW5pnsZLk"><!--pnid:LmAhIxCci3lTQFmoAliLgx-->用户诉求画像</td>
+<td data-page-node-id="wM3Wk1Ydmmvg1o5FMlFAFq"><!--pnid:lQw1w3kOUfed2ernVZ2766-->✅ 年龄画像已明确（19-25 岁，非 35+）</td>
+</tr>
+<tr data-page-node-id="rX83PqZ7d0rdpg64Vb7QNB">
+<td data-page-node-id="SHp7ZMwHQVHQ27E6U9F8Gv"><!--pnid:0OnQXMbTuZBsIJq18Mc6IJ-->决策链</td>
+<td data-page-node-id="fLELQARX2oafKnRtrCIesq"><!--pnid:7Z10PM5uOq44szLsLG2j8p-->✅ 五段链路已完整（见洞察 6）</td>
+</tr>
+<tr data-page-node-id="DQiMCXF1KLPczbHQxoupWN">
+<td data-page-node-id="HZjkDJwVILWXkpu59NxQnM"><!--pnid:0KxAp2OXy5jQwHfAjdQwe3-->≥30 产品入评论库 / 改良机会规则</td>
+<td data-page-node-id="pwl1Drvo96mTyPlIi7YJMI"><!--pnid:ozqEu4FoDJcW90s9ydiODB-->⬜ 需要下一步抓笔记正文+评论</td>
+</tr>
+</tbody>
+</table>
+<hr data-page-node-id="XCLTceJFyIZxJkcbI09RNi">
+<h2 data-page-node-id="kWCPvBqVzmbbQpPRVk9ejp" id="_5"><!--pnid:u7RK4DKb50Iul17Ja11fou-->五、用户话语词典（直接可复制，原生表述）</h2>
+<p data-page-node-id="x6QxaPLSwg68Ekwurry7KL"><strong data-page-node-id="D7DA7WqLNuyRM0LoRqIpde"><!--pnid:yv7n6CJs0lz0H6I5ylGGLx-->痛点自述类</strong></p>
+<blockquote data-page-node-id="LZ1BocgZBFd95AtJzmcTXJ">
+<p data-page-node-id="tL7ObKYdNzSqLm7VHDwFF8"><!--pnid:zYsGvdiCy8ZasnzhOLRdT6-->才25岁…怎么才能减少啊啊啊 / 眼纹重到一笑就卡粉 / 还有救吗 / 求助…用什么眼霜 / 我拿眼纹没办法了 / 突然发现眼睛下面有一个纹 / 这种干纹大家都有吗</p>
+</blockquote>
+<p data-page-node-id="TJy1Oyhvp3Bo7K8vdJeZHr"><strong data-page-node-id="azhSQlePa0v0eqCj9J4phY"><!--pnid:DVrr82q3VuHSXLbzyQr1XE-->效果期待类</strong></p>
+<blockquote data-page-node-id="VV4OLQ8bcu2U1kaMAtkW1y">
+<p data-page-node-id="njM00IauRW02cMjc8SNKtQ"><!--pnid:NcO2Nq56CaC0WGASm9sPOw-->让眼周身无分纹 / 泪沟平了 / 黑眼圈成功上岸 / 和眼下的干纹彻底告别 / 眼睛漂亮1000倍 / 一瓶秒了我所有的眼纹 / 星星眼</p>
+</blockquote>
+<p data-page-node-id="hRO8bawaEo8kYEA6dChWuz"><strong data-page-node-id="spX9kdu1jKoxcnbZaVEOJc"><!--pnid:l5mvE8N1w0cO94pGXJsG69-->手法/方案类</strong></p>
+<blockquote data-page-node-id="BKYj3Y2NligIvFLUSj8iqB">
+<p data-page-node-id="89x8Sbip2F7WxclvJKnXzJ"><!--pnid:jtt9BIRFPII7af9JkiJhxu-->三明治眼油敷法 / 以油入霜 / 8字眼霜涂法 / 眼部乳敷法 / 以油养肤 / 油养 / 跟练版</p>
+</blockquote>
+<p data-page-node-id="9Qs3o6zKhtJj74gaBosWUw"><strong data-page-node-id="QtwkAAvZ0UIYvubRzcrumC"><!--pnid:KXwfsTk7RprnzJ9iJZHp8X-->决策类</strong></p>
+<blockquote data-page-node-id="exWdCYQxauD71mUCBIcD4u">
+<p data-page-node-id="Ewl1pjK9eZ6tXJnYHFlEia"><!--pnid:vFfkDL1CDXG3tt8evnFv0R-->避雷半天最后还是买了 / 求必吃榜 / 我的战备清单 / 穷鬼意外发现</p>
+</blockquote>
+<hr data-page-node-id="8Myr9fkIW4on5keVxYxrIY">
+<h2 data-page-node-id="vh9RtJp7kC2XEcZY5E0rPs" id="_6"><!--pnid:wIyBieprHRbzOOsRSxxL3j-->六、下一步（二选一，你来定）</h2>
+<p data-page-node-id="Ti27KFlnivjjsrfinZ2LnR"><strong data-page-node-id="t0x0SPBA2BCUf9Ja9XoNvJ"><!--pnid:qvRWIOG8BAYzy1TojHRIMO-->方案 A：抓评论拿真原声（推荐，价值最高）</strong><!--pnid:Z97ckJHNBlY3SXKf35hrLb-->
+用 <code data-page-node-id="6NMc2MrhgYIGHhc77q8KiH"><!--pnid:6QjshHV1sbWDw6g0XXE6HE-->xhs-note-scraper</code><!--pnid:BNbh9YFPBokm7O3oSRJYV8--> 对上面高赞笔记逐条抓正文 + 首屏评论。这才是真正的"用户原声"，能填「差评原声/好评关键词」字段。
+- 成本：每条笔记约 10-30 秒，建议先抓 TOP10
+- 产出：可直接进评论库的原始语料</p>
+<p data-page-node-id="uetM1FxD3blIiyxK7kPMGz"><strong data-page-node-id="WwYCHC6NgDz4F3nkLt8OKX"><!--pnid:Ik9kExRQ3ElhS0C3iDJLhI-->方案 B：扩关键词，做痛点频次统计</strong><!--pnid:Q2TbvMlCrw2MEiN5qepsk9-->
+再跑 <code data-page-node-id="3xcfyZ57wZEgvb4On55JzS"><!--pnid:WVRoUp6uXQr2V8OhNHzRUY-->眼袋</code> <code data-page-node-id="6RCi3P4I0mXtj6ftJmnhtX"><!--pnid:DBarMPizvUTjj2ztOKHjmT-->黑眼圈</code> <code data-page-node-id="Ylx6HiQYg1gLSN55nQD1eK"><!--pnid:7Xaqg8HWO1nnaU0qosfkqb-->眼部精油</code> <code data-page-node-id="WlAr1cmhWnUadSbXQVgBZC"><!--pnid:4Y8TuRaS2RI29sczm3PObZ-->以油养肤</code> <code data-page-node-id="JDGCuL0HSskhOHSaS43bIj"><!--pnid:mf9JZqpjprhTdWBlQEL8pF-->眼霜测评</code><!--pnid:DVFeVkGoxrJqdZy5oSJVoj--> 等 5-8 个词，堆到 200+ 条样本，做严格的痛点频次百分比。
+- 成本：每个词约 15 秒
+- 产出：带百分比的痛点排行榜（评委最吃这种量化）</p>
+<p data-page-node-id="9lkVGZgk9YlNWndKCZ5RSN"><strong data-page-node-id="4PzelSta5gsQ2wa8NtpbXu"><!--pnid:ZjacqW0Bl0tUiLxvV8XLbl-->建议：先 A 后 B</strong><!--pnid:EVIC7DHu2BONq473rkqBO6-->——A 拿深度（真原声），B 拿广度（可量化）。两个加起来大概 20 分钟能跑完。</p>
+<hr data-page-node-id="nKtjwsYISccqCnky4HQfmZ">
+<h2 data-page-node-id="3O5Ry3Ey2iTlvsgoGxxoXQ" id="_7"><!--pnid:ROi5BuXUPg9zoL6OjNxDGw-->七、必须注意的两个坑</h2>
+<ol data-page-node-id="7nFPxUfLN2PDcLhuRu8sbH">
+<li data-page-node-id="0uMoFUGAmn4XPzCm8ecwk9"><strong data-page-node-id="okLLaQMnN4xMyxaPftEz1S"><!--pnid:bEAkpa11d8MN9LoHWRqPJc-->关键词噪音约 13%</strong><!--pnid:ejsKKMDlTeCkdVhCPFZlew-->：「眼油」30 条里混进了淡妆教程、grwm、香氛文案、包装设计等无关内容。<strong data-page-node-id="3gZor7OHA1BH1Bp5lwVJ9N"><!--pnid:vNaF2vYJlXxcrbKj9yKxNg-->用之前必须人工过一遍筛掉</strong><!--pnid:b9lUSWg7aWvk90JSf0D3AO-->，否则频次统计会失真。</li>
+<li data-page-node-id="25y5PlkviN1LD3iYzQ4dz0"><strong data-page-node-id="xYuCq1BjoFSCiQ0nipFfzf"><!--pnid:3mtMeptHLSYjg7zk48nkJG-->点赞数不是购买信号</strong><!--pnid:FpSZ4nqidVrnKSH1QnMfFe-->：<code data-page-node-id="1sKvm7O3SSvqtqrvKCSD1b"><!--pnid:15TWigCqS30cY8x8BQxGH5-->眼周抗老</code><!--pnid:XJTk6MnvlwB4dFODnXXDJF--> 里 217000 赞那条是按摩手法（0 成本），跟产品购买无关。<strong data-page-node-id="8bHJQzEGl2o3d9AS1lNiHQ"><!--pnid:vRADjRhSvVP5CsyKTCeoMw-->归因时要把"手法类爆款"和"产品类爆款"分开统计</strong><!--pnid:uKLAc1I9EezysXyoF8rpm5-->，我之前给你的字段字典里"GMV/ROI 优先于点赞"就是防这个。</li>
+</ol>
+<hr data-page-node-id="cnNykcAi8rkxpLbvYgpFtf">
+<h2 data-page-node-id="aDqed4E9H8wnoUIcVQz90h" id="_8"><!--pnid:gFR4UXn3w7PyFvrNMQY0xV-->附：三个原始数据文件（桌面）</h2>
+<ul data-page-node-id="r0Bz1AkrDvK05JQR7LH5ke">
+<li data-page-node-id="dy4sUMyWv5e9QxZnOvIw1E"><code data-page-node-id="ptSOee4Ax44uTlm3NChIYH"><!--pnid:9G3zSUwwgdL574HQzS4Jfo-->xhs_爆款标题_眼油_1790235218402.csv</code></li>
+<li data-page-node-id="sc0rkiIEk7n2MxA9kZS0Tb"><code data-page-node-id="ZfkXvJgz7v4SeXWYrLmQTn"><!--pnid:XNE3DSeYMuVAvt2I7qCGMT-->xhs_爆款标题_眼纹_1790235284113.csv</code></li>
+<li data-page-node-id="F3uQBdCJmcadyst5iqxlT9"><code data-page-node-id="IAMXQEZRY1RlC7spnlrQEy"><!--pnid:JfLa89hH9fYF6Dp0O61pCx-->xhs_爆款标题_眼周抗老_1790235296260.csv</code></li>
+</ul></body></html>

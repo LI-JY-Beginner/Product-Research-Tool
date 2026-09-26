@@ -1,0 +1,4461 @@
+{
+  "ok": true,
+  "identity": "user",
+  "data": {
+    "approx_char_count": 47329,
+    "has_more": false,
+    "ranges": [
+      {
+        "actual_range": "A1:V30",
+        "cells": [
+          [
+            {
+              "cell_styles": {
+                "font_size": 32,
+                "font_weight": "bold",
+                "horizontal_alignment": "center",
+                "vertical_alignment": "middle"
+              },
+              "value": "泡泡面膜竞品分析"
+            },
+            {
+              "cell_styles": {
+                "font_size": 32,
+                "font_weight": "bold",
+                "horizontal_alignment": "center",
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 32,
+                "font_weight": "bold",
+                "horizontal_alignment": "center",
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 32,
+                "font_weight": "bold",
+                "horizontal_alignment": "center",
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 32,
+                "font_weight": "bold",
+                "horizontal_alignment": "center",
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 32,
+                "font_weight": "bold",
+                "horizontal_alignment": "center",
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 32,
+                "font_weight": "bold",
+                "horizontal_alignment": "center",
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 32,
+                "font_weight": "bold",
+                "horizontal_alignment": "center",
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 32,
+                "font_weight": "bold",
+                "horizontal_alignment": "center",
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 32,
+                "font_weight": "bold",
+                "horizontal_alignment": "center",
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 32,
+                "font_weight": "bold",
+                "horizontal_alignment": "center",
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 32,
+                "font_weight": "bold",
+                "horizontal_alignment": "center",
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 32,
+                "font_weight": "bold",
+                "horizontal_alignment": "center",
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 32,
+                "font_weight": "bold",
+                "horizontal_alignment": "center",
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            }
+          ],
+          [
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "horizontal_alignment": "center",
+                "vertical_alignment": "middle"
+              },
+              "value": "产品信息"
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              },
+              "value": "品名"
+            },
+            {
+              "cell_styles": {
+                "background_color": "rgb(255, 255, 255)",
+                "font_color": "rgba(0, 0, 0, 0.88)",
+                "font_family": "__misans_ea41d1",
+                "font_size": 14,
+                "horizontal_alignment": "center",
+                "vertical_alignment": "middle"
+              },
+              "value": "P.CALM\n圣罗勒气泡深层面膜"
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "horizontal_alignment": "center",
+                "vertical_alignment": "middle"
+              },
+              "value": "亚洲积雪草气泡面膜"
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "horizontal_alignment": "center",
+                "vertical_alignment": "middle"
+              },
+              "value": "Nainur\n圣罗勒气泡深层面膜"
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              },
+              "value": "Holy Basil \n圣罗勒深层气泡面膜"
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              },
+              "value": "Vita + \n花青素泡泡面膜"
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              },
+              "value": "Dr.Lan\n积雪草亚洲青柠泡泡面膜"
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              },
+              "value": "KORMESIC\n牛油果泡泡面膜"
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              },
+              "value": "韩国Elizavecca\n小泥猪碳酸泡泡泥面膜"
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              },
+              "value": "木子言积雪草泡泡面膜"
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            }
+          ],
+          [
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "horizontal_alignment": "center",
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              },
+              "value": "图片"
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              },
+              "rich_text": [
+                {
+                  "image_height": 377,
+                  "image_name": "",
+                  "image_token": "QbhXbfklvoevE3xtGVQcgffKn5e",
+                  "image_width": 396,
+                  "text": "",
+                  "type": "embed-image"
+                }
+              ]
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              },
+              "rich_text": [
+                {
+                  "image_height": 376,
+                  "image_name": "",
+                  "image_token": "QhFkbfYNsoaQlxxwxPHcrOPcnJb",
+                  "image_width": 374,
+                  "text": "",
+                  "type": "embed-image"
+                }
+              ]
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              },
+              "rich_text": [
+                {
+                  "image_height": 368,
+                  "image_name": "",
+                  "image_token": "Badab4jd6oZoS9x9U3NcUDJDnOg",
+                  "image_width": 381,
+                  "text": "",
+                  "type": "embed-image"
+                }
+              ]
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              },
+              "rich_text": [
+                {
+                  "image_height": 371,
+                  "image_name": "",
+                  "image_token": "Bde0bc60SoNNBvxode7cvpMNnrd",
+                  "image_width": 369,
+                  "text": "",
+                  "type": "embed-image"
+                }
+              ]
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              },
+              "rich_text": [
+                {
+                  "image_height": 377,
+                  "image_name": "",
+                  "image_token": "D9rNbwR5dozLs1xAvZDcJXHXnUh",
+                  "image_width": 356,
+                  "text": "",
+                  "type": "embed-image"
+                }
+              ]
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              },
+              "rich_text": [
+                {
+                  "image_height": 280,
+                  "image_name": "",
+                  "image_token": "MUmvboj4CorKkJx58juca88dnXg",
+                  "image_width": 208,
+                  "text": "",
+                  "type": "embed-image"
+                }
+              ]
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              },
+              "rich_text": [
+                {
+                  "image_height": 327,
+                  "image_name": "",
+                  "image_token": "X6o2bUfNaoULJoxNUvHc6wWmnAg",
+                  "image_width": 289,
+                  "text": "",
+                  "type": "embed-image"
+                }
+              ]
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              },
+              "rich_text": [
+                {
+                  "image_height": 373,
+                  "image_name": "",
+                  "image_token": "HfJMbsNMnomyvSxy4qcc5YAPnpc",
+                  "image_width": 347,
+                  "text": "",
+                  "type": "embed-image"
+                }
+              ]
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              },
+              "rich_text": [
+                {
+                  "image_height": 376,
+                  "image_name": "",
+                  "image_token": "J9DabJWDqoBwTFxAndEcUeytnif",
+                  "image_width": 369,
+                  "text": "",
+                  "type": "embed-image"
+                }
+              ]
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            }
+          ],
+          [
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "horizontal_alignment": "center",
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              },
+              "value": "销量"
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "horizontal_alignment": "center",
+                "vertical_alignment": "middle"
+              },
+              "value": "4.67万"
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "horizontal_alignment": "center",
+                "vertical_alignment": "middle"
+              },
+              "value": "8429"
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              },
+              "value": "7201"
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              },
+              "value": "1208"
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              },
+              "value": "9.16w"
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              },
+              "value": "6.1w"
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              },
+              "value": "2.7w"
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              },
+              "value": "200+"
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              },
+              "value": "6000+"
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            }
+          ],
+          [
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "horizontal_alignment": "center",
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              },
+              "value": "价格/规格"
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "horizontal_alignment": "center",
+                "vertical_alignment": "middle"
+              },
+              "value": "25.98刀/90g"
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "horizontal_alignment": "center",
+                "vertical_alignment": "middle"
+              },
+              "value": "18.37刀/5g*12支"
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              },
+              "value": "15.92刀/90g"
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              },
+              "value": "24.8刀/90g"
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              },
+              "value": "216泰铢/4g*12"
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              },
+              "value": "109菲律宾比索/4g*12"
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              },
+              "value": "印尼盾113/4g*12"
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              },
+              "value": "80/100g"
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              },
+              "value": "29.9/4g*12"
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            }
+          ],
+          [
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "horizontal_alignment": "center",
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              },
+              "value": "每克均价"
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "horizontal_alignment": "center",
+                "vertical_alignment": "middle"
+              },
+              "value": "0.2887 美元 /g"
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "horizontal_alignment": "center",
+                "vertical_alignment": "middle"
+              },
+              "value": "0.3062 美元 /g"
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              },
+              "value": "0.1769 美元 /g"
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              },
+              "value": "0.2756 美元 /g"
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              },
+              "value": "4.5 泰铢 /g"
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              },
+              "value": "2.2708 比索 /g"
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              },
+              "value": "2.3542 印尼盾 /g"
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              },
+              "value": "0.80 /g"
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              },
+              "value": "0.6229 /g"
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            }
+          ],
+          [
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "horizontal_alignment": "center",
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              },
+              "value": "上架时间"
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "horizontal_alignment": "center",
+                "vertical_alignment": "middle"
+              },
+              "value": "2025/4/30"
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "horizontal_alignment": "center",
+                "vertical_alignment": "middle"
+              },
+              "value": "2025/9/28"
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              },
+              "value": "2025/8/3"
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              },
+              "value": "2025/11/26"
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              },
+              "value": "2024/9/20"
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              },
+              "value": "2025/2/8"
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              },
+              "value": "2025/8/31"
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            }
+          ],
+          [
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "horizontal_alignment": "center",
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              },
+              "value": "渠道"
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "horizontal_alignment": "center",
+                "vertical_alignment": "middle"
+              },
+              "value": "TikTok（美区）"
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "horizontal_alignment": "center",
+                "vertical_alignment": "middle"
+              },
+              "value": "TikTok（美区）"
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              },
+              "value": "TikTok（美区）"
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              },
+              "value": "TikTok（美区）"
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              },
+              "value": "TikTok（泰国）"
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              },
+              "value": "TikTok（菲律宾）"
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              },
+              "value": "TikTok（印尼）"
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              },
+              "value": "淘宝"
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              },
+              "value": "淘宝"
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            }
+          ],
+          [
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "horizontal_alignment": "center",
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              },
+              "value": "配赠"
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              },
+              "value": "/"
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              },
+              "value": "/"
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              },
+              "rich_text": [
+                {
+                  "image_height": 371,
+                  "image_name": "",
+                  "image_token": "JIb9bk9c9or6utxLTXPczJF0nBd",
+                  "image_width": 124,
+                  "text": "",
+                  "type": "embed-image"
+                }
+              ]
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              },
+              "rich_text": [
+                {
+                  "image_height": 159,
+                  "image_name": "",
+                  "image_token": "ADribzGXEodF1ux9PJucni2Sn5d",
+                  "image_width": 148,
+                  "text": "",
+                  "type": "embed-image"
+                }
+              ]
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              },
+              "value": "/"
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              },
+              "value": "/"
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              },
+              "value": "/"
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              },
+              "value": "/"
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              },
+              "rich_text": [
+                {
+                  "image_height": 567,
+                  "image_name": "",
+                  "image_token": "BXHRbUWj4o3s8oxIALicTjZSn9g",
+                  "image_width": 382,
+                  "text": "",
+                  "type": "embed-image"
+                }
+              ]
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            }
+          ],
+          [
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "horizontal_alignment": "center",
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              },
+              "value": "消费人群"
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              },
+              "value": "油痘 / 混油泛红肌、轻度敏感混干粗糙肌"
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              },
+              "value": "1.油痘、混油、毛孔粗大人群\n2.换季泛红、屏障薄弱的敏感肌3.通勤懒人、差旅党"
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              },
+              "value": "1.油痘、混油泛红肌:出油多、反复红痘印、毛孔易灼热敏感\n2.薄皮/换季敏感肌:普通清洁泥膜、高浓度酸膜敷完刺痛拔干"
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              },
+              "value": "核心主力:油痘泛红肌\nT区出油旺盛、黑头闭口反复、长痘伴随脸颊灼热泛红，想深层清洁但不耐高浓度猛酸。"
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              },
+              "value": "18-35 岁学生、通勤上班族，混油 / 油性肌"
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              },
+              "value": "18-35 岁学生、通勤上班族，混油 / 油性肌"
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              },
+              "value": "16–28 岁东南亚学生、年轻上班族"
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              },
+              "value": "16-30 岁学生、年轻上班族，混油 / 油性 / 油痘肌"
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              },
+              "value": "18-32 岁学生、通勤上班族，混油 / 油性肌肤，毛孔粗大、易出油长黑头"
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            }
+          ],
+          [
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "horizontal_alignment": "center",
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              },
+              "value": "用户痛点"
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              },
+              "value": "1.出油黑头反复，毛孔深层污垢难清理\n2.清洁猛料刺激泛红，油痘敏肌不敢深层净肤\n3.泡泡秒塌流淌，单次清洁效率低\n4.敷膜耗时久，泥膏难冲洗、拔干紧绷"
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              },
+              "value": "1.大罐泥膜笨重，外出不便携、久放易干失效\n2.气雾泡泡膜易爆袋、泡沫稀塌，上脸易流淌\n3.酸类清洁膜刺激泛红，敏痘肌不敢频繁用\n4.普通泥膜洗完拔干，只吸油不修护\n5.角质粗糙暗沉，却不耐受猛酸去角质"
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              },
+              "value": "出油伴随泛红、痘痘炎症明显，清洁后屏障脆弱，急需舒缓褪红"
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              },
+              "value": "黑头出油顽固，用完改善微弱，看不到直观效果。"
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              },
+              "value": "油混肌、黑头毛孔粗大、日常频繁化妆;学生、出差旅行党、租房懒人。"
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              },
+              "value": "适合油性、粗糙肤质"
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              },
+              "value": "1、经常出油、鼻周黑头多、毛孔粗大\n2、预算平价，追求便携单次装\n3、清洁毛孔黑头、痘痘、粗糙暗沉同时存在\n4、跨境囤货、出差旅行需要一次性便携清洁面膜"
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              },
+              "value": "1.毛孔易堵、黑头/闭口反复\n2.传统清洁泥膜干硬紧绷\n3.油皮T区出油旺盛，毛孔粗大显粗糙;\n4.清洁产品使用枯燥，缺少护肤仪式感;\n5.清洁后皮肤干燥起皮，后续护肤品难吸收。"
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              },
+              "value": "黑头白头\n粉刺油痘\n毛孔粗大\n粗糙油腻"
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            }
+          ],
+          [
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              },
+              "value": "产品卖点"
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              },
+              "value": "功能"
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              },
+              "value": "深入毛孔深处，带出污垢、细腻肤质，洗完肌肤清爽洁净。"
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              },
+              "value": "深层清洁\n保湿水润\n舒缓维稳"
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              },
+              "value": "深层清洁毛孔\n净透排毒\n天然青泥发泡配方\n温和亲肤不刺激"
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              },
+              "value": "减少黑头与多余油脂"
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              },
+              "value": "舒缓修护、去除黑头、洁净毛孔"
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              },
+              "value": "补水保湿、细腻柔滑、舒缓泛红、收敛毛孔"
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              },
+              "value": "深层清洁毛孔，祛除黑头粉刺、痘痘与痘印"
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              },
+              "value": "深入补水、抗皱祛纹、细腻润滑"
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              },
+              "value": "去黑头粉刺\n净肤控油\n细腻毛孔\n保湿焕亮"
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            }
+          ],
+          [
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              },
+              "value": "一句话卖点"
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              },
+              "value": "碳酸纳米微泡渗透毛孔深层，清洁力加倍。"
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              },
+              "value": "多效清洁，敷后水润不拔干"
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              },
+              "value": "见证泡泡焕活肌肤！"
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              },
+              "value": "敷上数分钟即可从泥膏转化绵密气泡，带走毛孔内污垢杂质。"
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              },
+              "value": "深层洁净肌肤\n 花青素精华；补水润肤，全肤质适用"
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              },
+              "value": "净浊控油 + 溶解黑头 + 收敛粗大毛孔"
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              },
+              "value": "复合酸牛油果面膜、毛孔清洁面膜、深层清洁、去除黑头"
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              },
+              "value": "微气泡深入毛孔，借助碳酸氧分软化油脂栓、松动黑头污垢，代替手动揉搓，温和导出毛孔垃圾"
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              },
+              "value": "泡泡绵密舒适，深层净激肌肤，清洁脸部污垢和油脂，细心呵护面部肌肤，展现清爽舒适的肌肤状态。"
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            }
+          ],
+          [
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              },
+              "value": "主打技术"
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              },
+              "value": "济州碳酸纳米微泡发泡技术"
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              },
+              "value": "氟醚温和自发泡技术"
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              },
+              "value": "济州碳酸纳米微泡技术"
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              },
+              "value": "碳酸纳米自发泡技术"
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              },
+              "value": "配方搭载弱酸 + 碳酸氢盐发泡体系"
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              },
+              "value": "配方搭载弱酸 + 碳酸氢盐发泡体系"
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              },
+              "value": "配方搭载弱酸 + 碳酸氢盐发泡体系"
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              },
+              "value": "碳酸水 + 发泡表活体系"
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              },
+              "value": "氨基酸表活体系接触空气后生成绵密碳酸泡泡"
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            }
+          ],
+          [
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              },
+              "value": "主打成分"
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              },
+              "value": "1.济州碳酸泉水\n取自济州岛纯净碳酸泉水，温和代谢角质、柔滑肌肤。\n2.圣罗勒叶提取物(神圣罗勒)\n内含丁香酚，含量高于普通罗勒，抵御外界环境对肌肤的刺激损伤。\n3.多羟基果酸PHA\n天然温和代谢角质，改善肌肤粗糙。"
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              },
+              "value": "1.积雪草提取物\n2.透明质酸钠\n3.氨基酸表活"
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              },
+              "value": "1:圣罗勒\n修护肌肤屏障内含抑菌活性成分，帮助打造健康肌肤环境\n2:济州碳酸泉水\n滋养肌肤，深层洁净疏通毛孔\n3.氨基酸 + 葡糖苷复合锁泡表活"
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              },
+              "value": "1.圣罗勒\n含抑菌活性成分，帮助打造健康稳定的肌肤环境\n2.碳酸泉水\n滋养肌肤，深入清洁疏通毛孔\n3.多羟基果酸PHA"
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              },
+              "value": "1、德国羟基积雪草苷、\n2、韩国马齿苋提取物\n3、马来西亚甘油\n4、高活性花青素精华\n5、氨基酸表活"
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              },
+              "value": "积雪草提取物、马齿苋提取物、透明质酸钠"
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              },
+              "value": "1、水解牛油果蛋白：深层滋养肌肤，焕亮光泽\n2、马齿苋提取物：舒缓肌肤不适，维持肌肤健康稳定状态\n3、柠檬酸 + 乳糖酸 + 苹果酸（复合酸体系）：清理毛孔污垢，细腻平滑肤质"
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              },
+              "value": "矿泥 + 炭粉双重净毛孔、猪皮胶原、"
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              },
+              "value": "高岭土、海藻糖、精氨酸、卡波姆、透明质酸钠、积雪草提取物、燕麦仁提取物"
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            }
+          ],
+          [
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              },
+              "value": "香味"
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              },
+              "value": "草本薄荷青草香"
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              },
+              "value": "清新草本积雪草淡香"
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              },
+              "value": "清冷草本圣罗勒青草气息"
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              },
+              "value": "新青草马齿苋淡香"
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              },
+              "value": "淡清新草木清香"
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              },
+              "value": "清新天然牛油果淡果香"
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              },
+              "value": "淡清新草本清香"
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              },
+              "value": "积雪草清润草木调"
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            }
+          ],
+          [
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              },
+              "value": "背书"
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              },
+              "value": "一、平台销量口碑背书\n1.韩国5大主流美妆电商平台热销NO.1\n2.韩国线上综合商城4.9/5高分用户评价\n3.海量真人实测发泡对比实拍(1分钟/3分钟发泡过程可视化)\n二、配方安全背书\n1.0人工色素、0人工香精，低敏配方\n2.敏感肌刺激测试完成，痘肌友好\n3.合规韩系原料标注，圣罗勒提取物采用药典标准命名Ocimum Sanctum Leaf Extract\n三、原料产地背书\n核心发泡基底:济州岛天然碳酸泉水，原生矿化碳酸水源，区别人工调配碳酸水"
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              },
+              "value": "进口积雪草植萃原料，主打天然舒缓植萃概念"
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              },
+              "value": "1.剔除20类有害添加，无人工色素、无人工香精，纯原料原生色泽与气味\n2.敏感肌友好实测，降低酸与植萃刺激性，兼顾清洁力与修护力"
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              },
+              "value": "1.温和安全背书\n皮肤科实测、专为敏感肌设计;无人工色素、无人工香精\n2.功效数据背书\n使用1周，黑头、皮脂油脂减少54%，效果可视化。"
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              },
+              "value": "多国进口原料"
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              },
+              "value": "3 大专利养肤成分"
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              },
+              "value": "1.官方合规背书:印尼BPOM(食品药品监督局)备案认证，拥有专属备案编号，印尼线下线上合法流通，本地消费者权威信任凭证\n2.本土达人背书:印尼网红MichelleZiudith担任品牌大使带货宣传"
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              },
+              "value": "/"
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              },
+              "value": "3大进口成分+2大专利"
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            }
+          ],
+          [
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              },
+              "value": "备案成分"
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              },
+              "value": "碳酸水 (20%)、伊利石、高岭土、甘油、纯化水、甲基全氟异丁基醚、甲基全氟丁基醚、膨润土、羟丙基淀粉磷酸酯、月桂基甜菜碱、癸基葡糖苷、椰油基葡糖苷、甲基丙二醇、圣罗勒提取物 (980ppm)、水杨酸、柠檬酸、氯化钠、羟乙基纤维素、1,2 - 己二醇、乙基己基甘油、辛酰羟肟酸、EDTA 二钠、氧化铁调色粉"
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              },
+              "value": "/"
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              },
+              "value": "/"
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              },
+              "value": "/"
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              },
+              "value": "/"
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              },
+              "value": "/"
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              },
+              "value": "/"
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              },
+              "value": "水，椰油酰胺丙基甜菜碱,高岭土，丙烯酸酯共聚物，二钠椰油两性二乙酸盐,甲基全氟丁基醚，十二烷基硫酸钠，月桂酰胺DEA,TEA-椰油谷氨酸,茶叶提取物,甘油,丙二醇,膨润土,胶原,木炭粉，苯氧乙醇,对羟基苯甲酸甲酯，香味，碳酸水，黄原胶,EDTA二钠,尿囊素，丁二醇，熏衣草熏衣草提取物,大红香蜂草叶提取物,椒样薄荷(薄荷)叶提取物，小苍兰提取物,洋甘菊花提取物,迷迭香(迷迭香)叶提取物"
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              },
+              "value": "水、甘油、丁二醇、椰油基葡糖苷、硅石、高岭土、甲基全氟异丁基醚、聚二甲基硅氧烷、海藻糖、卡波姆、精氨酸、黄原胶、椰油酰甘氨酸钠、对羟基苯乙酮、乙基己基甘油、苯氧乙醇、CI77288\n其他微量成分:赤藓醇、羟丙基环糊精、积雪草(CENTELLAASIATICA)提取物、积雪草苷、燕麦(AVENASATIVA)B-葡聚糖、透明质酸钠、尿囊素、香精"
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            }
+          ],
+          [
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              },
+              "value": "评论"
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              },
+              "value": "好评"
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              },
+              "value": "消痘效果明显、用完面部很干净、改善毛孔、舒缓肌肤、很清爽"
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              },
+              "value": "毛孔变得干净且更小、让皮肤柔软、保湿并有清爽、上妆后会让脸部看起来有光泽、独立包装用量好掌控"
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              },
+              "value": "洗完脸变干净了、保湿效果好、用完皮肤柔软、起泡的清凉感令人放松且满足"
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              },
+              "value": "皮肤非常柔软、去黑头效果好、很有效果、它让我的脸感觉很干净、"
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              },
+              "value": "用完更干净、光滑、白皙"
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              },
+              "value": "皮肤很清爽不刺痛、用完脸很光滑"
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              },
+              "value": "/"
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              },
+              "value": "清洁的到位，泡沫丰富，去黑头、洗完了皮肤清爽不刺激、很方便"
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            }
+          ],
+          [
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              },
+              "value": "差评"
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              },
+              "value": "没效果、没有刷子、里面一半都是空的、用了一次就坏了、用了一次干燥、长痘、漏料、用了十分钟没有泡沫、要洗很久才能洗干净、起泡的时候有刺痛感"
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              },
+              "value": "泡沫不明显、不能去黑头"
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              },
+              "value": "泡沫不明显、清洁力弱、用完爆痘、密封性不好，用了一次在容器就起泡"
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              },
+              "value": "不如视频里说的那么好"
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              },
+              "value": "皮肤没有变光滑、效果一般"
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              },
+              "value": "起泡效果一般，泡沫不够蓬松"
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              },
+              "value": "用着皮肤刺痛、完全不产生泡沫，结果反而变得像泥膜一样干燥、去黑头效果不明显、包装破损"
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              },
+              "value": "/"
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              },
+              "value": "料体太稀了、有明显的刺激感，洗后有点红还发紧、辣眼睛"
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            }
+          ],
+          [
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              },
+              "value": "差评率"
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              },
+              "value": "26%"
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              },
+              "value": "25%"
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              },
+              "value": "26%"
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              },
+              "value": "10%"
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              },
+              "value": "8%"
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              },
+              "value": "25%"
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              },
+              "value": "8%"
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              },
+              "value": "/"
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              },
+              "value": "/"
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            }
+          ],
+          [
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              },
+              "value": "品牌信息"
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              },
+              "value": "工厂"
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              },
+              "value": "美续"
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            }
+          ],
+          [
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            }
+          ],
+          [
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            }
+          ],
+          [
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            }
+          ],
+          [
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            }
+          ],
+          [
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            }
+          ],
+          [
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            }
+          ],
+          [
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            }
+          ],
+          [
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            },
+            {
+              "cell_styles": {
+                "font_size": 13,
+                "vertical_alignment": "middle"
+              }
+            }
+          ]
+        ],
+        "col_indices": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E",
+          "F",
+          "G",
+          "H",
+          "I",
+          "J",
+          "K",
+          "L",
+          "M",
+          "N",
+          "O",
+          "P",
+          "Q",
+          "R",
+          "S",
+          "T",
+          "U",
+          "V"
+        ],
+        "range": "A1:AZ30",
+        "row_indices": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30
+        ],
+        "truncated": false
+      }
+    ],
+    "returned_cell_count": 660,
+    "revision": 0,
+    "warning_message": "处理 ranges[n].cells 之前，必须先查看顶层 has_more，以及每个 range 的 actual_range / row_indices / col_indices。定位真实行号时用 row_indices[i]，定位真实列字母时用 col_indices[j]，不要按二维数组下标自己数行列；skip_hidden=true、skip_filter=true 或结果被截断时，这样会错位。"
+  }
+}

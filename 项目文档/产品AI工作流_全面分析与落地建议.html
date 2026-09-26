@@ -1,0 +1,651 @@
+<!DOCTYPE html><html data-page-node-id="tIXZnofh3jzWTZdOCTFT57" lang="zh-CN"><head data-page-node-id="GxrridTsrJ3ECGTji3CzOM">
+<script data-page-node-id="itx8RPJPvp6V3B8f1hECoZ" src="/page/page_comm/inject.js"></script><meta data-page-node-id="AtyT2IrDjCniV6yweecAUM" charset="utf-8">
+<meta data-page-node-id="7bWmi5cZK1UHJg78MHW6qu" content="width=device-width,initial-scale=1" name="viewport">
+<title data-page-node-id="FkdsdjwMRPtK5DBcpIwWo0" data-pnid-children="ysAgZ9IjI88N5pMfeYEyRZ">产品AI工作流 — 全面分析与落地建议</title><style data-page-node-id="OF3MZwqoxsWpQWxZP4kids" data-pnid-children="inLgijCu0uyoQt9BoKStBg">
+:root{--bg:#ffffff;--fg:#1f2328;--muted:#6b7280;--line:#e5e7eb;--accent:#2563eb;--soft:#f7f8fa;--warn:#b45309;--danger:#b91c1c;}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:-apple-system,"PingFang SC","Microsoft YaHei",Segoe UI,sans-serif;font-size:15px;line-height:1.75;}
+.wrap{max-width:1080px;margin:0 auto;padding:48px 32px 96px;}
+h1{font-size:28px;line-height:1.4;border-bottom:3px solid var(--accent);padding-bottom:14px;margin:0 0 24px;}
+h2{font-size:21px;margin:44px 0 16px;padding-left:12px;border-left:5px solid var(--accent);}
+h3{font-size:17px;margin:30px 0 12px;color:#111827;}
+p{margin:10px 0;}
+ul,ol{padding-left:24px;}
+li{margin:5px 0;}
+blockquote{margin:16px 0;padding:12px 18px;background:var(--soft);border-left:4px solid var(--muted);color:#374151;border-radius:0 6px 6px 0;}
+blockquote p{margin:6px 0;}
+table{border-collapse:collapse;width:100%;margin:16px 0;font-size:13.5px;display:block;overflow-x:auto;}
+th,td{border:1px solid var(--line);padding:9px 12px;text-align:left;vertical-align:top;}
+th{background:#f1f5f9;font-weight:600;white-space:nowrap;}
+tr:nth-child(even) td{background:#fcfcfd;}
+code{background:var(--soft);padding:2px 6px;border-radius:4px;font-size:13px;}
+strong{color:#111827;}
+hr{border:0;border-top:1px solid var(--line);margin:36px 0;}
+</style></head>
+<body data-page-node-id="cwtAfa8CVkYKdRGKbHBIUa"><div data-page-node-id="ZgijXtHZke5o1aPmMTNUUm" class="wrap"><h1 data-page-node-id="0AbaMFaqP1EXHCr1j5XlaO" id="ai-v21"><!--pnid:4oDF18bbKqC72XeN8PBS1B-->《产品AI工作流》/ 抖音爆品调研框架 V2.1 —— 全面分析与落地建议</h1>
+<blockquote data-page-node-id="N0cLTEy5aMWrod6C3FlrEQ">
+<p data-page-node-id="YYeQECqKSNed2ZeBrAxkHa"><!--pnid:nwm2fvrhtjIQUJbIfpc1Fd-->分析对象：飞书文档《产品AI工作流》（Wiki 节点 <code data-page-node-id="pJnlYLI6rW8Dj10II7tCIS"><!--pnid:E2dOm7oj5ap4XWpIW2jxyM-->Ldpqwx2OXibyIhkKwANc1u6endc</code><!--pnid:UU3csHb9gcSFpa34qxzwIY-->）
+分析时间：2026-09-22
+说明：本文为第三方审阅视角的建议，<strong data-page-node-id="wsxRYoRoybnoSJEr9tvpDB"><!--pnid:itigMFQfyKAJbe1v0P6QPp-->未修改原文任何内容</strong><!--pnid:p4jLqhercM8fH8dPIcWAnj-->，所有补丁均可按需选择性粘贴。</p>
+</blockquote>
+<hr data-page-node-id="NtKRnX3iYKfqKp2z7FeDmO">
+<h2 data-page-node-id="qQeN8pH8cuvJAbHtevAtKk" id="_1"><!--pnid:jKgWECPr2Crm4kUPX3cP88-->零、一句话结论</h2>
+<p data-page-node-id="3bw8whbgI40G1FtxlP6MwX"><!--pnid:hMEuvRTRSm6RiFvZfAS7dX-->这份文档的<strong data-page-node-id="A0HyRsgPcT7l2Y7c1nscjd"><!--pnid:6ZxqYUtQf9BZxRB8gcLTZ4-->方法论骨架是合格的</strong><!--pnid:mxtXcbdVYHiBlHmTdzR2oz-->——尤其是它有四 GB 清晰的数量化决策标准，以及"调研阶段不做验证、只为研发给方向"这条边界感，这是专业手笔，比多数内部流程稿强。</p>
+<p data-page-node-id="idtzpS9mANks1mIWkOwY95"><!--pnid:hl0sSvo2LO82vnSfuqio40-->但它目前是 <strong data-page-node-id="3AC25RhERmBT1QciF570DP"><!--pnid:snhyiWPQEDz4JgUlHHbzoQ-->"方法论 + 待办清单" 的拼接体，还不是"可执行的工作流"</strong><!--pnid:5uipvtvm1Ol3nCrRUNWey2-->。三类硬伤：</p>
+<ol data-page-node-id="4EJbJlkCzLGUHXvMZdjj3h">
+<li data-page-node-id="YmjxDq6tJjIu07zq6l5e3u"><strong data-page-node-id="XmEooABiSdhYsl0c8UgLEr"><!--pnid:b2ExOM6FMzg0Qiy6ajHepa-->结构脱节</strong><!--pnid:vTTuvRq0EKVGXtqeOO76oR--> —— 第二部分（方法论）与第九部分（任务清单）阶段划分不一致；方法论里有 3 个模块在任务清单里 <strong data-page-node-id="Ky1RPcIukEco2vp8wgVgQA"><!--pnid:WAMDgwtUW0hr4t4DXv4ivy-->根本没有对应任务</strong><!--pnid:eyObkQtLkjejhVq9S0ugdI-->；而交付物清单却在承诺 <strong data-page-node-id="0CoElNv6sZ4zngKYRx020C"><!--pnid:jhPd3YXe0WQn2YZs5xRFnD-->已经被划掉模块</strong><!--pnid:E7dotTv4HSinNcUQNQRLS3--> 的产出。</li>
+<li data-page-node-id="a5GyLYghRzDs1bEkHDNX0Q"><strong data-page-node-id="rZoyeh0D5ErPuABnNXX0A9"><!--pnid:eGe3rzQMwNAAbgduXZL2OW-->只写了顺境路径</strong><!--pnid:abgk9tmooWAXwp1zOYOFUV--> —— 全流程没有决策人、没有 GO/NOGO 评分卡、没有止损分支、没有一个 ROI 阈值与毛利挂钩。跑不出来怎么办？文档没写。</li>
+<li data-page-node-id="YZ8cJ2nXa6MMsWNXkwmRgN"><strong data-page-node-id="11tIPA7PX3iT8dHrYrqsBg"><!--pnid:RXXmo1t8ZZXDKWJV23m72X-->AI 预期有偏差</strong><!--pnid:zSBLz3xMRSL1QA50tz0woF--> —— 第十章列的 skill 里，有 2 个在技术上不成立（用户画像推测、差异化判断）；而最该自动化、边际收益最高的 2 个（每周迭代报告、投放数据回流）被放到了 P2。</li>
+</ol>
+<p data-page-node-id="ZujyOIb11Q3uarqE9PFXIq"><strong data-page-node-id="1PyqEZxXMd4rlCEHLBGMcd"><!--pnid:G4UeHGcEsBKfHM7gai8LtB-->优先级建议：先补「失败出口 + 阈值与毛利挂钩 + 合规红线」这三件事，再动任何 skill 的开发。</strong><!--pnid:EVO1KBQkbP0c6S3xOcgxW5--> 前两件决定你会不会亏钱，第三件决定你会不会被下架。</p>
+<hr data-page-node-id="eezbLQqRopv421J2niYfwR">
+<h2 data-page-node-id="mvdvXMQMIPlgIrrXy9KX40" id="_2"><!--pnid:V9g0oqbDBmiQwJiSLOzvbR-->一、结构性漏洞清单</h2>
+<p data-page-node-id="XMhNtd95suAjQpwb454Gft"><!--pnid:chVEylzWmXTu8avtgYE3zA-->分级：🔴 必修（不补会导致错判或返工）｜🟡 建议补（影响落地效率）｜🔵 打磨（提升协作体验）</p>
+<h3 data-page-node-id="xMzwi6zErdMaJ6LBmdkD9W" id="a"><!--pnid:yr52mIxQVWbyrioXJQVsuF-->A. 文档自相矛盾（最需要先修）</h3>
+<table data-page-node-id="BzJ42RdpotnAprtM09z2QK">
+<thead data-page-node-id="pHIthNzRlx57LfTS21NWVL">
+<tr data-page-node-id="7xJo0KtxZx98zyp2UOpGKv">
+<th data-page-node-id="VTuAc3aRTbkf5Hu6mbc6id"><!--pnid:XVUyW3oirPGqSyABGzz3Q0-->#</th>
+<th data-page-node-id="1l3h8FpLWAGZ356WbNfHo7"><!--pnid:23jP26CRCHSx9Z3BT4uZ7d-->级别</th>
+<th data-page-node-id="amZlVaI8IahCvLFoh34b6x"><!--pnid:G90qyxF8XRIvoGHUeFTaGh-->问题</th>
+<th data-page-node-id="rQUCGH0Wuy5h3kaQUMrhlQ"><!--pnid:ocyvQJgC4Jss5KIIZ4vSCX-->具体位置</th>
+<th data-page-node-id="fjqW1iL6YWzKX8yo7gtFae"><!--pnid:fcQ5d02C7X3UYF27YMUgdt-->后果</th>
+</tr>
+</thead>
+<tbody data-page-node-id="O1aWKqXDHRamldhp7XpSpy">
+<tr data-page-node-id="9psq0euyEOFhXDhJEZntAf">
+<td data-page-node-id="tSV7iSf3T8IWZCa8IZs9iq"><!--pnid:NgBmlvaiPWg2WKOZxXJ0nL-->1</td>
+<td data-page-node-id="MOa9sSffzrlRrqUQBD4cCX"><!--pnid:y25FeRsYMmLJybxP7NKskX-->🔴</td>
+<td data-page-node-id="lXsuSUQzRo9F9Blmg8YAmz"><strong data-page-node-id="QSrQaUThvyoFdH4fRNJyjf"><!--pnid:kxFv2be38xFiON0dfpXI0e-->周期直接打架</strong></td>
+<td data-page-node-id="WEkr7In792gjjqtrKTkOxz"><!--pnid:GIgIjaBcZ8X4QPcVtxCSsj-->方法一~五每节都标「（1周）」，合计 <strong data-page-node-id="zEes0JKbXLlmeMacDHznHN"><!--pnid:KT19pgWGEpVweeyCrsMrKN-->5 周</strong><!--pnid:MfArd2s9ICVcPmtsgIWLO7-->；但核心理念写「调研 2-3 周」，资源表也写「2-3 周」</td>
+<td data-page-node-id="RddzF1WJ4IpiCBgFRobJB5"><!--pnid:oHXjZ6OMGRUhBLnjCjXHCY-->排期从一开始就不可信，老板按 2-3 周要结果，实际要 5 周</td>
+</tr>
+<tr data-page-node-id="wKHlmDG9gGYkLQ0F3SXGZM">
+<td data-page-node-id="rQ9KqVRAVn81ZCBaeHkWwU"><!--pnid:fGpVk6VJh6OLTxiF9zHcwv-->2</td>
+<td data-page-node-id="BNN6J86edGWyf9XD8us2o1"><!--pnid:LEVWkhBmcMJaTwy1KrvMcU-->🔴</td>
+<td data-page-node-id="sQLTXpHEz8aKR61L4Uj74U"><strong data-page-node-id="A64ffH9inxySAey0h9jf6g"><!--pnid:MeStmXNZnMGB40VYFKxONI-->交付物承诺了没人做的东西</strong></td>
+<td data-page-node-id="yWhRq3BMmt3jf5ehmZdAFo"><!--pnid:doUtoLqf5VCj1ZHZwvJUWx-->第十一章「市场分析报告」含「<strong data-page-node-id="ZBy54Lr3xkv3F72KLrkH4Y"><!--pnid:Yy3ZMQAHiJ3iETlNba0jko-->流量结构</strong><!--pnid:15ik6jDPflMQpsxBfxcwiq-->」，但方法一~五没有任何章节产出它</td>
+<td data-page-node-id="fOblR6ntHTZsjMEciZX7sS"><!--pnid:oyIdYVZ50LlHvYPMToGHZB-->交付时必漏，或临时拼凑</td>
+</tr>
+<tr data-page-node-id="xOcqd5MyloTzWoEtkp5Lhd">
+<td data-page-node-id="p785R3GIfuYZOkX7C9ysmD"><!--pnid:seH85zTAB179gAA8aPlNGY-->3</td>
+<td data-page-node-id="xaZPTvIQHRbnNWh7OR1KMG"><!--pnid:eSoWTlpwCexRm0QjDljQIv-->🔴</td>
+<td data-page-node-id="L054VdnYACjaUPJexteGyi"><strong data-page-node-id="pYhP8eHjIiBgkF9Mkvotkh"><!--pnid:j0htvR1YbGsJxZou2BHWYv-->交付物承诺了已删除模块的产出</strong></td>
+<td data-page-node-id="uuIOYnxf4ZdpyuzwfV5iho"><!--pnid:li0MWL9j7Vt5TEKoGkQEpc-->4.4 复购逻辑已被删除线划掉，但第十一章「用户洞察报告」仍要求「<strong data-page-node-id="PKA0pE8VKxWLaKQfXaPQta"><!--pnid:ZpYoyaAKTuRJpKxyfdLW5v-->复购策略方向</strong><!--pnid:3PSiBP8cuzJSaSOzHuQg2m-->」</td>
+<td data-page-node-id="ZFd0gFXkrGK0hqA7UZeecs"><!--pnid:P5It19qQfWG8NLVrkVVNYa-->同上；要么恢复 4.4，要么删交付物条目</td>
+</tr>
+<tr data-page-node-id="3Y8OSucRgN0oXUrEZIcYIQ">
+<td data-page-node-id="z2iP5GOyIe9XUS0aqde1Ep"><!--pnid:fhzjO3enVtkJwVD9fLywMZ-->4</td>
+<td data-page-node-id="u16oz5e6wUWKqQOKqyF78L"><!--pnid:zZVBKIaVfaMzUjEYjxutSs-->🔴</td>
+<td data-page-node-id="NmaWP3ZoeOXS8l6hNvPqFt"><strong data-page-node-id="gZdABDNw1pfcyGIFlkrjmd"><!--pnid:EpR4wtfDQBb4SSINg7zH5M-->方法论有、执行清单没有</strong></td>
+<td data-page-node-id="vD684C1hHuGn3GMjMuqpWM"><!--pnid:3cwDBwyg0erna2PnZXwhG4-->方法二「产品调研」的 2.1 产品核心要素 / 2.3 货架策略 / 2.4 包装视觉调研 —— 在第九章任务清单里<strong data-page-node-id="I5frgqahFjFNFoilrTQYj5"><!--pnid:Xp06RorEmSFST2Jv6dGHEe-->完全没有对应任务</strong></td>
+<td data-page-node-id="uFBo185YPOt5Nr3i3X9aQg"><!--pnid:HyBCFkX41G71jOVGclNifz-->这三个恰恰产出「SKU矩阵&amp;定价方案」「包装设计方向」，必漏</td>
+</tr>
+<tr data-page-node-id="Vlz1hNAv2gEKxyL4HfCOG2">
+<td data-page-node-id="aMCU8XBtzBp7u91KlSDIFY"><!--pnid:YHwAtFfA2pxYEwE0BVBXhL-->5</td>
+<td data-page-node-id="gyg8efVC3MWxhxU1BAC7vD"><!--pnid:0zFlasa2LB3guumIjbixQ6-->🟡</td>
+<td data-page-node-id="GOnWxd8XI7mtpanHgXNvrW"><strong data-page-node-id="7aLADSMse0lyHvHSdlfYFU"><!--pnid:GKVUuKDQZCGxqsuKEeu0iP-->编号断裂</strong></td>
+<td data-page-node-id="wcY6KsN0M2HXuTs15tjwC2"><!--pnid:g9oKZ7auSLojiIJaBuC417-->1.2 之后直接跳 1.4（缺 1.3）；7.1 之后直接 7.3（缺 7.2）</td>
+<td data-page-node-id="HZIhQkMLJVaQKktf6kckXs"><!--pnid:xFClcer706EgCCdRdaRW77-->结合第 2 条推断：<strong data-page-node-id="DkSU7R5JfnLDKfUdzUug0B"><!--pnid:XdaBqU5kmfZhfUFYZE9rsv-->1.3 大概率就是「流量结构」，被误删</strong><!--pnid:MduUCiYKXi8YWlRaESNeOZ-->。建议直接补回</td>
+</tr>
+</tbody>
+</table>
+<h3 data-page-node-id="tll4jSK8qa7w0B37Yz8gUh" id="b"><!--pnid:3iOQ2LqwqhY5IE2obiYjog-->B. 决策机制缺失（最容易亏钱的部分）</h3>
+<table data-page-node-id="6dOu8qp83rLWj2QOJGFoht">
+<thead data-page-node-id="raq3dA5hOmMNybA9T7p4Ue">
+<tr data-page-node-id="fBr0WVD1dy0Fzwm2yxJ8xP">
+<th data-page-node-id="5XC9vsFQlG51b9LwdkW5FQ"><!--pnid:TGfiu7JPSiDF8iSKGB4Itv-->#</th>
+<th data-page-node-id="0F2lms65IaQGe5a3QInRBD"><!--pnid:ZXVaJdnkd4rAPTFcNsiKz8-->级别</th>
+<th data-page-node-id="SWQvkYf7Xpp3rh4sb19ArX"><!--pnid:kzrgSroXuBCW8KAec5nFUL-->问题</th>
+<th data-page-node-id="Tn4bYBDAG6X3o3c9D2ns8i"><!--pnid:oOWZnHLN0FiYb6Ey12CGpi-->建议补丁</th>
+</tr>
+</thead>
+<tbody data-page-node-id="tYCVG60ZAIl2v7UP7Qkp4M">
+<tr data-page-node-id="pRMGIcRos5PlLJrdOfJmZI">
+<td data-page-node-id="eVCTND7Y0cAM6uwbfaMthj"><!--pnid:aGcFWu2gKIXFyGEmYTYqem-->6</td>
+<td data-page-node-id="qrXpbDgWyDHlaVUQL3p2GB"><!--pnid:oPIRtgNOOaZFxLKUyHoljX-->🔴</td>
+<td data-page-node-id="ILxLThWDu7u7sw2YCkfqqu"><strong data-page-node-id="11lU9MOGRL1dpNrl1sD2kR"><!--pnid:Ns8MVu13XThtcoHyPnIPwP-->ROI &gt; 1.5 与毛利脱钩</strong></td>
+<td data-page-node-id="UPXRjTdIkgLJtWhY4r4Vpd"><!--pnid:Bfs7btSrnNJhpryZ1qTda1-->保本 ROI = 1 / 毛利率。毛利率 60% 时保本 ROI ≈ <strong data-page-node-id="iRpn6G3MdV8ZvDNM60zJ1h"><!--pnid:uU7YbYn9JXQRSoxjtA0ip4-->1.67</strong><!--pnid:JAx4fR2AoMxcwDPdpL7Btm-->，按 1.5 验收是在<strong data-page-node-id="GkftaSQNZAhv0kgP8hxlZC"><!--pnid:3azo5EVHNCFoa7fTwpycdn-->持续亏损</strong><!--pnid:ZJVK9N2kREp7FcrniG992E-->。阈值必须写成公式：<code data-page-node-id="t6kOi5kLKECkNTms0FRe96"><!--pnid:Y3VL2Mqhy8TiopwDv06utC-->目标ROI = (1/毛利率) × 安全系数(1.2~1.5)</code></td>
+</tr>
+<tr data-page-node-id="Ev7muXk6r81TcwQtbL2puO">
+<td data-page-node-id="16hbI01kj2yQEhluxLG6Nb"><!--pnid:182BcmM2uHlML2CFyh91Zf-->7</td>
+<td data-page-node-id="YEA9y5heqXqCqKMcFojrME"><!--pnid:n85GihEF3GFQtTwosiAjRv-->🔴</td>
+<td data-page-node-id="dUqVxZMy9rlEpPHiW5p2Ax"><strong data-page-node-id="IUwR7rtR1BCS1AwtpXgutb"><!--pnid:jC10O3rgVS20tMQt9BpX5E-->没有最小样本量门槛</strong></td>
+<td data-page-node-id="bpL5AiI7Pe9jW4ryewmKRb"><!--pnid:PoEVIieFyp30RUxttFkizE-->单条投 5000-10000 元，客单几十元时可能只有几十单，<strong data-page-node-id="7YietOTOuAo1IHuMpZ5I65"><!--pnid:Ubnh3RJWKtqg9odZcHM2Cd-->把噪声当信号</strong><!--pnid:x7gv9ErxjbDG0DoSX6cyPR-->。必须规定：素材需达到 N 次曝光 / N 次点击 / N 单转化后才允许进入评级，否则标「数据不足」</td>
+</tr>
+<tr data-page-node-id="RFE1nHvFBspq8qrIf6DyHH">
+<td data-page-node-id="gUhi9eHtyp7lwenpSwIcrs"><!--pnid:vuz4wMjMJyLa2BSdCBMghY-->8</td>
+<td data-page-node-id="XyZr7xsKnqoFvDDj307BRL"><!--pnid:CFk1CYQS5pWRkEUDehaUaq-->🔴</td>
+<td data-page-node-id="qHWkPPomqS18vSoqKEvLaL"><strong data-page-node-id="8XROWtzjxJeBODlAppPpuY"><!--pnid:1epz0921xeGm323ORfLUyX-->没有失败出口</strong></td>
+<td data-page-node-id="6gOr1aIJqXY5Cwvp0Ga2Kv"><!--pnid:w6wxRkFqHxdkusxxUcE1lr-->第六/七章只写「2-4 周找到跑出来的模板」。必须补：<strong data-page-node-id="wOcetXHsrsipCD5wDAUqQx"><!--pnid:0zqWrwgWCuDRJFmET2WG3y-->如果 4 周内无素材过线 → 触发止损评审</strong><!--pnid:djepWDKgni8KdEVnVEmRjT--> → 分支 A（换钩子方向加测一轮）/ B（判定素材无问题、产品主张有问题，回到第四章重新找痛点）/ C（判定品类误判，NOGO 结项）</td>
+</tr>
+<tr data-page-node-id="j5rUZekFMiCu3Euc6xlQQS">
+<td data-page-node-id="tPwCFUc4ELDoRgDeUOoGj1"><!--pnid:WUTsDJMjPaa4KGrhoeetLS-->9</td>
+<td data-page-node-id="r2j31D9tlPfe0OQ64pYqqf"><!--pnid:N4ecQxxjx2H2FCliIF8N70-->🟡</td>
+<td data-page-node-id="oZ0E99zDcB9Oevm86QyZge"><strong data-page-node-id="TR1StMihcEvU7MptdqYogy"><!--pnid:eDFvBVbwkPP2jJ5qqgR7gy-->GO/NOGO 没有决策人和权重</strong></td>
+<td data-page-node-id="VLPUxKNjxfEABNcozDJYt4"><!--pnid:b69uADEn0A5EnTonEmWWcC-->1.5 只写产出「GO / NOGO」。补三样：<strong data-page-node-id="EbUwwSJNY260mpGhpDpk9U"><!--pnid:Dwz08aukCXtOvlm32X1ocX-->谁签字</strong><!--pnid:A9YYoO2tBtr74GTTzAR9E3-->、五条判据的<strong data-page-node-id="kH8BBG5IWO2UqoGY7jxrEI"><!--pnid:gii6XzQWlwgmZhj35F8ykz-->加权评分卡</strong><!--pnid:puCy4WLzK2UspPUYD9YdZu-->（满分 100，≥ X 分 GO）、以及 <strong data-page-node-id="zNtFscLdKYjvzqwMOFFx5Y"><!--pnid:YpxIvogMYBDeCdadc2nOUz-->Kill Criteria</strong><!--pnid:OyHcAeRbVCvv1pd86DUvtL-->（中途什么条件下叫停）</td>
+</tr>
+<tr data-page-node-id="kqNVOlw5lecIOhMfha6OMy">
+<td data-page-node-id="Apf7KbYWOQhEtXm8Wd5MNX"><!--pnid:fmcFk740njPOUxAq71V8JJ-->10</td>
+<td data-page-node-id="hHhOcosJxwgx1P2zMfPn5F"><!--pnid:sRCZz9lRsncdV4hbfcaxpV-->🟡</td>
+<td data-page-node-id="ylMhuxMYon5hVkv7a2C5K9"><strong data-page-node-id="eDdZhGQR51KIz1WMYCpkqG"><!--pnid:Jhy2cKePVO6l7BgszDgjK0-->2.2 供应链被删，但决策依赖它</strong></td>
+<td data-page-node-id="Sy1zUs387LIp4dKFCAMalc"><!--pnid:s8kE6dq8mVFBQup9229A6z-->1.4 写「利润空间 = 1 - 成本占比 &gt; 50%」，成本数据没了 → <strong data-page-node-id="Wzf5x9liA1omzh9WaGNurA"><!--pnid:Pcgr3pw1Uj234pyrKCofAe-->这条判据变成空转</strong><!--pnid:28kSx0S5AZmr9cU61r6VKm-->。建议恢复为轻量必填三项：<strong data-page-node-id="RQPWTHaPSlLzfNEotoDWkm"><!--pnid:3kIplhCSIC9wv0ZHgc9iDk-->交期 / MOQ / 预估成本占比</strong><!--pnid:iULVBTtkrFaW8EsoiyPe0R-->，其余删掉</td>
+</tr>
+<tr data-page-node-id="jRRr7u7AwkYpbjVHs3j8gh">
+<td data-page-node-id="PxGzftmIXQW22psDFp2KOU"><!--pnid:9592Op1D53ZLX7D7RSs2SW-->11</td>
+<td data-page-node-id="wwrZUd7KC4lXt01SGIbVNg"><!--pnid:Gtb24wDZcXItHJsFRDpnxB-->🟡</td>
+<td data-page-node-id="t8E27tVDqvqXJRjZr4Hzc0"><strong data-page-node-id="8hKDpA07PDPdGKyD0tHOvd"><!--pnid:9QapJI5Ig2nyPvPVkOvGcu-->视频分级依据不成立</strong></td>
+<td data-page-node-id="DFOssxk2wPEzDkW2w0qghC"><!--pnid:30L3usIzkvFttBxzWkFmxa-->3.2 的 A/B/C 分级写「数据表现好（点赞/评论/<strong data-page-node-id="KRz937hgwUFMmE63QUh0E7"><!--pnid:yt8TUAWWzHf9nu8C7eHZqj-->转化推测</strong><!--pnid:mMLLuD5J3BuQWXrMMbrBXO-->）」。<strong data-page-node-id="JU7ddNi8a3JX0e7t8EvSw5"><!--pnid:hfa9JtjjfG2p9uXoHIV93y-->点赞 ≠ 带货</strong><!--pnid:71rOadQkOscIGJxIl5kvzl-->。抖音公开数据不开放转化。必须改为：<strong data-page-node-id="Yyt6jcdymZW6UZPopLqkRr"><!--pnid:Fp5jys1oseojV4RIU1ukkG-->只采带购物车的视频 + 用蝉妈妈视频带货明细拿真实 GMV 区间</strong><!--pnid:TYBRFggfaRiXsH88lik6xv-->；拿不到就明确降级为「曝光能力分级」，改名，别叫「转化能力」</td>
+</tr>
+<tr data-page-node-id="pPzG2CmCXe07rgOAIBnNmR">
+<td data-page-node-id="CxgNo0hoaMVLQPWGcZwfMQ"><!--pnid:BdUxwWLIntM7I6VYPYGnpU-->12</td>
+<td data-page-node-id="mYHVw1uVMkIGUAKBfTW8hG"><!--pnid:PPuSlYmIHjSF6YfHJJrBJa-->🟡</td>
+<td data-page-node-id="FOV29UBZzo0ZomkYlFbUtf"><strong data-page-node-id="lqar9bvx9PzTYHkHRm6Ikv"><!--pnid:CHm51G1GZIVaSQAl1uJucz-->缺"己方能力盘点"起点</strong></td>
+<td data-page-node-id="HFdFftDgzyYcFu9tRYvvSd"><!--pnid:1IbDmIIOuWtgKZObbmRe0f-->全流程都在看外部。5.2「我们<strong data-page-node-id="ped3sy1zAkEDdV8BkWjbRu"><!--pnid:O2GYufWJmU3tgaCNmw3NVg-->能做得到</strong><!--pnid:PMV51VrpZKSNO6sFD6rbpB-->的差异化」这个判断没有任何前置输入。必须在方法一之前加一节：<strong data-page-node-id="6KjXDXp4GcDU2M8Yk3waR6"><!--pnid:0F4owY7DYao38wITUbeK12-->内部资产清单</strong><!--pnid:qWdhw2z5d7kGEcDLoNZYqH-->（供应链/产能/现有账号矩阵/现有达人资源/团队擅长的内容形态/资金上限）</td>
+</tr>
+<tr data-page-node-id="zW95oCTA5s11jsvAfFZSws">
+<td data-page-node-id="9PWcei3Qe0bO6AT0DXLphB"><!--pnid:dydCTNXS1z38FXIwQ9dG3q-->13</td>
+<td data-page-node-id="add53uxj8RWWL9Zb4pZbeu"><!--pnid:0QOtF5c52z9b23ximxtfTR-->🟡</td>
+<td data-page-node-id="8zI22PA0J0BGH2yhZ0h8FL"><strong data-page-node-id="XzwkPG3pSVcfGBumIYq5J6"><!--pnid:RphcCTOocyWGy6UWwhtB4s-->达人链路断裂</strong></td>
+<td data-page-node-id="tC1CcmjAx4aH1TVr9ylua7"><!--pnid:SOdGiINXOA0fqdZjTEksNq-->5.4 只到「建立清单」，第七/八章突然开始消耗达人。中间缺失：寄样 → brief → 脚本审核 → 发布 → 数据回收 → 结算 → 复投。<strong data-page-node-id="sj94Xq4NqncgBbO1a84Wqn"><!--pnid:TKZollfnjsp3WWOhR0w7g6-->这是你最熟的一段，断得最可惜</strong></td>
+</tr>
+</tbody>
+</table>
+<h3 data-page-node-id="faH15e3L1yfVH6O7IpPba1" id="c"><!--pnid:H2ixkY2VcX0ZgnL8c5IVvV-->C. 合规与数据治理（专业团队必补）</h3>
+<table data-page-node-id="ztB0k4fhAVJcewg6ioB3F9">
+<thead data-page-node-id="a1PUMJMWOiHX4XI5TjeILt">
+<tr data-page-node-id="6i8TNe8ouZJxyiEVpzYaW5">
+<th data-page-node-id="0nzLSIrSUakC8nUcM1VO8E"><!--pnid:rUcLcWCa86sTLpMH1g3JOj-->#</th>
+<th data-page-node-id="6eMvaTDqNz2tOkJAO05YZ2"><!--pnid:rItpjQLPc36eVZooz7WSHG-->级别</th>
+<th data-page-node-id="QqbcStyGXRdqYGLNhK7EQa"><!--pnid:TXsglJlBYt5ArEvNajo8cO-->问题</th>
+<th data-page-node-id="xluyWTFxck1RtRNPZSVCoX"><!--pnid:sIDiKrreRBambluzOzXitR-->说明</th>
+</tr>
+</thead>
+<tbody data-page-node-id="dveYqCw57ewgVDWgDxdz94">
+<tr data-page-node-id="lEjmBzB6CxBCADxssmfyF3">
+<td data-page-node-id="fZTcgHGoQOXZG40NAhaDe8"><!--pnid:iz2QGzFGtZwGuKMQFt2tJ7-->14</td>
+<td data-page-node-id="1nEcb7W45a2XAgTL6ZVkQc"><!--pnid:9ywOG4mxGCaYNEMjYmfydG-->🔴</td>
+<td data-page-node-id="8Yvshysxq2jWJx5XKNF1iB"><strong data-page-node-id="atsoTVqoQlyu5DSovJ7ocz"><!--pnid:ZsfijZRm7Y2Wz9KcUP6NYd-->缺功效宣称 / 广告法合规红线</strong></td>
+<td data-page-node-id="cnMIRG4jMSHMrU9f6fHTHU"><!--pnid:E3Z9Ta58koq6bMyZSsShGY-->4.3「用户话术词库 → 直接用到视频脚本/详情页」。眼护/护肤是抖音<strong data-page-node-id="Pe197P5iM7XPDF2bUI9VS7"><!--pnid:GzVSYlY8d1hQ8BDwKJWvTV-->强监管类目</strong><!--pnid:CfCHHHmIqIiKU06AgEIkjl-->：化妆品监督管理条例、禁用词（最有效/根治/祛皱）、「化妆品 vs 医疗器械」界定（眼贴可能是械字号）。<strong data-page-node-id="sqN2BzGdAof9QTCQQs69d3"><!--pnid:U3OCz8XDEpQAu4szLhVu6z-->建议在话术词库产出后加一道强制合规过滤，否则素材下架 + 账号处罚风险极高</strong></td>
+</tr>
+<tr data-page-node-id="f79guXXRc2gwPfmqbVU5TN">
+<td data-page-node-id="hJm836x7BNFwCAWxkeK2Sc"><!--pnid:FuJpef772cwWNUuTTAl3rZ-->15</td>
+<td data-page-node-id="yMmeMF4S4B3MFTc19jY6t6"><!--pnid:ck6xIl7Oaj6MbfH0l62BU7-->🟡</td>
+<td data-page-node-id="YgIGt6VqgZOdlPmlZxRJ6B"><strong data-page-node-id="q7kXDbvwhZhgAOLv38FfTL"><!--pnid:1Om1y1D7VtdeyKcHP2lj4S-->评论抓取的个人信息合规</strong></td>
+<td data-page-node-id="D4krlT978ivS4z5WdN2L34"><!--pnid:huxBkDT0pQX129LE6liiQC-->2.2 / 3.1 直接「抓取评论」。平台公开评论 ≠ 可自由商业化二次使用（《个人信息保护法》下的"合理使用"边界）。内部分析通常 OK，但<strong data-page-node-id="gDSsLj6HuvwMvzyDjlvABW"><!--pnid:dR6TcnPPovTrXssOYetcEW-->产出物（尤其是对外/给客户的部分）需脱敏</strong><!--pnid:1XhP09EimVqeL99G4gilBu-->，且要限制留存期限</td>
+</tr>
+<tr data-page-node-id="J3uOOzqgXd0b40zDXS5NhW">
+<td data-page-node-id="7mUtP3XW0TdltkAVeGkHsf"><!--pnid:gxYz4Q8pGuq75Vqw0ajL6S-->16</td>
+<td data-page-node-id="pOQzxmOme5tZYqtnSNN5wc"><!--pnid:cRLWvwOusssqmWs40lSlNd-->🟡</td>
+<td data-page-node-id="Tm4J39AEZHR9tCdF8BZoiI"><strong data-page-node-id="NdOxqfW4wdCJen99QPbjbu"><!--pnid:QY2bAhdUUOB0N2YPTrBDrX-->数据源单点依赖 + 无口径校准</strong></td>
+<td data-page-node-id="gxOaW2akMalsVn2oXvbOXb"><!--pnid:PiHEqJUTjJ3eUT0lOVk4h6-->90% 数据来自蝉妈妈。蝉妈妈 GMV 是<strong data-page-node-id="HY5h7PRXqIGIB1unwtOPfp"><!--pnid:4C6A1SjAZ0FovXoDVeHYPs-->估算值</strong><!--pnid:rdJAbRtX5nOKCT95fzZmbo-->，与真实存在 10-30% 偏差。建议：<strong data-page-node-id="uigIKjeBCdbtnCT4ZqgUa7"><!--pnid:c9ua9bkIERoDloYfE8z2ld-->至少双源交叉</strong><!--pnid:Ym5OqOMqQ0Kakjzpk3uGmf-->（蝉妈妈 / 抖音罗盘官方 / 商品详情页销量×单价反推），三源差异 &gt; 20% 时报警，不许直接引用单源数字</td>
+</tr>
+<tr data-page-node-id="OXVLevDZwgTRudMKs1xAUY">
+<td data-page-node-id="A1mGSZF9KA0USwI8UlOGZd"><!--pnid:SlkkO1TOPN3FfzwHlyd8B9-->17</td>
+<td data-page-node-id="d50NDsbdGWGEchv6wzXbGi"><!--pnid:yzl4VhQMTJzpuuY5vlPOb9-->🟡</td>
+<td data-page-node-id="N8DhLERcsjySI3ygqK44iw"><strong data-page-node-id="oDMyT3sqYj9i4VQJcNXfV0"><!--pnid:MrFYeJFHoF6HgBkUq3j3cv-->无风控预案</strong></td>
+<td data-page-node-id="M2MetYsY21YXMHWjaoNzlh"><!--pnid:P6giemCsEUG8gxMFLfivWA-->没提反爬、滑块验证、账号风控、API 配额。这直接决定 TikTok 类 skill 能不能稳定跑。建议采集策略明确为「低频、按需、小规模」+ 异常时人工接管</td>
+</tr>
+<tr data-page-node-id="5zD1jI1Mudw9hYqG5HKG3X">
+<td data-page-node-id="WrVvtJiMMA4KU9vj5Ydfka"><!--pnid:5CDyraY9cN2Spb3l0MO9oE-->18</td>
+<td data-page-node-id="hRMfndF6Qo8QWz3i4xxh5P"><!--pnid:zWW7LjT9exZzF54CoAJQY6-->🟡</td>
+<td data-page-node-id="W9VFqYVaowFdM1nsjiccBc"><strong data-page-node-id="jWMDiluUNaaC1nWfrZTcrh"><!--pnid:Occ0f3xfDmVp5UWFQbChEE-->无资产沉淀规范</strong></td>
+<td data-page-node-id="GvhGLrQMLeUGjIPWolsfkS"><!--pnid:IkYNGGOMEl09CvCIdJCWnA-->全文 20+ 个 <code data-page-node-id="2HtXYlmHrhodPdntEtl17X"><!--pnid:2217977hlf7EbPEGF1EOYo-->xxx_日期.xlsx</code><!--pnid:WAPzeGThM1E5faPH53VBUh-->。没有统一存储位置、没有数据字典、没有更新责任人 → <strong data-page-node-id="1yJz1KS4BcmrD4cdSW4DOE"><!--pnid:Zjix2igXir2znoAqWvGX7c-->三个月后必丢，且无法跨项目复用</strong><!--pnid:YkhODJ0dWKBnyEO53H4FJD-->。建议统一到一个「调研数据仓」</td>
+</tr>
+</tbody>
+</table>
+<h3 data-page-node-id="1a7nD8RCVaHE9BQ93KCXFg" id="d"><!--pnid:GoJVzvWT9UIzj0FJlwkmqy-->D. 打磨项</h3>
+<table data-page-node-id="ctUmmOLEJtqt8bR78i4OjI">
+<thead data-page-node-id="ITStZ2YemcoiCy06GAURh0">
+<tr data-page-node-id="WCCwlKfmqYJKt5hcZqUcYu">
+<th data-page-node-id="YB9u5aOEtyll4gZbqtyiKs"><!--pnid:FfZ6Q67aKcqcLfTBVcnK6L-->#</th>
+<th data-page-node-id="o4CzxKVitLB6nRJUsf8J5a"><!--pnid:RWuovqiwQUjZhzLfbZJfB4-->级别</th>
+<th data-page-node-id="owgNB4fIHq89SO3JbGaI8n"><!--pnid:ecQstGVy647M7EUJDXKcf9-->问题</th>
+</tr>
+</thead>
+<tbody data-page-node-id="Qtmte6zDi4ob8m2LjvHfT1">
+<tr data-page-node-id="PnwfGXEmgbhEq06ctxeEzE">
+<td data-page-node-id="ukrmRfq46v76SAPorCoTxT"><!--pnid:k4JF5mB0BT5jIORxYz7MEn-->19</td>
+<td data-page-node-id="LfUQJGSeG2ZsUJg2kUzR24"><!--pnid:IjCYO7A7B4iZv3Icm4IVBx-->🔵</td>
+<td data-page-node-id="Flh1xXoIWVrkWXRKUclufE"><strong data-page-node-id="ZiiybK0kvOGIBKdaA2bXxK"><!--pnid:ArIVpTkzdgwELxnvCxz3SY-->阈值全线硬编码</strong><!--pnid:ZfmiTc73LiiIjMSwSJHesI-->：月销 &gt; 500 万、CR4 &gt; 60%、粉丝 1万-50万。眼护/细分品类的盘子远小于美妆大盘，直接套用会筛不出东西。建议全部改为「按品类自适应的分位数」而非绝对值（例：月销 TOP 10% 而非 &gt; 500 万）</td>
+</tr>
+<tr data-page-node-id="BYpwtV1pBGg8rR9GN3sioE">
+<td data-page-node-id="vLlHORHSaekeh8LqugY0yc"><!--pnid:2xbimxSRkw0oQRT1YcQeFF-->20</td>
+<td data-page-node-id="5xdJj7C8gS5mArYLJuAAt0"><!--pnid:yMBZopDuLpEbAearIvgTqM-->🔵</td>
+<td data-page-node-id="Pv7pfNvhgvTVWavs2Aoqme"><strong data-page-node-id="d42CAKvBkXeQHVdYbsQ7qe"><!--pnid:GVb3MImOa5Ag95WrVKemyz-->示例语境混用</strong><!--pnid:DLPy0AOXzfP0hv0EuOWBqs-->：一边是 torriden 精华（护肤话术：搓泥/刺激/吸收快），一边是沐浴油品牌资产（山丘/琥珀/省出5分钟），2.1 产品核心要素又写的是沐浴露/香型语境。建议统一到<strong data-page-node-id="noqvP9T6rvZwxoX92QVxi6"><!--pnid:vSpIcaOMSgCM3w5PiXzHdE-->你实际要做的品类</strong><!--pnid:yik6U3TXGioGzFGlYO7oK5-->，否则执行时会各理解一套</td>
+</tr>
+<tr data-page-node-id="lvWK2eK5f4XdzGQQTLvwGV">
+<td data-page-node-id="0BkSu76WzXJUW9cBCPYg8l"><!--pnid:jnvYLN23myUGskMmIpnk7N-->21</td>
+<td data-page-node-id="tsydGIMwQNx3hEzzuDwnDK"><!--pnid:xp7FDGYtRqp6F7Lx6OlRSr-->🔵</td>
+<td data-page-node-id="edokgtVAnCm1MWMbQO66bZ"><strong data-page-node-id="LWwNvemL9yqOShfwwPPwBc"><!--pnid:ywDksDzXvBCnC0kJOh2kJI-->V2.1 无 Changelog</strong><!--pnid:0EFFaqNPqtzboLDndnAcCK-->：团队无法对齐"最新版改了什么"。加一个版本表（版本 / 日期 / 改了什么 / 谁改的）</td>
+</tr>
+</tbody>
+</table>
+<hr data-page-node-id="skRkJIq0NJwL3bkNYH1x9L">
+<h2 data-page-node-id="V3VIi9NlValfPxIPVAGoNO" id="ai"><!--pnid:BrNHa38YI5aicMDP9WN06h-->二、逐模块 AI 落地方案</h2>
+<h3 data-page-node-id="KsQWvUXMZI0NolAz6ipQBj" id="_3"><!--pnid:8rG0FrfwV20HwLSrQMx7B2-->自动化等级定义</h3>
+<table data-page-node-id="7g3MLUswuzCfdsPecXSN2b">
+<thead data-page-node-id="vSUTKKxfpP0lMaGGFZSGDF">
+<tr data-page-node-id="a6QpT8qtJYmvotnFGg0zFI">
+<th data-page-node-id="xfh0t0za2g3sXzII4zhITM"><!--pnid:pAvZCdaTfyIpTIVRVYVFaB-->等级</th>
+<th data-page-node-id="RwKZVwTlSqPtN8FrhekLSu"><!--pnid:5kw7jKGr9jQBiWTWZ2IQpH-->含义</th>
+<th data-page-node-id="se7XRVmCNRYWsBDA8smSZS"><!--pnid:WIsB4ZTQNiTTGk3uPe2zyF-->人的角色</th>
+</tr>
+</thead>
+<tbody data-page-node-id="KZv54lySVfIhul62fir9YS">
+<tr data-page-node-id="hf1MNPC4whT8AZIaXKJgLo">
+<td data-page-node-id="6kihw6Z6qFvYwhuRv1wYfz"><strong data-page-node-id="ZqSfHBP5BKunYueTwguAvw"><!--pnid:a7DoTG0nx1mSBQGvkf95ys-->L4</strong></td>
+<td data-page-node-id="EoLtEVGzLcGRHEQd93PHdT"><!--pnid:dEkvCeTFBlQ8Bx8t0UDujH-->全自动，结果直接入库</td>
+<td data-page-node-id="ifQ0c3zaacrTvw8pSUsoKe"><!--pnid:g4dAkIvRDxwfsUjf3sE3iP-->不看</td>
+</tr>
+<tr data-page-node-id="LHAsU2CHoCSGZ457qYr2Bl">
+<td data-page-node-id="WJMu4YG8STEoDfvwdCcbpN"><strong data-page-node-id="Tc9oHmJXcawEqne45AkS58"><!--pnid:2wVFB2iH8kSfQfTUNZVyFX-->L3</strong></td>
+<td data-page-node-id="sQkVQsh8UVv1sxXvs3VW1X"><!--pnid:coxfpXxyuSFZABzK9eBqFB-->AI 跑 + 抽样复核</td>
+<td data-page-node-id="an7jad71oqVz4R0o3xPFxi"><!--pnid:X4DuMcOO9zgUzhbpOeALp9-->抽 10-20% 校验，异常才介入</td>
+</tr>
+<tr data-page-node-id="Dk5ZUqmV3BuuhmP0QUttqd">
+<td data-page-node-id="bE4MhREeCfZq8dzpSFTwnJ"><strong data-page-node-id="3vlZOqy9BDUW8iP6oIsckv"><!--pnid:JuqHWcCsYR1y1RuxS3u3tL-->L2</strong></td>
+<td data-page-node-id="3SqQNSEWX9MGvZ5Qs17d64"><!--pnid:veISjntxXeQPiuZbDjCJaB-->AI 出稿 + 逐条必审</td>
+<td data-page-node-id="TkPYIHsTCf2i8MHzDSPh3b"><!--pnid:FILjNRDZBuC8dxfmgVElYP-->每条都要人过一遍（30秒-5分钟）</td>
+</tr>
+<tr data-page-node-id="PtOky0BWrvKO8aiYl9jP0Q">
+<td data-page-node-id="ziVx3BNDDMbTqXnmj4Bttn"><strong data-page-node-id="TE2teywL2wT11S4dF5aPQs"><!--pnid:U14xyEclFJFN3WN1k3U5vS-->L1</strong></td>
+<td data-page-node-id="RoqOFx05l8kujzm7dBfExR"><!--pnid:pJVUPX4HvKlxgVg5Bj4cqE-->AI 备料 + 人判断</td>
+<td data-page-node-id="ox1VGZZ9S3BA9PASsosGIa"><!--pnid:PNMVg4m6Fcked5ykDxOojz-->AI 只做整理/初筛，判断全在人</td>
+</tr>
+<tr data-page-node-id="jFiWWqIb2VnrT4fhgLmB3l">
+<td data-page-node-id="EYzLw3PRNXD1MaltqQwyio"><strong data-page-node-id="xq0XuSVgraLqcBumsUOJbC"><!--pnid:4Esk58K0NTBoS4sn8Jvjku-->L0</strong></td>
+<td data-page-node-id="Xn4TxBYVcfXU4yhCttyEjT"><!--pnid:wcNcYnhtX7V2PmoxUPN4OD-->必须人工 / 线下，或 AI 在技术上不成立</td>
+<td data-page-node-id="PdrmEI5kDzpfEeMsMId0fc"><!--pnid:Rsdc5rWYCquJYwdMJd44pU-->AI 帮不上或帮倒忙</td>
+</tr>
+</tbody>
+</table>
+<h3 data-page-node-id="hfXzxDbm8cq2XZ5Z9BNH6I" id="_4"><!--pnid:W3NiailGd3o63ExiF1NJGO-->落地矩阵</h3>
+<table data-page-node-id="G9IL1snnKJkGH1uuqZHHZ7">
+<thead data-page-node-id="jPry0ae4YcC2w0wUh08wVW">
+<tr data-page-node-id="551dDQjUhuPLDwc8tIFLcR">
+<th data-page-node-id="fGKhlca7WW68kQ4IWx27Cy"><!--pnid:KesvWypyeZMMmMxjMEkYoT-->模块</th>
+<th data-page-node-id="HB9iG1rAfz8i7Dh3pf8pYx"><!--pnid:XX34EHxvlXVSwJeW9ItzeS-->AI 具体怎么做</th>
+<th data-page-node-id="BMvFqeD41LwVmLMlPYVyBi"><!--pnid:swLRGBBi1vgPY2h2UHrvsv-->等级</th>
+<th data-page-node-id="J0wYevWznowQKuxhGSGBYy"><!--pnid:xUm3PZ7w54x8oeGEiYLMay-->人工卡点</th>
+<th data-page-node-id="BnlPWX58FcdRF49uyLZyCz"><!--pnid:LWdqoJvSTegmKqVmg28qbm-->提效</th>
+</tr>
+</thead>
+<tbody data-page-node-id="odRElm9zO0xnqK8Z3SziGX">
+<tr data-page-node-id="DUoR832HSlPhHXu4OJPcIY">
+<td data-page-node-id="LgVHPbpueEG2UQm5G7VHrq"><strong data-page-node-id="U0x4DlwXO3zcygkZ0U4IW4"><!--pnid:czCbqR7HUNfkSy1mTZfuWR-->1.1 市场规模&amp;趋势</strong></td>
+<td data-page-node-id="uE6PF5O7ll9txO2AeQH35p"><!--pnid:etFYkfzp0nO0WNBQIcdFGt-->① 多源数据<strong data-page-node-id="3RuZ1kCu19VX6a78gCDLYO"><!--pnid:TgQDt5IO7leP55EJ1Xqf6z-->归一化</strong><!--pnid:hM5gvZgQQVag6kbiz53HNw-->（字段名映射、单位统一、缺失插补）② 时序分析：同比/环比/季节性 ③ <strong data-page-node-id="LWORZjzHOz9ZD4XVyPrd9X"><!--pnid:ZzAZSyXE5ggKlN9OfDetOU-->异常检测</strong><!--pnid:w74vrjLt4zqKdsrmBqBn9K-->（某月 GMV 跳变 = 大促还是数据错）④ <strong data-page-node-id="bPFmNi64uTXq4BW9d14Rxp"><!--pnid:j9iYVpulD4H2sWk6xKygbI-->三源交叉校验</strong><!--pnid:3E0a0FFzYmdtRozsnW7CE8-->，差异&gt;20% 报警</td>
+<td data-page-node-id="mNrM8RmVOKvbDhikiMg4hm"><!--pnid:wwP4oRHvdTw9aZUKjv74IP-->采集 L0→清洗 L4→解读 <strong data-page-node-id="J2ZTrtVcJKHttvV5tvme8i"><!--pnid:QBNmI2upSVQN6xtmc3youR-->L2</strong></td>
+<td data-page-node-id="EjDITwFPvouwZGGVycvCnm"><!--pnid:ykuGNUFv68QfGiUIx2pFpd-->品类边界定义、口径冻结</td>
+<td data-page-node-id="oFzymnLyKdwYMgXU0GXDi6"><!--pnid:Cmps1yuZGHVByrJpu8wpgz-->3-5×</td>
+</tr>
+<tr data-page-node-id="rcwA0kihcXZSMG2lhFBfL8">
+<td data-page-node-id="bZk7A4qCxt2fnTpyy3j7PD"><strong data-page-node-id="eXUh623q6gjUHfEXETJkzs"><!--pnid:v9htYkttUOhSKwfltpuZ91-->1.2 集中度 CR4/CR10</strong></td>
+<td data-page-node-id="C518zVAhHHCTqjEhoFCQUg"><!--pnid:9snmWjFne2DfKB5BiqMIBG-->纯计算（CR4/CR10/HHI），可 L4。LLM 辅助做「国际大牌/新锐/白牌」玩家分类（看品牌名+蓝V+资质+客单价）</td>
+<td data-page-node-id="8bxqRqR17tRXmJ7a50DQBc"><!--pnid:30U5Mun5ent982c6yywnID-->计算 <strong data-page-node-id="I2d0UDdw74JU2kvW6SfjTG"><!--pnid:MSlaRL9KttA4ypYuTdUTz5-->L4</strong><!--pnid:22kT6v25yreiivY2vdVcYC--> / 分类 L3</td>
+<td data-page-node-id="aneRFocbjoHnPw4bWxUEXt"><strong data-page-node-id="Gg1WJ4BOPEoOaWonBGGsHL"><!--pnid:oaTzwHOJoJ97BVojRSm4aV-->"市场"边界怎么定</strong><!--pnid:8B6UnNyuMsDMcXUTFlO5IN-->（把"眼霜"算进来，CR4 能从 60% 掉到 35%）—— 这个必须人拍</td>
+<td data-page-node-id="BLun5LdmLef6hhLogvmPrv"><!--pnid:SRprBNXUzZQS1MXUT9XuMR-->8-10×</td>
+</tr>
+<tr data-page-node-id="w2wZfqZ9FOHJu76nAItO1Q">
+<td data-page-node-id="YvuFCTDV3zc6MfF80Iadqo"><strong data-page-node-id="M2EFW6GGDisumID080puwN"><!--pnid:6cDGY3X01hWnbOLUsdQFjA-->1.3 流量结构（建议补回）</strong></td>
+<td data-page-node-id="K7nq9v0oSeyNdWFbzT8iPf"><!--pnid:KZuG8OMhuF4SmVTHXXSaGu-->自然/付费流量拆解、达人 vs 品牌自播占比、TOP 商品流量来源分布</td>
+<td data-page-node-id="rVLhPVBX7ppkLcMXqVpgHa"><strong data-page-node-id="xjdYIhLNYVNzLPs9QtSkFa"><!--pnid:QhuCqBQGKihlUhf0ClKsMN-->L4</strong><!--pnid:S7nkOfM9tZZi7eKL8LzsqL-->（数据来自平台后台，ETL 即可）</td>
+<td data-page-node-id="vUV8OetTU0M0lWpn9BMvdI"><!--pnid:vuzR1UD6JOYmgBXjxWTNMH-->无</td>
+<td data-page-node-id="IctGeLiPvw6AlojZgOjYbS"><!--pnid:Z04akf8twxrHcMXbLmUMlu-->10×</td>
+</tr>
+<tr data-page-node-id="mJdyZIrZMEX2IY4fGoP9Mq">
+<td data-page-node-id="jvGcL9ikY2fzgydlo3mMjb"><strong data-page-node-id="JDFo9TFntfkrSBjKYduN32"><!--pnid:5F39h4yV882E544mKmOczk-->1.4 价格带&amp;SKU</strong></td>
+<td data-page-node-id="jTHu13RQTkAKRishtyLyDH"><!--pnid:6ZKWI2i8tMF3zVJJAVmVKk-->分桶统计 + 可视化；<strong data-page-node-id="Hi9SOEITJ5mhQ5tdFWA89b"><!--pnid:OnAtKNZyJQQKfJG9rxnhh0-->伪SKU去重</strong><!--pnid:nCxZU9n5cucgXDo9N04p5P-->（同一商品换包装重复铺链接，聚类去重，人工极难做）</td>
+<td data-page-node-id="dN2L9u9ZtVhkMzXCPCo9kz"><strong data-page-node-id="T9KMLit80Qkn8TqWIYF7cJ"><!--pnid:N52YH99RspcbNadivvShiV-->L3</strong></td>
+<td data-page-node-id="iZoFX7qKn91R19zKECrJJs"><!--pnid:ailCXJ1ihEJdxD0208ouwu-->⚠️ 必须用<strong data-page-node-id="tHLLvin0L7XMTU3kMuYqje"><!--pnid:g5C4pS3dNcormjdRZLdM9H-->券后价/近30天成交均价</strong><!--pnid:4Pk5t82g19bHQ8YrS8cf7o-->分桶，不能用标价——直播间大量用券，标价 199 实付 99，用标价全错</td>
+<td data-page-node-id="AMpIjgbRd0qZmh6UPHcRtm"><!--pnid:OYMya22pPcTWz5M1ZlHmW7-->5-8×</td>
+</tr>
+<tr data-page-node-id="tyS3C0uv3PMl6JstkxkY2A">
+<td data-page-node-id="tj3LfHMoRuLYeZutTDbf59"><strong data-page-node-id="UgcyYxyFIeNw4JxxP9wJ5W"><!--pnid:682wHaiCCNpnh9ih3N56EI-->2.1/2.3 产品要素&amp;货架</strong></td>
+<td data-page-node-id="IZMlWDMO3FTCxdEcKLIlhv"><!--pnid:OJmXhgYcBJCM2nmBxWNk2n-->LLM 从评论/竞品抽取「属性-偏好-频次」三元组，生成候选取值；自动生成 SKU 矩阵草稿</td>
+<td data-page-node-id="QziXVhjbl234oX9JrPiniX"><strong data-page-node-id="nGOaid48d6pyKuCuESKwnp"><!--pnid:4BqWaiCF9Q6H8NkO6ONCTj-->L2</strong></td>
+<td data-page-node-id="Abnm67USh7Tqezoi79fJD6"><!--pnid:KeejCJGLrgixQ8shsqkyzE-->哪些要素是研发真能落地的</td>
+<td data-page-node-id="pH70FlcYwKpN4UaXD0tkFT"><!--pnid:QFnkPSyThAn0QX9t7kBOCc-->2-3×</td>
+</tr>
+<tr data-page-node-id="kel2jnbfW4qSmOxSGvifi9">
+<td data-page-node-id="23kU7tFlxcs0AF3MRWsx4m"><strong data-page-node-id="6Zq8vUEYrZQQ3GMDYxhaQP"><!--pnid:FJ9BYMhmKOi6rGbetoeREB-->2.4 包装视觉</strong></td>
+<td data-page-node-id="AT8nJrGChdi2IBi8V8Wyy0"><!--pnid:PIlnDnA55XpP3dPtI48AAd-->多模态模型批量读竞品主图/包装图，抽「色系/材质/瓶型/构图」特征，统计品类惯例；结合品牌资产生成方向草案</td>
+<td data-page-node-id="blptunuNDZhxs39fot6z66"><strong data-page-node-id="ftT4KhCENKSfLE0giI7XTJ"><!--pnid:yscFywnvycS7cNUFVOWY8U-->L2</strong></td>
+<td data-page-node-id="I1xytv5yDqwvLk97gQeE4w"><!--pnid:YcRgRzVHJIacxIlbqHG5gK-->设计判断</td>
+<td data-page-node-id="mHPP9exMRyoaiGtp03vNX8"><!--pnid:XTjnxHicOrXQjaChh1DjxU-->3×</td>
+</tr>
+<tr data-page-node-id="430udsbCCAfwMdkQBFYgMB">
+<td data-page-node-id="uwPeP7rjQrgba9VN7m1BCW"><strong data-page-node-id="Y8v36fCAVARCEQwFMchSUA"><!--pnid:TwuCmp953PYffPijyNjI5I-->3.1 TOP玩家筛选</strong></td>
+<td data-page-node-id="2Efs3BJqZCpx4kvZVhNFcb"><!--pnid:cnjPViwjfvH0PgypPYGzki-->规则引擎初筛 + LLM 判定「打法可复制性」（是否依赖明星/IP/超投流）</td>
+<td data-page-node-id="TmbJ6SAlwYdfTDUGT8HID9"><strong data-page-node-id="NNB5WwThu46kpCQnO2nq7X"><!--pnid:5EZAL3dxCqvOIP2hu2LxNa-->L3</strong></td>
+<td data-page-node-id="SPNxEeHvYZ9oVQuRnKGwKG"><!--pnid:8yHUmutNNeIQ6UA1fNyKU6-->终选 3-5 个</td>
+<td data-page-node-id="SijPGtQCuLAFsRM7ANONQl"><!--pnid:mnaa2QylkCNgyXfQ4YnhBk-->5×</td>
+</tr>
+<tr data-page-node-id="dE5xPw5ZOoEwu9ZFOpQvea">
+<td data-page-node-id="eZtF01pMaVR5WwlA0J9faj"><strong data-page-node-id="52hDYuQrz5V3i8RJIOQSr7"><!--pnid:wxwpxAh0T8aaZHZYYQHM1D-->3.2 评论抓取&amp;分析</strong><!--pnid:LWxjwc92FaZkcNa6z4vgxS-->（P0，ROI 最高）</td>
+<td data-page-node-id="SuGa2atPb9qma4GTn3r51X"><!--pnid:DoX6nsHfYGruCqWatu8KgN-->① 采集：Cookie 复用 + 浏览器自动化 ② <strong data-page-node-id="YChaaiAOrJKbVrXF5Y3Nyw"><!--pnid:0W5oZzTc6aY8563WKCIhYr-->品类情感词典</strong><!--pnid:4ORTl7QMhyxDBUQsWQ7Dcx-->（关键！通用情感模型会把「油润」判负面）③ 主题聚类（质地/气味/包装/效果/价格/物流）④ 水军识别打分 ⑤ 产出「痛点 × 覆盖率」交叉表</td>
+<td data-page-node-id="9WO2DH9CO0TAutIStmq84h"><strong data-page-node-id="dE7ISplN0PgnkzLUhHcA9Y"><!--pnid:H35KUtrkU3RVpO2K3KXvzU-->L3</strong></td>
+<td data-page-node-id="8FEzzZDRYrsxtiTaDP6hAo"><!--pnid:HmgCHSTDArmgPNnx09pw08-->⚠️<strong data-page-node-id="ggCwiYzR4VCH6P18MD8K3n"><!--pnid:yafgdwjX98JCRb8Hysu418-->强制 checkpoint：AI 给出 TOP5 痛点后，必须人工回读 20-30 条原始评论验证</strong><!--pnid:LOqU4p2JhPaGfwM2tkRmvk-->，否则极易被话术误导</td>
+<td data-page-node-id="WCEqBX6G0Ym4mF89DS4u54"><!--pnid:OR5sGo3GZSXAli81l7zwFs-->6-10×</td>
+</tr>
+<tr data-page-node-id="KSSXQfQTdBIlYSAgSXWARD">
+<td data-page-node-id="wbxzdqBV2LglMkm02Ysmh2"><strong data-page-node-id="HVgOXrKWQECzqpBZvOTmDs"><!--pnid:7EV6VJk7YTH4TECnDGTkQs-->3.2 爆品视频拆解</strong><!--pnid:Ln0Z6AsoktMLgykZZGMTuK-->（技术最重）</td>
+<td data-page-node-id="IEnMsEiI1NRAA92QhKdUr5"><!--pnid:ZWaPTIHMipOrsRZsdlwOaW-->ffmpeg <strong data-page-node-id="ztBTjoq0eGQFzPr9xiqbc1"><!--pnid:Yv86O7JzOGdT8EyhoJCrDF-->密集抽帧（1-2秒/帧，而非固定的 0/3/10/15 秒）</strong><!--pnid:Lirf9IjKqbFW5xVU6bIpPW-->→ Whisper 带时间戳 ASR → OCR 提画面文字 → 多模态模型判「场景/道具/光线/人物/镜头类型」→ 按时间轴切分四段 → 结构化 JSON</td>
+<td data-page-node-id="OzG0ymzc6eGkgWuHEhMceA"><strong data-page-node-id="NAOP8Hy8gqXiX4jyxq0ky3"><!--pnid:SQwQ4VV1MSCbEEjwFHPspl-->L3</strong><!--pnid:RnEAtRuUN34CdeQdDCRbLy-->（描述层）+ <strong data-page-node-id="DhDb1ClHj8WV8VVXS6uRNV"><!--pnid:lIWptqGx7kyC2kGVLluHyC-->L1</strong><!--pnid:BDpsfJJfWjekgTCoS0PTEY-->（归因层）</td>
+<td data-page-node-id="G9oZgqxSdWwq0MJt2hqMW6"><!--pnid:nBnwb5m0DxXILCz5k7yUPB-->⚠️ AI 能描述「0-3秒用了反问句」，但<strong data-page-node-id="GODZ1H21ZLBehHhU8BBmXb"><!--pnid:RdVTyhH7PCLRP2oKfQTNZq-->判断不了这个钩子是因为戳中痛点还是制造焦虑</strong><!--pnid:svM5c20mMQCst8Zhwmpn6F-->——而这直接决定能不能迁到你的品牌调性上</td>
+<td data-page-node-id="D1UvRNfEgC8zGtil62hkmB"><!--pnid:tBRILX5HAh3VTYgYofF3az-->4-6×</td>
+</tr>
+<tr data-page-node-id="cjjhBmDD2aMgs9tWDJzF3I">
+<td data-page-node-id="qNiZcuOQTHPd02yumVC29N"><strong data-page-node-id="4z6exTFmOjbOlK5Fda8ae2"><!--pnid:m0qyWGNaBYdrvwXqTyHHKk-->4.1 用户画像</strong></td>
+<td data-page-node-id="XWXKeUbcwPX97Ic5zSKhJI"><!--pnid:LH7Vr32QBoY5REG7eG9nN6-->⚠️ <strong data-page-node-id="I7kGlnWpOy6hROvUBf79x7"><!--pnid:mhVEgN7QaaaYOUX309I9Nh-->技术上不成立，建议重构</strong></td>
+<td data-page-node-id="dS0BugqQ6vF3EPOH0usTQr"><strong data-page-node-id="aJ9X64sEgwoBqUcmhOYrE0"><!--pnid:qvNHGCGQN1Urz6f8fKm2q3-->L0→L1</strong></td>
+<td data-page-node-id="Ng6e7heCNTvZyj0WMjrL5b"><!--pnid:xv2gqqyE3f5dF7qJ7exytd-->从评论文本猜人口属性（年龄/收入/性别）准确率极低且无法验证</td>
+<td data-page-node-id="svwss9fZP9xHrJtXZV69TM"><!--pnid:AnyRPPqwUmwqsxddQHPNz0-->—</td>
+</tr>
+<tr data-page-node-id="a79SpYGB9s5WqUPM5Zo5HQ">
+<td data-page-node-id="yuDWZt3CDQuTcCoP1e7wNm"><strong data-page-node-id="PXWtYyOcZavjWlzLhKqYUp"><!--pnid:z0ev8UrKWKnWuwwQHlzseG-->4.2/4.3 需求&amp;话术词库</strong></td>
+<td data-page-node-id="MW46B5cyGGUFYoyuhZBgNc"><!--pnid:NgFRJLhFDF11KEbaRbrX2V-->分词 + 领域词典 + 聚类 → 痛点TOP5/需求TOP5/频次；<strong data-page-node-id="zG4AHXcDr5ERmqZvDokpp1"><!--pnid:26HMnBzAmlQI7cKIlOy01r-->小红书与抖音分开做两套词库</strong><!--pnid:bq6PmyaNqZetJLmYS3unXm-->（小红书偏成分党理性评测，抖音偏情绪场景，合并会互相污染）</td>
+<td data-page-node-id="Dq8NJwOAl09UgKNjpDN5e4"><strong data-page-node-id="S9R624sYIMyUs6hlC9wucB"><!--pnid:lHPfpQioKo7zEFFwymx5F3-->L2</strong></td>
+<td data-page-node-id="UIZbv613hJkM4D6wCF0O6P"><!--pnid:8AajQTICqjDq73rVxUdH9E-->频次必须给真实数字，不许「高频」这种模糊词（原文这条要求很好，保留）</td>
+<td data-page-node-id="lubi9uc5YcsDFpAfYCn2rd"><!--pnid:IRpqM2dWCCED6eXhFTDbx2-->5-8×</td>
+</tr>
+<tr data-page-node-id="2KSyE9rV1QDCMWPXBXEj3i">
+<td data-page-node-id="EXuf103QivpQ569y1uA6On"><strong data-page-node-id="qnCqHiKDm0zEvHWpJk8sc5"><!--pnid:PhrZBGqFhmHGNPl8I96q1e-->5.1/5.2 供需匹配&amp;差异化</strong></td>
+<td data-page-node-id="kPEEG8zdSHPUFdxmlDbOp5"><!--pnid:fuzsGaLxcC09ogK2Wb6JXA-->AI 强项：① 表 joins 自动算「痛点 × 竞品卖点覆盖率」→ 机会缺口候选 ② <strong data-page-node-id="PqLQe78k0xorvrxz7MfTz4"><!--pnid:Anbh7Uz3YIL5vZIH3mgUIO-->embedding 语义对齐</strong><!--pnid:fkZfV4Zy1Inq83oDtkm15Q-->自动找「用户话术 vs 品牌话术」错位项（比人准）</td>
+<td data-page-node-id="6MlbQDmi5Xq9jugdtkvJNo"><strong data-page-node-id="IqPO9DgtNut8tr2sAgSi2M"><!--pnid:GEsZguf06lpoaM9JXdzdna-->L1</strong></td>
+<td data-page-node-id="QCvpGwtt2DOi8j5krnmYWc"><!--pnid:me4lmCZhj2HOpqrIWxLieg-->⚠️ 「我们能不能做到」的成本-能力判断、<strong data-page-node-id="h7vPHpsAcn4ujF7CdPkGkA"><!--pnid:KVX2T6X1cycAG7hYER9lWW-->10 个缺口里砍到 2 个</strong><!--pnid:aP29RMpXNnEVXXudC92yVd-->的取舍 —— 这是价值判断，AI 只能给平均正确的答案</td>
+<td data-page-node-id="XjwyFFhicNkG4LfYZAeD7t"><!--pnid:CzgBVsUVOZGVAzpygHAAHe-->2-3×</td>
+</tr>
+<tr data-page-node-id="TwcsFynsVqjeiG3K8b5eE7">
+<td data-page-node-id="9GffNqznDhtspxi5pPcQt6"><strong data-page-node-id="AX1SaApz1TCIIQ1RnETyLm"><!--pnid:7ibg0GrbB010PIZkfrQTHh-->5.3 品牌资产融入</strong></td>
+<td data-page-node-id="UdoBxuvQtzGrMT2klKGRPq"><!--pnid:j257iPCpubpGwAhRFAZggZ-->典型 <strong data-page-node-id="YagDNrZLiCMBt0TrYJVFyZ"><!--pnid:Qu52KDhuPoZP3XsWkEWvuE-->AI 发散 / 人收敛</strong><!--pnid:J0CS0nqOUZ2jCYWD7Zn2sV-->：LLM 基于品牌资产输入表批量出 10-20 个方向草案，人挑 2-3 个</td>
+<td data-page-node-id="cCtWwkw3QoXtqwLbRRWM6x"><strong data-page-node-id="k987Q7ZXLt1OCefrUlsjzT"><!--pnid:aiqSADQfkCqvnWOAFufZJF-->L2</strong></td>
+<td data-page-node-id="0UrH0AZha7wlUvlRSsBLAY"><!--pnid:fkIEWG101AB5WcwgYaYDsT-->⚠️技巧：给 AI <strong data-page-node-id="cnkadhhq4rSdHJyaeJLO7W"><!--pnid:wYmZiao1m54l4GXuZNWFaw-->反例样本</strong><!--pnid:2vzTYvzjyKblvbzXYCbwkZ-->（"我们不想要的样子"）比只给正例有效得多，否则 AI 会产出稀释调性的平均值文本</td>
+<td data-page-node-id="0RVKR8SiaGUNvopKSx6HRT"><!--pnid:FECUe8teU7Dw69Af7rj1O1-->3×</td>
+</tr>
+<tr data-page-node-id="Js40n38FdIOni23tpj7DoZ">
+<td data-page-node-id="10DVXxrwjRPmCoIAV1UuDh"><strong data-page-node-id="cv1zs2dcnfvL6Ss6l9z9sx"><!--pnid:5tSKpk6lea7GGt5xuRcIoN-->素材模板库&amp;拍摄清单</strong></td>
+<td data-page-node-id="p2Uf3dC9CsrI6UVMYrmdoQ"><!--pnid:c5cqh1aJ4tnddBgCPIv1ek-->把 A 级视频结构化结果聚类成模板，自动生成拍摄 checklist（道具/机位/时长/逐字稿骨架/分镜表）</td>
+<td data-page-node-id="a132Vm44snn66JhEPcpnvL"><strong data-page-node-id="2BQ9nGRQlyzQRGc8LUILjJ"><!--pnid:OjorKNAk9UTktCxHY9rLoM-->L3</strong></td>
+<td data-page-node-id="h44GUnMiKaM4qF6aDZUQAg"><!--pnid:fIkETpiIobUYZd6FA3LT8V-->导演对可执行性的判断（AI 不知道你租不起的场地、找不到的人）</td>
+<td data-page-node-id="a9s4yLkbf2buhBOIktU6wV"><!--pnid:4fnyTwX8Rc0hb3APYCeHT9-->6×</td>
+</tr>
+<tr data-page-node-id="wiGiFpS6bqRE3MIsNCG1wC">
+<td data-page-node-id="5R9TarPBN5eEnUThAe600X"><strong data-page-node-id="1DBKoiUtmVlNoPHU0t14mT"><!--pnid:YH2vsfQ2xlmoP90kverYWg-->素材生产（拍摄）</strong></td>
+<td data-page-node-id="bmkKJ7CYDdzBKRDanzCCki"><!--pnid:EIgDowlmQQUqTc2lhFLX9o-->⚠️ <strong data-page-node-id="aT0ZhYsG3VMntyavoxc3i0"><!--pnid:JIu7dx4jFeh8cdBlKTLH0Q-->L0 硬门槛</strong><!--pnid:K2SwM1KbcWhPxh1Zy7WVdr-->：实物上脸拍摄，AI 不可替代。数字人/AI生成素材在抖音带货场景有限流 + 虚假宣传风险</td>
+<td data-page-node-id="jC2SnYcIgmvEWPCpWU9MDh"><strong data-page-node-id="LAOjEfH0kEWZCyng8b6neM"><!--pnid:lnNhjw0VHRIN59eUO2YRiC-->L0</strong></td>
+<td data-page-node-id="MKMBhcXc3MWhkkYxQy66w5"><!--pnid:oOlfziAfE2Mx5V4T9TZS8x-->真人拍摄</td>
+<td data-page-node-id="RzxjZhV6CVhxzHM1UryYVV"><!--pnid:VjauCyBpFWeBUNjkTRHbCG-->—</td>
+</tr>
+<tr data-page-node-id="wlNlvaMxbVgylDV62jc899">
+<td data-page-node-id="bm65PEwftPIOZhAA4RnAKe"><strong data-page-node-id="kdzYBAfQMM7sR4zOW5Xz7W"><!--pnid:4erMZHbgrtNoWYsXBj3g99-->素材生产（剪辑）</strong></td>
+<td data-page-node-id="aEZ7Oibh0gL0gNgfG2e5Mb"><!--pnid:PgseNs5pirLLVptzdAgAGj-->自动切条、字幕烧录、批量变体（同模板改钩子/场景/话术，一次出 20 版）</td>
+<td data-page-node-id="9bqRbvLEoh7Qvlmk1eGojP"><strong data-page-node-id="5RHPSxPlrog3WPMiZJJpgY"><!--pnid:VvTTXAfaHNHBLwkaYHikCK-->L3</strong></td>
+<td data-page-node-id="s61ZcIf0jzVFPiYfPqD9fM"><!--pnid:lsNU8oVWjiADHAJXyNNNV1-->终审</td>
+<td data-page-node-id="xxrawb6wptD6pzHYVRoU9H"><!--pnid:LIJQGjFingxwYKOmMZLwbe-->8×</td>
+</tr>
+<tr data-page-node-id="IZqrP2Ow3oI1BzNtB6etVH">
+<td data-page-node-id="BErvDqprQ5U0NPN3sfKNZ7"><strong data-page-node-id="QtjiVoEWOeXEegEe88OIFa"><!--pnid:fSXCXjR5Evg5G7kv9O81Lw-->合规词检测</strong><!--pnid:JnrKL7EAlnETzjH9PGCMdY-->（建议新增）</td>
+<td data-page-node-id="ReiWnrOyPyoCd4PvZHoEoh"><!--pnid:JC0VokeFyZI8jWDv00GpCz-->广告法禁用词 + 功效宣称限制，<strong data-page-node-id="gFw6ccfILW6rXK0kqK7N79"><!--pnid:tvbuG1NkNql2HS14DJLWaV-->词典 + LLM 双重校验</strong></td>
+<td data-page-node-id="lA37hJPoZNqF8sJAydRl6w"><strong data-page-node-id="B1w1L14LKDzSsNS0y7yEot"><!--pnid:pAx4SkOSNuZxVeBGVTYhty-->L4</strong><!--pnid:IGksVEoQzihagRJiVhTM3N-->（做强制卡点）</td>
+<td data-page-node-id="KgfwTGBb6cZDLDbu5OBLRk"><!--pnid:yBoFdnlQ6umD3oxbqKEB8m-->只需处理疑似命中的少数</td>
+<td data-page-node-id="RVHjzJTwscIjNrIavllpqa"><!--pnid:TMfFwZK0vWTnqnlHZ8DJUS-->高防风险</td>
+</tr>
+<tr data-page-node-id="Uf1QwtQLBsbFNh7IO6ZXeg">
+<td data-page-node-id="rmgi6MgGdvAMfPjNY91zvU"><strong data-page-node-id="L7dg2xo6gDII9wNpasX3BJ"><!--pnid:CecdlAWnOtGyowHYbE1a9d-->投放&amp;数据回流</strong></td>
+<td data-page-node-id="ymTdPFvSrPbnv1IVHMByXR"><!--pnid:dLw7jNB0z8YvP1Tub79Cyu-->千川 API 拉数 → 素材级 ROI 看板；<strong data-page-node-id="uXSeozNnM9ATqr0oyM6mQn"><!--pnid:wuBEeQNlAtOaXx07fcz7r8-->自动异常告警</strong><!--pnid:k8Ru9IqCULYHT17fi63oao-->（CTR 掉 30%、评论批量负面 → 自动降级）；<strong data-page-node-id="jxGrUsHO4WkYyxScdWUQLL"><!--pnid:4XPB1REAoF3XhB10kgGFMk-->自动样本量把关</strong><!--pnid:e1QhOEZtYzIutGGmBge4FR-->（不达标打「数据不足」，禁止进评级）</td>
+<td data-page-node-id="pk3tTMJmUi62YhXDfzhGK7"><strong data-page-node-id="SLh2bv4p3gDNDFE51Zw0zt"><!--pnid:7KtdwC9estClPIxtUagfbr-->L4</strong></td>
+<td data-page-node-id="9CUXku9kfXEMdhamtzeJEr"><!--pnid:kkZ5oTOZBLdil2LXJWB9yP-->放量/关停的预算决策</td>
+<td data-page-node-id="ecycyHyGJylKKnj0twQmK7"><!--pnid:tch8QkEFJ5cjrwV7Y56uJB-->10×</td>
+</tr>
+<tr data-page-node-id="kquO9sLg529l5UHWwFhG2N">
+<td data-page-node-id="FaoJSDPqEP2CIIRQJYStvF"><strong data-page-node-id="uK6MejhzInLKATVORnOHsh"><!--pnid:lIDgAeopqZ5uxDa1Lb3Tpi-->每周迭代报告</strong></td>
+<td data-page-node-id="GRP6OO20MN1xDelisDVndP"><!--pnid:QrgxktPuwyDVzAiVDXfy2W-->⚠️ <strong data-page-node-id="69PUITYxzVJRCLLZ4x1QT0"><!--pnid:jt37jkQAriWW597qH74wFf-->被严重低估的一块</strong><!--pnid:I6l1Zyspp5UqGlHam80mt3-->。AI 取数 → 同比 → 报告草稿 → 飞书自动推送，一整条链路可自动化</td>
+<td data-page-node-id="K0k0nBdXi2ZQU5YTJaPsDo"><strong data-page-node-id="sKS8IGb5hzMov8J4R80BkA"><!--pnid:Wr5j76r4ObW0U8T4iQ2sSz-->L3→L4</strong></td>
+<td data-page-node-id="bbfgqF2L3a05x9IIuk1HNh"><!--pnid:oYwsez0EFdKbRrRJk2dyYo-->只看结论 + 拍板</td>
+<td data-page-node-id="84IvZGyJyqbTaMnAPn1WXK"><strong data-page-node-id="iZqOcxEzVhJiDVCLT8M12B"><!--pnid:tbd46p3lTzeR2dBKsCDkPC-->15×+</strong></td>
+</tr>
+<tr data-page-node-id="MshHzjjvWU33tWNXBR1NzF">
+<td data-page-node-id="Z0rwABL9VyU5bZboI5rmoi"><strong data-page-node-id="yF91m5YXpxQHMrJcBWKfF8"><!--pnid:GjhSNc9nK7xqHs5Ly7Aicd-->每周报告的归因解释</strong><!--pnid:VYGJn6lS99jfPEjiTasVKZ-->（增量价值最大）</td>
+<td data-page-node-id="Cs5SXlyNCS9K2Zb1yJqlfn"><!--pnid:3df5KdZM4Z1AFmll6Vxwra-->结合素材结构化标签做<strong data-page-node-id="BcyjWPDuFAWvA1oHR3hnUK"><!--pnid:kcjDqOKrisIVYbhQeOjw8n-->多因子分析</strong><!--pnid:Qjy8FkyKJ9KoSbqmD8zjud-->：回答「什么钩子 × 什么场景 × 什么角色更容易跑出来」。<strong data-page-node-id="S75cRD7pntsSSBMn4YttSW"><!--pnid:5BJGXys29i668qsQsnU1Bo-->这个靠人看表永远看不出来</strong></td>
+<td data-page-node-id="XG6wbP22YliGDxERzhBEeL"><strong data-page-node-id="sAM5TIFSA0bfQYAyhaS0Ln"><!--pnid:2ljNTBvA2s1Avk1p0sBXgL-->L3</strong></td>
+<td data-page-node-id="n4y0TLxGKKNCei8V3Xm2fu"><!--pnid:eSgqgKWeW7Ud58Cyig2bMg-->解读</td>
+<td data-page-node-id="s7hK9KKkzeEhwzM77RHibn"><!--pnid:dP9M5ZS0X9QV8Kdtr7v9GP-->不可替代</td>
+</tr>
+<tr data-page-node-id="gnYrmzmhui19uwM7TPvuVR">
+<td data-page-node-id="lP3ya14uFKcZmWViZH6vSN"><strong data-page-node-id="Bzjlm0ZtgzUhcdfBqiGZIS"><!--pnid:J4ioT1xFm1DRLA2dbbBFrZ-->达人链路</strong></td>
+<td data-page-node-id="YSrnUt9beHDfOrAtYoxT2N"><!--pnid:A6IL2eollPMqq7V47RkHIh-->达人筛选（已有雷达）、brief 自动生成、批量触达（半自动）、发布后数据自动回收</td>
+<td data-page-node-id="dYb4QUyzsdm1joPRIwInlK"><strong data-page-node-id="cAcCiWgPxAIkANpetX8A0a"><!--pnid:qHMMrffwEcMCdHmpx1BIqN-->L2</strong></td>
+<td data-page-node-id="35DGIN8TWxFOHw3r2CewJ9"><!--pnid:fd6UrKQTAsrZNGqY2t3cnR-->⚠️ 商务谈判、关系维护、合同条款 —— AI 可起草，<strong data-page-node-id="Zsa4HnVmA3jyKAfKgi36bx"><!--pnid:iJAui7nV9NRMHJScJ7surK-->不能代签</strong></td>
+<td data-page-node-id="awXY9vNMlf8pz4fn0NYLiA"><!--pnid:nSkrFcaX7FUAf4jPzPFFod-->4×</td>
+</tr>
+</tbody>
+</table>
+<hr data-page-node-id="L8YTOeSWVZfuklyOdUJWIP">
+<h2 data-page-node-id="4dE3HGacuDLQIFJQ9v6xKu" id="ai_1"><!--pnid:vGXnWdaI8uXcmdzghaze46-->三、AI 做不到 / 必须人工的边界清单</h2>
+<p data-page-node-id="UwMZDB1gyx38Hugnukczj3"><!--pnid:RmmSCs3WnzEMN3Or7J00d5-->这是你问题的核心，我按"为什么做不到"归类：</p>
+<p data-page-node-id="81QtyCo0lqMgKBPRjij8hA"><strong data-page-node-id="coTiDcaofsjIsbJZi5AB0g"><!--pnid:YJx6ZWHk8T0O8op04VO91X-->① 物理/权限壁垒（AI 根本进不去）</strong><!--pnid:GA59OaRkE4D9vo2C2I1nbW-->
+- 平台登录态、滑块验证、账号风控、API 配额 → <strong data-page-node-id="iQJbySuoBgIWJWGejVg7hg"><!--pnid:4znpaAcwYDCW9by3A4P7Jm-->每次跑批前人工登录一次，异常时接管</strong><!--pnid:AYY2RL3ocTKG7e4PaTlA51-->
+- 抖音<strong data-page-node-id="n38nemfkAqXGCslgdj5E2s"><!--pnid:ME5kE51QSbfWtt2Uigd8p6-->不开放</strong><!--pnid:dAKJoUi0tkemloxZK2iVJh-->公开转化数据 → 视频带货归因只能用第三方估算或人工校验
+- 实物拍摄 → 真人、真场景、真上脸</p>
+<p data-page-node-id="WSJgnr5i7EaLNU5L7x82Oj"><strong data-page-node-id="vbzwe1tflbiRLUqBIWExel"><!--pnid:kh15s1uqnvujpfYCK3wRdA-->② 数据不在线上（AI 拿不到输入）</strong><!--pnid:duIu5uQTqhet3kbUlJLukX-->
+- 供应链交期 / MOQ / 询到的实际成本 → 线下询价、打样
+- 内部能力边界（团队会做什么、有多少预算）→ 只有你知道
+- <strong data-page-node-id="OrtnMXPVqyyClQfnNojcgU"><!--pnid:qUd0PDUSzYZ8UXxHMDdnBs-->用户的"沉默需求"</strong><!--pnid:RNhN2Sdl9JAA14JbWRQyGj--> —— AI 只能从文本里挖文本，<strong data-page-node-id="OFAnZ91z2UacMuhXtYj2NG"><!--pnid:UlrU2Q2oTv0M1AUz1efimq-->挖不出没被说出来的东西</strong><!--pnid:LHddxO1kaXLz4khPWjQ9vl-->。这部分必须靠 1v1 深访 / 客服聊天记录 / 退货原因分析</p>
+<p data-page-node-id="edlQ4aLtqKTgekmm7BlEjD"><strong data-page-node-id="SV8GsgzQQycToR5AUxwUDA"><!--pnid:zkZ2Vrg0UdQN8Hrd9EPDy5-->③ 商业判断与责任归属（AI 不该替你做）</strong><!--pnid:o1zE37REudxAnxoSElTh5d-->
+- GO/NOGO 拍板 —— 需要签字担责
+- 成本-能力取舍（10 个机会点砍到 2 个）
+- 放量/关停的真金白银决策
+- 达人商务谈判与合同条款
+- 视频"为什么有效"的因果判断 —— AI 只能描述形式，给不出人群心理归因</p>
+<p data-page-node-id="KND8DYa9NTMoe7pFXEpHAh"><strong data-page-node-id="8woS4DZvI861xlYEM0WUqF"><!--pnid:DY6h8fdnMLeu9JyVssNpzt-->④ AI 会做错且代价很高（必须人把关）</strong><!--pnid:EoDo00kGGnu767u3BB1dxb-->
+- <strong data-page-node-id="gqEOL6uCOx5zsvbxAmkon2"><!--pnid:Y6hrkY4e8Yq4zX9PvQR3wc-->痛点真实性</strong><!--pnid:cQKHBLBvvucZ5xPfXmlSnE-->：AI 会把水军、活动话术、从众评论当成真实诉求 → 强制回读 20-30 条原评论
+- <strong data-page-node-id="TtqE9HZan7AdnGxVIoAx5l"><!--pnid:ZgnGktk6B2o2geU4zLoj7E-->功效宣称合规终审</strong><!--pnid:cpLA9GP40ksZuuRFcxtjdn-->：AI 漏判一次 = 素材下架 + 账号处罚 → AI 做初筛，<strong data-page-node-id="1JAuR0GVFyWmMC8aw6sCOd"><!--pnid:jlZrDaERqkwy0f3rgOY9mP-->人做终审</strong><!--pnid:tQTCUXdhC2yf7N14Kcnc67-->
+- <strong data-page-node-id="i71T5cS5z2Ri5SI2sddRx6"><!--pnid:5H2HvXoD3RSP9kocX6N98r-->蛇美军 / AI 幻觉</strong><!--pnid:19aWV3CZss10VYgTQJ5IL8-->：所有数字型结论（「TOP1 痛点是 XX，占比 34%」）必须可追溯到原始记录
+- <strong data-page-node-id="VWJLpUNjmJ9UqbmswRQ356"><!--pnid:hRkQ09eYa51CGNDTRAOyAd-->小事</strong><!--pnid:YMEkKHGI4MY8pqnazeXhds-->：ROI 阈值、分级 A/B/C —— AI 会执行规则，但规则本身错了 AI 不会告诉你</p>
+<hr data-page-node-id="05e6gfL6fVmW65w2npfhOG">
+<h2 data-page-node-id="inb9wJO5REzKKTm8CCye2M" id="skill"><!--pnid:0iqXwSi8jYszFPBkwQdkWQ-->四、Skill 优先级重排建议</h2>
+<p data-page-node-id="IpKqq47UtbynJiPLobeoaC"><strong data-page-node-id="WxPeDRjFpRNXFDGnqV6rMi"><!--pnid:YlMNF1vpkqyXNIH3vtwofn-->原文最大的问题：列了 8 个 skill，但没定义统一的数据结构。</strong><!--pnid:nSe5ex5EivE9oegJG9bmZ7--> 每个 skill 各吐各的文件，最后全靠人工搬运。<strong data-page-node-id="ROp4EmEGf7ye0tP3bQpfvZ"><!--pnid:5O8X96fex7i24sF4Eljdpe-->建议先把"数据字典/Schema"当成第 0 号交付物。</strong></p>
+<p data-page-node-id="4N93N7uF1aQqoB2M13Q1AR"><!--pnid:lp8gMrR97RJkH1nPx5WCjg-->另外，<strong data-page-node-id="KyQ2DFxfgTbHgc8I9zI5tW"><!--pnid:yvunh41oYcAMuanFbQUeAZ-->别按流程顺序排skill，按"省人时最多 × 技术风险最低"排。</strong></p>
+<table data-page-node-id="tQ5kG5VZda0WPhqavV8pZc">
+<thead data-page-node-id="Z3o2rVU8NUE7NvjZ7fnqQx">
+<tr data-page-node-id="QnbmUpXHCcZ6osnNkc8nju">
+<th data-page-node-id="38Uj22UsAncJId0mJ6JmDl"><!--pnid:H6vrptyQtdixmqDEX8dHdT-->新优先级</th>
+<th data-page-node-id="rKPBimMbmJ3fnrX8RYzwCc"><!--pnid:A78SbjV5a7zNS8kM8F6qiq-->Skill / 事项</th>
+<th data-page-node-id="HiX5d7FNhOmH60ifFPF8zE"><!--pnid:I7Q8TBidQ5ZYd2UPlfMVC2-->理由</th>
+<th data-page-node-id="YLRiI4BReWoMdlq7sPEDHZ"><!--pnid:vv5iUhhCkYXqoG4hy6JFIr-->对比原文</th>
+</tr>
+</thead>
+<tbody data-page-node-id="rWH0tr0ZzYDXsXOHs9Kiwm">
+<tr data-page-node-id="Gwa8ScPUgfZYfnYOd6lwjM">
+<td data-page-node-id="737J3BdaTCve28t6XeTMlZ"><strong data-page-node-id="zCKaZxTYX9GaQRaj5a7tyV"><!--pnid:1zz3xOfZzlhmbIjRjF52Wc-->P0-0</strong></td>
+<td data-page-node-id="yMJ5K4DSRSjAgPtbYZQE1W"><strong data-page-node-id="NZiOUP8rk3OsUb3uvI596e"><!--pnid:NN7BHUS8NjxDUFeH6rzUK0-->调研数据字典 + 统一数据仓</strong><!--pnid:Hwy3nisANifTPXMDXs3dit-->（一个 SQLite 或飞书多维表格，替代 20 个散装 xlsx）</td>
+<td data-page-node-id="Fh5TKQJTzIkmNSa6V0xNWJ"><!--pnid:fZckYdLRtIMO7DIXGTOVHB-->不做这个，后面所有 skill 都是孤岛</td>
+<td data-page-node-id="yNTtcDtzY8cSMRpKjI6LQV"><!--pnid:x0wS37363F0o8vtgQphnC6-->🆕 新增</td>
+</tr>
+<tr data-page-node-id="5vvaq1LIjDz1mxlLWvr1He">
+<td data-page-node-id="L9bwSlj7H6NZHiTZq4EfPZ"><strong data-page-node-id="44HNbvsl7yfsvkKYl58hIf"><!--pnid:AnH2WFVMJIQr2B1TIaIDvO-->P0-1</strong></td>
+<td data-page-node-id="VTW1Ml2kjHzlKAo1O2bycZ"><strong data-page-node-id="LbfqYxt1U92PzDBZQqHyHj"><!--pnid:M8UXCmENxsgtpOdrwHVwwV-->评论抓取&amp;分析</strong></td>
+<td data-page-node-id="ajb4SYQM5vCBecXIjoX3Fc"><!--pnid:KGTUnc4dp10mJ5wmHB1P0g-->省人时最多、技术风险最低</td>
+<td data-page-node-id="8Wcxzumzybiz7fgrn9yMcg"><!--pnid:9LTv9aHalD7kJsLts4Io4w-->= 原文 P0</td>
+</tr>
+<tr data-page-node-id="2OT4W9hGuznwAyEOHHkGzT">
+<td data-page-node-id="gX29np1Q2eeNDxlhOWbWe1"><strong data-page-node-id="v3xHdoieAVyt08v28WQbe9"><!--pnid:vKNCrPqjg8kvGASTSPbcXc-->P0-2</strong></td>
+<td data-page-node-id="VKyGxDRIcGgfmoibA9R6El"><strong data-page-node-id="MqEhSi3qs6nwRHt8dk3xfM"><!--pnid:fdfcjKXzdtQuwYI20IFNCN-->每周迭代报告自动化</strong><!--pnid:T1aXUZ9It5dEEedlgKgtkR-->（含多因子归因）</td>
+<td data-page-node-id="hvz8lEGhCG16WG9WCkReoF"><!--pnid:wAkLxlIUwWWT1xwfHpmjYE-->持续高频 + 边际收益最高 + <strong data-page-node-id="g9zUFplZpGgwQlJRVBjhNQ"><!--pnid:uj3KgvgIPosLKF6S1oQScv-->你已有飞书推送链路可复用</strong></td>
+<td data-page-node-id="JjbQgUTqrXua4TbKxgTg9f"><!--pnid:Ng2PinVIwJlPoVfQIo2WA3-->⬆️ 原文 P2，严重低估</td>
+</tr>
+<tr data-page-node-id="bdKe4paNfls9Ygn7lOxUyL">
+<td data-page-node-id="J4SZm2uOywnQ7o2hoqKBa9"><strong data-page-node-id="v1ys4wg0xq3TmEeZ7kDUKs"><!--pnid:zSQo8APbhPFbPHku26b0X7-->P0-3</strong></td>
+<td data-page-node-id="VKGS887Zq9fgTssQJqcsPI"><strong data-page-node-id="EuBo5lcIKmrAY8ZNUBc8GD"><!--pnid:t8DsVdfi16zsdu8hx2bitl-->投放数据回流（千川）</strong></td>
+<td data-page-node-id="B2X04wwXsK3Gc4vQsJRS2m"><!--pnid:70dXuKNZjerNgKpHXsUANw-->ROI 闭环的地基；且你本来就在做千川 API 通道</td>
+<td data-page-node-id="BvZ32fG8gRz6lfe9gFg7Ni"><!--pnid:pTPQwUNWiXE1Tug2f9DOfu-->⬆️ 原文 P2</td>
+</tr>
+<tr data-page-node-id="PDy52HX9uAR3Q69ITHOUs8">
+<td data-page-node-id="hrGzA6cX2DIqjdhSWilqQd"><strong data-page-node-id="SGfuteBKh2YlyT0G9MEwYb"><!--pnid:0QksADCFMwHI7XIt9ZO4QJ-->P1-1</strong></td>
+<td data-page-node-id="6fO9btchchl1uCYFFthIIj"><strong data-page-node-id="YaVC9OnchWARJ1ZT29vNcZ"><!--pnid:Zdi7PCtJNisCVXUyAM9El9-->视频拆解 skill</strong></td>
+<td data-page-node-id="DF3GGxy8Msxziw6KG24S3u"><!--pnid:ZTIM592qjDUJ4v0yXg9Cir-->技术最重（多模态），<strong data-page-node-id="9SFpOftTuxWV4Y22Svukad"><!--pnid:3XIR19MxWCa66acCmDAFes-->必须等 P0-0 的 Schema 定完再动</strong><!--pnid:B3gHZocItAcoi9i8t0ilo1-->，否则产出没法用</td>
+<td data-page-node-id="sFSXu1kRHquujPQoNBlIrl"><!--pnid:yKdO1o6MINM5NdloGIUFVO-->= 原文 P1</td>
+</tr>
+<tr data-page-node-id="uLZ0SRPHOfxaBfEOQW5Lhg">
+<td data-page-node-id="f0MShl6QuWAwi3D3rJjSPy"><strong data-page-node-id="jBSsTykp1tpBpyTKAeUEqS"><!--pnid:YtAbvwiVwCOj7z4rSglvAP-->P1-2</strong></td>
+<td data-page-node-id="dL026vIDNjgC6325sCzUL3"><strong data-page-node-id="RLB6vVekmkOpRIjx3Lx7h3"><!--pnid:KqghjshuNiHk5kQ4nuyhG2-->合规词检测</strong></td>
+<td data-page-node-id="9PcGcbz3Nkw57bc0VTnZ3w"><!--pnid:1PRbyprYV6jBOMBS7x8gfp-->成本低、防的是"下架+封号"这种大雷</td>
+<td data-page-node-id="JdMb2bCYGgULdYCIcvPbfu"><!--pnid:CLJaBf45BSt3CqETBT35JS-->🆕 新增</td>
+</tr>
+<tr data-page-node-id="yBD457IqLPTBqu1C89Wd3Q">
+<td data-page-node-id="MvJb5LMZIqxzuLyqYTPGIg"><strong data-page-node-id="eZoN1E9BTiVSKdm61mn1aM"><!--pnid:LbabNnlqQwqrdIS9oJpb56-->P1-3</strong></td>
+<td data-page-node-id="29lxr0b0kRtvENFWQNJRIA"><strong data-page-node-id="FHEFpiFKOqCBvamKzlVdzx"><!--pnid:rlKih5GNigwgJwZEnkhUEr-->小红书笔记&amp;评论抓取</strong></td>
+<td data-page-node-id="Jlhi2c2eIvISlZuoFUYMEK"><!--pnid:1M2CRtVNWbaZK6GyivYojC-->与抖音评论共用底层，做第二个时成本很低</td>
+<td data-page-node-id="YTi8ufmb5Nm3xovohhgCnA"><!--pnid:hceZokbDQtyH1FsxqWwPbM-->⬇️ 原文 P0</td>
+</tr>
+<tr data-page-node-id="1GmDCU9Z4HxqGPcapNCnbZ">
+<td data-page-node-id="yitoJfxKrmcNyiO3tkM2qk"><strong data-page-node-id="1bWRMohu5EZmKkDNWgevlb"><!--pnid:V2PDpkwHtLd9JrrPnbUlmq-->P2</strong></td>
+<td data-page-node-id="A57CpV4Yp6B4wOQhPlSZpS"><strong data-page-node-id="lyZEvmJL127x8N2wjhzz88"><!--pnid:zok307HBXlY2W3gxsH6ld3-->洞察生成模板</strong></td>
+<td data-page-node-id="cdS3mEdjAARI6QkbsbIApK"><!--pnid:NUFT6twB6XioZL9SSvErPz-->必须在所有数据结构定完之后最后做，否则是空中楼阁</td>
+<td data-page-node-id="iydYa9RzcL2ZhymGqKXZmR"><!--pnid:mmpYSlB4er9oSdoomMa4sF-->= 原文 P2</td>
+</tr>
+<tr data-page-node-id="ZrxWqDKCAT2AK24uj4XAUV">
+<td data-page-node-id="q48ui867ZdpqNByDVIOnSB"><strong data-page-node-id="KgxgysYklVd26fzaHNPKZI"><!--pnid:eg4NE8aPisNvb0tqyScUrU-->✂️ 建议砍掉</strong></td>
+<td data-page-node-id="LOkXeZGnyTBAsDEKI8kWOm"><strong data-page-node-id="H3HJYsdwlx0LJAQOlbBtjG"><!--pnid:4jRNkFdhcpRR7IkC8gtlMU-->用户画像推测 skill</strong></td>
+<td data-page-node-id="H4PquJx8Pz4CXpsZGy5e0H"><!--pnid:XdhH6ymDCFAA9oiStsFvNA-->从评论文本猜人口属性不成立。<strong data-page-node-id="Shi6VB9wJT3Iw07a3V4y71"><!--pnid:x88XP5wqEmlLB4vnJ26XLg-->改为：有官方后台数据就用，没有就留空，并把产出改名为"用户诉求画像 + 决策链路"</strong></td>
+<td data-page-node-id="NwdsKjWvoiYsQDHVxxs3fF"><!--pnid:ZtlLO9iDonfOjRViyE9twE-->✂️</td>
+</tr>
+</tbody>
+</table>
+<h3 data-page-node-id="vMiaTcqGd8LNbe9N2iKjHf" id="_5"><!--pnid:x95BdrP9VgiRDcw8uT61hc-->可复用的现有资产（你手上已有）</h3>
+<p data-page-node-id="c84QTa34xYhJ7ZDyQmHcw1"><!--pnid:lgENFUhRMZaMBePA62QVUn-->这条建议最实在 —— 这套工作流<strong data-page-node-id="EzTwq6NK2WdIgmAWmVHn98"><!--pnid:WCVxaXhIV6DTMySzGRUBmg-->不用从零搭</strong><!--pnid:uXcrtUVShPXUgjYloEg17G-->：</p>
+<ul data-page-node-id="ZDFOxttUIZPTCz59hSOucc">
+<li data-page-node-id="M5PyvHlToGd19dyH3CCV8w"><strong data-page-node-id="Rrqvl2lcYXvKU2NxyqJhj0"><!--pnid:wGW4xHHQDnGaaNiiCh06EX-->采集层</strong><!--pnid:KPHwVd7bRGgyHp9jgPa8nY-->：TikHub API + Kimi WebBridge 浏览器自动化 → 直接承接评论/视频/小红书的半自动采集</li>
+<li data-page-node-id="VkfOpdc1CPLvVuaKCjZCdu"><strong data-page-node-id="1gwZu8PWff9AjdqttEWQfY"><!--pnid:rw4zfsyvJbvV5MtXKPGGVs-->数据层</strong><!--pnid:JS4NPpPtOVjMSxqzQiduyv-->：<code data-page-node-id="2c9SDIBNOUmuoTdwt9Cn10"><!--pnid:IYQQlXvvcmm15k70W1KHOY-->~/.workbuddy/skills/</code><!--pnid:dPidCwHyjeVOjzbjDczosv--> 下统一放 skill；达人运营台的 6 张表可以扩展成"调研数据仓"的雏形</li>
+<li data-page-node-id="tGX6eQ7Gxao8cb3asAY6xa"><strong data-page-node-id="KBNLGNUaJxYQgu8FxTHp3P"><!--pnid:i63k3NLXCqN1HTOAr98xd0-->分析层</strong><!--pnid:FVVEu3xwIvrhx81U8ReyaD-->：Whisper + ffmpeg + 多模态模型 → 视频拆解</li>
+<li data-page-node-id="scJwK5hNWk06CejkZaYJcd"><strong data-page-node-id="wCaYTh12qDM7hSncMbmEnt"><!--pnid:CAn6GpNBlbDzVhwNGpPFQc-->回流层</strong><!--pnid:2k7tRy4KVrTuXBmUaoEN4z-->：千川 API 通道（你已在计划中）→ 素材级 ROI</li>
+<li data-page-node-id="brXrNpr0HAe6yV1qnQv4CX"><strong data-page-node-id="Rq1J7KFUAW1oZBV9GOb5kW"><!--pnid:T9v8ZtSOit8esoiyZAiHsa-->推送层</strong><!--pnid:9j8Gkc6wvepA61t39AgYCD-->：lark-cli 每日 9:00 简报链路 → <strong data-page-node-id="QBx0PlZYMDVl0S7On3YGzU"><!--pnid:tH0rvlQfT202mVFz1me479-->每周素材迭代报告直接复用</strong><!--pnid:DbwfGWPIEba1JBamKGIR3C-->，零新增成本</li>
+<li data-page-node-id="rZxT8nn7Yak6IDmx1eiigw"><strong data-page-node-id="2KXWWmOd8SvgJ56CMw8v2S"><!--pnid:E8dKgLnHqxW65QuXhnvN2R-->达人层</strong><!--pnid:CfQirUKrgMaZACUBMA0I9v-->：达人雷达 + TikHub → 任务 5.4 的达人资源清单可以直接自动化产出</li>
+</ul>
+<hr data-page-node-id="eRoGDqHxp9TThn3QfamWlp">
+<h2 data-page-node-id="yM8nliHAYaMupJ4LxGxPkA" id="_6"><!--pnid:qfN6OBnY2VQpbiuXQciIJl-->五、可直接粘贴的补丁（按优先级排序）</h2>
+<h3 data-page-node-id="jxnVY8Qn3S1zNkAKllpIqG" id="1"><!--pnid:1w3pIPqUydkVvTjnh7BDVo-->补丁 1 —— 修复周期矛盾（最高优先级）</h3>
+<blockquote data-page-node-id="upqObZUgs8f0192ELytH6J">
+<p data-page-node-id="OoHI9hMro8k6pxDrUEePQx"><strong data-page-node-id="NMdrTKtUdZVbqr8xjd7FmI"><!--pnid:Yxc0XZ8rmYwLfADrfQV2yI-->原文</strong><!--pnid:3Q65JSVOXhM93qVDa4ldTz-->：核心理念写「快速调研（2-3周）」，但方法一~五每节都标「（1周）」，合计 5 周。
+<strong data-page-node-id="21dhZnFnD1yF63MHdN0dDX"><!--pnid:KWaY2ZRp5Hr8dCdYxSMH38-->建议二选一</strong><!--pnid:FduRabdUka0qSEF80Ds9zl-->：
+- 方案 A（推荐）：把方法各节标注改为真实占比 —— 一（3天）/ 二（3天，并行）/ 三（1.5周）/ 四（3天，并行）/ 五（2天），总计约 3 周，<strong data-page-node-id="GQ7gmTy0KPiuIwXBXKnmc7"><!--pnid:oYBNWqAUiZk7Qt1hgpYMqS-->并把并行关系画出来</strong><!--pnid:r6lCkcAr41klU7XN8qlL13-->；
+- 方案 B：直接把总周期改成 5 周，同步改资源表。</p>
+</blockquote>
+<h3 data-page-node-id="5xhUpZN5SU2JxMgCfgStA5" id="2-gonogo-15"><!--pnid:AnvQ6gKC8p4KlH2AzlRgbg-->补丁 2 —— GO/NOGO 评分卡（替换原文 1.5）</h3>
+<p data-page-node-id="qMFr8ISOcbhhWc0nFkwNCK"><!--pnid:ZF14sp1ZHN8RkkYBiDPsY7-->原文只写"产出 GO / NOGO"，建议改为：</p>
+<table data-page-node-id="5WY2KL1WyLK6it68TrK8Dr">
+<thead data-page-node-id="BIyEc794u2gSPNYZz6EoDq">
+<tr data-page-node-id="SAkdKl13hjl2RAC8uQxx3f">
+<th data-page-node-id="jkqhArAic30gzqA20IAoNW"><!--pnid:QlBGA7yyi2rKgdvKPU7XzK-->判据</th>
+<th data-page-node-id="9J6JcWKyqJ83gqi1YD6Uwr"><!--pnid:BRQghPAnRP2QEkANJW02to-->权重</th>
+<th data-page-node-id="xAC0QgL2zcxyKfmauMolNM"><!--pnid:V2jY9bbSyJdRA1d8Eyvf8o-->打分规则</th>
+<th data-page-node-id="qqPBK2j4xLJEtwYUgRUwNn"><!--pnid:4vPvvkH5O0s3LTJ8wwgk2X-->得分</th>
+</tr>
+</thead>
+<tbody data-page-node-id="fShCkFSMP7RNY8GDNp1BXP">
+<tr data-page-node-id="iHXNEFP2uU9Wh87Lr5k7hC">
+<td data-page-node-id="iBJ65EH4aQiWzMSDMVIeW2"><!--pnid:kCSALrA7sU20cd28z4b4TH-->市场规模&amp;增速</td>
+<td data-page-node-id="m6K4Bb6rINC4PYoHBldUJP"><!--pnid:IWU3UVCtuOtC7gLk5DTql0-->25%</td>
+<td data-page-node-id="rZ4aNwPvMl29pCsNBl1Tpz"><!--pnid:BTIbm2kiKrSY6zjtAUGVnx-->&gt;10亿且增速&gt;20% = 100；5-10亿 = 60；&lt;5亿 = 20</td>
+<td data-page-node-id="RrPVhCxgODgjaG0cguxZV9"></td>
+</tr>
+<tr data-page-node-id="VGBHigBdAIA0dKiciGKgXx">
+<td data-page-node-id="236hbIU5YtzjdEAssiCK4v"><!--pnid:8HzWb9kXj27THpiOwwD2LG-->竞争集中度</td>
+<td data-page-node-id="mtroqwmBKqOcjzM8OX59Pz"><!--pnid:og54yy292l3NqD11RyN9sR-->20%</td>
+<td data-page-node-id="I8OJZnU6WuKDk68EDfd9Rf"><!--pnid:fUHO29ObOrfn3Nky9ig83k-->CR4&lt;40% = 100；40-60% = 60；&gt;60% = 20</td>
+<td data-page-node-id="XRY8GMa4leMHUMiRCd7l67"></td>
+</tr>
+<tr data-page-node-id="0OzyxFr61qv2VSoovgAmC5">
+<td data-page-node-id="ooWGPZvDNL1BjuNjAdvfYo"><!--pnid:0ql8T7Q5ty9WcV8omMMEwT-->价格带机会</td>
+<td data-page-node-id="wko6TwDW2GD99NdhFuQiw1"><!--pnid:SXpZDAtufjba9matchChOb-->20%</td>
+<td data-page-node-id="bWOSkymdZfcU9wd3USotMW"><!--pnid:qOyNc96xhR1Cj5JuS6eFMK-->目标带竞品&lt;10且月销&gt;1000万 = 100</td>
+<td data-page-node-id="hln9otrXbRP3C6RTtAxUR0"></td>
+</tr>
+<tr data-page-node-id="6y4oppxJwuNhlqLRP4wJSy">
+<td data-page-node-id="gqOMl70t5UAlr83di0UrS8"><strong data-page-node-id="8c2wHowtwfzRkkCMdQ120X"><!--pnid:Wd90BQILW07UqBNhPMjh9h-->利润空间</strong></td>
+<td data-page-node-id="K67W1WEyD6WKosW4iOmAxN"><!--pnid:0Ojs3ANyZiqMu9Q1zcf5hF-->20%</td>
+<td data-page-node-id="1URxrAC0WnbmKvIHqNkUdb"><!--pnid:dU39MPLUwCd5VzOom0kXGy-->⚠️ 需先补回供应链成本数据才能算</td>
+<td data-page-node-id="YsSjg3vMiUT6svquvsgiaB"></td>
+</tr>
+<tr data-page-node-id="HGQg75VdH1CzCU8DxOghVO">
+<td data-page-node-id="3LAOUyHv1ZmGVQIYGJZNSK"><strong data-page-node-id="qRhiMXe43nu2csWQ5AjvaQ"><!--pnid:bLXZmZBW0jFGIKnREat2tt-->我方能力匹配</strong></td>
+<td data-page-node-id="YN9EUzP5UPChzfuSuVGqdH"><!--pnid:mayRV47TwbmOxZwMj2ZIMr-->15%</td>
+<td data-page-node-id="ARUpVQDwq2Y5lpQa3r5u1u"><!--pnid:SiFP07LEBIMOj41MEqaI3s-->供应链/渠道/内容能力有几项现成</td>
+<td data-page-node-id="NcBnHoexvW65fP4lPTSG07"></td>
+</tr>
+<tr data-page-node-id="7zSdXb3sEJz0bbjxozGpci">
+<td data-page-node-id="xMY9KSMAyRBjIC2FxZiqtW"><strong data-page-node-id="qNQb6hDaZXHTUC4PDzV7M9"><!--pnid:9lbjuBrrwwWr1tKJV0cgyw-->加权总分</strong></td>
+<td data-page-node-id="1iQvfkHkQfC5nkdBWkrfCa"><!--pnid:pnmXzwPfJKbynY0P8UJBPi-->100%</td>
+<td data-page-node-id="RvlbhkNeiNrEynJUjcmeLc"><strong data-page-node-id="zXIGJrvdLUORfvSlrXa75J"><!--pnid:kWZcoVfvQQX3AnBOwIqAxJ-->≥ 70 → GO；50-70 → 补数据再议；&lt; 50 → NOGO</strong></td>
+<td data-page-node-id="vBDbwsnfAaBfdXCnxzMMnv"></td>
+</tr>
+</tbody>
+</table>
+<h3 data-page-node-id="e2xU2Rm9mQGkzFVOOT8FJu" id="3-roi-73-roi15"><!--pnid:4rb3HT9uzt3OPWaUtnkBA5-->补丁 3 —— ROI 阈值公式（替换原文 7.3 的 ROI&gt;1.5）</h3>
+<blockquote data-page-node-id="am1xJ30HqspwoWTJrQ7C9L">
+<p data-page-node-id="Ql1gAfi4tDYIsnoGGB5CtS"><strong data-page-node-id="1a7nEqTTd1AgvFtOfMff4J"><!--pnid:hOiarjhvi2wPX1zFyEcNVx-->保本 ROI = 1 ÷ 毛利率</strong><!--pnid:Z5l4Uv17DNL7QPnHlakN26-->
+毛利率 60% → 保本 ROI ≈ <strong data-page-node-id="MYvq5Rb7McDUestFuaTsKU"><!--pnid:G5JgGPyqX5pan4kAc3ilKJ-->1.67</strong>
+<strong data-page-node-id="6w4TVcLV0xjxA48vvK4mLp"><!--pnid:r5jlnEMI2hFNHf70W1yqNn-->目标 ROI = (1 ÷ 毛利率) × 安全系数 (1.2~1.5)</strong><!--pnid:3lK6XrcUmaFctI0NkmQ1WX-->
+⚠️ 并且：素材需先满足最小样本量（≥ X 次曝光 / ≥ Y 次点击 / ≥ Z 单转化）才允许进入评级，否则标记「数据不足」</p>
+</blockquote>
+<h3 data-page-node-id="MYHPlsx919x1LRdPUzXMdx" id="4"><!--pnid:6zonqZWk3I4P6Dt1if7P5E-->补丁 4 —— 失败出口（插在第七章之后）</h3>
+<blockquote data-page-node-id="N2Wl5dlXvZKcJjF0NvYKDo">
+<p data-page-node-id="eEjlIhVPutsM04aBl83WvL"><strong data-page-node-id="e5REMArhsQ9WLRN7nkZ1Uh"><!--pnid:19t84FgxnoaYJ7zDYAWeui-->如果 4 周内没有任何素材 ROI 过线，触发止损评审，走三条分支：</strong><!--pnid:5awSkFf7EF1aOrwCZBNyI7-->
+- <strong data-page-node-id="t8AtMaRGtt2WSgImVjtdoM"><!--pnid:YJBTHFt4OCzXSwpx1M8As2-->分支 A（素材问题）</strong><!--pnid:AXnsQJ3nfkIaWFG8RJma4z-->：钩子/场景/角色方向不对 → 回到 3.2 重新拆解，加测一轮，预算上限 X 万
+- <strong data-page-node-id="v370CeKzdULl3UDems7ekv"><!--pnid:BNL4ZyaRbE1QrIzlb5VRgo-->分支 B（主张问题）</strong><!--pnid:O5eB5HOPx2KATCUn76vOyM-->：产品无误但核心卖点没打中 → 回到第四章重找痛点，重新定义转化点
+- <strong data-page-node-id="W81EpRP9q1wz8yUlpH4i8s"><!--pnid:VBZqisiheHcuNs3WOTUBI6-->分支 C（品类问题）</strong><!--pnid:dXE5ZFw0MTWoJtvRKqcb4L-->：市场判断有误 → <strong data-page-node-id="hHYh7zVqPzWGxB1mmwlVW0"><!--pnid:MRh69chhqQ5ZPE6a9BBIHz-->NOGO 结项</strong><!--pnid:lQziJl9ipLQkomgx0HEFNt-->，书面复盘归档
+- ⚠️ <strong data-page-node-id="rIscv27eHdajTxZNVOXJNl"><!--pnid:3lE7JFOyC63VdeWKoJAGyv-->任何一个分支都不允许"再加预算继续原样投放"</strong></p>
+</blockquote>
+<h3 data-page-node-id="n4plSQ3aLWleCb8o4MsWU5" id="5"><!--pnid:q0YO6p6JlRvTuenepiE6AZ-->补丁 5 —— 合规红线（新增章节，插在第四章之后）</h3>
+<blockquote data-page-node-id="tAeGmvgrOWvYwRS0GzF2j6">
+<p data-page-node-id="twypy9c8X9p9dCqQUfFgFf"><strong data-page-node-id="WRDMYmheb2Lig47vvb4xfq"><!--pnid:ex9mpIfiFSyd00owNKZeQB-->4.5 合规红线（话术词库产出后必过）</strong><!--pnid:TZ0ZgDLbSwS097Kl0lvSMR-->
+- 禁用词清单：广告法绝对化用语、医疗化宣称、未备案功效
+- 类目界定：化妆品 vs 医疗器械（械字号眼贴适用规则不同）
+- 所有用户话术进入脚本前，<strong data-page-node-id="8zcRKL7zrRsN2KCzcCJGvI"><!--pnid:YMFlLafi1RwQ1QKiu0pvi1-->AI 词典 + LLM 双检 + 人工终审</strong><!--pnid:J9LJYudC4dVoqj3PIVQWGE-->
+- 对外产出物中的用户评论信息需脱敏</p>
+</blockquote>
+<h3 data-page-node-id="sLhCicNFrcdUbqmqkO0ngf" id="6"><!--pnid:sVqRdEzQr6mEVzhiFFB33V-->补丁 6 —— 内部能力盘点（新增第零章）</h3>
+<blockquote data-page-node-id="lxpz7iO4GnfSGEU9o7N4Z5">
+<p data-page-node-id="A6J8ZyhramIkQv5HVJjybz"><strong data-page-node-id="iHiO0bO1lFrdHif1GE4I7L"><!--pnid:pzwbggs6tSoAdVyhnBexSG-->零、己方能力盘点（所有外部调研的前置输入）</strong><!--pnid:wVploC4VkPGsSEnlDbHmsP-->
+- 供应链：现有哪些成熟产能？打样周期？MOQ？
+- 渠道：现有抖音账号矩阵？粉丝体量？历史最好素材的 ROI？
+- 达人：现有合作达人库多少？垂类分布？
+- 内容：团队擅长什么形态？（口播/剧情/测评/混剪）
+- 资金：本项目的总投入上限？可承受多久不回本？
+- ⚠️ <strong data-page-node-id="ess0P5TGESMjQrowMGK9uj"><!--pnid:huvdDmRemz3j0Pz9cx6JQN-->没有这一节，5.2「我们能做到的差异化」就是空的</strong></p>
+</blockquote>
+<h3 data-page-node-id="lSrPnBitGiyVm5DjHz279k" id="7"><!--pnid:dUxEgNzs919obqAGAQ4SC7-->补丁 7 —— 版本表（放在文档最开头）</h3>
+<table data-page-node-id="QapDZNLfq5xYoHYn5KJPhb">
+<thead data-page-node-id="J9V80qYRT5uoiHD59vD4vM">
+<tr data-page-node-id="ejNwHHgADPHPYV2aeKxk0f">
+<th data-page-node-id="Hj0m9ZMwghbTCtUpTF0F28"><!--pnid:ZFcGIXAF8oTOvDCA0AjKX0-->版本</th>
+<th data-page-node-id="g2wLl2oQTBJkqOqGKQfMxX"><!--pnid:ZZnDGoQ2CINGEC8apmqmcA-->日期</th>
+<th data-page-node-id="mzZmAfoPqAtwPsyl3LL51r"><!--pnid:5aXVhCMe0hVnSmJhe0vAIv-->改了什么</th>
+<th data-page-node-id="VNE3lFFNRcFTpehgYELt5v"><!--pnid:tWWEmPw1z6dxKj0TCkVxOZ-->谁改的</th>
+</tr>
+</thead>
+<tbody data-page-node-id="ZG7iYtEkcBeOvDC2tjnZyb">
+<tr data-page-node-id="lOpWq1P1bxrzkxoIojPadg">
+<td data-page-node-id="LPlvpxKODAp1uwBqDs6Fzh"><!--pnid:SshH8gIWU91hNqAEP50cGL-->V2.0</td>
+<td data-page-node-id="0iLkupuvNmNhuXoGu0cF6g"></td>
+<td data-page-node-id="jJyWDQ0sv3I2Id8Kgpa77D"></td>
+<td data-page-node-id="UXGMPhRYyU6AJ0BUnudNCA"></td>
+</tr>
+<tr data-page-node-id="FQ39N9QDTGeBkv3dmTvez6">
+<td data-page-node-id="v8hXafV6jVLFFmlkmL6yDg"><!--pnid:utGM03PGEMfIM7AxwGE5LI-->V2.1</td>
+<td data-page-node-id="PEEw6sr0BwnDCmiP2UiRue"></td>
+<td data-page-node-id="yJJw7eOta3dKNwCDTHSPHS"></td>
+<td data-page-node-id="zSeAePNUPVVTrkNRuVbZVn"></td>
+</tr>
+</tbody>
+</table>
+<hr data-page-node-id="72iRBtxNhXyt72WMLzdV6Q">
+<h2 data-page-node-id="FRuK2q15tZfllTaED7exEQ" id="_7"><!--pnid:Hp1NNSkKwtDnqptvFbeQsn-->六、最后一点判断</h2>
+<p data-page-node-id="mieZO4SIEDuUWtLxoQPIUw"><!--pnid:LZUO4HXGCrvodONCpZcCzC-->这份文档的价值不在它现在的完成度，而在<strong data-page-node-id="Z3jrA6jFVa9mAimcbxj9JD"><!--pnid:8gKmUjoDUXgzPfZkBERWmo-->你已经在用"决策标准 + 证据链"的方式思考选品</strong><!--pnid:duirPstRiLNp7kdIftaLxd-->——这本身就超过大多数做电商的人。它现在缺的不是更多的方法论，而是三样东西：</p>
+<ol data-page-node-id="H0mZTdpY6sDBu9hRmi82wT">
+<li data-page-node-id="HYrvUNubGH4L4UHRkInu0h"><strong data-page-node-id="ipoz7Te4CffDoY1uvW55xH"><!--pnid:1MDp3JDHIHnC787qB7rBO3-->把"每天的干活方式"和"每周的决策方式"分开</strong><!--pnid:9ZvvVQJtE6jPL3nlsFYSmk--> —— 现在混在一起了，导致既不好执行也不好决策</li>
+<li data-page-node-id="hiDLj8XCa9MLhTJFX8KzYz"><strong data-page-node-id="8iWCsWju6nHrAKcnQQf68f"><!--pnid:z7nBznDuGXBJTTb3KFMzoZ-->给流程装上刹车</strong><!--pnid:MTsXnlBGCyvbTRuyILef32--> —— 止损、合规、样本量，这三个是"防止你把钱和账号烧掉"的</li>
+<li data-page-node-id="FXgfj0NMy6I0kSMxZ9lfEz"><strong data-page-node-id="FbgHotFNiMvOnx2NsqSOko"><!--pnid:IBiqQo5tywG3s3zEJAPN9L-->先铺管道再开水龙头</strong><!--pnid:LXdsdND48ejRrItZTF3efp--> —— 数据字典 &gt; 单个 skill。现在急着写 skill，最后大概率会变成"又要手工搬一遍"</li>
+</ol>
+<p data-page-node-id="YNamodlEyn5seSRhc99LRN"><strong data-page-node-id="FvrwE8mF68zLMxZvfciuxM"><!--pnid:41Q3EOFUHwhsidX7zvk6Y6-->建议的最小启动动作</strong><!--pnid:w5Qm93R6E4L5EN1ekIm7cc-->：先花半天做 P0-0（数据字典）+ 补丁 2/3（评分卡和 ROI 公式），这两件做完，后面所有 skill 的开发方向会自己清晰起来。</p></div></body></html>
