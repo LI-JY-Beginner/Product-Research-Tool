@@ -29,5 +29,6 @@ Desktop.ini
 .vscode/
 *.swp
 
-# 旧版备份
+# 旧版备份 / 跑批前自动备份（与 data/ raw/ 重复，不入库）
 _backup_*/
+_pre_run_backup_*/
