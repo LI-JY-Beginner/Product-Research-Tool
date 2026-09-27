@@ -1,0 +1,46 @@
+{
+ "gid": "JZkLQqK13qhYEy4np99DTx7jZ5xygAFrm",
+ "fetchDate": "2026-09-25",
+ "info": {
+  "brand": "UNISKIN/优时颜",
+  "shop": "优时颜官方旗舰店",
+  "category3": "眼霜",
+  "sales30d": "2500-5000",
+  "reviewCount": "6",
+  "goodRate": 83.33,
+  "title": "【政府补贴】优时颜第4代微笑眼霜眼油抚纹紧致修护抗皱淡纹国货"
+ },
+ "audience": {
+  "summary": "",
+  "gender": [],
+  "region": [],
+  "prefer": "",
+  "age": ""
+ },
+ "sentiment": {},
+ "wordcloud": [],
+ "reviews": [
+  {
+   "content": "包装精美，买了送人的，发货很快，价格实惠，送了很多样品",
+   "date": "2026-09-22",
+   "time": "12:27:40"
+  },
+  {
+   "content": "我速度快。多次购买。性价比高！",
+   "date": "2026-09-22",
+   "time": "11:29:01"
+  }
+ ],
+ "negativeReviews": [
+  {
+   "content": "包装精美，买了送人的，发货很快，价格实惠，送了很多样品",
+   "date": "2026-09-22",
+   "time": "12:27:40"
+  },
+  {
+   "content": "我速度快。多次购买。性价比高！",
+   "date": "2026-09-22",
+   "time": "11:29:01"
+  }
+ ]
+}

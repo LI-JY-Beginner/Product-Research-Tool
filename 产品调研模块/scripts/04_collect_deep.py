@@ -10,9 +10,9 @@ import pcommon as P
 
 DATA = os.path.join(BASE, "data")
 HELPER = open(os.path.join(BASE, "tmp", "_helper.js"), encoding="utf-8").read()
-OUT = os.path.join(DATA, "deep.json")
+OUT = P.dpath("deep.json")
 
-LOG = open(os.path.join(BASE, "tmp", "04_deep.log"), "w", encoding="utf-8")
+LOG = open(os.path.join(BASE, "tmp", "04_deep_%s.log" % (P.CATE_NS or "eye")), "w", encoding="utf-8")
 def out(*a):
     s = " ".join(str(x) for x in a)
     LOG.write(s + "\n"); LOG.flush(); print(s, flush=True)
@@ -219,7 +219,7 @@ def one(it, idx):
 
 def load_source():
     if SRC == "cards":
-        cards = json.load(open(os.path.join(DATA, "cards.json"), encoding="utf-8"))
+        cards = json.load(open(P.dpath("cards.json"), encoding="utf-8"))
         items = []
         for gid, c in cards.items():
             it = dict(c)
@@ -227,7 +227,7 @@ def load_source():
             items.append(it)
         items.sort(key=lambda x: (x.get("榜_rank") or 999, -(x.get("price_est") or 0)))
         return items
-    return json.load(open(os.path.join(DATA, "top30.json"), encoding="utf-8"))
+    return json.load(open(P.dpath("top30.json"), encoding="utf-8"))
 
 
 def has_deep(d):
@@ -268,7 +268,7 @@ def main():
         deep[gid] = d
         done += 1
         json.dump(deep, open(OUT, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
-    out("\n已写 data/deep.json (%d 个商品，本次处理 %d)" % (len(deep), done))
+    out("\n已写 data/%s (%d 个商品，本次处理 %d)" % (P.dname("deep.json"), len(deep), done))
     for g, d in deep.items():
         out("  %s 视频%s 达人%s 词云%s 封面%s" % (g[:12], len(d.get("videos") or []),
                                                 len(d.get("bloggers") or []),

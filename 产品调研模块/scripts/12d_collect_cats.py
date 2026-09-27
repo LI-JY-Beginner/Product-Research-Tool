@@ -12,8 +12,8 @@ import pcommon as P
 
 DATA = os.path.join(BASE, "data")
 HELPER = open(os.path.join(BASE, "tmp", "_helper.js"), encoding="utf-8").read()
-OUT = os.path.join(DATA, "profile.json")
-LOG = open(os.path.join(BASE, "tmp", "12d_cats.log"), "w", encoding="utf-8")
+OUT = P.dpath("profile.json")
+LOG = open(os.path.join(BASE, "tmp", "12d_cats_%s.log" % (P.CATE_NS or "eye")), "w", encoding="utf-8")
 
 
 def out(*a):
@@ -84,7 +84,7 @@ def ev_json(code, wait=0, tries=2):
 
 
 def main():
-    cards = json.load(open(os.path.join(DATA, "cards.json"), encoding="utf-8"))
+    cards = json.load(open(P.dpath("cards.json"), encoding="utf-8"))
     items = []
     for gid, c in cards.items():
         c = dict(c); c["gid"] = gid; items.append(c)

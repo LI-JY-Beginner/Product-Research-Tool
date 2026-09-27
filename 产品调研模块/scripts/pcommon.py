@@ -38,6 +38,23 @@ for _k in ("HTTP_PROXY", "HTTPS_PROXY", "http_proxy", "https_proxy", "ALL_PROXY"
 
 FEIGUA = "https://dy.feigua.cn/app/#/goods-detail/index?id=&gid={gid}&tab={tab}"
 
+# ======================= 品类命名空间（多类目复用同一套脚本） =======================
+# 不设 PCATE  → 眼部护理（沿用历史文件名：cards.json / top30.json ...）
+# PCATE=face → 面部护理（自动落 cards_face.json / top30_face.json ...）
+CATE_NS = (os.environ.get("PCATE") or "").strip()
+
+
+def dname(name):
+    """数据文件名按当前品类命名空间映射：cards.json -> cards_face.json"""
+    if not CATE_NS:
+        return name
+    stem, ext = os.path.splitext(name)
+    return "%s_%s%s" % (stem, CATE_NS, ext)
+
+
+def dpath(name):
+    return os.path.join(DATA, dname(name))
+
 
 # ============================ WebBridge 通道 ============================
 def wb(action, args=None, wait=0, timeout=90):

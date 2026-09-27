@@ -111,8 +111,9 @@ ck("27 每个有带货视频的链接都有「这些视频在反复讲什么」�
    n_vs >= n_withv and "内容总结" in H and len(gs) >= 5,
    "有总结 %d / 有带货视频的 %d 个链接（其余 %d 个本月无视频）；分类：%s"
    % (n_vs, n_withv, len(P) - n_withv, "、".join(gs)))
-ck("28 全品对标表存在且 30 行",
-   "全品对标表" in H and P and len(P) == 30, "30 个商品")
+ck("28 全品对标表存在且行数=商品数",
+   "全品对标表" in H and P and len(P) == M.get("n"), "%d 个商品（眼部 %d + 面部 %d）"
+   % (len(P), M.get("nEye", 0), M.get("nFace", 0)))
 ck("29 三个飞书文件的数据需求都写进了「口径与方法」",
    all(k in H for k in ("2.1", "2.3", "2.4", "3.2", "竞品分析", "全球选品")), "对照表存在")
 ck("30 统计周期标注一致", "月榜" in H and M.get("range") and M["range"] in H, M.get("range"))
@@ -154,8 +155,46 @@ ck("42 卡面优先用 800×800 真·商品主图", npi >= len(P) * 0.5,
    "真商品图 %d / %d（缺失的是无评价数据的数据贫瘠链接，如实留空，不补占位图）"
    % (npi, len(P)))
 
+# ---------- 9 三级类目筛选（2026-09-27 新增） ----------
+ck("43 卡墙上方有「三级类目联动筛选」（一级/二级/三级）",
+   'class="cate"' in H and 'id="fl1"' in H and 'id="fl2"' in H and 'id="fl3"' in H
+   and "fillCate" in H and "cateRow" in H, "沿用用户调研模块的 select 写法")
+
+ck("44 每个商品都带完整类目路径（L1 / L2 / L3）",
+   all(p.get("l1") and p.get("l2") and p.get("cate") for p in P),
+   "L1=%s；L2=%s；L3=%s" % (
+       "／".join(sorted({p.get("l1") or "?" for p in P})),
+       "／".join(sorted({p.get("l2") or "?" for p in P})),
+       "／".join(sorted({p.get("cate") or "?" for p in P}))))
+
+ck("45 三级筛选是真过滤（不是摆设）",
+   "(!FILT.L1||p.l1===FILT.L1)" in H.replace(" ", "")
+   and "(!FILT.L2||p.l2===FILT.L2)" in H.replace(" ", "")
+   and "(!FILT.L3||p.cate===FILT.L3)" in H.replace(" ", "")
+   and "applyWall()" in H, "applyWall 里按 L1/L2/L3 三档过滤")
+
+_facets = {}
+for _p in P:
+    _k = (_p.get("l2") or "?", _p.get("cate") or "?")
+    _facets[_k] = _facets.get(_k, 0) + 1
+_empty = [k for k in _facets if _facets[k] == 0]
+ck("46 每个三级类目都有货（选任何一档都不会出空白卡墙）",
+   len(_facets) >= 8 and not _empty and min(_facets.values()) >= 3,
+   "；".join("%s·%s %d" % (a, b, _facets[(a, b)]) for (a, b) in
+             sorted(_facets, key=lambda x: (x[0] != "眼部护理", x[1]))))
+
+ck("47 筛选选项按「当前有货的类目」聚合，且带数量",
+   "facets()" in H and "l2Of" in H and "l3Of" in H and "g2[k]" in H and "g3[k]" in H,
+   "选项文案形如「面霜（6）」，选之前就知道有几个")
+
+ck("48 类目筛选器高亮当前选中的最深一级",
+   "classList.add('on')" in H and "cate select.on" in H.replace("  ", " "),
+   "已选到三级时高亮第三个 select（与参考图一致）")
+
 for f in ("data/pool_raw.json", "data/pool_eye.json", "data/top30.json", "data/cards.json",
-          "data/deep.json", "data/profile.json", "README.md"):
+          "data/deep.json", "data/profile.json", "README.md",
+          "data/pool_face.json", "data/top30_face.json", "data/cards_face.json",
+          "data/deep_face.json", "data/profile_face.json"):
     ck("· 文件 %s" % f, os.path.exists(os.path.join(BASE, f)) and os.path.getsize(os.path.join(BASE, f)) > 100)
 for f in glob.glob(os.path.join(BASE, "raw", "feishu", "*.json")):
     ck("· 飞书原始文档 %s" % os.path.basename(f), os.path.getsize(f) > 100)
@@ -163,8 +202,9 @@ for f in glob.glob(os.path.join(BASE, "raw", "feishu", "*.json")):
 md = ["# 产品调研模块 · 自检报告（单文件版）", "",
       "- 生成时间：%s" % datetime.datetime.now().strftime("%Y-%m-%d %H:%M"),
       "- 结果：**%d/%d PASS**" % (sum(1 for _, o, _ in res if o), len(res)),
-      "- 结构：**单文件 index.html**（hash 路由）＝ 商品卡墙 → 单品调研 → 爆款拆解折叠 → 全品对标表",
-      "- 规模：%.2f MB / %d 个商品 / 卡面图 %d / 拆解视频 %d 条" % (len(H) / 1e6, len(P), M.get("nCov", 0), M.get("nViral", 0)),
+      "- 结构：**单文件 index.html**（hash 路由）＝ 商品货架（三级类目筛选） → 单品调研 → 爆款拆解折叠 → 全品对标表",
+      "- 规模：%.2f MB / %d 个商品（眼部护理 %d + 面部护理 %d）/ 卡面图 %d / 拆解视频 %d 条"
+      % (len(H) / 1e6, len(P), M.get("nEye", 0), M.get("nFace", 0), M.get("nCov", 0), M.get("nViral", 0)),
       "", "| # | 检查项 | 结果 | 说明 |", "|---|---|---|---|"]
 for i, (n, o, d) in enumerate(res, 1):
     md.append("| %d | %s | %s | %s |" % (i, n, "✅ PASS" if o else "❌ FAIL", d or "—"))

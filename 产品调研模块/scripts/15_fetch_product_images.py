@@ -20,8 +20,8 @@ OUTIMG = os.path.join(BASE, "assets", "products")
 os.makedirs(OUTIMG, exist_ok=True)
 HELPER = open(os.path.join(BASE, "tmp", "_helper.js"), encoding="utf-8").read()
 JP_HOOK = open(os.path.join(BASE, "tmp", "_jp_hook.js"), encoding="utf-8").read()
-META = os.path.join(DATA, "prodimg.json")
-LOG = open(os.path.join(BASE, "tmp", "15_prodimg.log"), "w", encoding="utf-8")
+META = P.dpath("prodimg.json")
+LOG = open(os.path.join(BASE, "tmp", "15_prodimg_%s.log" % (P.CATE_NS or "eye")), "w", encoding="utf-8")
 
 UA = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
 
@@ -80,7 +80,7 @@ def dl(url, stem):
 
 
 def main():
-    cards = json.load(open(os.path.join(DATA, "cards.json"), encoding="utf-8"))
+    cards = json.load(open(P.dpath("cards.json"), encoding="utf-8"))
     items = []
     for gid, c in cards.items():
         c = dict(c); c["gid"] = gid; items.append(c)

@@ -1,0 +1,25 @@
+{
+ "productCount": 19,
+ "brandCount": 10,
+ "detailCount": 11,
+ "reviewCount": 273,
+ "negCount": 102,
+ "filteredCount": 1,
+ "dataRange": {
+  "start": "2026-08-25",
+  "end": "2026-09-25"
+ },
+ "corpusTotal": 468,
+ "corpusFeigua": 246,
+ "corpusXhs": 222,
+ "sources": [
+  {
+   "name": "飞瓜商品评价",
+   "detail": "商品详情页→商品评价，全部/好评/差评原文 + 舆情词云"
+  },
+  {
+   "name": "小红书",
+   "detail": "10 个关键词搜索结果 → 笔记正文 + 评论，已过 R1-R9 水军过滤"
+  }
+ ]
+}

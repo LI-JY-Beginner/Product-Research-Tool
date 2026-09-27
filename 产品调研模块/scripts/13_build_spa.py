@@ -24,6 +24,11 @@ load = lambda n: json.load(open(os.path.join(DATA, n), encoding="utf-8")) if os.
 cards = load("cards.json")
 deep = load("deep.json")
 prof = load("profile.json")
+# ---- 面部护理（2026-09-27 新增）：同一套采集逻辑、独立命名空间 ----
+cards2 = load("cards_face.json")
+deep2 = load("deep_face.json")
+prof2 = load("profile_face.json")
+top2 = load("top30_face.json") or []
 try:
     A = load("analysis.json")
 except Exception:
@@ -36,11 +41,66 @@ try:
 except Exception:
     RANGE_D = "近 30 天"
 
+L1_NAME = "个护家清"
+EYE_L3 = ["眼部精华", "眼霜", "眼膜", "眼贴", "眼部按摩仪"]
+FACE_L3 = ["面部精华", "面霜", "面膜", "洁面", "爽肤水", "防晒"]
+FACE_POOL_L3 = {p["gid"]: ((p.get("catePath") or {}).get("L3"))
+                for p in top2 if p.get("gid")}
+
+
+def _title_l3(t, table):
+    """按标题关键词定三级类目（table 顺序即优先级）"""
+    for kw, name in table:
+        if kw in t:
+            return name
+    return ""
+
+
+def eye_l3(title, fgcate):
+    """眼部护理三级类目：飞瓜商品分类优先，标题规则纠偏（如「眼霜套装」被飞瓜归到面部护理套装）"""
+    t = title or ""
+    if fgcate in EYE_L3 and "套装" not in t:
+        return fgcate
+    return (_title_l3(t, [("眼膜", "眼膜"), ("眼贴", "眼贴"), ("眼霜", "眼霜"),
+                          ("眼部精华", "眼部精华"), ("眼油", "眼部精华"), ("眼精华", "眼部精华")])
+            or (fgcate if fgcate in EYE_L3 else "眼部精华"))
+
+
+def face_l3(gid, title, fgcate):
+    """面部护理三级类目：以池子阶段「按三级类目关键词检索」的归属为准，标题规则兜底"""
+    v = FACE_POOL_L3.get(gid)
+    if v in FACE_L3:
+        return v
+    if fgcate in FACE_L3:
+        return fgcate
+    return (_title_l3(title or "", [("面膜", "面膜"), ("防晒", "防晒"), ("洁面", "洁面"),
+                                    ("洗面奶", "洁面"), ("爽肤水", "爽肤水"), ("化妆水", "爽肤水"),
+                                    ("精华水", "爽肤水"), ("面霜", "面霜"), ("精华", "面部精华")])
+            or ("面霜" if "霜" in (title or "") else "面部精华"))
+
+
 items = []
-for gid, c in cards.items():
-    c = dict(c); c["gid"] = gid
+for gid, c in (cards or {}).items():
+    c = dict(c); c["gid"] = gid; c["_ns"] = "eye"
+    c["_cp"] = {"L1": L1_NAME, "L2": "眼部护理", "L3": eye_l3(c.get("title"), c.get("cate"))}
     items.append(c)
-items.sort(key=lambda x: (x.get("榜_rank") or 999))
+for gid, c in (cards2 or {}).items():
+    c = dict(c); c["gid"] = gid; c["_ns"] = "face"
+    c["_cp"] = {"L1": L1_NAME, "L2": "面部护理", "L3": face_l3(gid, c.get("title"), c.get("cate"))}
+    items.append(c)
+# 眼部在前、同一类目内按榜内序
+items.sort(key=lambda x: (0 if x["_ns"] == "eye" else 1, x.get("榜_rank") or 999))
+
+# 三级类目「组内排名」（同 L3 内按 销售额档中位 → 销量档 → 浏览量 降序）
+_l3group = collections.defaultdict(list)
+for c in items:
+    _l3group[(c["_cp"]["L2"], c["_cp"]["L3"])].append(c)
+for _arr in _l3group.values():
+    _arr.sort(key=lambda x: (P.tier_mid(x.get("榜_sales_tier")),
+                             P.tier_mid(x.get("榜_volume_tier")),
+                             P.num(x.get("榜_views")) or 0), reverse=True)
+    for _i, _c in enumerate(_arr, 1):
+        _c["_l3rank"] = _i
 
 
 def cover(gid):
@@ -380,8 +440,10 @@ def analysis_of(v):
 
 def build_product(i, c):
     gid = c["gid"]
-    d = deep.get(gid) or {}
-    p = prof.get(gid) or {}
+    _is_face = c.get("_ns") == "face"
+    d = (deep2 if _is_face else deep).get(gid) or {}
+    p = (prof2 if _is_face else prof).get(gid) or {}
+    cp = c.get("_cp") or {}
     title = c.get("title") or ""
     brand = c.get("brand") or ""
     cats = p.get("cats") or {}
@@ -586,7 +648,10 @@ def build_product(i, c):
     return {
         "i": i, "gid": gid, "title": title, "brand": brand or "（飞瓜未标品牌）",
         "shop": c.get("shop") or "—", "shopScore": c.get("shop_score") or "—",
-        "cate": c.get("cate") or "未分类", "rank": c.get("榜_rank") or i,
+        "cate": cp.get("L3") or c.get("cate") or "未分类",
+        "cateRaw": c.get("cate") or "", "l1": cp.get("L1") or L1_NAME,
+        "l2": cp.get("L2") or "", "l3": cp.get("L3") or "",
+        "rank": c.get("_l3rank") or 1, "rankAll": c.get("榜_rank") or i,
         "rankNo": c.get("rank_no"), "rankPeriod": c.get("rank_period") or "月榜",
         "price": price, "cover": cover(gid),
         "link": (c.get("douyin_links") or [None])[0],
@@ -641,8 +706,11 @@ DB = {
         "nCov": sum(1 for p in PRODUCTS if p["cover"]),
         "nAud": sum(1 for p in PRODUCTS if p["badRate"] is not None),
         "nViral": sum(len(p["viral"]) for p in PRODUCTS),
-        "src": "飞瓜数据·抖音版（商品销售榜 → 类目「个护家清」→ 月榜）",
-        "kw": "眼油 / 眼部精华 / 眼精华 / 眼霜 / 眼膜 / 眼贴 / 眼周 / 眼部护理",
+        "nEye": sum(1 for p in PRODUCTS if p["l2"] == "眼部护理"),
+        "nFace": sum(1 for p in PRODUCTS if p["l2"] == "面部护理"),
+        "src": "飞瓜数据·抖音版（商品销售榜 → 一级类目「个护家清」→ 月榜）",
+        "kw": "眼部护理 8 词（眼油/眼部精华/眼精华/眼霜/眼膜/眼贴/眼周/眼部护理）"
+              "＋面部护理 6 类（面膜/防晒/洁面/爽肤水/面霜/面部精华，各 3 词）",
     },
     "products": PRODUCTS,
 }

@@ -1,0 +1,384 @@
+{
+ "fetchDate": "2026-09-25",
+ "items": [
+  {
+   "brand": "美雀琳",
+   "isSelf": false,
+   "spuCount": 1,
+   "talent": 1002,
+   "video": 2237,
+   "live": 4228,
+   "salesTier": [
+    "100w+"
+   ],
+   "score": 2240.8,
+   "spus": [
+    {
+     "title": "【14天抗皱眼油】美雀琳眼部植萃抗皱眼油 抗皱紧致淡纹1",
+     "gid": "3Z6vd1E3wqFEBVA1oApxtJ9j630mpXHjZ",
+     "sales": "100w+",
+     "talent": "1002",
+     "video": "2237",
+     "live": "4228"
+    }
+   ],
+   "reason": "达人1002 + 视频2237 + 直播4228",
+   "source": "飞瓜数据·商品库（个护家清/关键词：眼油，近30天）",
+   "fetchDate": "2026-09-25",
+   "category": {
+    "L1": "个护家清",
+    "L2": "眼部护理",
+    "L3": "眼部精华"
+   }
+  },
+  {
+   "brand": "效妆",
+   "isSelf": false,
+   "spuCount": 3,
+   "talent": 796,
+   "video": 3058,
+   "live": 1495,
+   "salesTier": [
+    "100w+"
+   ],
+   "score": 1762.5,
+   "spus": [
+    {
+     "title": "【林心如代言】效妆PDRN小金瓶眼油眼部精华油紧致抗皱保湿官方正品",
+     "gid": "3Z649OBD1oFEBM7YnOjwcJ410p8vmBFjA",
+     "sales": "100w+",
+     "talent": "742",
+     "video": "2262",
+     "live": "1431"
+    },
+    {
+     "title": "【林心如代言】效妆PDRN小金瓶眼油眼部精华油紧致抗皱保湿官方正品",
+     "gid": "EMKO7kVnLXTBvGKW38q2U4Grr6yrzLI3Y",
+     "sales": "100w+",
+     "talent": "11",
+     "video": "617",
+     "live": "2"
+    },
+    {
+     "title": "【明星同款】效妆PDRN小金瓶眼油眼部精华油紧致抗皱保湿官方正品",
+     "gid": "WDK7wprOMlCLE3dZ28BesW59J0z3RYFBV",
+     "sales": "100w+",
+     "talent": "43",
+     "video": "179",
+     "live": "62"
+    }
+   ],
+   "reason": "达人796 + 视频3058 + 直播1495",
+   "source": "飞瓜数据·商品库（个护家清/关键词：眼油，近30天）",
+   "fetchDate": "2026-09-25",
+   "category": {
+    "L1": "个护家清",
+    "L2": "眼部护理",
+    "L3": "眼部精华"
+   }
+  },
+  {
+   "brand": "白云山",
+   "isSelf": false,
+   "spuCount": 3,
+   "talent": 601,
+   "video": 2009,
+   "live": 1036,
+   "salesTier": [
+    "50w-100w"
+   ],
+   "score": 1202.5,
+   "spus": [
+    {
+     "title": "【官方正品拍一发二】白云山抗皱紧致眼部精华油眼油男女通用护肤",
+     "gid": "BZkMxyX1vrSpvERLVmxnH6rleZv4Kdf68",
+     "sales": "100w+",
+     "talent": "508",
+     "video": "1818",
+     "live": "816"
+    },
+    {
+     "title": "【白云山眼油】白云山抗皱紧致眼部精华油眼油男女通用护肤",
+     "gid": "RKrmY7KMAKfldOYxX1qEsEdA2Z7Dv1SDA",
+     "sales": "100w+",
+     "talent": "1",
+     "video": "0",
+     "live": "3"
+    },
+    {
+     "title": "【李若彤同款】白云山眼部抗皱紧致精华油眼油眼纹眼袋男女通用",
+     "gid": "VDkQ7ZQrKnHej2DrlYkkcGXGpAyXxmTZm",
+     "sales": "50w-100w",
+     "talent": "92",
+     "video": "191",
+     "live": "217"
+    }
+   ],
+   "reason": "达人601 + 视频2009 + 直播1036",
+   "source": "飞瓜数据·商品库（个护家清/关键词：眼油，近30天）",
+   "fetchDate": "2026-09-25",
+   "category": {
+    "L1": "个护家清",
+    "L2": "眼部护理",
+    "L3": "眼部精华"
+   }
+  },
+  {
+   "brand": "其他/白牌",
+   "isSelf": false,
+   "spuCount": 1,
+   "talent": 3,
+   "video": 403,
+   "live": 0,
+   "salesTier": [
+    "100w+"
+   ],
+   "score": 142.2,
+   "spus": [
+    {
+     "title": "【官方正品】眼油霜人参胶原玻色因以油入眼霜润养眼周抗皱紧致补水",
+     "gid": "0Z0WeLp1dLfeMQ5v6o31FnpxoGKpjBiLw",
+     "sales": "100w+",
+     "talent": "3",
+     "video": "403",
+     "live": "0"
+    }
+   ],
+   "reason": "达人3 + 视频403 + 直播0",
+   "source": "飞瓜数据·商品库（个护家清/关键词：眼油，近30天）",
+   "fetchDate": "2026-09-25",
+   "category": {
+    "L1": "个护家清",
+    "L2": "眼部护理",
+    "L3": "眼部精华"
+   }
+  },
+  {
+   "brand": "凌博士",
+   "isSelf": false,
+   "spuCount": 2,
+   "talent": 16,
+   "video": 0,
+   "live": 246,
+   "salesTier": [
+    "100w+"
+   ],
+   "score": 67.9,
+   "spus": [
+    {
+     "title": "【中秋】凌博士建模眼油霜全分子量玻尿酸眼精华套装紧致抗皱YS",
+     "gid": "vzA9mr5qLgTmWm6vOY1wu5RndzOxDjsgJ",
+     "sales": "100w+",
+     "talent": "7",
+     "video": "0",
+     "live": "177"
+    },
+    {
+     "title": "【政府补贴】凌博士建模眼油霜全分子量玻尿酸眼精华紧致抗皱YS ZY",
+     "gid": "7ZMV90W8qQsOMx41eDVLF1gwWGmK76uQo",
+     "sales": "100w+",
+     "talent": "9",
+     "video": "0",
+     "live": "69"
+    }
+   ],
+   "reason": "达人16 + 视频0 + 直播246",
+   "source": "飞瓜数据·商品库（个护家清/关键词：眼油，近30天）",
+   "fetchDate": "2026-09-25",
+   "category": {
+    "L1": "个护家清",
+    "L2": "眼部护理",
+    "L3": "眼部精华"
+   }
+  },
+  {
+   "brand": "雏菊的天空",
+   "isSelf": false,
+   "spuCount": 4,
+   "talent": 5,
+   "video": 104,
+   "live": 64,
+   "salesTier": [
+    "50w-100w"
+   ],
+   "score": 54.4,
+   "spus": [
+    {
+     "title": "【全新升级】雏菊的天空琥珀淡纹眼部精华油新一代补脂眼油抗皱SC",
+     "gid": "9ZB2e8QR7ls3kzD0gXe8FApVyWpyKRIpn",
+     "sales": "100w+",
+     "talent": "1",
+     "video": "32",
+     "live": "24"
+    },
+    {
+     "title": "【全新升级】雏菊的天空琥珀淡纹眼部精华油新一代补脂眼油抗皱官方",
+     "gid": "YXlmGl1JGKfY2rykMYv2TnykKWmGlxcLX",
+     "sales": "100w+",
+     "talent": "1",
+     "video": "60",
+     "live": "31"
+    },
+    {
+     "title": "【琥珀眼油2.0】雏菊的天空新一代补脂精华油修护抗皱中秋礼盒 SC",
+     "gid": "GMKEwO80dyHQoV78xlVXtle8xjWY3QuB7",
+     "sales": "100w+",
+     "talent": "1",
+     "video": "12",
+     "live": "5"
+    },
+    {
+     "title": "【孙坚推荐专属】雏菊的天空 琥珀2.0淡纹眼油8ml+滚珠2ml+眼膜1盒",
+     "gid": "KdW6KRA1jQujRQwA1EqGCGBnX1vMdRhZq",
+     "sales": "50w-100w",
+     "talent": "2",
+     "video": "0",
+     "live": "4"
+    }
+   ],
+   "reason": "达人5 + 视频104 + 直播64",
+   "source": "飞瓜数据·商品库（个护家清/关键词：眼油，近30天）",
+   "fetchDate": "2026-09-25",
+   "category": {
+    "L1": "个护家清",
+    "L2": "眼部护理",
+    "L3": "眼部精华"
+   }
+  },
+  {
+   "brand": "美诗",
+   "isSelf": false,
+   "spuCount": 1,
+   "talent": 8,
+   "video": 72,
+   "live": 35,
+   "salesTier": [
+    "100w+"
+   ],
+   "score": 37.1,
+   "spus": [
+    {
+     "title": "【官方正品】美诗参灵因小灯笼眼油抗皱紧致眼部精华油淡化细纹",
+     "gid": "BZkm65p5qwsorkpQoxwosqvWR6QOZMc6n",
+     "sales": "100w+",
+     "talent": "8",
+     "video": "72",
+     "live": "35"
+    }
+   ],
+   "reason": "达人8 + 视频72 + 直播35",
+   "source": "飞瓜数据·商品库（个护家清/关键词：眼油，近30天）",
+   "fetchDate": "2026-09-25",
+   "category": {
+    "L1": "个护家清",
+    "L2": "眼部护理",
+    "L3": "眼部精华"
+   }
+  },
+  {
+   "brand": "苏彤氏",
+   "isSelf": false,
+   "spuCount": 1,
+   "talent": 24,
+   "video": 8,
+   "live": 82,
+   "salesTier": [
+    "100w+"
+   ],
+   "score": 32.9,
+   "spus": [
+    {
+     "title": "法国苏彤氏双A超导微电流胶原眼油霜淡黑眼纹提拉紧致修护",
+     "gid": "RKroG1lXyAil3zW3ZOdxIEg2QvXz6XS7p",
+     "sales": "100w+",
+     "talent": "24",
+     "video": "8",
+     "live": "82"
+    }
+   ],
+   "reason": "达人24 + 视频8 + 直播82",
+   "source": "飞瓜数据·商品库（个护家清/关键词：眼油，近30天）",
+   "fetchDate": "2026-09-25",
+   "category": {
+    "L1": "个护家清",
+    "L2": "眼部护理",
+    "L3": "眼部精华"
+   }
+  },
+  {
+   "brand": "鄭明明",
+   "isSelf": false,
+   "spuCount": 1,
+   "talent": 3,
+   "video": 1,
+   "live": 28,
+   "salesTier": [
+    "50w-100w"
+   ],
+   "score": 8.6,
+   "spus": [
+    {
+     "title": "【2瓶正装】鄭明明凝时抗皱淡纹眼油霜50克 淡化眼纹 紧致眼部肌肤",
+     "gid": "EMKO7QdnjZTB4OYeldnVi4LnrxgDDdFW2",
+     "sales": "50w-100w",
+     "talent": "3",
+     "video": "1",
+     "live": "28"
+    }
+   ],
+   "reason": "达人3 + 视频1 + 直播28",
+   "source": "飞瓜数据·商品库（个护家清/关键词：眼油，近30天）",
+   "fetchDate": "2026-09-25",
+   "category": {
+    "L1": "个护家清",
+    "L2": "眼部护理",
+    "L3": "眼部精华"
+   }
+  },
+  {
+   "brand": "优时颜",
+   "isSelf": false,
+   "spuCount": 2,
+   "talent": 4,
+   "video": 11,
+   "live": 8,
+   "salesTier": [
+    "50w-100w"
+   ],
+   "score": 7.4,
+   "spus": [
+    {
+     "title": "【政府补贴】优时颜第4代微笑眼霜眼油抚纹紧致修护抗皱淡纹国货",
+     "gid": "JZkLQqK13qhYEy4np99DTx7jZ5xygAFrm",
+     "sales": "50w-100w",
+     "talent": "2",
+     "video": "2",
+     "live": "3"
+    },
+    {
+     "title": "【王楚钦同款】优时颜第4代微笑眼霜眼油抚纹紧致修护抗皱淡纹国货",
+     "gid": "JZk5rXdgO2FYvORnon0vixpLrllQRXUBl",
+     "sales": "50w-100w",
+     "talent": "2",
+     "video": "9",
+     "live": "5"
+    }
+   ],
+   "reason": "达人4 + 视频11 + 直播8",
+   "source": "飞瓜数据·商品库（个护家清/关键词：眼油，近30天）",
+   "fetchDate": "2026-09-25",
+   "category": {
+    "L1": "个护家清",
+    "L2": "眼部护理",
+    "L3": "眼部精华"
+   }
+  }
+ ],
+ "excluded": [
+  {
+   "name": "【拍一发二】以油入霜润养眼周身体乳人参胶原玻色因抗皱紧致眼油霜",
+   "reason": "品类噪音：非眼部护理产品（关键词误命中）"
+  }
+ ],
+ "criteria": "飞书工作流 3.1：月销>500万 或 近3月增速>50%；排除国际大牌、9.9福利款（飞瓜区间显示，按100w+档判定）"
+}

@@ -1,8 +1,18 @@
 # 产品调研模块 · 交付说明（单文件版）
 
-> 品类：眼油 / 眼部护理　｜　数据源：飞瓜数据（抖音）　｜　统计周期：近 30 天（月榜口径 08-28 ~ 09-26）
-> 生成：2026-09-26　｜　冻结线：**2026-09-26 12:00**
+> 品类：**眼部护理 + 面部护理**（一级类目同为「个护家清」）　｜　数据源：飞瓜数据（抖音）　｜　统计周期：近 30 天（月榜口径）
+> 生成：2026-09-27（第三版：新增面部护理 + 卡墙三级类目筛选）　｜　冻结线：**2026-09-26 12:00**（已过，后按用户要求继续迭代）
 > 视角：**全品类视角，各品牌一视同仁** —— 白云山与其他品牌同等呈现，不做「自家 vs 竞品」区分。
+
+---
+
+## 0. 本轮改了什么（2026-09-27）
+
+| 改动 | 说明 |
+|---|---|
+| **新增「面部护理」整个大类** | 沿用眼部护理**一模一样**的采集链路（池子→卡片→深度→画像→评价→词云→主图→生成），只加了一个品类命名空间开关 `PCATE=face`；定稿 **36 个链接**＝6 个三级类目（面膜/防晒/洁面/爽肤水/面霜/面部精华）**各 6 个** |
+| **卡墙上方新增「三级类目联动筛选」** | 一级「个护家清」→ 二级「眼部护理 / 面部护理」→ 三级（眼部精华/眼霜/眼膜/眼贴 · 面部精华/面霜/面膜/洁面/爽肤水/防晒），沿用《用户调研模块》的同款 select 写法；**每级都有「全部」**，选中项高亮描边 |
+| **筛选是真过滤，且一定对得上** | 选项**由当前有货的链接实时聚合**（括号里是数量）；每个商品带完整 `catePath`，`applyWall()` 按 L1/L2/L3 三档过滤 —— 选「面部护理/面霜」就**只**出面霜的 6 张卡，不会出现空列表或串类目 |
 
 ---
 
@@ -13,9 +23,9 @@
 
 | 路由 | 页面 | 内容 |
 |---|---|---|
-| `#/` | **商品卡墙** | 购物软件式卡片 grid，30 张卡，每张卡 = 飞瓜里**一个具体的商品购买链接**。每张卡显示：**商品主图（800×800，28/30）** + 商品名 + **💡 一句话卖点** + 价格/佣金 + 品牌/店铺 + **👥 主要消费人群** + 销售额·销量·浏览·转化 + 视频/直播/达人数 + 类目标签 + **差评率** + 货架定位。支持关键词搜索、10 种排序、类目筛选、「仅已拆解」 |
+| `#/` | **商品货架（卡墙）** | 购物软件式卡片 grid，**66 张卡**（眼部 30 + 面部 36），每张卡 = 飞瓜里**一个具体的商品购买链接**。上方是**三级类目联动筛选**；每张卡显示：**商品主图（800×800）** + 商品名 + **💡 一句话卖点** + 价格/佣金 + 品牌/店铺 + **👥 主要消费人群** + 销售额·销量·浏览·转化 + 视频/直播/达人数 + 类目标签 + **差评率** + 货架定位。支持关键词搜索、10 种排序、「仅已拆解」、「差评率 ≤8%」 |
 | `#/p/N` | **单品调研详情页** | 点卡片进入（**同一文件内 hash 跳转，不再出现「变成一大串代码」**）。11 个板块见下 |
-| `#/cmp` | 全品对标表 | 30 个链接 × 18 列横向铺开（按《竞品分析2》口径），点品名回单品页 |
+| `#/cmp` | 全品对标表 | 66 个链接 × 18 列横向铺开（按《竞品分析2》口径），点品名回单品页 |
 | `#/method` | 口径与方法 | 三个飞书文件的数据需求 → 本模块怎么给的 → 数据来源与缺口，逐条对照 |
 
 **单品详情页 11 个板块**（顺序固定）：
@@ -29,6 +39,58 @@
 板块标题行右侧显示该块的一句摘要 + 「展开 ▾ / 收起 ▴」，看哪块点哪块，页面不会一眼望不到头。
 板块区上方有工具条：`下面 N 个板块 / 默认收起，点标题展开你关心的那一块 / 全部展开 / 全部收起`。
 点击锚点跳转时目标板块会自动展开并滚动到位。
+
+## 1.1 三级类目筛选（本轮新增，卡墙上方）
+
+**长什么样**：一行「类目」+ 三个下拉，`一级 / 二级 / 三级`，与《用户调研模块》顶部那颗同款；已经选到最深那一级的下拉会被金色描边高亮。
+
+**为什么选了一定有卡**：下拉选项不是写死的类目树，而是**由当前真实有货的链接实时聚合**出来的，每项后面带数量：
+
+```
+一级：全部（66） / 个护家清（66）
+二级：全部（66） / 眼部护理（30） / 面部护理（36）
+三级（选「面部护理」后）：全部（36） / 面部精华（6） / 面霜（6） / 面膜（6） / 洁面（6） / 爽肤水（6） / 防晒（6）
+```
+
+所以**不存在「选了某类目结果一张卡都没有」的情况**，也不可能出现选项里有、数据里没有的类目。
+
+**筛选是真的过滤**：每个商品在生成时带一份 `catePath = {L1, L2, L3}`，`applyWall()` 里三档同时生效：
+
+```js
+var ok = (!q || s.indexOf(q)>=0)
+      && (!FILT.L1 || p.l1===FILT.L1)
+      && (!FILT.L2 || p.l2===FILT.L2)
+      && (!FILT.L3 || p.cate===FILT.L3)      // p.cate 就是三级类目
+      && (!FILT.deep || p.viral.length>0)
+      && (!FILT.bad  || (p.badRate!=null && p.badRate<=8));
+```
+
+改一级会自动重置二/三级并刷新选项；改二级会重置三级。页面右下角实时显示「当前筛选：个护家清 / 面部护理 / 面霜 → 命中 6 个商品」。
+**验收方式**：`tmp/g80_verify_cate.py` 会把每一档都程序化选一遍，逐档对比「可见卡数 vs 数据里的条数」，并检查每张可见卡的类目标签是否都属于所选类目。
+
+**三级类目怎么定的**（可复核，不是猜的）：
+- **眼部护理**：以**飞瓜商品详情页自己的「商品分类」**为准（眼膜/眼霜/眼部精华/眼贴），只有被飞瓜误分类的（如「眼霜套装」被归到「面部护理套装」）才用标题规则纠偏；
+- **面部护理**：以**池子阶段「按三级类目关键词检索」的归属**为准（搜「面霜」进来的就是面霜），标题规则兜底。
+
+## 1.2 想再加一个品类怎么扩（例如「头发护理」）
+
+整套脚本已经支持「品类命名空间」，**不用复制脚本**：
+
+```bash
+cd 产品调研模块
+# 1) 改 02b 里的 L1 / L2 / L3GROUPS（关键词分组），然后
+PCATE=hair FACE_QUOTA=6 python scripts/02b_collect_pool_face.py     # 出 top30_hair.json
+PCATE=hair python scripts/03_collect_cards.py
+PCATE=hair DEEP_SRC=cards DEEP_TOPN=20 python scripts/04_collect_deep.py
+PCATE=hair python scripts/12c_collect_profile4.py
+PCATE=hair python scripts/12d_collect_cats.py
+PCATE=hair python scripts/09_fetch_images.py
+PCATE=hair python scripts/15_fetch_product_images.py
+# 2) 在 13_build_spa.py 里加一行 load("cards_hair.json") 与对应 l3 解析，重跑
+python scripts/13_build_spa.py && python scripts/07_selfcheck.py
+```
+
+`PCATE` 只影响数据文件名（`cards.json` → `cards_face.json`），不设就是眼部护理，历史文件保持不动。
 
 ## 2. 数据需求对齐（三个飞书文件逐个对）
 
@@ -56,13 +118,16 @@
 
 ## 4. 取数口径
 
-- **池子**：飞瓜「商品销售榜」`#/product-rank/index?tab=product`，类目筛选 **个护家清**（用户指定的类目方式），关键词 8 个（眼油/眼部精华/眼精华/眼霜/眼膜/眼贴/眼周/眼部护理），周期**月榜 = 近 30 天**。
-- **定稿**：41 条 → 标题眼部校验 → 同品归一化去重（32 字标题 Jaccard ≥ 0.72）→ 37 条 → 按「销售额档中位 → 销量档 → 浏览量」降序 → **TOP30**。
+- **池子**：飞瓜「商品销售榜」`#/product-rank/index?tab=product`，类目筛选 **个护家清**（用户指定的类目方式），周期**月榜 = 近 30 天**。
+  - **眼部护理**：关键词 8 个（眼油/眼部精华/眼精华/眼霜/眼膜/眼贴/眼周/眼部护理）。41 条候选 → 标题眼部校验 → 同品归一化去重（Jaccard ≥ 0.72）→ 37 条 → 按「销售额档中位 → 销量档 → 浏览量」降序 → **TOP30**。
+  - **面部护理**（2026-09-27 新增）：关键词按 6 个三级类目分组，每组 3 词 —— 面膜（面膜/补水面膜/涂抹面膜）、防晒（防晒霜/防晒/隔离防晒）、洁面（洁面/洗面奶/洁面乳）、爽肤水（爽肤水/化妆水/精华水）、面霜（面霜/抗皱面霜/保湿面霜）、面部精华（面部精华/面部精华液/精华液）。
+    112 条候选 → 全域校验（剔除非面部护理：眼/发/身体/洗护/内衣/彩妆等 10 条）→ 按「命中它的三级类目关键词」归属 → 每类去重后**各取 TOP6** → **36 个链接**。
 - **卡片层**：每个商品开一次详情页读渲染 DOM（品牌/小店/分类/上架/佣金/好评/销售额·销量·订单·浏览·转化/视频·直播·达人数/渠道占比/带货方式占比）。
-- **深度层**：**全量 30 个链接**，每个取 30 条带货视频 + TOP20 达人 + 集中度 + 达人类型 + 内容词云。
-- **画像/评价层**（本轮新增）：`portrait/goodsTransactPortray`（性别/年龄/地域/兴趣/消费层级/价格偏好）+ `GetGoodsCommentPolarityStat`（好评/中评/差评计数 → 差评率）+ `GetGoodsCommentWord`（16 类评价词云）+ `getSegmentCommentsV2`（评价原文）。
-- **图片**：`assets/products/<gid>.*`＝**真·商品主图 800×800（28/30）**；`assets/covers/` 为兜底视频封面；`assets/video/`（216 张视频缩略图）。
-  （2 个数据贫瘠链接无评价数据 → 取不到商品图，如实留空，不塞占位图。）
+- **深度层**：每个链接取 **30 条带货视频**（接口 `size=30`，写死在脚本里）+ TOP20 达人 + 集中度 + 达人类型 + 内容词云。
+  ⚠️ `DEEP_TOPN` 是**要处理多少个商品**（不是每个商品取几条视频），默认要设成 ≥ 商品总数。
+- **画像/评价层**：`portrait/goodsTransactPortray`（性别/年龄/地域/兴趣/消费层级/价格偏好）+ `GetGoodsCommentPolarityStat`（好评/中评/差评计数 → 差评率）+ `GetGoodsCommentWord`（16 类评价词云）+ `getSegmentCommentsV2`（评价原文）。
+- **图片**：`assets/products/<gid>.*`＝**真·商品主图 800×800**；`assets/covers/` 为兜底视频封面；`assets/video/`（拆解视频缩略图）。
+  （取不到主图的数据贫瘠链接如实留空，不塞占位图。）
 
 ### 口径的已知限制（汇报时不要说成精确值）
 
@@ -77,31 +142,39 @@
 
 ```
 产品调研模块/
-├── index.html            ★ 唯一入口：卡墙 + 30 个单品详情 + 对标表 + 口径（hash 路由，自包含）
+├── index.html            ★ 唯一入口：商品货架（三级类目筛选）+ 66 个单品详情 + 对标表 + 口径（hash 路由，自包含）
 ├── assets/
-│   ├── products/<gid>.*  ★ 卡面图 = 真·商品主图 800×800（28/30）
+│   ├── products/<gid>.*  ★ 卡面图 = 真·商品主图 800×800
 │   ├── covers/<gid>.jpg   兜底卡面图 = TOP1 带货视频封面
-│   └── video/<awemeId>.jpg 拆解视频缩略图（216，已本地化）
+│   └── video/<awemeId>.jpg 拆解视频缩略图（已本地化）
 ├── data/
-│   ├── pool_raw.json / pool_eye.json / top30.json   池子与定稿
-│   ├── cards.json        30 个商品卡片层
-│   ├── deep.json         30 个链接深度层（视频/达人/词云/集中度/层级）
-│   ├── profile.json      ★ 画像 + 评价极性 + 16 类词云 + 评价原文
+│   ├── pool_raw.json / pool_eye.json / top30.json     「眼部护理」池子与定稿（30）
+│   ├── cards.json / deep.json / profile.json          「眼部护理」卡片/深度/画像三层
+│   ├── pool_raw_face.json / pool_face.json / top30_face.json 「面部护理」池子与定稿（36）
+│   ├── cards_face.json / deep_face.json / profile_face.json  「面部护理」卡片/深度/画像三层
+│   ├── prodimg.json / prodimg_face.json               真·商品主图索引
 │   └── analysis.json     聚合结果（附属页用）
 ├── scripts/
-│   ├── pcommon.py              公共基座（WebBridge 封装 + 接口层 + 工具）
+│   ├── pcommon.py              公共基座（WebBridge 封装 + 接口层 + 工具 + **品类命名空间 dname/dpath**）
 │   ├── 01_probe_tabs.py        B1 详情页 tab 与抖音原视频链接探测
-│   ├── 02_collect_pool.py      B2 扩池定稿 TOP30
-│   ├── 03_collect_cards.py     B3-B5 卡片层 30 个
-│   ├── 04_collect_deep.py      B6 深度层（全量 30；支持 DEEP_ONLY_GIDS / DEEP_ONLY_COVER）
+│   ├── 02_collect_pool.py      B2 扩池定稿 TOP30（眼部护理）
+│   ├── 02b_collect_pool_face.py ★ 扩池（面部护理版）：按三级类目分组检索，每类各取 TOP6
+│   ├── 03_collect_cards.py     B3-B5 卡片层
+│   ├── 04_collect_deep.py      B6 深度层（支持 DEEP_TOPN / DEEP_ONLY_GIDS，可断点续跑）
 │   ├── 05_analyze.py           B7 聚合分析
 │   ├── 06_build_html.py        附属页 品类聚合视图.html / deep.html（不再写 index.html）
 │   ├── 09_fetch_images.py      图片本地化（含飞瓜 logocdn 兜底）
 │   ├── 12_collect_profile2.py  画像/评价采集（单页批量版）
 │   ├── 12c_collect_profile4.py ★ 画像/评价采集（一商品一标签页版，稳定，推荐用这个）
 │   ├── 12d_collect_cats.py     ★ 补采 16 类分类词云 + 评价原文（**必须先点「商品评价」tab**）
-│   ├── 13_build_spa.py         ★ 主生成器：生成唯一 index.html
-│   └── 07_selfcheck.py         自检 52 项
+│   ├── 15_fetch_product_images.py ★ 卡面「真·商品主图」800×800（密文接口 + JSON.parse 钩子）
+│   ├── 13_build_spa.py         ★ 主生成器：合并两个品类 + 打 catePath + 生成唯一 index.html
+│   └── 07_selfcheck.py         自检（含三级类目筛选相关的 6 项）
+├── tmp/
+│   ├── _helper.js             点击/填表/杀遮罩的注入脚本
+│   ├── _jp_hook.js            ★ JSON.parse 钩子（抓加密接口明文）
+│   ├── g80_verify_cate.py     ★ 三级类目筛选验收（逐档对比可见卡数 vs 数据）
+│   └── run_face_pipeline.sh   ★ 面部护理一键采集流水线（PCATE=face）
 ├── _check/selfcheck.md   自检报告
 ├── 品类聚合视图.html      附属：早期跨商品汇总视图（非主看图）
 ├── product/p01…p30.html  ⚠️ 已废弃的多文件版单品页（跨文件跳转会失效，**不要用**，保留仅作备份）
@@ -112,21 +185,43 @@
 
 ```bash
 cd 产品调研模块
-python scripts/02_collect_pool.py 个护家清          # 重新扩池并定稿 TOP30
+
+# ---- 眼部护理（默认命名空间，历史文件不变）----
+python scripts/02_collect_pool.py 个护家清          # 扩池并定稿 TOP30
 python scripts/03_collect_cards.py                  # 卡片层 30 个
 DEEP_SRC=cards DEEP_TOPN=30 python scripts/04_collect_deep.py   # 深度层（可断点续跑）
 python scripts/12c_collect_profile4.py              # ★ 画像/评价极性/总词云（一商品一标签页）
 python scripts/12d_collect_cats.py                  # ★ 16 类分类词云 + 评价原文（会先点「商品评价」tab）
-python scripts/09_fetch_images.py                   # 视频封面/达人头像本地化
+python scripts/09_fetch_images.py                   # 视频封面本地化
 python scripts/15_fetch_product_images.py           # ★ 卡面「真·商品主图」（800×800，见坑 4）
-python scripts/13_build_spa.py                      # ★ 生成 index.html
-python scripts/07_selfcheck.py                      # 自检 52 项
+
+# ---- 面部护理（同一套脚本，只多一个 PCATE=face）----
+bash tmp/run_face_pipeline.sh                       # 一键跑完 03→04→12c→12d→09→15
+bash tmp/run_face_rest.sh                           # ★ 断点续跑：自动等登录恢复 → 补 04 → 12c→12d→09→15 → 生成 → 自检
+# 或者手动：
+# PCATE=face FACE_QUOTA=6 python scripts/02b_collect_pool_face.py     # 出 top30_face.json
+# PCATE=face python scripts/03_collect_cards.py
+# PCATE=face DEEP_SRC=cards DEEP_TOPN=20 python scripts/04_collect_deep.py
+# PCATE=face python scripts/12c_collect_profile4.py
+# PCATE=face python scripts/12d_collect_cats.py
+# PCATE=face python scripts/09_fetch_images.py
+# PCATE=face python scripts/15_fetch_product_images.py
+
+# ---- 生成 + 自检 + 验收 ----
+python scripts/13_build_spa.py                      # ★ 生成 index.html（两个品类合并）
+python scripts/07_selfcheck.py                      # 自检
 python -m http.server 8931 --bind 127.0.0.1         # 本地预览（双击 index.html 也行）
+python tmp/g80_verify_cate.py                       # ★ 三级类目筛选逐档验收
 ```
 
 前置条件：Kimi WebBridge 守护进程存活且飞瓜已登录（`python -c "import pcommon;print(pcommon.check_login())"` 返回 `normal`）。
+启动守护进程（Windows 必须后台常驻，否则命令一结束进程就被回收）：
+```bash
+"C:/Users/17831/.kimi-webbridge/bin/kimi-webbridge.exe" start; sleep 30000   # 用 run_in_background 跑
+curl -s http://127.0.0.1:10086/status   # 要同时满足 running:true 且 extension_connected:true
+```
 
-## 7. 复用这条链路必须知道的 9 个坑
+## 7. 复用这条链路必须知道的 14 个坑
 
 1. **飞瓜页面有隐形 `el-loading-mask` 遮罩**，`elementFromPoint` 永远命中它 → 点击静默失效。先 `document.querySelectorAll('.el-loading-mask,.v-modal').forEach(e=>e.remove())`，并对目标元素派发完整 PointerEvent 序列（`tmp/_helper.js` 已封装）。
 2. **同一个标签页里连续刷多个商品，画像/评价接口会「假返空」**：前 5–9 个正常，之后全返回 `null`（HTTP 仍 200）。**必须一个商品一个独立标签页**（`navigate newTab:true` → 取完 `close_tab`），见 `12c_collect_profile4.py`。
@@ -138,12 +233,19 @@ python -m http.server 8931 --bind 127.0.0.1         # 本地预览（双击 inde
 7. **`screenshot` 指定 selector 会报 `element has no layout box`**，用区域截图 `{x,y,width,height}`；且多标签页并存时区域截图可能截到另一个标签页，验证 DOM 时优先用 `evaluate` 而不是看图。
 8. **★ 飞瓜接口返回是密文，裸 `fetch()` 拿不到明文**：页面用的是自己的 fetch 包装（请求发出 → 解密 → `JSON.parse`）。你自己 `await fetch(...)` 拿到的 `Data` 是一串 Base64 密文。**解法：钩住 `JSON.parse`**（`tmp/_jp_hook.js`），在「解密之后、渲染之前」把明文截下来，再正则取字段。顺序：开页 → 装钩子 → 点「商品评价」tab 触发请求 → 等 11 秒 → 读 `window.__jp` → 正则抠 `CoverUrl`。这条路对任何加密接口都通用。
 9. **抖店（`haohuo.jinritemai.com`）在本机走不通**：浏览器导航被主机安全策略拦（`SENSITIVE_APPROVAL=TIMED_OUT`），`curl` 页面是纯 JS 渲染（11.9KB 无图），`promotion/pack` 接口有反爬（200 但 0 字节）。**别再往这条路上花时间。**
+10. **★★ 采集脚本跑着的时候，千万别同时做浏览器验证**：WebBridge 的 `session` 里所有动作都打在**当前活动标签页**上，采集脚本不停 `navigate newTab:true` 会不断把活动页切走。此时你去 `evaluate("document.getElementById('c1')")` 会打在飞瓜页上，返回一堆看不懂的结果（本次实测踩到：以为筛选器没渲染，其实是打错了页）。
+    **规则：一条链路内浏览器动作必须串行。** 采集在跑 → 只能做文件/静态层的事（改代码、查 JSON、写文档），等采集结束再进浏览器验收。
+11. **`python -m http.server` 做本地预览必须后台常驻**：前台 `&` 起的进程在命令结束时会被回收，浏览器打开就是 `ERR_CONNECTION_REFUSED`（`curl` 返回 000）。用后台任务方式起，起完先 `curl -o /dev/null -w "%{http_code}"` 确认 200 再开页面。
+12. **★ 筛选下拉的 `id` 不能和商品卡的 `id` 撞名**：卡片的 DOM id 是 `c1…cN`（`c`+序号），筛选框最初也叫 `c1/c2/c3` → `getElementById('c1')` 拿到的是**第 1 张商品卡**，`s.options` 是 `undefined`，`[].slice.call(undefined)` 直接抛错，验收脚本表现为「选项全是 None」。**已改名 `fl1/fl2/fl3`**，以后再加控件也避开 `c+数字`。
+13. **★ WebBridge 的 `evaluate` 参数名是 `code`，不是 `expression`**：传 `expression` 不报错，但 `data.result` 恒为空字符串，看起来像「页面没渲染」。正确写法 `P.ev("document.title")`（`pcommon.ev` 已封装对）。另外**通道动作打在「本会话最近打开的标签页」上**，`list_tabs` 里的 `active:false` 是「用户正在看的页」，两者不是一回事；如果所有 evaluate 都返回空，先 `list_tabs` 看有没有 Tab，全关掉再重新 `navigate` 即可恢复。
+14. **★ 飞瓜登录态会掉（`FEIGUADY2` cookie 消失）**：表现是所有脚本第一行 `login: expired`，画像/评价接口全返「无数据（飞瓜未返回）」，但**加密接口仍在返数据**，容易误判成接口坏了。判法：`pcommon.check_login()` 或看 `https://dy.feigua.cn/` 首页是否出现「注册 / 登录」。**只能由用户在 Edge 里重新登录**，脚本无法自愈。续跑方式：`bash tmp/run_face_rest.sh`（脚本会先跑 `tmp/_wait_login.py` 每 25 秒探一次，登录后自动接着跑完剩余步骤）。
 
 ## 8. 铁律
 
 - **所有品牌一视同仁**：白云山不单独高亮、不做对标基准，与其他品牌完全同等呈现。
-- **页面版式固定**：入口页是商品卡墙（购物软件式卡片），点开才是该链接的详情页；**入口页不放品类级结论速览**。
+- **页面版式固定**：入口页是商品货架（购物软件式卡片 + 三级类目筛选），点开才是该链接的详情页；**入口页不放品类级结论速览**。
 - 详情页板块顺序固定（见第 1 节），返回必须回到卡墙。
 - **爆款拆解只做 TOP10，精不求多，且必须拆内容（不是只列销售数据）**；每条折叠，点开才展开完整拆解。
+- **三级类目筛选必须是真过滤**：选项与商品的 `catePath` 同源，选任何一档显示的卡都必须严格属于该类目，且不会出现空列表。
 - **拿不到的数据如实标注缺口，不编数据。**
 - 语料/数据归属标注（如「飞瓜商品销售榜（个护家清/月榜）」）属于正常来源标注，保留。

@@ -13,9 +13,9 @@ import pcommon as P
 
 DATA = os.path.join(BASE, "data")
 HELPER = open(os.path.join(BASE, "tmp", "_helper.js"), encoding="utf-8").read()
-CARDS = os.path.join(DATA, "cards.json")
+CARDS = P.dpath("cards.json")
 
-LOGP = os.path.join(BASE, "tmp", "03_cards.log")
+LOGP = os.path.join(BASE, "tmp", "03_cards_%s.log" % (P.CATE_NS or "eye"))
 LOG = open(LOGP, "w", encoding="utf-8")
 def out(*a):
     s = " ".join(str(x) for x in a)
@@ -147,7 +147,7 @@ def fetch_one(it, idx):
 def main():
     a = int(sys.argv[1]) if len(sys.argv) > 1 else 0
     b = int(sys.argv[2]) if len(sys.argv) > 2 else 999
-    top = json.load(open(os.path.join(DATA, "top30.json"), encoding="utf-8"))
+    top = json.load(open(P.dpath("top30.json"), encoding="utf-8"))
     cards = json.load(open(CARDS, encoding="utf-8")) if os.path.exists(CARDS) else {}
     out("login:", P.check_login(), " 待采集:", len(top), " 已有:", len(cards))
     for i, it in enumerate(top):
@@ -170,7 +170,7 @@ def main():
             d.get("commission_rate"), d.get("praise"), d.get("销售额"), d.get("销量")))
     ok = sum(1 for v in cards.values() if v.get("_ok"))
     out("\n完成：%d/%d 成功" % (ok, len(cards)))
-    out("已写 data/cards.json")
+    out("已写 data/%s" % P.dname("cards.json"))
 
 
 if __name__ == "__main__":

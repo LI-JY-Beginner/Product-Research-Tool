@@ -8,6 +8,8 @@ import os, sys, json, subprocess, time
 import urllib.parse as up
 
 BASE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+sys.path.insert(0, os.path.join(BASE, "scripts"))
+import pcommon as P
 DATA = os.path.join(BASE, "data")
 COV = os.path.join(BASE, "assets", "covers")
 VID = os.path.join(BASE, "assets", "video")
@@ -18,8 +20,8 @@ TOPN = int(os.environ.get("VID_TOPN", "8"))          # 每个链接本地化几�
 UA = ("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
       "(KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36")
 
-deep = json.load(open(os.path.join(DATA, "deep.json"), encoding="utf-8"))
-cards = json.load(open(os.path.join(DATA, "cards.json"), encoding="utf-8"))
+deep = json.load(open(P.dpath("deep.json"), encoding="utf-8"))
+cards = json.load(open(P.dpath("cards.json"), encoding="utf-8"))
 
 
 def candidates(u):

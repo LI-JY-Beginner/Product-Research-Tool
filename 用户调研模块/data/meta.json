@@ -2,12 +2,12 @@
  "isPlaceholder": false,
  "dataRange": {
   "start": "2026-08-25",
-  "end": "2026-09-25"
+  "end": "2026-09-27"
  },
- "lastUpdated": "2026-09-25 20:12",
- "loginStatus": {
+ "lastUpdated": "2026-09-27 14:04",
+  "loginStatus": {
   "xhs": "unknown",
-  "feigua": "normal",
+  "feigua": "expired",
   "douyin": "skipped"
  },
  "updateLog": [
@@ -30,6 +30,10 @@
   {
    "date": "2026-09-25",
    "note": "飞瓜商品库+详情页产出重建（TOP10/画像/评价）"
+  },
+  {
+   "date": "2026-09-27",
+   "note": "飞瓜登录态已过期（页面提示需重新登录），本轮未采集；基于存量数据重建产出，语料 468（飞瓜 246 / 小红书 222）、评价 273、差评 102、词云 120 均保持不变"
   }
  ]
 }
