@@ -1,0 +1,1875 @@
+{
+ "fetchDate": "2026-09-28",
+ "rows": [
+  {
+   "brand": "恩熙",
+   "title": "恩熙·梅蔻臻颜云感净澈洁面乳",
+   "isSelf": false,
+   "summary": "女性最多，占99.57%；年龄集中分布在31-40，占比68.29%；地域集中在安徽、江苏、河南，占比72.14%；",
+   "femalePct": 99.57,
+   "ageRange": "31-40",
+   "agePct": 68.29,
+   "regionTop3": [
+    "安徽",
+    "江苏",
+    "河南"
+   ],
+   "regions": [
+    {
+     "region": "安徽",
+     "pct": 56.79
+    },
+    {
+     "region": "江苏",
+     "pct": 8.21
+    },
+    {
+     "region": "河南",
+     "pct": 7.14
+    },
+    {
+     "region": "浙江",
+     "pct": 3.57
+    },
+    {
+     "region": "山东",
+     "pct": 3.57
+    },
+    {
+     "region": "福建",
+     "pct": 1.79
+    },
+    {
+     "region": "陕西",
+     "pct": 1.79
+    },
+    {
+     "region": "辽宁",
+     "pct": 1.79
+    },
+    {
+     "region": "湖南",
+     "pct": 1.79
+    },
+    {
+     "region": "上海",
+     "pct": 1.79
+    }
+   ],
+   "gender": [
+    {
+     "gender": "男性",
+     "pct": 0.43
+    },
+    {
+     "gender": "女性",
+     "pct": 99.57
+    }
+   ],
+   "prefer": "喜欢随拍、亲子、时尚视频居多",
+   "nReviews": 104,
+   "rateBad": 0.0,
+   "source": "飞瓜商品详情页·受众画像（gid=n8LgKwvoyvHG）",
+   "fetchDate": "2026-09-28"
+  },
+  {
+   "brand": "THE WHOO/后",
+   "title": "【自营】THE WHOO/后拱辰享泡沫洁面乳洗面奶 180ml 旧版本礼物",
+   "isSelf": false,
+   "summary": "女性最多，占95.64%；年龄集中分布在31-40，占比56.81%；地域集中在山东、江苏、河南，占比31.64%；",
+   "femalePct": 95.64,
+   "ageRange": "31-40",
+   "agePct": 56.81,
+   "regionTop3": [
+    "山东",
+    "江苏",
+    "河南"
+   ],
+   "regions": [
+    {
+     "region": "山东",
+     "pct": 11.6
+    },
+    {
+     "region": "江苏",
+     "pct": 10.76
+    },
+    {
+     "region": "河南",
+     "pct": 9.28
+    },
+    {
+     "region": "河北",
+     "pct": 8.65
+    },
+    {
+     "region": "安徽",
+     "pct": 5.7
+    },
+    {
+     "region": "辽宁",
+     "pct": 4.85
+    },
+    {
+     "region": "陕西",
+     "pct": 4.43
+    },
+    {
+     "region": "黑龙江",
+     "pct": 3.59
+    },
+    {
+     "region": "山西",
+     "pct": 3.38
+    },
+    {
+     "region": "吉林",
+     "pct": 3.38
+    }
+   ],
+   "gender": [
+    {
+     "gender": "男性",
+     "pct": 4.36
+    },
+    {
+     "gender": "女性",
+     "pct": 95.64
+    }
+   ],
+   "prefer": "喜欢随拍、亲子、萌宠视频居多",
+   "nReviews": 74,
+   "rateBad": 14.86,
+   "source": "飞瓜商品详情页·受众画像（gid=6ZDl9MJLkGI6）",
+   "fetchDate": "2026-09-28"
+  },
+  {
+   "brand": "HUIYANDUO/荟妍朵",
+   "title": "【荟妍朵】鎏金胶原深层清洁肌肤弹润净化毛孔洁面乳G04A1",
+   "isSelf": false,
+   "summary": "女性最多，占95.16%；年龄集中分布在31-40，占比39.22%；地域集中在湖北、贵州、浙江，占比27.63%；",
+   "femalePct": 95.16,
+   "ageRange": "31-40",
+   "agePct": 39.22,
+   "regionTop3": [
+    "湖北",
+    "贵州",
+    "浙江"
+   ],
+   "regions": [
+    {
+     "region": "湖北",
+     "pct": 10.53
+    },
+    {
+     "region": "贵州",
+     "pct": 9.21
+    },
+    {
+     "region": "浙江",
+     "pct": 7.89
+    },
+    {
+     "region": "湖南",
+     "pct": 7.89
+    },
+    {
+     "region": "广东",
+     "pct": 7.89
+    },
+    {
+     "region": "重庆",
+     "pct": 6.58
+    },
+    {
+     "region": "四川",
+     "pct": 6.58
+    },
+    {
+     "region": "安徽",
+     "pct": 5.26
+    },
+    {
+     "region": "江苏",
+     "pct": 5.26
+    },
+    {
+     "region": "云南",
+     "pct": 3.95
+    }
+   ],
+   "gender": [
+    {
+     "gender": "男性",
+     "pct": 4.84
+    },
+    {
+     "gender": "女性",
+     "pct": 95.16
+    }
+   ],
+   "prefer": "喜欢时尚、随拍、亲子视频居多",
+   "nReviews": 1,
+   "rateBad": 0.0,
+   "source": "飞瓜商品详情页·受众画像（gid=zyAzZ7eGlOCv）",
+   "fetchDate": "2026-09-28"
+  },
+  {
+   "brand": "CEMOY/澳诗茉",
+   "title": "【官方推荐】CEMOY袋鼠爪花氨基酸洗面奶卸妆清洁控油保湿洁面护肤",
+   "isSelf": false,
+   "summary": "女性最多，占95.01%；年龄集中分布在31-40，占比53.47%；地域集中在江苏、山东、浙江，占比22.17%；",
+   "femalePct": 95.01,
+   "ageRange": "31-40",
+   "agePct": 53.47,
+   "regionTop3": [
+    "江苏",
+    "山东",
+    "浙江"
+   ],
+   "regions": [
+    {
+     "region": "江苏",
+     "pct": 8.37
+    },
+    {
+     "region": "山东",
+     "pct": 6.9
+    },
+    {
+     "region": "浙江",
+     "pct": 6.9
+    },
+    {
+     "region": "广东",
+     "pct": 5.92
+    },
+    {
+     "region": "河南",
+     "pct": 5.78
+    },
+    {
+     "region": "四川",
+     "pct": 4.99
+    },
+    {
+     "region": "北京",
+     "pct": 4.41
+    },
+    {
+     "region": "河北",
+     "pct": 4.26
+    },
+    {
+     "region": "陕西",
+     "pct": 3.96
+    },
+    {
+     "region": "安徽",
+     "pct": 3.96
+    }
+   ],
+   "gender": [
+    {
+     "gender": "男性",
+     "pct": 4.99
+    },
+    {
+     "gender": "女性",
+     "pct": 95.01
+    }
+   ],
+   "prefer": "喜欢随拍、个人管理、亲子视频居多",
+   "nReviews": 410,
+   "rateBad": 6.1,
+   "source": "飞瓜商品详情页·受众画像（gid=gWB828JrX2up）",
+   "fetchDate": "2026-09-28"
+  },
+  {
+   "brand": "THE WHOO/后",
+   "title": "【国内现货】The history of/后正品拱辰享净澈洁面膏180ml清洁【",
+   "isSelf": false,
+   "summary": "女性最多，占93.99%；年龄集中分布在31-40，占比55.56%；地域集中在江苏、河南、河北，占比27.21%；",
+   "femalePct": 93.99,
+   "ageRange": "31-40",
+   "agePct": 55.56,
+   "regionTop3": [
+    "江苏",
+    "河南",
+    "河北"
+   ],
+   "regions": [
+    {
+     "region": "江苏",
+     "pct": 9.53
+    },
+    {
+     "region": "河南",
+     "pct": 9.53
+    },
+    {
+     "region": "河北",
+     "pct": 8.15
+    },
+    {
+     "region": "辽宁",
+     "pct": 7.63
+    },
+    {
+     "region": "山东",
+     "pct": 5.55
+    },
+    {
+     "region": "安徽",
+     "pct": 5.03
+    },
+    {
+     "region": "黑龙江",
+     "pct": 5.03
+    },
+    {
+     "region": "山西",
+     "pct": 4.85
+    },
+    {
+     "region": "北京",
+     "pct": 4.16
+    },
+    {
+     "region": "广东",
+     "pct": 3.99
+    }
+   ],
+   "gender": [
+    {
+     "gender": "男性",
+     "pct": 6.01
+    },
+    {
+     "gender": "女性",
+     "pct": 93.99
+    }
+   ],
+   "prefer": "喜欢随拍、亲子、萌宠视频居多",
+   "nReviews": 10,
+   "rateBad": 10.0,
+   "source": "飞瓜商品详情页·受众画像（gid=dQL9q1Bz7ru0）",
+   "fetchDate": "2026-09-28"
+  },
+  {
+   "brand": "CHANDO/自然堂",
+   "title": "【双节同庆】自然堂洗面奶水润焕亮洁面洗卸合一不紧绷清洁控油",
+   "isSelf": false,
+   "summary": "女性最多，占92.58%；年龄集中分布在31-40，占比33.31%；地域集中在广东、江苏、四川，占比23.34%；",
+   "femalePct": 92.58,
+   "ageRange": "31-40",
+   "agePct": 33.31,
+   "regionTop3": [
+    "广东",
+    "江苏",
+    "四川"
+   ],
+   "regions": [
+    {
+     "region": "广东",
+     "pct": 8.49
+    },
+    {
+     "region": "江苏",
+     "pct": 7.75
+    },
+    {
+     "region": "四川",
+     "pct": 7.1
+    },
+    {
+     "region": "浙江",
+     "pct": 5.52
+    },
+    {
+     "region": "安徽",
+     "pct": 5.48
+    },
+    {
+     "region": "湖南",
+     "pct": 5.24
+    },
+    {
+     "region": "河南",
+     "pct": 5.15
+    },
+    {
+     "region": "湖北",
+     "pct": 4.64
+    },
+    {
+     "region": "山东",
+     "pct": 4.59
+    },
+    {
+     "region": "河北",
+     "pct": 3.81
+    }
+   ],
+   "gender": [
+    {
+     "gender": "男性",
+     "pct": 7.42
+    },
+    {
+     "gender": "女性",
+     "pct": 92.58
+    }
+   ],
+   "prefer": "喜欢随拍、亲子、人文社科视频居多",
+   "nReviews": 1896,
+   "rateBad": 13.55,
+   "source": "飞瓜商品详情页·受众画像（gid=lGpMKBz7G9sA）",
+   "fetchDate": "2026-09-28"
+  },
+  {
+   "brand": "RNW/如薇",
+   "title": "【徐璐同款】RNW抛光洗面奶 抛光提亮 卸妆去黑头控油温和不刺激",
+   "isSelf": false,
+   "summary": "女性最多，占92.57%；年龄集中分布在31-40，占比56.04%；地域集中在河南、江苏、广东，占比20.99%；",
+   "femalePct": 92.57,
+   "ageRange": "31-40",
+   "agePct": 56.04,
+   "regionTop3": [
+    "河南",
+    "江苏",
+    "广东"
+   ],
+   "regions": [
+    {
+     "region": "河南",
+     "pct": 7.18
+    },
+    {
+     "region": "江苏",
+     "pct": 6.98
+    },
+    {
+     "region": "广东",
+     "pct": 6.83
+    },
+    {
+     "region": "四川",
+     "pct": 6.33
+    },
+    {
+     "region": "安徽",
+     "pct": 6.18
+    },
+    {
+     "region": "山东",
+     "pct": 5.64
+    },
+    {
+     "region": "浙江",
+     "pct": 5.49
+    },
+    {
+     "region": "河北",
+     "pct": 5.49
+    },
+    {
+     "region": "贵州",
+     "pct": 4.91
+    },
+    {
+     "region": "云南",
+     "pct": 3.95
+    }
+   ],
+   "gender": [
+    {
+     "gender": "男性",
+     "pct": 7.43
+    },
+    {
+     "gender": "女性",
+     "pct": 92.57
+    }
+   ],
+   "prefer": "喜欢随拍、亲子、个人管理视频居多",
+   "nReviews": 766,
+   "rateBad": 13.05,
+   "source": "飞瓜商品详情页·受众画像（gid=0Z0WergKDDte）",
+   "fetchDate": "2026-09-28"
+  },
+  {
+   "brand": "PETERSON'S LAB/毕生之研",
+   "title": "【赵露思同款】毕生之研55洁面泡沫慕斯氨基酸洗面奶卸妆敏感肌ZB",
+   "isSelf": false,
+   "summary": "女性最多，占91.88%；年龄集中分布在24-30，占比38.98%；地域集中在江苏、四川、河南，占比22.45%；",
+   "femalePct": 91.88,
+   "ageRange": "24-30",
+   "agePct": 38.98,
+   "regionTop3": [
+    "江苏",
+    "四川",
+    "河南"
+   ],
+   "regions": [
+    {
+     "region": "江苏",
+     "pct": 8.45
+    },
+    {
+     "region": "四川",
+     "pct": 7.53
+    },
+    {
+     "region": "河南",
+     "pct": 6.47
+    },
+    {
+     "region": "广东",
+     "pct": 6.01
+    },
+    {
+     "region": "山东",
+     "pct": 5.81
+    },
+    {
+     "region": "河北",
+     "pct": 5.55
+    },
+    {
+     "region": "浙江",
+     "pct": 5.48
+    },
+    {
+     "region": "安徽",
+     "pct": 4.23
+    },
+    {
+     "region": "陕西",
+     "pct": 3.9
+    },
+    {
+     "region": "辽宁",
+     "pct": 3.83
+    }
+   ],
+   "gender": [
+    {
+     "gender": "男性",
+     "pct": 8.12
+    },
+    {
+     "gender": "女性",
+     "pct": 91.88
+    }
+   ],
+   "prefer": "喜欢随拍、明星八卦、二次元视频居多",
+   "nReviews": 262,
+   "rateBad": 6.49,
+   "source": "飞瓜商品详情页·受众画像（gid=zyAzlnpdyvH5）",
+   "fetchDate": "2026-09-28"
+  },
+  {
+   "brand": "SANSHI",
+   "title": "【Angelababy同款】SANSHI三式第二代糖脂复配洗面奶深层净澈",
+   "isSelf": false,
+   "summary": "女性最多，占90.35%；年龄集中分布在24-30，占比44.85%；地域集中在山东、河南、河北，占比21.79%；",
+   "femalePct": 90.35,
+   "ageRange": "24-30",
+   "agePct": 44.85,
+   "regionTop3": [
+    "山东",
+    "河南",
+    "河北"
+   ],
+   "regions": [
+    {
+     "region": "山东",
+     "pct": 7.98
+    },
+    {
+     "region": "河南",
+     "pct": 7.12
+    },
+    {
+     "region": "河北",
+     "pct": 6.69
+    },
+    {
+     "region": "江苏",
+     "pct": 6.48
+    },
+    {
+     "region": "广东",
+     "pct": 5.23
+    },
+    {
+     "region": "云南",
+     "pct": 5.06
+    },
+    {
+     "region": "四川",
+     "pct": 4.93
+    },
+    {
+     "region": "安徽",
+     "pct": 4.67
+    },
+    {
+     "region": "黑龙江",
+     "pct": 4.55
+    },
+    {
+     "region": "浙江",
+     "pct": 4.5
+    }
+   ],
+   "gender": [
+    {
+     "gender": "男性",
+     "pct": 9.65
+    },
+    {
+     "gender": "女性",
+     "pct": 90.35
+    }
+   ],
+   "prefer": "喜欢随拍、明星八卦、二次元视频居多",
+   "nReviews": 416,
+   "rateBad": 3.85,
+   "source": "飞瓜商品详情页·受众画像（gid=YXlWyJ97qwHm）",
+   "fetchDate": "2026-09-28"
+  },
+  {
+   "brand": "C咖",
+   "title": "【专属】C咖洗面奶双管氨基酸洁面白泥控油深层清洁黑头卸妆",
+   "isSelf": false,
+   "summary": "女性最多，占89.62%；年龄集中分布在31-40，占比67.69%；地域集中在河南、山东、江苏，占比32.37%；",
+   "femalePct": 89.62,
+   "ageRange": "31-40",
+   "agePct": 67.69,
+   "regionTop3": [
+    "河南",
+    "山东",
+    "江苏"
+   ],
+   "regions": [
+    {
+     "region": "河南",
+     "pct": 12.17
+    },
+    {
+     "region": "山东",
+     "pct": 10.22
+    },
+    {
+     "region": "江苏",
+     "pct": 9.98
+    },
+    {
+     "region": "广东",
+     "pct": 7.06
+    },
+    {
+     "region": "浙江",
+     "pct": 6.33
+    },
+    {
+     "region": "安徽",
+     "pct": 6.33
+    },
+    {
+     "region": "河北",
+     "pct": 5.6
+    },
+    {
+     "region": "陕西",
+     "pct": 5.35
+    },
+    {
+     "region": "山西",
+     "pct": 4.87
+    },
+    {
+     "region": "四川",
+     "pct": 3.41
+    }
+   ],
+   "gender": [
+    {
+     "gender": "男性",
+     "pct": 10.38
+    },
+    {
+     "gender": "女性",
+     "pct": 89.62
+    }
+   ],
+   "prefer": "喜欢随拍、亲子、明星八卦视频居多",
+   "nReviews": 336,
+   "rateBad": 1.49,
+   "source": "飞瓜商品详情页·受众画像（gid=JZkLQ5ey8OsY）",
+   "fetchDate": "2026-09-28"
+  },
+  {
+   "brand": "SANSHI",
+   "title": "【Angelababy专属】三式糖脂洁面乳2.0氨基酸糖脂复配洗面奶洗卸养",
+   "isSelf": false,
+   "summary": "女性最多，占88.38%；年龄集中分布在24-30，占比42.86%；地域集中在河南、河北、云南，占比24.19%；",
+   "femalePct": 88.38,
+   "ageRange": "24-30",
+   "agePct": 42.86,
+   "regionTop3": [
+    "河南",
+    "河北",
+    "云南"
+   ],
+   "regions": [
+    {
+     "region": "河南",
+     "pct": 9.48
+    },
+    {
+     "region": "河北",
+     "pct": 8.49
+    },
+    {
+     "region": "云南",
+     "pct": 6.22
+    },
+    {
+     "region": "四川",
+     "pct": 6.22
+    },
+    {
+     "region": "山东",
+     "pct": 6.22
+    },
+    {
+     "region": "江苏",
+     "pct": 5.52
+    },
+    {
+     "region": "广东",
+     "pct": 5.09
+    },
+    {
+     "region": "安徽",
+     "pct": 4.81
+    },
+    {
+     "region": "浙江",
+     "pct": 4.67
+    },
+    {
+     "region": "山西",
+     "pct": 3.82
+    }
+   ],
+   "gender": [
+    {
+     "gender": "男性",
+     "pct": 11.62
+    },
+    {
+     "gender": "女性",
+     "pct": 88.38
+    }
+   ],
+   "prefer": "喜欢随拍、明星八卦、二次元视频居多",
+   "nReviews": 470,
+   "rateBad": 7.66,
+   "source": "飞瓜商品详情页·受众画像（gid=YXl3Ykk6nxsm）",
+   "fetchDate": "2026-09-28"
+  },
+  {
+   "brand": "CEMOY/澳诗茉",
+   "title": "【韩雪专享】CEMOY澳诗茉袋鼠爪花洗面奶洁面控油收缩毛孔清洁",
+   "isSelf": false,
+   "summary": "女性最多，占88.24%；年龄集中分布在31-40，占比42.11%；地域集中在广东、江苏、四川，占比37.5%；",
+   "femalePct": 88.24,
+   "ageRange": "31-40",
+   "agePct": 42.11,
+   "regionTop3": [
+    "广东",
+    "江苏",
+    "四川"
+   ],
+   "regions": [
+    {
+     "region": "广东",
+     "pct": 12.5
+    },
+    {
+     "region": "江苏",
+     "pct": 12.5
+    },
+    {
+     "region": "四川",
+     "pct": 12.5
+    },
+    {
+     "region": "北京",
+     "pct": 8.33
+    },
+    {
+     "region": "上海",
+     "pct": 8.33
+    },
+    {
+     "region": "陕西",
+     "pct": 8.33
+    },
+    {
+     "region": "湖北",
+     "pct": 8.33
+    },
+    {
+     "region": "云南",
+     "pct": 4.17
+    },
+    {
+     "region": "山西",
+     "pct": 4.17
+    },
+    {
+     "region": "山东",
+     "pct": 4.17
+    }
+   ],
+   "gender": [
+    {
+     "gender": "男性",
+     "pct": 11.76
+    },
+    {
+     "gender": "女性",
+     "pct": 88.24
+    }
+   ],
+   "prefer": "喜欢随拍、个人管理、亲子视频居多",
+   "nReviews": 15,
+   "rateBad": 6.67,
+   "source": "飞瓜商品详情页·受众画像（gid=q1BR6ArG0yh2）",
+   "fetchDate": "2026-09-28",
+   "preferBorrowed": "同品牌另一链接"
+  },
+  {
+   "brand": "Hi!papa/海龟爸爸",
+   "title": "【总监特批机制】海龟爸爸小蓝瓶青少年精华面霜青春水洁面控油保湿",
+   "isSelf": false,
+   "summary": "女性最多，占86.37%；年龄集中分布在31-40，占比48.67%；地域集中在江苏、河南、浙江，占比23.39%；",
+   "femalePct": 86.37,
+   "ageRange": "31-40",
+   "agePct": 48.67,
+   "regionTop3": [
+    "江苏",
+    "河南",
+    "浙江"
+   ],
+   "regions": [
+    {
+     "region": "江苏",
+     "pct": 9.21
+    },
+    {
+     "region": "河南",
+     "pct": 7.37
+    },
+    {
+     "region": "浙江",
+     "pct": 6.81
+    },
+    {
+     "region": "广东",
+     "pct": 6.45
+    },
+    {
+     "region": "河北",
+     "pct": 6.45
+    },
+    {
+     "region": "四川",
+     "pct": 5.71
+    },
+    {
+     "region": "山东",
+     "pct": 4.97
+    },
+    {
+     "region": "北京",
+     "pct": 4.42
+    },
+    {
+     "region": "福建",
+     "pct": 3.87
+    },
+    {
+     "region": "安徽",
+     "pct": 3.87
+    }
+   ],
+   "gender": [
+    {
+     "gender": "男性",
+     "pct": 13.63
+    },
+    {
+     "gender": "女性",
+     "pct": 86.37
+    }
+   ],
+   "prefer": "喜欢随拍、个人管理、明星八卦视频居多",
+   "nReviews": 15,
+   "rateBad": 6.67,
+   "source": "飞瓜商品详情页·受众画像（gid=3Z63oDWvxxhE）",
+   "fetchDate": "2026-09-28"
+  },
+  {
+   "brand": "KANS/韩束",
+   "title": "【国庆大放价】韩束红蛮腰洁面控油洗面奶洗卸养三合一清洁毛孔",
+   "isSelf": false,
+   "summary": "女性最多，占84.22%；年龄集中分布在31-40，占比46.73%；地域集中在广东、江苏、四川，占比22.65%；",
+   "femalePct": 84.22,
+   "ageRange": "31-40",
+   "agePct": 46.73,
+   "regionTop3": [
+    "广东",
+    "江苏",
+    "四川"
+   ],
+   "regions": [
+    {
+     "region": "广东",
+     "pct": 8.56
+    },
+    {
+     "region": "江苏",
+     "pct": 7.48
+    },
+    {
+     "region": "四川",
+     "pct": 6.61
+    },
+    {
+     "region": "山东",
+     "pct": 6.61
+    },
+    {
+     "region": "河南",
+     "pct": 6.4
+    },
+    {
+     "region": "安徽",
+     "pct": 4.99
+    },
+    {
+     "region": "河北",
+     "pct": 4.86
+    },
+    {
+     "region": "浙江",
+     "pct": 4.61
+    },
+    {
+     "region": "贵州",
+     "pct": 3.7
+    },
+    {
+     "region": "湖南",
+     "pct": 3.57
+    }
+   ],
+   "gender": [
+    {
+     "gender": "男性",
+     "pct": 15.78
+    },
+    {
+     "gender": "女性",
+     "pct": 84.22
+    }
+   ],
+   "prefer": "喜欢随拍、亲子、人文社科视频居多",
+   "nReviews": 2862,
+   "rateBad": 2.06,
+   "source": "飞瓜商品详情页·受众画像（gid=zyAzlV2JMRi5）",
+   "fetchDate": "2026-09-28"
+  },
+  {
+   "brand": "MIHOO/小迷糊",
+   "title": "【小鬼-王琳凯同款】小迷糊洁颜蜜4.0洗卸合一清洁控油洗面奶洁面",
+   "isSelf": false,
+   "summary": "女性最多，占83.73%；年龄集中分布在24-30，占比39.83%；地域集中在山东、河南、河北，占比25.02%；",
+   "femalePct": 83.73,
+   "ageRange": "24-30",
+   "agePct": 39.83,
+   "regionTop3": [
+    "山东",
+    "河南",
+    "河北"
+   ],
+   "regions": [
+    {
+     "region": "山东",
+     "pct": 9.11
+    },
+    {
+     "region": "河南",
+     "pct": 7.98
+    },
+    {
+     "region": "河北",
+     "pct": 7.93
+    },
+    {
+     "region": "江苏",
+     "pct": 6.23
+    },
+    {
+     "region": "广东",
+     "pct": 5.75
+    },
+    {
+     "region": "四川",
+     "pct": 5.19
+    },
+    {
+     "region": "安徽",
+     "pct": 4.27
+    },
+    {
+     "region": "山西",
+     "pct": 4.18
+    },
+    {
+     "region": "辽宁",
+     "pct": 4.1
+    },
+    {
+     "region": "浙江",
+     "pct": 3.75
+    }
+   ],
+   "gender": [
+    {
+     "gender": "男性",
+     "pct": 16.27
+    },
+    {
+     "gender": "女性",
+     "pct": 83.73
+    }
+   ],
+   "prefer": "喜欢随拍、明星八卦、二次元视频居多",
+   "nReviews": 96,
+   "rateBad": 3.12,
+   "source": "飞瓜商品详情页·受众画像（gid=kvZ2mO7BdMF5）",
+   "fetchDate": "2026-09-28"
+  },
+  {
+   "brand": "C咖",
+   "title": "【酶油黑头】C咖双酶小气泡洁面慕斯泡沫氨基酸洗面奶清洁控油敏肌",
+   "isSelf": false,
+   "summary": "女性最多，占74.95%；年龄集中分布在31-40，占比52.86%；地域集中在江苏、广东、浙江，占比21.61%；",
+   "femalePct": 74.95,
+   "ageRange": "31-40",
+   "agePct": 52.86,
+   "regionTop3": [
+    "江苏",
+    "广东",
+    "浙江"
+   ],
+   "regions": [
+    {
+     "region": "江苏",
+     "pct": 7.77
+    },
+    {
+     "region": "广东",
+     "pct": 7.55
+    },
+    {
+     "region": "浙江",
+     "pct": 6.29
+    },
+    {
+     "region": "河南",
+     "pct": 5.98
+    },
+    {
+     "region": "山东",
+     "pct": 5.33
+    },
+    {
+     "region": "四川",
+     "pct": 5.24
+    },
+    {
+     "region": "河北",
+     "pct": 5.15
+    },
+    {
+     "region": "北京",
+     "pct": 5.15
+    },
+    {
+     "region": "安徽",
+     "pct": 4.15
+    },
+    {
+     "region": "陕西",
+     "pct": 4.1
+    }
+   ],
+   "gender": [
+    {
+     "gender": "男性",
+     "pct": 25.05
+    },
+    {
+     "gender": "女性",
+     "pct": 74.95
+    }
+   ],
+   "prefer": "喜欢随拍、明星八卦、亲子视频居多",
+   "nReviews": 161,
+   "rateBad": 5.59,
+   "source": "飞瓜商品详情页·受众画像（gid=kvZ2K4gn5mI5）",
+   "fetchDate": "2026-09-28"
+  },
+  {
+   "brand": "C咖",
+   "title": "【老爸抽检】C咖双管洗面奶氨基酸白泥控油卸妆清黑头抛光毛孔男女",
+   "isSelf": false,
+   "summary": "女性最多，占73.86%；年龄集中分布在31-40，占比49.52%；地域集中在广东、河南、河北，占比26.18%；",
+   "femalePct": 73.86,
+   "ageRange": "31-40",
+   "agePct": 49.52,
+   "regionTop3": [
+    "广东",
+    "河南",
+    "河北"
+   ],
+   "regions": [
+    {
+     "region": "广东",
+     "pct": 9.95
+    },
+    {
+     "region": "河南",
+     "pct": 8.73
+    },
+    {
+     "region": "河北",
+     "pct": 7.5
+    },
+    {
+     "region": "江苏",
+     "pct": 6.81
+    },
+    {
+     "region": "山东",
+     "pct": 6.2
+    },
+    {
+     "region": "浙江",
+     "pct": 5.05
+    },
+    {
+     "region": "四川",
+     "pct": 4.9
+    },
+    {
+     "region": "安徽",
+     "pct": 4.36
+    },
+    {
+     "region": "湖南",
+     "pct": 3.68
+    },
+    {
+     "region": "云南",
+     "pct": 3.52
+    }
+   ],
+   "gender": [
+    {
+     "gender": "男性",
+     "pct": 26.14
+    },
+    {
+     "gender": "女性",
+     "pct": 73.86
+    }
+   ],
+   "prefer": "喜欢随拍、明星八卦、亲子视频居多",
+   "nReviews": 422,
+   "rateBad": 3.79,
+   "source": "飞瓜商品详情页·受众画像（gid=2ZnEApdmvlIX）",
+   "fetchDate": "2026-09-28"
+  },
+  {
+   "brand": "植祛",
+   "title": "【祛痘控油洗面奶】植祛氨基酸祛痘洁面乳油皮舒缓保湿水杨酸不紧绷",
+   "isSelf": false,
+   "summary": "女性最多，占70.99%；年龄集中分布在31-40，占比52.72%；地域集中在河南、广东、山东，占比25.42%；",
+   "femalePct": 70.99,
+   "ageRange": "31-40",
+   "agePct": 52.72,
+   "regionTop3": [
+    "河南",
+    "广东",
+    "山东"
+   ],
+   "regions": [
+    {
+     "region": "河南",
+     "pct": 9.41
+    },
+    {
+     "region": "广东",
+     "pct": 8.45
+    },
+    {
+     "region": "山东",
+     "pct": 7.56
+    },
+    {
+     "region": "河北",
+     "pct": 6.29
+    },
+    {
+     "region": "四川",
+     "pct": 5.86
+    },
+    {
+     "region": "江苏",
+     "pct": 5.86
+    },
+    {
+     "region": "安徽",
+     "pct": 5.09
+    },
+    {
+     "region": "贵州",
+     "pct": 4.7
+    },
+    {
+     "region": "浙江",
+     "pct": 4.4
+    },
+    {
+     "region": "云南",
+     "pct": 4.36
+    }
+   ],
+   "gender": [
+    {
+     "gender": "男性",
+     "pct": 29.01
+    },
+    {
+     "gender": "女性",
+     "pct": 70.99
+    }
+   ],
+   "prefer": "喜欢随拍、人文社科、亲子视频居多",
+   "nReviews": 2223,
+   "rateBad": 4.68,
+   "source": "飞瓜商品详情页·受众画像（gid=1ZWYz6dZ4AIj）",
+   "fetchDate": "2026-09-28"
+  },
+  {
+   "brand": "依蜜蔻",
+   "title": "依蜜蔻氨基酸润肤净颜洁面乳120g*2【9周年】男女控油 清爽不紧绷",
+   "isSelf": false,
+   "summary": "女性最多，占58.35%；年龄集中分布在31-40，占比61.6%；地域集中在广东、广西、海南，占比83.06%；",
+   "femalePct": 58.35,
+   "ageRange": "31-40",
+   "agePct": 61.6,
+   "regionTop3": [
+    "广东",
+    "广西",
+    "海南"
+   ],
+   "regions": [
+    {
+     "region": "广东",
+     "pct": 40.17
+    },
+    {
+     "region": "广西",
+     "pct": 39.8
+    },
+    {
+     "region": "海南",
+     "pct": 3.09
+    },
+    {
+     "region": "湖南",
+     "pct": 2.72
+    },
+    {
+     "region": "贵州",
+     "pct": 1.85
+    },
+    {
+     "region": "福建",
+     "pct": 1.85
+    },
+    {
+     "region": "浙江",
+     "pct": 1.24
+    },
+    {
+     "region": "云南",
+     "pct": 1.24
+    },
+    {
+     "region": "江西",
+     "pct": 1.11
+    },
+    {
+     "region": "江苏",
+     "pct": 0.99
+    }
+   ],
+   "gender": [
+    {
+     "gender": "男性",
+     "pct": 41.65
+    },
+    {
+     "gender": "女性",
+     "pct": 58.35
+    }
+   ],
+   "prefer": "喜欢随拍、亲子、个人管理视频居多",
+   "nReviews": 1,
+   "rateBad": 0.0,
+   "source": "飞瓜商品详情页·受众画像（gid=KdW6e34oQpIj）",
+   "fetchDate": "2026-09-28"
+  },
+  {
+   "brand": "至本",
+   "title": "至本舒颜修护洁面乳 温和清洁泡沫绵密氨基酸表活舒缓洁净洗面奶",
+   "isSelf": false,
+   "summary": "女性最多，占54.65%；年龄集中分布在24-30，占比40.59%；地域集中在河南、山东、广东，占比24.88%；",
+   "femalePct": 54.65,
+   "ageRange": "24-30",
+   "agePct": 40.59,
+   "regionTop3": [
+    "河南",
+    "山东",
+    "广东"
+   ],
+   "regions": [
+    {
+     "region": "河南",
+     "pct": 9.56
+    },
+    {
+     "region": "山东",
+     "pct": 7.89
+    },
+    {
+     "region": "广东",
+     "pct": 7.43
+    },
+    {
+     "region": "江苏",
+     "pct": 6.34
+    },
+    {
+     "region": "河北",
+     "pct": 6.01
+    },
+    {
+     "region": "浙江",
+     "pct": 5.55
+    },
+    {
+     "region": "四川",
+     "pct": 5.18
+    },
+    {
+     "region": "安徽",
+     "pct": 4.84
+    },
+    {
+     "region": "湖南",
+     "pct": 3.51
+    },
+    {
+     "region": "云南",
+     "pct": 3.38
+    }
+   ],
+   "gender": [
+    {
+     "gender": "男性",
+     "pct": 45.35
+    },
+    {
+     "gender": "女性",
+     "pct": 54.65
+    }
+   ],
+   "prefer": "喜欢随拍、游戏、二次元视频居多",
+   "nReviews": 609,
+   "rateBad": 4.27,
+   "source": "飞瓜商品详情页·受众画像（gid=JZkMgGDl9mCY）",
+   "fetchDate": "2026-09-28"
+  },
+  {
+   "brand": "L'OREAL /欧莱雅",
+   "title": "【双11抢先购】欧莱雅全新欧莱雅复颜燕窝酸水乳霜洁面套装抗皱紧致",
+   "isSelf": false,
+   "summary": "女性最多，占54.14%；年龄集中分布在31-40，占比40.06%；地域集中在江苏、山东、河南，占比22.57%；",
+   "femalePct": 54.14,
+   "ageRange": "31-40",
+   "agePct": 40.06,
+   "regionTop3": [
+    "江苏",
+    "山东",
+    "河南"
+   ],
+   "regions": [
+    {
+     "region": "江苏",
+     "pct": 9.22
+    },
+    {
+     "region": "山东",
+     "pct": 7.64
+    },
+    {
+     "region": "河南",
+     "pct": 5.71
+    },
+    {
+     "region": "四川",
+     "pct": 5.33
+    },
+    {
+     "region": "广东",
+     "pct": 5.25
+    },
+    {
+     "region": "北京",
+     "pct": 5.13
+    },
+    {
+     "region": "辽宁",
+     "pct": 5.09
+    },
+    {
+     "region": "浙江",
+     "pct": 4.98
+    },
+    {
+     "region": "河北",
+     "pct": 4.82
+    },
+    {
+     "region": "安徽",
+     "pct": 4.59
+    }
+   ],
+   "gender": [
+    {
+     "gender": "男性",
+     "pct": 45.86
+    },
+    {
+     "gender": "女性",
+     "pct": 54.14
+    }
+   ],
+   "prefer": "喜欢随拍、明星八卦、萌宠视频居多",
+   "nReviews": 102,
+   "rateBad": 19.61,
+   "source": "飞瓜商品详情页·受众画像（gid=ywAnYkg8Z7in）",
+   "fetchDate": "2026-09-28"
+  },
+  {
+   "brand": "EIIO/奕沃",
+   "title": "【黄子韬同款】eiio奕沃好气色洁面乳抛光焕亮保湿控油抗氧洗面奶",
+   "isSelf": false,
+   "summary": "女性最多，占42.44%；年龄集中分布在31-40，占比55.54%；地域集中在江苏、四川、山东，占比20.69%；",
+   "femalePct": 42.44,
+   "ageRange": "31-40",
+   "agePct": 55.54,
+   "regionTop3": [
+    "江苏",
+    "四川",
+    "山东"
+   ],
+   "regions": [
+    {
+     "region": "江苏",
+     "pct": 7.02
+    },
+    {
+     "region": "四川",
+     "pct": 6.92
+    },
+    {
+     "region": "山东",
+     "pct": 6.75
+    },
+    {
+     "region": "广东",
+     "pct": 6.23
+    },
+    {
+     "region": "河南",
+     "pct": 5.86
+    },
+    {
+     "region": "河北",
+     "pct": 5.75
+    },
+    {
+     "region": "辽宁",
+     "pct": 4.83
+    },
+    {
+     "region": "重庆",
+     "pct": 4.52
+    },
+    {
+     "region": "浙江",
+     "pct": 4.35
+    },
+    {
+     "region": "安徽",
+     "pct": 4.35
+    }
+   ],
+   "gender": [
+    {
+     "gender": "男性",
+     "pct": 57.56
+    },
+    {
+     "gender": "女性",
+     "pct": 42.44
+    }
+   ],
+   "prefer": "喜欢随拍、个人管理、游戏视频居多",
+   "nReviews": 1754,
+   "rateBad": 20.58,
+   "source": "飞瓜商品详情页·受众画像（gid=EMKO758L78sB）",
+   "fetchDate": "2026-09-28"
+  },
+  {
+   "brand": "BUV",
+   "title": "【蔡徐坤代言】BUV绿泥洗面奶控油深层清洁细腻毛孔去闭口男女通用",
+   "isSelf": false,
+   "summary": "女性最多，占40.2%；年龄集中分布在31-40，占比39.48%；地域集中在广东、河南、江苏，占比24.98%；",
+   "femalePct": 40.2,
+   "ageRange": "31-40",
+   "agePct": 39.48,
+   "regionTop3": [
+    "广东",
+    "河南",
+    "江苏"
+   ],
+   "regions": [
+    {
+     "region": "广东",
+     "pct": 9.86
+    },
+    {
+     "region": "河南",
+     "pct": 8.05
+    },
+    {
+     "region": "江苏",
+     "pct": 7.07
+    },
+    {
+     "region": "四川",
+     "pct": 6.56
+    },
+    {
+     "region": "山东",
+     "pct": 6.36
+    },
+    {
+     "region": "浙江",
+     "pct": 5.18
+    },
+    {
+     "region": "河北",
+     "pct": 4.99
+    },
+    {
+     "region": "贵州",
+     "pct": 4.12
+    },
+    {
+     "region": "云南",
+     "pct": 4.05
+    },
+    {
+     "region": "安徽",
+     "pct": 3.85
+    }
+   ],
+   "gender": [
+    {
+     "gender": "男性",
+     "pct": 59.8
+    },
+    {
+     "gender": "女性",
+     "pct": 40.2
+    }
+   ],
+   "prefer": "喜欢随拍、游戏、二次元视频居多",
+   "nReviews": 4119,
+   "rateBad": 16.14,
+   "source": "飞瓜商品详情页·受众画像（gid=5Zm46Jm7X1c2）",
+   "fetchDate": "2026-09-28"
+  },
+  {
+   "brand": "倾颜",
+   "title": "【3.0重磅升级 官方正品】倾颜氨基酸净澈洁面慕斯控油祛痘深层清洁",
+   "isSelf": false,
+   "summary": "女性最多，占26.29%；年龄集中分布在31-40，占比51.81%；地域集中在广东、江苏、浙江，占比24.35%；",
+   "femalePct": 26.29,
+   "ageRange": "31-40",
+   "agePct": 51.81,
+   "regionTop3": [
+    "广东",
+    "江苏",
+    "浙江"
+   ],
+   "regions": [
+    {
+     "region": "广东",
+     "pct": 9.7
+    },
+    {
+     "region": "江苏",
+     "pct": 7.93
+    },
+    {
+     "region": "浙江",
+     "pct": 6.72
+    },
+    {
+     "region": "山东",
+     "pct": 5.91
+    },
+    {
+     "region": "河南",
+     "pct": 4.74
+    },
+    {
+     "region": "云南",
+     "pct": 4.64
+    },
+    {
+     "region": "四川",
+     "pct": 4.35
+    },
+    {
+     "region": "河北",
+     "pct": 4.28
+    },
+    {
+     "region": "安徽",
+     "pct": 4.21
+    },
+    {
+     "region": "贵州",
+     "pct": 3.82
+    }
+   ],
+   "gender": [
+    {
+     "gender": "男性",
+     "pct": 73.71
+    },
+    {
+     "gender": "女性",
+     "pct": 26.29
+    }
+   ],
+   "prefer": "喜欢随拍、人文社科、个人管理视频居多",
+   "nReviews": 447,
+   "rateBad": 10.74,
+   "source": "飞瓜商品详情页·受众画像（gid=LMqXEOg8ZGt5）",
+   "fetchDate": "2026-09-28"
+  },
+  {
+   "brand": "海洋至尊",
+   "title": "【欧豪同款】海洋至尊三棱镜洗面奶男士长效控油祛痘去黑头洁面露",
+   "isSelf": false,
+   "summary": "女性最多，占13.02%；年龄集中分布在24-30，占比36.88%；地域集中在广东、河南、山东，占比22.02%；",
+   "femalePct": 13.02,
+   "ageRange": "24-30",
+   "agePct": 36.88,
+   "regionTop3": [
+    "广东",
+    "河南",
+    "山东"
+   ],
+   "regions": [
+    {
+     "region": "广东",
+     "pct": 7.78
+    },
+    {
+     "region": "河南",
+     "pct": 7.65
+    },
+    {
+     "region": "山东",
+     "pct": 6.59
+    },
+    {
+     "region": "江苏",
+     "pct": 6.49
+    },
+    {
+     "region": "河北",
+     "pct": 6.1
+    },
+    {
+     "region": "浙江",
+     "pct": 4.78
+    },
+    {
+     "region": "安徽",
+     "pct": 4.52
+    },
+    {
+     "region": "四川",
+     "pct": 3.92
+    },
+    {
+     "region": "陕西",
+     "pct": 3.76
+    },
+    {
+     "region": "云南",
+     "pct": 3.53
+    }
+   ],
+   "gender": [
+    {
+     "gender": "男性",
+     "pct": 86.98
+    },
+    {
+     "gender": "女性",
+     "pct": 13.02
+    }
+   ],
+   "prefer": "喜欢随拍、游戏、二次元视频居多",
+   "nReviews": 4415,
+   "rateBad": 1.86,
+   "source": "飞瓜商品详情页·受众画像（gid=3Z6vJ46ryXud）",
+   "fetchDate": "2026-09-28"
+  },
+  {
+   "brand": "KANS/韩束",
+   "title": "【国庆狂欢购】韩束男士377小白泥洗面奶焕白净透美白控油保湿护肤",
+   "isSelf": false,
+   "summary": "女性最多，占5.59%；年龄集中分布在31-40，占比51.13%；地域集中在江苏、山东、广东，占比22.31%；",
+   "femalePct": 5.59,
+   "ageRange": "31-40",
+   "agePct": 51.13,
+   "regionTop3": [
+    "江苏",
+    "山东",
+    "广东"
+   ],
+   "regions": [
+    {
+     "region": "江苏",
+     "pct": 7.79
+    },
+    {
+     "region": "山东",
+     "pct": 7.39
+    },
+    {
+     "region": "广东",
+     "pct": 7.13
+    },
+    {
+     "region": "河南",
+     "pct": 6.3
+    },
+    {
+     "region": "四川",
+     "pct": 6.3
+    },
+    {
+     "region": "浙江",
+     "pct": 4.77
+    },
+    {
+     "region": "安徽",
+     "pct": 4.67
+    },
+    {
+     "region": "云南",
+     "pct": 4.24
+    },
+    {
+     "region": "河北",
+     "pct": 4.21
+    },
+    {
+     "region": "北京",
+     "pct": 3.51
+    }
+   ],
+   "gender": [
+    {
+     "gender": "男性",
+     "pct": 94.41
+    },
+    {
+     "gender": "女性",
+     "pct": 5.59
+    }
+   ],
+   "prefer": "喜欢随拍、游戏、二次元视频居多",
+   "nReviews": 3525,
+   "rateBad": 6.3,
+   "source": "飞瓜商品详情页·受众画像（gid=7ZMpzlxL68ux）",
+   "fetchDate": "2026-09-28"
+  }
+ ],
+ "insights": [
+  {
+   "text": "品类女性占比均值 72.4%（区间 5.6% ~ 99.6%，26 个商品）",
+   "evidence": "飞瓜受众画像·性别分布（各商品详情页）"
+  },
+  {
+   "text": "主力人群年龄段分布：31-40（20 个商品）、24-30（6 个商品）",
+   "evidence": "飞瓜受众画像·年龄分布（各商品详情页）"
+  },
+  {
+   "text": "高频地域 TOP5：江苏（22 个商品）、河南（22 个商品）、广东（22 个商品）、山东（20 个商品）、四川（11 个商品）",
+   "evidence": "飞瓜受众画像·地域分布（各商品详情页）"
+  },
+  {
+   "text": "高频内容偏好 TOP5：随拍（25 个商品）、个人管理（16 个商品）、亲子（15 个商品）、游戏（12 个商品）、明星八卦（11 个商品）",
+   "evidence": "飞瓜受众画像·视频喜好（各商品详情页）"
+  },
+  {
+   "text": "商品评价差评率均值 7.27%（区间 0.00% ~ 20.58%，26 个商品）",
+   "evidence": "飞瓜商品详情页·商品评价（好评/中评/差评计数）"
+  }
+ ],
+ "source": "飞瓜商品详情页 → 受众画像 Tab（消费者画像）"
+}

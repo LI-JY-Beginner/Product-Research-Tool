@@ -1,0 +1,32 @@
+{
+ "corpusTotal": 1317,
+ "corpusFeigua": 868,
+ "corpusXhs": 449,
+ "noteCount": 115,
+ "fgSpuCount": 24,
+ "productCount": 24,
+ "brandCount": 18,
+ "detailCount": 26,
+ "reviewCount": 868,
+ "negCount": 168,
+ "filteredCount": 5,
+ "dataRange": {
+  "start": "2024-10-29",
+  "end": "2026-09-28"
+ },
+ "coreRange": {
+  "start": "2026-09-14",
+  "end": "2026-09-28"
+ },
+ "dataRangeNote": "飞瓜商品评价取全部历史评价中命中舆情词云高频词的原话；小红书为本次搜索结果（笔记+评论）",
+ "sources": [
+  {
+   "name": "飞瓜",
+   "detail": "洁面/洗面奶商品榜 TOP30 → 商品详情页「商品评价」原话（24 个商品，逐商品按舆情词云高频词定向抽取）"
+  },
+  {
+   "name": "小红书",
+   "detail": "洁面/洗面奶 20 组关键词搜索 → 笔记正文 + 评论，已过 R1-R12 水军过滤"
+  }
+ ]
+}

@@ -1,34 +1,29 @@
 {
- "generatedAt": "2026-09-27",
+ "generatedAt": "2026-09-28",
  "sentimentDist": [
   {
    "name": "好评",
-   "value": 16521
+   "value": 14877
   },
   {
    "name": "中评",
-   "value": 290
+   "value": 291
   },
   {
    "name": "差评",
-   "value": 676
+   "value": 700
   }
  ],
  "cloud": [
   {
    "word": "滋润",
-   "count": 30,
+   "count": 35,
    "polarity": "good",
    "sensitive": false
   },
   {
-   "word": "黑眼圈",
-   "count": 19,
-   "polarity": "good"
-  },
-  {
    "word": "吸收",
-   "count": 18,
+   "count": 20,
    "polarity": "good",
    "sensitive": false
   },
@@ -39,26 +34,31 @@
    "sensitive": false
   },
   {
+   "word": "脂肪粒",
+   "count": 16,
+   "polarity": "good"
+  },
+  {
+   "word": "方便",
+   "count": 15,
+   "polarity": "good",
+   "sensitive": false
+  },
+  {
    "word": "眼下",
    "count": 15,
    "polarity": "good"
   },
   {
-   "word": "油",
-   "count": 13,
-   "polarity": "bad",
-   "sensitive": false
-  },
-  {
-   "word": "性价比",
-   "count": 11,
-   "polarity": "good",
-   "sensitive": false
-  },
-  {
    "word": "不油腻",
-   "count": 10,
+   "count": 14,
    "polarity": "good",
+   "sensitive": false
+  },
+  {
+   "word": "油",
+   "count": 12,
+   "polarity": "bad",
    "sensitive": false
   },
   {
@@ -67,37 +67,25 @@
    "polarity": "good"
   },
   {
-   "word": "方便",
-   "count": 9,
-   "polarity": "good",
-   "sensitive": false
-  },
-  {
-   "word": "成分",
-   "count": 8,
-   "polarity": "good",
-   "sensitive": false
-  },
-  {
    "word": "保湿",
    "count": 8,
    "polarity": "good",
    "sensitive": false
   },
   {
-   "word": "骗人",
+   "word": "性价比",
    "count": 8,
-   "polarity": "bad",
-   "sensitive": false
-  },
-  {
-   "word": "紧致",
-   "count": 7,
    "polarity": "good",
    "sensitive": false
   },
   {
-   "word": "智商税",
+   "word": "滚珠",
+   "count": 8,
+   "polarity": "good",
+   "sensitive": false
+  },
+  {
+   "word": "肿",
    "count": 7,
    "polarity": "bad",
    "sensitive": false
@@ -108,33 +96,50 @@
    "polarity": "good"
   },
   {
-   "word": "安全",
+   "word": "脂肪粒",
+   "count": 7,
+   "polarity": "bad"
+  },
+  {
+   "word": "细纹",
    "count": 6,
+   "polarity": "good",
+   "sensitive": false
+  },
+  {
+   "word": "价格",
+   "count": 6,
+   "polarity": "good",
+   "sensitive": false
+  },
+  {
+   "word": "紧致",
+   "count": 6,
+   "polarity": "good",
+   "sensitive": false
+  },
+  {
+   "word": "过敏",
+   "count": 6,
+   "polarity": "bad",
+   "sensitive": false
+  },
+  {
+   "word": "成分",
+   "count": 5,
    "polarity": "good",
    "sensitive": false
   },
   {
    "word": "按摩",
-   "count": 6,
-   "polarity": "good",
-   "sensitive": false
-  },
-  {
-   "word": "使用便捷",
-   "count": 6,
-   "polarity": "good",
-   "sensitive": false
-  },
-  {
-   "word": "细纹",
    "count": 5,
    "polarity": "good",
    "sensitive": false
   },
   {
-   "word": "外观设计",
+   "word": "油腻",
    "count": 5,
-   "polarity": "good",
+   "polarity": "bad",
    "sensitive": false
   },
   {
@@ -143,25 +148,13 @@
    "polarity": "bad"
   },
   {
-   "word": "抗皱",
-   "count": 4,
-   "polarity": "good",
-   "sensitive": true
-  },
-  {
-   "word": "价格",
-   "count": 4,
-   "polarity": "good",
-   "sensitive": false
-  },
-  {
-   "word": "眼纹",
-   "count": 4,
-   "polarity": "good",
-   "sensitive": false
-  },
-  {
    "word": "清爽",
+   "count": 4,
+   "polarity": "good",
+   "sensitive": false
+  },
+  {
+   "word": "实惠",
    "count": 4,
    "polarity": "good",
    "sensitive": false
@@ -173,13 +166,7 @@
    "sensitive": false
   },
   {
-   "word": "肿",
-   "count": 4,
-   "polarity": "bad",
-   "sensitive": false
-  },
-  {
-   "word": "过敏",
+   "word": "智商税",
    "count": 4,
    "polarity": "bad",
    "sensitive": false
@@ -191,39 +178,45 @@
    "sensitive": false
   },
   {
-   "word": "没有效果",
-   "count": 4,
-   "polarity": "bad",
-   "sensitive": false
-  },
-  {
-   "word": "味道",
-   "count": 4,
-   "polarity": "bad",
-   "sensitive": false
-  },
-  {
    "word": "价廉",
    "count": 3,
    "polarity": "good",
    "sensitive": false
   },
   {
-   "word": "水润",
+   "word": "外观设计",
    "count": 3,
    "polarity": "good",
    "sensitive": false
   },
   {
-   "word": "实惠",
+   "word": "安全",
    "count": 3,
    "polarity": "good",
    "sensitive": false
   },
   {
-   "word": "滚珠",
+   "word": "使用便捷",
    "count": 3,
    "polarity": "good",
+   "sensitive": false
+  },
+  {
+   "word": "物超所值",
+   "count": 3,
+   "polarity": "good",
+   "sensitive": false
+  },
+  {
+   "word": "骗人",
+   "count": 3,
+   "polarity": "bad",
+   "sensitive": false
+  },
+  {
+   "word": "味道",
+   "count": 3,
+   "polarity": "bad",
    "sensitive": false
   },
   {
@@ -253,22 +246,52 @@
    "polarity": "good"
   },
   {
+   "word": "抗皱",
+   "count": 2,
+   "polarity": "good",
+   "sensitive": true
+  },
+  {
+   "word": "小巧",
+   "count": 2,
+   "polarity": "good",
+   "sensitive": false
+  },
+  {
+   "word": "温和",
+   "count": 2,
+   "polarity": "good",
+   "sensitive": false
+  },
+  {
+   "word": "冰冰凉凉",
+   "count": 2,
+   "polarity": "good",
+   "sensitive": false
+  },
+  {
+   "word": "水润",
+   "count": 2,
+   "polarity": "good",
+   "sensitive": false
+  },
+  {
+   "word": "不过敏",
+   "count": 2,
+   "polarity": "good",
+   "sensitive": false
+  },
+  {
    "word": "不贵",
    "count": 2,
    "polarity": "good",
    "sensitive": false
   },
   {
-   "word": "润滑",
+   "word": "黑眼圈",
    "count": 2,
    "polarity": "good",
    "sensitive": false
-  },
-  {
-   "word": "淡纹",
-   "count": 2,
-   "polarity": "good",
-   "sensitive": true
   },
   {
    "word": "敏感肌",
@@ -277,37 +300,13 @@
    "sensitive": false
   },
   {
-   "word": "划算",
-   "count": 2,
-   "polarity": "good",
-   "sensitive": false
-  },
-  {
-   "word": "物超所值",
-   "count": 2,
-   "polarity": "good",
-   "sensitive": false
-  },
-  {
-   "word": "便宜",
-   "count": 2,
-   "polarity": "good",
-   "sensitive": false
-  },
-  {
-   "word": "脂肪粒",
+   "word": "刺痛",
    "count": 2,
    "polarity": "bad",
    "sensitive": false
   },
   {
-   "word": "刺激",
-   "count": 2,
-   "polarity": "bad",
-   "sensitive": false
-  },
-  {
-   "word": "干",
+   "word": "红肿",
    "count": 2,
    "polarity": "bad",
    "sensitive": false
@@ -323,19 +322,18 @@
    "polarity": "bad"
   },
   {
-   "word": "刺痛",
+   "word": "辣眼睛",
+   "count": 2,
+   "polarity": "bad"
+  },
+  {
+   "word": "卡粉",
    "count": 1,
    "polarity": "bad",
    "sensitive": false
   },
   {
-   "word": "红肿",
-   "count": 1,
-   "polarity": "bad",
-   "sensitive": false
-  },
-  {
-   "word": "闷",
+   "word": "搓泥",
    "count": 1,
    "polarity": "bad",
    "sensitive": false
@@ -344,84 +342,84 @@
  "goodWords": [
   {
    "word": "滋润",
-   "count": 30
+   "count": 35
   },
   {
    "word": "吸收",
-   "count": 18
+   "count": 20
   },
   {
    "word": "包装",
    "count": 16
   },
   {
-   "word": "性价比",
-   "count": 11
+   "word": "方便",
+   "count": 15
   },
   {
    "word": "不油腻",
-   "count": 10
-  },
-  {
-   "word": "方便",
-   "count": 9
-  },
-  {
-   "word": "成分",
-   "count": 8
+   "count": 14
   },
   {
    "word": "保湿",
    "count": 8
   },
   {
-   "word": "紧致",
-   "count": 7
+   "word": "性价比",
+   "count": 8
   },
   {
-   "word": "安全",
-   "count": 6
-  },
-  {
-   "word": "按摩",
-   "count": 6
-  },
-  {
-   "word": "使用便捷",
-   "count": 6
+   "word": "滚珠",
+   "count": 8
   },
   {
    "word": "细纹",
+   "count": 6
+  },
+  {
+   "word": "价格",
+   "count": 6
+  },
+  {
+   "word": "紧致",
+   "count": 6
+  },
+  {
+   "word": "成分",
    "count": 5
   },
   {
-   "word": "外观设计",
+   "word": "按摩",
    "count": 5
   },
   {
-   "word": "抗皱",
+   "word": "清爽",
+   "count": 4
+  },
+  {
+   "word": "实惠",
    "count": 4
   }
  ],
  "badWords": [
   {
    "word": "油",
-   "count": 13
-  },
-  {
-   "word": "骗人",
-   "count": 8
-  },
-  {
-   "word": "智商税",
-   "count": 7
+   "count": 12
   },
   {
    "word": "肿",
-   "count": 4
+   "count": 7
   },
   {
    "word": "过敏",
+   "count": 6
+  },
+  {
+   "word": "油腻",
+   "count": 5
+  },
+  {
+   "word": "智商税",
    "count": 4
   },
   {
@@ -429,67 +427,67 @@
    "count": 4
   },
   {
-   "word": "没有效果",
-   "count": 4
+   "word": "骗人",
+   "count": 3
   },
   {
    "word": "味道",
-   "count": 4
+   "count": 3
   },
   {
    "word": "没用",
    "count": 3
   },
   {
-   "word": "脂肪粒",
-   "count": 2
-  },
-  {
-   "word": "刺激",
-   "count": 2
-  },
-  {
-   "word": "干",
-   "count": 2
-  },
-  {
    "word": "刺痛",
-   "count": 1
+   "count": 2
   },
   {
    "word": "红肿",
+   "count": 2
+  },
+  {
+   "word": "卡粉",
+   "count": 1
+  },
+  {
+   "word": "搓泥",
    "count": 1
   },
   {
    "word": "闷",
+   "count": 1
+  },
+  {
+   "word": "难闻",
    "count": 1
   }
  ],
  "decision": [
   {
    "criterion": "质地体验",
-   "weight": 69,
-   "pct": 34.8
+   "weight": 81,
+   "pct": 39.1
   },
   {
    "criterion": "设计便捷",
-   "weight": 46,
-   "pct": 23.2
+   "weight": 52,
+   "pct": 25.1
   },
   {
    "criterion": "功效",
-   "weight": 37,
-   "pct": 18.7
+   "weight": 30,
+   "pct": 14.5
   },
   {
    "criterion": "价格",
-   "weight": 29,
-   "pct": 14.6
+   "weight": 30,
+   "pct": 14.5
   },
   {
    "criterion": "成分安全",
-   "weight": 17,
-   "pct": 8.6
+   "weight": 14,
+   "pct": 6.8
   }
  ],
  "source": "飞瓜商品评价（情感分布+舆情词云）+ 小红书笔记与评论高频词"

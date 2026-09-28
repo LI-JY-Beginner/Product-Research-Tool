@@ -14,6 +14,29 @@ DATA = os.path.join(BASE, "data")
 RAW = os.path.join(BASE, "raw")
 TODAY = datetime.now().strftime("%Y-%m-%d")
 
+
+def guess_brand_from_title(title, shop=""):
+    """详情页「品牌」字段缺失时从标题兜底提品牌。
+    只在**已知是真眼部商品**时使用（调用方已按类目过滤）。
+    标题惯例「【营销词】品牌+产品名」：先剥营销括号，再匹配开头的英文名或 2-4 字中文名。
+    匹配到「眼油霜人参胶」这类明显是产品描述的开头时返回空串，宁缺毋滥，
+    绝不返回 "—" 之类的占位符。"""
+    t = re.sub(r"^[【\[].*?[】\]]", "", (title or "").strip())
+    t = re.sub(r"^[（(].*?[)）]", "", t).strip()
+    # 英文品牌
+    me = re.match(r"^([A-Za-z][A-Za-z0-9'\-\.]{1,18})(?![a-z])", t)
+    if me:
+        return me.group(1).strip()
+    # 中文品牌：2-4 字，且不能是「产品词」开头
+    mc = re.match(r"^([\u4e00-\u9fa5]{2,4})", t)
+    if not mc:
+        return ""
+    cand = mc.group(1)
+    if re.search(r"眼|霜|油|精华|面部|抗皱|补水|紧致|润养|淡纹|男女|肌肤|官方|正品|全新|升级|补贴|代言", cand):
+        return ""
+    return cand
+
+
 # ===== 统一需求桶（飞瓜 + 小红书共用一套）=====
 NEED_BUCKETS = [
     ("功效诉求（淡纹/抗老/黑眼圈）",
@@ -104,14 +127,46 @@ def pick_quotes(quotes, limit=4):
     return out
 
 
+def load_gid_brand_map():
+    """从 top10.json 建 gid → 品牌 的权威映射。
+    详情页「品牌」字段缺失时优先用它兜底（top10 的品牌名是榜单口径的正名，
+    比从标题正则猜准得多：实测标题猜会得到「优时颜第」「雏菊的天」这类截断名）。"""
+    mp = {}
+    fp = os.path.join(DATA, "top10.json")
+    if os.path.exists(fp):
+        try:
+            for it in json.load(open(fp, encoding="utf-8")).get("items", []):
+                b = (it.get("brand") or "").strip()
+                for sp in it.get("spus", []):
+                    g = sp.get("gid")
+                    if g and b:
+                        mp[g] = b
+        except Exception:
+            pass
+    return mp
+
+
 def load_corpus():
-    """返回 [(text, source_tag)]"""
+    """返回 [(text, source_tag, brand)]"""
     items = []
+    gid_brand = load_gid_brand_map()
     dp = os.path.join(RAW, "feigua_details_all.json")
     if os.path.exists(dp):
         det = json.load(open(dp, encoding="utf-8"))["details"]
         for gid, d in det.items():
-            brand = (d.get("info", {}) or {}).get("brand") or "—"
+            info = d.get("info", {}) or {}
+            cate3 = (info.get("category3") or "").strip()
+            # ★ 先按类目剔除噪音：实测混入「眼油霜人参胶原玻色因以油入眼霜」（润林个护严选，
+            #   类目「身体乳/霜/贴/膏/油」），评价讲的是身体乳，整条必须剔除。
+            if cate3 and ("眼" not in cate3):
+                continue
+            # ★ 详情页「品牌」字段会缺失（实测 11 个商品里 2 个为空）。
+            #   以前直接 `or "—"` 会把字符串 "—" 当成真品牌名传下去，
+            #   导致语料来源显示成「飞瓜·—」、痛点品牌列表里多出一个「—」。
+            #   兜底顺序：详情页 brand → top10 的 gid→品牌 → 标题正则 → 留空（按无品牌处理）
+            brand = ((info.get("brand") or "").strip()
+                     or gid_brand.get(gid, "")
+                     or guess_brand_from_title(info.get("title", "")))
             for key in ("reviews", "negativeReviews"):
                 lst = d.get(key) or []
                 if isinstance(lst, dict): lst = lst.get("reviews", [])
@@ -139,8 +194,9 @@ def tally(corpus, buckets, skip_nonfixable=False, neg_guard=False):
             m = find_positive(t, pat) if neg_guard else re.search(pat, t)
             if m:
                 cnt[name] += 1; by_src[name][s] += 1
-                if b: brands[name].add(b)
-                quotes[name].append({"text": excerpt(t, m), "source": s + (f"·{b}" if b else "")})
+                if b and b != "—": brands[name].add(b)   # 空品牌不塞进品牌列表
+                quotes[name].append({"text": excerpt(t, m),
+                                     "source": s + (f"·{b}" if (b and b != "—") else "")})
                 break
     for k in quotes: quotes[k] = pick_quotes(quotes[k])
     return cnt, by_src, quotes, brands

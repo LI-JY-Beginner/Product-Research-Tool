@@ -1,0 +1,533 @@
+{
+ "generatedAt": "2026-09-28",
+ "sentimentDist": [
+  {
+   "name": "好评",
+   "value": 1149
+  },
+  {
+   "name": "差评",
+   "value": 168
+  }
+ ],
+ "cloud": [
+  {
+   "word": "洗完",
+   "count": 146,
+   "polarity": "good"
+  },
+  {
+   "word": "清洁力",
+   "count": 88,
+   "polarity": "good"
+  },
+  {
+   "word": "泡沫",
+   "count": 73,
+   "polarity": "good"
+  },
+  {
+   "word": "滋润",
+   "count": 54,
+   "polarity": "good"
+  },
+  {
+   "word": "清爽",
+   "count": 45,
+   "polarity": "good"
+  },
+  {
+   "word": "性价比",
+   "count": 41,
+   "polarity": "good"
+  },
+  {
+   "word": "控油",
+   "count": 40,
+   "polarity": "good"
+  },
+  {
+   "word": "舒服",
+   "count": 28,
+   "polarity": "good"
+  },
+  {
+   "word": "油皮",
+   "count": 25,
+   "polarity": "good"
+  },
+  {
+   "word": "香味",
+   "count": 22,
+   "polarity": "good"
+  },
+  {
+   "word": "氨基酸",
+   "count": 21,
+   "polarity": "good"
+  },
+  {
+   "word": "味道",
+   "count": 21,
+   "polarity": "good"
+  },
+  {
+   "word": "干皮",
+   "count": 20,
+   "polarity": "good"
+  },
+  {
+   "word": "毛孔",
+   "count": 18,
+   "polarity": "good"
+  },
+  {
+   "word": "滑",
+   "count": 18,
+   "polarity": "good"
+  },
+  {
+   "word": "洗后",
+   "count": 13,
+   "polarity": "good"
+  },
+  {
+   "word": "闭口",
+   "count": 13,
+   "polarity": "bad"
+  },
+  {
+   "word": "过敏",
+   "count": 13,
+   "polarity": "bad"
+  },
+  {
+   "word": "敏感肌",
+   "count": 12,
+   "polarity": "good"
+  },
+  {
+   "word": "黑头",
+   "count": 12,
+   "polarity": "good"
+  },
+  {
+   "word": "混油",
+   "count": 11,
+   "polarity": "good"
+  },
+  {
+   "word": "洗干净",
+   "count": 11,
+   "polarity": "good"
+  },
+  {
+   "word": "长痘",
+   "count": 11,
+   "polarity": "bad"
+  },
+  {
+   "word": "泛红",
+   "count": 11,
+   "polarity": "bad"
+  },
+  {
+   "word": "洗不干净",
+   "count": 11,
+   "polarity": "bad"
+  },
+  {
+   "word": "紧绷",
+   "count": 11,
+   "polarity": "bad"
+  },
+  {
+   "word": "皂基",
+   "count": 9,
+   "polarity": "good"
+  },
+  {
+   "word": "痘痘",
+   "count": 9,
+   "polarity": "good"
+  },
+  {
+   "word": "成分",
+   "count": 9,
+   "polarity": "good"
+  },
+  {
+   "word": "很干",
+   "count": 9,
+   "polarity": "bad"
+  },
+  {
+   "word": "难闻",
+   "count": 9,
+   "polarity": "bad"
+  },
+  {
+   "word": "泡泡",
+   "count": 8,
+   "polarity": "good"
+  },
+  {
+   "word": "洗掉",
+   "count": 8,
+   "polarity": "good"
+  },
+  {
+   "word": "不干",
+   "count": 8,
+   "polarity": "good"
+  },
+  {
+   "word": "便宜",
+   "count": 8,
+   "polarity": "good"
+  },
+  {
+   "word": "痘肌",
+   "count": 8,
+   "polarity": "good"
+  },
+  {
+   "word": "去油",
+   "count": 8,
+   "polarity": "good"
+  },
+  {
+   "word": "拔干",
+   "count": 8,
+   "polarity": "bad"
+  },
+  {
+   "word": "起泡",
+   "count": 7,
+   "polarity": "good"
+  },
+  {
+   "word": "膏体",
+   "count": 5,
+   "polarity": "bad"
+  },
+  {
+   "word": "起皮",
+   "count": 5,
+   "polarity": "bad"
+  },
+  {
+   "word": "爆痘",
+   "count": 5,
+   "polarity": "bad"
+  },
+  {
+   "word": "假滑",
+   "count": 4,
+   "polarity": "bad"
+  },
+  {
+   "word": "刺鼻",
+   "count": 4,
+   "polarity": "bad"
+  },
+  {
+   "word": "没用",
+   "count": 3,
+   "polarity": "bad"
+  },
+  {
+   "word": "粉刺",
+   "count": 3,
+   "polarity": "bad"
+  },
+  {
+   "word": "脸干",
+   "count": 3,
+   "polarity": "bad"
+  },
+  {
+   "word": "屏障受损",
+   "count": 3,
+   "polarity": "bad"
+  },
+  {
+   "word": "烂脸",
+   "count": 3,
+   "polarity": "bad"
+  },
+  {
+   "word": "干燥",
+   "count": 2,
+   "polarity": "bad"
+  },
+  {
+   "word": "卸不干净",
+   "count": 2,
+   "polarity": "bad"
+  },
+  {
+   "word": "绷",
+   "count": 2,
+   "polarity": "bad"
+  },
+  {
+   "word": "不适",
+   "count": 2,
+   "polarity": "bad"
+  },
+  {
+   "word": "没洗干净",
+   "count": 2,
+   "polarity": "bad"
+  },
+  {
+   "word": "智商税",
+   "count": 2,
+   "polarity": "bad"
+  },
+  {
+   "word": "踩雷",
+   "count": 2,
+   "polarity": "bad"
+  }
+ ],
+ "goodWords": [
+  {
+   "word": "洗完",
+   "count": 146
+  },
+  {
+   "word": "清洁力",
+   "count": 88
+  },
+  {
+   "word": "泡沫",
+   "count": 73
+  },
+  {
+   "word": "滋润",
+   "count": 54
+  },
+  {
+   "word": "清爽",
+   "count": 45
+  },
+  {
+   "word": "性价比",
+   "count": 41
+  },
+  {
+   "word": "控油",
+   "count": 40
+  },
+  {
+   "word": "舒服",
+   "count": 28
+  },
+  {
+   "word": "油皮",
+   "count": 25
+  },
+  {
+   "word": "香味",
+   "count": 22
+  },
+  {
+   "word": "氨基酸",
+   "count": 21
+  },
+  {
+   "word": "味道",
+   "count": 21
+  },
+  {
+   "word": "干皮",
+   "count": 20
+  },
+  {
+   "word": "毛孔",
+   "count": 18
+  },
+  {
+   "word": "滑",
+   "count": 18
+  }
+ ],
+ "badWords": [
+  {
+   "word": "闭口",
+   "count": 13
+  },
+  {
+   "word": "过敏",
+   "count": 13
+  },
+  {
+   "word": "长痘",
+   "count": 11
+  },
+  {
+   "word": "泛红",
+   "count": 11
+  },
+  {
+   "word": "洗不干净",
+   "count": 11
+  },
+  {
+   "word": "紧绷",
+   "count": 11
+  },
+  {
+   "word": "很干",
+   "count": 9
+  },
+  {
+   "word": "难闻",
+   "count": 9
+  },
+  {
+   "word": "拔干",
+   "count": 8
+  },
+  {
+   "word": "膏体",
+   "count": 5
+  },
+  {
+   "word": "起皮",
+   "count": 5
+  },
+  {
+   "word": "爆痘",
+   "count": 5
+  },
+  {
+   "word": "假滑",
+   "count": 4
+  },
+  {
+   "word": "刺鼻",
+   "count": 4
+  },
+  {
+   "word": "没用",
+   "count": 3
+  }
+ ],
+ "decision": [
+  {
+   "criterion": "温和度（不紧绷）",
+   "weight": 432,
+   "pct": 40.3
+  },
+  {
+   "criterion": "清洁力",
+   "weight": 261,
+   "pct": 24.4
+  },
+  {
+   "criterion": "使用感（泡沫/香味）",
+   "weight": 125,
+   "pct": 11.7
+  },
+  {
+   "criterion": "肤质匹配",
+   "weight": 99,
+   "pct": 9.2
+  },
+  {
+   "criterion": "成分安全",
+   "weight": 88,
+   "pct": 8.2
+  },
+  {
+   "criterion": "功效（祛痘/去黑头）",
+   "weight": 35,
+   "pct": 3.3
+  },
+  {
+   "criterion": "价格",
+   "weight": 31,
+   "pct": 2.9
+  }
+ ],
+ "sentimentDistFeigua": [
+  {
+   "name": "好评",
+   "value": 22480,
+   "pct": 88.52
+  },
+  {
+   "name": "中评",
+   "value": 850,
+   "pct": 3.35
+  },
+  {
+   "name": "差评",
+   "value": 2064,
+   "pct": 8.13
+  }
+ ],
+ "corpus": {
+  "total": 1317,
+  "feigua": 868,
+  "xhs": 449
+ },
+ "source": "飞瓜商品评价原文（868 条，24 个商品）+ 小红书洁面/洗面奶笔记与评论（449 条）合并统计（好评=未命中痛点桶；差评=命中痛点桶且非否定语境）",
+ "quick": {
+  "goodTop": [
+   "洗完",
+   "清洁力",
+   "泡沫",
+   "滋润",
+   "清爽"
+  ],
+  "badTop": [
+   "闭口",
+   "过敏",
+   "长痘",
+   "泛红",
+   "洗不干净"
+  ],
+  "goodRate": 87.2,
+  "decision": [
+   {
+    "criterion": "温和度（不紧绷）",
+    "weight": 432,
+    "pct": 40.3
+   },
+   {
+    "criterion": "清洁力",
+    "weight": 261,
+    "pct": 24.4
+   },
+   {
+    "criterion": "使用感（泡沫/香味）",
+    "weight": 125,
+    "pct": 11.7
+   },
+   {
+    "criterion": "肤质匹配",
+    "weight": 99,
+    "pct": 9.2
+   },
+   {
+    "criterion": "成分安全",
+    "weight": 88,
+    "pct": 8.2
+   },
+   {
+    "criterion": "功效（祛痘/去黑头）",
+    "weight": 35,
+    "pct": 3.3
+   },
+   {
+    "criterion": "价格",
+    "weight": 31,
+    "pct": 2.9
+   }
+  ]
+ }
+}

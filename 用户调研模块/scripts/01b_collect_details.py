@@ -91,8 +91,19 @@ def parse_audience(txt):
     if m: out["summary"] = m.group(1).strip()
     m2 = re.search(r"内容偏好[：:]\s*([^\n]+)", txt)
     if m2: out["prefer"] = m2.group(1).strip()
-    ma = re.search(r"年龄集中分布在([^，,]+)[，,]\s*占比([\d.]+)%", txt)
+    ma = re.search(r"年龄集中分布在([^，,\n]+)[，,]\s*占比([\d.]+)%", txt)
     if ma: out["age"] = {"range": ma.group(1).strip(), "pct": float(ma.group(2))}
+    # ★ 兜底：飞瓜文案里「年龄集中分布在31-40， 占比51.35%」的分隔符有时是逗号+空格、
+    #   有时夹了换行，老正则要求紧跟逗号 → 解析成 None，但 summary 明明有值。
+    #   实测 9 行画像里 3 行（凌博士/雏菊的天空/白云山）因此丢了年龄。
+    #   这里再不依赖标点，直接从「年龄集中分布在」往后找第一个「X-Y岁/50+」+ 后面的百分比。
+    if not out.get("age"):
+        ma2 = re.search(
+            r"年龄[^\n]{0,20}?((?:\d{1,2}[-~—]\d{1,2})|(?:\d{1,2}\s*岁以下)|(?:50\+|55\+|60\+))"
+            r"[^\d%]{0,12}?([\d.]+)\s*%", txt)
+        if ma2:
+            out["age"] = {"range": ma2.group(1).strip().replace("~", "-").replace("—", "-"),
+                          "pct": float(ma2.group(2))}
     g = re.search(r"性别分布([\s\S]{0,260})", txt)
     if g:
         for mm in re.finditer(r"(男性|女性)\s*([\d.]+)%\s*\n?\s*TGI\s*([\d.]+)", g.group(1)):

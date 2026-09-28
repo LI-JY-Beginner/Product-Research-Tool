@@ -1,0 +1,366 @@
+{
+ "fetchDate": "2026-09-28",
+ "items": [
+  {
+   "brand": "BUV",
+   "isSelf": false,
+   "spuCount": 1,
+   "talent": 6922,
+   "video": 32000,
+   "live": 9815,
+   "salesTier": [
+    "100w+"
+   ],
+   "score": 16422.5,
+   "spus": [
+    {
+     "title": "【蔡徐坤代言】BUV绿泥洗面奶控油深层清洁细腻毛孔去闭口男女通用",
+     "gid": "5Zm46Jm7X1c28OnVZYV7I8rwdmr7zlhnd",
+     "sales": "100w+",
+     "talent": "6922",
+     "video": "3.2w",
+     "live": "9815"
+    }
+   ],
+   "reason": "达人6922 + 视频32000 + 直播9815",
+   "source": "飞瓜数据·商品榜（个护家清/关键词：洗面奶·洁面，近30天）；商品池共 64 个洁面商品（榜单扫描），其 TOP30 进详情页取准确指标",
+   "fetchDate": "2026-09-28",
+   "category": {
+    "L1": "个护家清",
+    "L2": "面部护理",
+    "L3": "洁面"
+   }
+  },
+  {
+   "brand": "CHANDO/自然堂",
+   "isSelf": false,
+   "spuCount": 1,
+   "talent": 2518,
+   "video": 6235,
+   "live": 5404,
+   "salesTier": [
+    "100w+"
+   ],
+   "score": 4540.4,
+   "spus": [
+    {
+     "title": "【双节同庆】自然堂洗面奶水润焕亮洁面洗卸合一不紧绷清洁控油",
+     "gid": "lGpMKBz7G9sALk7oGJXet3699lolKgikJ",
+     "sales": "100w+",
+     "talent": "2518",
+     "video": "6235",
+     "live": "5404"
+    }
+   ],
+   "reason": "达人2518 + 视频6235 + 直播5404",
+   "source": "飞瓜数据·商品榜（个护家清/关键词：洗面奶·洁面，近30天）；商品池共 64 个洁面商品（榜单扫描），其 TOP30 进详情页取准确指标",
+   "fetchDate": "2026-09-28",
+   "category": {
+    "L1": "个护家清",
+    "L2": "面部护理",
+    "L3": "洁面"
+   }
+  },
+  {
+   "brand": "海洋至尊",
+   "isSelf": false,
+   "spuCount": 1,
+   "talent": 2289,
+   "video": 7367,
+   "live": 2347,
+   "salesTier": [
+    "100w+"
+   ],
+   "score": 4080.8,
+   "spus": [
+    {
+     "title": "【欧豪同款】海洋至尊三棱镜洗面奶男士长效控油祛痘去黑头洁面露",
+     "gid": "3Z6vJ46ryXudyeJkDXmlc31VkB7ZL0h8x",
+     "sales": "100w+",
+     "talent": "2289",
+     "video": "7367",
+     "live": "2347"
+    }
+   ],
+   "reason": "达人2289 + 视频7367 + 直播2347",
+   "source": "飞瓜数据·商品榜（个护家清/关键词：洗面奶·洁面，近30天）；商品池共 64 个洁面商品（榜单扫描），其 TOP30 进详情页取准确指标",
+   "fetchDate": "2026-09-28",
+   "category": {
+    "L1": "个护家清",
+    "L2": "面部护理",
+    "L3": "洁面"
+   }
+  },
+  {
+   "brand": "EIIO/奕沃",
+   "isSelf": false,
+   "spuCount": 1,
+   "talent": 931,
+   "video": 3055,
+   "live": 518,
+   "salesTier": [
+    "100w+"
+   ],
+   "score": 1571.2,
+   "spus": [
+    {
+     "title": "【黄子韬同款】eiio奕沃好气色洁面乳抛光焕亮保湿控油抗氧洗面奶",
+     "gid": "EMKO758L78sBXgMQlKBRC4AKjZe0V1c3Y",
+     "sales": "100w+",
+     "talent": "931",
+     "video": "3055",
+     "live": "518"
+    }
+   ],
+   "reason": "达人931 + 视频3055 + 直播518",
+   "source": "飞瓜数据·商品榜（个护家清/关键词：洗面奶·洁面，近30天）；商品池共 64 个洁面商品（榜单扫描），其 TOP30 进详情页取准确指标",
+   "fetchDate": "2026-09-28",
+   "category": {
+    "L1": "个护家清",
+    "L2": "面部护理",
+    "L3": "洁面"
+   }
+  },
+  {
+   "brand": "KANS/韩束",
+   "isSelf": false,
+   "spuCount": 2,
+   "talent": 933,
+   "video": 2635,
+   "live": 765,
+   "salesTier": [
+    "100w+"
+   ],
+   "score": 1486.7,
+   "spus": [
+    {
+     "title": "【国庆狂欢购】韩束男士377小白泥洗面奶焕白净透美白控油保湿护肤",
+     "gid": "7ZMpzlxL68uxzjjeGpXZh17BjJ7wR9Tq4",
+     "sales": "100w+",
+     "talent": "544",
+     "video": "1454",
+     "live": "461"
+    },
+    {
+     "title": "【国庆大放价】韩束红蛮腰洁面控油洗面奶洗卸养三合一清洁毛孔",
+     "gid": "zyAzlV2JMRi5gEl2g2YMcG3zWm8wg5hx5",
+     "sales": "100w+",
+     "talent": "389",
+     "video": "1181",
+     "live": "304"
+    }
+   ],
+   "reason": "达人933 + 视频2635 + 直播765",
+   "source": "飞瓜数据·商品榜（个护家清/关键词：洗面奶·洁面，近30天）；商品池共 64 个洁面商品（榜单扫描），其 TOP30 进详情页取准确指标",
+   "fetchDate": "2026-09-28",
+   "category": {
+    "L1": "个护家清",
+    "L2": "面部护理",
+    "L3": "洁面"
+   }
+  },
+  {
+   "brand": "倾颜",
+   "isSelf": false,
+   "spuCount": 1,
+   "talent": 841,
+   "video": 2019,
+   "live": 943,
+   "salesTier": [
+    "100w+"
+   ],
+   "score": 1278.8,
+   "spus": [
+    {
+     "title": "【3.0重磅升级 官方正品】倾颜氨基酸净澈洁面慕斯控油祛痘深层清洁",
+     "gid": "LMqXEOg8ZGt5oy5gd1KlUBjW29yy43For",
+     "sales": "100w+",
+     "talent": "841",
+     "video": "2019",
+     "live": "943"
+    }
+   ],
+   "reason": "达人841 + 视频2019 + 直播943",
+   "source": "飞瓜数据·商品榜（个护家清/关键词：洗面奶·洁面，近30天）；商品池共 64 个洁面商品（榜单扫描），其 TOP30 进详情页取准确指标",
+   "fetchDate": "2026-09-28",
+   "category": {
+    "L1": "个护家清",
+    "L2": "面部护理",
+    "L3": "洁面"
+   }
+  },
+  {
+   "brand": "植祛",
+   "isSelf": false,
+   "spuCount": 1,
+   "talent": 955,
+   "video": 2185,
+   "live": 228,
+   "salesTier": [
+    "100w+"
+   ],
+   "score": 1203.8,
+   "spus": [
+    {
+     "title": "【祛痘控油洗面奶】植祛氨基酸祛痘洁面乳油皮舒缓保湿水杨酸不紧绷",
+     "gid": "1ZWYz6dZ4AIj95n41vBvT9AnJ57yvyCM8",
+     "sales": "100w+",
+     "talent": "955",
+     "video": "2185",
+     "live": "228"
+    }
+   ],
+   "reason": "达人955 + 视频2185 + 直播228",
+   "source": "飞瓜数据·商品榜（个护家清/关键词：洗面奶·洁面，近30天）；商品池共 64 个洁面商品（榜单扫描），其 TOP30 进详情页取准确指标",
+   "fetchDate": "2026-09-28",
+   "category": {
+    "L1": "个护家清",
+    "L2": "面部护理",
+    "L3": "洁面"
+   }
+  },
+  {
+   "brand": "SANSHI",
+   "isSelf": false,
+   "spuCount": 2,
+   "talent": 374,
+   "video": 1135,
+   "live": 586,
+   "salesTier": [
+    "100w+"
+   ],
+   "score": 693.4,
+   "spus": [
+    {
+     "title": "【Angelababy同款】SANSHI三式第二代糖脂复配洗面奶深层净澈",
+     "gid": "YXlWyJ97qwHmKQ9eoqx5HAen1XpBA6i0A",
+     "sales": "100w+",
+     "talent": "368",
+     "video": "1129",
+     "live": "552"
+    },
+    {
+     "title": "【Angelababy专属】三式糖脂洁面乳2.0氨基酸糖脂复配洗面奶洗卸养",
+     "gid": "YXl3Ykk6nxsm68pkjnDJUA3rGM3jXpCL9",
+     "sales": "100w+",
+     "talent": "6",
+     "video": "6",
+     "live": "34"
+    }
+   ],
+   "reason": "达人374 + 视频1135 + 直播586",
+   "source": "飞瓜数据·商品榜（个护家清/关键词：洗面奶·洁面，近30天）；商品池共 64 个洁面商品（榜单扫描），其 TOP30 进详情页取准确指标",
+   "fetchDate": "2026-09-28",
+   "category": {
+    "L1": "个护家清",
+    "L2": "面部护理",
+    "L3": "洁面"
+   }
+  },
+  {
+   "brand": "CEMOY/澳诗茉",
+   "isSelf": false,
+   "spuCount": 2,
+   "talent": 441,
+   "video": 995,
+   "live": 297,
+   "salesTier": [
+    "100w+"
+   ],
+   "score": 598.9,
+   "spus": [
+    {
+     "title": "【韩雪专享】CEMOY澳诗茉袋鼠爪花洗面奶洁面控油收缩毛孔清洁",
+     "gid": "q1BR6ArG0yh27LJBxk6yfQlyBLJ8v0IXL",
+     "sales": "100w+",
+     "talent": "1",
+     "video": "0",
+     "live": "17"
+    },
+    {
+     "title": "【官方推荐】CEMOY袋鼠爪花氨基酸洗面奶卸妆清洁控油保湿洁面护肤",
+     "gid": "gWB828JrX2upn722J3xQI0966jBlGrHy0",
+     "sales": "100w+",
+     "talent": "440",
+     "video": "995",
+     "live": "280"
+    }
+   ],
+   "reason": "达人441 + 视频995 + 直播297",
+   "source": "飞瓜数据·商品榜（个护家清/关键词：洗面奶·洁面，近30天）；商品池共 64 个洁面商品（榜单扫描），其 TOP30 进详情页取准确指标",
+   "fetchDate": "2026-09-28",
+   "category": {
+    "L1": "个护家清",
+    "L2": "面部护理",
+    "L3": "洁面"
+   }
+  },
+  {
+   "brand": "C咖",
+   "isSelf": false,
+   "spuCount": 3,
+   "talent": 434,
+   "video": 1149,
+   "live": 71,
+   "salesTier": [
+    "100w+"
+   ],
+   "score": 593.5,
+   "spus": [
+    {
+     "title": "【专属】C咖洗面奶双管氨基酸洁面白泥控油深层清洁黑头卸妆",
+     "gid": "JZkLQ5ey8OsYvZr0BmZRsxpDDql7mwtBE",
+     "sales": "100w+",
+     "talent": "2",
+     "video": "0",
+     "live": "13"
+    },
+    {
+     "title": "【老爸抽检】C咖双管洗面奶氨基酸白泥控油卸妆清黑头抛光毛孔男女",
+     "gid": "2ZnEApdmvlIXz5jRjOGWTJydpEj240fpg",
+     "sales": "100w+",
+     "talent": "1",
+     "video": "7",
+     "live": "3"
+    },
+    {
+     "title": "【酶油黑头】C咖双酶小气泡洁面慕斯泡沫氨基酸洗面奶清洁控油敏肌",
+     "gid": "kvZ2K4gn5mI5Mn7YeGRDC1WO98KwlyCvA",
+     "sales": "100w+",
+     "talent": "431",
+     "video": "1142",
+     "live": "55"
+    }
+   ],
+   "reason": "达人434 + 视频1149 + 直播71",
+   "source": "飞瓜数据·商品榜（个护家清/关键词：洗面奶·洁面，近30天）；商品池共 64 个洁面商品（榜单扫描），其 TOP30 进详情页取准确指标",
+   "fetchDate": "2026-09-28",
+   "category": {
+    "L1": "个护家清",
+    "L2": "面部护理",
+    "L3": "洁面"
+   }
+  }
+ ],
+ "excluded": [
+  {
+   "name": "【老粉回购350ml大容量超值装】éLL卸妆油深层清洁全脸温和洁颜油",
+   "reason": "品类噪音：非洁面产品（详情页复核为洗脸巾/香皂等）"
+  },
+  {
+   "name": "至本舒颜修护卸妆膏 温和洁净清爽舒适易乳化冲洗保湿净肤洁颜膏",
+   "reason": "品类噪音：非洁面产品（详情页复核为洗脸巾/香皂等）"
+  },
+  {
+   "name": "【爆品特惠】逐本云檀卸妆油洁颜油深层清洁温和不刺激-至优惠价格！",
+   "reason": "品类噪音：非洁面产品（详情页复核为洗脸巾/香皂等）"
+  }
+ ],
+ "criteria": "飞书工作流 3.1：月销>500万 或 近3月增速>50%；排除非洁面品类误命中（洗脸巾 / 卸妆油 / 香皂等）。指标一律取飞瓜商品详情页「商品数据」段（销售额 / 销量 / 带货视频 / 带货直播 / 带货达人），不用商品榜列表的 innerText 解析值（懒渲染易错位）",
+ "stats": {
+  "detailSpus": 26,
+  "listSpus": 0,
+  "brandCandidates": 20,
+  "poolSize": 64
+ }
+}

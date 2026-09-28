@@ -1,0 +1,3296 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>小红书采集工具包 v1 · 下载</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#f6f7f9;color:#1f2328;
+ font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;
+ line-height:1.7;-webkit-font-smoothing:antialiased}
+.wrap{max-width:900px;margin:0 auto;padding:32px 20px 72px}
+header{background:#fff;border:1px solid #e6e8eb;border-radius:14px;padding:28px 28px 24px;margin-bottom:18px}
+h1{margin:0 0 6px;font-size:24px;letter-spacing:.2px}
+.sub{color:#6b7280;font-size:14px;margin:0}
+.badges{margin-top:14px;display:flex;flex-wrap:wrap;gap:8px}
+.badge{background:#eef2ff;color:#3b4ea0;border:1px solid #dbe2ff;border-radius:999px;
+ padding:3px 11px;font-size:12.5px}
+.card{background:#fff;border:1px solid #e6e8eb;border-radius:14px;padding:24px 26px;margin-bottom:18px}
+h2{margin:0 0 14px;font-size:17px;padding-left:11px;border-left:3px solid #4f6ef7}
+h3{margin:20px 0 8px;font-size:15px;color:#374151}
+p{margin:9px 0}
+ul,ol{margin:9px 0;padding-left:22px}
+li{margin:5px 0}
+.mono{font-family:ui-monospace,SFMono-Regular,Consolas,"Courier New",monospace}
+code{background:#f2f4f7;border:1px solid #e6e8eb;border-radius:4px;padding:1px 5px;
+ font-size:13px;font-family:ui-monospace,SFMono-Regular,Consolas,monospace}
+pre{background:#f8f9fb;border:1px solid #e6e8eb;border-radius:8px;padding:12px 14px;
+ overflow:auto;font-size:12.5px;line-height:1.6}
+.dl{text-align:center;padding:8px 0 4px}
+button.dlbtn{display:inline-block;background:#4f6ef7;color:#fff;border:0;border-radius:10px;
+ padding:14px 34px;font-size:16px;font-weight:600;cursor:pointer;box-shadow:0 2px 8px rgba(79,110,247,.25)}
+button.dlbtn:hover{background:#3f5ce0}
+button.dlbtn:active{transform:translateY(1px)}
+.dlhint{color:#6b7280;font-size:13px;margin-top:12px}
+.dlstate{margin-top:12px;font-size:13.5px;min-height:20px}
+.dlstate.ok{color:#15803d}
+.dlstate.err{color:#b91c1c}
+table{border-collapse:collapse;width:100%;font-size:13.5px}
+th,td{border:1px solid #e6e8eb;padding:7px 10px;text-align:left;vertical-align:top}
+th{background:#f2f4f7;font-weight:600}
+td.num{text-align:right;white-space:nowrap;color:#6b7280;width:80px}
+td.mono{font-family:ui-monospace,SFMono-Regular,Consolas,monospace;font-size:12.5px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media(max-width:700px){.grid{grid-template-columns:1fr}}
+.box{background:#f8f9fb;border:1px solid #e6e8eb;border-radius:10px;padding:14px 16px}
+.box .t{font-weight:600;margin-bottom:6px;font-size:14px}
+.box .d{font-size:13.5px;color:#4b5563}
+details.file{border:1px solid #e6e8eb;border-radius:8px;margin-bottom:8px;background:#fff}
+details.file>summary{cursor:pointer;padding:9px 14px;font-size:13.5px;
+ display:flex;justify-content:space-between;align-items:center}
+details.file>summary .sz{color:#9ca3af;font-size:12px}
+pre.code{max-height:420px;font-size:12px;background:#fbfcfd;border:0;border-top:1px solid #eef0f3}
+.warn{background:#fff7ed;border:1px solid #fed7aa;border-radius:10px;padding:12px 16px;font-size:13.5px;color:#7c2d12}
+.ok-note{background:#f0fdf4;border:1px solid #bbf7d0;border-radius:10px;padding:12px 16px;font-size:13.5px;color:#166534}
+footer{color:#9ca3af;font-size:12.5px;text-align:center;margin-top:30px}
+.step{display:flex;gap:10px;margin-bottom:10px}
+.step .n{flex:0 0 24px;height:24px;border-radius:50%;background:#4f6ef7;color:#fff;
+ font-size:13px;display:flex;align-items:center;justify-content:center;font-weight:600}
+.step .c{font-size:14px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <h1>小红书采集工具包 v1 · 下载</h1>
+  <p class="sub">搜关键词 → 抓笔记正文与评论 → 过滤水军 → 出需求/痛点洞察文档。换一个类目只要改一份 YAML。</p>
+  <div class="badges">
+    <span class="badge">17 个文件</span>
+    <span class="badge">53 KB</span>
+    <span class="badge">内置 洁面 / 眼油 两套配置</span>
+    <span class="badge">已实测：115 篇笔记 / 802 条评论</span>
+  </div>
+</header>
+
+<div class="card">
+  <h2>① 下载工具包</h2>
+  <div class="dl">
+    <button class="dlbtn" id="dlbtn">⬇ 下载 zip（53 KB）</button>
+    <div class="dlhint">点一下即可，zip 已完整内嵌在本页面里，不依赖任何网盘。</div>
+    <div class="dlstate" id="dlstate"></div>
+  </div>
+  <div class="warn" style="margin-top:18px">
+    <b>备用方式</b>：如果上面这个按钮点了没反应（部分内置浏览器会拦下载），翻到本页最下面
+    <b>「全部源码」</b>，按目录结构逐个新建文件、复制粘贴即可，效果完全一样。
+  </div>
+</div>
+
+<div class="card">
+  <h2>② 这是什么</h2>
+  <p>一套用来<b>批量抓小红书笔记和评论、并做成用户调研语料</b>的命令行工具包。整个流程配置驱动：
+  类目相关的词（关键词、品牌、需求词、痛点词）全部写在一份 YAML 里，换品类时脚本一行都不用改。</p>
+  <div class="grid">
+    <div class="box"><div class="t">能拿到什么</div><div class="d">
+      笔记标题 / 正文 / 作者 / 点赞 / 评论数，以及每条评论的作者、内容、点赞、时间、IP 属地。</div></div>
+    <div class="box"><div class="t">会产出什么</div><div class="d">
+      清洗后的有效语料 JSON、需求 TOP5、痛点排行、词条表，以及一份 Markdown + HTML 的评论汇总文档。</div></div>
+    <div class="box"><div class="t">靠什么抓</div><div class="d">
+      本地浏览器真实登录态（Kimi WebBridge），不需要 cookie 也不碰接口签名。</div></div>
+    <div class="box"><div class="t">质量控制</div><div class="d">
+      内置 R1–R12 共 12 条水军/无效评论过滤规则，实测 802 条原始评论保留 450 条有效语料。</div></div>
+  </div>
+</div>
+
+<div class="card">
+  <h2>③ 四步上手</h2>
+  <div class="step"><div class="n">1</div><div class="c">
+    双击 <code>环境自检.bat</code> —— 检查 Python，自动补装 pyyaml，并确认浏览器插件已连上、小红书已登录。</div></div>
+  <div class="step"><div class="n">2</div><div class="c">
+    复制 <code>config/_template.yaml</code> 改名为你的类目，比如 <code>config/shampoo.yaml</code>，
+    照着里面 6 处 <code>__改这里__</code> 的提示填词。</div></div>
+  <div class="step"><div class="n">3</div><div class="c">
+    双击 <code>开始采集.bat</code>，输入类目名（如 <code>shampoo</code>），回车，全程自动跑完。</div></div>
+  <div class="step"><div class="n">4</div><div class="c">
+    去 <code>产出/&lt;你的目录名&gt;/</code> 拿结果：<code>评论汇总.md</code> / <code>评论汇总.html</code>
+    直接能看，<code>data/</code> 里是结构化数据。</div></div>
+  <div class="ok-note" style="margin-top:16px">
+    <b>想先看看效果？</b> 不动配置直接跑 <code>开始采集.bat</code> 输入 <code>cleanser</code>，
+    就是用洁面类目现成配置跑一遍，跑通了再改成自己的类目。
+  </div>
+</div>
+
+<div class="card">
+  <h2>④ 包里有什么</h2>
+  <table>
+    <thead><tr><th>文件</th><th>大小</th></tr></thead>
+    <tbody><tr><td class="mono">README.md</td><td class="num">10.8 KB</td></tr>
+<tr><td class="mono">config/_template.yaml</td><td class="num">4.2 KB</td></tr>
+<tr><td class="mono">config/cleanser.yaml</td><td class="num">11.6 KB</td></tr>
+<tr><td class="mono">config/eyeoil.yaml</td><td class="num">6.6 KB</td></tr>
+<tr><td class="mono">scripts/00_preflight.py</td><td class="num">2.9 KB</td></tr>
+<tr><td class="mono">scripts/10_collect_links.py</td><td class="num">4.1 KB</td></tr>
+<tr><td class="mono">scripts/11_clean_links.py</td><td class="num">2.8 KB</td></tr>
+<tr><td class="mono">scripts/12_pick_notes.py</td><td class="num">3.2 KB</td></tr>
+<tr><td class="mono">scripts/13_scrape_notes.py</td><td class="num">6.0 KB</td></tr>
+<tr><td class="mono">scripts/14_deep_comments.py</td><td class="num">4.6 KB</td></tr>
+<tr><td class="mono">scripts/20_filter.py</td><td class="num">9.6 KB</td></tr>
+<tr><td class="mono">scripts/21_analyze.py</td><td class="num">9.9 KB</td></tr>
+<tr><td class="mono">scripts/30_build_doc.py</td><td class="num">12.5 KB</td></tr>
+<tr><td class="mono">scripts/run_all.py</td><td class="num">8.8 KB</td></tr>
+<tr><td class="mono">scripts/xcommon.py</td><td class="num">10.6 KB</td></tr>
+<tr><td class="mono">开始采集.bat</td><td class="num">1.5 KB</td></tr>
+<tr><td class="mono">环境自检.bat</td><td class="num">1.4 KB</td></tr></tbody>
+  </table>
+  <p style="font-size:13.5px;color:#6b7280;margin-top:12px">
+    <code>config/</code> 是唯一需要你改的地方；<code>scripts/</code> 通用，不同类目共用同一套。
+  </p>
+</div>
+
+<div class="card">
+  <h2>⑤ 换类目要填的 6 处</h2>
+  <p>打开 <code>config/_template.yaml</code>，按注释填：</p>
+  <ol>
+    <li><b>keywords</b>：搜索用的关键词，20 个左右最好（例：洗面奶、氨基酸洁面、油皮洗面奶）</li>
+    <li><b>categoryWords</b>：判定「这篇笔记说的是不是这个类目」的词</li>
+    <li><b>brands</b>：这个类目的品牌名，命中会加分</li>
+    <li><b>noiseWords</b>：看到就丢掉的干扰词（比如别的品类的词）</li>
+    <li><b>needs / pains</b>：你想统计的需求维度和痛点维度，每个维度下面挂同义词</li>
+    <li><b>outputDir</b>：产出目录名，写 <code>./产出/你的类目</code></li>
+  </ol>
+  <div class="warn"><b>一个坑先说在前面</b>：
+  <code>outputDir</code> 写相对路径时，是按<b>工具包根目录</b>算的，不是按你命令行当前位置算的，
+  所以在哪个目录下敲命令都不会跑偏。</div>
+</div>
+
+<div class="card">
+  <h2>⑥ 已知限制</h2>
+  <ul>
+    <li>必须先在浏览器里登录小红书，且 Kimi WebBridge 守护进程处于运行状态（<code>环境自检.bat</code> 会替你确认）。</li>
+    <li>小红书搜索结果的 <code>xsec_token</code> 会过期，已经抓过的笔记再抓一遍基本抓不到新东西 ——
+        想扩量就换关键词再搜一轮。</li>
+    <li>评论默认每篇最多取 120 条，脚本内部还会滚动加载 3 轮；特别热门的笔记可能取不全。</li>
+    <li>抓太快容易被限流，脚本已按类目配置里的间隔参数限速，不要手动改小。</li>
+    <li>只抓公开可见内容，不做任何登录态绕过或反爬对抗。</li>
+  </ul>
+</div>
+
+<div class="card">
+  <h2>⑦ 完整 README</h2>
+  <details class="file"><summary><span class="mono">README.md</span><span class="sz">展开</span></summary>
+    <pre class="code"># 小红书评论采集工具包
+
+把一个类目的小红书**帖子正文 + 评论**扒下来，过一遍水军过滤，
+产出「评论汇总文档」+「需求 TOP5 / 痛点红线 / 决策权重」。
+
+洁面（洗面奶）类目已用本工具包完整跑通：**115 篇笔记 / 802 条原始评论 → 450 条有效语料**。
+
+---
+
+## 一、别人拿到这个包，要做几件事？
+
+**4 步，第 1 次约 15 分钟，之后换类目只改 1 个文件。**
+
+| # | 做什么 | 怎么做 |
+|---|---|---|
+| 1 | 装依赖 | 双击 `环境自检.bat`，它会自动装 pyyaml 并检查环境 |
+| 2 | 登录小红书 | 用**本机 Edge 浏览器**打开 `xiaohongshu.com` 扫码登录 |
+| 3 | 改配置 | 复制 `config/_template.yaml`，改名成你的类目，填 6 处（下面详说） |
+| 4 | 开跑 | 双击 `开始采集.bat`，输入类目名回车 |
+
+&gt; ⚠️ **必须用 Kimi WebBridge 控制的那个浏览器登录**，不是随便一个浏览器。
+&gt; 自检脚本会告诉你扩展连上没有。
+
+---
+
+## 二、目录结构
+
+```
+xhs-scraper/
+├─ README.md              ← 你在这儿
+├─ 环境自检.bat            ← 第一次用，先双击它
+├─ 开始采集.bat            ← 日常用，双击它
+├─ config/
+│   ├─ cleanser.yaml      ← 洁面/洗面奶（已跑通，可直接用）
+│   ├─ eyeoil.yaml        ← 眼油/眼部精华（已预置）
+│   └─ _template.yaml     ← 空白模板，新类目复制这个
+└─ scripts/
+    ├─ run_all.py         ← 一条命令跑全流程（带看门狗，别跳过它）
+    ├─ xcommon.py         ← 公共基座（配置读取 / 浏览器调用 / 文本工具）
+    ├─ 00_preflight.py    ← 采集前体检：守护进程 + 登录态
+    ├─ 10_collect_links.py ← ① 按关键词搜，收集候选笔记链接
+    ├─ 11_clean_links.py   ← ② 清洗标题、去重、剔噪音
+    ├─ 12_pick_notes.py    ← ③ 挑高价值笔记（剔除教程类）
+    ├─ 13_scrape_notes.py  ← ④ 逐篇抓正文 + 评论
+    ├─ 14_deep_comments.py ← ⑤ （可选）评论二次深挖
+    ├─ 20_filter.py        ← ⑥ R1–R12 去水军过滤
+    ├─ 21_analyze.py       ← ⑦ 统计需求/痛点/词库/决策权重
+    └─ 30_build_doc.py     ← ⑧ 生成评论汇总文档（md + html）
+```
+
+---
+
+## 三、换一个类目要改什么
+
+复制 `config/_template.yaml` → 改名 `config/面膜.yaml`，只改 6 处：
+
+### ① project（2 行）
+```yaml
+project:
+  name: 面膜
+  catKey: mask
+  outputDir: ./产出/面膜              # ★ 相对路径 → 落在 xhs-scraper/产出/面膜/
+                                      #   也可以填绝对路径，如 D:/我的项目/面膜
+  session: xhs-mask-research          # ★ 每个类目一个独立名字，别重名
+```
+
+### ② category.words —— 品类词（决定&quot;这条评论算不算相关&quot;）
+```yaml
+category:
+  words:
+    - 面膜
+    - 敷面膜
+    - 补水
+```
+&gt; 这是**最关键的一项**。评论里出现任意一个词才保留。
+&gt; 填太少 → 大量真实评论被判&quot;无关&quot;丢掉；填太多 → 垃圾混进来。
+&gt; **建议先只填 keywords 跑一轮，看抓回来什么，再回来补这项。**
+
+### ③ keywords —— 搜索关键词（决定&quot;能搜到哪些笔记&quot;）
+```yaml
+keywords:
+  - [面膜, 综合]
+  - [面膜避雷, 吐槽]
+  - [面膜推荐, 求安利]
+  - [面膜测评, 测评]
+  - [补水面膜, 需求]
+```
+&gt; 20 组左右为宜。类型标签填：`综合` / `求安利` / `吐槽` / `测评` / `需求` / `痛点`。
+&gt; **吐槽类和测评类的真实反馈密度最高**，优先多配。
+
+### ④ buckets —— 统计口径
+```yaml
+buckets:
+  needs:                                    # 需求桶：用户想要什么
+    - [功效诉求（补水/保湿）, &#x27;补水|保湿|水润|不干|滋润&#x27;]
+    - [价格性价比, &#x27;平价|便宜|性价比|学生|划算&#x27;]
+  pains:                                    # 痛点桶：用户踩了什么坑
+    - [过敏 / 刺痛 / 泛红, &#x27;过敏|泛红|刺痛|灼热|痒|红肿|烂脸&#x27;]
+    - [无效 / 智商税, &#x27;(?&lt;!有)没效果|无效|智商税|后悔|踩雷|不值&#x27;]
+```
+&gt; 格式 `[桶名, &#x27;正则&#x27;]`，`|` 表示&quot;或&quot;，一个桶建议 5–20 个词。
+&gt; 痛点桶**自动做否定识别**：「不紧绷」「不假滑」不会被算成痛点。
+
+### ⑤ decisionMap —— 决策权重映射
+```yaml
+decisionMap:
+  功效诉求（补水/保湿）: 功效
+  价格性价比: 价格
+```
+&gt; 把需求桶归并到用户实际决策时的评判维度。不填也能跑（会退回用需求桶本身）。
+
+### ⑥ doc —— 文档标题
+```yaml
+doc:
+  title: 面膜 · 小红书评论汇总
+  path: 个护家清 / 面部护理 / 面膜
+```
+
+**改完双击 `开始采集.bat`，输入 `面膜` 回车即可。**
+
+---
+
+## 四、常用命令
+
+```bash
+# 跑默认类目（cleanser）全流程
+python scripts/run_all.py
+
+# 指定类目
+python scripts/run_all.py --cat 面膜
+
+# 只跑某几步（比如只想重新出文档）
+python scripts/run_all.py --only 30
+
+# 从第 20 步开始跑（前面已有数据，想重算统计）
+python scripts/run_all.py --from 20
+
+# 先看看会跑什么，不真跑
+python scripts/run_all.py --dry-run
+
+# 快速试跑：本批最多处理 20 条（确认配置对了再放开跑）
+python scripts/run_all.py --limit 20
+```
+
+**单步跑**（比如只想重抓评论）：
+```bash
+python scripts/13_scrape_notes.py --cat 面膜 --limit 30
+```
+&gt; ⚠️ 单步跑没有看门狗守护，WebBridge 守护进程可能中途死掉导致静默采到 0 条。
+&gt; 除非你确定，否则用 `run_all.py`。
+
+---
+
+## 五、依赖（只有 3 个）
+
+| 依赖 | 用途 | 怎么装 |
+|---|---|---|
+| **Python 3.9+** | 跑脚本 | 去 python.org 装，装时勾「Add to PATH」。工具包会**自动探测**解释器，找不到才需要设环境变量 `XHS_PYTHON` |
+| **pyyaml** | 读配置文件 | `python -m pip install --only-binary=:all: pyyaml`（`环境自检.bat` 会帮你装） |
+| **Kimi WebBridge** | 控制浏览器抓页面 | 需单独安装（不是 pip 包）。工具包会**自动探测**常见位置，找不到就跳过看门狗并提示——纯本地步骤（清洗/过滤/统计/出文档）照常能跑 |
+
+&gt; **路径不用改代码。** Python 和 WebBridge 两个路径都支持自动探测 + 环境变量覆盖
+&gt; （`XHS_PYTHON` / `XHS_DAEMON`）。`outputDir` 用相对路径 `./产出/&lt;类目&gt;`，
+&gt; 相对工具包根目录解析，解压在哪就落在哪。
+
+**WebBridge 的两个硬要求：**
+1. 守护进程必须是**常驻**的。直接跑 `kimi-webbridge.exe start` 会&quot;假成功&quot;——
+   日志显示已监听，命令一结束进程就被回收。`run_all.py` 内置看门狗解决了这个。
+2. 浏览器（Edge）要打开，且 **Kimi 浏览器扩展已启用**。
+   自检看 `extension_connected: true`。
+
+---
+
+## 六、产出物
+
+跑完后在 `outputDir` 指向的目录里：
+
+```
+outputDir/
+├─ raw/
+│   ├─ xhs_links_20260928.json        候选笔记链接（原始）
+│   ├─ xhs_candidates_clean.json      清洗后的候选
+│   ├─ xhs_picked.json                挑出来待抓的清单
+│   └─ xhs_output/note_&lt;id&gt;.json      每篇笔记的正文+评论（原始留档）
+├─ data/
+│   ├─ raw_comments.json              保留语料（450 条）
+│   ├─ filtered_log.json              被剔除语料+原因（可审计）
+│   ├─ needs_top5.json                需求 TOP5
+│   ├─ redline.json                   痛点红线
+│   ├─ lexicon.json                   词云+好评率+决策权重
+│   └─ overview.json                  语料概况
+└─ &lt;类目&gt;·小红书评论汇总_20260928.md / .html    ← 汇总文档
+```
+
+`.html` 双击就能看，`.md` 可以直接贴飞书/Notion。
+
+---
+
+## 七、已知限制（如实说明，不装作能拿到）
+
+1. **小红书只渲染部分评论。** 页面声明 1000 条的笔记，实际通常只能读到几十到一百多条。
+   洁面这轮 115 篇平均约 7 条/篇，最多的 24 条。这是平台限制，不是脚本问题。
+
+2. **`xsec_token` 会过期。** 把已经抓过的笔记再打开一遍，几乎拿不到新评论
+   （实测二刷 115 篇只多 13 条）。**想扩量要回去重跑第①步拿新笔记**，
+   而不是反复重刷同一批旧链接。
+
+3. **搜索结果链接是 `/search_result/&lt;nid&gt;`，不是 `/explore/&lt;nid&gt;`。**
+   这个坑已经处理了，但如果你自己改正则要注意——漏了 `search_result` 会静默采到 0 条且不报错。
+
+4. **结果里混着 `/user/profile/` 的作者主页链接**，已过滤。
+
+5. **不采任何非公开内容**，不做推测性补全；取不到的字段留空。
+
+---
+
+## 八、R1–R12 过滤规则
+
+| 规则 | 剔除什么 |
+|---|---|
+| R1 | 营销文本（淘口令 / 加微 / 优惠券 / 外链…） |
+| R2 | 空内容，或超短且无信息 |
+| R3 | 与本品类/品牌均无关（低相关）← **最主力的一条**，靠 `category.words` 判定 |
+| R4 | 同文案出现在 ≥3 个不同笔记（模板复刷） |
+| R5 | 同一 IP 属地占比过高（疑似水军聚集；无属地数据时不启用，避免误杀整篇） |
+| R6 | 同笔记同一小时零赞评论 ≥8 条（集中爆发） |
+| R7 | 营销号昵称特征 |
+| R9 | 不可改良项打标（物流 / 价格 / 客服 —— 保留但统计时剔除） |
+| R10 | 完全重复的语料（同内容只计一条） |
+| R11 | 纯话题标签串，剥掉 `#标签` 后没有实质表述 |
+| R12 | 作者置顶 / 购买引导（去某宝、戳我、主页有…） |
+
+洁面这轮的实际分布：**输入 873 → 保留 450，过滤 423**
+（R3 无关 346 / R2 超短 49 / R11 纯标签 16 / R12 营销 6 / R1 广告 5 / R10 重复 1）。
+
+---
+
+## 九、两条统计纪律（决定数据可不可信）
+
+1. **痛点桶走否定识别。** 「不紧绷」「不假滑」「没长脂肪粒」不会被算成痛点。
+   同时排除「担心 / 怕 / 会不会」这类假设语境——那是需求信号，不是已发生的痛点。
+
+2. **一条语料只进一个桶**（第一个命中的）。否则同一条话被重复计数，频次会虚高。
+
+---
+
+## 十、出问题先看这
+
+| 现象 | 原因 / 怎么办 |
+|---|---|
+| 采到 0 条链接 | ① 小红书没登录 → 浏览器扫码登录&lt;br&gt;② 正则漏了 `search_result`（已修，别自己改回去）&lt;br&gt;③ WebBridge 扩展没连 → 打开 Edge 确认扩展启用 |
+| 脚本全静默、body 返回 0 字 | 守护进程死了。**用 `run_all.py` 跑**，它有看门狗 |
+| 提示「代理/连接被拒」 | 系统代理劫持 127.0.0.1。`run_all.py` 已自动清代理，别单独跑单步脚本 |
+| 候选很多但有效语料少 | `category.words` 填太窄 → 看着 `filtered_log.json` 里的 R3 被剔条目补词 |
+| 深挖几乎没新增 | `xsec_token` 过期，正常。回第①步重搜新笔记 |
+| 端口 10086 被占 | 历史上有杀毒软件（金山毒霸）抢过这个端口，卸载或改端口 |
+</pre></details>
+</div>
+
+<div class="card">
+  <h2>⑧ 全部源码（备用：手动复制）</h2>
+  <p style="font-size:13.5px;color:#6b7280">
+    万一下载按钮用不了，就按 <code>xhs-scraper/&lt;路径&gt;</code> 建同名文件，展开下面每一项、点右上角复制粘贴。
+  </p>
+  <details class="file"><summary><span class="mono">README.md</span><span class="sz">10.8 KB</span></summary><pre class="code"># 小红书评论采集工具包
+
+把一个类目的小红书**帖子正文 + 评论**扒下来，过一遍水军过滤，
+产出「评论汇总文档」+「需求 TOP5 / 痛点红线 / 决策权重」。
+
+洁面（洗面奶）类目已用本工具包完整跑通：**115 篇笔记 / 802 条原始评论 → 450 条有效语料**。
+
+---
+
+## 一、别人拿到这个包，要做几件事？
+
+**4 步，第 1 次约 15 分钟，之后换类目只改 1 个文件。**
+
+| # | 做什么 | 怎么做 |
+|---|---|---|
+| 1 | 装依赖 | 双击 `环境自检.bat`，它会自动装 pyyaml 并检查环境 |
+| 2 | 登录小红书 | 用**本机 Edge 浏览器**打开 `xiaohongshu.com` 扫码登录 |
+| 3 | 改配置 | 复制 `config/_template.yaml`，改名成你的类目，填 6 处（下面详说） |
+| 4 | 开跑 | 双击 `开始采集.bat`，输入类目名回车 |
+
+&gt; ⚠️ **必须用 Kimi WebBridge 控制的那个浏览器登录**，不是随便一个浏览器。
+&gt; 自检脚本会告诉你扩展连上没有。
+
+---
+
+## 二、目录结构
+
+```
+xhs-scraper/
+├─ README.md              ← 你在这儿
+├─ 环境自检.bat            ← 第一次用，先双击它
+├─ 开始采集.bat            ← 日常用，双击它
+├─ config/
+│   ├─ cleanser.yaml      ← 洁面/洗面奶（已跑通，可直接用）
+│   ├─ eyeoil.yaml        ← 眼油/眼部精华（已预置）
+│   └─ _template.yaml     ← 空白模板，新类目复制这个
+└─ scripts/
+    ├─ run_all.py         ← 一条命令跑全流程（带看门狗，别跳过它）
+    ├─ xcommon.py         ← 公共基座（配置读取 / 浏览器调用 / 文本工具）
+    ├─ 00_preflight.py    ← 采集前体检：守护进程 + 登录态
+    ├─ 10_collect_links.py ← ① 按关键词搜，收集候选笔记链接
+    ├─ 11_clean_links.py   ← ② 清洗标题、去重、剔噪音
+    ├─ 12_pick_notes.py    ← ③ 挑高价值笔记（剔除教程类）
+    ├─ 13_scrape_notes.py  ← ④ 逐篇抓正文 + 评论
+    ├─ 14_deep_comments.py ← ⑤ （可选）评论二次深挖
+    ├─ 20_filter.py        ← ⑥ R1–R12 去水军过滤
+    ├─ 21_analyze.py       ← ⑦ 统计需求/痛点/词库/决策权重
+    └─ 30_build_doc.py     ← ⑧ 生成评论汇总文档（md + html）
+```
+
+---
+
+## 三、换一个类目要改什么
+
+复制 `config/_template.yaml` → 改名 `config/面膜.yaml`，只改 6 处：
+
+### ① project（2 行）
+```yaml
+project:
+  name: 面膜
+  catKey: mask
+  outputDir: ./产出/面膜              # ★ 相对路径 → 落在 xhs-scraper/产出/面膜/
+                                      #   也可以填绝对路径，如 D:/我的项目/面膜
+  session: xhs-mask-research          # ★ 每个类目一个独立名字，别重名
+```
+
+### ② category.words —— 品类词（决定&quot;这条评论算不算相关&quot;）
+```yaml
+category:
+  words:
+    - 面膜
+    - 敷面膜
+    - 补水
+```
+&gt; 这是**最关键的一项**。评论里出现任意一个词才保留。
+&gt; 填太少 → 大量真实评论被判&quot;无关&quot;丢掉；填太多 → 垃圾混进来。
+&gt; **建议先只填 keywords 跑一轮，看抓回来什么，再回来补这项。**
+
+### ③ keywords —— 搜索关键词（决定&quot;能搜到哪些笔记&quot;）
+```yaml
+keywords:
+  - [面膜, 综合]
+  - [面膜避雷, 吐槽]
+  - [面膜推荐, 求安利]
+  - [面膜测评, 测评]
+  - [补水面膜, 需求]
+```
+&gt; 20 组左右为宜。类型标签填：`综合` / `求安利` / `吐槽` / `测评` / `需求` / `痛点`。
+&gt; **吐槽类和测评类的真实反馈密度最高**，优先多配。
+
+### ④ buckets —— 统计口径
+```yaml
+buckets:
+  needs:                                    # 需求桶：用户想要什么
+    - [功效诉求（补水/保湿）, &#x27;补水|保湿|水润|不干|滋润&#x27;]
+    - [价格性价比, &#x27;平价|便宜|性价比|学生|划算&#x27;]
+  pains:                                    # 痛点桶：用户踩了什么坑
+    - [过敏 / 刺痛 / 泛红, &#x27;过敏|泛红|刺痛|灼热|痒|红肿|烂脸&#x27;]
+    - [无效 / 智商税, &#x27;(?&lt;!有)没效果|无效|智商税|后悔|踩雷|不值&#x27;]
+```
+&gt; 格式 `[桶名, &#x27;正则&#x27;]`，`|` 表示&quot;或&quot;，一个桶建议 5–20 个词。
+&gt; 痛点桶**自动做否定识别**：「不紧绷」「不假滑」不会被算成痛点。
+
+### ⑤ decisionMap —— 决策权重映射
+```yaml
+decisionMap:
+  功效诉求（补水/保湿）: 功效
+  价格性价比: 价格
+```
+&gt; 把需求桶归并到用户实际决策时的评判维度。不填也能跑（会退回用需求桶本身）。
+
+### ⑥ doc —— 文档标题
+```yaml
+doc:
+  title: 面膜 · 小红书评论汇总
+  path: 个护家清 / 面部护理 / 面膜
+```
+
+**改完双击 `开始采集.bat`，输入 `面膜` 回车即可。**
+
+---
+
+## 四、常用命令
+
+```bash
+# 跑默认类目（cleanser）全流程
+python scripts/run_all.py
+
+# 指定类目
+python scripts/run_all.py --cat 面膜
+
+# 只跑某几步（比如只想重新出文档）
+python scripts/run_all.py --only 30
+
+# 从第 20 步开始跑（前面已有数据，想重算统计）
+python scripts/run_all.py --from 20
+
+# 先看看会跑什么，不真跑
+python scripts/run_all.py --dry-run
+
+# 快速试跑：本批最多处理 20 条（确认配置对了再放开跑）
+python scripts/run_all.py --limit 20
+```
+
+**单步跑**（比如只想重抓评论）：
+```bash
+python scripts/13_scrape_notes.py --cat 面膜 --limit 30
+```
+&gt; ⚠️ 单步跑没有看门狗守护，WebBridge 守护进程可能中途死掉导致静默采到 0 条。
+&gt; 除非你确定，否则用 `run_all.py`。
+
+---
+
+## 五、依赖（只有 3 个）
+
+| 依赖 | 用途 | 怎么装 |
+|---|---|---|
+| **Python 3.9+** | 跑脚本 | 去 python.org 装，装时勾「Add to PATH」。工具包会**自动探测**解释器，找不到才需要设环境变量 `XHS_PYTHON` |
+| **pyyaml** | 读配置文件 | `python -m pip install --only-binary=:all: pyyaml`（`环境自检.bat` 会帮你装） |
+| **Kimi WebBridge** | 控制浏览器抓页面 | 需单独安装（不是 pip 包）。工具包会**自动探测**常见位置，找不到就跳过看门狗并提示——纯本地步骤（清洗/过滤/统计/出文档）照常能跑 |
+
+&gt; **路径不用改代码。** Python 和 WebBridge 两个路径都支持自动探测 + 环境变量覆盖
+&gt; （`XHS_PYTHON` / `XHS_DAEMON`）。`outputDir` 用相对路径 `./产出/&lt;类目&gt;`，
+&gt; 相对工具包根目录解析，解压在哪就落在哪。
+
+**WebBridge 的两个硬要求：**
+1. 守护进程必须是**常驻**的。直接跑 `kimi-webbridge.exe start` 会&quot;假成功&quot;——
+   日志显示已监听，命令一结束进程就被回收。`run_all.py` 内置看门狗解决了这个。
+2. 浏览器（Edge）要打开，且 **Kimi 浏览器扩展已启用**。
+   自检看 `extension_connected: true`。
+
+---
+
+## 六、产出物
+
+跑完后在 `outputDir` 指向的目录里：
+
+```
+outputDir/
+├─ raw/
+│   ├─ xhs_links_20260928.json        候选笔记链接（原始）
+│   ├─ xhs_candidates_clean.json      清洗后的候选
+│   ├─ xhs_picked.json                挑出来待抓的清单
+│   └─ xhs_output/note_&lt;id&gt;.json      每篇笔记的正文+评论（原始留档）
+├─ data/
+│   ├─ raw_comments.json              保留语料（450 条）
+│   ├─ filtered_log.json              被剔除语料+原因（可审计）
+│   ├─ needs_top5.json                需求 TOP5
+│   ├─ redline.json                   痛点红线
+│   ├─ lexicon.json                   词云+好评率+决策权重
+│   └─ overview.json                  语料概况
+└─ &lt;类目&gt;·小红书评论汇总_20260928.md / .html    ← 汇总文档
+```
+
+`.html` 双击就能看，`.md` 可以直接贴飞书/Notion。
+
+---
+
+## 七、已知限制（如实说明，不装作能拿到）
+
+1. **小红书只渲染部分评论。** 页面声明 1000 条的笔记，实际通常只能读到几十到一百多条。
+   洁面这轮 115 篇平均约 7 条/篇，最多的 24 条。这是平台限制，不是脚本问题。
+
+2. **`xsec_token` 会过期。** 把已经抓过的笔记再打开一遍，几乎拿不到新评论
+   （实测二刷 115 篇只多 13 条）。**想扩量要回去重跑第①步拿新笔记**，
+   而不是反复重刷同一批旧链接。
+
+3. **搜索结果链接是 `/search_result/&lt;nid&gt;`，不是 `/explore/&lt;nid&gt;`。**
+   这个坑已经处理了，但如果你自己改正则要注意——漏了 `search_result` 会静默采到 0 条且不报错。
+
+4. **结果里混着 `/user/profile/` 的作者主页链接**，已过滤。
+
+5. **不采任何非公开内容**，不做推测性补全；取不到的字段留空。
+
+---
+
+## 八、R1–R12 过滤规则
+
+| 规则 | 剔除什么 |
+|---|---|
+| R1 | 营销文本（淘口令 / 加微 / 优惠券 / 外链…） |
+| R2 | 空内容，或超短且无信息 |
+| R3 | 与本品类/品牌均无关（低相关）← **最主力的一条**，靠 `category.words` 判定 |
+| R4 | 同文案出现在 ≥3 个不同笔记（模板复刷） |
+| R5 | 同一 IP 属地占比过高（疑似水军聚集；无属地数据时不启用，避免误杀整篇） |
+| R6 | 同笔记同一小时零赞评论 ≥8 条（集中爆发） |
+| R7 | 营销号昵称特征 |
+| R9 | 不可改良项打标（物流 / 价格 / 客服 —— 保留但统计时剔除） |
+| R10 | 完全重复的语料（同内容只计一条） |
+| R11 | 纯话题标签串，剥掉 `#标签` 后没有实质表述 |
+| R12 | 作者置顶 / 购买引导（去某宝、戳我、主页有…） |
+
+洁面这轮的实际分布：**输入 873 → 保留 450，过滤 423**
+（R3 无关 346 / R2 超短 49 / R11 纯标签 16 / R12 营销 6 / R1 广告 5 / R10 重复 1）。
+
+---
+
+## 九、两条统计纪律（决定数据可不可信）
+
+1. **痛点桶走否定识别。** 「不紧绷」「不假滑」「没长脂肪粒」不会被算成痛点。
+   同时排除「担心 / 怕 / 会不会」这类假设语境——那是需求信号，不是已发生的痛点。
+
+2. **一条语料只进一个桶**（第一个命中的）。否则同一条话被重复计数，频次会虚高。
+
+---
+
+## 十、出问题先看这
+
+| 现象 | 原因 / 怎么办 |
+|---|---|
+| 采到 0 条链接 | ① 小红书没登录 → 浏览器扫码登录&lt;br&gt;② 正则漏了 `search_result`（已修，别自己改回去）&lt;br&gt;③ WebBridge 扩展没连 → 打开 Edge 确认扩展启用 |
+| 脚本全静默、body 返回 0 字 | 守护进程死了。**用 `run_all.py` 跑**，它有看门狗 |
+| 提示「代理/连接被拒」 | 系统代理劫持 127.0.0.1。`run_all.py` 已自动清代理，别单独跑单步脚本 |
+| 候选很多但有效语料少 | `category.words` 填太窄 → 看着 `filtered_log.json` 里的 R3 被剔条目补词 |
+| 深挖几乎没新增 | `xsec_token` 过期，正常。回第①步重搜新笔记 |
+| 端口 10086 被占 | 历史上有杀毒软件（金山毒霸）抢过这个端口，卸载或改端口 |
+</pre></details>
+<details class="file"><summary><span class="mono">config/_template.yaml</span><span class="sz">4.2 KB</span></summary><pre class="code"># ============================================================================
+# 小红书评论采集工具包 · 类目配置【空白模板】
+# ----------------------------------------------------------------------------
+# 想采一个新类目（比如「面膜」）：
+#   1) 把本文件复制成 config/面膜.yaml
+#   2) 照下面 &lt;尖括号&gt; 的地方填 —— 只有 6 处
+#   3) 跑：python run_all.py --cat 面膜
+#
+# ★ 填不出来的先留空数组 []，脚本不会崩，只是那部分数据为空。
+#   最省事的做法：先只填 keywords 跑一轮采集，看看抓回来的东西长什么样，
+#   再回头补 category.words（品类词）和 buckets（统计口径）。
+# ============================================================================
+
+project:
+  name: &lt;类目中文名，如：面膜&gt;
+  catKey: &lt;英文短名，如：mask&gt;            # 只用来做内部标识
+  # 相对路径 = 落在「xhs-scraper/产出/&lt;目录名&gt;」下（推荐，换机器不用改）
+  outputDir: ./产出/&lt;改成你的目录名&gt;
+  session: xhs-&lt;英文短名&gt;-research
+
+doc:
+  title: &lt;类目中文名&gt; · 小红书评论汇总
+  path: &lt;类目路径，如：个护家清 / 面部护理 / 面膜&gt;
+  subtitle: 数据源：小红书公开笔记与评论
+
+# ---- ① 品类词：评论里出现任意一个 → 算「和本类目强相关」，予以保留
+category:
+  words: []
+  #   - 面膜
+  #   - 敷面膜
+  #   - 补水
+  #   - 精华液
+
+  # ---- ② 品牌词：命中也算相关（留住&quot;只提牌子没提品类&quot;的评论）
+  brands: []
+  #   - 某某品牌
+
+  # ---- ③ 噪音词：标题里出现 → 直接丢掉（关键词误命中）
+  noise: []
+  #   - 宠物
+  #   - 家电
+
+# ---- ④ 搜索关键词：[关键词, 标签]。tag 只做展示分类，填：综合/求安利/吐槽/测评/需求/痛点
+keywords: []
+#  - [面膜, 综合]
+#  - [面膜避雷, 吐槽]
+#  - [面膜推荐, 求安利]
+#  - [面膜测评, 测评]
+#  - [补水面膜, 需求]
+
+collect:
+  links:
+    scrollTo: [1500, 3000, 4500]
+    scrollWait: 1.8
+    perKeywordCap: 40
+    navWait: 6
+  notes:
+    rounds: 2
+    scrollTo: [900, 1800, 2700, 3600, 4500, 6000, 7500]
+    maxComments: 120
+    navWait: 5
+    gap: 1.2
+
+# ---- ⑤ 统计口径：需求桶 / 痛点桶
+# 需求桶 = 用户「想要什么」；痛点桶 = 用户「踩了什么坑」，全部走否定识别。
+# 格式：[桶名, &#x27;正则&#x27;]（正则里 | 表示&quot;或&quot;，建议用 5-20 个词覆盖一个维度）
+buckets:
+  needs: []
+  #  - [功效诉求（补水/保湿）, &#x27;补水|保湿|水润|不干|滋润&#x27;]
+  #  - [价格性价比, &#x27;平价|便宜|性价比|学生|划算&#x27;]
+
+  pains: []
+  #  - [过敏 / 刺痛 / 泛红, &#x27;过敏|泛红|刺痛|灼热|痒|红肿|烂脸&#x27;]
+  #  - [无效 / 智商税, &#x27;(?&lt;!有)没效果|无效|智商税|后悔|踩雷|不值&#x27;]
+
+decisionMap: {}
+#  功效诉求（补水/保湿）: 功效
+#  价格性价比: 价格
+
+nonFixable: [物流, 快递, 发货, 客服态度, 服务态度, 退货, 退款, 退不了, 降价]
+
+# ---- ⑥ 筛选：教程类剔除 + 高价值加权
+pick:
+  tutorial: &#x27;手法|教程|跟练|小课堂|步骤|教学|示范|演示&#x27;
+  high: &#x27;避雷|避坑|别买|千万别|后悔|智商税|翻车|吐槽|踩雷|没用|无效|难用|差评|空瓶|用完|用了|感受|体验|实测|测评|对比|真实|亲测|回购|求推荐|哪个好|怎么样|过敏|刺痛|泛红|烂脸|闷痘&#x27;
+  blankTemplate: true
+  tagBonus: [吐槽, 测评, 求安利]
+
+filter:
+  R1_营销文本: &#x27;加V|加薇|加微|私信|点我头像|点击主页|主页联系|淘口令|淘宝|天猫|京东|拼多多|http[s]?://|www\.|优惠券|领券|链接在|低价出|代购|代拍|返现|返利|刷单|接广告|互关|互赞|涨粉|引流|货源|一手价|批发&#x27;
+  R7_营销昵称: &#x27;好物|优选|严选|福利|返利|优惠券|折扣|代购|旗舰店|官方旗舰|客服|批发|厂家|工厂|清仓|特卖|团购|带货|甄选&#x27;
+  R9_不可改良: &#x27;太贵|价格.*贵|物流|快递|发货|包装|瓶口|按压.*难|盖.*松&#x27;
+  R12_购买引导: &#x27;(?&lt;![a-zA-Z])tao(?![a-zA-Z])|去某宝|某宝|置顶评论|戳我|私我|主页有|点击主页&#x27;
+  maxLen: 300
+  r4CrossNotes: 3
+  r5IpHitRate: 0.4
+  r5MinCount: 5
+  r6HourBurst: 8
+
+output:
+  writeMd: true
+  writeHtml: true
+  maxPerNote: 120
+</pre></details>
+<details class="file"><summary><span class="mono">config/cleanser.yaml</span><span class="sz">11.6 KB</span></summary><pre class="code"># ============================================================================
+# 小红书评论采集工具包 · 类目配置
+# ----------------------------------------------------------------------------
+# 这是【唯一需要改的文件】。换一个类目 = 复制本文件改名，然后改下面几处：
+#   1) project.name / outputDir / session
+#   2) category.*          —— 品类词、品牌词、噪音词（决定&quot;这条评论算不算相关&quot;）
+#   3) keywords            —— 搜索关键词（决定&quot;能搜到哪些笔记&quot;）
+#   4) buckets.needs / buckets.pains + decisionMap  —— 统计口径
+#   5) doc.title           —— 产出文档标题
+# 改完直接跑：python run_all.py --cat &lt;你的文件名去掉.yaml&gt;
+# ============================================================================
+
+project:
+  name: 洁面（洗面奶）
+  catKey: cleanser
+  # ★ 产出目录：raw / data / 汇总文档都会落在这里。
+  #   相对路径 = 落在「xhs-scraper/产出/」下（推荐，换机器不用改）；
+  #   也可以填任意绝对路径，如 D:/我的项目/洁面
+  outputDir: ./产出/洁面
+  # 每个类目一个独立 session，避免和别的类目抢同一个浏览器标签
+  session: xhs-cleanser-research
+
+doc:
+  title: 洗面奶 · 小红书评论汇总
+  # 类目路径（写完在文档副标题上）
+  path: 个护家清 / 面部护理 / 洁面（洗面奶）
+  subtitle: 数据源：小红书公开笔记与评论
+
+# ---------------------------------------------------------------- 品类词表
+category:
+  # 品类词：评论里出现任意一个 → 判定&quot;和本类目强相关&quot;，予以保留（R3 规则用）
+  words:
+    - 洗面奶
+    - 洁面
+    - 洗颜
+    - 洗脸
+    - 洗面
+    - 氨基酸
+    - 皂基
+    - 泡沫
+    - 泡泡
+    - 慕斯
+    - 洁面乳
+    - 洗面乳
+    - 洁面膏
+    - 洁面奶
+    - 清洁力
+    - 洗得干净
+    - 洗不干净
+    - 洗不掉
+    - 紧绷
+    - 假滑
+    - 干涩
+    - 拔干
+    - 控油
+    - 出油
+    - 油皮
+    - 干皮
+    - 混油
+    - 混干
+    - 敏感肌
+    - 痘肌
+    - 痘痘
+    - 闭口
+    - 黑头
+    - 毛孔
+    - 泛红
+    - 刺痛
+    - 过敏
+    - 烂脸
+    - 温和
+    - 不刺激
+    - 刺激
+    - 保湿
+    - 香精
+    - 味道
+    - 起泡
+    - 打泡
+    - 冲洗
+    - 洗完
+    - 洗后
+    - 表活
+    - 弱酸
+    - sls
+    - 皂
+    - 膏体
+    - 洗感
+    - 肤感
+    - 回购
+    - 空瓶
+    - 搓
+    - 清爽
+    - 滋润
+    - 干干净净
+    - 洗干净
+
+  # 品牌词：命中任意一个也算相关（用于留住&quot;只提牌子没提品类&quot;的评论）
+  brands:
+    - 芙丽芳丝
+    - freeplus
+    - elta
+    - 珂润
+    - curel
+    - 薇诺娜
+    - 至本
+    - 逐本
+    - hfp
+    - 半亩花田
+    - 谷雨
+    - 优时颜
+    - 珀莱雅
+    - 薇姿
+    - 理肤泉
+    - 雅漾
+    - 丝塔芙
+    - cerave
+    - 适乐肤
+    - 大宝
+    - 旁氏
+    - 妮维雅
+    - 曼秀雷敦
+    - 资生堂
+    - 洗颜专科
+    - 珊珂
+    - senka
+    - 悦诗风吟
+    - innisfree
+    - fancl
+    - 芳珂
+    - dhc
+    - 城野医生
+    - 石泽研究所
+    - suisai
+    - 嘉娜宝
+    - kanebo
+    - 诗留美屋
+    - 牛乳石碱
+    - 花印
+    - 玉泽
+    - 瑷尔博士
+    - 可复美
+    - 敷尔佳
+    - 欧莱雅
+    - olay
+    - 露得清
+    - neutrogena
+    - 可伶可俐
+    - 相宜本草
+    - 百雀羚
+    - 自然堂
+    - 韩束
+    - 御泥坊
+    - 一叶子
+    - 膜法世家
+    - 阿芙
+    - 林清轩
+    - 兰蔻
+    - sk-ii
+    - 黛珂
+    - 雪肌精
+    - 高丝
+    - kose
+    - 溪木源
+    - 肌肤未来
+    - rnw
+    - unny
+    - 柳丝木
+    - 摇滚动物园
+    - 优斐斯
+    - 博乐达
+
+  # 噪音词：标题里出现 → 直接丢掉（关键词误命中，不是本类目）
+  noise:
+    - 沐浴
+    - 洗发
+    - 沐浴露
+    - 洗发水
+    - 卸妆
+    - 美甲
+    - 洗衣机
+    - 洗洁精
+    - 宠物
+    - 狗狗
+    - 猫
+    - 洗碗
+    - 洗手液
+    - 私处
+    - 内衣
+    - 鞋
+    - 地毯
+    - 洗衣液
+
+# ---------------------------------------------------------------- 搜索关键词
+# 20 组左右为宜：综合 + 求安利 + 吐槽 + 测评 + 各肤质需求 + 使用痛点。
+# tag 只用于产出文档里做归类展示，不影响采集。
+keywords:
+  - [洗面奶, 综合]
+  - [洗面奶推荐, 求安利]
+  - [洗面奶避雷, 吐槽]
+  - [洗面奶测评, 测评]
+  - [洗面奶 平价, 需求]
+  - [洗面奶 学生, 需求]
+  - [氨基酸洗面奶, 需求]
+  - [洗面奶 油皮, 需求]
+  - [洗面奶 干皮, 需求]
+  - [洗面奶 敏感肌, 需求]
+  - [洗面奶 痘肌, 需求]
+  - [洗面奶 智商税, 吐槽]
+  - [洗面奶 紧绷, 痛点]
+  - [洗面奶 假滑, 痛点]
+  - [洗面奶 黑头, 需求]
+  - [洁面推荐, 求安利]
+  - [洁面 测评, 测评]
+  - [洗面奶 空瓶, 需求]
+  - [洗面奶 翻车, 吐槽]
+  - [男士洗面奶, 需求]
+
+# ---------------------------------------------------------------- 采集参数
+collect:
+  links:
+    scrollTo: [1500, 3000, 4500]     # 搜索页滚到这些 y 坐标，每屏多拿几条
+    scrollWait: 1.8
+    perKeywordCap: 40                # 每个关键词最多取多少条
+    navWait: 6                       # 打开搜索页后等多久
+  notes:
+    rounds: 2                        # 「展开回复 + 下滑」重复几轮
+    scrollTo: [900, 1800, 2700, 3600, 4500, 6000, 7500]
+    maxComments: 120                 # 每篇最多抓多少条评论
+    navWait: 5
+    gap: 1.2                         # 两篇之间歇一下，太密会被限流
+
+# ---------------------------------------------------------------- 统计口径
+buckets:
+  # 需求桶：用户&quot;想要什么&quot;。按顺序匹配，一条语料只进第一个命中的桶。
+  needs:
+    - [清洁力（洗得干净/控油/去黑头）, &#x27;清洁力|洗得干净|洗干净|洗得掉|洗掉|去油|控油|黑头|白头|毛孔|油脂|脏东西|深层清洁|卸得掉|洗完很干净&#x27;]
+    - [洗后肤感（不紧绷/不假滑/不拔干）, &#x27;紧绷|拔干|干涩|假滑|洗后|洗完|保湿|水润|舒服|清爽|不干|不涩|滋润|肤感|滑&#x27;]
+    - [成分安全（氨基酸/无皂基/无香精）, &#x27;氨基酸|皂基|成分|无香精|香精|酒精|sls|表活|弱酸|ph值|ph|防腐剂|无添加|安全|温和配方|刺激&#x27;]
+    - [肤质匹配（油皮/干皮/敏感肌/痘肌）, &#x27;油皮|干皮|混油|混干|混合皮|敏感肌|痘肌|痘痘肌|大油田|沙漠皮|肤质|中性皮&#x27;]
+    - [祛痘 / 去闭口功效, &#x27;祛痘|去痘|消痘|闭口|粉刺|痘痘|痘印|抗炎|消炎|红肿|痘&#x27;]
+    - [价格性价比（平价/学生党）, &#x27;平价|便宜|性价比|学生|穷鬼|大碗|百元|实惠|划算|预算|不贵|价位|多少钱|一支能用|几十块&#x27;]
+    - [泡沫与使用愉悦感, &#x27;泡沫|泡泡|绵密|丰富|起泡|打泡|冲洗|好冲|香味|味道|好闻|难闻|气味|香精味|留香|仪式感&#x27;]
+    - [选品求助（求推荐/哪个好）, &#x27;用哪个|推荐吗|求推荐|求安利|哪个好|可以吗|适合吗|怎么选|怎么办|用哪种|哪款|怎么样|有用过的吗|求分享&#x27;]
+    - [用法/搭配困惑（频率/干手干脸/二次清洁）, &#x27;一天洗几次|早晚|频率|干手|干脸|打湿|二次清洁|先用|顺序|要不要|还要用|搭配|卸妆后|敷&#x27;]
+
+  # 痛点桶：用户&quot;踩了什么坑&quot;。全部走否定识别 ——
+  # 「不紧绷」「不假滑」不会被算成痛点（否则数据会失真）。
+  pains:
+    - [洗后紧绷 / 拔干, &#x27;紧绷|拔干|干涩|很干|脸干|干燥|起皮|脱皮|绷得|绷&#x27;]
+    - [假滑 / 残留冲不净, &#x27;假滑|滑腻|冲不干净|洗不干净|残留|膜感|没洗干净|洗不掉|洗完还是油|油膜&#x27;]
+    - [过敏 / 刺痛 / 泛红 / 烂脸, &#x27;过敏|泛红|发红|刺痛|灼热|辣眼睛|辣脸|瘙痒|很痒|又痒|肿|红疹|起疹|烂脸|烧灼|烫|不适&#x27;]
+    - [致痘 / 闷痘 / 爆闭口, &#x27;闷痘|致痘|长痘|爆痘|闭口|粉刺|起痘|冒痘|越长越多&#x27;]
+    - [清洁力不足 / 洗不干净, &#x27;清洁力不够|清洁力不行|洗不干净|洗不掉|清洁力弱|卸不干净|没洗干净|卸不掉|清洁力差&#x27;]
+    - [过度清洁 / 伤屏障, &#x27;过度清洁|清洁力太强|清洁力太猛|伤屏障|屏障受损|越洗越油|越洗越干|洗太干净&#x27;]
+    - [气味难闻 / 香精味重, &#x27;难闻|异味|刺鼻|呛|味儿|味道怪|香精味|味道太冲|化工味&#x27;]
+    - [无效 / 智商税, &#x27;(?&lt;!有)没效果|(?&lt;!有)没有效果|没啥效果|一点效果没有|不见效|没见效|无效|智商税|交智商税|后悔|骗子|骗人|踩雷|不值|白买|吹上天|(?&lt;!有)(?&lt;!还)没用(?!完|之前|以前|过)|没啥用|浪费钱|交税&#x27;]
+    - [包装 / 膏体问题, &#x27;挤不出来|挤不动|太硬|硬得|不好挤|难起泡|起不了泡|漏|盖不严|盖子松|开口太|膏体&#x27;]
+
+# 决策权重：需求桶 → 用户实际决策时的评判维度（多个桶可合并到同一维度，权重会相加）
+decisionMap:
+  清洁力（洗得干净/控油/去黑头）: 清洁力
+  洗后肤感（不紧绷/不假滑/不拔干）: 温和度（不紧绷）
+  成分安全（氨基酸/无皂基/无香精）: 成分安全
+  肤质匹配（油皮/干皮/敏感肌/痘肌）: 肤质匹配
+  祛痘 / 去闭口功效: 功效（祛痘/去黑头）
+  价格性价比（平价/学生党）: 价格
+  泡沫与使用愉悦感: 使用感（泡沫/香味）
+
+# 不可改良项：命中这些的语料不进痛点榜（物流/客服/价格类差评改了也没用）
+nonFixable: [物流, 快递, 发货, 客服态度, 服务态度, 退货, 退款, 退不了, 降价]
+
+# ---------------------------------------------------------------- 筛选与过滤
+pick:
+  # 纯教程/手法类 → 排除，对&quot;为什么买&quot;挖掘价值低
+  tutorial: &#x27;手法|教程|跟练|小课堂|正确使用方法|按摩|穴位|步骤|教学|示范|演示|正确洗脸|洗脸步骤|洗脸方式|怎么洗脸|洗脸教学&#x27;
+  # 高价值信号 → 加权
+  high: &#x27;避雷|避坑|别买|千万别|后悔|智商税|翻车|吐槽|踩雷|没用|无效|难用|差评|空瓶|用完|用了|感受|体验|实测|测评|对比|真实|亲测|回购|求推荐|哪个好|用哪个|怎么样|可以吗|推荐|平价|学生|过敏|紧绷|假滑|干涩|刺痛|泛红|爆痘|闷痘|闭口|黑头|清洁力|洗不干净|清洁力太强|香精|味道|难闻|油皮|干皮|敏感肌|痘肌|混油|混干&#x27;
+  blankTemplate: true   # true = 品牌加分直接用 category.brands，不用另填
+  # 类型加分：这几个 tag 的笔记真实反馈密度最高
+  tagBonus: [吐槽, 测评, 求安利]
+
+# 过滤规则 R1-R12（水军/营销/无关内容剔除）
+filter:
+  R1_营销文本: &#x27;加V|加薇|加微|私信|点我头像|点击主页|主页联系|淘口令|淘宝|天猫|京东|拼多多|http[s]?://|www\.|优惠券|领券|链接在|低价出|代购|代拍|返现|返利|刷单|接广告|互关|互赞|涨粉|引流|货源|一手价|批发&#x27;
+  R7_营销昵称: &#x27;好物|优选|严选|福利|返利|优惠券|折扣|代购|旗舰店|官方旗舰|客服|批发|厂家|工厂|清仓|特卖|团购|带货|甄选&#x27;
+  R9_不可改良: &#x27;太贵|价格.*贵|物流|快递|发货|包装|瓶口|按压.*难|盖.*松&#x27;
+  R12_购买引导: &#x27;(?&lt;![a-zA-Z])tao(?![a-zA-Z])|去某宝|某宝|置顶评论|戳我|私我|主页有|点击主页&#x27;
+  maxLen: 300            # 单条语料超过这个长度截断
+  r4CrossNotes: 3        # 同文案出现在 &gt;=N 个不同笔记 → 判为复刷
+  r5IpHitRate: 0.4       # 同一属地占比超过该值且条数 &gt;= r5MinCount → 判为水军聚集
+  r5MinCount: 5
+  r6HourBurst: 8         # 同笔记同一小时零赞评论 &gt;=N 条 → 整簇剔除
+
+# ---------------------------------------------------------------- 输出
+output:
+  writeMd: true
+  writeHtml: true
+  # 汇总文档里每篇笔记最多列多少条语料（太多会让文档过大）
+  maxPerNote: 120
+</pre></details>
+<details class="file"><summary><span class="mono">config/eyeoil.yaml</span><span class="sz">6.6 KB</span></summary><pre class="code"># ============================================================================
+# 小红书评论采集工具包 · 类目配置【示例2：眼油 / 眼部精华】
+# ----------------------------------------------------------------------------
+# 这个文件演示「同一个类目，换个品类词表就能跑」。
+# 与 cleanser.yaml 的差别只有：project.* / category.* / keywords / buckets.* / doc.*
+# 代码一行都不用动。
+# ============================================================================
+
+project:
+  name: 眼油（眼部精华）
+  catKey: eyeoil
+  outputDir: ./产出/眼油
+  session: xhs-eyeoil-research
+
+doc:
+  title: 眼油 · 小红书评论汇总
+  path: 个护家清 / 面部护理 / 眼部护理（眼油·眼部精华）
+  subtitle: 数据源：小红书公开笔记与评论
+
+category:
+  words:
+    - 眼油
+    - 眼霜
+    - 眼部精华
+    - 眼部
+    - 眼周
+    - 眼纹
+    - 细纹
+    - 干纹
+    - 泪沟
+    - 黑眼圈
+    - 眼袋
+    - 脂肪粒
+    - 脂肪球
+    - 辣眼
+    - 刺眼
+    - 搓泥
+    - 卡粉
+    - 搓开
+    - 吸收
+    - 油腻
+    - 以油养肤
+    - 抗老
+    - 抗皱
+    - 紧致
+    - 淡纹
+    - 祛皱
+    - 皱纹
+    - 眼贴
+    - 眼膜
+    - 按摩
+    - 手法
+    - 涂眼
+    - 抹眼
+    - 眼周护理
+    - 眼部护理
+    - 去纹
+    - 眼干
+  brands:
+    - 阿芙
+    - melvita
+    - 蜜葳特
+    - 赏容
+    - olay
+    - 欧莱雅
+    - 珀莱雅
+    - 韩束
+    - 自然堂
+    - 薇诺娜
+    - 华熙
+    - 润百颜
+    - 夸迪
+    - 林清轩
+    - 逐本
+    - 至本
+    - haba
+    - 科颜氏
+    - 兰蔻
+    - 雅诗兰黛
+    - 赫莲娜
+    - 娇韵诗
+    - 悦薇
+    - 小棕瓶
+    - 红腰子
+    - 优时颜
+    - 丸美
+  noise:
+    - 美甲
+    - 甲油胶
+    - 指甲
+    - 带鱼
+    - 护发
+    - 发油
+    - 精油皂
+    - 卸妆
+    - 洗发
+    - 沐浴
+    - 香水
+    - 口红
+
+keywords:
+  - [眼油, 综合]
+  - [眼油避雷, 吐槽]
+  - [眼油推荐, 求安利]
+  - [眼部精华油, 综合]
+  - [眼油测评, 测评]
+  - [眼周抗老, 需求]
+  - [以油养肤 眼周, 需求]
+  - [眼油 智商税, 吐槽]
+  - [眼纹 眼油, 需求]
+  - [黑眼圈 眼油, 需求]
+
+collect:
+  links:
+    scrollTo: [1500, 3000, 4500]
+    scrollWait: 1.8
+    perKeywordCap: 40
+    navWait: 6
+  notes:
+    rounds: 2
+    scrollTo: [900, 1800, 2700, 3600, 4500, 6000, 7500]
+    maxComments: 120
+    navWait: 5
+    gap: 1.2
+
+buckets:
+  needs:
+    - [功效诉求（淡纹/抗老/黑眼圈）, &#x27;细纹|干纹|抗老|抗皱|淡纹|皱纹|紧致|松弛|泪沟|眼袋|黑眼圈|浮肿|暗沉|眼下|改善&#x27;]
+    - [质地体验（好吸收/不油腻）, &#x27;好吸收|易吸收|不油|清爽|不腻|不黏|轻薄|吸收快|肤感|滋润|不滋润|水润|润滑&#x27;]
+    - [温和安全（不过敏/不长脂肪粒）, &#x27;温和|不辣|不刺激|敏感肌|孕妇|无酒精|不熏|过敏|脂肪粒|安全&#x27;]
+    - [设计便捷（滚珠/手法/便携）, &#x27;手法|怎么涂|怎么用|滚珠|便携|方便|按摩头|好上手|简单|充电|权杖|按摩棒|外观设计|瓶身|出口|用量|一次用多少|带出门&#x27;]
+    - [价格性价比, &#x27;平价|便宜|性价比|学生|穷鬼|大碗|百元|实惠|划算|预算|元左右|不贵|价廉&#x27;]
+    - [香味与使用愉悦感, &#x27;味道|香味|好闻|香气|留香|仪式感|难闻|冰冰凉凉|清凉|气味|香精&#x27;]
+    - [用法/搭配困惑（二选一、叠涂、频率）, &#x27;二选一|叠涂|怎么用|先用|顺序|每天|隔几天|要不要|还要用|流程|要每天都用&#x27;]
+    - [选品求助（按年龄/症状求推荐）, &#x27;用哪个|推荐吗|求推荐|哪个好|可以吗|适合|选择|怎么办|用哪种|哪款|怎么样&#x27;]
+    - [成分/达人驱动（PDRN、主播推荐）, &#x27;pdrn|玻色因|胜肽|视黄醇|咖啡因|成分|浓度|肽|主播|推荐买|视频推荐&#x27;]
+
+  pains:
+    - [糊眼 / 进眼睛, &#x27;糊眼|糊眼睛|进眼睛|模糊|砸吧|眼周很痒|辣眼睛|辣眼|睁不开&#x27;]
+    - [无效 / 智商税, &#x27;(?&lt;!有)没效果|(?&lt;!有)没有效果|没任何效果|没一点效果|没啥效果|一点效果没有|不见效|没见效|无效|智商税|交智商税|后悔|骗子|骗人|踩雷|不值|白买|吹上天|(?&lt;!有)(?&lt;!还)没用(?!完|之前|以前|过)|(?&lt;!有)(?&lt;!还)没有用(?!完|之前|以前|过)|没啥用|没鸟用|没一点鸟用|浪费钱&#x27;]
+    - [油腻 / 不吸收, &#x27;油腻|很厚|不吸收|不好吸收|闷|假滑|厚重|油乎乎|黏腻|粘腻|浮在表面|搓泥&#x27;]
+    - [过敏 / 脂肪粒, &#x27;过敏|红点|红疹|脂肪粒|起粒|起小疙瘩|发痒|很痒|瘙痒|肿痛|红肿|刺痛|灼热|不适|刺激|辣眼睛|辣眼|烧灼|长闭口|闷痘&#x27;]
+    - [气味难闻, &#x27;难闻|异味|刺鼻|呛|味儿|味道怪|香精味&#x27;]
+    - [卫生/包装设计差, &#x27;漏|不卫生|卫生隐患|二次污染|难打开|打不开|包装差|包装简陋|包装不好|包装太|瓶口太|盖不严|盖子松|滴管不好|取量不|控制不了用量|一次挤太多|洒了&#x27;]
+
+decisionMap:
+  功效诉求（淡纹/抗老/黑眼圈）: 功效
+  质地体验（好吸收/不油腻）: 质地体验
+  温和安全（不过敏/不长脂肪粒）: 成分安全
+  设计便捷（滚珠/手法/便携）: 设计便捷
+  价格性价比: 价格
+
+nonFixable: [物流, 快递, 发货, 客服态度, 服务态度, 退货, 退款, 退不了, 降价]
+
+pick:
+  tutorial: &#x27;手法|教程|跟练|小课堂|正确使用方法|怎么用|按摩|穴位|步骤|手法版|秘诀|撑起|撑起来|榨干|轮廓紧致术|眼保健操|教学|示范|演示|手法教学&#x27;
+  high: &#x27;避雷|避坑|别买|千万别|后悔|智商税|翻车|吐槽|踩雷|没用|无效|难用|差评|空瓶|用完|用了|感受|体验|实测|测评|对比|真实|亲测|回购|到底谁在用|值得买|推荐|求推荐|哪个好|用哪个|怎么样|可以吗|过敏|脂肪粒|辣眼|糊眼|油腻|搓泥|卡粉|长粒|刺激|痒|味道|难闻&#x27;
+  blankTemplate: true
+  tagBonus: [吐槽, 测评, 求安利]
+
+filter:
+  R1_营销文本: &#x27;加V|加薇|加微|私信|点我头像|点击主页|主页联系|淘口令|淘宝|天猫|京东|拼多多|http[s]?://|www\.|优惠券|领券|链接在|低价出|代购|代拍|返现|返利|刷单|接广告|互关|互赞|涨粉|引流|货源|一手价|批发&#x27;
+  R7_营销昵称: &#x27;好物|优选|严选|福利|返利|优惠券|折扣|代购|旗舰店|官方旗舰|客服|批发|厂家|工厂|清仓|特卖|团购|带货|甄选&#x27;
+  R9_不可改良: &#x27;太贵|价格.*贵|物流|快递|发货|包装|瓶口|滴管.*难|按压.*难|盖.*松&#x27;
+  R12_购买引导: &#x27;(?&lt;![a-zA-Z])tao(?![a-zA-Z])|去某宝|某宝|置顶评论|戳我|私我|主页有|点击主页&#x27;
+  maxLen: 300
+  r4CrossNotes: 3
+  r5IpHitRate: 0.4
+  r5MinCount: 5
+  r6HourBurst: 8
+
+output:
+  writeMd: true
+  writeHtml: true
+  maxPerNote: 120
+</pre></details>
+<details class="file"><summary><span class="mono">scripts/00_preflight.py</span><span class="sz">2.9 KB</span></summary><pre class="code"># -*- coding: utf-8 -*-
+&quot;&quot;&quot;
+00_preflight.py — 跑之前的体检：守护进程 + 扩展连接 + 小红书登录态
+
+只看两件事：
+  1) Kimi WebBridge 守护进程活着、浏览器扩展连上了
+  2) 小红书是登录状态
+
+★ 判定登录态别用 document.cookie —— web_session / id_token 是 httpOnly，
+  JS 读不到，会得出「未登录」的错误结论。必须用 cdp Network.getCookies。
+
+用法: python 00_preflight.py [--cat cleanser]
+退出码: 0=全部就绪  2=有问题（可重跑，先按提示处理）
+&quot;&quot;&quot;
+import sys
+import os
+
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import xcommon as X
+
+
+def main():
+    opt, _ = X.cli(&quot;采集前体检&quot;)
+    cfg = X.load_cfg(explicit=opt.config, cat=opt.cat)
+    print(f&quot;类目：{cfg.project.name}（配置 {cfg._config_path}）&quot;, flush=True)
+    print(f&quot;产出目录：{cfg._out}&quot;, flush=True)
+    print(&quot;-&quot; * 60, flush=True)
+
+    ok = True
+
+    # 1) 守护进程
+    running, connected = X.wb_alive()
+    print(f&quot;[1/2] WebBridge 守护进程 running={running}｜扩展 extension_connected={connected}&quot;, flush=True)
+    if not running:
+        print(&quot;      ✗ 守护进程没起来。看门狗会自动拉起，直接跑 run_all.py 即可；&quot;, flush=True)
+        print(&quot;        如果是用本脚本单独体检，请先运行 run_all.py（它会带看门狗）。&quot;, flush=True)
+        ok = False
+    elif not connected:
+        print(&quot;      ✗ 守护进程正常，但浏览器扩展没连上。请打开 Edge，确认 Kimi 浏览器扩展已启用。&quot;, flush=True)
+        ok = False
+
+    # 2) 登录态
+    wb = X.WB(cfg._session, cfg._tmp)
+    wb(&quot;navigate&quot;, {&quot;url&quot;: &quot;https://www.xiaohongshu.com/explore&quot;}, wait=5)
+    r = wb(&quot;cdp&quot;, {&quot;method&quot;: &quot;Network.getCookies&quot;,
+                   &quot;params&quot;: {&quot;urls&quot;: [&quot;https://www.xiaohongshu.com&quot;]}})
+    names = {}
+    try:
+        for c in (r.get(&quot;data&quot;, {}).get(&quot;result&quot;, {}) or {}).get(&quot;cookies&quot;, []):
+            names[c[&quot;name&quot;]] = c[&quot;value&quot;]
+    except Exception:
+        pass
+    has = &quot;web_session&quot; in names or &quot;id_token&quot; in names
+    print(f&quot;[2/2] 小红书 cookie {len(names)} 个｜web_session={&#x27;有&#x27; if &#x27;web_session&#x27; in names else &#x27;无&#x27;}&quot;
+          f&quot;｜id_token={&#x27;有&#x27; if &#x27;id_token&#x27; in names else &#x27;无&#x27;}&quot;, flush=True)
+    txt = wb.eval_text(&quot;document.body.innerText&quot;) or &quot;&quot;
+    good, why = X.login_ok(txt)
+    head = X.norm(txt)[:100]
+    print(f&quot;      页面首屏：{head}&quot;, flush=True)
+    if has and good:
+        print(&quot;      ✓ 判定：已登录&quot;, flush=True)
+    else:
+        print(f&quot;      ✗ 判定：需要重新登录（cookie={has} / 页面={why or &#x27;正常&#x27;}）&quot;, flush=True)
+        print(&quot;        请在本机浏览器打开 https://www.xiaohongshu.com 扫码登录后重跑。&quot;, flush=True)
+        ok = False
+
+    print(&quot;-&quot; * 60, flush=True)
+    print(&quot;结论：&quot; + (&quot;✓ 可以开跑&quot; if ok else &quot;✗ 先处理上面的问题&quot;), flush=True)
+    return 0 if ok else 2
+
+
+if __name__ == &quot;__main__&quot;:
+    sys.exit(main())
+</pre></details>
+<details class="file"><summary><span class="mono">scripts/10_collect_links.py</span><span class="sz">4.1 KB</span></summary><pre class="code"># -*- coding: utf-8 -*-
+&quot;&quot;&quot;
+10_collect_links.py — 第 1 步：按关键词搜索，收集候选笔记链接
+
+走浏览器真实搜索页，从 DOM 里抠带 xsec_token 的笔记链接。
+输出: raw/xhs_links_&lt;日期&gt;.json
+
+★ 三个坑（都在这里处理掉了）：
+  1) 搜索结果里的笔记链接是 /search_result/&lt;nid&gt;?xsec_token=...，
+     不是 /explore/&lt;nid&gt;。正则漏了 search_result 会静默采到 0 条。
+  2) 结果里混着大量 /user/profile/ 的作者主页链接，必须过滤。
+  3) 每个关键词多滚几屏能多拿几条；xsec_token 会过期，
+     想扩量要重新跑本脚本拿新 token，而不是重刷旧链接。
+
+用法: python 10_collect_links.py [--cat cleanser] [--limit 20]
+&quot;&quot;&quot;
+import os
+import sys
+
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import xcommon as X
+
+JS_LINKS = &quot;&quot;&quot;(() =&gt; { var o=[]; document.querySelectorAll(&#x27;a[href]&#x27;).forEach(function(a){
+  var h=a.getAttribute(&#x27;href&#x27;)||&#x27;&#x27;; if(h.indexOf(&#x27;xsec_token&#x27;)&lt;0) return;
+  var t=(a.innerText||&#x27;&#x27;).trim();
+  var sec=a.closest(&#x27;section&#x27;)||a.parentElement.parentElement;
+  var st=(sec&amp;&amp;sec.innerText||&#x27;&#x27;);
+  var m=st.match(/([\\d.]+w?)\\s*\\n?\\s*(赞|点赞)/);
+  o.push({title:t.slice(0,120), url:h, likes:(m?m[1]:&#x27;&#x27;)}); });
+  var seen={}; return JSON.stringify(o.filter(function(x){
+    if(!x.title||seen[x.url])return false; seen[x.url]=1; return true; })); })()&quot;&quot;&quot;
+
+
+def main():
+    opt, _ = X.cli(&quot;小红书候选笔记链接采集&quot;)
+    cfg = X.load_cfg(explicit=opt.config, cat=opt.cat)
+    wb = X.WB(cfg._session, cfg._tmp)
+
+    kws = [(k, t) for k, t in (cfg.get(&quot;keywords&quot;) or [])]
+    if opt.limit:
+        kws = kws[: opt.limit]
+    if not kws:
+        raise SystemExit(&quot;[配置错误] keywords 是空的。请先在配置里填搜索关键词。&quot;)
+
+    lc = cfg.getpath(&quot;collect.links&quot;, {}) or {}
+    scroll_to = lc.get(&quot;scrollTo&quot;, [1500, 3000, 4500])
+    scroll_wait = lc.get(&quot;scrollWait&quot;, 1.8)
+    cap = lc.get(&quot;perKeywordCap&quot;, 40)
+    nav_wait = lc.get(&quot;navWait&quot;, 6)
+    noise = list(cfg.getpath(&quot;category.noise&quot;, []) or [])
+
+    print(f&quot;=== {cfg.project.name} · 候选笔记采集（{len(kws)} 组关键词）===&quot;, flush=True)
+    out, expired = [], False
+
+    for i, (kw, tag) in enumerate(kws, 1):
+        url = f&quot;https://www.xiaohongshu.com/search_result?keyword={str(kw).replace(&#x27; &#x27;, &#x27;%20&#x27;)}&amp;type=51&quot;
+        wb(&quot;navigate&quot;, {&quot;url&quot;: url}, wait=nav_wait)
+        for y in scroll_to:
+            wb(&quot;evaluate&quot;, {&quot;code&quot;: f&quot;window.scrollTo(0,{y})&quot;}, wait=scroll_wait)
+
+        txt = wb.eval_text(&quot;document.body.innerText&quot;) or &quot;&quot;
+        ok, why = X.login_ok(txt)
+        if not ok:
+            print(f&quot;  ⚠️ 小红书登录过期（{why}），请重新扫码登录后重跑&quot;, flush=True)
+            expired = True
+            break
+
+        items = wb.eval_json(JS_LINKS) or []
+        kept = 0
+        for it in items:
+            u = it.get(&quot;url&quot;, &quot;&quot;)
+            if X.is_author_profile(u):          # 坑 2：作者主页链接
+                continue
+            nid = X.note_id_from_url(u)
+            if not nid or not X.token_from_url(u):
+                continue
+            it[&quot;nid&quot;] = nid
+            it[&quot;keyword&quot;], it[&quot;tag&quot;], it[&quot;fetchDate&quot;] = kw, tag, cfg._today
+            it[&quot;isNoise&quot;] = any(n in it[&quot;title&quot;] for n in noise)
+            out.append(it)
+            kept += 1
+            if kept &gt;= cap:
+                break
+        print(f&quot;  [{i}/{len(kws)}] {kw} → {kept} 条&quot;, flush=True)
+
+    # 全量去重（同一条笔记可能命中多个关键词）
+    seen, uniq = set(), []
+    for x in out:
+        if x[&quot;nid&quot;] in seen:
+            continue
+        seen.add(x[&quot;nid&quot;])
+        uniq.append(x)
+
+    fp = os.path.join(cfg._raw, f&quot;xhs_links_{cfg._stamp}.json&quot;)
+    X.jdump({&quot;fetchedAt&quot;: cfg._today, &quot;category&quot;: cfg.project.name,
+             &quot;count&quot;: len(uniq), &quot;links&quot;: uniq}, fp)
+    print(f&quot;\n[done] 共 {len(uniq)} 条候选（去重后）→ {fp}&quot;, flush=True)
+    if expired:
+        print(&quot;       ⚠️ 因登录过期提前中断，登录后重跑本步即可（会把新旧合并去重）&quot;, flush=True)
+        return 2
+    return 0
+
+
+if __name__ == &quot;__main__&quot;:
+    sys.exit(main())
+</pre></details>
+<details class="file"><summary><span class="mono">scripts/11_clean_links.py</span><span class="sz">2.8 KB</span></summary><pre class="code"># -*- coding: utf-8 -*-
+&quot;&quot;&quot;
+11_clean_links.py — 第 2 步：清洗候选标题、去重、剔噪音
+
+输入: raw/xhs_links_*.json
+输出: raw/xhs_candidates_clean.json
+
+做四件事：
+  1) 从搜索卡片的整块文本里剥出真正的标题（卡片文本 = 标题\n作者昵称\n3天前\n1.2万）
+  2) 标题必须命中「品类词」才算相关（否则多半是作者昵称被当成了标题）
+  3) 剔除噪音词命中的标题（关键词误命中别的品类）
+  4) 按 nid 去重（同一条笔记可能被多个关键词搜到）
+
+用法: python 11_clean_links.py [--cat cleanser]
+&quot;&quot;&quot;
+import glob
+import os
+import re
+import sys
+
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import xcommon as X
+
+
+def main():
+    opt, _ = X.cli(&quot;候选标题清洗&quot;)
+    cfg = X.load_cfg(explicit=opt.config, cat=opt.cat)
+
+    files = sorted(glob.glob(os.path.join(cfg._raw, &quot;xhs_links_*.json&quot;)))
+    if not files:
+        raise SystemExit(f&quot;[缺少输入] {cfg._raw} 下没有 xhs_links_*.json，请先跑 10_collect_links.py&quot;)
+    src = files[-1]
+    links = X.jload(src, {}).get(&quot;links&quot;, [])
+    print(f&quot;输入：{src}（{len(links)} 条原始链接）&quot;, flush=True)
+
+    words = list(cfg.getpath(&quot;category.words&quot;, []) or [])
+    noise = list(cfg.getpath(&quot;category.noise&quot;, []) or [])
+    if not words:
+        # 没填品类词就只做去重，不卡相关性（方便新类目先跑通流程）
+        hit_re = None
+        print(&quot;  ⚠️ 配置里 category.words 是空的，本步跳过相关性校验（只做去重/剥标题）&quot;, flush=True)
+    else:
+        hit_re = re.compile(&quot;|&quot;.join(re.escape(w) for w in words))
+
+    seen, out = set(), []
+    for l in links:
+        u = l.get(&quot;url&quot;, &quot;&quot;)
+        if X.is_author_profile(u):
+            continue
+        t = X.clean_title(l.get(&quot;title&quot;, &quot;&quot;), hit_re, noise)
+        if not t:
+            continue
+        nid = X.note_id_from_url(u)
+        if not nid or nid in seen:
+            continue
+        seen.add(nid)
+        out.append({&quot;title&quot;: t, &quot;url&quot;: u, &quot;nid&quot;: nid,
+                    &quot;likes&quot;: l.get(&quot;likes&quot;) or &quot;&quot;, &quot;tag&quot;: l.get(&quot;tag&quot;, &quot;&quot;),
+                    &quot;keyword&quot;: l.get(&quot;keyword&quot;, &quot;&quot;), &quot;fetchDate&quot;: cfg._today})
+
+    def lk(x):
+        v = re.sub(r&quot;[^\d.]&quot;, &quot;&quot;, str(x[&quot;likes&quot;] or &quot;0&quot;))
+        try:
+            return float(v or 0)
+        except Exception:
+            return 0.0
+
+    out.sort(key=lambda x: -lk(x))
+    X.jdump({&quot;cleanedAt&quot;: cfg._today, &quot;category&quot;: cfg.project.name,
+             &quot;count&quot;: len(out), &quot;candidates&quot;: out},
+            os.path.join(cfg._raw, &quot;xhs_candidates_clean.json&quot;))
+
+    print(f&quot;[done] 清洗后 {len(out)} 条候选（原始 {len(links)} 条）&quot;, flush=True)
+    for i, c in enumerate(out[:20], 1):
+        print(f&quot;{i:&gt;2}. [{c[&#x27;tag&#x27;]:&lt;4}] {str(c[&#x27;likes&#x27;] or &#x27;—&#x27;):&lt;6} {c[&#x27;title&#x27;][:50]}&quot;, flush=True)
+    return 0
+
+
+if __name__ == &quot;__main__&quot;:
+    sys.exit(main())
+</pre></details>
+<details class="file"><summary><span class="mono">scripts/12_pick_notes.py</span><span class="sz">3.2 KB</span></summary><pre class="code"># -*- coding: utf-8 -*-
+&quot;&quot;&quot;
+12_pick_notes.py — 第 3 步：从候选里挑「高挖掘价值」的笔记
+
+打分规则（可配）：
+  +2  标题命中 high 正则（避雷/空瓶/紧绷/假滑…）
+  +2  标题命中品牌词（说明是具体产品的真实反馈，不是泛泛而谈）
+  +1  来源 tag 属于 tagBonus（吐槽/测评/求安利 —— 真实反馈密度最高）
+  剔除：标题命中 tutorial 正则（手法/教程类，对&quot;为什么买&quot;挖掘价值低）
+
+输出: raw/xhs_picked.json   ← 下一步按这个清单去抓正文和评论
+
+用法: python 12_pick_notes.py [--limit 40] [--cat cleanser]
+      --limit 就是本次最多挑几篇（不传则用配置里的 defaultPick）
+&quot;&quot;&quot;
+import glob
+import os
+import re
+import sys
+
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import xcommon as X
+
+
+def main():
+    opt, _ = X.cli(&quot;高价值笔记挑选&quot;)
+    cfg = X.load_cfg(explicit=opt.config, cat=opt.cat)
+
+    cand_p = os.path.join(cfg._raw, &quot;xhs_candidates_clean.json&quot;)
+    cands = X.jload(cand_p, {}).get(&quot;candidates&quot;, [])
+    if not cands:
+        raise SystemExit(f&quot;[缺少输入] {cand_p} 为空，请先跑 11_clean_links.py&quot;)
+
+    limit = opt.limit or cfg.getpath(&quot;pick.defaultPick&quot;, 40)
+    tut = cfg.getpath(&quot;pick.tutorial&quot;)
+    high = cfg.getpath(&quot;pick.high&quot;)
+    tag_bonus = list(cfg.getpath(&quot;pick.tagBonus&quot;, []) or [])
+    brands = list(cfg.getpath(&quot;category.brands&quot;, []) or [])
+    tut_re = re.compile(tut) if tut else None
+    high_re = re.compile(high) if high else None
+
+    # 已经抓过的笔记不再重复挑（支持断点续跑）
+    done = set()
+    for f in glob.glob(os.path.join(cfg._notes, &quot;*.json&quot;)):
+        d = X.jload(f, {}) or {}
+        if d.get(&quot;nid&quot;):
+            done.add(d[&quot;nid&quot;])
+
+    keep, drop = [], []
+    for c in cands:
+        t = c.get(&quot;title&quot;, &quot;&quot;)
+        if c.get(&quot;nid&quot;) in done:
+            continue
+        if tut_re and tut_re.search(t):
+            drop.append(t)
+            continue
+        score = 0
+        if high_re and high_re.search(t):
+            score += 2
+        bs = [b for b in brands if b.lower() in t.lower()]
+        if bs:
+            score += 2
+        if c.get(&quot;tag&quot;) in tag_bonus:
+            score += 1
+        keep.append({**c, &quot;score&quot;: score, &quot;brands&quot;: bs})
+
+    keep.sort(key=lambda x: (-x[&quot;score&quot;], -len(x.get(&quot;title&quot;, &quot;&quot;))))
+    picked = [k for k in keep if k[&quot;score&quot;] &gt; 0][:limit]
+
+    X.jdump({&quot;pickedAt&quot;: cfg._today, &quot;category&quot;: cfg.project.name,
+             &quot;count&quot;: len(picked), &quot;items&quot;: picked},
+            os.path.join(cfg._raw, &quot;xhs_picked.json&quot;))
+
+    print(f&quot;候选 {len(cands)} 条｜已采 {len(done)} 条｜剔教程 {len(drop)} 条｜&quot;
+          f&quot;本次新挑 {len(picked)} 条（上限 {limit}）&quot;, flush=True)
+    if drop:
+        print(&quot;\n=== 已剔除（教程/手法类）===&quot;, flush=True)
+        for t in drop[:10]:
+            print(f&quot;  ✗ {t[:46]}&quot;, flush=True)
+    print(&quot;\n=== 待采集（前 25）===&quot;, flush=True)
+    for i, k in enumerate(picked[:25], 1):
+        b = (&quot;·&quot; + &quot;,&quot;.join(k[&quot;brands&quot;])) if k[&quot;brands&quot;] else &quot;&quot;
+        print(f&quot;{i:&gt;2}. [分{k[&#x27;score&#x27;]}] {k[&#x27;title&#x27;][:40]} {b}&quot;, flush=True)
+    return 0
+
+
+if __name__ == &quot;__main__&quot;:
+    sys.exit(main())
+</pre></details>
+<details class="file"><summary><span class="mono">scripts/13_scrape_notes.py</span><span class="sz">6.0 KB</span></summary><pre class="code"># -*- coding: utf-8 -*-
+&quot;&quot;&quot;
+13_scrape_notes.py — 第 4 步：逐篇打开笔记，抓正文 + 评论（尽量多抓）
+
+输入: raw/xhs_picked.json（没有就退回 raw/xhs_candidates_clean.json）
+输出: raw/xhs_output/note_&lt;nid&gt;.json
+
+抓取手法：
+  1) 打开笔记（统一走 /explore/&lt;nid&gt;?xsec_token=...，实测比 /search_result/ 稳）
+  2) 分阶段下滑 + 反复点「展开N条回复 / 查看更多评论」，让懒加载的评论渲染出来
+  3) 读 #detail-title / #detail-desc / .parent-comment / .comment-item
+
+已知限制（如实说明，不装作能拿到）：
+  · 小红书只渲染&quot;可见范围&quot;的评论，声明 1000 条的笔记实际能读到的通常几十到一百多条
+  · 二次深挖（14_deep_comments.py）能再补一点，但 xsec_token 过期后会几乎无新增
+  · 想大幅扩量，正确做法是回去重跑 10_collect_links.py 拿新笔记，
+    而不是反复重刷同一批旧链接
+
+用法: python 13_scrape_notes.py [--limit 40] [--cat cleanser]
+&quot;&quot;&quot;
+import glob
+import os
+import re
+import sys
+import time
+
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import xcommon as X
+
+# 展开所有可展开的回复/评论（点 3 轮，每轮同时滚到底）
+JS_EXPAND = &quot;&quot;&quot;(() =&gt; {
+  let clicked = 0;
+  for (let round = 0; round &lt; 3; round++) {
+    const nodes = [...document.querySelectorAll(&#x27;div,span,button,a&#x27;)];
+    for (const e of nodes) {
+      const t = (e.innerText || &#x27;&#x27;).trim();
+      if (!t) continue;
+      if (/^展开\\d*条?回复$|^展开更多评论$|更多回复|查看更多评论|展开更多|共\\d+条回复/.test(t)) {
+        try { e.click(); clicked++; } catch (err) {}
+      }
+    }
+    window.scrollTo(0, document.body.scrollHeight);
+  }
+  return clicked;
+})()&quot;&quot;&quot;
+
+JS_EXTRACT = &quot;&quot;&quot;(() =&gt; {
+  var q=function(s){var e=document.querySelector(s);return e?(e.innerText||&#x27;&#x27;).trim():&#x27;&#x27;;};
+  var cs=[...document.querySelectorAll(&#x27;.parent-comment, .comment-item&#x27;)].map(function(e){
+    return (e.innerText||&#x27;&#x27;).trim();
+  });
+  var cnt=&#x27;&#x27;;
+  var m=document.body.innerText.match(/(\\d+)\\s*条评论/); if(m) cnt=m[1];
+  return JSON.stringify({title:q(&#x27;#detail-title&#x27;), desc:q(&#x27;#detail-desc&#x27;),
+                         author:q(&#x27;.author-container&#x27;), like:q(&#x27;.like-wrapper&#x27;),
+                         commentCount:cnt, comments:cs});
+})()&quot;&quot;&quot;
+
+
+def main():
+    opt, _ = X.cli(&quot;笔记正文 + 评论采集&quot;)
+    cfg = X.load_cfg(explicit=opt.config, cat=opt.cat)
+    wb = X.WB(cfg._session, cfg._tmp)
+
+    picked_p = os.path.join(cfg._raw, &quot;xhs_picked.json&quot;)
+    if os.path.exists(picked_p):
+        cands = X.jload(picked_p, {}).get(&quot;items&quot;, [])
+        print(f&quot;[info] 用高价值清单 xhs_picked.json（{len(cands)} 条）&quot;, flush=True)
+    else:
+        cands = X.jload(os.path.join(cfg._raw, &quot;xhs_candidates_clean.json&quot;), {}).get(&quot;candidates&quot;, [])
+        print(&quot;[info] 没有 xhs_picked.json，退回用全部候选&quot;, flush=True)
+    if not cands:
+        raise SystemExit(&quot;[缺少输入] 请先跑 12_pick_notes.py&quot;)
+
+    limit = opt.limit or len(cands)
+    cands = cands[:limit]
+
+    nc = cfg.getpath(&quot;collect.notes&quot;, {}) or {}
+    rounds = nc.get(&quot;rounds&quot;, 2)
+    scrolls = nc.get(&quot;scrollTo&quot;, [900, 1800, 2700, 3600, 4500, 6000, 7500])
+    max_comments = nc.get(&quot;maxComments&quot;, 120)
+    nav_wait = nc.get(&quot;navWait&quot;, 5)
+    gap = nc.get(&quot;gap&quot;, 1.2)
+
+    done = total_comments = 0
+    for i, c in enumerate(cands, 1):
+        nid = c.get(&quot;nid&quot;) or X.note_id_from_url(c.get(&quot;url&quot;, &quot;&quot;))
+        tok = X.token_from_url(c.get(&quot;url&quot;, &quot;&quot;))
+        if not nid or not tok:
+            continue
+        fp = os.path.join(cfg._notes, f&quot;note_{nid[:16]}.json&quot;)
+        if os.path.exists(fp):                    # 断点续跑：已抓过的跳过
+            continue
+        url = X.build_note_url(nid, tok)
+        wb(&quot;navigate&quot;, {&quot;url&quot;: url}, wait=nav_wait)
+
+        # 分阶段下滑，中途穿插「展开回复」
+        half = max(1, len(scrolls) // 2)
+        for y in scrolls[:half]:
+            wb(&quot;evaluate&quot;, {&quot;code&quot;: f&quot;window.scrollTo(0,{y})&quot;}, wait=1.2)
+        for _ in range(rounds):
+            wb(&quot;evaluate&quot;, {&quot;code&quot;: JS_EXPAND}, wait=2.2)
+        for y in scrolls[half:]:
+            wb(&quot;evaluate&quot;, {&quot;code&quot;: f&quot;window.scrollTo(0,{y})&quot;}, wait=1.2)
+        wb(&quot;evaluate&quot;, {&quot;code&quot;: JS_EXPAND}, wait=2.0)
+
+        d = wb.eval_json(JS_EXTRACT)
+        if not d:
+            txt = wb.eval_text(&quot;document.body.innerText&quot;) or &quot;&quot;
+            ok, why = X.login_ok(txt)
+            if not ok:
+                print(f&quot;⚠️ 小红书登录过期（{why}），停止采集。已抓 {done} 篇，登录后重跑本步可续传。&quot;, flush=True)
+                break
+            d = {&quot;title&quot;: &quot;&quot;, &quot;desc&quot;: &quot;&quot;, &quot;author&quot;: &quot;&quot;, &quot;comments&quot;: [], &quot;commentCount&quot;: &quot;&quot;}
+
+        nd = {&quot;nid&quot;: nid, &quot;url&quot;: url, &quot;fetchDate&quot;: cfg._today,
+              &quot;title&quot;: d.get(&quot;title&quot;) or c.get(&quot;title&quot;, &quot;&quot;),
+              &quot;desc&quot;: d.get(&quot;desc&quot;, &quot;&quot;),
+              &quot;author&quot;: (d.get(&quot;author&quot;, &quot;&quot;) or &quot;&quot;).split(&quot;\n&quot;)[0][:24],
+              &quot;like&quot;: d.get(&quot;like&quot;, &quot;&quot;),
+              &quot;commentCount&quot;: d.get(&quot;commentCount&quot;, &quot;&quot;),
+              &quot;keyword&quot;: c.get(&quot;keyword&quot;, &quot;&quot;), &quot;tag&quot;: c.get(&quot;tag&quot;, &quot;&quot;),
+              &quot;srcTitle&quot;: c.get(&quot;title&quot;, &quot;&quot;), &quot;likes&quot;: c.get(&quot;likes&quot;, &quot;&quot;),
+              &quot;comments&quot;: []}
+
+        seen = set()
+        for b in (d.get(&quot;comments&quot;) or []):
+            cc = X.parse_comment_block(b)
+            if cc and cc[&quot;content&quot;] not in seen:
+                seen.add(cc[&quot;content&quot;])
+                nd[&quot;comments&quot;].append(cc)
+            if len(nd[&quot;comments&quot;]) &gt;= max_comments:
+                break
+
+        X.jdump(nd, fp)
+        done += 1
+        total_comments += len(nd[&quot;comments&quot;])
+        print(f&quot;[{i}/{len(cands)}] {nd[&#x27;title&#x27;][:30]} | 正文{len(nd[&#x27;desc&#x27;])}字 &quot;
+              f&quot;评论{len(nd[&#x27;comments&#x27;])}条 (累计{total_comments})&quot;, flush=True)
+        time.sleep(gap)
+
+    print(f&quot;\n[done] 本次抓取 {done} 篇，评论 {total_comments} 条 → {cfg._notes}&quot;, flush=True)
+    nfiles = len(glob.glob(os.path.join(cfg._notes, &quot;*.json&quot;)))
+    print(f&quot;       目录内累计 {nfiles} 篇笔记&quot;, flush=True)
+    return 0
+
+
+if __name__ == &quot;__main__&quot;:
+    sys.exit(main())
+</pre></details>
+<details class="file"><summary><span class="mono">scripts/14_deep_comments.py</span><span class="sz">4.6 KB</span></summary><pre class="code"># -*- coding: utf-8 -*-
+&quot;&quot;&quot;
+14_deep_comments.py — 第 5 步（可选）：对已抓笔记再深挖一轮评论
+
+和 13 的差别：这版会滚动「内部可滚动容器」（评论区常是独立滚动区），
+所以经常能比 13 多扒出一些。
+
+★ 实测提醒：对**同一批旧链接**重刷，收益很小（xsec_token 过期后
+  页面只给回已缓存的那部分，实测 115 篇只多 13 条）。
+  真正有效的扩量方式 = 回第 1 步重新搜索拿新笔记。
+  本步的价值是「把已抓到但评论没展开全的那些笔记再压一压」。
+
+用法: python 14_deep_comments.py [--limit 30] [--cat cleanser]
+  只处理「已抓条数 &lt; 声明条数」的笔记，优先补差距最大的。
+&quot;&quot;&quot;
+import os
+import sys
+
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import xcommon as X
+
+JS_SCROLL = &quot;&quot;&quot;(() =&gt; {
+  let n=0;
+  const cands=[...document.querySelectorAll(&#x27;div&#x27;)].filter(d=&gt;d.scrollHeight&gt;d.clientHeight+150 &amp;&amp; d.clientHeight&gt;150);
+  cands.forEach(d=&gt;{ try{ d.scrollTop=d.scrollHeight; n++; }catch(e){} });
+  window.scrollTo(0, document.body.scrollHeight);
+  return n;
+})()&quot;&quot;&quot;
+
+JS_EXPAND = &quot;&quot;&quot;(() =&gt; {
+  let clicked=0;
+  for(let r=0;r&lt;4;r++){
+    const nodes=[...document.querySelectorAll(&#x27;div,span,button,a&#x27;)];
+    for(const e of nodes){
+      const t=(e.innerText||&#x27;&#x27;).trim();
+      if(!t) continue;
+      if(/^展开\\s*\\d*\\s*条?回复$|更多回复|查看更多评论|展开更多|共\\s*\\d+\\s*条回复|查看全部\\s*\\d+\\s*条回复/.test(t)){
+        try{ e.click(); clicked++; }catch(err){}
+      }
+    }
+    const cands=[...document.querySelectorAll(&#x27;div&#x27;)].filter(d=&gt;d.scrollHeight&gt;d.clientHeight+150&amp;&amp;d.clientHeight&gt;150);
+    cands.forEach(d=&gt;{ try{ d.scrollTop=d.scrollHeight; }catch(e){} });
+  }
+  return clicked;
+})()&quot;&quot;&quot;
+
+JS_EXTRACT = &quot;&quot;&quot;(() =&gt; {
+  var cs=[...document.querySelectorAll(&#x27;.parent-comment, .comment-item&#x27;)].map(function(e){
+    return (e.innerText||&#x27;&#x27;).trim(); });
+  var cnt=&#x27;&#x27;; var m=document.body.innerText.match(/(\\d+)\\s*条评论/); if(m) cnt=m[1];
+  return JSON.stringify({comments:cs, commentCount:cnt});
+})()&quot;&quot;&quot;
+
+
+def main():
+    opt, _ = X.cli(&quot;评论二次深挖&quot;)
+    cfg = X.load_cfg(explicit=opt.config, cat=opt.cat)
+    wb = X.WB(cfg._session, cfg._tmp)
+
+    limit = opt.limit or 30
+
+    # 挑「实际抓到的 &lt; 页面声明的」笔记，按差距从大到小
+    targets = []
+    for f in sorted(os.listdir(cfg._notes)):
+        if not f.endswith(&quot;.json&quot;):
+            continue
+        d = X.jload(os.path.join(cfg._notes, f), {}) or {}
+        have = len(d.get(&quot;comments&quot;) or [])
+        try:
+            decl = int(d.get(&quot;commentCount&quot;) or 0)
+        except Exception:
+            decl = 0
+        if decl == 0 or have &lt; decl:
+            targets.append((f, have, decl))
+    targets.sort(key=lambda x: -(x[2] - x[1]))
+    targets = targets[:limit]
+    if not targets:
+        print(&quot;[done] 没有需要深挖的笔记（都抓全了，或目录为空）&quot;, flush=True)
+        return 0
+    print(f&quot;[info] 待深挖 {len(targets)} 篇&quot;, flush=True)
+
+    added_total = 0
+    for i, (f, have, decl) in enumerate(targets, 1):
+        p = os.path.join(cfg._notes, f)
+        d = X.jload(p, {}) or {}
+        url = d.get(&quot;url&quot;, &quot;&quot;)
+        if not url:
+            continue
+        wb(&quot;navigate&quot;, {&quot;url&quot;: url}, wait=5)
+        for _ in range(2):
+            wb(&quot;evaluate&quot;, {&quot;code&quot;: JS_SCROLL}, wait=1.5)
+            wb(&quot;evaluate&quot;, {&quot;code&quot;: JS_EXPAND}, wait=2.0)
+        for _ in range(3):
+            wb(&quot;evaluate&quot;, {&quot;code&quot;: JS_SCROLL}, wait=1.5)
+        wb(&quot;evaluate&quot;, {&quot;code&quot;: JS_EXPAND}, wait=2.0)
+
+        r = wb.eval_json(JS_EXTRACT)
+        blocks = (r or {}).get(&quot;comments&quot;) or []
+        if r and r.get(&quot;commentCount&quot;):
+            d[&quot;commentCount&quot;] = r[&quot;commentCount&quot;]
+
+        have_txt = {c[&quot;content&quot;] for c in (d.get(&quot;comments&quot;) or [])}
+        added = 0
+        for b in blocks:
+            c = X.parse_comment_block(b)
+            if c and c[&quot;content&quot;] not in have_txt:
+                have_txt.add(c[&quot;content&quot;])
+                d.setdefault(&quot;comments&quot;, []).append(c)
+                added += 1
+        d[&quot;deepFetched&quot;] = cfg._today
+        X.jdump(d, p)
+        added_total += added
+        print(f&quot;[{i}/{len(targets)}] {str(d.get(&#x27;title&#x27;,&#x27;&#x27;))[:26]} | 原有{have} +新{added} &quot;
+              f&quot;= {len(d.get(&#x27;comments&#x27;, []))}（声明{decl}）&quot;, flush=True)
+
+    print(f&quot;\n[done] 深挖新增评论 {added_total} 条&quot;, flush=True)
+    if added_total &lt;= max(3, len(targets) // 10):
+        print(&quot;       提示：新增很少，通常是 xsec_token 已过期。&quot;
+              &quot;想扩量请重跑 10_collect_links.py 拿新笔记。&quot;, flush=True)
+    return 0
+
+
+if __name__ == &quot;__main__&quot;:
+    sys.exit(main())
+</pre></details>
+<details class="file"><summary><span class="mono">scripts/20_filter.py</span><span class="sz">9.6 KB</span></summary><pre class="code"># -*- coding: utf-8 -*-
+&quot;&quot;&quot;
+20_filter.py — 第 6 步：R1–R12 去水军过滤（本工具包的核心质量关）
+
+输入: raw/xhs_output/*.json
+输出: data/raw_comments.json   保留语料（含 noteMeta，供出文档用）
+      data/filtered_log.json  被剔除语料 + 剔除原因（可审计，能逐条回溯）
+
+规则一览（词表全部读配置，换类目只改 yaml）：
+  R1  营销文本（淘口令/加微/优惠券/外链…）
+  R2  空内容，或超短且不含任何品类/品牌词
+  R3  与品类/品牌均无关（低相关）        ← 最主力的一条，靠 category.words 判定
+  R4  同文案出现在 &gt;=N 个不同笔记（模板复刷）
+  R5  同一属地占比过高且条数够多（疑似水军聚集；无属地数据时不启用，避免误杀整篇）
+  R6  同笔记同一小时零赞评论 &gt;=N 条（集中爆发）
+  R7  营销号昵称特征
+  R9  不可改良项打标（物流/价格/客服 —— 保留但统计时剔除）
+  R10 完全重复的语料（同内容只计一条）
+  R11 纯话题标签串，剥掉 #标签 后没有实质表述
+  R12 作者置顶/购买引导（去某宝、戳我、主页有…）
+
+用法: python 20_filter.py [--cat cleanser]
+&quot;&quot;&quot;
+import hashlib
+import os
+import re
+import sys
+from collections import Counter, defaultdict
+
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import xcommon as X
+
+
+def anon_id(uid):
+    &quot;&quot;&quot;脱敏：不可逆 hash，审计时能对簇但不暴露账号&quot;&quot;&quot;
+    return hashlib.md5(str(uid).encode(&quot;utf-8&quot;)).hexdigest()[:12]
+
+
+def norm_time(t):
+    if t is None:
+        return None, None
+    from datetime import datetime as _dt
+    dt = None
+    if isinstance(t, (int, float)):
+        ts = t if t &lt; 1e12 else t / 1000
+        try:
+            dt = _dt.fromtimestamp(ts)
+        except Exception:
+            dt = None
+    else:
+        s = str(t)
+        if s.isdigit() and len(s) &gt;= 10:
+            try:
+                dt = _dt.fromtimestamp(int(s[:10]))
+            except Exception:
+                dt = None
+        if dt is None:
+            for fmt in (&quot;%Y-%m-%d %H:%M:%S&quot;, &quot;%Y-%m-%d&quot;):
+                try:
+                    dt = _dt.strptime(s[:len(fmt) + 2], fmt)
+                    break
+                except Exception:
+                    continue
+    if not dt:
+        return str(t), None
+    return dt.strftime(&quot;%Y-%m-%d %H:%M:%S&quot;), dt.strftime(&quot;%Y-%m-%d&quot;)
+
+
+def main():
+    opt, _ = X.cli(&quot;语料去水军过滤&quot;)
+    cfg = X.load_cfg(explicit=opt.config, cat=opt.cat)
+
+    files = [os.path.join(cfg._notes, f) for f in sorted(os.listdir(cfg._notes))
+             if f.endswith(&quot;.json&quot;)] if os.path.isdir(cfg._notes) else []
+    if not files:
+        raise SystemExit(f&quot;[缺少输入] {cfg._notes} 下没有笔记 JSON，请先跑 13_scrape_notes.py&quot;)
+
+    # ---- 词表 ----
+    cat_words = list(cfg.getpath(&quot;category.words&quot;, []) or [])
+    brand_words = list(cfg.getpath(&quot;category.brands&quot;, []) or [])
+    f = cfg.getpath(&quot;filter&quot;, {}) or {}
+    max_len = f.get(&quot;maxLen&quot;, 300)
+    # ★ 笔记正文和评论用两个不同的截断长度，别合并成一个：
+    #   正文很长，R4「同文案复刷」是按完整文本比对 noteId 集合的，
+    #   正文若截得太短会和评论撞成同一串，把正文误判成复刷（会少掉十几条语料）。
+    desc_len = f.get(&quot;descMaxLen&quot;, 400)
+    r4_n = f.get(&quot;r4CrossNotes&quot;, 3)
+    r5_rate = f.get(&quot;r5IpHitRate&quot;, 0.4)
+    r5_min = f.get(&quot;r5MinCount&quot;, 5)
+    r6_n = f.get(&quot;r6HourBurst&quot;, 8)
+    R1 = re.compile(f.get(&quot;R1_营销文本&quot;, &quot;$^&quot;))
+    R7 = re.compile(f.get(&quot;R7_营销昵称&quot;, &quot;$^&quot;))
+    R9 = re.compile(f.get(&quot;R9_不可改良&quot;, &quot;$^&quot;))
+    R12 = re.compile(f.get(&quot;R12_购买引导&quot;, &quot;$^&quot;))
+
+    def hits_any(text, words):
+        t = text.lower()
+        return [w for w in words if str(w).lower() in t]
+
+    # ---- 读入所有笔记，摊平成行 ----
+    all_rows = []
+    note_meta = {}
+    for fp in files:
+        doc = X.jload(fp, {}) or {}
+        nid = doc.get(&quot;nid&quot;) or os.path.basename(fp).replace(&quot;.json&quot;, &quot;&quot;)
+        note_meta[nid] = {&quot;title&quot;: doc.get(&quot;title&quot;, &quot;&quot;), &quot;url&quot;: doc.get(&quot;url&quot;, &quot;&quot;),
+                          &quot;author&quot;: doc.get(&quot;author&quot;, &quot;&quot;), &quot;keyword&quot;: doc.get(&quot;keyword&quot;, &quot;&quot;),
+                          &quot;tag&quot;: doc.get(&quot;tag&quot;, &quot;&quot;), &quot;likes&quot;: doc.get(&quot;likes&quot;, &quot;&quot;),
+                          &quot;desc&quot;: doc.get(&quot;desc&quot;, &quot;&quot;)}
+        if doc.get(&quot;desc&quot;):
+            all_rows.append({&quot;id&quot;: nid + &quot;_desc&quot;, &quot;nickname&quot;: doc.get(&quot;author&quot;, &quot;&quot;),
+                             &quot;userId&quot;: nid, &quot;content&quot;: doc[&quot;desc&quot;][:desc_len], &quot;likeCount&quot;: 0,
+                             &quot;ipLocation&quot;: None, &quot;createTime&quot;: doc.get(&quot;fetchDate&quot;),
+                             &quot;_noteId&quot;: nid, &quot;_isDesc&quot;: True})
+        for c in (doc.get(&quot;comments&quot;) or []):
+            for sub in (c.get(&quot;subComments&quot;) or []):
+                sub[&quot;_parent&quot;] = c.get(&quot;id&quot;)
+            for c2 in [c] + (c.get(&quot;subComments&quot;) or []):
+                c2[&quot;_noteId&quot;] = nid
+                all_rows.append(c2)
+
+    print(f&quot;输入 {len(files)} 篇笔记 → 摊平 {len(all_rows)} 条语料&quot;, flush=True)
+
+    # ---- 预扫描：R4 复刷簇、R5 属地分布 ----
+    note_sets = defaultdict(set)
+    for r in all_rows:
+        ct = (r.get(&quot;content&quot;) or &quot;&quot;).strip()
+        if ct:
+            note_sets[ct].add(r[&quot;_noteId&quot;])
+    dup_texts = {t for t, notes in note_sets.items() if len(notes) &gt;= r4_n}
+    per_note_ip = defaultdict(Counter)
+    for r in all_rows:
+        per_note_ip[r[&quot;_noteId&quot;]][r.get(&quot;ipLocation&quot;) or &quot;未知&quot;] += 1
+
+    kept, filtered = [], []
+    kept_texts = set()
+
+    def filter_one(r):
+        content = (r.get(&quot;content&quot;) or &quot;&quot;).strip()
+        nickname = r.get(&quot;nickname&quot;) or &quot;&quot;
+        if not content:
+            return False, &quot;R2&quot;, &quot;空内容&quot;
+        if R1.search(content):
+            return False, &quot;R1&quot;, &quot;营销文本模式&quot;
+        cat_hit = hits_any(content, cat_words)
+        brand_hit = hits_any(content, brand_words)
+        if len(content) &lt; 6 and not cat_hit and not brand_hit:
+            return False, &quot;R2&quot;, &quot;超短且无信息&quot;
+        if not cat_hit and not brand_hit:
+            return False, &quot;R3&quot;, &quot;与品类/品牌均无关（低相关）&quot;
+        if content in dup_texts:
+            return False, &quot;R4&quot;, &quot;同文案复刷簇&quot;
+        if R7.search(nickname):
+            return False, &quot;R7&quot;, &quot;营销号昵称特征&quot;
+        if &quot;#&quot; in content and len(re.sub(r&quot;#[^\s#]+&quot;, &quot;&quot;, content).strip()) &lt; 10:
+            return False, &quot;R11&quot;, &quot;纯话题标签串，无实质表述&quot;
+        if R12.search(content):
+            return False, &quot;R12&quot;, &quot;作者营销/购买引导&quot;
+        if content in kept_texts:
+            return False, &quot;R10&quot;, &quot;重复语料（同内容只计一条）&quot;
+        return True, None, None
+
+    for r in all_rows:
+        content = (r.get(&quot;content&quot;) or &quot;&quot;).strip()[:max_len]
+        nt, day = norm_time(r.get(&quot;createTime&quot;))
+        ok, rule, reason = filter_one({**r, &quot;content&quot;: content})
+        rec = {&quot;id&quot;: r.get(&quot;id&quot;), &quot;noteId&quot;: r[&quot;_noteId&quot;], &quot;isSub&quot;: bool(r.get(&quot;_parent&quot;)),
+               &quot;isNoteDesc&quot;: bool(r.get(&quot;_isDesc&quot;)), &quot;content&quot;: content,
+               &quot;likeCount&quot;: r.get(&quot;likeCount&quot;, 0), &quot;createTime&quot;: nt, &quot;date&quot;: day,
+               &quot;fetchDate&quot;: cfg._today, &quot;ipLocation&quot;: r.get(&quot;ipLocation&quot;),
+               &quot;userHash&quot;: anon_id(r.get(&quot;userId&quot;)),
+               &quot;r9NonFixable&quot;: bool(R9.search(content)),
+               &quot;categoryHits&quot;: hits_any(content, cat_words),
+               &quot;brandHits&quot;: hits_any(content, brand_words)}
+        if ok:
+            kept_texts.add(content)
+            kept.append(rec)
+        else:
+            rec[&quot;filterRule&quot;], rec[&quot;filterReason&quot;] = rule, reason
+            filtered.append(rec)
+
+    # ---- R5：同笔记内属地聚集（无属地数据则跳过，避免误杀）----
+    keep2 = []
+    for r in kept:
+        ip = r.get(&quot;ipLocation&quot;) or &quot;&quot;
+        if not ip or ip == &quot;未知&quot;:
+            keep2.append(r)
+            continue
+        cnt = per_note_ip[r[&quot;noteId&quot;]][ip]
+        total = sum(per_note_ip[r[&quot;noteId&quot;]].values()) or 1
+        if cnt / total &gt; r5_rate and cnt &gt;= r5_min:
+            r2 = dict(r)
+            r2.update({&quot;filterRule&quot;: &quot;R5&quot;, &quot;filterReason&quot;: f&quot;同IP属地占比&gt;{cnt * 100 // total}%（疑似水军聚集）&quot;})
+            filtered.append(r2)
+            continue
+        keep2.append(r)
+
+    # ---- R6：同笔记同一小时零赞集中爆发 ----
+    hour_key = defaultdict(list)
+    for r in keep2:
+        if r.get(&quot;createTime&quot;):
+            hour_key[(r[&quot;noteId&quot;], r[&quot;createTime&quot;][:13])].append(r)
+    drop6 = set()
+    for k, rows in hour_key.items():
+        if len(rows) &gt;= r6_n and all((x.get(&quot;likeCount&quot;) or 0) == 0 for x in rows):
+            drop6.update(x[&quot;id&quot;] for x in rows)
+    if drop6:
+        final = []
+        for r in keep2:
+            if r[&quot;id&quot;] in drop6:
+                r2 = dict(r)
+                r2.update({&quot;filterRule&quot;: &quot;R6&quot;, &quot;filterReason&quot;: &quot;零赞同小时集中爆发&quot;})
+                filtered.append(r2)
+            else:
+                final.append(r)
+        keep2 = final
+
+    X.jdump({&quot;fetchedAt&quot;: cfg._today, &quot;category&quot;: cfg.project.name,
+             &quot;count&quot;: len(keep2), &quot;noteMeta&quot;: note_meta, &quot;comments&quot;: keep2},
+            os.path.join(cfg._data, &quot;raw_comments.json&quot;))
+    rule_counter = Counter(x.get(&quot;filterRule&quot;) for x in filtered)
+    X.jdump({&quot;fetchedAt&quot;: cfg._today, &quot;count&quot;: len(filtered),
+             &quot;ruleSummary&quot;: dict(rule_counter), &quot;filtered&quot;: filtered},
+            os.path.join(cfg._data, &quot;filtered_log.json&quot;))
+
+    print(f&quot;\n[done] 输入 {len(all_rows)} 条 → 保留 {len(keep2)} 条，过滤 {len(filtered)} 条&quot;, flush=True)
+    for k, v in sorted(rule_counter.items() or []):
+        print(f&quot;   {k}: {v} 条&quot;, flush=True)
+    print(f&quot;   → {os.path.join(cfg._data, &#x27;raw_comments.json&#x27;)}&quot;, flush=True)
+    return 0
+
+
+if __name__ == &quot;__main__&quot;:
+    sys.exit(main())
+</pre></details>
+<details class="file"><summary><span class="mono">scripts/21_analyze.py</span><span class="sz">9.9 KB</span></summary><pre class="code"># -*- coding: utf-8 -*-
+&quot;&quot;&quot;
+21_analyze.py — 第 7 步：统计需求 TOP / 痛点红线 / 词库 / 决策权重
+
+输入: data/raw_comments.json（上一步的保留语料）
+输出: data/needs_top5.json   高频需求 TOP5（带引文）
+      data/redline.json      痛点红线（带引文）
+      data/lexicon.json      词云 + 好评率 + 决策权重
+      data/overview.json     语料概况（页面上「数据口径」那栏用）
+
+两条统计纪律（决定数据可不可信）：
+  1) 痛点桶走「否定识别」——「不紧绷」「不假滑」「没长脂肪粒」不会被算成痛点。
+     识别逻辑：命中词所在子句里，前面 10 字内出现 不/没/无/未/别/… 就跳过；
+     同时排除「担心/怕/会不会」这类假设语境（那是需求信号，不是已发生的痛点）。
+  2) 一条语料只进一个桶（第一个命中的），避免同一条话被重复计数导致频次虚高。
+
+用法: python 21_analyze.py [--cat cleanser]
+&quot;&quot;&quot;
+import os
+import re
+import sys
+from collections import Counter, defaultdict
+
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import xcommon as X
+
+NEG_RE = re.compile(r&quot;(?:不|没|无|未|别|不会|不太|没有|绝不|毫无|并不|也不|都不|不算|谈不上)&quot;
+                    r&quot;[^，。！？；;.!?\s]{0,8}$&quot;)
+HYP_RE = re.compile(r&quot;(?:担心|害怕|怕|会不会|会不|可能|容易|据说|听说|万一|想着|就算|如果|假如|希望|期待)&quot;
+                    r&quot;[^，。！？、；\s]{0,3}$&quot;)
+DEG_RE = re.compile(r&quot;[很太超挺特别非常有点比]{1,3}$&quot;)
+CLAUSE_RE = re.compile(r&quot;[，,。！？；;.!?\n]&quot;)
+
+
+def find_positive(text, pat):
+    &quot;&quot;&quot;返回第一个「非否定语境」的命中。全部命中都是否定/假设/疑问 → 返回 None。&quot;&quot;&quot;
+    bounds = [0] + [c.end() for c in CLAUSE_RE.finditer(text)]
+    for m in re.finditer(pat, text):
+        cs = max([b for b in bounds if b &lt;= m.start()] or [0])
+        pre = text[max(cs, m.start() - 10):m.start()]
+        pre2 = DEG_RE.sub(&quot;&quot;, DEG_RE.sub(&quot;&quot;, pre))
+        if NEG_RE.search(pre2):
+            continue
+        if HYP_RE.search(pre2):
+            continue
+        if re.match(r&quot;[^？?。！]{0,4}[吗呢][？?]?&quot;, text[m.end():m.end() + 6]):
+            continue
+        return m
+    return None
+
+
+def excerpt(text, m, win=72):
+    &quot;&quot;&quot;以命中词为中心截引文，保证证据一定出现在展示出来的那句话里&quot;&quot;&quot;
+    start = max(0, m.start() - 18)
+    end = min(len(text), start + win)
+    return (&quot;…&quot; if start &gt; 0 else &quot;&quot;) + text[start:end] + (&quot;…&quot; if end &lt; len(text) else &quot;&quot;)
+
+
+def pick_quotes(quotes, limit=4):
+    &quot;&quot;&quot;引文排序：亲历口吻优先（我买/用了/回购），其次信息量长句优先&quot;&quot;&quot;
+    seen, out = set(), []
+
+    def score(q):
+        t = q[&quot;text&quot;]
+        first = 2 if re.search(r&quot;我(用|买|入手|洗|涂|抹|上脸|最近|之前)|用了|买了|入手|回购|空瓶&quot;, t) else 0
+        return (-first, -len(t))
+
+    for q in sorted(quotes, key=score):
+        if &quot;#&quot; in q[&quot;text&quot;]:
+            continue
+        key = q[&quot;text&quot;][:24]
+        if key in seen:
+            continue
+        seen.add(key)
+        out.append(q)
+        if len(out) &gt;= limit:
+            break
+    return out
+
+
+def main():
+    opt, _ = X.cli(&quot;语料统计&quot;)
+    cfg = X.load_cfg(explicit=opt.config, cat=opt.cat)
+
+    rc_p = os.path.join(cfg._data, &quot;raw_comments.json&quot;)
+    rawc = X.jload(rc_p, {})
+    if not rawc or not rawc.get(&quot;comments&quot;):
+        raise SystemExit(f&quot;[缺少输入] {rc_p} 为空，请先跑 20_filter.py&quot;)
+
+    note_meta = rawc.get(&quot;noteMeta&quot;, {})
+    needs_cfg = [(n, p) for n, p in (cfg.getpath(&quot;buckets.needs&quot;, []) or [])]
+    pains_cfg = [(n, p) for n, p in (cfg.getpath(&quot;buckets.pains&quot;, []) or [])]
+    dec_map = dict(cfg.getpath(&quot;decisionMap&quot;, {}) or {})
+    non_fixable = list(cfg.getpath(&quot;nonFixable&quot;, []) or [])
+    top_needs = cfg.getpath(&quot;output.topNeeds&quot;, 5)
+    top_pains = cfg.getpath(&quot;output.topPains&quot;, 8)
+
+    if not needs_cfg or not pains_cfg:
+        print(&quot;⚠️ 配置里 buckets.needs / buckets.pains 有空项，对应产出会为空。&quot;
+              &quot;先跑通采集、看着语料再把桶补全即可。&quot;, flush=True)
+
+    # 去重后的语料
+    seen, corpus = set(), []
+    for c in rawc[&quot;comments&quot;]:
+        t = X.norm(c.get(&quot;content&quot;, &quot;&quot;))
+        if len(t) &lt; 4 or t in seen:
+            continue
+        seen.add(t)
+        corpus.append((t, c))
+    print(f&quot;语料 {len(corpus)} 条（去重后）&quot;, flush=True)
+
+    def tally(buckets, neg_guard=False, skip_nonfixable=False):
+        cnt = Counter()
+        quotes = defaultdict(list)
+        notes = defaultdict(set)
+        for t, rec in corpus:
+            if skip_nonfixable and any(n in t for n in non_fixable):
+                continue
+            for name, pat in buckets:
+                try:
+                    m = find_positive(t, pat) if neg_guard else re.search(pat, t)
+                except re.error as e:
+                    print(f&quot;  ⚠️ 桶「{name}」正则写错了（{e}），本桶跳过&quot;, flush=True)
+                    continue
+                if m:
+                    cnt[name] += 1
+                    quotes[name].append({&quot;text&quot;: excerpt(t, m), &quot;source&quot;: &quot;小红书&quot;,
+                                         &quot;noteId&quot;: rec.get(&quot;noteId&quot;, &quot;&quot;)})
+                    notes[name].add(rec.get(&quot;noteId&quot;, &quot;&quot;))
+                    break
+        for k in quotes:
+            quotes[k] = pick_quotes(quotes[k])
+        return cnt, quotes, notes
+
+    nc, nq, nn = tally(needs_cfg)
+    pc, pq, pn = tally(pains_cfg, neg_guard=True, skip_nonfixable=True)
+
+    def mk(cnt, quotes, notes, topn):
+        return [{&quot;name&quot;: k, &quot;count&quot;: v, &quot;fgCount&quot;: 0, &quot;xhsCount&quot;: v, &quot;brandCount&quot;: 0,
+                 &quot;brands&quot;: [], &quot;noteCount&quot;: len(notes.get(k, set())), &quot;quotes&quot;: quotes[k]}
+                for k, v in cnt.most_common(topn)]
+
+    sources = [{&quot;name&quot;: &quot;小红书&quot;,
+                &quot;detail&quot;: f&quot;{len(cfg.get(&#x27;keywords&#x27;) or [])} 组关键词搜索 → 笔记正文 + 评论，已过 R1–R12 水军过滤&quot;}]
+    needs = {&quot;generatedAt&quot;: cfg._today, &quot;items&quot;: mk(nc, nq, nn, top_needs),
+             &quot;corpus&quot;: {&quot;total&quot;: len(corpus), &quot;feigua&quot;: 0, &quot;xhs&quot;: len(corpus)},
+             &quot;sources&quot;: sources}
+    redline = {&quot;generatedAt&quot;: cfg._today, &quot;items&quot;: mk(pc, pq, pn, top_pains),
+               &quot;source&quot;: f&quot;小红书笔记正文与评论（{cfg.project.name}）；已剔除物流/客服/价格等不可改良项&quot;}
+
+    # ---- 词云 / 好评率 ----
+    gw, bw = Counter(), Counter()
+    pain_ids = set()
+    for t, rec in corpus:
+        hit = None
+        for _, pat in pains_cfg:
+            try:
+                hit = find_positive(t, pat)
+            except re.error:
+                hit = None
+            if hit:
+                break
+        if hit:
+            bw[hit.group(0)] += 1
+            pain_ids.add(rec.get(&quot;id&quot;))
+    for t, rec in corpus:
+        if rec.get(&quot;id&quot;) in pain_ids:
+            continue
+        for _, pat in needs_cfg:
+            try:
+                m = re.search(pat, t)
+            except re.error:
+                m = None
+            if m:
+                gw[m.group(0)] += 1
+                break
+
+    total = len(corpus) or 1
+    good = total - len(pain_ids)
+    good_rate = round(good / total * 100, 1)
+    cloud = ([{&quot;word&quot;: w, &quot;count&quot;: n, &quot;polarity&quot;: &quot;good&quot;} for w, n in gw.most_common(30)] +
+             [{&quot;word&quot;: w, &quot;count&quot;: n, &quot;polarity&quot;: &quot;bad&quot;} for w, n in bw.most_common(30)])
+    cloud = sorted(cloud, key=lambda x: -x[&quot;count&quot;])[:56]
+
+    # ---- 决策权重 ----
+    dw = Counter()
+    for name, crit in dec_map.items():
+        dw[crit] += nc.get(name, 0)
+    dsum = sum(dw.values()) or 1
+    decision = [{&quot;criterion&quot;: k, &quot;weight&quot;: v, &quot;pct&quot;: round(v / dsum * 100, 1)}
+                for k, v in dw.most_common()]
+    if not decision:                       # 没配 decisionMap 就用需求桶兜底
+        decision = [{&quot;criterion&quot;: k, &quot;weight&quot;: v, &quot;pct&quot;: round(v / (sum(nc.values()) or 1) * 100, 1)}
+                    for k, v in nc.most_common(top_needs)]
+
+    lexicon = {&quot;generatedAt&quot;: cfg._today,
+               &quot;sentimentDist&quot;: [{&quot;name&quot;: &quot;好评&quot;, &quot;value&quot;: good},
+                                 {&quot;name&quot;: &quot;差评&quot;, &quot;value&quot;: len(pain_ids)}],
+               &quot;cloud&quot;: cloud,
+               &quot;goodWords&quot;: [{&quot;word&quot;: w, &quot;count&quot;: n} for w, n in gw.most_common(15)],
+               &quot;badWords&quot;: [{&quot;word&quot;: w, &quot;count&quot;: n} for w, n in bw.most_common(15)],
+               &quot;decision&quot;: decision,
+               &quot;source&quot;: &quot;小红书笔记与评论（好评=未命中痛点桶；差评=命中痛点桶且非否定语境）&quot;,
+               &quot;quick&quot;: {&quot;goodTop&quot;: [x[&quot;word&quot;] for x in sorted(cloud, key=lambda x: -x[&quot;count&quot;])
+                                     if x[&quot;polarity&quot;] == &quot;good&quot;][:5],
+                         &quot;badTop&quot;: [x[&quot;word&quot;] for x in sorted(cloud, key=lambda x: -x[&quot;count&quot;])
+                                    if x[&quot;polarity&quot;] == &quot;bad&quot;][:5],
+                         &quot;goodRate&quot;: good_rate, &quot;decision&quot;: decision}}
+
+    overview = {&quot;corpusTotal&quot;: len(corpus), &quot;corpusFeigua&quot;: 0, &quot;corpusXhs&quot;: len(corpus),
+                &quot;noteCount&quot;: len(note_meta), &quot;category&quot;: cfg.project.name, &quot;sources&quot;: sources}
+
+    X.jdump(needs, os.path.join(cfg._data, &quot;needs_top5.json&quot;))
+    X.jdump(redline, os.path.join(cfg._data, &quot;redline.json&quot;))
+    X.jdump(lexicon, os.path.join(cfg._data, &quot;lexicon.json&quot;))
+    X.jdump(overview, os.path.join(cfg._data, &quot;overview.json&quot;))
+
+    print(f&quot;\n=== 高频需求 TOP{top_needs} ===&quot;, flush=True)
+    for i, x in enumerate(needs[&quot;items&quot;], 1):
+        print(f&quot;{i}. {x[&#x27;count&#x27;]:&gt;4}  {x[&#x27;name&#x27;]}&quot;, flush=True)
+    print(f&quot;\n=== 痛点红线 ===&quot;, flush=True)
+    for i, x in enumerate(redline[&quot;items&quot;], 1):
+        print(f&quot;{i}. {x[&#x27;count&#x27;]:&gt;4}  {x[&#x27;name&#x27;]}&quot;, flush=True)
+    print(f&quot;\n=== 决策权重 ===&quot;, flush=True)
+    for x in decision:
+        print(f&quot;   {x[&#x27;criterion&#x27;]}  {x[&#x27;pct&#x27;]}%&quot;, flush=True)
+    print(f&quot;\n好评率 {good_rate}%（好评 {good} / 差评 {len(pain_ids)}）&quot;, flush=True)
+    print(f&quot;→ {cfg._data}&quot;, flush=True)
+    return 0
+
+
+if __name__ == &quot;__main__&quot;:
+    sys.exit(main())
+</pre></details>
+<details class="file"><summary><span class="mono">scripts/30_build_doc.py</span><span class="sz">12.5 KB</span></summary><pre class="code"># -*- coding: utf-8 -*-
+&quot;&quot;&quot;
+30_build_doc.py — 第 8 步：生成《小红书评论汇总》独立文档（md + html）
+
+输入: data/raw_comments.json、data/filtered_log.json、data/overview.json
+      raw/xhs_output/*.json（为了统计每篇「抓到多少条」）
+输出: &lt;outputDir&gt;/&lt;doc.title&gt;_&lt;日期&gt;.md   留档 / 贴飞书
+      &lt;outputDir&gt;/&lt;doc.title&gt;_&lt;日期&gt;.html 直接双击打开看
+
+文档结构：
+  一、采集与清洗概况（关键词数 / 笔记数 / 原始评论数 / 有效语料数 + 剔除规则分布）
+  二、逐篇笔记 · 评论明细（每篇一张表，正文和评论分列标注来源）
+  三、口径说明（怎么采的、什么算「有效」、有什么局限）
+
+用法: python 30_build_doc.py [--cat cleanser]
+&quot;&quot;&quot;
+import html
+import os
+import re
+import sys
+from collections import Counter, defaultdict
+
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import xcommon as X
+
+RULE_DESC = {
+    &quot;R1&quot;: &quot;营销文本（淘口令/加微/优惠券/外链等）&quot;,
+    &quot;R2&quot;: &quot;空内容，或超短且无信息&quot;,
+    &quot;R3&quot;: &quot;与本品类/品牌均无关（低相关）&quot;,
+    &quot;R4&quot;: &quot;同文案跨笔记复刷（≥N 篇）&quot;,
+    &quot;R5&quot;: &quot;同 IP 属地聚集&quot;,
+    &quot;R6&quot;: &quot;零赞同同小时集中爆发&quot;,
+    &quot;R7&quot;: &quot;营销号昵称特征&quot;,
+    &quot;R9&quot;: &quot;不可改良项（物流/价格/客服）&quot;,
+    &quot;R10&quot;: &quot;重复语料（同内容只计一条）&quot;,
+    &quot;R11&quot;: &quot;纯话题标签串，无实质表述&quot;,
+    &quot;R12&quot;: &quot;作者营销/购买引导&quot;,
+}
+
+
+def esc(s):
+    return html.escape(str(s if s is not None else &quot;&quot;))
+
+
+def main():
+    opt, _ = X.cli(&quot;评论汇总文档生成&quot;)
+    cfg = X.load_cfg(explicit=opt.config, cat=opt.cat)
+
+    rc = X.jload(os.path.join(cfg._data, &quot;raw_comments.json&quot;), {})
+    if not rc or not rc.get(&quot;comments&quot;):
+        raise SystemExit(&quot;[缺少输入] 请先跑 21_analyze.py（或 20_filter.py）&quot;)
+    fl = X.jload(os.path.join(cfg._data, &quot;filtered_log.json&quot;), {})
+    ov = X.jload(os.path.join(cfg._data, &quot;overview.json&quot;), {})
+
+    meta = rc.get(&quot;noteMeta&quot;, {})
+    kept = rc.get(&quot;comments&quot;, [])
+    max_per_note = cfg.getpath(&quot;output.maxPerNote&quot;, 120)
+
+    by_note = defaultdict(list)
+    for c in kept:
+        by_note[c[&quot;noteId&quot;]].append(c)
+
+    raw_cnt = {}
+    if os.path.isdir(cfg._notes):
+        for f in os.listdir(cfg._notes):
+            if not f.endswith(&quot;.json&quot;):
+                continue
+            d = X.jload(os.path.join(cfg._notes, f), {}) or {}
+            raw_cnt[d.get(&quot;nid&quot;, &quot;&quot;)] = len(d.get(&quot;comments&quot;) or [])
+
+    notes = sorted(by_note.items(), key=lambda kv: -len(kv[1]))
+    total_kept = len(kept)
+    total_raw = sum(raw_cnt.values())
+    n_desc = sum(1 for c in kept if c.get(&quot;isNoteDesc&quot;))
+    rule_cnt = Counter(x.get(&quot;filterRule&quot;) for x in fl.get(&quot;filtered&quot;, []))
+    kws = cfg.get(&quot;keywords&quot;) or []
+    title = cfg.doc.title
+    path = cfg.doc.path
+    stamp = cfg._stamp
+
+    # ============================== Markdown ==============================
+    md = []
+    md.append(f&quot;# {title}&quot;)
+    md.append(&quot;&quot;)
+    md.append(f&quot;&gt; 采集日期：{cfg._today}　｜　类目路径：{path}　｜　&quot;
+              f&quot;数据源：小红书（Web 端搜索 + 笔记详情页公开可见内容）&quot;)
+    md.append(&quot;&quot;)
+    md.append(&quot;## 一、采集与清洗概况&quot;)
+    md.append(&quot;&quot;)
+    md.append(&quot;| 项目 | 数值 |&quot;)
+    md.append(&quot;|---|---|&quot;)
+    md.append(f&quot;| 搜索关键词 | {len(kws)} 组 |&quot;)
+    md.append(f&quot;| 采集笔记 | {len(meta)} 篇 |&quot;)
+    md.append(f&quot;| 抓取评论（原始） | {total_raw} 条 |&quot;)
+    md.append(f&quot;| 清洗后有效语料 | **{total_kept} 条**（笔记正文 {n_desc} 条 · 真实评论 {total_kept - n_desc} 条） |&quot;)
+    md.append(f&quot;| 被剔除语料 | {fl.get(&#x27;count&#x27;, 0)} 条 |&quot;)
+    md.append(&quot;&quot;)
+    md.append(&quot;### 剔除规则分布（R1–R12）&quot;)
+    md.append(&quot;&quot;)
+    md.append(&quot;| 规则 | 含义 | 剔除条数 |&quot;)
+    md.append(&quot;|---|---|---|&quot;)
+    for r, n in rule_cnt.most_common():
+        md.append(f&quot;| {r} | {RULE_DESC.get(r, &#x27;&#x27;)} | {n} |&quot;)
+    md.append(&quot;&quot;)
+    md.append(&quot;### 搜索关键词&quot;)
+    md.append(&quot;&quot;)
+    md.append(&quot;| # | 关键词 | 类型 |&quot;)
+    md.append(&quot;|---|---|---|&quot;)
+    for i, kv in enumerate(kws, 1):
+        k, t = (kv + [&quot;—&quot;])[:2] if isinstance(kv, (list, tuple)) else (kv, &quot;—&quot;)
+        md.append(f&quot;| {i} | {k} | {t} |&quot;)
+    md.append(&quot;&quot;)
+    md.append(&quot;&gt; 说明：一条语料只归入一个最相关的桶；重复文案（R10）只计一条，避免频次虚高。&quot;)
+    md.append(&quot;&quot;)
+    md.append(&quot;---&quot;)
+    md.append(&quot;&quot;)
+    md.append(&quot;## 二、逐篇笔记 · 评论明细&quot;)
+    md.append(&quot;&quot;)
+    md.append(f&quot;&gt; 共 {len(notes)} 篇笔记，按有效评论数从多到少排列。「笔记正文」为作者原文，一并计入语料。&quot;)
+    md.append(&quot;&quot;)
+    for i, (nid, cs) in enumerate(notes, 1):
+        m = meta.get(nid, {})
+        md.append(f&quot;### {i}. {m.get(&#x27;title&#x27;) or &#x27;(无标题)&#x27;}&quot;)
+        md.append(&quot;&quot;)
+        md.append(f&quot;- 链接：{m.get(&#x27;url&#x27;, &#x27;&#x27;)}&quot;)
+        md.append(f&quot;- 来源关键词：{m.get(&#x27;keyword&#x27;, &#x27;—&#x27;)}　｜　类型：{m.get(&#x27;tag&#x27;, &#x27;—&#x27;)}　｜　&quot;
+                  f&quot;点赞：{m.get(&#x27;likes&#x27;) or &#x27;—&#x27;}　｜　该篇抓到评论 {raw_cnt.get(nid, 0)} 条，有效 {len(cs)} 条&quot;)
+        if m.get(&quot;desc&quot;):
+            md.append(f&quot;- 笔记正文摘要：{re.sub(r&#x27;\\s+&#x27;, &#x27; &#x27;, m[&#x27;desc&#x27;])[:200]}…&quot;)
+        md.append(&quot;&quot;)
+        md.append(&quot;| # | 语料内容 | 来源 |&quot;)
+        md.append(&quot;|---|---|---|&quot;)
+        for j, c in enumerate(cs[:max_per_note], 1):
+            t = re.sub(r&quot;\s+&quot;, &quot; &quot;, c.get(&quot;content&quot;, &quot;&quot;)).replace(&quot;|&quot;, &quot;丨&quot;)
+            src = &quot;笔记正文&quot; if c.get(&quot;isNoteDesc&quot;) else &quot;评论&quot;
+            md.append(f&quot;| {j} | {t[:220]} | {src} |&quot;)
+        if len(cs) &gt; max_per_note:
+            md.append(f&quot;| … | 其余 {len(cs) - max_per_note} 条见 HTML 版 / data/raw_comments.json | — |&quot;)
+        md.append(&quot;&quot;)
+    md.append(&quot;---&quot;)
+    md.append(&quot;&quot;)
+    md.append(&quot;## 三、口径说明&quot;)
+    md.append(&quot;&quot;)
+    md.append(&quot;- **采集方式**：小红书 Web 端按关键词搜索 → 打开笔记详情页 → 多次下滑并点击&quot;
+              &quot;「展开更多回复」→ 抓 `#detail-title` / `#detail-desc` / `.parent-comment` 的可见文本。&quot;)
+    md.append(&quot;- **仅采公开可见内容**，不做任何推测性补全；未取到的字段留空。&quot;)
+    md.append(f&quot;- **「有效」判定**：命中本类目品类词或品牌词，且未命中 R1–R12 任一剔除规则。&quot;)
+    md.append(&quot;- **已知局限**：小红书只渲染部分评论，页面声明 1000 条的笔记实际通常只能读到几十到一百多条；&quot;
+              &quot;`xsec_token` 过期后重刷旧链接几乎无新增，扩量需重新搜索。&quot;)
+    md.append(&quot;- 本表为**原始语料留档**；需求 TOP5 / 痛点红线 / 决策权重的统计结果见 `data/` 下 json。&quot;)
+    md.append(&quot;&quot;)
+    mdp = os.path.join(cfg._out, f&quot;{title}_{stamp}.md&quot;)
+    open(mdp, &quot;w&quot;, encoding=&quot;utf-8&quot;).write(&quot;\n&quot;.join(md))
+
+    # ============================== HTML ==============================
+    h = [f&quot;&quot;&quot;&lt;!DOCTYPE html&gt;&lt;html lang=&quot;zh-CN&quot;&gt;&lt;head&gt;&lt;meta charset=&quot;UTF-8&quot;&gt;
+&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width,initial-scale=1.0&quot;&gt;
+&lt;title&gt;{esc(title)}&lt;/title&gt;&lt;style&gt;
+:root{{--bg:#f5f6fa;--card:#fff;--ink:#1e293b;--ink2:#64748b;--line:#e2e8f0;--pri:#4f46e5;--pri-soft:#eef2ff;--bad:#e11d48}}
+*{{margin:0;padding:0;box-sizing:border-box}}
+body{{background:var(--bg);color:var(--ink);font:14px/1.65 &quot;Microsoft YaHei&quot;,&quot;PingFang SC&quot;,system-ui,sans-serif;padding-bottom:40px}}
+.wrap{{max-width:1080px;margin:0 auto;padding:0 24px}}
+header{{background:var(--card);border-bottom:1px solid var(--line);padding:16px 0;position:sticky;top:0;z-index:10}}
+header h1{{font-size:18px}}header .sub{{font-size:12px;color:var(--ink2);margin-top:3px}}
+.sec{{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px 20px;margin:16px 0}}
+.sec h2{{font-size:16px;margin-bottom:10px}}
+table{{width:100%;border-collapse:collapse;font-size:13px;margin-top:6px}}
+th,td{{border:1px solid var(--line);padding:6px 9px;text-align:left;vertical-align:top}}
+th{{background:#f8fafc;font-weight:600;font-size:12px}}
+.note{{border:1px solid var(--line);border-radius:10px;padding:12px 14px;margin-bottom:12px;background:#fff}}
+.note h3{{font-size:14.5px;margin-bottom:6px}}
+.note .mt{{font-size:12px;color:var(--ink2);margin-bottom:6px}}
+.note .mt a{{color:var(--pri);text-decoration:none;word-break:break-all}}
+.tag{{font-size:11px;background:#f1f5f9;color:var(--ink2);border-radius:3px;padding:1px 6px;margin-left:4px}}
+.tag.d{{background:#fff1f2;color:var(--bad)}}
+.desc{{font-size:12.5px;color:var(--ink2);background:#f8fafc;border-left:3px solid var(--pri);padding:6px 10px;margin:6px 0;border-radius:0 6px 6px 0}}
+ul{{margin-left:18px;font-size:13px;color:var(--ink2)}}li{{margin:3px 0}}
+&lt;/style&gt;&lt;/head&gt;&lt;body&gt;&lt;header&gt;&lt;div class=&quot;wrap&quot;&gt;
+&lt;h1&gt;{esc(title)}&lt;/h1&gt;
+&lt;div class=&quot;sub&quot;&gt;类目路径：{esc(path)}　｜　{esc(cfg.doc.get(&#x27;subtitle&#x27;, &#x27;&#x27;))}　｜　采集日期：{cfg._today}&lt;/div&gt;
+&lt;/div&gt;&lt;/header&gt;&lt;main class=&quot;wrap&quot;&gt;&quot;&quot;&quot;]
+
+    h.append(&#x27;&lt;div class=&quot;sec&quot;&gt;&lt;h2&gt;一、采集与清洗概况&lt;/h2&gt;&lt;table&gt;&#x27;)
+    h.append(&quot;&lt;tr&gt;&lt;th&gt;项目&lt;/th&gt;&lt;th&gt;数值&lt;/th&gt;&lt;/tr&gt;&quot;)
+    h.append(f&quot;&lt;tr&gt;&lt;td&gt;搜索关键词&lt;/td&gt;&lt;td&gt;{len(kws)} 组&lt;/td&gt;&lt;/tr&gt;&quot;)
+    h.append(f&quot;&lt;tr&gt;&lt;td&gt;采集笔记&lt;/td&gt;&lt;td&gt;{len(meta)} 篇&lt;/td&gt;&lt;/tr&gt;&quot;)
+    h.append(f&quot;&lt;tr&gt;&lt;td&gt;抓取评论（原始）&lt;/td&gt;&lt;td&gt;{total_raw} 条&lt;/td&gt;&lt;/tr&gt;&quot;)
+    h.append(f&quot;&lt;tr&gt;&lt;td&gt;清洗后有效语料&lt;/td&gt;&lt;td&gt;&lt;b&gt;{total_kept}&lt;/b&gt; 条（笔记正文 {n_desc} · 真实评论 {total_kept - n_desc}）&lt;/td&gt;&lt;/tr&gt;&quot;)
+    h.append(f&quot;&lt;tr&gt;&lt;td&gt;被剔除语料&lt;/td&gt;&lt;td&gt;{fl.get(&#x27;count&#x27;, 0)} 条&lt;/td&gt;&lt;/tr&gt;&quot;)
+    h.append(&quot;&lt;/table&gt;&quot;)
+    h.append(&#x27;&lt;h2 style=&quot;font-size:14px;margin-top:14px&quot;&gt;剔除规则分布（R1–R12）&lt;/h2&gt;&lt;table&gt;&#x27;)
+    h.append(&quot;&lt;tr&gt;&lt;th&gt;规则&lt;/th&gt;&lt;th&gt;含义&lt;/th&gt;&lt;th&gt;剔除条数&lt;/th&gt;&lt;/tr&gt;&quot;)
+    for r, n in rule_cnt.most_common():
+        h.append(f&quot;&lt;tr&gt;&lt;td&gt;{esc(r)}&lt;/td&gt;&lt;td&gt;{esc(RULE_DESC.get(r, &#x27;&#x27;))}&lt;/td&gt;&lt;td&gt;{n}&lt;/td&gt;&lt;/tr&gt;&quot;)
+    h.append(&quot;&lt;/table&gt;&lt;/div&gt;&quot;)
+
+    h.append(f&#x27;&lt;div class=&quot;sec&quot;&gt;&lt;h2&gt;二、逐篇笔记 · 评论明细&lt;/h2&gt;&#x27;
+             f&#x27;&lt;div style=&quot;font-size:12.5px;color:#64748b&quot;&gt;共 {len(notes)} 篇笔记，按有效评论数从多到少排列&lt;/div&gt;&lt;/div&gt;&#x27;)
+    for i, (nid, cs) in enumerate(notes, 1):
+        m = meta.get(nid, {})
+        h.append(&#x27;&lt;div class=&quot;note&quot;&gt;&#x27;)
+        h.append(f&#x27;&lt;h3&gt;{i}. {esc(m.get(&quot;title&quot;) or &quot;(无标题)&quot;)}&lt;/h3&gt;&#x27;)
+        h.append(f&#x27;&lt;div class=&quot;mt&quot;&gt;&lt;a href=&quot;{esc(m.get(&quot;url&quot;, &quot;&quot;))}&quot; target=&quot;_blank&quot;&gt;{esc(m.get(&quot;url&quot;, &quot;&quot;))}&lt;/a&gt;&lt;/div&gt;&#x27;)
+        h.append(f&#x27;&lt;div class=&quot;mt&quot;&gt;来源关键词 &lt;span class=&quot;tag&quot;&gt;{esc(m.get(&quot;keyword&quot;, &quot;—&quot;))}&lt;/span&gt;&#x27;
+                 f&#x27;类型 &lt;span class=&quot;tag&quot;&gt;{esc(m.get(&quot;tag&quot;, &quot;—&quot;))}&lt;/span&gt;&#x27;
+                 f&#x27;点赞 &lt;span class=&quot;tag&quot;&gt;{esc(m.get(&quot;likes&quot;) or &quot;—&quot;)}&lt;/span&gt;&#x27;
+                 f&#x27;抓到评论 &lt;span class=&quot;tag&quot;&gt;{raw_cnt.get(nid, 0)}&lt;/span&gt;&#x27;
+                 f&#x27;有效 &lt;span class=&quot;tag d&quot;&gt;{len(cs)}&lt;/span&gt;&lt;/div&gt;&#x27;)
+        if m.get(&quot;desc&quot;):
+            h.append(f&#x27;&lt;div class=&quot;desc&quot;&gt;笔记正文摘要：{esc(re.sub(r&quot;\\s+&quot;, &quot; &quot;, m[&quot;desc&quot;])[:200])}…&lt;/div&gt;&#x27;)
+        h.append(&quot;&lt;table&gt;&lt;tr&gt;&lt;th style=&#x27;width:38px&#x27;&gt;#&lt;/th&gt;&lt;th&gt;语料内容&lt;/th&gt;&lt;th style=&#x27;width:78px&#x27;&gt;来源&lt;/th&gt;&lt;/tr&gt;&quot;)
+        for j, c in enumerate(cs[:max_per_note], 1):
+            t = esc(re.sub(r&quot;\s+&quot;, &quot; &quot;, c.get(&quot;content&quot;, &quot;&quot;))[:240])
+            src = &#x27;&lt;span class=&quot;tag&quot;&gt;正文&lt;/span&gt;&#x27; if c.get(&quot;isNoteDesc&quot;) else &#x27;&lt;span class=&quot;tag d&quot;&gt;评论&lt;/span&gt;&#x27;
+            h.append(f&quot;&lt;tr&gt;&lt;td&gt;{j}&lt;/td&gt;&lt;td&gt;{t}&lt;/td&gt;&lt;td&gt;{src}&lt;/td&gt;&lt;/tr&gt;&quot;)
+        h.append(&quot;&lt;/table&gt;&lt;/div&gt;&quot;)
+
+    h.append(&#x27;&lt;div class=&quot;sec&quot;&gt;&lt;h2&gt;三、口径说明&lt;/h2&gt;&lt;ul&gt;&#x27;
+             &quot;&lt;li&gt;采集方式：小红书 Web 端按关键词搜索 → 笔记详情页多次下滑 + 展开更多回复 → 抓可见文本。&lt;/li&gt;&quot;
+             &quot;&lt;li&gt;仅采公开可见内容，不做推测性补全；未取到的字段留空。&lt;/li&gt;&quot;
+             &quot;&lt;li&gt;「有效」判定：命中本类目品类词或品牌词，且未命中 R1–R12 任一剔除规则。&lt;/li&gt;&quot;
+             &quot;&lt;li&gt;已知局限：平台只渲染部分评论；xsec_token 过期后重刷旧链接几乎无新增，扩量需重新搜索。&lt;/li&gt;&quot;
+             &quot;&lt;li&gt;本页为原始语料留档；需求 TOP5 / 痛点红线 / 决策权重见 data/ 下 json。&lt;/li&gt;&quot;
+             &quot;&lt;/ul&gt;&lt;/div&gt;&quot;)
+    h.append(&quot;&lt;/main&gt;&lt;/body&gt;&lt;/html&gt;&quot;)
+    hp = os.path.join(cfg._out, f&quot;{title}_{stamp}.html&quot;)
+    open(hp, &quot;w&quot;, encoding=&quot;utf-8&quot;).write(&quot;&quot;.join(h))
+
+    print(f&quot;[done] 笔记 {len(meta)} 篇｜原始评论 {total_raw} 条｜有效语料 {total_kept} 条&quot;, flush=True)
+    print(f&quot;  → {mdp}&quot;, flush=True)
+    print(f&quot;  → {hp}&quot;, flush=True)
+    return 0
+
+
+if __name__ == &quot;__main__&quot;:
+    sys.exit(main())
+</pre></details>
+<details class="file"><summary><span class="mono">scripts/run_all.py</span><span class="sz">8.8 KB</span></summary><pre class="code"># -*- coding: utf-8 -*-
+&quot;&quot;&quot;
+run_all.py — 一条命令跑完整条链路（含 WebBridge 看门狗）
+
+用法：
+  python run_all.py                          # 用默认类目（cleanser）全跑
+  python run_all.py --cat 面膜                # 换类目
+  python run_all.py --config D:/x/mask.yaml   # 直接指定配置文件
+  python run_all.py --only 10,11,20,21,30     # 只跑指定步骤
+  python run_all.py --from 13                 # 从第 13 步开始（前面的已有数据）
+  python run_all.py --limit 20                # 本批最多处理 20 条（快速试跑）
+  python run_all.py --dry-run                 # 只打印将执行什么，不真跑
+
+★ 这个脚本存在的唯一原因：本机 WebBridge 守护进程会在每次调用后被回收，
+  必须有个常驻看门狗在旁边盯着、发现死了就拉起来。
+  直接用 00/10/13 等单步脚本跳过本脚本，守护进程可能随时死掉导致静默采到 0 条。
+
+★ 子进程会清掉 HTTP_PROXY 等代理变量 —— 本机系统代理会劫持 127.0.0.1，
+  不清掉的话所有 WebBridge 调用都会连不上。
+&quot;&quot;&quot;
+import os
+import subprocess
+import sys
+import threading
+import time
+import urllib.request
+
+HERE = os.path.dirname(os.path.abspath(__file__))
+PKG = os.path.dirname(HERE)
+sys.path.insert(0, HERE)
+
+
+def _find_python():
+    &quot;&quot;&quot;按优先级找解释器：环境变量 → 默认路径 → 当前解释器 → 系统 python。
+
+    ★ 换机器时不用改代码：默认路径不存在会自动退到 `python`。
+      想指定就设环境变量 XHS_PYTHON。
+    &quot;&quot;&quot;
+    env = os.environ.get(&quot;XHS_PYTHON&quot;)
+    if env and os.path.exists(env):
+        return env
+    default = r&quot;C:\Users\17831\.workbuddy\binaries\python\versions\3.13.12\python.exe&quot;
+    if os.path.exists(default):
+        return default
+    cur = sys.executable
+    if cur and os.path.exists(cur):
+        return cur
+    return &quot;python&quot;
+
+
+def _find_daemon():
+    &quot;&quot;&quot;同理，找不到就返回 None，看门狗会跳过（不影响纯本地步骤）&quot;&quot;&quot;
+    env = os.environ.get(&quot;XHS_DAEMON&quot;)
+    if env and os.path.exists(env):
+        return env
+    default = r&quot;C:\Users\17831\.kimi-webbridge\bin\kimi-webbridge.exe&quot;
+    if os.path.exists(default):
+        return default
+    for cand in (r&quot;C:\Users\%s\.kimi-webbridge\bin\kimi-webbridge.exe&quot; % os.environ.get(&quot;USERNAME&quot;, &quot;&quot;),
+                 os.path.expanduser(r&quot;~/.kimi-webbridge/bin/kimi-webbridge.exe&quot;)):
+        if os.path.exists(cand):
+            return cand
+    return None
+
+
+PYTHON = _find_python()
+DAEMON = _find_daemon()
+
+STATUS_URL = &quot;http://127.0.0.1:10086/status&quot;
+
+# ---- 链路定义：(步骤号, 脚本文件, 是否需要浏览器/登录态) ----
+STEPS = [
+    (&quot;00&quot;, &quot;00_preflight.py&quot;, True),
+    (&quot;10&quot;, &quot;10_collect_links.py&quot;, True),
+    (&quot;11&quot;, &quot;11_clean_links.py&quot;, False),
+    (&quot;12&quot;, &quot;12_pick_notes.py&quot;, False),
+    (&quot;13&quot;, &quot;13_scrape_notes.py&quot;, True),
+    (&quot;14&quot;, &quot;14_deep_comments.py&quot;, True),
+    (&quot;20&quot;, &quot;20_filter.py&quot;, False),
+    (&quot;21&quot;, &quot;21_analyze.py&quot;, False),
+    (&quot;30&quot;, &quot;30_build_doc.py&quot;, False),
+]
+
+_STOP = False
+
+
+def daemon_alive():
+    urllib.request.install_opener(urllib.request.build_opener(urllib.request.ProxyHandler({})))
+    try:
+        import json
+        d = json.loads(urllib.request.urlopen(STATUS_URL, timeout=4).read().decode())
+        return bool(d.get(&quot;running&quot;)), bool(d.get(&quot;extension_connected&quot;))
+    except Exception:
+        return False, False
+
+
+def watchdog():
+    &quot;&quot;&quot;常驻看门狗：守护进程死掉就拉起来&quot;&quot;&quot;
+    while not _STOP:
+        running, _ = daemon_alive()
+        if not running:
+            try:
+                subprocess.run([DAEMON, &quot;start&quot;], capture_output=True, timeout=30)
+            except Exception:
+                pass
+        time.sleep(5)
+
+
+def parse_args(argv):
+    cat = config = only = start_from = None
+    limit = None
+    dry = False
+    i = 0
+    while i &lt; len(argv):
+        a = argv[i]
+        if a == &quot;--cat&quot; and i + 1 &lt; len(argv):
+            cat = argv[i + 1]; i += 2
+        elif a == &quot;--config&quot; and i + 1 &lt; len(argv):
+            config = argv[i + 1]; i += 2
+        elif a == &quot;--only&quot; and i + 1 &lt; len(argv):
+            only = [x.strip() for x in argv[i + 1].split(&quot;,&quot;) if x.strip()]; i += 2
+        elif a == &quot;--from&quot; and i + 1 &lt; len(argv):
+            start_from = argv[i + 1].strip(); i += 2
+        elif a == &quot;--limit&quot; and i + 1 &lt; len(argv):
+            limit = argv[i + 1]; i += 2
+        elif a == &quot;--dry-run&quot;:
+            dry = True; i += 1
+        else:
+            i += 1
+    return cat, config, only, start_from, limit, dry
+
+
+def main(argv):
+    global _STOP
+    cat, config, only, start_from, limit, dry = parse_args(argv)
+
+    # 选步骤
+    steps = STEPS
+    if only:
+        steps = [s for s in STEPS if s[0] in only]
+    elif start_from:
+        hit = False
+        sel = []
+        for s in STEPS:
+            if s[0] == start_from:
+                hit = True
+            if hit:
+                sel.append(s)
+        steps = sel or STEPS
+
+    print(&quot;=&quot; * 68, flush=True)
+    print(&quot;小红书评论采集工具包 · 一键跑批&quot;, flush=True)
+    print(f&quot;  类目配置：{config or (&#x27;config/&#x27; + (cat or &#x27;cleanser&#x27;) + &#x27;.yaml&#x27;)}&quot;, flush=True)
+    print(f&quot;  步骤：{&#x27; → &#x27;.join(s[0] for s in steps)}&quot;, flush=True)
+    print(f&quot;  本批上限：{limit or &#x27;不限&#x27;}&quot;, flush=True)
+    print(&quot;=&quot; * 68, flush=True)
+
+    if dry:
+        for num, f, need_wb in steps:
+            print(f&quot;  将运行 {f}&quot; + (&quot;（需要浏览器登录态）&quot; if need_wb else &quot;&quot;), flush=True)
+        return 0
+
+    # 子进程环境：清掉代理（本机系统代理会劫持 127.0.0.1）
+    env = os.environ.copy()
+    for k in (&quot;HTTP_PROXY&quot;, &quot;HTTPS_PROXY&quot;, &quot;http_proxy&quot;, &quot;https_proxy&quot;, &quot;ALL_PROXY&quot;, &quot;all_proxy&quot;):
+        env.pop(k, None)
+
+    need_browser = any(s[2] for s in steps)
+    if need_browser and not DAEMON:
+        print(&quot;⚠️ 没找到 kimi-webbridge.exe，看门狗不启用。&quot;, flush=True)
+        print(&quot;   需要抓网页的步骤（00/10/13/14）会失败；纯本地步骤不受影响。&quot;, flush=True)
+        print(&quot;   解决：设环境变量 XHS_DAEMON 指向它，或改 scripts/run_all.py 顶部的 DAEMON。&quot;, flush=True)
+    if need_browser and DAEMON:
+        t = threading.Thread(target=watchdog, daemon=True)
+        t.start()
+        print(&quot;[看门狗] 已启动，正在等守护进程 + 浏览器扩展就绪…&quot;, flush=True)
+        for _ in range(15):
+            running, connected = daemon_alive()
+            if running and connected:
+                break
+            time.sleep(2)
+        running, connected = daemon_alive()
+        print(f&quot;[看门狗] running={running}｜extension_connected={connected}&quot;, flush=True)
+        if not connected:
+            print(&quot;         ⚠️ 浏览器扩展没连上。请打开 Edge 确认 Kimi 浏览器扩展已启用。&quot;, flush=True)
+            print(&quot;            采链接/抓笔记两步会失败，其余步骤不受影响。&quot;, flush=True)
+
+    base_cmd = [PYTHON, &quot;&quot;]
+    common = []
+    if config:
+        common += [&quot;--config&quot;, config]
+    elif cat:
+        common += [&quot;--cat&quot;, cat]
+    if limit:
+        common += [&quot;--limit&quot;, str(limit)]
+
+    failures = []
+    for num, f, need_wb in steps:
+        path = os.path.join(HERE, f)
+        if not os.path.exists(path):
+            print(f&quot;\n!! 跳过 {f}（文件不存在）&quot;, flush=True)
+            continue
+        print(f&quot;\n{&#x27;=&#x27; * 24} 步骤 {num} · {f} {&#x27;=&#x27; * 24}&quot;, flush=True)
+        t0 = time.time()
+        try:
+            r = subprocess.run([PYTHON, path] + common, cwd=PKG, env=env,
+                               capture_output=True, text=True, encoding=&quot;utf-8&quot;,
+                               errors=&quot;replace&quot;, timeout=7200)
+            out = (r.stdout or &quot;&quot;) + ((&quot;\n[STDERR]\n&quot; + r.stderr) if r.stderr.strip() else &quot;&quot;)
+            print(out[-6000:], flush=True)
+            print(f&quot;---- 退出码 {r.returncode}｜耗时 {time.time() - t0:.0f}s ----&quot;, flush=True)
+            # 00 体检返回 2 = 有问题但不致命；采集类返回 2 = 登录过期
+            if r.returncode not in (0, 2):
+                failures.append((num, f, r.returncode))
+                print(&quot;!! 本步失败，后续依赖它的步骤可能拿不到数据&quot;, flush=True)
+        except subprocess.TimeoutExpired:
+            print(f&quot;!! 超时（2 小时），已跳过 {f}&quot;, flush=True)
+            failures.append((num, f, &quot;timeout&quot;))
+        except Exception as e:
+            print(f&quot;!! 运行异常：{e}&quot;, flush=True)
+            failures.append((num, f, str(e)))
+
+    _STOP = True
+    print(f&quot;\n{&#x27;=&#x27; * 68}&quot;, flush=True)
+    if failures:
+        print(&quot;跑批结束，但有失败步骤：&quot;, flush=True)
+        for num, f, code in failures:
+            print(f&quot;  ✗ 步骤 {num} {f}（{code}）&quot;, flush=True)
+    else:
+        print(&quot;跑批全部完成 ✓&quot;, flush=True)
+    print(&quot;=&quot; * 68, flush=True)
+    return 1 if failures else 0
+
+
+if __name__ == &quot;__main__&quot;:
+    try:
+        sys.exit(main(sys.argv[1:]))
+    finally:
+        _STOP = True
+</pre></details>
+<details class="file"><summary><span class="mono">scripts/xcommon.py</span><span class="sz">10.6 KB</span></summary><pre class="code"># -*- coding: utf-8 -*-
+&quot;&quot;&quot;
+xcommon.py — 小红书评论采集工具包 · 公共基座
+
+所有脚本都从这里拿三样东西：
+  1) CFG   ：读好的配置（config/&lt;类目&gt;.yaml）
+  2) wb()  ：调用 Kimi WebBridge 的 HTTP 客户端
+  3) 一堆文本工具（标题清洗 / 评论解析 / 时间归一）
+
+配置读取优先级：
+  命令行 --config &lt;路径&gt;  &gt;  环境变量 XHS_CONFIG  &gt;  config/&lt;类目&gt;.yaml  &gt;  config/cleanser.yaml
+
+任何脚本都可以被单独运行（`python 10_collect_links.py --cat cleanser`），
+也可以被 run_all.py 串起来跑。
+&quot;&quot;&quot;
+import argparse
+import json
+import os
+import re
+import subprocess
+import sys
+import time
+
+# ---------------------------------------------------------------- 路径
+
+HERE = os.path.dirname(os.path.abspath(__file__))          # .../xhs-scraper/scripts
+PKG = os.path.dirname(HERE)                                # .../xhs-scraper
+CONFIG_DIR = os.path.join(PKG, &quot;config&quot;)
+DEFAULT_CAT = &quot;cleanser&quot;
+
+WB_URL = &quot;http://127.0.0.1:10086/command&quot;
+WB_STATUS = &quot;http://127.0.0.1:10086/status&quot;
+
+
+# ---------------------------------------------------------------- 配置
+
+class Cfg(dict):
+    &quot;&quot;&quot;带点号取值的配置对象：CFG.step.links.roles → dict&quot;&quot;&quot;
+
+    def __getattr__(self, k):
+        try:
+            v = self[k]
+        except KeyError:
+            raise AttributeError(k)
+        return Cfg(v) if isinstance(v, dict) else v
+
+    def getpath(self, dotted, default=None):
+        cur = self
+        for part in dotted.split(&quot;.&quot;):
+            if not isinstance(cur, dict) or part not in cur:
+                return default
+            cur = cur[part]
+        return cur
+
+
+def _find_config(cat=None, explicit=None):
+    if explicit:
+        return explicit if os.path.isabs(explicit) else os.path.join(os.getcwd(), explicit)
+    env = os.environ.get(&quot;XHS_CONFIG&quot;)
+    if env:
+        return env
+    name = (cat or DEFAULT_CAT) + &quot;.yaml&quot;
+    return os.path.join(CONFIG_DIR, name)
+
+
+def load_cfg(explicit=None, cat=None):
+    &quot;&quot;&quot;读入配置并补齐派生字段（路径、日期、SESSION 名）&quot;&quot;&quot;
+    from datetime import datetime
+
+    path = _find_config(cat=cat, explicit=explicit)
+    if not os.path.exists(path):
+        avail = [f for f in os.listdir(CONFIG_DIR) if f.endswith(&quot;.yaml&quot;)] if os.path.isdir(CONFIG_DIR) else []
+        raise SystemExit(f&quot;[配置错误] 找不到配置文件：{path}\n&quot;
+                         f&quot;           config/ 下现有：{avail}\n&quot;
+                         f&quot;           用法：--cat &lt;名称&gt;  或  --config &lt;路径&gt;&quot;)
+    try:
+        import yaml
+    except ImportError:
+        raise SystemExit(&quot;[依赖缺失] 需要 pyyaml。安装：python -m pip install --only-binary=:all: pyyaml&quot;)
+    with open(path, encoding=&quot;utf-8&quot;) as f:
+        raw = yaml.safe_load(f) or {}
+
+    c = Cfg(raw)
+    today = datetime.now().strftime(&quot;%Y-%m-%d&quot;)
+    stamp = today.replace(&quot;-&quot;, &quot;&quot;)
+    c[&quot;_config_path&quot;] = path
+    c[&quot;_cat_key&quot;] = os.path.splitext(os.path.basename(path))[0]
+    c[&quot;_today&quot;] = today
+    c[&quot;_stamp&quot;] = stamp
+    c[&quot;_session&quot;] = c.get(&quot;project&quot;, {}).get(&quot;session&quot;) or f&quot;xhs-{c[&#x27;_cat_key&#x27;]}&quot;
+
+    outdir = c.get(&quot;project&quot;, {}).get(&quot;outputDir&quot;)
+    if not outdir:
+        raise SystemExit(f&quot;[配置错误] {path} 缺少 project.outputDir（产出目录）&quot;)
+    outdir = os.path.expanduser(str(outdir))
+    # ★ 相对路径一律相对「工具包根目录」解析，不跟着调用时的 cwd 跑，
+    #   否则单步跑（python scripts/xx.py）时产出会落到别的地方去。
+    if not os.path.isabs(outdir):
+        outdir = os.path.normpath(os.path.join(PKG, outdir))
+    c[&quot;_out&quot;] = outdir
+    c[&quot;_raw&quot;] = os.path.join(outdir, &quot;raw&quot;)
+    c[&quot;_data&quot;] = os.path.join(outdir, &quot;data&quot;)
+    c[&quot;_notes&quot;] = os.path.join(outdir, &quot;raw&quot;, &quot;xhs_output&quot;)
+    c[&quot;_tmp&quot;] = os.path.join(outdir, &quot;tmp&quot;)
+    for d in (c[&quot;_out&quot;], c[&quot;_raw&quot;], c[&quot;_data&quot;], c[&quot;_notes&quot;], c[&quot;_tmp&quot;]):
+        os.makedirs(d, exist_ok=True)
+    return c
+
+
+def cli(desc=&quot;小红书评论采集工具包&quot;):
+    &quot;&quot;&quot;统一命令行：--cat / --config / --limit / 位置参数透传&quot;&quot;&quot;
+    ap = argparse.ArgumentParser(description=desc)
+    ap.add_argument(&quot;--cat&quot;, default=None, help=&quot;类目配置名（config/&lt;名&gt;.yaml），默认 &quot; + DEFAULT_CAT)
+    ap.add_argument(&quot;--config&quot;, default=None, help=&quot;直接指定配置文件路径（优先级最高）&quot;)
+    ap.add_argument(&quot;--limit&quot;, type=int, default=None, help=&quot;本次最多处理多少条&quot;)
+    known, rest = ap.parse_known_args()
+    return known, rest
+
+
+# ---------------------------------------------------------------- WebBridge
+
+class WB:
+    &quot;&quot;&quot;Kimi WebBridge 客户端。用 curl.exe 发请求（本机环境实测最稳）。
+
+    注意：本机系统代理会劫持 127.0.0.1，所以调用前必须把代理环境变量清掉，
+    这一动作由 run_all.py / 看门狗统一负责，脚本内不再重复处理。
+    &quot;&quot;&quot;
+
+    def __init__(self, session, tmpdir):
+        self.session = session
+        self.req = os.path.join(tmpdir, &quot;req.json&quot;)
+
+    def __call__(self, action, args=None, wait=0, timeout=90):
+        payload = {&quot;action&quot;: action, &quot;args&quot;: args or {}, &quot;session&quot;: self.session}
+        with open(self.req, &quot;w&quot;, encoding=&quot;utf-8&quot;) as f:
+            json.dump(payload, f, ensure_ascii=False)
+        try:
+            r = subprocess.run([&quot;curl.exe&quot;, &quot;-s&quot;, &quot;-X&quot;, &quot;POST&quot;, WB_URL,
+                                &quot;-H&quot;, &quot;Content-Type: application/json&quot;,
+                                &quot;--data-binary&quot;, &quot;@&quot; + self.req],
+                               capture_output=True, text=True, encoding=&quot;utf-8&quot;, timeout=timeout)
+            return json.loads(r.stdout)
+        except Exception as e:
+            return {&quot;ok&quot;: False, &quot;err&quot;: str(e)}
+        finally:
+            if wait:
+                time.sleep(wait)
+
+    def eval_json(self, code, wait=0, timeout=90):
+        &quot;&quot;&quot;跑一段 JS，返回解析后的对象；失败返回 None&quot;&quot;&quot;
+        r = self(&quot;evaluate&quot;, {&quot;code&quot;: code}, wait=wait, timeout=timeout)
+        if not r.get(&quot;ok&quot;):
+            return None
+        raw = (r.get(&quot;data&quot;) or {}).get(&quot;value&quot;, &quot;&quot;)
+        if isinstance(raw, (dict, list)):
+            return raw
+        try:
+            return json.loads(raw)
+        except Exception:
+            return None
+
+    def eval_text(self, code=&quot;document.body.innerText&quot;):
+        r = self(&quot;evaluate&quot;, {&quot;code&quot;: code})
+        if not r.get(&quot;ok&quot;):
+            return &quot;&quot;
+        v = (r.get(&quot;data&quot;) or {}).get(&quot;value&quot;, &quot;&quot;)
+        if isinstance(v, str):
+            try:
+                return json.loads(v)
+            except Exception:
+                return v
+        return str(v)
+
+
+def wb_alive():
+    &quot;&quot;&quot;守护进程活着吗（不含扩展连接判定）&quot;&quot;&quot;
+    import urllib.request
+    urllib.request.install_opener(urllib.request.build_opener(urllib.request.ProxyHandler({})))
+    try:
+        d = json.loads(urllib.request.urlopen(WB_STATUS, timeout=4).read().decode())
+        return bool(d.get(&quot;running&quot;)), bool(d.get(&quot;extension_connected&quot;))
+    except Exception:
+        return False, False
+
+
+# ---------------------------------------------------------------- 登录态
+
+LOGIN_BAD = [&quot;重新登录&quot;, &quot;登录超限&quot;, &quot;已退出登录&quot;, &quot;超出登录设备上限&quot;, &quot;扫码登录&quot;, &quot;手机号登录&quot;, &quot;请登录&quot;, &quot;登录已失效&quot;]
+
+
+def login_ok(text, window=600):
+    &quot;&quot;&quot;页面文本判定登录态。注意：document.cookie 看不到 httpOnly 的 web_session，
+    真·判定请配合 cdp Network.getCookies，见 00_preflight.py。&quot;&quot;&quot;
+    head = (text or &quot;&quot;)[:window]
+    for b in LOGIN_BAD:
+        if b in head:
+            return False, b
+    return True, &quot;&quot;
+
+
+# ---------------------------------------------------------------- 文本工具
+
+TIME_LINE = re.compile(
+    r&quot;^(\d{4}-\d{2}-\d{2}|\d{2}-\d{2}[\u4e00-\u9fa5]{0,8}|\d+分钟前|\d+小时前|\d+天前&quot;
+    r&quot;|\d+月\d+日|昨天|前天|刚刚|编辑于[^\n]{0,12})$&quot;)
+
+TITLE_TIME_PAT = re.compile(
+    r&quot;^(\d{4}-\d{2}-\d{2}|\d{2}-\d{2}|\d+分钟前|\d+小时前|\d+天前|\d+月\d+日|昨天|刚刚)$&quot;)
+
+# ★ 小红书搜索结果里的笔记链接是 /search_result/&lt;nid&gt;，
+#   不是 /explore/&lt;nid&gt;。正则漏了 search_result 会导致候选全军覆没且不报错。
+NOTE_URL_RE = re.compile(r&quot;(?:search_result|explore|discovery/item)/([0-9a-f]{16,32})&quot;)
+TOKEN_RE = re.compile(r&quot;xsec_token=([^&amp;]+)&quot;)
+
+
+def norm(t):
+    return re.sub(r&quot;\s+&quot;, &quot; &quot;, (t or &quot;&quot;)).strip()
+
+
+def clean_title(raw, hit_re, noise=()):
+    &quot;&quot;&quot;从搜索结果卡片的整块文本里剥出标题。
+
+    卡片文本形如「标题\\n作者昵称\\n3 天前\\n1.2万」，
+    作者昵称通常很短，所以取去掉时间行后最长的一段。返回 None 表示这条不合格。
+    &quot;&quot;&quot;
+    parts = [p.strip() for p in (raw or &quot;&quot;).split(&quot;\n&quot;) if p.strip()]
+    keep = [p for p in parts if not TITLE_TIME_PAT.match(p)]
+    if not keep:
+        return None
+    t = max(keep, key=len)
+    if len(t) &lt; 6:                       # 过短 = 作者昵称，不是标题
+        return None
+    if hit_re and not hit_re.search(t):
+        return None
+    if any(n in t for n in noise):
+        return None
+    return t
+
+
+def parse_comment_block(block):
+    &quot;&quot;&quot;把一条评论块的 innerText 拆成 {nickname, content, time}。
+
+    结构：昵称\\n正文（可能多行）\\n时间行\\n[点赞数][回复]
+    &quot;&quot;&quot;
+    lines = [l.strip() for l in (block or &quot;&quot;).split(&quot;\n&quot;) if l.strip()]
+    if len(lines) &lt; 2:
+        return None
+    nick = lines[0]
+    idx = None
+    for i, l in enumerate(lines[1:], 1):
+        if TIME_LINE.match(l):
+            idx = i
+            break
+    if idx is None:
+        content, t = &quot; &quot;.join(lines[1:3]), &quot;&quot;
+    else:
+        content, t = &quot; &quot;.join(lines[1:idx]), lines[idx]
+    content = norm(content)
+    if len(content) &lt; 3:
+        return None
+    return {&quot;nickname&quot;: nick, &quot;content&quot;: content[:300], &quot;time&quot;: t}
+
+
+def note_id_from_url(url):
+    m = NOTE_URL_RE.search(url or &quot;&quot;)
+    return m.group(1) if m else &quot;&quot;
+
+
+def token_from_url(url):
+    m = TOKEN_RE.search(url or &quot;&quot;)
+    return m.group(1) if m else &quot;&quot;
+
+
+def is_author_profile(url):
+    &quot;&quot;&quot;搜索结果里混着作者主页链接，必须丢掉&quot;&quot;&quot;
+    return &quot;/user/profile/&quot; in (url or &quot;&quot;)
+
+
+def build_note_url(nid, token, source=&quot;pc_search&quot;):
+    &quot;&quot;&quot;统一走 /explore/ 打开笔记（带 xsec_token），实测比 /search_result/ 稳&quot;&quot;&quot;
+    return f&quot;https://www.xiaohongshu.com/explore/{nid}?xsec_token={token}&amp;xsec_source={source}&quot;
+
+
+def jdump(obj, path):
+    os.makedirs(os.path.dirname(path), exist_ok=True)
+    with open(path, &quot;w&quot;, encoding=&quot;utf-8&quot;) as f:
+        json.dump(obj, f, ensure_ascii=False, indent=1)
+
+
+def jload(path, default=None):
+    if not os.path.exists(path):
+        return default
+    try:
+        with open(path, encoding=&quot;utf-8&quot;) as f:
+            return json.load(f)
+    except Exception:
+        return default
+
+
+def log(*a):
+    print(*a, flush=True)
+</pre></details>
+<details class="file"><summary><span class="mono">开始采集.bat</span><span class="sz">1.5 KB</span></summary><pre class="code">@echo off
+chcp 65001 &gt;nul
+cd /d &quot;%~dp0&quot;
+echo ============================================================
+echo   小红书评论采集工具包
+echo ============================================================
+echo.
+echo   第 1 步：改配置（config 文件夹里选一个类目：
+echo            cleanser=洁面  eyeoil=眼油  _template=新类目）
+echo   第 2 步：确认浏览器已登录小红书
+echo   第 3 步：回车开始跑
+echo.
+echo   常用命令：
+echo     开始采集.bat              跑默认类目（洁面）全流程
+echo     开始采集.bat cleanser     指定类目
+echo     开始采集.bat 20          只跑第 20 步（过滤）
+echo     开始采集.bat --from 20   从第 20 步开始跑
+echo     开始采集.bat --dry-run   只看看会跑什么，不真跑
+echo.
+echo ============================================================
+set /p CAT=请输入类目名（直接回车=cleanser）：
+if &quot;%CAT%&quot;==&quot;&quot; set CAT=cleanser
+
+set PY=C:\Users\17831\.workbuddy\binaries\python\versions\3.13.12\python.exe
+if not exist &quot;%PY%&quot; set PY=python
+
+echo.
+echo 正在运行：%CAT%
+&quot;%PY%&quot; scripts\run_all.py --cat %CAT%
+echo.
+echo ============================================================
+echo   跑完了。产出在配置里 project.outputDir 指定的目录：
+echo     raw\xhs_output\      每篇笔记的原始 JSON
+echo     data\                清洗与统计结果
+echo     *评论汇总_日期.md/html  汇总文档
+echo ============================================================
+pause
+</pre></details>
+<details class="file"><summary><span class="mono">环境自检.bat</span><span class="sz">1.4 KB</span></summary><pre class="code">@echo off
+chcp 65001 &gt;nul
+cd /d &quot;%~dp0&quot;
+echo ============================================================
+echo   环境自检（第一次用请先跑这个）
+echo ============================================================
+echo.
+
+set PY=C:\Users\17831\.workbuddy\binaries\python\versions\3.13.12\python.exe
+if not exist &quot;%PY%&quot; (
+  echo [1/3] 没找到内置 Python，改用系统 python
+  set PY=python
+) else (
+  echo [1/3] Python 路径 OK
+)
+&quot;%PY%&quot; --version
+if errorlevel 1 (
+  echo   !! Python 不可用，请先安装 Python 3.9+
+  pause &amp; exit /b 1
+)
+
+echo.
+echo [2/3] 检查依赖 pyyaml
+&quot;%PY%&quot; -c &quot;import yaml; print(&#x27;  pyyaml 已装，版本&#x27;, yaml.__version__)&quot;
+if errorlevel 1 (
+  echo   正在安装 pyyaml...
+  &quot;%PY%&quot; -m pip install --only-binary=:all: pyyaml
+  if errorlevel 1 (
+    echo   !! 安装失败，请手动执行：
+    echo      %PY% -m pip install --only-binary=:all: pyyaml
+    pause &amp; exit /b 1
+  )
+)
+
+echo.
+echo [3/3] 检查 WebBridge 守护进程
+&quot;%PY%&quot; scripts\00_preflight.py --cat cleanser
+if errorlevel 1 (
+  echo.
+  echo   !! 有环境问题。常见原因：
+  echo      1）Kimi WebBridge 没装 / 守护进程没起 —— 看下面「依赖」一节
+  echo      2）Edge 浏览器没打开，或 Kimi 浏览器扩展没启用
+  echo      3）小红书没登录 —— 在浏览器里扫码登录后重试
+)
+
+echo.
+echo ============================================================
+pause
+</pre></details>
+</div>
+
+<footer>小红书采集工具包 v1 · 全部内容已内嵌在本页面，离线可用</footer>
+
+</div>
+<script>
+var B64 = "UEsDBBQAAAAIADt0PF2zGq1VBBYAADwrAAAVAAAAeGhzLXNjcmFwZXIvUkVBRE1FLm1kjVpZU1vXln7Xr9htP6QbBwTYzkCl05WupCq3buXeVDpV3V2pFMKg2LoGRAn5xnTpQQKEJEADNvMsZhsjYYOtiaHq/hRHe59znvwX+lt7HR1J4MTXGawz7LX3WnsN3/r2uSnkcdoob1VLe2Z+3MyVrVjMWpmQhV0ZLcjpqMulJierxXC1+Nx4WTFWcsbyuDOipUUW5+VRRh1tq/mYuCVYREuLSjypFqfU2u67s2nzMobxViSpjk/lxAouVWUH913V8r6MlX8LT/Mo9TKmwhXIUdnt38LJW3hgrYbVy1Hx41+/vyvcwlhYMUZLmNkoX+JSTpwYR/NqbcyKJfH+b+FRrPU0Yq1tvTuLq9MF/JC7b96dJXjdsvDKmD1Qqy8c1WRuWs2dmoUZK7z87my5paWj464w8jHjxayZO8YMn7V3CrWWlakNuT/FixRvJ56IO3fb6b5aTai5uJk/UvNLLS16/tbWVpfr5k0BhX8LR2T8sFouq6lLGT82L5dgQsxKFtmLyMiyjG1WK2+q5al3ZxsuV0vLHaGOyF7GixeiQ6gXWaO8J7AiGZ+wnmzgQbU0JTMpldyyFUo/V7MlvAq5sBpkYQktLS5XSNwUIYEZqpVwtRTHbxVO4QfuiJArhDU6/+HdDjw3t6PVizXz9TyNS0/LWEV4jFRebo2ZsedqO9x2ryfowQpkbqx6tox7cvIAY8TQyEjPQL+QpTd4SW3s8hiaRHRClLFUkedzjrfQndkDOMfqC7VaFt/03fcK9Tpt7sflEt1OPJVnYeF57OvxP/AP3h9+8Kit1z/gESpxaGxGWJiWfZtUmi1Z0aRxnqMl7yRl/I3w9PoHf/Hdd3cHvQND/T1BbxutjtaNl2UmqeKZ6vkm/JftR/pkD8UnGD4Oj4G/wmPMPMLgFE6jJ7pDws/CcJEGw+AG3IHDpGYY8+KpjO7a+5JJypV18xz6ulxfirfLm++KaYFQuYxa2QosIP7sG/CJ//be+8+AT9sgtY/lY13W6DbtZc0krHFLC219MakW89ZyunpxycHovEV+96XgfTLHl2FcbJGcmTTzCWirEs/kyznzcr1anFSvyGWb/bQ8DT+lRZ/PGZWnan3c5fJ4PK7HD4Zbh3sDPUPegNv1dnb17WxY/PDNV19/903bQJ9o+vN2IiMwkVw9gIvL8cva61f95+oYuDk0ITefPaCtiMbZwPCxmoirlr4qQi3symLRHn91sO0MuByl1+2b/d6ewWFvQHtGgyCdNtwNSSOOdFHLDJCdN1ZOVWpXT5VoFukd8fp9/Q0CbfVWz9Srkht/WWMHxqsLmUyxVGtrHF7bKGaWxDQ7bV3Ms7KxdK4Osmrtkhx5/th2Mu3ynFRctghsmG8oOOx2ifrqAo8Gu3v6+9uGRpo3DJZHYps5r1Z2oKaMHqjXEeNgipZY3DNWp6yFA2NqgXSPH5qFEyRtmJYW3SD7MaJzwD94VbaMvpDRl3KjLMv7kMdRauYrMj2PnOr4rXk8RrGAO8j4tax8ZYb29u6hgPeXft/9B0F7GprBLlGJZPX8KbwLuVvm4mpyx7xcgQ4oQxw5KhxpFNbR3t3r7+/39ga7+32DD4dJIEl7O7Mp1HRCRk+sWawzqTKrOmW8oTnCS1Y4wQXBenoBF2iS2NGtHaouT9gSs0IVo3AntRmzthapFKQqukxFZGJWLj23Nk6aBHV2D/l6H3YP+oPe4QZF385sYWkz1uFitVKQ4TNeCG1SYtZa2lFzS9AXDnHFbB23uzl4GwSyuG1hhTMocWry6ZWa3TT+Tnef1zvUTfvrHQw2WGpH0OTpPIyCOXkkcgiiWBVequn5Rimd7d2/+PqDCLa6g7CUXfFDx9vw0x86OgXs0ggLmsZ3dPcM9vSP/J+3LoDH7wmjsmHmsgwP3IwL3Ng6WX7qboQFtjgdHbfbu+898vX3dff5e2sCWdw+ytIGisN1GAJlke5uiQfBgX6yMaXGhhqPXBpBOW5ERyjtKDZceF2uPy5MGktwaXJeoRI0seoULrvG2zVqmea9qR12KOD/GzwZC+wUZnbaXhwNc9mPuqD8YM+At0uwTFz29gT/7B3pEgM9ww9x6X8UHHoU/NoX6BJtbgZj9vzNGR4zLkaFsVKU+ZJZyMuLcb1yM3OOpC8aS0WTEM5DH/5zE/9VSxvwqmplFxXZqKw5E5EJ9kbF111uFZ+hCpktwchuR6Nh7/Cwzz/YpVdBarUGvMPenkDvg6vLV/m0s0n2hk29MA6nqFof2YkOHoNL3mU2dJZs5r3vD4y0/eoP9A2Lt+FZ/Cvk0whEweMoHCZOZG75BnIxUir7kJFbQMXG/8lo0ZMbjdtTE0j7o2V2aTu11reJLtRcoenazO4iTvTSUOwx1WKegFSYsxYsQxA7W9IwtIbjURDLRuq4Wqmo8TTrTOkNafNyzZhbYuAAg8ud5/J4Ru+p3Nm3YmljdUPm1lmMuXUo4zs31MImKVItbqkUQn/FHrazzMPWx+TqhSoUkIEB+lkyEE+lbOZyurI/J6j10DvCVkTJwXpMKoPTKDbIRkBMGMhxQ5sxkeQ70BvaQjMb2/K2bNVF2RuCpG2cbjk5vGFbxs7xDABcPn1eLa9wBm3akJoo2odW8ROb/WOkmDOZif/ceNOKXForhY+FzGTU/nnTI5U6MJOZjwXykcwlZPxZ89PX1D7gqf7bfsRbWpuOc9nP9g53tmP+cVnYk+mTarEsc6vQHx4n16dQUoyjC5gT+cDDi/SginqcmfUVL5Ef6En1T55E/+Sk6XG2Sr9PMzyZ5gEUKoDK2hVkOmntxWV+Qpb34HSoR4xKzxZpc3eWUeM1rOTd2Rb3HvU+9AadzeFsLdPbiGjH7PY7Ok15vTD/P5crWAWVBUZbpn4uXlBjJ8i6dsrlaPlJTm7o1iyBd+ELbGo3/F6VAKMSH4uP+FaIb4XwU73ZCyFoZelVSFWmcPXRzzVpKL5q80yF9+lHfhajZekEv0NA49iakPMkJI/2UEtCMv4Ewa8FDPX4Bv9Z3XhPGnUzi8+q5QnWTa7N1BZExXIuTT1wvIxBBKJOVtBkkV76UYivQ/w8ZETOjLGjkLHwJIS75uhlyBgbNceLdRUR3zAYCVoqy7kJ4yAFWf/6H1/8CzqGf6PGYS6u1qGpfi3kvBSihnR0NoR1IjK0/cJnH9W8GEaTZ2nh+QkqIbFCIkCHjC999DPVNk/Ig7R2YOyUb6j4/A3d5ejOBi/rxCHuAiQgEjhvsac6Jmpp4TaUGunMHiLdhHfGD8kvl38LU8NknO4blYJmBuhSRgAwZnCJ39TEbh1ii1D1WWKD++6IPm+vj8rKdz1DTsJvQBVqcVMe1x254W1y5g+4Xpf9At684lZd9o2a8SYnHV+X50/QYyOJsVcgIq2lqL2kBeocEa/I0kblFAEKVUjd7CGKKrIfci11t2fLVjiMnAoJjljAbrOMPJJo0H5XAB85WVWjIAaxdX39vaRn0Bfsd8CF+EfhKo/EOEpHQPBBlyYpJndk7g2AMdwMw9AX4Y6RmeBLqnW68qKuARPlpj/cbyOh6XEewQ23TJ4ARdiVogbT5MoKwW7dJ3LDo1vcez3DD1w3qRJZlUUzt1PjBOK1FhFmcdoi19BI8IF/0Omw6l0VpgBCR3O0zAJ+/03R2orSX9MUw1AUMbvayMjYpmZ+4nACoB3CfGMn5Gfzx6jgNSSa+EPR/sH+EUBcklutpIhCQuBAKhuPfQANE7W3hVeauDpWSSq/PBVBFZ2kPzTPLwH/AETr9UfjqN34l6IJBb1Wuyn0Vjdw5w8F9QVGWnFDC7o8tMIbZn5OL5MYDJUoEbbZWQbsJQfp1HwbVDCyOewVt5QAiciNQApq9oJJmg8tvt834AvS6m0/k8k5mAgDKWtcs/7kU3ZkSCXoXfOZKxO8p9dq3Ghn1tvtdlzbfJAzN7MyTsvNnSzMWOeHGptb+Ddiulo8ssKz6qgCMCbzZ2YMMGIJfowgQZIQ2lqcL9ElWmvrRHtlc3BSglbIlvElar09deN4rrBCswgZZgR1v/ccKxS3KYbJxK6QcNhCSidIFDWKkUjB6xRjS8v3bLTbbZ/famkhwrEww1wV8WqpimCjtvkD94mLpADfjiKzyakLJO+v+vpE0C++/+rHb5nndRjcKrG2XAdUagu4BVf721ZsUi4RJ6QSF5QJ48fAvEh6QAlm7oJ5KZmGsVCa/ufb/+r+/n9//Pavf/EIXipzmrzKfIVdjelV3PHYu986IIZ8QwKlPQgD2vHXes832BMY+fcu3OqyuVEkq/h1KlUQRVfMYVu0tgl76mZeUC+BuUGHNIFTWtnXcC08gkZwInQxgH1aTJxZQr0yTTQnPmArJEVzP1I9T2pCqm4uefySOZ+6V5beqHQGpZoLg1HOE2WzegwXtp7vUPBousPNXbybc4m7MXsZ0X2aTtcjJkaxGt3jUb5AWaOuedvYjOj0LWyHARptIEqrxR3CAnqUBVw/m1fTkUaViPpp2F5zb8JYmcdUtAmNO+3mjf/6q2++wyUbyuO0wx7y6qZ21+P0x19wmv+SihDBEf2WY2O1WWIuFV6o1jPkx/vbMjWFPhntB5lV98z4reOtpaWum27hSD0j+4JIBAIP2DBXR1tz/GsSWXd/MKf1rNLSgpHUHGiCkozreQg3av3Ve++eltzmfewVcNMAu90NwkHxDEDIDd5LQoBEpF4uqMUL7DCdk6zMyMwLyhW6XgKWETe8tmEvAWqgKUR7NksnDo1ZBDApCl9y3Ia0nzhBlmaikpTubKtTgNgWOgQgJgkaa/pf14/ZWizU/V7T2FiazOT1GQKJwsI5pjCf8HgfB72DhMO6e/2Dg97eoLevSwQDj7zNuU1Gjyi36d00Es9cLqI/ATYyKSIzGp2AynqGSAfeUvTTmoGhLO685ZDjgZ5fr1DNjx8MMy/Y3dne+Un7552ftf1tGC5t/7nOLFKm1SdN1yhmEtXbM9jn6+tBiWHOsUEYxx40oKM5Lfb6cKIXvX1NK6j9UdMzFKhru/IiivwCIRCIzNLMT5MQVttNha77C1/fl41ryKedkzOSoMnFW7UCaitmzC3ZUMZeGfTpuWI2GLLOO15fLlMXfOYGufZJ3DWLMfHo7evu999/jxTyX82gsqBbtLyVTaY2ZS5r46AmibpH7Q76h+6+14gNJ5VX9PH2wQu87x2EP41nms0D+72PffDk3xuIjqhanrkld8+pV0/FbjXxnk1b5/+7N/B3n/fX3xHFNlCAPhOva0cJtTT3j8J7UX3dpQf6kEzbiB8lUfospYE/ZaDl0c899gEapY+xc4QstYAYT/eJ+bMT2Omptb2O6dx/8QcRzFdOVccIyiNBbexaSxkURtoyLJzIqlO1mGL0SaeZ56tE/OiTVw1ZkEaRMWu6EKIpvlIbT9GDyPgEq8aFh8ur3D6GONHR3q79i5KATb1Pc/NlhVHAiwThUdHyFSqasU2ZjOAHpculC4BXG4RRdOjzJSRB8zwn7FNmWTqRazE64/2UpnDjFtVgDXsxn+i8Y6M4Zvvo9fRxTWv7QJAxlLWQ04cMsFQnqel5POzthas+9A7qlE9FeXWD1UNXSfarpAneosDXFCMYrRMwH9WTnrHNaikFE9oQav64flBAZs+to+BWy9MyXnBUSmtGsOO2HZN6SqBpZG9djSMoGnwQgqSLHuXtDDU+mIKOtfQyNK2kE3vYVlGmk3InScws+t4MUQTUHCzsc87USt8mpZkA1GeYq/yMoJDHzWxwd8A7/Kg/6P5iEGnL49gPz72Ph/r9Aa/9hHtHmp+P69dm2Frch6CQ0dDzCfgcpiH4BvBReAnswsQGlbGTAzWe5tKqztIYIjxNa9Bbch2uo+rRmiZ3rVnNzLrukFa2PrFpVSgYa2Gs9xFaU/dQwI8M53V7NGyAr4ej1WKFXFdrrq1IB5gajWlpd0kaJsCU1UqlinK2tk4HdWgPJ6IyV6qdMsvIskqh651S4X0zC1hzQGRvep6dgArM0YLKvUYONp6VrxTWQwSnc7DDc5v74zALdQz8i+C+Try1TxNcjX3CD/pbhAxMEOZDQQKWhUWZ3gYKIbZrclNe5PCjeraoxjZlvEg3d+ah9dvwXg1H/6A/PXhWZsUopuLz5puosXEEG6uFzeplVkXy/Cp9SVAtpgjMakbfTX8lphGYTHgTqD5PMYsP+ZTfNO0Oa8vJFabdsXnaetbapvA0Hxcgt8V30HbxZPprgsy0To1x5uYJc7xN7OrWikycmXaO+PjMV58gFRzV7rIIzCr+9L2QL9eBwWVyE60r7G0dLlKLPD9TPTuzD9Uiy9YKfHaFtNEvc9+P1krPluezcytyKaNJM59Xa2E1d6ozkT3hJzyhnST0zMiiGG+tvDFfr9c+iknsfmZ36JgP3akRn5DpGUfKp86+ynRBLb429o+NREleRPjx53oXkqgDiCQzkbeyJSQjtRkjdRLP1OsI7bkmx2jDc1tqNVmjqBgQICa556CmUTuYM3dHO6kAhBc9oCyyk9R0mY0foBG7CWXyXJZ3sz6U/BG9jplfQ4Jl4r1afEXBldhF6y08N/km9jmT4kaeatHpgZk9MC+PbSnkjxykwMZW9g10ME+PqqVjeTaH7l3DowrxQLk1OlCMn6j4DGFUHdEQ6fi2q7GOUCwyDwhbF8d0t2DTYp99elsfy7Bt6HMl/gwLASnudN5GhsOc8H32cXH7zidYEsKGo0Tc+ZwuoTy1eVo/0aHfoLDWuyj4UsjSpZyZFHf1Vbtg+4qOGqPo1O3SmtZnh0qp3iaj/FxeTDmnNOyVhAO0FyBC60XbYXzN18eNTC/Xsz+menGJXbHmLs3xUXP0ufHqyR/xv4TKEZ4Lb1TqCTyIBk9F5eUYseLhOZ12lnkwpGAT6LQkEjNzF3An9JzskNboNn2po+Eg9IC/O9WG2pf0jDG7QVW3zjp3cmoO69ND8kvyxcsVhwzX5BR/LUMlaYbYH0iw23vN5tiFkQSsQTHeB4qGOUIs1taMepElnZeWkSOas3YyQpAqVmYQwZwedKOUjfxkvsxqhobgsTaD/o5scv1K4m4sZFyCMIqOqR3EhW2wP+DSh971vq7+adcX9wJf6i8ndCl9f+3kT2iqlzn7y5Ra+WVgAZOwkK3Gr6t064j5zct1npy/M9OfnzGfaHeXOh3qmGVcRRlD12lY6J6/bwQ1bRYTQU0UQZ1U6n25Oqpgudonr1JrwiYY6eu5RqZPz8SsCrltZRsIw41FEgreOlRT5KuUf04qiBl+LCcP1XREdHR+2taOfzqutd+o+UyHFKM8gu3EPBF1usw62tQb5ud+UV7QKR6SaOMnjXQmHHpPRdMnv8Zz/giAGGDCJdcaLg+cYppwLPIMt1sU/Cs5OtDNJ1l3/cmIjTORPOeP5dY6TdmIXxm8UhWHWxSL5PIr6w52JJ42s+rARy3WOARo3Cbs/tkneurkpvZhVKRX9BUcVESZyz8xz9F2UAdhxWbky5e4Y60W4UJqEhk2xgCQZZERk0Xz/BxIAs5mTxBy/T9QSwMEFAAACAgAQXM8XcWElFXnAgAA+AUAABwAAAB4aHMtc2NyYXBlci/lvIDlp4vph4fpm4YuYmF0rVRdTxpBFH3nV0xIfGkigqYfabJNG/vUh9ak7UOTTci6LGVbYDe7S5WXBhtxMSJo/KpAJagoMbqo0fKxUH9Md2aWJ/9CB4ZVMakvOpmXnb3n3HPPvTMvBT4kASkYdPEhXgZPHnu9PvAiGgu7+AAYCQD30PeA7HW7emHMPRZlAAAeZ3Fz22rs2dVZ22h2dL2Tn4O1MkzWYDr5QHk8TjZ8eAh8AB2VL1s5tNroJBdx27hspXgpGhQ/A7SuW+ZvuNvo6OlOYt6qJ6z6AT4xcZ4E5RySq8WHBS6qCgqDzmY6v7YBEOKCJIYZXGih0wYAfk2IyGFOExi0fuzQzN/UMtrXgkuGbeyi86y9n4KbFVg7xZsmbK9duXMTNNYHwfyW3d6DrQTcX7Bry4OVwnodr1bgctsydwe003jqs2eS08DAIjwd8yfR4shN0dqIbpisoPMZXFm4g8txpPcXpXVo5CjRHZhR73V6mD0gCnrOeGmVKftCR90S5u+gGB4OKlKEMllm5ho/aM7/wAElPqzEojQ/LiyQbbVyBGWZCauRumylrfoiLhRvmXyvsVQFDYzIYPzVB8au1uw/KzBZplbBpUVSNs6foUyZtphxbCUudHspBsk9JMghN8O43aBL1eVxolw98olPzPhz9iP5Vlnf02djPtYzJSlfJ2OBQJydFKOcIgoqK8e1kBRlv5EoUYqq7JjHR/Zo/9wjTAvdbFFJA8K0qGok78SnIZqSJKBRrpumoKMdWKjYF0t2KU209mS6HBSviLKmssRrPxcOe+Q4MZ8nLaBRD2Vtv9WkW9BIW825v4kfVnMf6k0ijN54cr2BrEhfBF7zSDFNjmmvRcWZ19xstwnttYFbo3BT7HRI9dNolk4rqmZxVceHq7ZxTGAwUySTBd68f/f2GhjgNI4FtxaqJ9HZhlXPYLNoGyVsrqCtwjXmEX0L0YmOEqYfbZRRoeiJBEZCWiRMwL1j8lSh0s4DuCVzMVVw/QNQSwMEFAAACAgARXM8XTD+zF/qAgAAlAUAABwAAAB4aHMtc2NyYXBlci/njq/looPoh6rmo4AuYmF0rZTfT9NQFMff+1cclyAsSrex+AuDMRqfeJAXY4g1y9Z1rLFrm7YgezEFRVY2fhgBRUaADWTiZICSDRnwv8hu2z3tX/Cu7RgjaGKw6UvvPfd7Pud7z+l9ho4KIEQiBB2lRbh5w+v1wT1+kCPoMHjC4Gp7FRa9LsIK67nEYysAGFMFlHltjm/qWbVWThj5fKWk6vlVYzZnFopoLGEW35nHC5XSZq2s/ae0JEHIjAJ9/T0Pu6knMiPJlO/Wbb+PIl8K0ovQYDgcp0IsH5RYRqbEuBIVeGoIR7ECL1N+0offLmedZIYZgo0ALyjADLOygh3q629zQQcBYNE+83n8z0HfXdW1I5TYRm/HjMMt6LNO18opfXYfl2p8PzAOlsHWxCcdPOfbDQwnM+clbQkwiwV09AYe9xJuwsnd2enQ1skYSRIkjhliOPA1JQCuXGkoVEqTaLqAKTCO7Tna0szsWGPfT965hs+JwUEMcbVepgKeEPhwQsdOm6rLKjSr6svrlaMlc28e1xMPxrhTLBpcbEwUJAXqy3dBlFhe6WgHJw5QcRenxRSGltDT+fbrVhwZCDjlBAJu199K0r9lUTrnwNuaJEni/QZADERWBJaXlSDHYZsEnot3Wjcd7+nGS90NYoCL0pz1zs6C1nbMH+u2b7qWRBM5XdswV1O18qez8fipE/wTwEWGA7jPm+5vmg5PmdADiQ0PMJguoU+smceLRi7ZsF+mJVZUZMrrDYgSE+HYgahCinFMQQcVoDkmyONR+KO/ZEvr6GnNntzqh61q5uOJOopKJXNjBE0to8UVu/xm8T48u71sjD1DiAeifkueFtT64l4Rfqmz+AUjnayUktWlzImashvqRJ3EfwdzYrRFvQurP7I096bNjQRayFnT9h6V1fqAJebByt3c1b6gnTkcg2bqXd+i5cdaaHva+Jmp7H/GIcbCATqcaxDh7jpVqY6ndO2rsTJih6CZqer4pFmYO3dBl/pZWR1A/AZQSwMEFAAAAAgA7nM8XYQmoqqQFQAAiy4AACAAAAB4aHMtc2NyYXBlci9jb25maWcvY2xlYW5zZXIueWFtbK1aW28bR5Z+16/ocR4yztpS7FxmRpjMYCeDRRazM1gEg11gs0HAOJxYa5kSKGocL+qBulAkJd5kUaIkUpYoU3eJpC4W7xKwP2XcVd39lL+w36nqapLyCLsBLNisrq7bqXNOfedS/Z7x2Tv8G3jP4NW01dw2G7t2ZdYuN51o1MnP8doOj9R4ImL8T82wTltWvuxEklanjAH33+EfprOv18Rq5U04w7MVsx52CmF7d0pkG9b6rFiJmq3LN+HFN+FpkdxGq1k/VNQYnxm8lOSxS1E4Vt0whGeSP7YT1uwlz6RQNesLzsY2j27x0uyP7XWsZRgP7hrjwbH/8j8KDQZ8T/3GkDE2GRqfDP1+JIjnCf/ExMhYQPZ8eNd45Av5vx8LPh/8wPD+/hbO4p/Bl6ZAiF1JvglP0XM84T6vHTqb53j+sR3jc+e8vH6HNrhRVNy1yjmznsSvla/zyPmdH9txudhHd40n/ufPxoLfTRjGW4uJTMG62EZ/J1vun3qmgzYeq/KlQ7OZt46zdrnqTfrxXePbyUdP/KGJwYDfj5mHvPq4byQwYfyD8Z3/0Qjt+I++cW81q7Vpl4s8/Ypfzcp5PrlrfDf2aDA0Ehr1v02c2dzj0SZkIIqvxFbU2V7FIBJGOWHlL0Rqx64tgvvjz0OPxwJGcDLwjW90dHD8OfQI/DV+bXa2PFFDgDzVEqn44HPf09HfYKJ3quwDruiHBwyDpD9siIspqAgYKi5ypCs7l8Q8gyT/B//zYePRqN8XmPAH8eo942+rEXe3UEDeWcaugr5n4Op3vpAPhTiNinBLccKZ6ZjtdTvT4YV9KIATTUCH5SyGQbKvNOxaBQyGHqtOb8KJHx5P3J94FPSN+4NDap2hN+EktJjoS+3byQy0G+dAFJp8bZ/0KLsPRoPiH9t5d26zscnTFbO1w4tHZqslZtNWa8NbDeP57rTx++EhEVsE151iA1sZUlzADN5ZGDYGNQleI6RaSXsH0D2MC8fW0YI+N5jembrmkSR/keCxIyyg+or5bZ5JqBHiddrei4F+6Ip1coV53cHDBu1fM/x+0D/h9wUfPR4YgO6RwKT6kcRcQREy3cAuJQBJqlpY7xrnZQ36CDYr6fB4RamqWZ9XAh/3hR4PG0TffImXL0U9AoFiIWdmH2+szBzJ9xZlmZj8VhO3XBXJsmhCUOsebTxyzNthdTbNekqROvAOgLQLQnZxf0CD1bDcv9cESjSwJ0hzU1WlFkoaxt/mXhg8ViIwgdAApopxvN30ECphNmNQKPN6w1pew+6//Miw92Z5bA3qpxggcYvWNYz7XQF5dVd/dON2oVuxZ+t9w3Slus83m05EN1rr06jrxvOiODvqqZwXdSWyLFYqfeuajfO+BXrr1G7PpfvqPXTXI3jF5/Pd8fwqxxtnPBruvsIp/DuvgGCa8os9q1VzK3wqKlqLutI4E5cHethCFnVdSe2Js4buBmz1Kniy1svdCboVUav1dKvVemZbTovZTXs6oSnKrfZV8M+tOLkToL6utBZ56ULPUcnzk6zH8jwUWxMRa1o5zSL7OorV9NQz0z3SrR9AvdwK8SzWFNfh7hzdCtRMNK41Ebtr1tmV7rZ47kwt6aVe13rkHl/qVvjcGYTQI7RyoqeSSekJivvioqXHtE+7yjYxOtFVO917Lm12lrrzgKO6ZbrUrfD8S/viRI8+aFpLnjZlvNH1iBXr6EprQVzudgWqdKlPnVz18k619DQIXxY7Zv2k9zAD+z3PAucUx9NspnBmzU76Dk8finQGg/lJRpwV8awQ4g5AWuGDOsrfBn2B7lm259fMeseePzfrG+6rvwT9/vHRSc0i/2jIp/ebnu7u5dFk0D+qZ1mJ2pUm39fn3o6eA2i0iMOZbuXxX8Y1L5LzZvPAnj+1slU9rFpz8vtaTdqrInfZxRIrHbZTp04+0l2T72k1AnyTmM71oUQ30dZqha3xYhY71ZT7g76/+j3qps1GBoM1WaU9XtasELkpUdXqznfLVuuiS4DIt629sJOviWXNE/v1rJXd5FvTXeFiA2Z9ydpb9LYxDzZqRfQHnmjmimnYuJzzKsUzWtlGAoGRCRKHlowv8Mhj+fx5d57vHj/SRG6mnGiKJ1qgQ6+4eS7OO9ZW1jq4FHGtdxOTIxO+ET1qNQ7hdff9xBfwfzumV6rkoGLWVYqfLugp43nALCa2tk89ek55UgvSSsWxpK4s1ng1y5Pr/JXGdDgw8O0xpYdg1MXseMh9vNcn67FR33Mtr8IZQBpHzK0H/JOh4Nj3/oCvO7fZvqTf64ymAAemXIAS2kkPtdeunHzYulr3NPaQogpPcs7mgdjwDv0VTNAO35j3FCrM05c4Zx52FMT5sllfgV+hx69edxVOvCSC7Y62BTxStbMamSae3B/RcnBa+a5QnfwhYLyLjs7RaveQPhmb0FohmocCbk/To2Y6QWehcCg2dtxXwcAz92kyENCcFJt06DFU1xdhu9b5/L4VP+B5jXF0DFcyXaMLOdJ5ubpy8aobDa0rh8vzQqTnoQIEs74Ng0lemo5w7EpFwRt5HzCnqxXPM1EwFRgbmfB7HsdZRrz2TBUQM73Y1wKl6GsU1QuP3DrfndNCv0pZ2Z6eNuKZQrNbhzfQY4zKW2CEHrmQwz9dSRx1x1jbPZZIxAH2egFrbwphqWezIlhNS/KlPki8UBWVSj9FmOBduI43QkpM+fBDRH6zvLbL05B8E0cCQrNabZ6JIVAUp9O8HOexAzzzTEbsdejl6wXYDvlmFkplX+wjekdPvDE717A/cA2s6QZFPu8ZId/3OH2Hyir1Bo2kElPrvPMCAuany1apqaTOO6d8KanyETSFDpBJ7PeNrzw/856hqPz6xnsVMt3rkn6zA2IV4PM9dz9vDZebu+du8mYrjPW52cJgteO3m092gbE3m7Vb20P7LeOVp3f79NL3u3209vlu7aG8wNsnWGvy5TlrP3Ubd1zHFryXIn6bQOnq3tqsvMu3licP/HaxUavxf4hFOV23b/u6ZXd2b2zKytZgfP6OTN7FQXPzafCNlqsDj8ZGR938w+hI4InrZyHmx/s/jw0bXz345MMP7xkffUi/H+P5a2qnyFseV6f4mjA4VrWv18xm3nhu8I0McJXSApU0P03z0rpYuObRLbFR7Jn6330joWHjweAv5btxf/AP6ih97hsfNj7+0LjxpwN9Dx1EIYyZeXqFfquLevKA769q5k9vztCdKL6E2NejHu63dRLHLGYjIlE85Hd5EBybJL/TeHjLVJjrTTgBeMB08LLhHxDI1BegZG/CAIkkZQOjW3anfJOlvyJePvgl/T78heTup5q794xPJad/QZyW4576fvh87OlTfyAEWh48fIs1ijdWJapYIuaXPJa4cX0fYz6R1e+JzQ8Gb90aJjXrJUxqNhac3IU4iUp/foGyNaVDXpmjTNL2kbMGYzb1TpSyL8Xn5gRV3kCpviheEvhn90WsdkfMnNu7U2YrbDZidygTm4g7xSZvpnmi4USSEqzDkgEnYmUNEG9f563jYxWTKDNOCb7ipcqAyVSkNt1feVG2Sqt4EfaQCoKHeKqlsAJ2/57xvted9XZmXpjkvoY7QU9UUD7xrMHUdEzNxay1DhUqrGVosGenmU1xVMHeuWaidsrBBLkWIx/Bm5GSSFcxtdb7X3ubkIGligSxD8rMSXQcIismgZCeVIyv9qHamXrFVCqAqa5MzeauxlQ8zOCzILhiduyFKCSZiiGZSj5QQcNVLMkUGagt9hAYy/DYHMFpZJ8Yre3QkMhtqdwKPalo22W07sJUO1NTMK8b00XkBRUImpkKqZkKptn4Yx5u45c5q2d2JMPj0zRY1Fp8fospUphKC0CJxEqDqTRAl2jlUWgliymLOKQs35Bn4YaUJXOpln2Y6sNUToSpbIgsMjH5Xo9laixTWRB6QnxHc2SrUIo10d6i7ooOcPlEhPfwokuhtZPHOGPIIC2VyRM+vymWYyRg2UTaR4W4jFGh+jDrDGat6a5KBUIjJuZz1nRK9kRhNbft6Wtq664Gd0NstUEDPVSy5C9LH2RI+Ro8sq6YoN4y8+oaPhzz+jPVjVkHNee4TTuFc4qTcMUjM5DHSzEDscReWOUcc7ZnqYBe2RevGYabnSRTQOe8OGV03LMVe6YDgGB0vZKc4hu5Hm2TCTqznlJOoJiNI3oFx0lAsomprB2zWq+BbpivyisJplI6TCVzmErjML7TwRMpG188ZyoFRC+dXIs561dUCISPaFP6SE+IR1EB3Ye8TZLuUuaE43xpijyL+QNSKRxy6W0M0f0JwGqn4x7P7L56w1Q7z+SY15l5ngnzhjE36Y5+TngaeiZHhFOATKzpPvH5l0zNbO0laaw4vnKbxBbAoBBHq30dBVq6C+LEmc2jHoUDN8+Xh0TmBGeC56tiZhHbcLYXrVSUTgYiDPzas/Uhs5kQx0UFYWpPFJaWDghV4B4cg8+5A7G2ztRgpgYzNVrKAKDTOwnjEcooMQX9jCwC1GN3itnXqyioSZHFVFAlIWy5BtqlXVF+YJ9dsesHZnNO2RW+sUimBZjgzOzbr6s8s8vL63ZljseO3IumAdcH8NAVdl9VFW7Kq5KkMpXQXuCVWpPOCWaLrankPDrw0qlVAFDHlUGSd2HD/ViuVqCcv0ToWxFb2gJYjrr70orukB5L2Jg9pQKDYD6o6IpREUyzlxegrFBw2kU0TIfXtQGtRTvSYm6LZ9p6KnIko9wCgf1Zsc8EqhS0a0IgIAqgCQlh6OYKPQgr87WEXzKLSwTJ3C4eVPYWBKk+TDVAzRdlIfsza6ptzZww++qVVWhbG3l6IvWxVtes3AvijizSspB41ty2gPTEIRRqDRR7mAjFESEOjk8PgdELBbBOrqYerNicQlGQpl4y1Yk5y9cSTmNzb0MtLUhoPPdCDricR2f8AtJ6UEu7FqTXl+fyvqfL8F7fg16WNlnfgGLihny6QtDdYBfpbPT06ZWaaukfUCv3yYo3d1UbaDPbJfj7znpBichr6hkN17Hd7KtbiTzzBjJV8HROJDeJJ5RgwC/0xKtIuwkSMdVNl0eCrkJgko8GX3jiJBmFzLw9LVE71nTaqC3mCcD57LWL4yJ82IPa6h0tBbzniRX6BGHxvGdFOA/LMRJLNzZ9/+e//fXPgJt3iZXLMfGywHrfFOLuS1T48o5bARASFMmK6iUt3d4UXlFP/STXY95qQMNSt0JfGExnmXOY4ycZKswm1Kx+4ORr0i2D6wMn02xU0bNh1qFqBx5pVOJQEomAwp//9mfSz2ss8HiSkRFBAZHedamWyPr60L5oSNvbLGH5HihJROxXdFepbiicXNnZXiVlTZQkpjTFxg5zK/Ow1lCC4jHDfwIlernTQSuZUtf8oiAYbc5JW9xOMyu/Qi/qO/REtwcbV4yCMDg7pUOmln1fxsp87tw6WREbM1ACwLwXSqhUnwR9+BnOWsTtmLtUlw88VrJaF1BhgmrEhvVDDKIkMMxo45K+bpCXx7pPQq0AIKfM7fwWZQR7vmMgJP8pUcVw303fT3Tlh92bLUW811slKX+i1z3cNwDjf6oDPNw3AhPc5p8OG6qkSyLZpY8hGPj/cjWH3W6001s8vmFDvyBmql5DypejhQbek3eB6YrINux4xSk2vHstleGQ+kFRJR1QRJXKidgtEOHxA0TDQ7y8jYBoSFFCCcRaGRpFH//AtWhsqiNGawXGAv808oPvW7qm/0oNvmfw6yMn/AJletG+2EMpZxPhKcjznoFHPl/UNSccln1Qwm+TpTooeFxLgoB3ky+yTvLwGOk7ARjeVmlgfOTRExWaW82KWF6z9heGKJF8vozdypMlUi+ctRIlCyqNO2a9qTwqQM8dkVgRqVWQBjgyO3SdEpoMjQVHfKPDQAg5CVNTMru2abUQB1TTduWKbyFWO3llFcuu+FYasmsiLhYPEEBcUDwgTnacwxKNh1Iwq9S0EzMAjCye3MHqfp+pQndXlZUGXHPt+/Z1k9O9r3IRR5r26yJP19S3CvNbOP5ofjzy/WPsQuVwGX12srEIS3MkITc5Y9ajqGiY7uK2SgAylf/TgK20RCM+sFAGNlKTmEooSr8dKC2z14iCZzdhNxkB7mFCBk+vF5jKSDJIgaIteJh4D7w+ozZ1MdwTQ3Qjh55YwwsFutGE7q5iOjeEc30y1yV1XUbtkirXzPXXPG+o1uMUuUmQvlxKj1dyw4Fw43w39NIxV3+gfTOg7ou8SZjfjvoCT/7sfzo+6gvhAIaCk36Z95IPn7n32pAt4E/dCYEr3c/v1KW0uhUgdqV3efFowP3Mh79cUAPpS5frNUQ39F0L3TbQ90fyqxslC55OOrsxBJzkLBXC0C46EL7vfzcWmJwAKCiduNfNMHcT0PIzRTqO6sMX48sH97988FBi+gWfyw/ZmR0nGyY055FzPhfh5QaPZ+WpjA/8ZWQ05A/SGf7ywTeqJ118FI6hvqD83xh+7JUoFfwKAcPeFPSdEdDFSE58Jk0VHm2Z9ZZTRDwuC3sqa51DELVViNRsleRTeQMW/sBKwJNuHpt1OD4LbYrbS+vscSg0/tXE178dHhpiz549+89BRnd3M2BcHTHgnCyWrsB5XtiHYqfo5EWb8EdekeKiEAvklmStVJUKGf3CnicBCxjTuOaL81j0BfZPhf36JROX+3C/4SssA2sZsFM0MzJ3EF8gXRbxBmCXlOPLX2i2rL629qrElp0OIJoopOgZvgcV1m6aVnUX71Iv5ldF/JWmVORyNjyGZg7HcpWAS9aZQnZ3UcZTEO0lIxczNU0ab7aWmIW25AqO6jbNw+u7IBmncxZrSyp/9U2vsSIqS4dufgS2Z/ADelaGhSm7wpRZYcpHY4AROn1AUZ5aGPwAJ4k8qsEP4FDJ+R88/AYLA7/AMV5pDyvv9ivf/f/+x/v/8fXdkG8MrqJXlYnNzQyJ3C2sTtkpXqo0NBOxc6gPKRMVSmXI0+3VJFr1qe+Hf/EHhunKoT8jDcl6OV37MgL1J5NcP0TkROcndihW6BI4+PHnwbGJiT/JTL7xUc/4TEJe78XUdS+0yvjNZ3+iL+yIi5mEOpn6+zO6cKTPeelLqeAn/zz+xUjoS4kUHw5+3DslJTFOX/JClSe3gLIuYZUdMhL1LAhGkI91MMcfRwKfj00GQj0rqMNqT607+Tm5ju6jEvXBT78Ymwz+bjI4gRe/NPq2oqh1Caim6dOT/CWUXHFb7gyLK3O8fGFVo+r4vxOPwL5aAg8H1LeZBCPPgiMh/x+/UzCq61+Eno56b97r/xY1mlCXFmoX7m1OLNdzdUFSlt73ITngANLygRpLsWVpT3mF0JV/9QdJ1PJuZOB/AVBLAwQUAAAACADxczxdHDEib4QNAACAGgAAHgAAAHhocy1zY3JhcGVyL2NvbmZpZy9leWVvaWwueWFtbK1ZW29bxxF+569gkAcnhi3ZjuMkRIugcVGkSBMERtACdY2AllmbtUQKFBXbxT5QlCiSEq8SL7pQlqgLqStFURdeRQL5K+bunvPkv9Bvd88hKTstUiCCrN3ZmZ2ZnZmdmT3+0Pr73/DH8qGVluO8sdmtF7TjGa3U0INBfXWWVndooEojAevPVSs/afLVkh6I8svSG1+Cbze67fk7b1srPNdilbp12IqJPr3LK20ajb3xJcH15m/4A3ZaZ7lb22eZYLd5wVopqPDGF6GJSLfmw7pS8G0rwqKbAOniFFa046iW36XlE236Uqsm3/iib3x+sOrWYtaRUYfdNeHwDL2yj41a+coMrZZo6IDG91kujIONe9z/cox4h67jbCN2r+Op2/NKAs8dr164PU8mMH08OfLc4Z2Qy0/cI0PXBe/mFt+YglJaPqJPX3ZrUZ7apXO7SvJv6jiLoaPNYrW67GMOm1V5420rNOiNt60wCHCGbxyvbFbHK4fbOYoF96R3fNL7R6fHZh0a7jaKNNgYVvuBnHBMTDjdLpv15bOJm2rLTY9jwmH3jDyzWHBWIdPr9I72hIooeSeO2EmQ+ZogHLd7n9mswntz27R0wWoBGExf24SKWOGJ2V78KFAdAEx/rr5/kInJx4Zgli6zaIk1EnBXTzQNHNKWjx+mtFIZflaaWCymC4Xe0n1iYrXetPaObAB6LjcAmKKvLPUBmhwAeKPHpjnbB2i90gfY6T6rrBuA3kwKHrlQn4e2OW8A2oxf8+/zysJVODFtwu0t0JsyQo0+wBKL7HTHxETzvBLuY2AbE5OosdSFianUtUDTALrNHcA00NT82yZ+Lqv5pvoAXzkxlT4rasEzE1PND1hhZ3WAbOVkAIODnp0NALOmzVkkzJJ7JhCeZ6dpE7jwDxxxrt4HlB9U5Fzx05UlGmteUQBuAfDYY3f1Y0Ff6mhzywYw5hj9yem1m+bO5bTkKQ+bHLTzOC2ZgHvU/srU7LCoxU701YApKe67Auvre2zNDAAtuM9nLuiG34QzQe24QXdzPefF+OxyzwAFvtzWN3vI7ZrW2TeRr7O4VdqlaTrdl2C5w56Y0z7wzP7YPBMvJsGOleMmx0BZS5lBAJW14yyW9OZq78wHWqwyoN5uUF8/B5WphL+AE5jIcpxtpfmiGWG4nVqgTI8SZpC1llj2on+cbq3G2+KeudzOCUfvdrZjPFUxgVRFxOl0L2gjwT6S1gr6ST8+tmk8aWLiyYEbXmkD4Cv+nolrtGDGCDvL9rexSoKdm0GqF5ZZ+azHcAunsVjMSiCUvWl9qDLJDdz+Fk2EHg0u6lMdfbV6A3cuwYqXV1AstqtFEzes7MRPS2Ea2utje9nnv7Fl5/PIb9grxz5KXgdxYW9Y9ZwPnA3U4MU2rs07FEYuZ8sNmp7lu7H3VcYlsponvbK1l83eQ1tG3KOjRp0adbqeG/dtYsSD9R/cNuvD25/eunXD+skt8fcu5o8GCP5md3pt1ttDn8u1cYfnG2X2+/Zxm/XuLbnqsv+kyO7JAPI6DBEe96S43tY77wr8Qki6/bn4e+czKfueKfuG9Z7U47OeHmP2l/fdY2MOlxesbt95R+SnEnwqtLk9dMdiMZoCWZQdjn5yeUjn1lk6pB2HYRRUOJUrh5WjhnvWQ5G7Yb2mKghRtYMoGqLyLlEbicqoROVfwtbatLVKVH0hqpKQHlPCzkuav0PYSpZVwgLdrc0TlqrTzMy1R6aC2tkuzZW7l4v6fgQK0p1LVSOG0cSoAqGU6yEIW1o0ZoqEIAnx0KWAQC0GvRkn2mVTy8wQRUk7BwThx2bWCWvOI6nJrWqGKyaHiwJrJvt6sdoeXYiI2xHYhV6CeSfI0nGhl57u9Cql0k5RSxXaW2JAcWQdH8EGCNX8EUKP0rQQJCy7oQcWcMMEEZ+FnpIr6fEjSuSAgUptrZTvtjssWhUebK7w+MawKlPDYjnRMHSQS4T5Yt16CJXLmKETJGoTUdSEZeqYEVX26PYZgW27tTnsJ7zko9E0oYEAT53Dv9NsLWMQsi3otp3Rin6lEUGa1RoHBC0cchOBGD0Yx6l87DAvus9ttEdJggwJAj07cKBus8o2WsxXFJPjlPBt/RRzoR4t5UgPA5sVeAqBtVfVD1sQXuSbWYJ6RAPTMNNrNr1BaGiBl7JE35wRAxC0WqDxU+mJs3MCRrQZ7stGSqXJU7Ro3csOlGQzYdQPeEgokTzVpxaJohAm0bNNIlNwivD0Mmbgtk9bwqFEX2kLNJ0ti99gGL8iDOVQTgkGoIeX+5KFNDiMJY7woKGrZTadFGHViOi+MIz2xjdF4xvwGib6ZpLHgsqpPQKi0ANOpQE56PkGbcQJO47T7T0olqLBDTHTClPCCIUphNgSBhkH51N8d16gFDneClgeMI8vjEeMqApzeyLWImFaP9PbM8M8G+RzF0CoymHkC3h5cR8dNlGrNJElPRKiULAjND9GERBY3edHOcEQZvN7xlHo3GuiOPFiVOxih20ziDeqAxcylKCh2WGt3e42GvreCZ43UPH7Pz74Dibr1pps4WhQufEnHhfhsaYWrtDVDaJN5zT/JdGKs3pzRp8NErqQoem8QCnGsM0ibRSIoFLcjFN162W5bTOpYGgkXxdOVz/L8tM5pDc8KLTOqihXa6vCPHKRqAFLpIckbDePZcI3ajRRJKoo0naIZxeIarEluZwRvib8iBZ6wBTZDSR1iBsomdc++vJ3H+AV+TGr5IFkr3NkcCUXNhYBdJvN7mV6AK75uL/eh2l6xwAGMYqLvFjFKSwJSnMm9SE9bUi3sd0HaCLG/Cmi72fRiIkB/iNabQ/NicyUPpxx+VKYmSbqyEMieE3VxYjwFUdAjHz05Qe0hCxbn6fhKBExhQEJ9ONfogf4P7eog8pbUcnrtXVjpo5swuf72lldXzgZsL2sSbC9UF0WF5F65SKBC2lshfQwctarW3q2SuhUEFWGgEoPRiGu3q0j0GMomnHBgFeWxIDCSXO7Wn4Xz1WiXlYD9UAWDBFrZsmAAkYVQYcI5eWQqQ/UFO28agziyZpZ5kt7uJVJEW9G2PGlZRl9/g7PrgoGonKLF56Aplp8+kgWVp+fGJXt/TidLoKQoDbq2SNREXBenl0asJxMjCpzQmUzhbb8Mt+GGnoLUHIV/07pTIeofMx8+0YqBdznRaMHqAzDNBLQtgKqHtFqSXiiFZdWl3iiBn0lwfyoyo0IShM7ybP1RZHAWVg8TAkGdb+I4gY+xgzFUF+eNwDlSpNme1+UP5xSzlYzwHZrO2KGGEdbhIp7xlG1jU3xDGojAKSUIg1dCOrG7JWKySLbYIWiSdjZApAiyzxxjDjFB5Fv0ebh4L+6lbMZpNjzq7or2xUy7Po/eh+bVaVPRSwk/qp2xXaFDtveaQpsxoLF4nK7/uR8aX8svr085OE9lDC8DzoHug9xjxjWzooYS5ssF2WooY0CXia5KJ3Lm5Du80kajKgsclT2x3Q5CjGw9Lhz5Ln8uDTpdXuc9lFbv5tKL8uKWV3nTTQd5bh23MbbmbCjLZ4vGV1Ept5vvGTakA0T+paz7iV8frSj728TxZCHQ4QXl7RjBN5CEhfSGNjaDmGFXfTe6FxLtLmoWmyWO5aNc2eNTu2wxajQB10R4dsNLTJN1CdJg7VCXcMxnjmfPsMR1AOQYKBryDmhA5ljo9PdWhCAmZf7iZp3mtplgajHl5mhVeY1UzyujWw9qiW8/XDABm6BrN7IsRhgVYL2iMazRAWTbNPO0fXLxyKhx3XR1/HcOtZxISsCR1dfa2dH0K9MG2mtPIXUJ2X4WrSdFSobDcUvtRYDLYjZMQy0G+/11maqUpXZyNoqwRL10UrkL9mFqywnM6TRGMp8Jcz7eNTuev6DY2x81O5FVHo9kw4RO/anX7ldk3itPVQWNJ/IV57Zln86R70Ojwi2B7d/1BI7esrHMkGWO4TD6NzGXwn+aJmgGGi7hFiZ6nbQa6MKh5Lo1el0XAA02ESToufPiRq0qRQ/xVGqS8hJ3ea2nJXW0DPv8cgBLH3YraG2z7dEW44k88zrHX848ehL2/AwefHixT+GiPg0Mr1BQzX00rNyWGyz2A6cAVfGRB8dbKB+bglXYWDzooymeKwsBhwNFquKp4PYU+/Q5ByELtDAqRi089d4X+0K89JWGjeY4EayRkLmvvC86P1ZuI7LLKz74DPTLEvnvFi2yacfLr7QEI0j9uyIgRfiQqohvK89m1ti4S1TU5bNaiKu8DQoLYl7KmGi8oUhFNUY7rkg4v8eYn7Rxnebi4QDF80gODdlcNYKUBnhNgPZUssvfhTJPX6M96wWPhZabu8bLw7kraHrYq7SFVHZiqhkZVQQo3wYdWLoOqJLpA0am1dzVJKh6ygkUtbtOz9CCVwFWI8et2yq2Xtov/nvP9z8+6OPvXY32pweiPM02XpCuN8Y+GVJz1+or9Jod08RSiKwxKDCRzR2g1ElpI7ZX/7F4bKJDySAPHfve9wTE9/JzxzWT8TKp38e/9rpfSDvwK2hu3LpW6frvnvSZXyh8Nz72j3p+WrSM4GFzy0W9fVffg33OL2Ob5/0Lo+Ev/aOjfZWIP57h0fIU58//gNQSwMEFAAAAAgA9HM8XStkiLanCQAAuxAAACEAAAB4aHMtc2NyYXBlci9jb25maWcvX3RlbXBsYXRlLnlhbWytV2lPm8sV/u5fMU0+5CZlz3qthKveVFWq21RVdNVKpShyiC+4gI1s04R2KpnFxga8ADarCZvZg03YvGOpPyV5Z+Z9P+Uv9Jl3bLOoUr8EWcx2Zs6Zc57zzHlvk2ff8M9ym7CjqChsaPltPTOmpwvG+LixHGDZLebPsik/+U+WiE9FsZw2/GFRTn/xxcReQSyW+e46X6l88U3jiMZv+Ifj+OgJrNByPi23z+eOlPqvpSDPxNn2yBfflLGyoQeSX3zhr6XQ19ISthDSepfwiQme/MjnxrXiOUuFWfCcB2Oky+X8xdHdrPY0Ddn6+0z5trtE+He03CQWyFN2NMcnP7Jotp2IpTGWPOJzebZ+QD774vgRFt3nyRB5RFhqzNx9/y7Rs9PQPTDk7XE5iXvQ+drW19c0MARndNm8RKmz3Ib05wU/wVlaLszGC3xlSyrwB0ViEY7kiSNRHCMdnV9LU/rYEsyHmFZaYqd7mJFqFzLGyKYxusuCAQjzcFrLFbDxi2/ENIQnfSI5rBUm5anDS/wkAaNwPLZK+3vtQ+9c7rceaS0cqpfTKr44XCQn8eMTs2z5g7JKyyX1rYqRqGhFn5YP8rUsxEwtLBCGFEud6utbBNezd7vcQ03myYgLmx1GjPSMDAebmSJvBrt67V65IoqrenqdRTfZxRgWldHfFL+WAbfr7/Yur9VCiNPWb7eSpwovWu4QSGCxsPTj9gi8okLSDkHc4Cf7EET1yU8QEquHV+X6bZ7ednLl77aMv4jvwktwMQv4EQ6+Nq5nAha5KJZzLJPXsxlckjwjeqzMkrtA6fseT6Ony20bsLubtcIOgt/8FIaxcgLa2oFegE+iOrKrh2PQzsMbPFlgi7uAgNQWz8Nl0OAa9A4Men/rcFtJU/0grALcWnkNcbs8FNIeu8fjcDmtRKq/dsH2RrfdY7e5u3oslreuLukxr8Pb9z9c1i6z/gYv8E/j3FfEngGbt6e+Rd267jqZsBMplj7nOT9plkkgXTWRErGAGlYD4Bl8U1WtMM0LMQnbmkbm/8hKPvExrqePtFxEGWCpEg35PL1GrkBuqcZbU3CMiBxpxSIfiyr2IJ8DM0Sk5xENABPZpaxmpYIMmv/EpJAprRDUiltaZQU5aamhW7rHBLgV2WnGmZDGWlrXhjyRvTGDBOFHp/WhOL5g4Qg/P7aYU1X71037Q1PKfjZdhue1/CoMVWbJzEksauXoLckA0RhE2WGMH6+jr25+C2FX91YYeeO2OW+Yyldj+ClF17RvELa4b6yeKO0AsrGxUPee8tjyKY9sabkNHgnJ/PafGPE0xPVMRhmrlDpdDo/9mk6WXhOhvSvDcxE/uxK4TcJjSXG6UT8RBnTUBw0ExojDi07whNfWLbNO5tunhEgVQH+4tgTa+gE2iWKJxYLN/NMIS4dYcK+ZxWJ8p9zMzybhlmYj6cNSs5hfFiN5S40ETVNvS8M6VNQaiDrn+qwxXDGWsw1EHXl9TSUrDK0pvrFsqsey2dbWFCZqKpVtnRZLl6uvr8pcfQ5nr0d2kBpdbsz/7IKxrQ9bWhrI/Rb5/wH6nVcE/mJzeK2ktemJOQeK+Uld8rltwEoetJizTts/lNgjM1hee1WF2zVogqXtpsLvpabWJ/J/22NT96Oa7gbyyLTjcd2Oftv7567+frvTi6Na226ofGgOu6U1rU1tVyCQItcfhSXlD75+DoZQAUMf8pfzz4ikw2AWWYzSQN8eVu+TmbzL9S1XxfTcnlYIKDG2Mq3SnPl3wUb62RGLbbM0aCPAggfqSeJrJVaKSjDiIBBgA7nDDzdZcPFOp2Ros4sUIRT5vQs03uLBuVvyyGJBT6ehljxsbGshYByZJdsBsTynCEgUT1lhW6ZL9VE03ym7/WquAiFsYpUngnomhBtDoQJMMxiJ5yvYDHPUFFVTFF1+vk1lSZE/prw4idGdy+O0YhY34r4d2cnEsZ3lT9Cn2kWFpZO0vkLZ4baIr1IWnAH54AST3x3O69bplXGeiCI8LFiAu9HhJ8tgammWuUTVmKp1KoZLYvSQivkZill9pELF6Ig+lrtiIZ9fw4XlSYsFlgiI3QgO++6Hp79CmXVXEl0iyD/AUFOM1oUoi0X4SJwivkhR8/6+kjT7rb3LIZ+9lxJw//q3TLz/41NrVUCK3vCXtTphsThdzt853tveyJeqA8zGz4bBC5UDwzeDNjqtn+6gTePdDnPfMCKN1E+G2cR6bWT4fKYMWv7xwmxlgVcIoLsYhprOK6mxRcThsuGTJS1Hdbg7CcZjobixmCK/JsbBAsRxXTaxxldGLQOOrl7zCR/0utwOW58VkA1Nov6jai/Vs6uiOErxqOqZC7Y2QvnhlrGfksuIOgWK9alRyktx9O7goB5HN971O4r9KBokDiJ6oOWPKAuParlxDGoBuIyIqBT18jZVZFkLDCKIpKiFz1i6kCOWBcmPUfn5MHtOMcPSU7KBNygfW2XReaqVZ439KcrSH8CgVLEoRXEloSqSq5inWuFYrqEc1U8PqWQIk5Ipm91HvrGtMtAdUdUrraKzCssqSBUWqTGfFfML8uJv+mzO3p/t/QN9ePqtxOsetEu/2rp/dDkHZSaou9VY/Rr5W35x9HntbhmIV62v9diWEfehhkKlAVciUn+m+KfPjcuGXaSp2BnWKutUMlZwGvU0G43KARsvarmisX5GVaMPx8VJkfLsAmhSK6bMXnqFstSemDqAD/CZgOyYLLHUEn60x+sd6PB0/mBtbqbv3r37WxPVSgt8dI0FcdGNgNnMXuBNR2UKJ0ckksYLVCtuSiei4ZNheCuOAkA2uBqclmVhgAl78hU2PQGlM3ipZaOffaD8fFcchygrJZATFBhHCQfjfcCgJBoeyiM9pHdfPa65ZeFM7BxJt2yVkUrSQmAde7ZkI7ajUmtV+aX1fGKBhzZrlvL5eT14xArzgMgCPtHUmKoMrCqlLILwnFP5CRsB6nN+rThLBdbCc4DNhjyH5bZhMsA3Bt2mld+/lmQSzaCu1kMZaWVqXz9FPEwmaLon+4oAqMp/qtKf4htZ3/RTQBqhonwqxCKTTfcAeYpHoOkeX7kwz29tew3FyCV4jGVKVsV2HbbGf/6m8a+dd70213c/XA5xh6Is3hDyaoNPb2P9XJV8lAdPAB8JJtkoyIA4ryFJasUT/Qc7PgVQQmDkfvDc7fJ4/mgWAuS+nHn4+4EXDu8rE/ctTQ/MqZcO53MUCNU33P3ohWvQ/eOg24OJJxaL+hgxi2O3w2t/+baeMOb4hbe/rz4D9X+yu6U+VSD8F1BLAwQUAAAACACMcjxd66zpwwoGAAC1CwAAIwAAAHhocy1zY3JhcGVyL3NjcmlwdHMvMDBfcHJlZmxpZ2h0LnB5jVZbTxtHFH73rxhNHrxOwRCkVpUlv6RKH1qpfWilREJotazH9pb1rrU7jkGWJZMEsLkEKkJIwIlCQgglqYHcIBia/5J4b0/8hZ6Zsc0CIQoPeM9czvnO7ZtzCfVe7kWqmdKMTAIVaLr3R7YSwRhH+vvlvEXSupbJ0nh+DH2q3EP+3t+tDzNObc5budM6WnSfVY4PV5xG1Z1e9z+uepsz6Dvk1v5xdpf8j4/du89BdHbmvYOnrQ8b3sOmc7TkVsYjEWd+y6vPtPbXW833rYMZ0BFB6EoM/arlNHSdDF+1tFSGoLBi923Te1T5XBl33837L6rOw82undb+dOtgEjQMxE6suQ+2hUFv+j23+enBBHKq605jpQvEqb707m2ilKkWcsSgcdU0RzTCHGW+FsmwbBPb1kwD9SEtJVNzhBgIFKMspfnfDX3s+HAWzP7yB/K3m639Oae6AystiMh/y87UwefKrFvfEtY+V1jIgnsP/e1tr7noN2D3lvNxIlhrMghqKo9+I7RoWiPxDKE/cSA2HIlEYNt9s5RA+TGaBSRnszLY26sqFKk6UQybWEORoFIB296T8QTqTzoTm8HtTWdn12tuQXySbr0WLDeCpw+OD6vO/HYwNQcZBczORNWdrbnzC976gbN+x1uYPD6s8SrQcnnTosgeszufph2JgBjPKzQb15hRKvX3wLJYSWmWoeSI1JGVYZv9SrKc1nQiy7FYrKNpVDVzOfBJsdGNSCSSImmUUzRDiiUgqgiZedqDZJREN+Kqrkk4mJoKVieh+ETl4Rg/paYz/IhuKikZBImM5nVN1WgS7kNKjbSW6UEQIyErVFzLW5pBpTT2dpveagMqsAR343nL/IuoNM48KEOMgok576iB+J4sdMnMG9ir4R6U1gt2NvmnVSCnlbYOXrAcrDYg8x3Vslmg5Qvv4F6MLqMf+k/vizCMgH9MFuIl1ijhzuCrVsEwoIfBUdMwwAOS4kEpDsuKrt0k0ml8g1f6BoYuaLSOqmSp/VE+PqqLXkNklBKDNYTcNZMsdT+/5J2WRoZJOzpFXkNeC+FTffl0r79e89/tuY+eQwMATwTLm97MMrSVP7XlTG+6MzXYhaL1Vt8CxUABM/Xgp876wZl7A4V9fLj6BTDnDCPkbNxyH9cZWUCb1V/5d1bgvzO35M286vDbrL+9B/3hf1zw12ZDplgLNW6zbt/f6KKEugDQF9jmmfxZ0W3Cl4jejk43gt8an3+fOfv7jGqOJs/QIQsdZ0RAAbjd2qJzWEHXIMksYGsNv7EuWPbMPWfvtbPAgvBN6NuFCHx7QupsqTjMq+76VYlXfJs9exCXaC4fa5+SsKHc1DIKJWCrhAuWjhMIM1a1E319xWIxPqopJtBdxs4WoIdzfaypTYvgcg8qKtDb3wtVFthj6oA/uaYcAZJMMWXn2RT3dF0J/eG8Yik5G65wHOxj8GtI8FC5LGwzjrDBfqnMRWqNnaQvbVpIRZqBJIshkHBKoQpDWI4J2SJ2QadiBcHh7obaAYsGh2KJU4i5wUF1ELMPPDQEtkG4qegFkERFjaokT9E1/gORD9WTYttcyCoMMw49bpjhFM4AENx56E6WT1PHAKOO7jOL2m9mSSeGxE/Hyqi1vwWcETKRLEXh5YkyNoiGlqMnlgmUFYq6y0+iZRxyOo1BUQdRWEtn7QIV5yuYjlJeK3ECAZMpMBkkpfPwD5upMXjKDGL9CRuYZwQLHBnTTEHNZcfaj0xGM2RzRAJ1Qm+WKIJqDdPK8eXBxJX+/qFTQRPOBGvvgkdPg437zu48exXY1Qs4k2VJMVLc+oWksNieZ9gItvdadOIX1LG4nNWRDjNLR0lQr/gb4zATuPd3hDagOJHfZAkQlWEMEj4kSywgEKSooKLoBe/hOdAIMTKtM6p16wchDuI09ZW2g6nyJcw0ApazcFdMLt9OVl97ZUP7YjSDWGCYXCXMYzy/3Wo+B3hgD7PcgGpeapgHb6Iq5iWgXAgMm/H4fIVj521YhBYsmODCSgZg7gFRllkNyzDsQG/KMpuCZBmLrLFZi4xqVBKzUSzyP1BLAwQUAAAACACPcjxdyUl3INYIAABOEAAAJwAAAHhocy1zY3JhcGVyL3NjcmlwdHMvMTBfY29sbGVjdF9saW5rcy5weY1Xa3PTVhr+7l9xVp3FUmtkJ213Og6GYbd0pu0ufICZMuN4NIp9FIvIkiodY3uMZ9KWkIQlJCxpISHcuty6BUKH0gQSysz+FDaS7U/5C/scXXxJ2JnVB0nn6L1fnvPqPXLw/YOkaJV0czJLqkw7+AnfSQiCkBjJKEXLMGiRKYZuTrmy3SBvp5dJ+/FjMkL8J/d3t1f9S/PezPPu8tPO+oK/tNb+9cfd7Uv+8m/dGxe86ZXu9Hz78XLn6bPu1d/9y/cTic6LZ/6Lxc7DOW/lUXvttvf0VsjUvfsCfDtbl8mnJ/5GurOX/It3vM0HpO7SosKsKWqS9ur5QVn/mf420fn9qjf7KksctZaul93QSuWQf+2+v3b7sHzGtcxE4u31GbKzOb+z+S/v5pXd7bnud6+9tUedNyvQ4t0731664F+e33l1YXd7Hv4kCBmRSGhUe+uqf2sNZHtU+9fXSdqlqlMsKw51qwZLHzL10uEjfWtzsizDIUjDtbO5ELDQum1YDg2JYb//5J/e3Iq/vQjtZEge2dle7d5c6W5d787OenPPSIb4N+9ylwkZlUjPMH9jo31z2rv3sDu7SNJVlzpp27E03aBpHq+d12ud6ZmdzS2ENzQdNnlvZrp3tzpvZv2te6HED+Hw+iIPUJxJ796qv7Xqzd7xflnsIF5Y/v0NljBid/vGQFJgJ5e0drvnrP/dc3/+J9jTefBNd3bB/+FZZ+OKv/a4c34Vd4jBDgmYwdKZvhQGB5Te3IZ/7WE/uYn28iP/+fdZYjdY2TLJu6oxf/BgUWWkaFDVhPMFvmHoFZ2R0UwhqGG9YlsOI5Ybv7kNN5HATbZVVpZ1zsbETAoU4U5Jd0y1QsV4rU64/CkqCg+rokiSFIuqF61KBZapLjmdSHxxUvnr58e/PElyBIpFUSK5w6RJzqoOsXL5whgpWcVqhZpM/rpKncZJyl2xnKOGISbVfNmhWiEpyZrlHFOLZVGrmkWmW6aoSk0Elksp51R5krKjjDn6RJVRMcmZktK5c8nkGNE1kbtTovUTmpjspygpHcpIxKGs6phjkSSWE1XQmtQ5ReuM80syhFZEKaYAO7QVDculLhOTWHJjuC4VYXHgxTGDBs4MrXrs0ACeAwdw26MoJqnkXCZXVAZf02J+fLwkFz6oHZHGx933x8fNI/wpdl7cOtf+9iUeUjpgtGS76pbFJtOZQbNMdg29SJG9kdGMlCJVx8iWU8TQp6ibFStHKvmRQhYqW9IYaQ24hvZstsaimJAvTp44Lrtw35zUtYZoycgzo04/A/UgA4RH+A91OVB97hyXkq/LUFmQIkGaarh0jAx8yY30tDCnSrkVgSmixEszkShRjVRU3RSlbKDBslmKKCig0wi9Lgres8X2qx93Xj7YD6XABUCsIAV8RW0yYDIstaRgIXKk0Ys6y0GiXLRMTZ9MEXRKuFZZyFabCLi++rMIHllBql34myLBilVsKRGQTdVc0OXFqRRhEkGBEv5GdJMEfChJUZiijZrllFxBIvieL0iFKGTcJzloydDFvkDc89n+5x6DaTH+rU/uqLpLycmGy2jlWF2Htnx3ZqH9+ml3eaWzvl4gsXICIGn/9ArAB/zorG94M3NA+ogWYH/35xDXezAHMiFy0ijCpMidoN+FCGzkAGyEFGm2At+arYDeLTr4jhYDm1EMgxDunbJAnB/5OANQ+TDD7x/hvSANstVUQNRexq+wCdYR+ZMoq6o9QGNT58vQz7+oNsg+yoRUpnp2rzhsRbL+FNFYPIIg0NHMw06qjE5aTkMOSLjhhTiDYVxs9AUTNSGXy5EmZ8X5coaHhYNki/x7gwzVZlCVOGSbBjVFZFFq4bA63ws4zlgIghrNQB/nTqEpQgutKiofVas7tMSLrZAin/F2Co3gNaenCASi8NRJidceNQGmDsznahA1qV8waD3I0IQyY7abTadrtZpc11ULp8ikW66iISrDx/eRqIJyTeAA5EmyQ21DBbQkSTJFkn8czQBFDrCGTXMfjwg9RbWJINj6JMzgFSJAs5Dl+lspwpOSi7Mj9Xi4Lw3uQK+C+obHMulZ1ajGMjGbUQjVhBrQ3arJcZUB9pqNliTEqgZKK8odv1idV0ZtQuYyFQYUFoXeQTRhlRp9eA57V+i7Z6HPa+VGBC2TuqlYUyIE9p2J2tWaGvYhLhpC3q7e2d1cJD0ga69sea+/j0eGuSbEt4LB6xL6NRwX/Pmf23e+CQm9pcvYxADxjpKJr37V8G9DnyYcqk71Y6EDQNyBaPD5UIyP7ajs+yBFbR65zFDi9AD2AjnDHldBqrOw/XgRpBDHYTMRqtOy7ipqFdOMo0RjmliVsn2a9whGVDKKMXT/5DYkjF+AdaabezzGZBmkC1mhil5SNMeqKDAIevZawxPHyeEWfz0tB+PCIEf2/9Ops7wAQUIBmvHc9y1qLgE9zZdo4PhVozj+P+WFXggOhKC74/PHKqmNfbJ093gAVJxeNRuiGeYDUvmxjG2epWAzALRhpwEysmrb1CyJgx3JryDbH+TIyN4oBR8O5zgY7w9HWF/xql/1+abeSvchsECaU7UWeXvhH3iBvBYf5vdUdCAF+Z95hNHZu7yFskd/eEuYj6dBHcKrt7jOp/Err3c2n2AmH5zY0UThAYPpA5OQqX+NCLkoRykVVzUPTZ2HBnHIDrZwPc4fRyXwDzu6L+ecRFZLJTHm64eS641DXI+c0vgpFk/TZyxMO0F+8c+GCAj937ZmOIQwtWK3gl+3qIFOy2dK1YotNsNyoaWjDHDYrxG0WnyKRfuDR1RqOGlA06rJ+XlyuLUIjxCe8NnAeqCpZktDR9+4mS9ZJi0gOb+QZo8xyGJ4+PFMBSkDXiERQaI1u/UO0EK0I7zK7qkbIVrFiHnjziBW+otL3vwC0u7/8ARguQcd+Y/Vk/vewnMUCGzBT5l/8SKH0msPvaU57+VvcUHN/w8cjYbU0cTAIoMBFeYqCg+jgqkU/zWKwsdVRRFC6/lvFOUTWTjESon/AlBLAwQUAAAACACScjxdfOGnaRMGAABOCwAAJQAAAHhocy1zY3JhcGVyL3NjcmlwdHMvMTFfY2xlYW5fbGlua3MucHmFVl1P21YYvs+vOHIvsKvgBtpNU1QmTVpvd7NdVAqZZeyTYHDsyD4pibJIQVsWMgilgn4QqFo6uraUAh3tmvHR/pcutpMr/sLec46dAEVtLhz7+P143ue87+NzCQ1fHkaarRtWNokKJDP8DV2JCYIQGxlRNBOrlmIa1rQr50voY3UFBdvbaBT5r56eHLX8ds1/c9+rrvaqDf9xvffkwX/VWW/xsFdv0pvGire61Xu0H4t13y97tadJ5KgzV4qTLo+oXJanXNtiL+sHg5eaaumGrhLs8vzcKubNtry1tc7hP52DecgdQ2hEQp3DRX9pPXjzxGtuBI160PrNv/vGe3jfv1f317d79QWv8RSCB+uP/Fd/0rcM5cnRHLfnZmgM8fVxq3O83q3W/Advg2d749ZVb/OF12iOWyPyaKddPzlqQNZRKbT2PtR6G4feneNO+9V/1QVveTZ4fdjdhdKbfqMZ7NwP1tpebZ8mW/rLm1v1Nlte8w//we7pJN0nL73jZX9uqXPwewSOZrkqIeCvt7rJKYSwPNGZGmr7vZUdeNXd3eVvvbmXYMCR8DjXAO1CA1mGjvjGMDgLnXbVf7gRbK90d/a827vdX48pkM1Wp73VjwrEenN7NEwsWHnu799NonyJTNoW+rQzUsPDmkoQW3Wxk2YNZOTytkNQ1rQnonvbje4cHN25JTcWg4ucV8mkbFB/IibiYMtXdMOx1BwWo2d1wqX/oqJkDBMriiRJUaiiZudyAFB10c1YLKbjDMqphiVKSaACITtP4kiB7b4pa6YhCqc7l/eyIDFDLZNlVqat6go8iLiYNw3NIGMQQtZsK2Nk4wgq5s8qkWLMjwJywdMFMFgXaeUyvfSxT9mABgLKCnR7HAnnh0GgxdBIRgZZNuEBOXj6c1TDxejHkktw7kbRIGJGSAVHB97eHT5haVSOgldQpz3v/73hrzfQ+SwnRwvd3Xdeba777g4aSSiabZpYI/3tDFlwHQ1qYRBSwyNptsZMGDdTlBwRbOKoXJHkLCaiwN4KcZRK8wh5x7AoSI4OprYM9hVowbKJLZFZSxUEnegtPvKezfeW3/uLYNaAEBmz4E6O/eQUcMjtjO3oNLNpuIRRCBlZHwjAP87aTklmJjw9sp0+CsumrH3Wk5l86hnuAos72IVLCHj1Nl72J97be+3d3qICFY4YzFeTKgwTAL/6DCr27/3bef/Bv7cHLsHaDie/V235b2eD5/N8WPlv0iCKQ/H+YFu4v8qpFBD62Hp80r6NerVmcLwDCofOlo9AYIIXByADAAPEDZS6+26/+6HeB+M/3uhtLVAdOIX5CghlX3/O0U/TY9PFyU8hOhimIZeHFhGFXwTe3rCGXU3NY3FGQhlgcwYZFudQCvfSxdiCAS8QOivQOBJlnk8Q2JvUnjXHIGOB7h9vsoJjAkAhbNJwm27KhquoBZAnR8k7Nm1asSAN/NlU2xYxrMKAUxJKAZUyYhBwCVOwB54kHhYb5210JintDfKFHFR5aRawxYqhKxnHzilQAqA7H4qaQvn0DwigHH0hNjWRVV0XwWUQDWiV1XweW7pYDitJIhA+Rhx85OEO7OEOrvEzCaIfzPE0dsHCjMaaPrLJECgrRM0OXtIHztTFsaZxie79wCFaCOkVMphok99DE4MJUy9i62qpErYK1XBzWiye2stbvPHcwoToCKmfx3U5zYLFkUscsZgK8aYZ3oQgDaghTukspQ4mBceCbrdVIt6iDomBNS5qOE/QDfZn2NaFrgk5wYFS2qnui1DfmKnmJnQVFZNomIHnQUE09UIuD9vCeg7r35EzNUMR0TCH69DKU6DMMv0AnuNX0OyCRf2plEJyiXlHRydYh7XKWZ/PfYUuPHUJ0cBGQp7SQZPSKDz4LS2icpSdyzj7oFJpYXqOzsv8xdpCZ96AzyntemwVctgBGDRoKjmaSMfhnJc8J4MZoWwkvx2tyChV1lJD0IJD6eT1axX4/tEWgCXWAkOsBYbg2DokJa9/XUHMmE7EUDqV/CqRrlyAJtpXOD/AXCoKpV6BQ8MYEhSFniYUReB46JkF068wP2NIsf8BUEsDBBQAAAAIAJVyPF2TMXh5nQYAAJwMAAAkAAAAeGhzLXNjcmFwZXIvc2NyaXB0cy8xMl9waWNrX25vdGVzLnB5hVZdT9tmFL73r3jlXtShwXysnaZIqbRJu50mbReVsshyYieYOHZkOyooipRWQJKSUBiUQcu6dmtLuwGBtVsggVbaT+n8kVzxF3aOXzuEQjuEwH7f8/Gcc55zfK6Q0ZFRktYlRcvGSNHKjH6BJwzLsszEpFBQ0jlB0y3Z5Auz5H1ljXg7O+Qz4u4+Pz1+aHeXnMpmv1LvVxtuY+XfSqP/x4bbWHeXNuxu26kc/1tpeg/nvJ213t4+w7j1Vae20Nuec2qbp8c1536rP988Pa6DJYaQa5OEuE+q/V83nJUT+3CXTCnZKXD0G5Xu33nXf9Qe8151vNW/x7w32163PebcqbrdlfeVF2DlEhPO6h2v3ui1wEmt13rjbiy5Gy1nvm2frNqdbbwFcFu/OHuPnfvN/ova6XHDPmyCjPv6Efz2Ko3efi0wPQGmf37udpaJJWaJc/DY7izh41e6VjQxmuVld/tkzP1rsdeaG3MP7jp7daf2CnPmp23IjdNacDov3K0KZItad+pr/c1nkIdzCbCKlm4oonqWBLe+6L5+MOY+2PReLnoHXQDstI5Y+7Bjdyv2Uc0+2meH82+fLKEDpvd21al2YsQQb4/NTJl+WWWJnzZ1jRDyfmGZ2IeL9mEFyuo26r13m/bh7+7hvNN84Cx13XurAMBdrzo/Qi7nensdhvHWXgKQGCnMWlNg4wJTEqOjqpJXLHJ9PIkvadEiaVUWNVM2khAw/oQizv4Bpnxrx915Cklxnj0ELjnVJ16rCiFDQezjJxA+uAS6eCd7QDaoG5HkjFhUrW/BL8aIhFXyBd2wSFbVU+GzboZPhhw+mbMmw8AfviBaU7yCmCxuPAqy9ERSDE3My1z4LqZM/M8JQkZRZUGIRCKhqZm0ns9DAkST3GIYBjCRvKhoXCTmB6kXrCgRSJzc4tOqwrFQcFoY2hIQJzQPG/Fl05msL6jqoiTACyfPFFQlrVhxsMKndS2jZKMEEknfRSvCUD1Rk4QCqIZwp3UAAAZ4AcodJSwWHIUUSYTqCH4Z/NKHjuHO9F1Po2+OGoySUjnCZ2WLY8+U2ShJJKmWkiFQbaocCypKgGCKKZPvZk1Lzn89o1hchk14xx1nfwUpOP88SUrUfBkY14FmBgb3Wm1nvtZrr5CJCYpOUBUthzxigxgpUeKYT54+6wYmDPH5pWGRfvwQJQDp9XGKFNoIVC9Kh+0VpMEfN5fJ4UUgA/0upLDhQVBVTIu7xGowEmiqEGeYsZQRJPqiJlRTzurGLE9lLuoCVsGQQdeQgQr5AvCQg7MIlgHjk1VI+ze6Jg9CuSCOh768H+iZgq9xhTjtP73ufej13rvqYGZD8zkLzX616TxrAllxAq213MYdd33Xu3vkdXehanSCESKBMfBoAmMo5gzgzxBF8/uRxz/cRYr6EwNIOhIwMnLGJWmIkxmfjpiRUnkgALFIlKGaIrFDmiEcXpQkTkr418mASjlZBm5Lho4tk0hipgdo04j2A0b73KFeLMVSZagNG7AhwJAewoAG0PN5LNC8lqIV5WGtoKLgLHjkTVk00lOc9WEgAJUXCwVZk+Du03bNtO6XfXzYU8gGdBU8f8wX1b8WJ5OD4xQyNpHy85PC8AIag+EUzKrbssH5UVvhS3LYd8r8XwdnGYTWoRkctNlHlCcGx1jNMDmlkZE0FMeXYmNUGt6DlooBlvIQB3gT5jeXk2fjqphPSSKZiRFudCYR6AMxRlVZ42YulB6nPxqh31BMTs5PTg6Ro2WMKDewQ26S8WQi5k+tJHUPpJaK+QJXYqmNLy1A53eDpUviLHgJ50FwXjD0aTlt8fhVip5LCYjqRQ31ESw1FwEDCsxfjJmelM8rfepDMbQZQKgUb8FQNJzkdNcjJXTld0mkDDvR09OTLRge/WqV3iD9zy7qa3RZCe6Ay4M7dghUhg2+/+v4UaTCQTRUHBeBe/3NZbjCTJZh6kA5MmrRnIp/bxTlwUcJXZzRhkJnf9Di8TiOuHDRqlFUY3Sh8jepOohcYtJHB+W1/NYG44nYxHjyPDHDBMEqtfUTKVmJ2PXPk+VLjJ2H83YektZ/tIDbY71JJm98FAQCUKKUYrJWzMsGECRIUCI2eQPYOjHUyilgJcf+02bJNcJGWVpooGTQCslIJOBoeEA/ByzLfBhRSYndnCzzJAGLeymXuOqT+mqyDN9xePO74iqwG7a8MimlLgvZkK2iocFEYhjwKQjIYQFWojhhBQF3JUFgKXLcyGTcGegGFWH+A1BLAwQUAAAACACZcjxdBndExxkLAAAQGAAAJgAAAHhocy1zY3JhcGVyL3NjcmlwdHMvMTNfc2NyYXBlX25vdGVzLnB5tRhrc9NW9rt/xV3RmUjEkZ1AH+vUdCjtzE4/sDsLM2XGeDWKdZ2okSUjySQexzMGGpKUhNDyDrSQ0rSwSx482gSSwMz+lDaS7U/8hT3nXkm2Y9Ptflh/sO8997zvOeee4wNk4OAAyVmabo6mSMnND3yAkJggCLHBQ4qTs9UiVUzLpY5cLJNfa9dI/fFjcpj4qytvdpaatSv19Rl/7qq3U6s/vtZY23izM+9/ddVffeDfmCH9pLH+ZWPt5ZudWW9jtzmz6P2wBKdvduZiscarq970SorY6kRicsxRinpunGryF45lArr/dNm/O+dtPGnWat6d7yKsnGpquqaCOkrOoKoZ4M8xdjMvW+ysklssuQnUXPnQ1LUjDDMWA/He4g1/7pL/7DoYECNkUCKdBszWt+/tbdUaP2+QBJ0sGpZNE4zFR5MOzSmuNU7NtCzLYKq39p3/8yV//RpJOFS1c2OKTZ2S4SZI/eEzVIuQIYl4sxebt37x137e27rkb38NbvEWF7wfFurnX/xWm/eeXAfhx/1vl8FQgJIE8e+t1O9e8u88B39xD/5WWwBxjbVH/sw33lf3G7u79aUv+ZG/9dS/h8b7366AvEMSOH2bHNCoq+rGgKu7BgWW4V6jTg62clG1qekO5KxCAX4REiwHdJcWYjFv82n93krz9hVv9he8vh/Pg62N9ef+rcugyN7WQuPB9N7u3caFXf/Sa28W3DbH3fnvTeJtLNZffr/34kdv8Z9cO8FbXG/8dK4xf8G781yIVEcPPtgAlmQwmUwScAEc8WsAac3b08AejAH2AG/WlrytLW/mvrdwDiBwQ/XbrzCgvl3mYvdezvuPl/3NJ/78DVB58LCiUVpUArswfkFJ4OhdXGgsryD9+Rdoy+5F0rpY0ng949+95125vLezBML2Xlz2b973b2x433/HxfgXnnk//OS9mPbnHkFIY8CvPqgvr3nnliCm/FvreI2Xt5szC43Nr8EwUMAwaM5VDN0cZ1kEHgOGUb4AW0IaNXQqUrPQAGpvdtO7AsCaP/fCv/lT8+or//JKLFa/9hDEpEix7I5ZJumRpJmBAUMv6C45nMziJqe6hCWLQ+0sy2y9ULRsl4wa1ki4tpxwZdNw5ZQjoKsXaCwGAAgcd0zWkZcrJuNAxyGabptqgYrhXh1x8FdUlLxuUEWRJCnkNYk3AqqrDjkVix0gPAH8uRpm/OI638KF83RIRCUEroscIo3dNXT5+iIswD/+zV/87SWIB+/ldUy4z04on57629Hjn5A0AVNFUSLpI6QCPjYouoFVGThLDgMob9lERLhtlUwODZYfkkPBsr9fYuQEqqTpuMS0IIUANQMVQLNyJYwt+UyJ2uUTFK/Zso8ahtin6Wfj4AEzPlJyXcuMq31SdpixYUI5L0qsPGcYygiluCBBpOBnk9on6aRLpqZIX58ku7ZeEKXhAFfPE/FProQ0rm6WaDs88Q/uyNOntYOQIh9xb74zFYDbi8s7U3zHUaa6q89UO82UN/0EmPZHBSshQ+C5oiu1jCDEtcukQqjMPA4ah67v7x8mVQIhmRsDA20baKoBEf/l3xO6qVkTMoQ2JM9JCyMtcvaIpZWDk79QfXTMZf5AOpu6JdsMRQ3HqpIoYbzzqDj596PHTnaFxVnVJmfS+ZKZc3XLFB2pghCa7n23cD4cSKEftV/Q1FTrelJ9fcPV4YB3zkn/l1DZV4vjnaUY4kYuqEUx0pBK3MuBGm9TgvlEirQw3TRoFewK6U5nRgxAElyMmBDxgqXTpx0MHR4DCbhDPS8WJMarkBlk4Rwo8dmJvx6XHRBsjur5slhhr07qjNjX8Qz1SXCL8P60H+Ae4FHcdH3UEtQ5G0lkvhzAaFd10Bj5Gfo4EyTjYmACKmGRHbydYeDcY5DcbiqH/g5fiFTOQY9FURPTaJ4UQBRcKeNnFQFbgRA6hXEtCryE72t2mjMzzTsXBYnXjPwoQzcsVVNgI2JDoed0Nw284J7NvD4ax3Tge9XlZBMjjOrzj0WgkRWHOg5cfZywnVsoSjGGxnsmpQjIYd39wgJ1GRp0QnEi7GutArWgQIQEdFJ3XEcMWQWWMt2h13KYHl+g+hFKHFJWkkepKwoYoI4QJ5msFJEVIQpcMS9kdDNvZQm8V81/3drb3vRqO/7WtLdwnXS3exWDgtYoT6piGwCVHLjmjZIzlj5plyjnTg2Hvl293/NAz7ZRkNosaWH0NCe0hvel3RbM8z4VjPWmHzYvPPRqt5u1XjboWPBdrnzLFlvVHUpOlB3w56eTOsqr77z0Nr7mXXIWQmvTm55lDcUQkxw990IQC/zJT2OMynwN70zLrbF2l7HfTIqhZTm5mUM4eA28wR5uIWhbZCZIYK5ClkG5Zm8j8jJz3IEcAHhDXBYv0O0YYTFHB/85CRV98AP8Hnofvw+9h9+H38VvWML3+7AO7qGgTkZtXBtDAB8LoMBzcCjJsU31rDKhMmeEmAD6HCCA9S7HGVWLbcewQwbyUOBLzTIpHLuWqxrtgpPRA65DLhIdHgETyqgNYcPdDEzaEghmBnRqoIKuCcyBp5hHFV1T8rZVUEq2IQYosAQ1BEFqRR/0pCzEWW/6RwiC+ELRIAuXQJrqqIZhtxAB870LCLt4iGCB6VsBlpnU4HvZansh6V1M8lBGepXeA8S/sQptXH17FUIZ5gWYMmAgg5YbR4LNZ7D4fU3BYOaOkZJuaExB5g5QLY52tnSaGGGXro/C1WDsMlelkL4aJxgc6TBKgivn6u2b1Niks9qsXas/eu0vfhMNa7zvgZksIh1TjTxoBhEpDsZZ2gXxL5FEIkyJMHjKGDnBeSaFpNnOG0Lt6VnVKIXaw4BOQf280N0XVcpVSQiNYiHcLkpBUbZqjlKRJ6j0xyRFbXTIeWg/5w4j0IbU/8WI/0HBZNtVYuJNjMhIqWC4iq0OsCtXtE693Um3jdiFrkgU3tIu8YSGVqGd3hoHjcbKwbM/qpuKNS4CU6kDK5C9PzfxEz6gvy7df7O12Jqm67e3vd3rfD7FNxOEVNnYPe+du+uvfs8bj99q53lWkQqWsSqpr88ACieGsZbPpf7dx/7qCkxbkIp7O/eBqMdb1f4Zsak63gFFF1cE1tjBfQhYiLCZC9e8WQt3YRGFfSbb2rMmjOFUW3dncs5YMFOEpXYre2Gdp9CifoLhkAr6IUtTy/sbvkgxjZdKvmX3lWuHsPLZRRwYEtCyXW/EyEoxwA0ADJsHhyQ70PLB0WkomplkNpMaOpztYoTta0si2/WWuM9zAUEHtDfhOC1PWDb6NHBACODo4DF1tHWIm958HDt3MvBtD09yS5zWId/+ri08KtoiwKHUhBhwgL6z6Ixg0RE7bXa4o6Fn2/fM5VgKwnDl0PARV0YMC8bRka5cBGR4v+EnI+CjA6hCliUoFjnQpjtLESqrmiZ20HQnjqllWppmZZxPTCTqUgEfjU5kiRxJd/Q+3VrwtIzA0AtrpUIR+EA2F1siWEPTnyaDbY1FR28DZz3kd/f0Fb2aaG/Ws6QCNH18vIPQPpTMVskU4SNRJWDZx4a8rFT1Vm8SYZ8NeYGPTRFyKB8JYBQgYv35emNtudKpMbwXvQsW/lMlOwalRRHaunBQCvQ/bWbQFdDHQ/17vMz/DO4slFwbsl8cTiXk14vfkEqrN6r2UMHEv7uwV0Rz8A82Gb96DCdBdyUcDNqpoIcLNQ2sqd9Zw7J9cZo7AbzN+DNl+fTZQ4dgKE/CBAtxpSj4x5wCY2uaCIqC86yiCDyU8A89ivMGn3Kl2H8AUEsDBBQAAAAIAJxyPF13zSTJywgAAIISAAAnAAAAeGhzLXNjcmFwZXIvc2NyaXB0cy8xNF9kZWVwX2NvbW1lbnRzLnB5tVh7TxvZFf/fn+J2tgozYAacbKoK4lRpmqparXarDVIjGXc0zFzDhPGMO3MNRsaSuwlgwDySQEqAJCIJXbZLgOyjJECS77LrGdt/7VfoufeOn4DSVq2E8Nw75/k7555z7nyEuju7kWbrhjXch9Ik0f1ruhMSBCEU+VjRMU4pmp1MYou4cmoC/ZhfQeXdXXQZ+S+3fz4peEv71fzszyfwt+7tv/EOv/XnHpR3Vyp7B970gn/4yi8+LL3OV97uVfbvVvaOQiHvfhFFLqHy+l3vcM8rfAOMlfePyrOF0sm6f7zuze38lC9601PVOzsgnO94e2+8R7C/ABq5HK945L1+7a/tl+d3y9/MB2TFI2ZJMeTP5kvH2+XjJSCq3Hnr769Qnd6LdX/2vjdzBBaVjjZ+yn8ZCv24NoW8vSf+D/P+0nJ1+j73o7PTWy4ClT/7xv/bV9UH7/zF7c7O6syCVzgE+f7KP8sbc967gnewBCZlXKwpxB7FFqq8n/E3n3rLiyGEqls/VB8/85b+UT5+5G08AWzKJw+8l2vgevXL59S/wjQI49pRJHIZlfdngBzMpNb6j7fAG2okQuXNp/7L5/7mrL9aAHZ/9uvqzJL/8I13soSiCITTmERoTMBG/+GBv7xZ/v6ZP/8ennk0uBx/cxdoQELp+NDLnwB+ALY/N8fj5hUOSm+nOcD+t1veq1XvJO9N7XCDAbF6YL3FeUAH/kNMGIzllR3/u9U+lJogI7aFzkqdWHe3aSQNgi71xulCUwnSTKxaLnbiYBvz/G55eZrGn9kDCPirB+gK8p4f+GuLfAkawR5uCaBXOlnzpgqVrW3IpsrhY38z7734CgioVTSJjWTKdgiy3dqTO+GGQvBPTqlkRDaodiL2hoGC7+iGY6lJLNbW6pBLf0VFSRgmVhRJkmqiMtQ98FZ10a1Q6JObys3rX3z+6acQEdAsihKKXkVZ8MzEBFnR3n541GzLBbdVS3ejMVmWdVtLU4Tkv6SxM3ETm1gjtnPNNMUO3RjrkOIyaCXYEfXoVV12Ncc2zT9gY3iEwFIzDWDly67I5V504QJq3b0KuxLTSzXKCdu5oWojVFgWEWcii2oyB+xUtFV+P7K6uvpRDsIEHFjK5lCOiRo3LN0er/NR7OpeDNn6RIsUxuFgknYsZPWHcpIo0ahQsG7c+uO1z353JljggjaKdQ4ZGC3STQeWzpWP+52uLokS1sC0bB3/O2CGIY5WeChNiG2FVYC2nwmh4rkgjOwElxbIr2kgURFDpljYGcAZMjnZ0SHJxDGSotQf0BkJ8RdEouTEsNK4abvnz/wYDQ66nYODeif9hUT+DS0ILxZ+OelvfA/nna8m/afb5c15vsWP4STn5luT3tSrQE5XIKeFEY4qVJUzKXpkgl0iEqnuGuIJgGUGNrhSQ7056o4DcQ8Y+G+uCfn/UxpfuHBOEv93aXw6g3ONnAx8bs/MgS+uXR84lZpjqoO0DzoMZcOBN91B7QsjOXjqNghOUiySakpMpC2NGLZF7WKuBQadm2mB7cwGi0Q7OvrZczLaevjqzKCFut0j0lyQgmTgSdUD0iA1kxKTlIxF4k2n9JObn38mu6DUGjYSE2K2VsL7NDeMgsV1O22RPmCmNtWRC+k4gZKqYYlSH3PJToH3CsB4i8ZTFLj20lHR393io4Eg8bAmhhmVaau6AgsRZ1IQGINEQQTAZyWMYVCuBmuVcLbxIcb1p9+KwCMrLnZdQDSM2IokU1KIkfGuE6XmyPzZdqAJ8ZcfIb94j3acvSfVR1O8CUL7gKYTtG/WelhDWag3Hb84y9tN6XgR2g2wwCDAxBHVGcbEBW2xeK28oAQyLORCx8A6bSum4RLoMtxoy4aDKQWA8ZoBNYighIwh1ccN6DyCfNu1LaGJJjiCrNbUN3UGxm2KYb153bYhGg09YZSQwiibkygC9YON0Ig6hoHbxJaoy2C/KNSiLjDSWFxqrhqthuhYM4HZsEgbM8sSLqC3wY8zGk4RdIP9QLjOFNbbDAffg00qiZl6he21cgbIy2oqBciJYiLMaMOMVJKaoyPTWIijeCJqqskhXUWZPtQtZmIX46gbZeA4tJKDPcFTrI/lD49sEKjgVcOYlEOhEGK6beE4gjkKxrbqZr7y97/ynG+aXgpVmE0h5aZ2Skd0FPQLD8sbe97b1dLro/LXdJgVIGRm2h2JDjhp3AAxOKscJq4wIcQMK2HHkfduiitCWRrQwD4pR6fLNnGMXdV1rMP4StQG8jRrjTBqA5GmMbag2DgqwTXBYRRpyswUPWfnJ9+ZyZo6KyXTDrUmSChYgOWCILWfEnjxgVMxPiQKljpmDIPJICPLZPVRxlwYjatQYi43pFK3Feqlo1rDWLzYduSoLDymmumaLLg3YRBWn/xqIiNyk9APcPIxqMZ5Ue4915xL/xNz/jNTGhkH0RgfkimnQsuR2OiTDdlDpq2N0vMiOjyc0tnVpDmMDoKejpyzKkdbaYi1vo6DHqd9L9RS0xSSoYU/q1Eyi2DGRVHVKKrn1rpGFrKz0VKPKPcQ5ea+tmUfy2ro/y6uXX0URicOteYD+K0xv1ssoxkNkmuWt8pu9kkGu8RmVukUKUxBmEBDVtNms4th6l+tRmqn2bjDXVEUaRzVmEDvcr/HME5gncHOG6ytqxN1KjjMejqZEvUwSkmt+AW1BYSyZVuhhLqVNXI9rbUqjrIwggQB6iAGMXFHGIYhKdZ38VfxHJpE3uJTqKtZikgOdcE1N8uE55DQ5lNCiPJCGAirQdHBoJBy9CMG6/FZWuNyp2tuS40dtGp1nZVY0Os9e8LnGpRt8jZHr+9nFG8IfDMmV6IwMGXES2HU7D7q6UGRXulUSwlW/tJy+QU0h3WunX2GuAfdo5pf599EUNMHCbhJ828ScCFuh0bw73zHPyVU9g+rMwuVw3ugFzLXpOOsYhrWKLu5t31HOMOtej8KhcBDRaE3aEWhTVtQFDoSKorA3aE3b5wxiMgHRSn0L1BLAwQUAAAACADWcjxdoHnZeFkPAACMJgAAIAAAAHhocy1zY3JhcGVyL3NjcmlwdHMvMjBfZmlsdGVyLnB5nVpbcxNHFn7Xr+galsoMMfIFTIIqpGo3l0q2kuyWyUO2FGVqkEZ4sKRRzYyCXS5XmQXbMrGxCXdswCYmIVwsJ1xssMH/BTQj6Ym/sOf0ZW6SMVk92Jruc+vTp8/5+oz2kP379pOsmTNKx1Ok4uT3f4gjCUmSEn09at4oOLqVLI+QV+MXSePBA3KIeA/vvNm6PtD7avzCQG8fcc9temuP3cmF5vaUt7nyZqvqLT5w1++4E+vuzETj+hlvacPdPt18fLc1NedOPHqzNZ1INF9ecCfupIilneweHrRVs+KUK073vuQJ2yzR2annKZLTHK0bSNSsWSzqJcem04SQ+vaNxqVrzdpD7/I1UOjO3ycl09G/1h3tzdZM/eUCsHuXp7zlXxoX76JCQj9UHluSnlML5nEur3n7vjt9sXVthUkk7xP26J675S4soYK5mru63FxdBunN0y9a4/PejWV34ab3vMaW89sZt3qtvjHe/K0K5M3abHP5rjtxt3X6brO22ZqYbbxYBVZv9nbjj83Gwqo7d8+7+IyMaMUC8IM3wcCBXjBk/k7r4jhavvgAHbl+1Z37pb650u2eXXJfrnbXt656p5fc6ka3u3K5deHlq/Ff2eoG+ghp/P7cnZxwV5+hpurl5tOJxq2H9Y2L9Y1ZcFB9c7P+4pJ74RRY0I3/pmfATGQ9AP7cOBeZcW9MeVeW6GZV6y/ONRY22MYR/nk1OU+8xfH6xqZ7dgG2GFYODgG9rRtLJKs5+nHTGkmeNK2cTdzqirtKF3iQEHd+hu5LFTaocW7NXbxLPj7yDei/R62caTy42Fxdw6XfXfZubLsrs251nS+xn7KDKvePm+7imju75NUuQtC17l+FVYJ+79Kau3LLXbkO/I3L5+tbWzwwT11vLUy+2VrANVFeoPRmV70rT6nWGg2SmdapbXditlmreTfGvUuPG7UprvgQVcxM4xaszQFza+Fp88nNZu1Mc/U5XQb1QRV01TceNqqT7tx5LuEDsbXu3Lp39Unjt7XG9DP35SmcO4zun4UIg4hoTtday8+86Qve0hQuYvp378mp7vrmure01e2u3vYWZ/Eg4llkR6D+YrKxeQsCE8xhMcs19vYQd3UGQ3BqFrwIexQ6LTMsTiAKgVPsHWPrJY3ntWbtRuv2VbCh8fBlfeNP8I07fcc7N032sDFwxznvz2VvcdpdvQkHG4K9ub1G+ftI/cVic3wCAr61/LS7+fhh/dmau3XJrW2hasgVt+bd1Ruvx0951Ude9Tx8gShqLT8BYTyaE7Ad3qNLKVIecQbheEbSUHr/fogvki3oWsnWrQxNVEaxbFoOGdTswYJxTDyatvhm6eKbPWIn8pZZhIxXKOhZxzBLNuFzn5iVEmjpIjk9r1UKTs7IOokEcCTLmjOYNFCfI/d0gWA2kjOsklbUZfGsHbPxv6yivbqqKooi9A5jBoO1aDb5LpFIgAailcySauTkipFTUjRBwVKaZ/7wLs1BQmAh0RqfpKvCHaD5B7YZ8o9be9ZYm4K9Byrv+uPW4p/Nx79CaKEvUJClOxWrJPyRLOb6ZduxqKakXoJkr8sSTfWSoiQH9eGccVy3HVlJp3r7Mty8kmkVVceA5TncPCNPHGLY5BuzpKcSIhVwXTjYRf/SGepjSLc6ShAO9p/BC2rOoYQ5hxwJ2ECFYYOjHa2UBcVdRDZK8DdfMDVHUQKljg1cDrPoI9KrQ9jpBVuHp27S29PTExBaIwGXrw+UJ9FCNAZ0FcuyYys+mT6c1csO+Yz+gwDpIMA3GLUG82gVOtoJhIGJdtKwwcMGOBg2PUcKekm2FUgYYGpUdpu1b7EYHCPbsGE9GUWJ8Lzd/PYlcCtzHfaW7qRpkXwRJktElvb+Z//e4v69ObL3i9Ter1N7j0pdxB+UlHZVHVcUWRX4q0zDDBaDngFdChTgvkwXqlU6Mh+zdG2obWb3heMna5Yco1Tx4w1wAxjTFs9sG0MRzceZxXlqcQd3AEdHCknhx6qoGSWZO8osQ2yr4IfvktmCIUssQ8fwlMRckM0fp4RwEnIqPMj6cLlgZA3nCEhJwqLyxvEuLL3sGY5Lgh1EyEQYlmmRpE6YYAAISKqImGzwssL2GHfYhmOq5zChFQwbEqAVooyFGfouD9kkZ580IOdJFEpJSgbHhS6M+4gIdkrTmbDzqYUh/2sGkBwdsR29+NkwHJq8lG5sPXfXzjPMmCGjgcAxKJ0/sUrEyjP559F/fYMgrbbuTlSb6+dJ7wHVzlpaWWccUEMk7po9ZD98CANr9DvztOaoDLkcIegFav9x3aGpXYqCGwj/dEYh4D74l2ChCUf8XfgpYQcBeWCLcLDaB4SjY5RwdIzSFbVhFc4LUOeRVpZg4Cu9BHQHenoUvsBXVycIc4z38BcAXu7PMwyuQImtb6wEsAtQevWed/lh69K2+/xXLDfV++581X321KvOA0IASoZSUSohXNrLKtAD8cDB1+MzAbSjoO31+Kx3tebNAESYATTFMC0ANqhdFKt/mSMAlEAH6AYRMdHNn+6AQe7LK+7KPUSxW9d9072fb4JNDIcxcOKdPcu5ajVAmzjLcWMVGdfOA3RxZ0+5U0sAdAQMmn49/l9WgXQ7G/UkjnwtvHlQeNM6qIZorIOfWKZtf4MxhT7nNP2qBRscIuv/svyF4QzAIFD1JA/6dEUjLK3/a6NE8QdQ9XOaQxF9h74wK9Y/KpaNJB8yErgyHIHEBMe/WIZTJHPagV41fJHAHP23HyR+fgGLduT5QPBQeBrjOdyZ57AaRq4xHqjJnY3rU8OoMODiu5Eng4Zjq1ppRHb0YciQ9DCFiz/WfpiBXHhSt2QlnrrTJ2lCO4kJjR1ELMKQz08qggWnnEwsDWxCdvGmx/1cgpF1/qz7DGDqfHN5JsgQWqGgWuZJmlZZKsOAVotw+4Qhfj5pTi2joliCy5lZmslPYCqX8+X4wabyjBzQACXzGTxKlEQk1mOarVPomS8rSUsvFzSASzwFgz+lwCe+ZWkQkkHzJMdwCrqUCsSzAcoHfypWITyJj2yqYzllH0mrAFS3wnx8REgd0kdwL8IUYmh36Y52PGIvPAq5BWMIDmBokg3sLhMPeZiPPlO2YBsQFkXmYwhHBEJSK5ehEsqjkoErxN17n0iqEFkyskO4Wzu65y12oqkVuHh8yQUDAyIYHTIFlZZmhmXSKZHHMtwrLJ2kSM9u4o3yVyaUJUBMQM1wvJQFhOXo3xpRo/O6kx38FHPZrjarLMf7RquG/Snz+LdWRR8LAhTPSZaiS1+N6PZIojC2I1K7cozycA54/OTtTPgBqrSkljULvYdngXPj6WrTkO1DBelsBrbyr6nJ9qX95aMWcEAbTTxysn08/5UtBPZ5iYEdMkohMSYQZYw0alMc5bya/Jmw3MQohDgg8kuchPemij14BB0ehTyt22e86fveHF40Bw4SVi3hRgmX8YF+wtsr1Ul343SQ9GgisXV68wpdkGUYUvyEZ6HPhDGBZ7KYsmVL7C4LX+pAiH5Ey0ZZjlyZsk7Urb7ydNbJJLVcTrZCPmasuUpZxbKABo461BwoHhT0oVW+iKQByNLGGpCnVzGOTOE6hhWeHf6yblHpqlGOLZc3CXZdckhCOmxrJs3dEDp1zBPeIiCdOxAx78PFkG3XkI43BNGwpOWmS5QcnPPXC+uSQwWUcahwlGUrFKDc839lL0TqwlIuahFPZpwnvG0I57nI6P7xyvy5BvAfksFAHyY+v18ZkTHQm7R1zcoOylyS8nZRvSgqDHe8u8vu1lwgE/E8IApYgY8ruOSuAOsHK2YAfieGELyPBCwGkrCXfEQO0Ys+dQfXLp598e/gIL+D611Zqm8ve6dq7d7+/8QfQPHv2vSNKBUxBEHvH7i36zqIumKXA8g10U3/QGy6CK9ddv2DYNdjLdWIXGmPhJYKo0X3BVAppHLZkvakf/je3pN5n9bhLkHnHwPcyniPpi3+aAB2bJqiN0P90ViY9/3FOKchwZqrbOGR5upOmxSkiV3E96B41izetVMcKONisMR0hXuAu1aEd05F6RS/6WaCpAQHMaeNYGn1m5RCSoBbQv0Kc6iLWJUCGAfT+MbnSDhFju7bZ0VgFf82Fr5ZZCl0pvDOClADgjuBc8JZHsYN+2jlGAwfM82CsE5gD6UdPgE93iU5RoowceSkKJ2MbBcUxn5WgInF7bJHicM7dKeEvVmEetpIu8QA9qVoa0J1TKSLIccOda1dFELZLzR7EOhF/5vzcZDbyTXWYYipz41h7Ri9t1DnDByOH58OjKLZAjdwvCO8Lf+3M9NUuiNnuBBELgzmUPSgBQeQ4hZhbRuNQIIQaqFWdKS9jB+YTvOW0ABENIZaeIiGN0Wd4XiPglsOJyIKw+hwoB9gYfDCCxIABYTiLVo19hbNrV5rrj9qbk/FXqFBnvDB45Cul/uC67KfGHDhwfoo2NoJHrWVPqCGceQ54oOnuOtBq7/MqMsjbWA6QLNRDLYFqM0oB/nHMR2tgKirUpR3Ykj+qBUquo01BKzsjWTnEr6mYEI+9ltGWJtwBnEo7Q7F9h3dRxFobCFWX7JSxtMLt89QXKQgp/djSo8ERorksRR/+e/wK9SPR1HvPnxxQrq5YWN7d3iHOi2NKW8Pp75dHB3flUjoHYqEXtu71vCr1eBqMmhWLHVIH4lBdWy+KvF4A92p8GZ0qBtRxwvhaTm0vV2Y7UM8cP3uPZBRMrFgy1lm+ZAPz4UlWIywewT2COHiThIxjSIVvNTRmMBuIMYI1FJZHo7ndRplPQqehR6qZBjFU+7Y6ys0SUTMcBqrWCbGIJrzlDTgzhslGvXp4CDs5FfhWy4esWJU1q5RvUtkH+oQ2RILEcQsPGKCWIkH7bsEbnvu9b3QIaeIDEfnWUx/lzyRqxTLaD0WUD33dydeQEWB4uNlyzyhZ50kAuBYQYLKz0o6RgVVJsAH/ugFq7ho9FGUwJsUKWbXWFRY+6sg/GEM8LX91EaAKCwmapZdfWGR/BIswjC0OUoQS8K/yjs7I7RCnznuBrTkaKVY1KjTWOiEjFP8uNARk4mv7+qAtt8G+X1p0Zf5vpTOAWjMkHCDJtp+od0Z9vMMNs22a4z9PGSGvdbzOztsmXQy1rGh4cbyxY+hl3Ph5fq9jHgvSpgLX0eHxlJk9MedNIQo0e7RnXzzXltwvKeMdZDHbwQ9iUQCUoCqYiyrKi3SqopvP1WVl2n8ZYWOb/jYO1El8T9QSwMEFAAAAAgAqXI8XUhBdiTrDwAAkCcAACEAAAB4aHMtc2NyYXBlci9zY3JpcHRzLzIxX2FuYWx5emUucHm9WmtzE1ea/q5fcbazU7RmZNlmYCbljZOayiSzW7WTSWWytWxptKq21DYNUku0WtgeS1XG4BtgbAcTB2yH2AGGEHwJELBlg/8LUbekT/yFfd5zTqtbFwxs1a4KrO4+573fT+s91vXrLpbMpgxzqI8V7MGu9+lJSFGU0PHehGZq6dG/69HcKHs5vsSqDx+y3zN38+6rg1vV/du1rfX66rj70wT78i+fs25WXV6pTuxVyxvV8iFua9tzTvk6Lpypx9XNr921i/XpuVCo9uK6M3m3j6U0W+u2tOFEMpvJ6Kadj57JZ81XBzOV3cuV3XFQqd66VDlcq964WdvedL+++epglgNPlyWwqeupfMLO5k5yUMZY/cdv6huLPlMngc7Zvecc3HC/niZ4xj+CtJ5KG6bugeIT5P8IwLQ+YiSzZgAQklbKi+w3zLn7vLZ9qXptmq6DUgfAs+d167yhD/vwQjz33oQz9TPo1td/rq9tQAu/jF91b+y4c1vO/PfOi0u/jM/VJ753v5uvLt0nlkKV3Tvu2rowRLX8wHlxhbieeuxs3fLgtiu7c/T3cB0QsBoY6Q1LQd31p7Wfd0DEWbgHkNr2lDPzI4jA0viH54CtPvlHdf8ZHopb58K0u78obt1H6/Ubh7VLE7WJB9VHX+EhNlQObtU2fqxuLbszC4LKL+MTISkl4a+P79deLIITZ/F5ZXcTmnNnx53V+87mgjN/tz599dXBVWd2DgpgvT3M2Vx2piZh8eq1HQb03SDa7S5/1+2uPugGtu6X4/eYs/NT7dnj2iHstCJIOQtX3eWn7rWv6jfvEKdXJp3Di93u+I1u8Ce4BLu1w5vVn/YhUm3rBUzgbFwk5UPD32wLD4LWnPlnYAggeOg8e+TML1aXbsMvhWzQqRDveJiRy66tC1M68w9qhyt4Utl9AC0DLSJH3AqxgYHb42r9wqEzOQd+PfA1qA8O49yZg1FhRWf7oDb9BE7tPlyv3bwFByeKIbiA+/hGH8uN2qfhRc2hGuvqSmo2S6Z1zczrVpxHs5HJZS2bZfPelaV7V/nRfGjQymaQB9JpPWkbWTPP5NrH2YJp61aEpfRBrZC2U0bSDoUAEc1p9umoQQRstScCxOJJyrBMLaOr3r02kKdvNZEYNNJ6IhEOhz26IxT54F7Ls1Oh0Gef/CnxxSesH4xFsZDDbtVS1I/6oP0i7F6E3YuwexF2Lwoj0pdz5wGtuquzxer+Gt+7/SNtdfae0l1l7zZ91S8+53dw6a3lYm1nhjDsXg4rMjSbP5YS+29YB6p+dXDh1cFteNa/RP/po7/l42M9kfdL/6yEQ//6X593Zld4W9HZegyHK9L/htPJqyIisnbxObbsud9cLyJQa9tPis7CQ/qq7E7DF4ruxcfVtfEifJv4de5NuN+uFuGruCo6u1fd1RXo4rbzYvItJfhlHH9XhAC/5QL8saO+Y86LGai09nTSvVquzu5RyK596+zuQsGUM7aX4mO9EsPH//6H//jrJ52QgHKkTXlmHDChEByJDRpmKpHL5g3bOK+rtj5iRxi8JNzHZYG71g6XnJVvG1GDICYuZJ6iUEX8IohENIGSM3m/fvG+uIWpKVr55m4R3t3Vrxfry1vs5dRXTKBmn2VNHYAUGkRzAH6eykOQWE8cyTuWjOpmSg2zwazFkswwWUPYKDFvICY43+E4B6dtGdoGPTTWIVGE8U19DRsliUZGG1FjAxxogIAkcWMQtx9gOZq3NURVOM6wAwyFG+A5Swc84YwRkmQ+4u9mXUiZ4T4fOgh1HGDC4tF8YUBVlEjrLTaFfULg5TO5rmtW8rRKOAJycFmypm2YBT0IJMLiHYGgtIxmY7/w2tsfCd8hXz1RijkLy87iRjxGC/GPlIgUXxioT37DZr+Lv4mUpdsFy2SZUOCG/EB6pT6S1K2cLf0xE2HDhtn/++O+V1b27zbKVmW3jAtEujvzwGsTrqJdqW1fwD/ENDwXDihqFxW4n25U75Rx665RY4M6g3qHfI+S5/kgt5t0j54Ww74vTANZaYNhqmndFA4YkXC/IXbDQdFUBeVRIQWLHR+yHqan8zpEIX1xNfKVPqAlr/cBiM4HrEGjASY1lTOSZxPnCllbz6viK8LSRsaw+0/42hJaQRV2yvMo+JXyI+faFLUyC/uVg2+cyRnURXdmsbK3041yVilPdSMua082RWV0Jp+i5KEEuxe269PzaDWgLwHX0Jeumyg8BdJZXoeiIiwWD/ElYjKfzFq6ei7gFLTxXEwhkRQ/OgYNK08rx6UrSt+1FDCngjOUkJ0iWlZ39krRfbJcdJ9OFN3Le8jUl2uXdpGGx2uHi9h0BX1LuChEIRj6kmBCsGL1h3L1+lPyYKnRnlbXVLs4NxHWxXWPgGykl3OUKfKom3qqofOz+mg/FzMgJIRQ3lNoc0PUN4QFsAQVE+s7fiIeREfrRBvqfgMm2hLVUikVIH4ugYWiWi5HcXquKcOQjFgMsw/7hfs0ox+wdO1s0KGxVzpgRkMISKGzOegrAQlORZNpQ1VEDybaYkXQSw4O8fV0VkslcKPqI7m0kYS/AhiFyxw0hiIMTZO4RyUSereSiRwAvV7mTBZUAR5NUCcfYUrb+CLp4XmSEzxDFFVCE2FjJbEIwc2sLfbArt51dAgurHjYlIBFLc2Ar/x1NG/rmU9GDFsdVGLVg7KzsyhmqTgbIwol9KBluBiCp7b9DHFSe7bIjvdQ34VqhMZQkVKBop7I6LZGdbtBmZ7+GQ8Vn1MxYAnlxVTEWk4URLoij+C6ADBv8JSBQvKsDj1wKIViMczrV1xWohxs9u7YOFQHbCk9mchoZB1qSZthsWbk0cX+WcsJaQiyIVTWhEpGtIE0ldK0kW8BxvqnYrmJKofFrJng4gGyCQiemYOXY/0zKf1JH4KL8HqIz6WE70vzSP/wlS+dpKE/3zNylmHCdC9vffdqd57VJ+eqz7dQUFiTKTCBNymTUSv3Q7m+vkdpdnvPKS9Vyv9AZeLdKXkQ9UUtXaUi/Kk+fqs+PV1fmUI/WV29ghZVTjxTc+7lyzRRrt9FL+bMPUaPS2gibDBdyJ/u/9Iq6FK+95hzbZ9mnIVrKIQCPpDPkc5yhXxTSvdSIG/EyGNjfpzEm9P7qaiZtTJqI5owvJg2uEDtaks9SDwfsBOkXvtd85vtIxP8eglORS5KSlLCOoMyIbExoil2h0sM0x5N654mUPQ66Ypyna2l06OqNGEEfjGUGCpoVqr/Uw01BOX/rAGvpBzGvVY8DracJilGDnKqz7goIhRA/minUjz4W8wOO2AWfwNZBRJbOjeNEK5Zh9R9NDPINDQXmjmqmgRjixxAl4HIbOnkOhrDo0/jJh8feCst1NQObluj7Q/pk4F8LfOIGEZ4IHrKFvXa7w5Ebx9uw0g9ZI6G66huWWAOs63ema7nHYzJ8EX0YM4ZI3FKGG/cze+dGQTWzfrSTbQScJYxvSR6I3f1IYUaP/Ro8ZpOlDpqTtom05k5+EyMGEFX2M96O24R7iN2ed4/JlqIPr+VRhuLGFby2YKV1LGgODvz1fJGZe+eEumItuOHF6d/SwEenuaXKzzhkV3qLLcZZBBB2xG2M6jfetCHvOws76i4zM0qk3o4G4cftffFeO5TkG0MlBthXgvHmZR1OYnbc/hv0ozHo75RBGRGwY4cduT8HY2qEMwM5AvtiaElr2TOqu2cRKhimcHmQ/AcG1NIkbDAWagtSckE1+dxPTj0sbzDzKKMnM5/HFgcsBDs/nq7rsWOPFZj8Yiws7ed0iXniRsNZHlBCJM7CZaxp6HkUhtqbrQIO88Tk2lHM9m8nRAnTiqXUY4KwjX56N+Q8UgvRXtha0Ya2wYVkdNFXVePoesdzlqp/DGvaSix6v4lZ/JxfWmLTjoXVqtPNvghRPXhUm1rByGOCQmDV237Um2LGjfn2SPENPui9+X49S96jzN354kztYJH7v4dpRT3uzKwO6YM6aZuaRgI/kD64o2pnU1po9CQgV6RFAQj+24V8RuYcItcisjdgEAMZ+Fa0gCyXpGddQPO5Zu5eUOpFZ9UK3bJq5Ls5Pmp+zuw7/t8xO+mWtlngRQz6FsvqObK7jVPzTNjRCxnZc/oSTvKEy5PrCt0xDu7VL95pzr7g/vzhW5na8Ndneuu7D9zvzuobs6K03R3aa82u43+SSl5HU0XPt5rgO7AawB6zrcMDUfYwHCwDkdaSjLJlTBSjc6n0fW8vr6eNqiy8xOMoNcnGtWwQ8tIn461UCDrWAmb9rZUuNchauKKPig2p1snPPo0p9pOuwaGY3gWHbKyhZzaE+5QkzzdNad5I+Wl96PVyMf+AIynOcL4hoawWd2NbP0W6s6IQ9Mj2ok3KjrzGjV3qOlDw7HMUQrkauaGkFMLMgBNR36AU0YTMEPZLB1CiT1dfI+nrXBjQ4ICm0Sko02Vg3RLkF+z3h7kkF45mqezBUKnIvtS8kQADwcqDIJeyWXTmmXYo5SYCZNS4nrHNt42Dg035fbfcgGbpXs73ANaK+qBdtTNXMvzGH4rjmPSWmYgpbGRPtY1EpOk4uFY38nfxZuSRfD1oJ8mUsNtrbrf4ibBKHElR98oT5JqoFanhmO0h9vXFA4tIHsEqlS+QD6Dv2pqOHpeSxfQp4QDpvUGZ1EMCZdu4VZW/WFUgNNeZc8l6UqY9zxsy3E3THt0OU41q1VO9HLu9Xjoa8UgP+8xevM4OccCUz69A6wu3Rev7dAaO5OrTvmGr5f/vVgqKQu6bFZW+ChJW6UFdEvvIUuwdAj5Pvnokthe7jDXGjQC/xETG7VPgeaFlx9qbznXeERR01qhO30COJ5tteBoivNSvJ0jHgTENQ+GtmXi4T+pOxLMdorHI+O692S4A1HE7DshHXgbpJ6/ANy7PKLfaG03go2GMEW/u+q9+PXevPNmg1Tc37JQ2V1qedXFjwbayJ8rYNbg7Rop9stsjjSAjMNVEOcyjwROjN+Yod5uGEOMAqaRNDHz9MucHEeKa1dls6X+n7jsyCQl9zfySJJ8gfCTIcOLWKSjP5Rk6+f9moNHryiVX3Zsn8XVp8EmWjw61dpKd5g4Oo1F/ASXYwaTQ1lrVCaMYFsb6diHc/ynomdShUxOTJiR1x9xt/zIxuuoPHDZzx+BIPg7m1ZomfqOgA7+2KYV2tP9EeBNP7ZRvNcp3tHL38x+uEbrj4bGGhm6BM/p73DAQm5rRITn6mYhw1O20GRMji5xqg2tB7WYF41SlI2NxI5xhz4W7/vwRInxB2SuY/FSB2rN3Db9yOpd2JN2+D9nsKmxeT2DI7KTEbW+jQ8miDZqNSiLJyjQuP7VkWz489dYI4xLv2qkY/G0RIMaT8HiZNavbe1nsUH0NL6PNXyskz7kkUlPKBRCKkokSHOJBM9CiQS9uUokFCEx/Y5Gpzc64n1WOPQ/UEsDBBQAAAAIALByPF0OjgCICRMAAM0xAAAjAAAAeGhzLXNjcmFwZXIvc2NyaXB0cy8zMF9idWlsZF9kb2MucHm1Wulv21a2/66/4j4aD5ZSa7OdNJVtfWk7mAGmnaDN4M3ANRRapCzGlCiQlJcqAuQmju3GsZNmj53FadKkbbykzeItKTB/SiKS0qf8C++ce0mJ1GIrb94ErSze5dxzzj3rj+oiwSNBklQEKTsWI3k9FTyOIz6O43x9kcRoXpKFhKAkQ7lp8rZ0lVhPn5LjxFx/9H7/tnX1njl/6V3pe2Nr2dp9UN75qbJ5rrKxaz6bM0t770oXrAtPrV8vmNfnzLUf3+/PZwTyEUnrGfn9/oLPV3lzxZh9FCMCr/NhlZ9MJJVMRszqWui0pmTflWboREqSdVEVhYSsjHkmlAlRnZDESTroI/QfUAlPpbWEktdzeT18hM7BweXt3fLueWvvXmVjzdxctjbn3pUWze+vGPNbxsPbxtZl887au9JFZAu5mtuNkUFG4zNJjYcHUX5d0mUxnhg0bzwyV+/FQyAMIda1WyAaCZPK8+fVH++CBmxODt2OaiDWynNz6ZGxvGjM7ZkLV4z9krV6wedjCrP2rph3z4GagWR5uwRyV+fmqivny9tL5vas+fyG+dN3xvkXIJ4x+3v16kZl86J5bQt4sZ5erWxsse/G0j3j8QX7WuiIubpgXpuvbK6b12/hyEfEWLhavfWw8vicMX/LmD9vbJ9FRcChu4t4aOkS6IvRJP96RWxaN5esvfNwNlMn8Gfs36+sPXm/v2iu/wgCGD8sspVIcf6GeX/O/P2JeeeRuXvJpr69ANSN5R+NN+cqm8+BIFIrLZV35kFO6/Y5mC3vleDR2riB10X5hluCcfjOpoxnpeotStBnXX1i/n4tRnLTelrJkkbbHQ4Gk7xOkrLIZzVRHaEGLmVyiqpTk3S+K5rzTRWdb9q05kupSgbcRJbFpC4pWY3Yc58q+SwYaA8RxBSfl3VBSuo+H+wI5Xg9HZLwMN0f6QHCbESQ1CyfEf3OMz+q4V9/IgGmLiYSgUDAOXcKPQJk4TXyD5/vq7//9fPEZ59//SkZIgVqZtxXUS5GuMqlR9WrJTSa1aeow1c3QavlvYdh4/v7xpuNcHn/pnn2vjG/HTYeXq9eeWOtL4DGuB6bRi/SsH7eNc7PGhs7eIHz1ysvZ6176+Xtq+aN++U/1syZzdryPlyONrj61LgyYz3bC+OfhUXjzhwsBlNEf3u9ZK1s0+/1c/pxo3FpkVr3fOXVE2ZTxsOLxvwr2PR24dGXBGzJveeovYf85QQxnt01VrcqM7fBB2oLjuGC6srLyou7sAz/21o2b7ykbrJugektX66t/biuLGP5lXnzhfV4y1rYMd7M1JZ8woS7aCxvmld3Kgub1TXQyLy18LP5YiZc3ntl3t8PGxsPzNWLbjajEcrG3EUQhnkWeiUwQ1VqLP8CcQdcBKKMZxe9PWt3s7J5p/rgJriItf6mvP0bXgFocuNu5fkTcKnKH1v1LfSyyq9XK6VZJkm48ny9vLNl7F8zNvdhXdHn84EpElFL+rVAjO5TRT2vZqmZh2Ccz4l+TVf9YMMpAh8aySo6+VLJikSUNZFwHJggo5LhpazfpqLk9B6SAOP7RygpS37OHevtiEXzARegy5OpMbpWVnghAQ9+cSonS0lJHwJCoaSSTUljPQR8kj3zOpxJmU3SbadxX81JTivABxAJJTD29xCuKV9wgR5SKLKjQSyUCCgpqv0tNCbqfs7ZwdkisZwhgcxfT2u6mPl8SoJVw9b+LuQElp9GIOC9MmbBXi+T3miCz/Ly9LciRBT0tPnrpDeSYCmKDi3YwqfkToRoym1uIZSJTkh4sqCzne7PiDoPFBzRQQ3iFzDE1U8YF3O6a0VNOT1keIStyPBTiZyoJnAzrMSDYSkNVxxLcCFYckJUv4QFsC/aG7FPH512Nrniol+WNN1WENxMkkhZykT9Muxtw8lhyvBfBG5kJMTncmJW8CcdA8GrzyLnhaJz3Y5+JA3CK1MQ7tdc94wnpvBEWIt8tF3osqBUCA7WJiWU19awdx01dCWrS9m86JkQDrw8emQPSbH7Qiu1RakbJZVxWLAvTxJAu+CXI0BWFrN+odGekQbeGqVCycNKDZKIKPhtpYYksHDND2eOi9NDMp8ZFXgyPhEjQaQ4PjEcHQmwy9EVnZcTtnnQSfjqngL2kHw+47cZDU3wcl4E4mxVNiFAnLGXRL2Xjbq1LU7S0G4+g6WcvVHNQwpkl2snVv8UW8t85SuYB2GR4BQSTMnuWVFgtmub96RWt1k/B0JPKqpQ0xUTB6sye1WtSqMzeGOuCXyk45rOZ3L2RII+MJ13kaED/5EveHVcUCazh6xjfofmY7OYERwHSHFdpEA5LNphpj7HNY2kuDhhBSMrOaGQLFCmdUXgp4vvSqX3r1fhEzK4tbJRebUJdRiuQUnrs1yDuac4qBnNixu0jLtdq/shGP6POEqsXzfNS6vW8wdQVbLsXtn8yTw7W117Ycw+hfIW8mrl8YxTaSx0IAbX1XVQ9dsJhTMEsjjISM4QYN4o7ZMzLRYFg0H6fwtFwj4qVa3OBkoF6heTWqBIrL1zLSjiNsayXTvbezAu46bNuTabsC9Zvs6yK5YRtIIHZSGBmvsVCRQT7QhQ/RiXltylPuw+cqRQ92xK4MgRLG5Yu0CrdlJgrsvIQ7Vvrd7DQoQyQ1zbSZC4VlLuWvJSefCr3V44XBRsn+1OooN395BIoJ0wLa2hq2W/Mv9V9G3pCtRHHVoVcEb3A0PGpV/LO6hdRhdYwbboIBNxmQlGIij+sxiMnOAVyiianmC1u9+VMLyaKahF1EatqqdKAVLd3QE6kS12rpEG8+xMAV0ossuiIRAYdy98iOASpJIJlFzM5jOiyusiegSUAS6hx3sIRnPILxAThrm3pavcSGA41juCeUDSoD/S+WwSNk70EFofwPp8ThYDAVaM0gm6LdBOkRLV1zj91DvUWpw4PedtVpgz+4RS3Xj9A5R9MFje/sVcLbE+BtpRc+3l+/0VVuOzFoZaXQQMzlvgL1Zn/jBmL1YfXDafrlVu3a7+evNd6btOmAL1dhoRD23NO8wQxuwzFpZYFUTjEiOIXcjighNCbPygvLeEgMn8FmImSz9AYw+iQXPujiHQoiPeQnsUCF4wAqQQINh5CVoC3TJVH6QT27j8UPdAi6AFvDZmV09uK8uAiWFgpU5EdzlFblMKBe2BxYRIIcPCEE2o3bQo6PZD3wVtGDRjge5iS4Pj2phhkEBjbS4hKuYQzqtyN3PntnsYHlJzQtdmu1pBAmD7QMOdr8FNXUt1fqzFssbEzZK39d0OdMquzbI0Lmq29EihTqCy+QhsgYFkTvx3qr2alu3YjbZCDYXZUlJjwy65wdnZiZxAyz1vGe3VituYzMs3Kz/NIMOqGNLyo361+5tvtI9QYAIfmeFupNdNQ0okMlJ8W/rpA+7NjoK279OqBIsEeiu1ONJBMHRs9nQPq3PrtprUhmPuLmrEa7f4j/ZgtnAcyIaVPoGPWlsGZXBWZ/V/IKSKOZmHeMmdwZHy9hMXC/hPo/0z59Yh16bktrt9drlc2wuBqHqaxVbQcS/oGL/DMUWPhuAI++pJ3NM3tr/pMwRuiyahl+XXt2qmA6WFez+1JCgayZ9PfvFXYi3Mk3AbyJicoQh1m3v7t8JtE1bZUTiHisuuwK/vGPvLWG3VS2biFMyLC3X8lhXPb8//QGw42FtE0xkIwJBYytsXzL3LEFPBpY25vUZ35yAoG8+uAQlz5TmG7JW7kLcgNFPa318hp7oEiJeSHKTx7xQotTaCHkUHoOtRQbtBW8unCKRBVsEzsLFlCEepy3uzIHhzyY8aWER4beZ2eW+v/PqaufTEfHHBLD2urD0yZp9AgjVXf4HqF2IOnrV+w9x4YV27Zf282+qsFD3MjQ0b8w+NjdtM0Zdfl7fXgUvW4DCsEnU8f50BljTgLiLGCUfSxcQpIglyBxnLVWi2ldV49Zt17xEDor03DGWBuf2bee9K9ewTqFOdin4RLrJ654Hx4xbYEYlGIhG0cBDXxkM37lZvzVZLt43tbSwszr6ubO5hxp27b1ycgS/AmHXrDVoBBt6Vpps/NaWJSejyxsXsKVL5Ay7qHvQCWLjMvzJvPGZ5CqiVd5Yw3V3fMh7cxQC+8HN1brm6WoKVMMhMsY3UoNXK2hPI8iC+/YIBIyh7G4JKWAE65rPvyMm/nTiKbyRurICZglas3T/wpcT536316+ads3AUyk3fy9DXHavo6Keoe58Cr7tA2Bufg6onbMabERYlD4VkirPb5USBdurFUEaw9yk5bMWEHMTQSQikYpa9ARvi6BswLhCaVCUI39w3WY5RzQiBQIedPg1UHXT5iC8MpziOG/yvz/726cl/nvicQrTxQfpuSOaRnW/TwU+/5GBI5IX4IMX0kmle1UR9iPv7yT8Bq3EfG8aXCkMcYoH47oAjdt4Y4iYlQU8PCeKElBSD9KFHykq6xMtBLcnL4lA0FEEq7A1VAYFj+jVQHAyzsUFNn4Y/vpiqKHqhEAyOjsW6UkdTx1L8AL5WUQV4TKXgu5Qdj3VFxd5P+kbZU2+s61j/x/3H8VGWsmKsS+wVj6ci8JhTpVhXf6r/mHiUPQU1JaXDAjHVS4mN8kBXjEaF/uPFou9IoZDh1TEpG4sM5HiBvq+MDIwqU0FN+hYfRqFeEtUgjMDqUUWYLhRG+eT4mAp9phCb4FU/Mh4YSCqyotrPwGFgIAWaikX7c1PhaOjYUcJ9ISVVBXkh/+T/LEpcD3cC6P8J7oN8/SnXo1GoOJiXejQ+qwU1UZVSDkdwuq4rmVh/JIdcgBXxOeR7iik+Fo0ch5kBRxDC53WlLg3p7afb8LJFtQX7qOrAQE1QelQ0N0U0RZYEwtaglgM1mtFjMA0KUzQJX1vFNF1Kjk8P6EoOlPctyC+IU8BV7VCSjhYKqBDUqhiLHkeG7CksUTyTvSBKgzZ7A7ZwQTyij2kB4tEhwrSRwpZU5QUpr7HzPIL1upTJJLWPI+leD6fHautqamM3pPOjslgoOLcT+W/nTHzVx+c0MeZ8GXCR66uTQzGPMVLpHl0AOQ8SyOEeef0EiOjilB7kZWksG5PFlD4wIapwQeCZbAyIU8Ie7XWljqf4VJLxMylKY2k9diwSGfBeDCoCy6dDGGrQcMStYaBC0C0aNYfX4OEnlXJOI+k+j977Q0eb9h+rM0dCGb1zi2q9n/CFgnsLBJIA06sgJhUowtHss0pWHMCGKjiqivx4jH6CkmWkBA2Uh4loo3xRiHWftODLq7w+t+5AdS6bw7uNMd/G00JCw4Wm4IhezwEQ+wK4Gmsxr4aoRlvw0mwgNnv08L6G26dacltj1OVKLGZ4pYugPMTxsbzsRGNGHuNEo4M08VgsylItiPfZlAbDLLkMhlmKw8DN0p2oxgcFaYIkZV7TII1BKMU0lY425CgY8LkXQpTi4o2oNu7AEsHVIdMxB9+nzTDsZGgAbdtdSw/A0QfDcDQwQP8wIZBxfHHq5Rzy/AgrINJOEdPtYVtMYp7vjR+AdgP93vggjVnx7oCXGDeow7l6Os7AbsjdafrIIG/2GIYlXMO+lL1RiDegiLBaoONeqJsNH0zJjXt7ydTR707otIPC6zS9gHhHNFuh4zWCg6NxN0g+GB6NM4CjDUzeEURe4/hgzhqw8rqQbRDz9jQ5GKVG0jjRDQZGqMMNce4w7c1n+MzFD4PZOzJGtr1mjAxrrz+6EPcmC/0QaL2FNql7q7SIFeoDreB295pssQOtMmfnAg3unGrjz4ditVST3d4+zibWfFfuBGDX1nBX/y6M68Qv/Oz+j4CwraMekuGcExu1me6LM6gWb86GD2mAZu9wORdcy9FM0NeOkuvEjA7XwpO0KqaGODflvCrbIFuRIzp4A/ZYiVHow8a5eJuFg2Heq7RDDm4AfMmgluNreQIqA+9BNgjMOS9A8Dzc0GgrzF7s9zcHk8SBDslRqPgQchQ+tm+D0jyQpAdMbkG4Fbx8ID2GOTdSIgIXr+HQ9v6mSzoYkG5zhXRpvDU+TcNNDcZ14biZYbbPwagDCFK3NxrODql2BLUjQDfrUPqgzuqOd9UCqBu5dga9Oz6mO5jdNYVYx83/z7i1V+hDsGsQvz8y0gqu7m42BqZe5/YPRLCbdqMBMCtraT2tksVpVw7QXd8R527KCA33dXBWaFfkNSLKLJ3m5UZT5wZlKe6GkT8ARG78DYYLOcbf/Tbhw8RGhxtA3sEwsMC1YKsdzltDeT8I3217TDPC+x/Bd9ue74Z48eSd343lrTbo7kodff1/AF/bsgRyw4WWt3eb8dcPQV8RbqVoqxtsbX1oGEyzZuKNHoDtDsyy5i1MUUxn1Qfhs7jTjdCmDwVobXg27aCz0NhmdfDsYQFa/hHbAxp/eQNdnfuH8Y2/q4Fpz09nGn82A/yk5LyWHjqp5sWA51hCXaiQEXLFw1elWy6yf60b8fl8EPUSCQR2EwkyNES4RAIVnUhwLBLjr8xF/Mkq+5luwPe/UEsDBBQAAAAIABx0PF1pGw7aGQ4AAEQjAAAeAAAAeGhzLXNjcmFwZXIvc2NyaXB0cy9ydW5fYWxsLnB5tRprU9tW9rt/xa0zHeyuMbZJ0wy7/pDdss1MX0wgs+0Ao8q2DCpG9kpyA8tkx2nCw4RXFlISHk1ISELT8MgTCBBm9qeklix/4i/sOfdKsoTlhO7OKglIV+eec+55n6OcIo0fNZJkNiVKPS0kr6Ybz+KKz+/3++S8xPGZTDg3SN4W5khpp6Avr2g3Dkp7q8b2DW1jQr/5AlYqs2+M7c2j/TFt5lfyNyHxZ1lM9QikvHS9Mr9Wvj5/tF/0+cpza/rzm0f7Cz5CcoNqb1YiDvR1r1MENlb2bhkbq+Wne+XFDSCTzAi8pAgy4NWG14ATT5SNjUleJZXle8bIUi1WffIew1dvb1ZKiz3k05amgaZ+XukLD/L9GcbP4gt96oE+MaptLFSGJ8sHG/pPo6W9V3UQZaXMIIlGQtFoKBYJxaKh5ojJgjb9GHhniPT1B5XHq3VQpOVsP4k2e8imtDdVfvIE3wECbb+gPbqOaihOwrHLC9e07Wf6UlG/uaVPbqASvNFnxH5RJbGIh5CWnujFXX2poK0uaKvXyjMjCAYaRyKHv1YKd4zNm3CG+rhT8mAjLHiwDqfXi7Pa5Ja2NaIXHxkrE6W9Qml37Gh/orQzWV66g3r1vb01TIzD26Wdx8a1BWBHW7+lLa3h0eY2wRy1qTva4l0wKuR06bXD+LSNMX181ThcLK9dL+0vwCZ9c1p/smJsXQWD0mamjHu/aos/63OvgCAwrx0OV1b2QFpAStvZqfyyZ5sv7p2/YrzZLS9ulpcLvxWuaNM3ylNb+vpe6fWItvVUv140Xm7ryw9+K/wIqJiBABUSiTRF4W8zKa8XtcmboCN2CmP7uXE4ijf0EThwsqtNbxpXDyoL0/r8K6ChTxW1zX1j9EVl+TY4QmV0VBvbIlQNSI+KSFufsY+q7wzDFnK+o6ONa7vw9TffIvXS3n3QnjYN26fRl9GdmczKz/fKe3fYexTU+K/6xBUSjX0SjsCfKJMOaIShBckbm8t6sQCSckibSbVy9QAwGIc/A3hpZxy5wygi9ueyskqyinWn5BM5OZsUlOrKoH2r9soCj8HIXhD7Bes+L2cyYiIsC3/PC4rq851vvdBK4oA6nOPV3nBKlCW+XwhYz3xCwd8BjkuLGYHjgkFf2+efeWxAPEEfcMGWRYwuaiASIuyFz5cS0gSQSCmOWXkg2OJDO4bz6RPF0v4tbXis/PqRXnxjPLpfGR3Xbq+BVZanNrV7Vy2pj/yLsEAGwVJ7c40uaAez4K32HrrGNGK6E1UxUkI1Q9ACjQEcWAY6CYTUuV1U3d0rQM2JHN4yV0GFjD7WxtcqhQLazXcM7XfMVPHSrz5nMQgs2dh44+L5m/PtXNu3Hee//sqCR4Xib0H6gckRbkQ5K4V7BDXgr8L7gxRMTFNIXkrZMhcGREVVArBsyhAvWVDzsoSwdAnEzeczKlCQ/X9p6boI6lC6op+cbY52hS9l5b5EPpUa7EqIEi+LgtLFztT1A0CJWUnpag5H4W/MXAeKgt/i5hgXJqFaTswXdDmZl4ETtA7AlMyrfCIjWPjwncfpYLkWJyz6HI9+xp7fZV4pXuh3mZc2MwGeCW4ItoVaHdtCPR3OQfAiX2UlAd7YkQqVTUMLxGeEPXiqzU6WX29i4FzaYjkGYvX7dfjpudYv/5867IOU03hJSCRo+EBFdrmX/medpbMySSLLokQCDgY+VE5KnXxYI5qL7a0Xvjr3Zas/BJoJhmz69lXlNAe080ARaP+z6RjFJqDY5EEx6DhS7bHxNA4Ap13BG6dhoVmAUTFHBPm7A5ePKddetyzO52vvONdxsZ27eOELeOnvVdVcS1OTnQlaopHI2TNNisqreQWM9hSk98ZGwoo/CB+l3SIEoQCzMm16O0RYdmPVUYjotza1mYeVpYLx8Ir+ctp4NAaBrKl8e087uKkXrgQpOuChta0dyHfSAwX8kQgKOxLhcrKQzog9vSoUFrDUIecFUwMBf5QCRSNcMpvJCEmVy4hSn+IFGKWAUY6WkE6wv/IZxQEXo3AxLicm+zgpqwreYM0UrJlTkjKfE5yAbrKnKdxpLiUIOWCyv1+QVC/AGD1ILIL5ShVkL5oxeoRYlOMlPjP4D8ELppmiaY5wibyYAQ1nk26obp+Pa+/4ug3kTJfMCMQsAYo38QfBikDujIuZUYXijsvmBAmM+9hbRs77XZucHRg8D5aagXdDl4NBFlxUedBh9CzLf69kJXstBUziQjiT5VPKcazwiOQCVdMN0YIhm1fjp4NhLCUCwXBKgP4GjhQ8HjES2WwmkGLODWWqBGUHeGHItS4MqIKEeQUUJ0lgXULKb2ISBpJCTiWt9BdA1EQkKt2QS8iXeDXZm8r2OEO8u94EL3KWg2YJ6Cgzrfh9qReqGgJGR6g2HdTZUUKEA+G5teoMMLjTBHXHFZdSrKtatYVhU6CThRGwM7AIWfV3hyAO5eDUAgfCz4H80bKr2miOBF0o68vOunI8FIg2S4AmrGTAfwIfWwVZjpcVgePlHiUAP6xUhF1fnJj9G6Q37L8geyOTHO2k4ixAIixrfRwL0K/YTkGlBE8Rh7BF8ieSAXtz0MOLBzBc6hS7nQKGZQiktBH10/wpkj+QqDeKKusMEUJ2/xF3xEnMhhIyTrT0jCfDbInjxMhRbidCbQq4cyCsqLKYCwRp7h3AxOsgFlZyGRG8KeQPomRs4PdwgQo7ERcu/broMjrvJkPt4ER0LIs5sRzNDtjvRsPsDD3E3B117FYEN7ADwM74asjUaYgqIOQQQIgxGUIipqf086LrND2ZbILPsLBhOc3JEALXx92O9SenSKVQtMcYqBAhpwA0Teh2JQeYq2ezQDoVajIKmgzL/wCqdEa6cQG3MKeiYq1yVcXTSzVSdVqKW8gg5qo7uikcE7BJLh73xO+mg0o7vhveeARMIRPmc5CdUgElWHNoZBBYYuKhb3OyKIGHxP3kI3LmbIikM3mll0bRoPO9tjVdfn2vtPvQ2LxmbLyujI5WFke07Qfa8LY2MUz+vY1zusrcBs6Wirv+enjSfkLYBIwNsSDrDJlRAtgKNLD7pgYw8QDGJVhssAZvDUFYbaAjsYbg5XeSsJqOhaEG2tw2hL/Pgi1ScdsqoTJ5HyI6iyrtjFduzyA65ojIFXQ6sNZQf7u3SC2bTDmTHbIk5cHi0yEiCUKKu5SwGXRruMqZtjViHM4YKxNkKH3Zj/LyQ/91rNC161zsv2jyNbGju9NuooZ5h79HLB+zBz2sTT+yxj1sfgNkTzjUKXo3gMlsbtCsEVASfbR78ldHSVhW4lN79RHbBCjOobiznpTq47kvvqhCYt3I3jhiKlAO57K5QF+IJmFTLVQ4CTl7CYwNg600CBYTq7EYS4UucAziWNmw+qRKybSFtwt3j3amif5sBRpqnIjUNmKulhra6JnN8tzab4UfPQzMgRjuTJ2Pz5YPblRWXpYXrlnmP2aNApuip0H6qJPVp8aLB0f7i8f6cyQ4Pc9a95PQNB7d10aegyF4zW7MVg/nOzM3tI2rOEYY+0mf2yXQsYg5VWlyTGsrK68qV3G2aorOm7qXuI+LGsOkPccLd9C7AARWqKfjVv0bMgvTYwdTwzQCB2qO2mmrpJto289AKdr4Gp5n/T5OhNeLzpoZnND2PL34i/b0JtTP5b3HbwsP6wgULYtDy5J5qUcIRD8+3mpbJbXdBNQvrU0xmVuohOxdtWkiAdLpc5ff1Vo35ggFv4MDKzg5hWbujw+ZN5ePDpY8epv4kH3rFVEtEwAHq3Omqmmyy3I4tz7A/+igGKfExuY2fgrYL5BW+t1oZcPYWCWfg1/WaJEq/p3e6MUCXJgmZ9/oUw+a0D2fzBkbW6WdVXA5hytOaMOvSge3T+KHlFyChzoo2Y966GTDFpwLsZIDm/ysVC1BcFRIM2pVWCYI1Had1WLeqsIcJQ9k37qboLHAvku1idC0WA+clblY2skBeh/sZidJ82IGOjelyu/JEiHOpxzjdJracWQO22rM5dg4C++D3im1S/rgA8IGmZhSMavRGZI91MYcWl/7IEBVlBxFWhXvUEO8AUqB2OnLZmFChuCQl7FoAkKk+roOejWCkQ3dE384HK6mY6YT42Mds2UjePRuCFFMOaC/S6l42+efhTAZxuGfx2DRfXk32uDM5q0gse+5cT/9nut/L0JBlrOyEvfLQi7DJwV/tW3/JBY51rjDKpwtIEOgTuE9GAqUL1j2BEDCne0dn7ZeuNDdJWElRIEAOe35rAe7T7RKHw8jAMSdjWcikUhL9/vcPO1nc8hCQRt9Xb57hQzJYVY24dAHo5xRmNfnX5Ehh+JII+iyJRxJX1bo3PEd5nSKRCKkdDCr3y+YY/cYnF9fKlbmNyr3bpUORsAujdEX2o0DyOasHIfC2gHLaj/6xe9OTZJw8ErdBCuuSIjEgrWZwvJSq6sIWA7qRBIM1uwzwyE4FVaH6w+q8W5mqry3XnqzbLz8CaoDu15hXyD164fsgwP7gFxHROYcx2HrHcx0WgdyouydHNLIi/FqGLQCzh2DCnqa3haRp+1nVdd/h1rqCsNvmq4/WMOkPWwivEKE+pzRal7b/1Hb2cFWQ/iv+MAgK+CYk4Jb81a7e6wJSmfOepEBE7Eo1JSyrMMr783qy3fws/nBCFglU67ddr2j3LEYpaYHZldLx8knJPKleXfUZLF5iLmZZ0h2zzJcbGvDa1Bt4v8hGZsB1LO/s3vD92ZzFHUKiQUV6Jd8sMhx+HWX4+gohuNwCsJx5iTGFbHZtz1RDdBBCT7R+U60pds0orQoQZXs2OHS538AUEsDBBQAAAAIAPhzPF2u+2PKOxIAAHMqAAAeAAAAeGhzLXNjcmFwZXIvc2NyaXB0cy94Y29tbW9uLnB5rVp7cxNHtv9fn6JruNkdbWTJhtzcxIWzlxAnsGGBCk5lbxlndiyN7MGjGe3MyLbKuEoQ/AK/SGzMw2BMbPAWxDbBYOMHrtqPEjSj0V/5Cvec7p7RSLaBVKIQa6Yfp0+fPo/fOa1DpO4vdSRppFS9o5Hk7HTdR9gSEQQh0ps0MhlDj2fz5JfCFHFWJ0qbD4ovH3orV7zlzfLQUPnOoLO+6AysO6MD5D/rxBl44gw8deY2nc1HkYg7UnBnR7wrt93ZJ+Xvdopb497urfLQqHttt7gx4t5fL27Meou7v27fjhDSECXHP/+CEAKv3sqWs7hTun2lPDBW2ln+dXs4aehptSNxtPR0q3Rn+ZN4Xs5ov26PwLzDUdLTLkbZvNXvSlNL5Es1o5JvlPZPTTXVoRCgQ060tJwlzvIDd3i99HgFph2JkuJGwbk/6N4YAvbYLmAh9/5Q+cFNd2PAXZshCcJ26j360b03Ca/uzIvyzJqz8z3MxeUjjEHkd+JGcfumMzBc2nzENuRchx0vePOjpK6OsU+OeusrzqsrnxAC/0rjK86D75yJm+WhCfKPE+ek42dOf37yC9q333bDHUlNkXVLMWlHJFLc2iruTAeCdiZWiluL3oPHzth06doTb3cSuIC9/TObtzsNnTTUS0lD05SkLWmq3mXh+QKPsk18uv+Ezf26PRopvpwLiBEzp0uypuHo4sbP3vN19+6it379deEyVRY1kzVMm8hmR1Y2LcV/v2AZuv9sWP6TGfRbufasaSQVK+iz8sGjrWaUSOQQcPf7PoQJPhI50fxVM2kCRuJZ2e6Mp1RTlzOK6L/L7RZ+i5KUVjVFkqKgV/7nEInH44neTqvOSppyVjET8K1mbSty9ssv9qGJS4Wm7//ZQzTCtED67ORXIZoXDFUXYZkYEZgGCNHIZ82fH/v6VIt0/FgLjBT8oxMikW8+lb7+6hQ2dtp2tjGRaDj8P/F6+K+hsaG+/qMPE2jWsp4ScOS5lmMtX597w2DLlu2cBWT/iHNg9hKJJDXZssjxdIeYUpN2tDGCwgAtcjYeli6/dCbWwZ6cwnbgApyVl97TeTAs8BFxy1aycaa5pqEpFvll8HuCdFANKaWUkiaS1KEA67YpSaKlaOkY6eLr4Mc285UX/HSDCHBYa1db0K70JpWsTb5U8s2maZjVE0xZtRRyDBZQ23O2QkeIXdFgjKnYOVOne+yOEjVNVEvVQZh6UhG7Y5TfKFE0oNFdYRpYpgrIGE4Ztq2kYtgj5zS76bShK6E9JHMmZzpoShsmAfOziarz2XErq6m2KMSFaDX/wJFu2GGugJ7Pl0+GjtBxperJoQ1y5qq6GWfwtxWptNXKBDpAneghpVU9JTGdFsED0S3GQPDAdFKt2jHw6zc31hL0O3CQbzOqBdYs+j1c1FUGBS8g72RPSoxWlmQHqOjdzPzgQTUhBMJAUah4aSEa8KR372VH76ZN6AeADG4MJRqy2Ch5nwjUewuR0MQq9iqeIEYpRbnMNEMGkYFaVUkpRnzxVawJ49LAIregly+8+cXyzqS79qo0Nef8NOMuP4egwDzj68Ild2bRnZ2Dh3PN586dPHOaOJNjEAbQpqhmmUaGpGRbQZ9MuH/235kCI+uw3T1nCv+HjrRa0FwL/Y0rvaplWyI+h9RV7pZVDSi3pqmCp1ElYYYGY8HbhgRF7SwNh5ayelQwIy7iaFu1YtROoqrRGlJTatrn8uBoMs29YD1poZVJsTx1y1tZaSPuyKvixpgzvMqaAUQUt16Ae+rDFfrP68Ieawk+aSFsKCyeQ0C9VhpfBbSENOh2fwMRwDzus2mYyYL4UTi40qNVQAvu8A2yF31w3a3ygPw8KZyg+s8830naXOP89khHaC2+uus9v1Ha3nQWnraR8mzBe3iJZPNIDuCBszzi/TgA/HH8UZchWTVLqN/RNGDQ0LV8Xbuqy2a+qRGaGvlczikeJTGyik71AlRJZ3C1SaBwVYgS2SLpMIM9oCxIIG7JaUVCgxHT1Kn19TNVTcIA9MwwlEvDSMl5aPQ1Oq4bPWIUQo2ZxldReO//6t7L1L2X4jwB65ksjKfz4qaS1WTwoEKdACGaD0m2CtwKJORbaIPh+FDplG2pS8nTDl85qbdWeu0AkrTLlkLxBLWJaGt9WzCfrk1n06egnfJG2+lTpR1AlmrotCfJPBpArwuAA4Hrvv4oa/JHUXmlBcQmfcnWP/vc/rmtnwdZI4fW90ZaMCSbsz9TTaHa2unMN2jUHntjdkVQw1avE75SPCAPfqy4+cgZ2gS07OxMo9uKVvNYcTBZQD45AEoinK3I+qNs8CHyy80BUrqzgWiD2gqmCK+usZbXhdEg13Hvv2QrvS6MseQA0DI4BG99rnS3wNIQyBUw84DwAujzOqJptgZkBpMPneFbAM7dnxZp1zA3DA4oE729ALJhE0CCbasIuc3kDrgbZ/gxEHVmV90bL53xLcTeYblWhT6+t4qY9whDN8wMhRt7cWaVYFB5oIEpKu0ImsGAqvSXBVY6BiwBeyskwLbkNwym3ZXRsCHFegtt+AL9lJgehObaXP/3n4m9bCxGkxRGEzHYYqyyrViI61iYp1hlkbB4rXhG7lJgDUtMYcCD8CQZXU0tZk6JhqN8kgfypKaKKcVKNglvzqyFSkQvbc2hTvqpZeDzExU3j48aZMDYWNyhoX/isju9Wi5MFLfv++FcRufl52rxY2ZHLqPo9ll8MylTqIngBprwOcqnxOVUSpL5WHB2uLRQDU9jpFPRsk0Cy1w59EAgEaTw8Bbk72AV5a2b3vICEQAQhfHRgSuy9OeARe+sueOL7uiQs3w7HJiZMaOT8FN0d7ZQfnyz4if2WYnKEBay81mlSdXt/ZeEjNt9Mg/knIXbzsKV0uQgPqxed+/Oc9JdEEn0GJy9ZaPIs3Eqcok244KWWKUcoeF/TMoVFEL8rOubTwN1qqmUBAUS8CtYSAGcroHHhI6J697Kuvv0MlZIYMezm7x6sXzPfX4Ndl9aegbCRHdESbvPltwrE6CdfPCzLVTcrR9BPODKnKuP3dFLJEg0QQvckQJWGajjdEbGnN2B8vyWe/UqmxMulWBpZnzEd6fe7i20h6tLxZ3Z0tTTcI0iQUqz18ozS6VrM8xqvLU5b+1HmMkKJc7gAEK4wbHy0JizMMYOz3eoNZmkqqt2kEbyAAmakclWO1jsj/NumpnRp+puU/lXrWNidNClKf+KY70ENCe0eBI2FCwuJ226NioOV8QeGVB1fYwWS8CFNX1cH2IpK+cR/sCSfQKbKzQGRASkgu/wxdARtPnxv7FqO/0BxQoa8/cDk9AVvw2W4Qd3F0/lMlmRMxYjaZxp5UxFkq2kqjZ9LgMar6TRexJ1mvMGRaM4nLjYKviaihGhzqJ//4F/z5451wLfrCISOxhP849QdwJnHTd0G7xAXQuYPkgniwmLjCJL0NN5Fzp1GDY4pkWS/4sOzhdY21spJOWsjSJhkY2GEDhgwIX8sVbWldPn39FqmTHfQqWPUrdEE6Btqmoch/zN9AsVGE5PadyPTJ9gdIF60IOCrSmmicoCaEqJVtQEkkDQ2/yemgNq695aAoXclqYoWREHhPRf6ZY1CRnnBgD7fpvOY+a7fh0sHjJc8rdzaPG7U86dewypOZPjCKF4QekOZCze2iIbQNCg/AhJN8zrK6KAbOQgN0B0KyAPsGX86ue84J83HAIHaCaHxV21xRguWVy/Jo0R+RyGjpiVcnSNLCmhhIMvFKroAIkYoSW2GMFsObr/sjDsDfa2V3f8pGk/tTl4X9VHSpOcypE2CSkjSWNvvN1I5eOqritmC4wJS+odjuM3izx02t2/V9zdMTSDmnX2CHR/oXZXW+ybxRoi0V1bfEJD7PZrRT3tEA7VbkUMlViXh92rC97undLSNXdtC/IVZ3IGsREEw8nH7si/nafT3u49AFLO8AIAqVANiFcJwNdqajs6shyiFOypborz1F7CMAF4sqa3PadqqQP6zppGb/4EpGga9IHoo/sUKzCahSRXQwFeaXQKatsVs/wgCqPkFOT1KQW1RYzuKde2G4YmptiBQ2jRwccK0Wisqh20EiIWHAqm9zokokpK4JQOPjZOnztN+vXH4LvSrS1IRN3CpUjk1JkvTp6WPj32GdbKBMA17o1V1o1qy568FwPlW5P47qz/XC4UMGkOhkBn8O4tv3IWhoobV/lwd+Rx6f6lylh3BIDfpjOxHpq+sl67HCwCHtadHhbagvJlh6pDXiSiBwDvqeopo6fpw/r6ioqW55+X7z7gN3NUCYNNAkALwGXgMZKG0aUqiPdYUY7gVcYZXcvTu78epd0vffiwsTQ79591Rhl4hlTBmRwmyVSWnFbsHsPswnM+TolaGD0eXSL19VLWVNKa2tFpA7oENnyj6FQovKLbQX8B7qG1ke2qLUgy2zHJDI6nMew/aBcS2dc9cX1pD6cIDAIIf9CVTPgCNBJpOfn3ZunUydN4S2YqINlMVtUUkS0vfCueT/V90F8Hfw/zvxdDz63ncx8o9fV153Mfp+X/buurj32E/e87w4Pl7+cA19OX1Ql35oX/svBveOI1cAFb3Nlh/DuzeNG9uQTdFzEdwK/h2/DvYmn7hvfqenFzvPXb8zqu0HC4P/pfCJhbTracapYo/2fpldhvZv9dWN2fRcobY4MVkYKE3p2cLa09KG394N6bLQ+Ngj6Wnkx5y6vlH15hqnpzhSQsRTaTnRJkfJBcJo7qauoT1FOsFIE60yFYMzdMhXWiCfz0ozN8y92eKG4Okqr5BPOrlW1vaM0p3CoXRpyBJWfwjvdw0P15vrgxhQSvLpanbmGic/pMSzPiYumrmtM2BfGvjVVkL3IOLqZUK2l0K2Y+odpKJpoQW+vrPpbr0m19DR/GjsBZgAxaznzZfHofor2WkpRso0vRm8TWb//U9j4OZk4BK1Gifw/ooxJAhLl2mHfeeh8dCoE/om9itDSrZsVoUEtRZF2yVVvjqKcTMjYTzEQ3VEtpEqMV71LcGg+fijM2XxoZgoNxp9ecuzPMHOConJFF8IXs9wBBYssGc5PZeeA8vPy6MMrGnD+vQxLqFQbcm89Lj1bh9QhhOgOPDfHDxY2h14Ux3wOFh5YLt52NDefVcGnupyAXxgvQ8S1IddlvDrz5UQCuWLaY3gVeGbgFtkLAlXjzS6WFTUiJ3bvzNJoPu/e3wxktfuOFnIXxIetLkF0a0ioYQk4mX//a8DwWgsFLBaOZT+sCpE6JVCYzwhx1VRtjPCPbyU4xyyfzMUhjT3wMEDAWSzJyr4ijYjA236QpelBFhmdQF3KUfNhYi4v45xDxdodAoEAmLGtWpwWjYod24PKwBtMgAliEsste48wsAl09YK6s50UdpWJTAdFHqolvmMbfba7RrEyEV/UQ4qR2zUh2ifRvRZOxQAKKcHeelQ1BezHeBdCZuNcG3eFJ0qeryS68Q0CoTTNbBon6A7WmlnAF6zW+7oKHAS0HWOhMrHjf7TgLt2m5cQS7fIWE59bS5Zfe83vu9GpbK+ihszDWVqVtmqorVNu0Km3TqLbR3Rygb1q1vvEjp+Tw2A8fLEbcLKxIh/q3JWqqF5qCIciCGmNcKDpgCBNSCUa8taGxLUYaolUhOgiKXJG12qt0Sl6tamsHpNnl844DVIsyELq+D84Cf31BBFYM8rk40haN+ckJ3k++6zxYCmeyV3yJhObABOpp+WuVOfltIN0jb1XSPsHXKUi88JH9MgUJ0EyMPrU2Hqmvb8OCu0rH2f2Bt7cVSU1JeKcsAV5HCM9FmsFzqsQl39xgAFeUMBeZeIdp5LJiA1WZDLvHpbgIV6GR5qA1/Bj1exZQLUnO2Z2GCdDQwB8MhdZA66wO/e76OuRazBcVN7YQ41IMAB6JlTuLGw/A3fuW46enCbyrSvAFEgI1nBCzjBOWUVGx4lYBJcTY9iEhNXJmEtLrbFJiW91zm+A9X60gDOKO/OBsFxhIQfPfeEgqcZuV7HnVd2WqFruQ0tKzGv7T9GdFVmMi0dPTE+9VZaPT0DuszhzigmBV8FCp/r+G8EEf/er/E23iW+hj3/2++C/QOqLRfiFGQr8XCN/C1P4kiw7b92am9or5nQqalWImZWLfQmYMDiwFttDU4J/VBXodzZbZ54c97/SDiH1+elOVIf/WG/MQzSCxFtPvmNL6XATpnfgXmfOaNVXdhlcQjpazOrnA/x9QSwECFAAUAAAACAA7dDxdsxqtVQQWAAA8KwAAFQAAAAAAAAAAAAAAtoEAAAAAeGhzLXNjcmFwZXIvUkVBRE1FLm1kUEsBAhQAFAAACAgAQXM8XcWElFXnAgAA+AUAABwAAAAAAAAAAAAAAP+BNxYAAHhocy1zY3JhcGVyL+W8gOWni+mHh+mbhi5iYXRQSwECFAAUAAAICABFczxdMP7MX+oCAACUBQAAHAAAAAAAAAAAAAAA/4FYGQAAeGhzLXNjcmFwZXIv546v5aKD6Ieq5qOALmJhdFBLAQIUABQAAAAIAO5zPF2EJqKqkBUAAIsuAAAgAAAAAAAAAAAAAAC2gXwcAAB4aHMtc2NyYXBlci9jb25maWcvY2xlYW5zZXIueWFtbFBLAQIUABQAAAAIAPFzPF0cMSJvhA0AAIAaAAAeAAAAAAAAAAAAAAC2gUoyAAB4aHMtc2NyYXBlci9jb25maWcvZXllb2lsLnlhbWxQSwECFAAUAAAACAD0czxdK2SItqcJAAC7EAAAIQAAAAAAAAAAAAAAtoEKQAAAeGhzLXNjcmFwZXIvY29uZmlnL190ZW1wbGF0ZS55YW1sUEsBAhQAFAAAAAgAjHI8Xeus6cMKBgAAtQsAACMAAAAAAAAAAAAAALaB8EkAAHhocy1zY3JhcGVyL3NjcmlwdHMvMDBfcHJlZmxpZ2h0LnB5UEsBAhQAFAAAAAgAj3I8XclJdyDWCAAAThAAACcAAAAAAAAAAAAAALaBO1AAAHhocy1zY3JhcGVyL3NjcmlwdHMvMTBfY29sbGVjdF9saW5rcy5weVBLAQIUABQAAAAIAJJyPF184adpEwYAAE4LAAAlAAAAAAAAAAAAAAC2gVZZAAB4aHMtc2NyYXBlci9zY3JpcHRzLzExX2NsZWFuX2xpbmtzLnB5UEsBAhQAFAAAAAgAlXI8XZMxeHmdBgAAnAwAACQAAAAAAAAAAAAAALaBrF8AAHhocy1zY3JhcGVyL3NjcmlwdHMvMTJfcGlja19ub3Rlcy5weVBLAQIUABQAAAAIAJlyPF0Gd0THGQsAABAYAAAmAAAAAAAAAAAAAAC2gYtmAAB4aHMtc2NyYXBlci9zY3JpcHRzLzEzX3NjcmFwZV9ub3Rlcy5weVBLAQIUABQAAAAIAJxyPF13zSTJywgAAIISAAAnAAAAAAAAAAAAAAC2gehxAAB4aHMtc2NyYXBlci9zY3JpcHRzLzE0X2RlZXBfY29tbWVudHMucHlQSwECFAAUAAAACADWcjxdoHnZeFkPAACMJgAAIAAAAAAAAAAAAAAAtoH4egAAeGhzLXNjcmFwZXIvc2NyaXB0cy8yMF9maWx0ZXIucHlQSwECFAAUAAAACACpcjxdSEF2JOsPAACQJwAAIQAAAAAAAAAAAAAAtoGPigAAeGhzLXNjcmFwZXIvc2NyaXB0cy8yMV9hbmFseXplLnB5UEsBAhQAFAAAAAgAsHI8XQ6OAIgJEwAAzTEAACMAAAAAAAAAAAAAALaBuZoAAHhocy1zY3JhcGVyL3NjcmlwdHMvMzBfYnVpbGRfZG9jLnB5UEsBAhQAFAAAAAgAHHQ8XWkbDtoZDgAARCMAAB4AAAAAAAAAAAAAALaBA64AAHhocy1zY3JhcGVyL3NjcmlwdHMvcnVuX2FsbC5weVBLAQIUABQAAAAIAPhzPF2u+2PKOxIAAHMqAAAeAAAAAAAAAAAAAAC2gVi8AAB4aHMtc2NyYXBlci9zY3JpcHRzL3hjb21tb24ucHlQSwUGAAAAABEAEQA6BQAAz84AAAAA";
+function b64ToBytes(s){
+  var bin = atob(s);
+  var len = bin.length;
+  var arr = new Uint8Array(len);
+  for (var i = 0; i < len; i++) arr[i] = bin.charCodeAt(i);
+  return arr;
+}
+function download(){
+  var st = document.getElementById('dlstate');
+  try{
+    var bytes = b64ToBytes(B64);
+    var blob = new Blob([bytes], {type:'application/zip'});
+    var url = URL.createObjectURL(blob);
+    var a = document.createElement('a');
+    a.href = url;
+    a.download = 'xhs-scraper_小红书采集工具包_v1.zip';
+    document.body.appendChild(a);
+    a.click();
+    setTimeout(function(){
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+    }, 1500);
+    st.className = 'dlstate ok';
+    st.textContent = '已触发下载（53 KB）。若浏览器没反应，看下方「备用方式」。';
+  }catch(e){
+    st.className = 'dlstate err';
+    st.textContent = '下载失败：' + e.message + ' —— 请用下方备用方式。';
+  }
+}
+function fallbackCopy(id){
+  var pre = document.getElementById(id);
+  var t = pre.textContent;
+  var ta = document.createElement('textarea');
+  ta.value = t;
+  document.body.appendChild(ta);
+  ta.select();
+  try{ document.execCommand('copy'); alert('已复制，新建同名文件粘贴即可。'); }
+  catch(e){ alert('复制失败，请手动全选复制。'); }
+  document.body.removeChild(ta);
+}
+document.addEventListener('DOMContentLoaded', function(){
+  var b = document.getElementById('dlbtn');
+  if (b) b.addEventListener('click', download);
+});
+</script>
+</body>
+</html>

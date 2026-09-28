@@ -3,14 +3,14 @@
  "brandCount": 10,
  "detailCount": 11,
  "reviewCount": 273,
- "negCount": 102,
+ "negCount": 101,
  "filteredCount": 1,
  "dataRange": {
   "start": "2026-08-25",
-  "end": "2026-09-27"
+  "end": "2026-09-28"
  },
- "corpusTotal": 468,
- "corpusFeigua": 246,
+ "corpusTotal": 378,
+ "corpusFeigua": 156,
  "corpusXhs": 222,
  "sources": [
   {
